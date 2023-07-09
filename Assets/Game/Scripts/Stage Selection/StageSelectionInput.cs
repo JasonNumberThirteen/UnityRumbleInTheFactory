@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class StageSelectionInput : MonoBehaviour
 {
-	private int stageIndex;
+	public Counter stageCounter;
 
 	private void OnNavigate(InputValue iv)
 	{
@@ -12,13 +12,13 @@ public class StageSelectionInput : MonoBehaviour
 
 		if(stageOffset == -1)
 		{
-			Debug.Log("Stage index: " + --stageIndex);
+			stageCounter.DecreaseBy(1);
 		}
 		else if(stageOffset == 1)
 		{
-			Debug.Log("Stage index: " + ++stageIndex);
+			stageCounter.IncreaseBy(1);
 		}
 	}
 
-	private void OnSubmit(InputValue iv) => Debug.Log("Selected stage index: " + stageIndex);
+	private void OnSubmit(InputValue iv) => Debug.Log("Selected stage index: " + stageCounter.CurrentValue);
 }
