@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 377437077}
   - component: {fileID: 377437079}
   - component: {fileID: 377437078}
+  - component: {fileID: 377437080}
   m_Layer: 5
   m_Name: 2 Players Option
   m_TagString: Untagged
@@ -336,6 +337,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377437076}
   m_CullTransparentMesh: 1
+--- !u!114 &377437080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377437076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &468366888
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +490,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468366888}
   m_CullTransparentMesh: 1
+--- !u!1 &639037318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 639037320}
+  - component: {fileID: 639037319}
+  m_Layer: 0
+  m_Name: Options Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &639037319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639037318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d018faf732f65542a7bf9d66b429675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  options:
+  - {fileID: 889727192}
+  - {fileID: 377437080}
+  - {fileID: 1651447533}
+--- !u!4 &639037320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639037318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &680709370
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +622,7 @@ GameObject:
   - component: {fileID: 889727189}
   - component: {fileID: 889727191}
   - component: {fileID: 889727190}
+  - component: {fileID: 889727192}
   m_Layer: 5
   m_Name: 1 Player Option
   m_TagString: Untagged
@@ -679,6 +747,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889727188}
   m_CullTransparentMesh: 1
+--- !u!114 &889727192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889727188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1002192793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808def52445d3904096a8291885fa6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsController: {fileID: 639037319}
 --- !u!4 &1623448754
 Transform:
   m_ObjectHideFlags: 0
@@ -1331,6 +1418,7 @@ GameObject:
   - component: {fileID: 1651447530}
   - component: {fileID: 1651447532}
   - component: {fileID: 1651447531}
+  - component: {fileID: 1651447533}
   m_Layer: 5
   m_Name: Exit Option
   m_TagString: Untagged
@@ -1455,6 +1543,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651447529}
   m_CullTransparentMesh: 1
+--- !u!114 &1651447533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651447529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1749089703
 GameObject:
   m_ObjectHideFlags: 0
