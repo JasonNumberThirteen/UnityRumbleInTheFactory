@@ -10,7 +10,5 @@ public class PlayerRobotInput : MonoBehaviour
 		Vector2 movement = iv.Get<Vector2>();
 
 		MovementVector = movement;
-
-		Debug.Log(MovementVector);
 	}
 }
