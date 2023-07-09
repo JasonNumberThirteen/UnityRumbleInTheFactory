@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -356252332091342721}
   m_Layer: 0
   m_Name: Yellow Robot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1032987853
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1321011705, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
