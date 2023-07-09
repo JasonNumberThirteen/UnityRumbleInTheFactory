@@ -422,6 +422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageCounter: {fileID: 286413667}
+  sceneManager: {fileID: 1104572917}
+  stageScene: Stage
 --- !u!114 &443464711
 MonoBehaviour:
   m_ObjectHideFlags: 0

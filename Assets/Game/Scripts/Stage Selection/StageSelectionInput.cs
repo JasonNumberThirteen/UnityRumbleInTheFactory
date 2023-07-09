@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class StageSelectionInput : MonoBehaviour
 {
 	public Counter stageCounter;
+	public GameSceneManager sceneManager;
+	public string stageScene;
 
 	private void OnNavigate(InputValue iv)
 	{
@@ -20,5 +22,5 @@ public class StageSelectionInput : MonoBehaviour
 		}
 	}
 
-	private void OnSubmit(InputValue iv) => Debug.Log("Selected stage index: " + stageCounter.CurrentValue);
+	private void OnSubmit(InputValue iv) => sceneManager.LoadScene(stageScene);
 }
