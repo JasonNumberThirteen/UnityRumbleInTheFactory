@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 287245387
     locked: 0
+  - name: Bullets
+    uniqueID: 3292875393
+    locked: 0
   - name: Entities
     uniqueID: 3261979443
     locked: 0
