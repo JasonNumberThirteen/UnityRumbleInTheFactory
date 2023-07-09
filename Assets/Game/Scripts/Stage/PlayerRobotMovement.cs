@@ -12,6 +12,15 @@ public class PlayerRobotMovement : MonoBehaviour
 		int x = Mathf.RoundToInt(input.MovementVector.x);
 		int y = Mathf.RoundToInt(input.MovementVector.y);
 
+		if(Mathf.Abs(x) > Mathf.Abs(y))
+		{
+			y = 0;
+		}
+		else
+		{
+			x = 0;
+		}
+
 		return new Vector2(x, y);
 	}
 
