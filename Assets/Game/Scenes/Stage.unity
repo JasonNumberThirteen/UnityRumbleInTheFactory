@@ -1050,6 +1050,10 @@ PrefabInstance:
       value: Entity Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 9159079852551321459, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 2644064332054541095, guid: 6d75c624a416d364e9857b7401f23dc4, type: 3}
+    - target: {fileID: 9159079852551321459, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: parent
       value: 
       objectReference: {fileID: 1939610192}
