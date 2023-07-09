@@ -3,26 +3,24 @@ using UnityEngine.InputSystem;
 
 public class MainMenuInput : MonoBehaviour
 {
-	private int optionIndex;
+	public MainMenuOptionsController optionsController;
 
 	private void OnNavigate(InputValue iv)
 	{
 		float y = iv.Get<Vector2>().y;
 		int optionOffset = Mathf.RoundToInt(-y);
 
-		optionIndex += optionOffset;
-
-		if(optionIndex < 0)
+		if(optionOffset == -1)
 		{
-			optionIndex = 2;
+			optionsController.DecreaseOptionValue();
+			optionsController.SelectOption();
 		}
-		else if(optionIndex > 2)
+		else if(optionOffset == 1)
 		{
-			optionIndex = 0;
+			optionsController.IncreaseOptionValue();
+			optionsController.SelectOption();
 		}
-
-		Debug.Log("Option index: " + optionIndex);
 	}
 
-	private void OnSubmit(InputValue iv) => Debug.Log("Selected option index: " + optionIndex);
+	private void OnSubmit(InputValue iv) => optionsController.SubmitOption();
 }
