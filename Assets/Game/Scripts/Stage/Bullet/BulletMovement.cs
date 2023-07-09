@@ -4,8 +4,9 @@ public class BulletMovement : MonoBehaviour
 {
 	[Min(0.01f)] public float movementSpeed = 5f;
 
+	public Vector2 Direction {get; private set;} = Vector2.up;
+
 	private Rigidbody2D rb2D;
-	private Vector2 direction = Vector2.up;
 
 	private void Awake() => rb2D = GetComponent<Rigidbody2D>();
 	
@@ -13,6 +14,6 @@ public class BulletMovement : MonoBehaviour
 	{
 		float speed = movementSpeed*Time.fixedDeltaTime;
 
-		rb2D.MovePosition(rb2D.position + speed*direction);
+		rb2D.MovePosition(rb2D.position + speed*Direction);
 	}
 }
