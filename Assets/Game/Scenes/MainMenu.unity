@@ -1338,6 +1338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageSelectionBackgroundTimer: {fileID: 905126337}
+  input: {fileID: 1623448753}
 --- !u!4 &1144572965
 Transform:
   m_ObjectHideFlags: 0
