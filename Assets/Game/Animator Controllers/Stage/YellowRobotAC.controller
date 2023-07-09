@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: YellowRobotRightAnimation
-  m_Speed: 0.25
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -549889344853661584}
@@ -121,7 +121,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: YellowRobotUpAnimation
-  m_Speed: 0.25
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6728337896357811216}
@@ -358,7 +358,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: YellowRobotDownAnimation
-  m_Speed: 0.25
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8335802956827075941}
@@ -387,7 +387,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: YellowRobotLeftAnimation
-  m_Speed: 0.25
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1032274504190093574}
