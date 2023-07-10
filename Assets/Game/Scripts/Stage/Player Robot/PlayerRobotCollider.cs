@@ -8,7 +8,7 @@ public class PlayerRobotCollider : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
-		if(collider.CompareTag("SlipperyFloor"))
+		if(collider.CompareTag("Slippery Floor"))
 		{
 			SetSliding(true);
 		}
@@ -16,7 +16,7 @@ public class PlayerRobotCollider : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D collider)
 	{
-		if(collider.CompareTag("SlipperyFloor"))
+		if(collider.CompareTag("Slippery Floor"))
 		{
 			SetSliding(false);
 		}

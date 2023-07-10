@@ -9,6 +9,7 @@ TagManager:
   - Shield
   - Nuke
   - Toxic Waste
+  - Slippery Floor
   layers:
   - Default
   - TransparentFX

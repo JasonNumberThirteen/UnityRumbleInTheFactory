@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 703712902}
   m_Layer: 6
   m_Name: Slippery Floor
-  m_TagString: Untagged
+  m_TagString: Slippery Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
