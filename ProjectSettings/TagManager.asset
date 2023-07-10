@@ -10,6 +10,7 @@ TagManager:
   - Nuke
   - Toxic Waste
   - Slippery Floor
+  - Bricks
   layers:
   - Default
   - TransparentFX

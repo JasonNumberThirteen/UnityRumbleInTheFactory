@@ -25,6 +25,11 @@ public class BulletCollider : MonoBehaviour
 			}
 		}
 
+		if(collider.CompareTag("Bricks"))
+		{
+			Destroy(collider.gameObject);
+		}
+
 		EntityExploder ee = collider.gameObject.GetComponent<EntityExploder>();
 
 		if(ee != null)
