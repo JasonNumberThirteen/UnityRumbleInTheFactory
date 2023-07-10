@@ -24,6 +24,13 @@ public class BulletCollider : MonoBehaviour
 				nr.ChangeToDestroyedState();
 			}
 		}
+
+		EntityExploder ee = collider.gameObject.GetComponent<EntityExploder>();
+
+		if(ee != null)
+		{
+			ee.Explode();
+		}
 		
 		Instantiate(splatterEffect, gameObject.transform.position, Quaternion.identity);
 		Destroy(gameObject);
