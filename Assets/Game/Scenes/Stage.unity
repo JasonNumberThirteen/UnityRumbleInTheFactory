@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 703712904}
   - component: {fileID: 703712903}
   - component: {fileID: 703712902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slippery Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

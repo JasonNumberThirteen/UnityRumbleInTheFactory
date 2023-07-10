@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7044433582862398462}
   - component: {fileID: 8438295727497518047}
   - component: {fileID: 3234668162895731857}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -211,7 +211,6 @@ MonoBehaviour:
   splatterEffect: {fileID: 4882441606795613529, guid: f1c0785e07f2be945a779be11629fb76, type: 3}
   excludedTags:
   - Shield
-  - Toxic Waste
 --- !u!114 &3234668162895731857
 MonoBehaviour:
   m_ObjectHideFlags: 0
