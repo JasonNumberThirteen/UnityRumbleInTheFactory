@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a74168e2e2e9ba4c9686c9105420929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2137018745332980371, guid: e8a6b6350b5c6574da5c1ffff3f1b51b, type: 3}
+  bullet: {fileID: 8514831330534971138, guid: 0d0c300c481bc73418ff6a6165776a64, type: 3}
   offsetFromObject: 0.5
 --- !u!1001 &466109410508387328
 PrefabInstance:
