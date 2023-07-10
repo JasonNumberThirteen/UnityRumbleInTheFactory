@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -3623404601346522351}
   - component: {fileID: 45353465981504269}
   - component: {fileID: -356252332091342721}
+  - component: {fileID: 7147733544946703518}
   m_Layer: 0
   m_Name: Yellow Robot
   m_TagString: Player
@@ -252,6 +253,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66042f11243ce64db86aa9c2ea607e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7147733544946703518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2644064332054541095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a74168e2e2e9ba4c9686c9105420929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 2137018745332980371, guid: e8a6b6350b5c6574da5c1ffff3f1b51b, type: 3}
+  offsetFromObject: 0.5
 --- !u!1001 &466109410508387328
 PrefabInstance:
   m_ObjectHideFlags: 0
