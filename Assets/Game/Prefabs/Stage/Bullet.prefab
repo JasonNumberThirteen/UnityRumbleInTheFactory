@@ -209,6 +209,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splatterEffect: {fileID: 5157963463243356095, guid: cbdce3ec3ebf5e248ae2e76005b111c5, type: 3}
+  excludedTags:
+  - Shield
+  - Player
 --- !u!114 &3234668162895731857
 MonoBehaviour:
   m_ObjectHideFlags: 0
