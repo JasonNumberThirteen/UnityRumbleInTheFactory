@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerRobotInput : MonoBehaviour
 {
 	public Vector2 MovementVector {get; private set;}
+	public Vector2 LastMovementVector {get; private set;}
 
 	private PlayerRobotShoot shoot;
 
@@ -13,6 +14,7 @@ public class PlayerRobotInput : MonoBehaviour
 	{
 		Vector2 movement = iv.Get<Vector2>();
 
+		LastMovementVector = MovementVector;
 		MovementVector = movement;
 	}
 

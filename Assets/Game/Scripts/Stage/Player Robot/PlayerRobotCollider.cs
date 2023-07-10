@@ -22,5 +22,5 @@ public class PlayerRobotCollider : MonoBehaviour
 		}
 	}
 
-	private void SetSliding(bool isSliding) => Debug.Log(isSliding);
+	private void SetSliding(bool isSliding) => movement.IsSliding = isSliding;
 }

@@ -4,11 +4,18 @@ public class PlayerRobotMovement : MonoBehaviour
 {
 	[Min(0.01f)] public float movementSpeed = 5f;
 
+	public bool IsSliding {get; set;}
+
 	private PlayerRobotInput input;
 	private Rigidbody2D rb2D;
 
 	public Vector2 MovementVector()
 	{
+		if(IsSliding)
+		{
+			return input.LastMovementVector;
+		}
+		
 		int x = Mathf.RoundToInt(input.MovementVector.x);
 		int y = Mathf.RoundToInt(input.MovementVector.y);
 
