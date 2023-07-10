@@ -22,6 +22,11 @@ public class BulletCollider : MonoBehaviour
 			if(nr != null)
 			{
 				nr.ChangeToDestroyedState();
+				Destroy(nr);
+			}
+			else
+			{
+				return;
 			}
 		}
 
