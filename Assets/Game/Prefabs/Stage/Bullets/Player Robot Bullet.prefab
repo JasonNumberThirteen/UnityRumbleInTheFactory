@@ -58,10 +58,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8438295727497518047, guid: e8a6b6350b5c6574da5c1ffff3f1b51b, type: 3}
       propertyPath: excludedTags.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8438295727497518047, guid: e8a6b6350b5c6574da5c1ffff3f1b51b, type: 3}
-      propertyPath: excludedTags.Array.data[1]
+      propertyPath: excludedTags.Array.data[2]
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []

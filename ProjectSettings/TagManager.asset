@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Shield
   - Nuke
+  - Toxic Waste
   layers:
   - Default
   - TransparentFX
