@@ -8,6 +8,11 @@ public class BulletMovement : MonoBehaviour
 
 	private Rigidbody2D rb2D;
 
+	public void SetDirection(Vector2 direction)
+	{
+		Direction = direction;
+	}
+
 	private void Awake() => rb2D = GetComponent<Rigidbody2D>();
 	
 	private void FixedUpdate()
