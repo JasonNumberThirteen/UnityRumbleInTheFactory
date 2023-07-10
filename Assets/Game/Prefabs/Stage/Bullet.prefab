@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb82d236fd397f40b368766ff7e681a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatterEffect: {fileID: 5157963463243356095, guid: cbdce3ec3ebf5e248ae2e76005b111c5, type: 3}
+  splatterEffect: {fileID: 4882441606795613529, guid: f1c0785e07f2be945a779be11629fb76, type: 3}
   excludedTags:
   - Shield
 --- !u!114 &3234668162895731857
