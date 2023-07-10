@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3175265644466931908}
   - component: {fileID: 5173178135221568878}
   - component: {fileID: 2249889350710709286}
+  - component: {fileID: 8887816664841345866}
   m_Layer: 0
   m_Name: Nuke
   m_TagString: Nuke
@@ -158,3 +159,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8887816664841345866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414169594087006866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1dbc5c0de3c09e4db1a0de371a1085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyState: {fileID: 502883198, guid: 158f0daf0dd0383409fda8ee32398fb3, type: 3}

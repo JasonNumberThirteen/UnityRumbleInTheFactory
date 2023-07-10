@@ -14,6 +14,16 @@ public class BulletCollider : MonoBehaviour
 				return;
 			}
 		}
+
+		if(collider.CompareTag("Nuke"))
+		{
+			NukeRenderer nr = collider.gameObject.GetComponent<NukeRenderer>();
+
+			if(nr != null)
+			{
+				nr.ChangeToDestroyedState();
+			}
+		}
 		
 		Instantiate(splatterEffect, gameObject.transform.position, Quaternion.identity);
 		Destroy(gameObject);
