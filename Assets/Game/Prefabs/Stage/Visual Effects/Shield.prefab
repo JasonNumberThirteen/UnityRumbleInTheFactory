@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield
       objectReference: {fileID: 0}
+    - target: {fileID: 3754489346627593844, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
+      propertyPath: m_TagString
+      value: Shield
+      objectReference: {fileID: 0}
     - target: {fileID: 6975690211842807208, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       propertyPath: m_Controller
       value: 
