@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 7131367110452112014, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9008716198566069377, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -88,6 +92,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
+  rayDistance: 0.5
+  raycastExcludedLayers:
+    serializedVersion: 2
+    m_Bits: 4
 --- !u!114 &-7595496625844468315
 MonoBehaviour:
   m_ObjectHideFlags: 0
