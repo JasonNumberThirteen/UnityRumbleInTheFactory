@@ -11,6 +11,7 @@ TagManager:
   - Toxic Waste
   - Slippery Floor
   - Bricks
+  - Enemy
   layers:
   - Default
   - TransparentFX
