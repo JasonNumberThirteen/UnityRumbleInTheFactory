@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  rayDistance: 0.5
+  rayDistance: 0.63
   raycastAngle: 35
   raycastExcludedLayers:
     serializedVersion: 2
