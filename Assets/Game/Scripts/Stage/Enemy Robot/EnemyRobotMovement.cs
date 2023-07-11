@@ -5,6 +5,7 @@ public class EnemyRobotMovement : MonoBehaviour
 {
 	[Min(0f)] public float movementSpeed;
 	[Min(0.01f)] public float rayDistance = 0.5f;
+	[Range(1, 90)] public int raycastAngle = 30;
 	public LayerMask raycastExcludedLayers;
 	
 	private Rigidbody2D rb2D;
@@ -30,15 +31,19 @@ public class EnemyRobotMovement : MonoBehaviour
 
 	private void DetectObstacles()
 	{
-		Vector2 rayPosition = direction*rayDistance;
-		RaycastHit2D hit = Physics2D.Raycast(rb2D.position, direction, rayDistance, ~raycastExcludedLayers);
-
-		if(hit.collider != null)
+		for (int angle = -raycastAngle; angle <= raycastAngle; angle += raycastAngle)
 		{
-			RandomiseDirection();
-		}
+			Vector2 rayDirection = Quaternion.Euler(0, 0, angle)*direction;
+			Vector2 rayPosition = rayDirection*rayDistance;
+			RaycastHit2D hit = Physics2D.Raycast(rb2D.position, rayDirection, rayDistance, ~raycastExcludedLayers);
 
-		Debug.DrawLine(rb2D.position, rb2D.position + rayPosition, Color.red);
+			Debug.DrawLine(rb2D.position, rb2D.position + rayPosition, Color.red);
+
+			if(hit.collider != null)
+			{
+				RandomiseDirection();
+			}
+		}
 	}
 
 	private void RandomiseDirection()

@@ -11900,6 +11900,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1939610192}
     m_Modifications:
+    - target: {fileID: 4936867783617591281, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
+      propertyPath: raycastAngle
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 5121082757261380367, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
       propertyPath: m_RootOrder
       value: 0

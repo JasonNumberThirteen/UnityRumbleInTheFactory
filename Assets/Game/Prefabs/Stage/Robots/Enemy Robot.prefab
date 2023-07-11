@@ -93,9 +93,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   rayDistance: 0.5
+  raycastAngle: 35
   raycastExcludedLayers:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 12
 --- !u!114 &-7595496625844468315
 MonoBehaviour:
   m_ObjectHideFlags: 0
