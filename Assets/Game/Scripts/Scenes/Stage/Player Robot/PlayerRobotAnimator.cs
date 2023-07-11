@@ -1,21 +1,10 @@
 using UnityEngine;
 
-public class PlayerRobotAnimator : MonoBehaviour
+public class PlayerRobotAnimator : EntityAnimator
 {
-	private PlayerRobotMovement movement;
-	private Animator animator;
-
-	private void Awake()
+	protected override void SetValues()
 	{
-		movement = GetComponent<PlayerRobotMovement>();
-		animator = GetComponent<Animator>();
-	}
-
-	private void Update() => SetValues();
-
-	private void SetValues()
-	{
-		Vector2 movementDirection = movement.MovementVector();
+		Vector2 movementDirection = movement.Direction;
 
 		animator.SetFloat("MovementSpeed", MovementSpeed(movementDirection));
 

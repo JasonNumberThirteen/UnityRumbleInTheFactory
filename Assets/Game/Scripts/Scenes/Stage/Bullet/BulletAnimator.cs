@@ -1,19 +1,8 @@
 using UnityEngine;
 
-public class BulletAnimator : MonoBehaviour
+public class BulletAnimator : EntityAnimator
 {
-	private EntityMovement movement;
-	private Animator animator;
-
-	private void Update() => SetValues();
-
-	private void Awake()
-	{
-		movement = GetComponent<EntityMovement>();
-		animator = GetComponent<Animator>();
-	}
-
-	private void SetValues()
+	protected override void SetValues()
 	{
 		Vector2 direction = movement.Direction;
 

@@ -1,19 +1,8 @@
 using UnityEngine;
 
-public class EnemyRobotAnimator : MonoBehaviour
+public class EnemyRobotAnimator : EntityAnimator
 {
-	private EnemyRobotMovement movement;
-	private Animator animator;
-
-	private void Awake()
-	{
-		movement = GetComponent<EnemyRobotMovement>();
-		animator = GetComponent<Animator>();
-	}
-
-	private void Update() => SetValues();
-
-	private void SetValues()
+	protected override void SetValues()
 	{
 		Vector2 movementDirection = movement.Direction;
 
