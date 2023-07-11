@@ -13,6 +13,34 @@ public class EnemyRobotMovement : MonoBehaviour
 
 	public Vector2 MovementVector() => direction;
 
+	public void RandomiseDirection()
+	{
+		float randomValue = Random.value;
+		Vector2 currentDirection = direction;
+
+		if(randomValue <= 0.25f)
+		{
+			direction = Vector2.up;
+		}
+		else if(randomValue <= 0.5f)
+		{
+			direction = Vector2.down;
+		}
+		else if(randomValue <= 0.75f)
+		{
+			direction = Vector2.left;
+		}
+		else if(randomValue <= 1f)
+		{
+			direction = Vector2.right;
+		}
+
+		if(currentDirection == direction)
+		{
+			RandomiseDirection();
+		}
+	}
+
 	private void Awake() => rb2D = GetComponent<Rigidbody2D>();
 	private void Start() => RandomiseDirection();
 
@@ -43,34 +71,6 @@ public class EnemyRobotMovement : MonoBehaviour
 			{
 				RandomiseDirection();
 			}
-		}
-	}
-
-	private void RandomiseDirection()
-	{
-		float randomValue = Random.value;
-		Vector2 currentDirection = direction;
-
-		if(randomValue <= 0.25f)
-		{
-			direction = Vector2.up;
-		}
-		else if(randomValue <= 0.5f)
-		{
-			direction = Vector2.down;
-		}
-		else if(randomValue <= 0.75f)
-		{
-			direction = Vector2.left;
-		}
-		else if(randomValue <= 1f)
-		{
-			direction = Vector2.right;
-		}
-
-		if(currentDirection == direction)
-		{
-			RandomiseDirection();
 		}
 	}
 }
