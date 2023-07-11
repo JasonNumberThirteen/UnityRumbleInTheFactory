@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public abstract class EntityMovement : MonoBehaviour
+public class EntityMovement : MonoBehaviour
 {
 	[Min(0f)] public float movementSpeed = 5f;
-	
+
 	public Vector2 Direction {get; set;}
 
 	protected Rigidbody2D rb2D;

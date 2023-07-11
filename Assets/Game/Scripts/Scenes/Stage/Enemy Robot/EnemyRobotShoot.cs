@@ -12,11 +12,11 @@ public class EnemyRobotShoot : MonoBehaviour
 	public void FireBullet()
 	{
 		GameObject instance = Instantiate(bullet, transform.position + BulletPositionOffset()*offsetFromObject, Quaternion.identity);
-		BulletMovement bm = instance.GetComponent<BulletMovement>();
+		EntityMovement em = instance.GetComponent<EntityMovement>();
 
-		if(bm != null)
+		if(em != null)
 		{
-			bm.SetDirection(BulletDirection());
+			em.Direction = BulletDirection();
 		}
 	}
 
