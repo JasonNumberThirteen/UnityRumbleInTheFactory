@@ -8,8 +8,6 @@ public class EnemyRobotCollider : MonoBehaviour
 	
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		Debug.Log("Collision!");
-		
 		movement.RandomiseDirection();
 	}
 }

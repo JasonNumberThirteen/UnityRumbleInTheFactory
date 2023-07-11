@@ -12,8 +12,6 @@ public class EnemyRobotMovement : MonoBehaviour
 	{
 		float randomValue = Random.value;
 
-		Debug.Log(randomValue);
-
 		if(randomValue <= 0.25f)
 		{
 			direction = Vector2.up;
