@@ -6,15 +6,19 @@ public class Timer : MonoBehaviour
 	[Min(0.01f)] public float duration;
 	public bool countFromTheStart = true;
 	public UnityEvent onEnd;
+	
+	public bool Started {get; private set;}
+	public bool Finished {get; private set;}
 
 	private float timer;
-	private bool started, finished;
 
-	public void StartTimer() => started = true;
+	public void StartTimer() => Started = true;
 	public bool ReachedTheEnd() => timer >= duration;
 	public float ProgressPercent() => timer / duration;
 
-	private void Start()
+	private void Start() => StartTimerImmediately();
+
+	private void StartTimerImmediately()
 	{
 		if(countFromTheStart)
 		{
@@ -24,20 +28,25 @@ public class Timer : MonoBehaviour
 
 	private void Update()
 	{
-		if(started)
+		if(Started)
 		{
 			if(!ReachedTheEnd())
 			{
 				Modify();
 			}
-			else if(!finished)
+			else if(!Finished)
 			{
-				onEnd.Invoke();
-
-				finished = true;
+				Finish();
 			}
 		}
 	}
 
 	private void Modify() => timer = Mathf.Clamp(timer + Time.deltaTime, 0f, duration);
+
+	private void Finish()
+	{
+		onEnd.Invoke();
+
+		Finished = true;
+	}
 }
