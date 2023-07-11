@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyRobotShoot : MonoBehaviour
 {
 	public GameObject bullet;
 	[Min(0f)] public float offsetFromObject = 0.5f;
+	[Min(0.01f)] public float fireDelay = 1f;
 
 	private Animator animator;
 
@@ -19,6 +21,7 @@ public class EnemyRobotShoot : MonoBehaviour
 	}
 
 	private void Awake() => animator = GetComponent<Animator>();
+	private void Start() => InvokeRepeating("FireBullet", fireDelay, fireDelay);
 
 	private Vector3 BulletPositionOffset()
 	{

@@ -1,66 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1876450837564877639
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3680114213225325760}
-  - component: {fileID: 3826441078430317012}
-  m_Layer: 2
-  m_Name: Shoot Timer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3680114213225325760
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876450837564877639}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5121082757261380367}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3826441078430317012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876450837564877639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1
-  countFromTheStart: 1
-  onEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4199117186027029748}
-        m_TargetAssemblyTypeName: EnemyRobotShoot, Assembly-CSharp
-        m_MethodName: FireBullet
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &4185214069242318734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,10 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 9008716198566069377, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3680114213225325760}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7131367110452112014, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
       insertIndex: -1
@@ -145,11 +81,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -4199117186027029748}
   m_SourcePrefab: {fileID: 100100000, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
---- !u!4 &5121082757261380367 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9008716198566069377, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
-  m_PrefabInstance: {fileID: 4185214069242318734}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6405080330063127808 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7131367110452112014, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
@@ -211,3 +142,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1372171276495067033, guid: 8c4e0f4bbc5b492469be53cc62a61ca1, type: 3}
   offsetFromObject: 0.1
+  fireDelay: 1
