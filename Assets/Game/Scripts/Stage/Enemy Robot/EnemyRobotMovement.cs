@@ -30,6 +30,8 @@ public class EnemyRobotMovement : MonoBehaviour
 		}
 	}
 
+	public Vector2 MovementVector() => direction;
+
 	private void Awake() => rb2D = GetComponent<Rigidbody2D>();
 	private void Start() => RandomiseDirection();
 
