@@ -9,7 +9,7 @@ public class EnemyRobotMovement : MonoBehaviour
 	
 	private Rigidbody2D rb2D;
 	private Vector2 direction;
-	
+
 	public Vector2 MovementVector() => direction;
 
 	private void Awake() => rb2D = GetComponent<Rigidbody2D>();
@@ -17,11 +17,20 @@ public class EnemyRobotMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		Move();
+		DetectObstacles();
+	}
+
+	private void Move()
+	{
 		float speed = movementSpeed*Time.fixedDeltaTime;
-		Vector2 rayPosition = direction*rayDistance;
 
 		rb2D.MovePosition(rb2D.position + direction*speed);
+	}
 
+	private void DetectObstacles()
+	{
+		Vector2 rayPosition = direction*rayDistance;
 		RaycastHit2D hit = Physics2D.Raycast(rb2D.position, direction, rayDistance, ~raycastExcludedLayers);
 
 		if(hit.collider != null)
