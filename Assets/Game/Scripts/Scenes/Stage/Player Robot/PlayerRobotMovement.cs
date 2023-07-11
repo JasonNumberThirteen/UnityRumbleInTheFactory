@@ -1,13 +1,10 @@
 using UnityEngine;
 
-public class PlayerRobotMovement : MonoBehaviour
+public class PlayerRobotMovement : EntityMovement
 {
-	[Min(0.01f)] public float movementSpeed = 5f;
-
 	public bool IsSliding {get; set;}
 
 	private PlayerRobotInput input;
-	private Rigidbody2D rb2D;
 
 	public Vector2 MovementVector()
 	{
@@ -31,16 +28,17 @@ public class PlayerRobotMovement : MonoBehaviour
 		return new Vector2(x, y);
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+
 		input = GetComponent<PlayerRobotInput>();
-		rb2D = GetComponent<Rigidbody2D>();
 	}
 	
-	private void FixedUpdate()
+	protected override void FixedUpdate()
 	{
-		float speed = movementSpeed*Time.fixedDeltaTime;
-
-		rb2D.MovePosition(rb2D.position + MovementVector()*speed);
+		Direction = MovementVector();
+		
+		base.FixedUpdate();
 	}
 }

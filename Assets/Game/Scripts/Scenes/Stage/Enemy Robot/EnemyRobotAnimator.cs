@@ -15,7 +15,7 @@ public class EnemyRobotAnimator : MonoBehaviour
 
 	private void SetValues()
 	{
-		Vector2 movementDirection = movement.MovementVector();
+		Vector2 movementDirection = movement.Direction;
 
 		animator.SetFloat("MovementSpeed", MovementSpeed(movementDirection));
 
