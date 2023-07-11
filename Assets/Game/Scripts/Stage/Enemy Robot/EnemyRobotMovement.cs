@@ -11,6 +11,7 @@ public class EnemyRobotMovement : MonoBehaviour
 	public void RandomiseDirection()
 	{
 		float randomValue = Random.value;
+		Vector2 currentDirection = direction;
 
 		if(randomValue <= 0.25f)
 		{
@@ -27,6 +28,11 @@ public class EnemyRobotMovement : MonoBehaviour
 		else if(randomValue <= 1f)
 		{
 			direction = Vector2.right;
+		}
+
+		if(currentDirection == direction)
+		{
+			RandomiseDirection();
 		}
 	}
 
