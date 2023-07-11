@@ -12,6 +12,7 @@ TagManager:
   - Slippery Floor
   - Bricks
   - Enemy
+  - Entities
   layers:
   - Default
   - TransparentFX
