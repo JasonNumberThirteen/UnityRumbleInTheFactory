@@ -7,19 +7,35 @@ public class MainMenuInput : MonoBehaviour
 
 	private void OnNavigate(InputValue iv)
 	{
-		float y = iv.Get<Vector2>().y;
-		int optionOffset = Mathf.RoundToInt(-y);
+		Vector2 inputVector = iv.Get<Vector2>();
 
+		ChangeOption(inputVector.y);
+	}
+
+	private void ChangeOption(float y)
+	{
+		int optionOffset = Mathf.RoundToInt(-y);
+		
 		if(optionOffset == -1)
 		{
-			optionsController.DecreaseOptionValue();
-			optionsController.SelectOption();
+			SelectPreviousOption();
 		}
 		else if(optionOffset == 1)
 		{
-			optionsController.IncreaseOptionValue();
-			optionsController.SelectOption();
+			SelectNextOption();
 		}
+	}
+
+	private void SelectPreviousOption()
+	{
+		optionsController.DecreaseOptionValue();
+		optionsController.SelectOption();
+	}
+
+	private void SelectNextOption()
+	{
+		optionsController.IncreaseOptionValue();
+		optionsController.SelectOption();
 	}
 
 	private void OnSubmit(InputValue iv) => optionsController.SubmitOption();
