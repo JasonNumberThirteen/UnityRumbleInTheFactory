@@ -9,9 +9,15 @@ public class StageSelectionInput : MonoBehaviour
 
 	private void OnNavigate(InputValue iv)
 	{
-		float x = iv.Get<Vector2>().x;
-		int stageOffset = Mathf.RoundToInt(x);
+		Vector2 inputVector = iv.Get<Vector2>();
+		
+		ChangeStage(inputVector.x);
+	}
 
+	private void ChangeStage(float x)
+	{
+		int stageOffset = Mathf.RoundToInt(x);
+		
 		if(stageOffset == -1)
 		{
 			stageCounter.DecreaseBy(1);
