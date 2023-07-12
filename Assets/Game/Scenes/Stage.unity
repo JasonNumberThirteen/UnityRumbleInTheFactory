@@ -2962,6 +2962,8 @@ GameObject:
   - component: {fileID: 240067381}
   - component: {fileID: 240067380}
   - component: {fileID: 240067382}
+  - component: {fileID: 240067384}
+  - component: {fileID: 240067383}
   m_Layer: 7
   m_Name: Destruction Bonus
   m_TagString: Bonus
@@ -3121,6 +3123,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkDelay: 0.125
+--- !u!114 &240067383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240067377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662340b5d97e29c48b6a35db826b837d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &240067384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240067377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 20
+  countFromTheStart: 1
+  onEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 240067383}
+        m_TargetAssemblyTypeName: GameObjectDestroyer, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &246685068
 PrefabInstance:
   m_ObjectHideFlags: 0
