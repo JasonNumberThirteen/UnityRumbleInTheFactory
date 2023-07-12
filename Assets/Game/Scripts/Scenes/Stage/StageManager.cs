@@ -7,9 +7,10 @@ public class StageManager : MonoBehaviour
 
 	[Min(0)] public int pointsForBonus = 500;
 	public GameObject[] enemies;
+	public int enemiesLimit = 3;
 
 	private GameObject[] enemySpawners;
-	private int enemyIndex = 0;
+	private int enemyIndex = 0, enemiesToSpawn;
 
 	public void StartSpawn()
 	{
@@ -53,11 +54,18 @@ public class StageManager : MonoBehaviour
 
 	private void ResetEnemySpawnersTimers()
 	{
+		enemiesToSpawn = Mathf.Max(0, enemiesLimit - GameObject.FindGameObjectsWithTag("Enemy").Length);
+		
 		foreach (GameObject es in enemySpawners)
 		{
-			Timer timer = es.GetComponent<Timer>();
+			if(enemiesToSpawn > 0)
+			{
+				Timer timer = es.GetComponent<Timer>();
 
-			timer.ResetTimer();
+				timer.ResetTimer();
+
+				--enemiesToSpawn;
+			}
 		}
 	}
 }
