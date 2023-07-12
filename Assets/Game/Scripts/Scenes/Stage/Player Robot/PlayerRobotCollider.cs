@@ -16,6 +16,13 @@ public class PlayerRobotCollider : MonoBehaviour
 		}
 		else if(collider.CompareTag("Bonus"))
 		{
+			BonusEffect be = collider.gameObject.GetComponent<BonusEffect>();
+
+			if(be != null)
+			{
+				be.PerformEffect();
+			}
+			
 			scoreCounter.IncreaseBy(StageManager.instance.pointsForBonus);
 			Destroy(collider.gameObject);
 		}
