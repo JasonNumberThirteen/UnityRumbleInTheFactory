@@ -11,7 +11,7 @@ public class StageManager : MonoBehaviour
 	public float spawnInterval = 2f;
 
 	private GameObject[] enemySpawners;
-	private int enemyIndex = 0, enemiesToSpawn;
+	private int enemyIndex = 0, enemiesToSpawn, spawnerIndex;
 
 	public void StartSpawn()
 	{
@@ -56,17 +56,16 @@ public class StageManager : MonoBehaviour
 	private void ResetEnemySpawnersTimers()
 	{
 		enemiesToSpawn = Mathf.Max(0, enemiesLimit - GameObject.FindGameObjectsWithTag("Enemy").Length);
-		
-		foreach (GameObject es in enemySpawners)
+
+		while (enemiesToSpawn > 0)
 		{
-			if(enemiesToSpawn > 0)
-			{
-				Timer timer = es.GetComponent<Timer>();
+			GameObject spawner = enemySpawners[spawnerIndex];
+			Timer timer = spawner.GetComponent<Timer>();
 
-				timer.ResetTimer();
+			timer.ResetTimer();
 
-				--enemiesToSpawn;
-			}
+			--enemiesToSpawn;
+			spawnerIndex = (spawnerIndex + 1) % enemySpawners.Length;
 		}
 	}
 }
