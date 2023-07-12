@@ -13,6 +13,7 @@ TagManager:
   - Bricks
   - Enemy
   - Entities
+  - Bonus
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Floor Tile
-  - 
+  - Bonus
   - 
   - 
   - 
@@ -64,6 +65,9 @@ TagManager:
     locked: 0
   - name: Foreground Tiles
     uniqueID: 3161305819
+    locked: 0
+  - name: Bonuses
+    uniqueID: 984162821
     locked: 0
   - name: Effects
     uniqueID: 1707604139
