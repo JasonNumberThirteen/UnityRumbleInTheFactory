@@ -37,9 +37,7 @@ public class BulletCollider : MonoBehaviour
 
 		if(collider.CompareTag("Player"))
 		{
-			PlayerRobotRespawn prr = collider.gameObject.GetComponent<PlayerRobotRespawn>();
-
-			prr.Respawn();
+			StageManager.instance.InitiatePlayerRespawn(collider.gameObject.GetComponent<PlayerRobotRespawn>());
 		}
 
 		EntityExploder ee = collider.gameObject.GetComponent<EntityExploder>();
