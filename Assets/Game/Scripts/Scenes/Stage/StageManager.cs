@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class StageManager : MonoBehaviour
 {
@@ -6,7 +7,16 @@ public class StageManager : MonoBehaviour
 
 	[Min(0)] public int pointsForBonus = 500;
 
+	private GameObject[] enemySpawners;
+
 	private void Awake() => CheckSingleton();
+
+	private void Start()
+	{
+		enemySpawners = GameObject.FindGameObjectsWithTag("Enemy Spawner");
+
+		StartCoroutine(SpawnEnemies());
+	}
 
 	private void CheckSingleton()
 	{
@@ -17,6 +27,21 @@ public class StageManager : MonoBehaviour
 		else if(instance != this)
 		{
 			Destroy(gameObject);
+		}
+	}
+
+	private IEnumerator SpawnEnemies()
+	{
+		while (true)
+		{
+			yield return new WaitForSeconds(5);
+
+			foreach (GameObject es in enemySpawners)
+			{
+				Timer timer = es.GetComponent<Timer>();
+
+				timer.ResetTimer();
+			}
 		}
 	}
 }

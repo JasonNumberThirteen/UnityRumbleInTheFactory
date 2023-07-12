@@ -5,7 +5,7 @@ public class Timer : MonoBehaviour
 {
 	[Min(0.01f)] public float duration;
 	public bool countFromTheStart = true;
-	public UnityEvent onEnd;
+	public UnityEvent onReset, onEnd;
 	
 	public bool Started {get; private set;}
 	public bool Finished {get; private set;}
@@ -15,6 +15,14 @@ public class Timer : MonoBehaviour
 	public void StartTimer() => Started = true;
 	public bool ReachedTheEnd() => timer >= duration;
 	public float ProgressPercent() => timer / duration;
+
+	public void ResetTimer()
+	{
+		Finished = false;
+		timer = 0f;
+
+		onReset.Invoke();
+	}
 
 	private void Start() => StartTimerImmediately();
 
