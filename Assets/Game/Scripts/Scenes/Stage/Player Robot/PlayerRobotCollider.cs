@@ -16,7 +16,7 @@ public class PlayerRobotCollider : MonoBehaviour
 		}
 		else if(collider.CompareTag("Bonus"))
 		{
-			scoreCounter.IncreaseBy(500);
+			scoreCounter.IncreaseBy(StageManager.instance.pointsForBonus);
 			Destroy(collider.gameObject);
 		}
 	}
