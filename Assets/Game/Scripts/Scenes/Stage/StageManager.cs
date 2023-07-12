@@ -57,13 +57,14 @@ public class StageManager : MonoBehaviour
 	{
 		enemiesToSpawn = Mathf.Max(0, enemiesLimit - GameObject.FindGameObjectsWithTag("Enemy").Length);
 
-		while (enemiesToSpawn > 0)
+		while (enemiesToSpawn > 0 && enemyIndex < enemies.Length)
 		{
 			GameObject spawner = enemySpawners[spawnerIndex];
 			Timer timer = spawner.GetComponent<Timer>();
 
 			timer.ResetTimer();
 
+			spawner.GetComponent<EntitySpawner>().entity = enemies[enemyIndex++];
 			--enemiesToSpawn;
 			spawnerIndex = (spawnerIndex + 1) % enemySpawners.Length;
 		}
