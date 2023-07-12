@@ -35,6 +35,13 @@ public class BulletCollider : MonoBehaviour
 			Destroy(collider.gameObject);
 		}
 
+		if(collider.CompareTag("Player"))
+		{
+			PlayerRobotRespawn prr = collider.gameObject.GetComponent<PlayerRobotRespawn>();
+
+			prr.Respawn();
+		}
+
 		EntityExploder ee = collider.gameObject.GetComponent<EntityExploder>();
 
 		if(ee != null)

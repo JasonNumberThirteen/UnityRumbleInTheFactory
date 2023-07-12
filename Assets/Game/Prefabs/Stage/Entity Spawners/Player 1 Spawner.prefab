@@ -54,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: m_Name
-      value: Player 1 Spawner Variant
+      value: Player 1 Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: m_TagString
+      value: Player Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 9159079852551321459, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: entity

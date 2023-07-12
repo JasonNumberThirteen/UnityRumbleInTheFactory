@@ -15,6 +15,7 @@ TagManager:
   - Entities
   - Bonus
   - Enemy Spawner
+  - Player Spawner
   layers:
   - Default
   - TransparentFX
