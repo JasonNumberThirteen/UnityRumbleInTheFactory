@@ -17,8 +17,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1806615934405384734, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
+      propertyPath: duration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806615934405384734, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806615934405384734, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 3893651801573016522}
+    - target: {fileID: 1806615934405384734, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806615934405384734, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3754489346627593844, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       propertyPath: m_Name
@@ -87,9 +103,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3754489346627593844, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2891574348213550397}
-    - targetCorrespondingSourceObject: {fileID: 3754489346627593844, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -8340968112408731834}
   m_SourcePrefab: {fileID: 100100000, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
 --- !u!1 &3893651801573016522 stripped
 GameObject:
@@ -168,32 +181,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-8340968112408731834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3893651801573016522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 3
-  countFromTheStart: 1
-  onEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3893651801573016522}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
