@@ -88,6 +88,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8014517836353926290}
+    - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2755370287333617725}
   m_SourcePrefab: {fileID: 100100000, guid: b243df00ecf005341914640827158bb8, type: 3}
 --- !u!4 &4649277262984454597 stripped
 Transform:
@@ -207,6 +210,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   spawnerTag: Player Spawner
+--- !u!114 &2755370287333617725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6879066138954518474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5a600641e43474dbecfc8651e16f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4324362989984493490
 PrefabInstance:
   m_ObjectHideFlags: 0

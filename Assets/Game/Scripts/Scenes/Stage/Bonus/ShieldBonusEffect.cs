@@ -6,11 +6,10 @@ public class ShieldBonusEffect : BonusEffect
 	
 	public override void PerformEffect()
 	{
-		GameObject shield = GameObject.FindGameObjectWithTag("Shield");
-		Timer timer = shield.GetComponent<Timer>();
+		PlayerRobotShield prs = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerRobotShield>();
 
-		timer.duration = duration;
+		prs.ShieldTimer.duration = duration;
 
-		timer.ResetTimer();
+		prs.ShieldTimer.ResetTimer();
 	}
 }
