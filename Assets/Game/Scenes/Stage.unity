@@ -2961,6 +2961,7 @@ GameObject:
   - component: {fileID: 240067379}
   - component: {fileID: 240067381}
   - component: {fileID: 240067380}
+  - component: {fileID: 240067382}
   m_Layer: 7
   m_Name: Destruction Bonus
   m_TagString: Bonus
@@ -3107,6 +3108,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &240067382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240067377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cb779944c63b8419ecd4ab3bb59df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkDelay: 0.125
 --- !u!1001 &246685068
 PrefabInstance:
   m_ObjectHideFlags: 0
