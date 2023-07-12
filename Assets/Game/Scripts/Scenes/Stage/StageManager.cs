@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
 	[Min(0)] public int pointsForBonus = 500;
 	public GameObject[] enemies;
 	public int enemiesLimit = 3;
+	public float spawnInterval = 2f;
 
 	private GameObject[] enemySpawners;
 	private int enemyIndex = 0, enemiesToSpawn;
@@ -46,7 +47,7 @@ public class StageManager : MonoBehaviour
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(5);
+			yield return new WaitForSeconds(spawnInterval);
 
 			ResetEnemySpawnersTimers();
 		}
