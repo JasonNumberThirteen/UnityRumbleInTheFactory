@@ -12,6 +12,10 @@ public class PlayerRobotCollider : MonoBehaviour
 		{
 			SetSliding(true);
 		}
+		else if(collider.CompareTag("Bonus"))
+		{
+			Destroy(collider.gameObject);
+		}
 	}
 
 	private void OnTriggerExit2D(Collider2D collider)
