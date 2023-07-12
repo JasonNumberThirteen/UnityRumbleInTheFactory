@@ -14,7 +14,7 @@ public class StageManager : MonoBehaviour
 	private void Start()
 	{
 		enemySpawners = GameObject.FindGameObjectsWithTag("Enemy Spawner");
-
+	
 		StartCoroutine(SpawnEnemies());
 	}
 
@@ -36,12 +36,17 @@ public class StageManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds(5);
 
-			foreach (GameObject es in enemySpawners)
-			{
-				Timer timer = es.GetComponent<Timer>();
+			ResetEnemySpawnersTimers();
+		}
+	}
 
-				timer.ResetTimer();
-			}
+	private void ResetEnemySpawnersTimers()
+	{
+		foreach (GameObject es in enemySpawners)
+		{
+			Timer timer = es.GetComponent<Timer>();
+
+			timer.ResetTimer();
 		}
 	}
 }
