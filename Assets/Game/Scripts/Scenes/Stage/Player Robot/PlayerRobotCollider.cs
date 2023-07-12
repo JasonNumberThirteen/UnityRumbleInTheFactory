@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerRobotCollider : MonoBehaviour
 {
+	public Counter scoreCounter;
+	
 	private PlayerRobotMovement movement;
 
 	private void Awake() => movement = GetComponent<PlayerRobotMovement>();
@@ -14,6 +16,7 @@ public class PlayerRobotCollider : MonoBehaviour
 		}
 		else if(collider.CompareTag("Bonus"))
 		{
+			scoreCounter.IncreaseBy(500);
 			Destroy(collider.gameObject);
 		}
 	}
