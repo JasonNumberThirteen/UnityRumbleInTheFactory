@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerRobotCollider : MonoBehaviour
 {
-	public Counter scoreCounter;
+	public PlayerData data;
 	
 	private PlayerRobotMovement movement;
 
@@ -23,7 +23,8 @@ public class PlayerRobotCollider : MonoBehaviour
 				be.PerformEffect();
 			}
 			
-			scoreCounter.IncreaseBy(StageManager.instance.pointsForBonus);
+			data.score += StageManager.instance.pointsForBonus;
+			
 			Destroy(collider.gameObject);
 		}
 	}

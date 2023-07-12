@@ -1,51 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &247344383244169735
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5651405964400891847}
-  - component: {fileID: 5424739210768657462}
-  m_Layer: 0
-  m_Name: Score Counter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5651405964400891847
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247344383244169735}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4649277262984454597}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5424739210768657462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247344383244169735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialValue: 0
-  text: {fileID: 0}
 --- !u!1001 &1328539149210322081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,9 +66,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5974700386229724516, guid: b243df00ecf005341914640827158bb8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6523168775923901168}
-    - targetCorrespondingSourceObject: {fileID: 5974700386229724516, guid: b243df00ecf005341914640827158bb8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5651405964400891847}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
       insertIndex: -1
@@ -241,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b21df6d55e0084caf83b3ad0d07ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreCounter: {fileID: 5424739210768657462}
+  data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
 --- !u!114 &8014517836353926290
 MonoBehaviour:
   m_ObjectHideFlags: 0
