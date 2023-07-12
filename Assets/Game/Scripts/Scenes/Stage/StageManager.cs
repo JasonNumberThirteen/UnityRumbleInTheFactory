@@ -11,15 +11,15 @@ public class StageManager : MonoBehaviour
 	private GameObject[] enemySpawners;
 	private int enemyIndex = 0;
 
-	private void Awake() => CheckSingleton();
-
-	private void Start()
+	public void StartSpawn()
 	{
 		enemySpawners = GameObject.FindGameObjectsWithTag("Enemy Spawner");
 
 		AssignEnemiesToSpawners();
 		StartCoroutine(SpawnEnemies());
 	}
+
+	private void Awake() => CheckSingleton();
 
 	private void CheckSingleton()
 	{
