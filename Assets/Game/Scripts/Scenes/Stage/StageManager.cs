@@ -6,15 +6,18 @@ public class StageManager : MonoBehaviour
 	public static StageManager instance = null;
 
 	[Min(0)] public int pointsForBonus = 500;
+	public GameObject[] enemies;
 
 	private GameObject[] enemySpawners;
+	private int enemyIndex = 0;
 
 	private void Awake() => CheckSingleton();
 
 	private void Start()
 	{
 		enemySpawners = GameObject.FindGameObjectsWithTag("Enemy Spawner");
-	
+
+		AssignEnemiesToSpawners();
 		StartCoroutine(SpawnEnemies());
 	}
 
@@ -27,6 +30,14 @@ public class StageManager : MonoBehaviour
 		else if(instance != this)
 		{
 			Destroy(gameObject);
+		}
+	}
+
+	private void AssignEnemiesToSpawners()
+	{
+		foreach (GameObject es in enemySpawners)
+		{
+			es.GetComponent<EntitySpawner>().entity = enemies[enemyIndex++];
 		}
 	}
 

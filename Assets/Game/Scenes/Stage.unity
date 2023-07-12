@@ -13083,6 +13083,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsForBonus: 500
+  enemies:
+  - {fileID: 6405080330063127808, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
+  - {fileID: 6405080330063127808, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
+  - {fileID: 6405080330063127808, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
 --- !u!4 &1342973423
 Transform:
   m_ObjectHideFlags: 0
