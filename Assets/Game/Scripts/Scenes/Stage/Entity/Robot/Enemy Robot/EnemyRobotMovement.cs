@@ -47,7 +47,8 @@ public class EnemyRobotMovement : EntityMovement
 	{
 		for (int angle = -raycastAngle; angle <= raycastAngle; angle += raycastAngle)
 		{
-			Vector2 rayDirection = Quaternion.Euler(0, 0, angle)*Direction;
+			Quaternion rayRotation = Quaternion.Euler(0, 0, angle);
+			Vector2 rayDirection = rayRotation*Direction;
 			Vector2 rayPosition = rayDirection*rayDistance;
 			RaycastHit2D hit = Physics2D.Raycast(rb2D.position, rayDirection, rayDistance, ~raycastExcludedLayers);
 
