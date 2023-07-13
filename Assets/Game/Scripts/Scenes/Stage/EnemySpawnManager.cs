@@ -4,25 +4,32 @@ using System.Collections;
 public class EnemySpawnManager : MonoBehaviour
 {
 	public GameObject[] enemies;
+	public string spawnerTag;
 	public int enemiesLimit = 3;
 	public float spawnInterval = 2f;
 
-	private GameObject[] enemySpawners;
-	private int enemyIndex = 0, enemiesToSpawn, spawnerIndex;
+	private GameObject[] spawners;
+	private int enemyIndex, enemiesToSpawn, spawnerIndex;
 
 	public void StartSpawn()
 	{
-		enemySpawners = GameObject.FindGameObjectsWithTag("Enemy Spawner");
-
+		FindSpawners();
 		AssignEnemiesToSpawners();
 		StartCoroutine(SpawnEnemies());
 	}
 
+	private void FindSpawners() => spawners = GameObject.FindGameObjectsWithTag(spawnerTag);
+
 	private void AssignEnemiesToSpawners()
 	{
-		foreach (GameObject es in enemySpawners)
+		foreach (GameObject spawner in spawners)
 		{
-			es.GetComponent<EntitySpawner>().entity = enemies[enemyIndex++];
+			EntitySpawner es = spawner.GetComponent<EntitySpawner>();
+
+			if(es != null)
+			{
+				es.entity = enemies[enemyIndex++];
+			}
 		}
 	}
 
@@ -32,24 +39,35 @@ public class EnemySpawnManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds(spawnInterval);
 
-			ResetEnemySpawnersTimers();
+			DetermineEnemiesToSpawn();
+			ResetSpawnersTimers();
 		}
 	}
 
-	private void ResetEnemySpawnersTimers()
+	private void ResetSpawnersTimers()
 	{
-		enemiesToSpawn = Mathf.Max(0, enemiesLimit - GameObject.FindGameObjectsWithTag("Enemy").Length);
-
 		while (enemiesToSpawn > 0 && enemyIndex < enemies.Length)
 		{
-			GameObject spawner = enemySpawners[spawnerIndex];
+			GameObject spawner = spawners[spawnerIndex];
 			Timer timer = spawner.GetComponent<Timer>();
+			EntitySpawner es = spawner.GetComponent<EntitySpawner>();
 
 			timer.ResetTimer();
 
-			spawner.GetComponent<EntitySpawner>().entity = enemies[enemyIndex++];
-			--enemiesToSpawn;
-			spawnerIndex = (spawnerIndex + 1) % enemySpawners.Length;
+			if(es != null)
+			{
+				es.entity = enemies[enemyIndex++];
+				--enemiesToSpawn;
+				spawnerIndex = (spawnerIndex + 1) % spawners.Length;
+			}
 		}
+	}
+
+	private void DetermineEnemiesToSpawn()
+	{
+		int aliveEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+		int missingEnemies = enemiesLimit - aliveEnemies;
+		
+		enemiesToSpawn = Mathf.Max(0, missingEnemies);
 	}
 }
