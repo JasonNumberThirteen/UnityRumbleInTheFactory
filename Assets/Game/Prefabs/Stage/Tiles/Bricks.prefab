@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 2102452818352769747}
   - component: {fileID: 4553958894686594028}
   - component: {fileID: 8388036953258573170}
+  - component: {fileID: 1258385577399760706}
   m_Layer: 8
   m_Name: Bottom Right Brick
   m_TagString: Bricks
@@ -193,6 +194,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &1258385577399760706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438967679561492981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4834d97d744b0e42b093bbc288956e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2308587011227819208
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +218,7 @@ GameObject:
   - component: {fileID: 4611606674136784892}
   - component: {fileID: 8845124058093380345}
   - component: {fileID: 9186111125729273382}
+  - component: {fileID: 4224584489321028058}
   m_Layer: 8
   m_Name: Bottom Left Brick
   m_TagString: Bricks
@@ -351,6 +365,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &4224584489321028058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2308587011227819208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4834d97d744b0e42b093bbc288956e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6319188888266772951
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +389,7 @@ GameObject:
   - component: {fileID: 6792576481016533555}
   - component: {fileID: 6473529578522941121}
   - component: {fileID: 3891677541856079269}
+  - component: {fileID: 4505754649827338905}
   m_Layer: 8
   m_Name: Top Left Brick
   m_TagString: Bricks
@@ -509,6 +536,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &4505754649827338905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319188888266772951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4834d97d744b0e42b093bbc288956e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6619443221430191917
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +560,7 @@ GameObject:
   - component: {fileID: 4201467977299864850}
   - component: {fileID: 3702001075338574780}
   - component: {fileID: 3374186132321072360}
+  - component: {fileID: 3183359024789417362}
   m_Layer: 8
   m_Name: Top Right Brick
   m_TagString: Bricks
@@ -667,3 +707,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &3183359024789417362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6619443221430191917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4834d97d744b0e42b093bbc288956e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
