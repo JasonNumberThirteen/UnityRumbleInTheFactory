@@ -8,6 +8,7 @@ public class EnemyRobotTrigger : RobotTrigger
 
 		playerData.score += erp.pointsForDestruction;
 
+		StageManager.instance.uiManager.CreateGainedPointsText(gameObject.transform.position, erp.pointsForDestruction);
 		base.TriggerEffect();
 	}
 }
