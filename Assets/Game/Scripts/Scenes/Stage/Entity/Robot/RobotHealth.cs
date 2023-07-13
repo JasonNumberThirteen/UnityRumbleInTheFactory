@@ -6,16 +6,16 @@ public class RobotHealth : MonoBehaviour
 
 	public int CurrentHealth {get; private set;}
 
-	public void ReceiveDamage(int damage)
+	public virtual void ReceiveDamage(int damage)
 	{
 		CurrentHealth -= damage;
 
 		CheckHealth();
 	}
 
-	private void Start() => CurrentHealth = initialHealth;
+	protected virtual void Start() => CurrentHealth = initialHealth;
 
-	private void CheckHealth()
+	protected virtual void CheckHealth()
 	{
 		if(CurrentHealth <= 0)
 		{
@@ -23,7 +23,7 @@ public class RobotHealth : MonoBehaviour
 		}
 	}
 
-	private void Explode()
+	protected virtual void Explode()
 	{
 		EntityExploder ee = GetComponent<EntityExploder>();
 
