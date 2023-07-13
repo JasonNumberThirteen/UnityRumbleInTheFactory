@@ -8,9 +8,15 @@ public class EnemyRobotShoot : MonoBehaviour
 	[Min(0.01f)] public float fireDelay = 1f;
 
 	private Animator animator;
-
+	private EnemyRobotFreeze freeze;
+	
 	public void FireBullet()
 	{
+		if(freeze.Frozen)
+		{
+			return;
+		}
+		
 		GameObject instance = Instantiate(bullet, transform.position + BulletPositionOffset()*offsetFromObject, Quaternion.identity);
 		EntityMovement em = instance.GetComponent<EntityMovement>();
 
@@ -20,7 +26,12 @@ public class EnemyRobotShoot : MonoBehaviour
 		}
 	}
 
-	private void Awake() => animator = GetComponent<Animator>();
+	private void Awake()
+	{
+		animator = GetComponent<Animator>();
+		freeze = GetComponent<EnemyRobotFreeze>();
+	}
+
 	private void Start() => InvokeRepeating("FireBullet", fireDelay, fireDelay);
 
 	private Vector3 BulletPositionOffset()
