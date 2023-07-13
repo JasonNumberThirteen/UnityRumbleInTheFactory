@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRobotCollider : MonoBehaviour
+public class PlayerRobotTrigger : MonoBehaviour
 {
 	public PlayerData data;
 	

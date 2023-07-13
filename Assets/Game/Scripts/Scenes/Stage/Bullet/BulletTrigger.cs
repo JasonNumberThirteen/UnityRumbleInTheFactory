@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletCollider : MonoBehaviour
+public class BulletTrigger : MonoBehaviour
 {
 	public GameObject splatterEffect;
 	public string[] excludedTags;
