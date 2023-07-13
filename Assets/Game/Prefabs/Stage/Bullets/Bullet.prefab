@@ -210,7 +210,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splatterEffect: {fileID: 4882441606795613529, guid: f1c0785e07f2be945a779be11629fb76, type: 3}
   excludedTags:
-  - Shield
   - Bonus
   triggerableTags:
   - Nuke
