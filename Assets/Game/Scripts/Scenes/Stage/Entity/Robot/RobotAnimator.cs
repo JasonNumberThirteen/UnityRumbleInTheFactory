@@ -4,16 +4,16 @@ public class RobotAnimator : EntityAnimator
 {
 	protected override void SetValues()
 	{
-		Vector2 movementDirection = movement.Direction;
+		Vector2 direction = movement.Direction;
 
-		animator.SetFloat("MovementSpeed", MovementSpeed(movementDirection));
+		animator.SetFloat("MovementSpeed", MovementSpeed(direction));
 
-		if(movementDirection != Vector2.zero)
+		if(direction != Vector2.zero)
 		{
-			animator.SetInteger("MovementX", (int)movementDirection.x);
-			animator.SetInteger("MovementY", (int)movementDirection.y);
+			animator.SetInteger("MovementX", (int)direction.x);
+			animator.SetInteger("MovementY", (int)direction.y);
 		}
 	}
 
-	private float MovementSpeed(Vector2 movementDirection) => (movementDirection.x != 0f || movementDirection.y != 0f) ? 1f : 0f;
+	private float MovementSpeed(Vector2 direction) => (direction == Vector2.zero) ? 0f : 1f;
 }
