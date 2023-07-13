@@ -23,10 +23,12 @@ public class EnemyRobotFreeze : MonoBehaviour
 	{
 		Vector2 movementDirection = movement.Direction;
 		
+		Frozen = true;
 		movement.Direction = Vector2.zero;
 
 		yield return new WaitForSeconds(duration);
-		
+
+		Frozen = false;
 		movement.Direction = movementDirection;
 	}
 }
