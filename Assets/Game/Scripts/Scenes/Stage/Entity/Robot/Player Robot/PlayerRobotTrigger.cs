@@ -18,7 +18,12 @@ public class PlayerRobotTrigger : RobotTrigger
 		base.TriggerEffect();
 	}
 
-	private void Awake() => movement = GetComponent<PlayerRobotMovement>();
+	protected override void Awake()
+	{
+		base.Awake();
+		
+		movement = GetComponent<PlayerRobotMovement>();
+	}
 
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
