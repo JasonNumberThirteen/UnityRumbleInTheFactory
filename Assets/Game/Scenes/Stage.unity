@@ -13136,6 +13136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsForBonus: 500
   playerRespawnDelay: 1
+  gameOverTextTimer: {fileID: 1572466353}
 --- !u!4 &1342973423
 Transform:
   m_ObjectHideFlags: 0
@@ -15295,7 +15296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 4
-  countFromTheStart: 1
+  countFromTheStart: 0
   onReset:
     m_PersistentCalls:
       m_Calls: []

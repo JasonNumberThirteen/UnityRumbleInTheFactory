@@ -17,5 +17,7 @@ public class NukeTrigger : MonoBehaviour, ITriggerable
 		{
 			ee.Explode();
 		}
+
+		StageManager.instance.SetGameAsOver();
 	}
 }
