@@ -1,10 +1,22 @@
 using UnityEngine;
 
-public class PlayerRobotTrigger : MonoBehaviour
+public class PlayerRobotTrigger : RobotTrigger
 {
 	public PlayerData data;
 	
 	private PlayerRobotMovement movement;
+
+	public override void TriggerEffect()
+	{
+		PlayerRobotRespawn respawn = GetComponent<PlayerRobotRespawn>();
+		
+		if(respawn != null)
+		{
+			StageManager.instance.InitiatePlayerRespawn(respawn);
+		}
+
+		base.TriggerEffect();
+	}
 
 	private void Awake() => movement = GetComponent<PlayerRobotMovement>();
 
