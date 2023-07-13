@@ -6365,6 +6365,7 @@ GameObject:
   - component: {fileID: 600235742}
   - component: {fileID: 600235744}
   - component: {fileID: 600235743}
+  - component: {fileID: 600235745}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -6389,7 +6390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -120}
   m_SizeDelta: {x: 0, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &600235743
@@ -6491,6 +6492,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600235741}
   m_CullTransparentMesh: 1
+--- !u!114 &600235745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600235741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d822f13543f816b4989dbb0902bbff29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0}
+  timer: {fileID: 1572466353}
 --- !u!1001 &610951089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15280,7 +15295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 4
-  countFromTheStart: 0
+  countFromTheStart: 1
   onReset:
     m_PersistentCalls:
       m_Calls: []
