@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class RobotTrigger : MonoBehaviour, ITriggerable
 {
-	public virtual void TriggerEffect()
-	{
-		EntityExploder ee = GetComponent<EntityExploder>();
-
-		if(ee != null)
-		{
-			ee.Explode();
-		}
-	}
+	private RobotHealth health;
+	
+	public virtual void TriggerEffect() => health.ReceiveDamage(1);
+	
+	private void Awake() => health = GetComponent<RobotHealth>();
 }
