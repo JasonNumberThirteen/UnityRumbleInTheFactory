@@ -6,29 +6,26 @@ public class EnemyRobotFreeze : MonoBehaviour
 	public bool Frozen {get; private set;}
 	
 	private EnemyRobotMovement movement;
-	private EnemyRobotShoot shoot;
+	private Vector2 lastDirection;
 
-	public void Freeze(float duration)
-	{
-		StartCoroutine(FreezeYourself(duration));
-	}
+	public void Freeze(float duration) => StartCoroutine(FreezeYourself(duration));
 
-	private void Awake()
-	{
-		movement = GetComponent<EnemyRobotMovement>();
-		shoot = GetComponent<EnemyRobotShoot>();
-	}
-
+	private void Awake() => movement = GetComponent<EnemyRobotMovement>();
+	
 	private IEnumerator FreezeYourself(float duration)
 	{
-		Vector2 movementDirection = movement.Direction;
+		lastDirection = movement.Direction;
 		
-		Frozen = true;
-		movement.Direction = Vector2.zero;
+		SetState(true);
 
 		yield return new WaitForSeconds(duration);
 
-		Frozen = false;
-		movement.Direction = movementDirection;
+		SetState(false);
+	}
+
+	private void SetState(bool freeze)
+	{
+		Frozen = freeze;
+		movement.Direction = (Frozen) ? Vector2.zero : lastDirection;
 	}
 }
