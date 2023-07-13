@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
 	[Min(0)] public int pointsForBonus = 500;
 	[Min(0.01f)] public float playerRespawnDelay = 1f;
 	public Timer gameOverTextTimer;
+	public StageUIManager uiManager;
 
 	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => StartCoroutine(RespawnPlayer(prr));
 
