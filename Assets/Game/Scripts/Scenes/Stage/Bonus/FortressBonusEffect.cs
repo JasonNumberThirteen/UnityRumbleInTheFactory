@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FortressBonusEffect : BonusEffect
+public class FortressBonusEffect : TimedBonusEffect
 {
 	[Min(0f)] public float overlapBoxSize = 2.5f;
 	public LayerMask overlapLayers;

@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class FreezeBonusEffect : BonusEffect
+public class FreezeBonusEffect : TimedBonusEffect
 {
-	[Min(0.01f)] public float duration = 10f;
-	
 	public override void PerformEffect()
 	{
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

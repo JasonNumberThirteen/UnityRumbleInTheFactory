@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class ShieldBonusEffect : BonusEffect
+public class ShieldBonusEffect : TimedBonusEffect
 {
-	[Min(0.01f)] public float duration = 10f;
-	
 	public override void PerformEffect()
 	{
 		PlayerRobotShield prs = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerRobotShield>();
