@@ -121,3 +121,4 @@ MonoBehaviour:
   overlapLayers:
     serializedVersion: 2
     m_Bits: 256
+  metalTile: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
