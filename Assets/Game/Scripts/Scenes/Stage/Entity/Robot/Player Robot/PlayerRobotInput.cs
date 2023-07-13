@@ -6,9 +6,9 @@ public class PlayerRobotInput : MonoBehaviour
 	public Vector2 MovementVector {get; private set;}
 	public Vector2 LastMovementVector {get; private set;}
 
-	private PlayerRobotShoot shoot;
+	private RobotShoot shoot;
 
-	private void Awake() => shoot = GetComponent<PlayerRobotShoot>();
+	private void Awake() => shoot = GetComponent<RobotShoot>();
 
 	private void OnMove(InputValue iv)
 	{
