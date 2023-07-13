@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletTrigger : MonoBehaviour
 {
 	public GameObject splatterEffect;
-	public string[] excludedTags;
+	public string[] excludedTags, triggerableTags;
 	
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
@@ -15,36 +15,17 @@ public class BulletTrigger : MonoBehaviour
 			}
 		}
 
-		if(collider.CompareTag("Nuke"))
+		foreach (string tt in triggerableTags)
 		{
-			NukeRenderer nr = collider.gameObject.GetComponent<NukeRenderer>();
-
-			if(nr != null)
+			if(collider.CompareTag(tt))
 			{
-				nr.ChangeToDestroyedState();
-				Destroy(nr);
+				ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
+
+				if(triggerable != null)
+				{
+					triggerable.TriggerEffect();
+				}
 			}
-			else
-			{
-				return;
-			}
-		}
-
-		if(collider.CompareTag("Bricks"))
-		{
-			Destroy(collider.gameObject);
-		}
-
-		if(collider.CompareTag("Player"))
-		{
-			StageManager.instance.InitiatePlayerRespawn(collider.gameObject.GetComponent<PlayerRobotRespawn>());
-		}
-
-		EntityExploder ee = collider.gameObject.GetComponent<EntityExploder>();
-
-		if(ee != null)
-		{
-			ee.Explode();
 		}
 		
 		Instantiate(splatterEffect, gameObject.transform.position, Quaternion.identity);

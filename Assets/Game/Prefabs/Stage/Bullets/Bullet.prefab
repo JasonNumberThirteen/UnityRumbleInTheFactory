@@ -212,6 +212,9 @@ MonoBehaviour:
   excludedTags:
   - Shield
   - Bonus
+  triggerableTags:
+  - Nuke
+  - Bricks
 --- !u!114 &3234668162895731857
 MonoBehaviour:
   m_ObjectHideFlags: 0
