@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5173178135221568878}
   - component: {fileID: 2249889350710709286}
   - component: {fileID: 8887816664841345866}
+  - component: {fileID: 7250390401246617337}
   - component: {fileID: -3710137388361032966}
   m_Layer: 0
   m_Name: Nuke
@@ -173,6 +174,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyState: {fileID: 502883198, guid: 158f0daf0dd0383409fda8ee32398fb3, type: 3}
+--- !u!114 &7250390401246617337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414169594087006866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50147b8e35605149b1116f6d0cb8884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-3710137388361032966
 MonoBehaviour:
   m_ObjectHideFlags: 0
