@@ -30,12 +30,8 @@ public class StageUIManager : MonoBehaviour
 	}
 
 	public void RemoveLeftEnemyIcon() => Destroy(leftEnemyIcons[leftEnemyIconIndex++]);
-
-	private void Start()
-	{
-		CreateLeftEnemyIcons();
-		UpdateCounters();
-	}
+	
+	private void Start() => CreateLeftEnemyIcons();
 
 	private void CreateLeftEnemyIcons()
 	{
