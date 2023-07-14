@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DestructionBonusEffect : BonusEffect
+public class DestructionBonusTrigger : BonusTrigger
 {
-	public override void PerformEffect()
+	public override void TriggerEffect(GameObject sender)
 	{
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -15,5 +15,7 @@ public class DestructionBonusEffect : BonusEffect
 				ee.Explode();
 			}
 		}
+
+		base.TriggerEffect(sender);
 	}
 }

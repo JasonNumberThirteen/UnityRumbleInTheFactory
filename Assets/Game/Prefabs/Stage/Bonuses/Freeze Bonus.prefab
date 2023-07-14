@@ -114,7 +114,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 185465399744776725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b79c25bffd42b4f42b98caf4e877ef2c, type: 3}
+  m_Script: {fileID: 11500000, guid: c37f915d121b16047935878d70494506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   duration: 10

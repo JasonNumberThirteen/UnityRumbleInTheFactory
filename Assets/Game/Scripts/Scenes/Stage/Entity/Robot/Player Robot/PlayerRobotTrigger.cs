@@ -33,17 +33,12 @@ public class PlayerRobotTrigger : RobotTrigger
 		}
 		else if(collider.CompareTag("Bonus"))
 		{
-			BonusEffect be = collider.gameObject.GetComponent<BonusEffect>();
+			ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
 
-			if(be != null)
+			if(triggerable != null)
 			{
-				be.PerformEffect();
+				triggerable.TriggerEffect(gameObject);
 			}
-			
-			data.score += StageManager.instance.pointsForBonus;
-			
-			StageManager.instance.uiManager.CreateGainedPointsCounter(gameObject.transform.position, StageManager.instance.pointsForBonus);
-			Destroy(collider.gameObject);
 		}
 	}
 

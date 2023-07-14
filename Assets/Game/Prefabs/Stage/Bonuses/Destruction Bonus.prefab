@@ -92,7 +92,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destruction Bonus
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2816180102894065610, guid: 45c1cf0a586e1bb4ba562296bbadc509, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -114,6 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2262667808754140118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2be2d526633ea48b1bfd706fb801e5, type: 3}
+  m_Script: {fileID: 11500000, guid: fbc7ce9dafff85246a090fdb11304f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}

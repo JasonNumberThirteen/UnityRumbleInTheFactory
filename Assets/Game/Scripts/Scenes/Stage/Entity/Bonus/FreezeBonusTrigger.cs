@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class FreezeBonusEffect : TimedBonusEffect
+public class FreezeBonusTrigger : TimedBonusTrigger
 {
-	public override void PerformEffect()
+	public override void TriggerEffect(GameObject sender)
 	{
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		
@@ -12,5 +12,7 @@ public class FreezeBonusEffect : TimedBonusEffect
 
 			erf.Freeze(duration);
 		}
+
+		base.TriggerEffect(sender);
 	}
 }

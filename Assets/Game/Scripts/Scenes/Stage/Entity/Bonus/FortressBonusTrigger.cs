@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class FortressBonusEffect : TimedBonusEffect
+public class FortressBonusTrigger : TimedBonusTrigger
 {
 	[Min(0f)] public float overlapBoxSize = 1.5f;
 	public LayerMask overlapLayers;
 	public GameObject metalTile;
 	
-	public override void PerformEffect()
+	public override void TriggerEffect(GameObject sender)
 	{
 		GameObject nuke = GameObject.FindGameObjectWithTag("Nuke");
 		Collider2D nukeCollider = nuke.GetComponent<Collider2D>();
@@ -31,5 +31,7 @@ public class FortressBonusEffect : TimedBonusEffect
 				}
 			}
 		}
+
+		base.TriggerEffect(sender);
 	}
 }

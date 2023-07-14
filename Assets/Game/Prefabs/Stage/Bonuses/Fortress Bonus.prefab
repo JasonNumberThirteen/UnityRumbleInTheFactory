@@ -114,9 +114,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5288424573387977449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6ba0b061a19694e890f242332fd465, type: 3}
+  m_Script: {fileID: 11500000, guid: ed9fb23aa4e665c4888a7c72be68396e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   duration: 10
   overlapBoxSize: 1.5
   overlapLayers:
