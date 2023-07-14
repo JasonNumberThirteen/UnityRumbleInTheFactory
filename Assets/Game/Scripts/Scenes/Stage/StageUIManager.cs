@@ -20,9 +20,11 @@ public class StageUIManager : MonoBehaviour
 		text.text = points.ToString();
 	}
 
-	private void Start()
+	public void UpdateCounters()
 	{
 		playerOneLivesCounter.SetTo(playerData.lives);
 		stageCounter.SetTo(gameData.stage);
 	}
+
+	private void Start() => UpdateCounters();
 }
