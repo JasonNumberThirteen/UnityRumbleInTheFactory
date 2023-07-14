@@ -5,6 +5,9 @@ public class StageUIManager : MonoBehaviour
 {
 	public RectTransform parent;
 	public GameObject gainedPointsCounter;
+	public PlayerData playerData;
+	public GameData gameData;
+	public Counter playerOneLivesCounter, stageCounter;
 
 	public void CreateGainedPointsCounter(Vector2 position, int points)
 	{
@@ -15,5 +18,11 @@ public class StageUIManager : MonoBehaviour
 
 		rt.anchoredPosition = textPosition;
 		text.text = points.ToString();
+	}
+
+	private void Start()
+	{
+		playerOneLivesCounter.SetTo(playerData.lives);
+		stageCounter.SetTo(gameData.stage);
 	}
 }
