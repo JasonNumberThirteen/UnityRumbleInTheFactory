@@ -89,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bricksTile: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
   blinkDelay: 5
-  blinkDuration: 1
+  blinkDuration: 0.25
 --- !u!114 &8923623980498974969
 MonoBehaviour:
   m_ObjectHideFlags: 0
