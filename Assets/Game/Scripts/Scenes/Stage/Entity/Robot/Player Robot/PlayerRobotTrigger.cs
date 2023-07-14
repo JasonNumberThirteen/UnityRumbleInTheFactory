@@ -25,7 +25,7 @@ public class PlayerRobotTrigger : RobotTrigger
 		movement = GetComponent<PlayerRobotMovement>();
 	}
 
-	private void OnTriggerEnter2D(Collider2D collider)
+	private void OnTriggerStay2D(Collider2D collider)
 	{
 		ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
 
