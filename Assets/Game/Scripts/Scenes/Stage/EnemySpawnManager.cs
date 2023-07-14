@@ -29,6 +29,8 @@ public class EnemySpawnManager : MonoBehaviour
 			if(es != null)
 			{
 				es.entity = enemies[enemyIndex++];
+
+				StageManager.instance.uiManager.RemoveLeftEnemyIcon();
 			}
 		}
 	}
@@ -59,6 +61,8 @@ public class EnemySpawnManager : MonoBehaviour
 				es.entity = enemies[enemyIndex++];
 				--enemiesToSpawn;
 				spawnerIndex = (spawnerIndex + 1) % spawners.Length;
+
+				StageManager.instance.uiManager.RemoveLeftEnemyIcon();
 			}
 		}
 	}
