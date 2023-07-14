@@ -25,7 +25,7 @@ public class StageUIManager : MonoBehaviour
 
 	public void UpdateCounters()
 	{
-		playerOneLivesCounter.SetTo(playerData.lives);
+		playerOneLivesCounter.SetTo(playerData.Lives);
 		stageCounter.SetTo(gameData.stage);
 	}
 

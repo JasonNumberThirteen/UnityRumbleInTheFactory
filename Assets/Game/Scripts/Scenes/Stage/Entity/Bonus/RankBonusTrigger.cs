@@ -4,7 +4,7 @@ public class RankBonusTrigger : BonusTrigger
 {
 	public override void TriggerEffect(GameObject sender)
 	{
-		++playerData.rank;
+		++playerData.Rank;
 
 		base.TriggerEffect(sender);
 	}

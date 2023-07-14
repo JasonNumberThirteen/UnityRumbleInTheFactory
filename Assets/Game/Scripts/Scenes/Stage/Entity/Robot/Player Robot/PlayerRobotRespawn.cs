@@ -7,7 +7,7 @@ public class PlayerRobotRespawn : MonoBehaviour
 
 	public void Respawn()
 	{
-		if(data.lives-- > 0)
+		if(data.Lives-- > 0)
 		{
 			GameObject spawner = GameObject.FindGameObjectWithTag(spawnerTag);
 			Timer timer = spawner.GetComponent<Timer>();

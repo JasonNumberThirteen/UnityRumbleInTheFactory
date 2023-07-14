@@ -6,7 +6,7 @@ public class EnemyRobotHealth : RobotHealth
 	{
 		EnemyRobotPoints erp = GetComponent<EnemyRobotPoints>();
 
-		playerData.score += erp.pointsForDestruction;
+		playerData.Score += erp.pointsForDestruction;
 
 		StageManager.instance.uiManager.CreateGainedPointsCounter(gameObject.transform.position, erp.pointsForDestruction);
 		base.Explode();

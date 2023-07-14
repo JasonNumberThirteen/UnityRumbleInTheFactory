@@ -4,7 +4,7 @@ public class LifeBonusTrigger : BonusTrigger
 {
 	public override void TriggerEffect(GameObject sender)
 	{
-		++playerData.lives;
+		++playerData.Lives;
 
 		base.TriggerEffect(sender);
 	}

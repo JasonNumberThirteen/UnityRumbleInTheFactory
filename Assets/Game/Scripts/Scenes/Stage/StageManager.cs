@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour
 	public Timer gameOverTextTimer;
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
+	public PlayerData playerData;
 
 	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => StartCoroutine(RespawnPlayer(prr));
 
@@ -19,6 +20,7 @@ public class StageManager : MonoBehaviour
 	}
 	
 	private void Awake() => CheckSingleton();
+	private void Start() => playerData.ResetData();
 
 	private void CheckSingleton()
 	{

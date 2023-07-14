@@ -13141,6 +13141,7 @@ MonoBehaviour:
   gameOverTextTimer: {fileID: 1572466353}
   uiManager: {fileID: 1237164743}
   enemySpawnManager: {fileID: 1295888590}
+  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
 --- !u!4 &1342973423
 Transform:
   m_ObjectHideFlags: 0
