@@ -117,7 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6ba0b061a19694e890f242332fd465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapBoxSize: 2.5
+  duration: 10
+  overlapBoxSize: 1.5
   overlapLayers:
     serializedVersion: 2
     m_Bits: 256
