@@ -6367,7 +6367,7 @@ GameObject:
   - component: {fileID: 597469607}
   - component: {fileID: 597469606}
   m_Layer: 5
-  m_Name: Left Enemies Icon
+  m_Name: Left Enemy Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
