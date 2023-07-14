@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba9a81e4e86c634bb31cddfb36ada4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bricksTile: {fileID: -328825978, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
+  bricksTile: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
   blinkDelay: 1
 --- !u!114 &8923623980498974969
 MonoBehaviour:
