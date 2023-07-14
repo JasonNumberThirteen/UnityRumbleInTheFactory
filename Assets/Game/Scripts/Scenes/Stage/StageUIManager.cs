@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class StageUIManager : MonoBehaviour
 {
-	public RectTransform parent;
-	public GameObject gainedPointsCounter;
+	public RectTransform parent, hud;
+	public GameObject gainedPointsCounter, leftEnemyIcon;
 	public PlayerData playerData;
 	public GameData gameData;
 	public Counter playerOneLivesCounter, stageCounter;
@@ -26,5 +26,24 @@ public class StageUIManager : MonoBehaviour
 		stageCounter.SetTo(gameData.stage);
 	}
 
-	private void Start() => UpdateCounters();
+	private void Start()
+	{
+		CreateLeftEnemyIcons();
+		UpdateCounters();
+	}
+
+	private void CreateLeftEnemyIcons()
+	{
+		int limit = 20;
+		int amount = Mathf.Min(StageManager.instance.enemySpawnManager.enemies.Length, limit);
+
+		for (int i = amount - 1; i >= 0; --i)
+		{
+			GameObject instance = Instantiate(leftEnemyIcon, hud.transform);
+			RectTransform rt = instance.GetComponent<RectTransform>();
+			Vector2 iconPositionOffset = new Vector2(-16 + 8*(i % 2), -16 + 8*(i / 2) - 8*((limit - 1) / 2));
+
+			rt.anchoredPosition = iconPositionOffset;
+		}
+	}
 }
