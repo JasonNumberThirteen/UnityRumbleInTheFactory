@@ -27,18 +27,11 @@ public class PlayerRobotTrigger : RobotTrigger
 
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
-		if(collider.CompareTag("Slippery Floor"))
-		{
-			SetSliding(true);
-		}
-		else if(collider.CompareTag("Bonus"))
-		{
-			ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
+		ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
 
-			if(triggerable != null)
-			{
-				triggerable.TriggerEffect(gameObject);
-			}
+		if(triggerable != null)
+		{
+			triggerable.TriggerEffect(gameObject);
 		}
 	}
 
