@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player 1 Data
   m_EditorClassIdentifier: 
   score: 0
-  lives: 3
+  lives: 2
   rank: 1
