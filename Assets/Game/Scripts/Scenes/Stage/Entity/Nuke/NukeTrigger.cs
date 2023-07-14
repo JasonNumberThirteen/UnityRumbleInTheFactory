@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class NukeTrigger : MonoBehaviour, ITriggerable
 {
+	public string destroyedStateLayer;
+	
 	public void TriggerEffect(GameObject sender)
 	{
 		NukeRenderer nr = GetComponent<NukeRenderer>();
@@ -17,6 +19,8 @@ public class NukeTrigger : MonoBehaviour, ITriggerable
 		{
 			ee.Explode();
 		}
+
+		gameObject.layer = LayerMask.NameToLayer(destroyedStateLayer);
 
 		StageManager.instance.SetGameAsOver();
 	}

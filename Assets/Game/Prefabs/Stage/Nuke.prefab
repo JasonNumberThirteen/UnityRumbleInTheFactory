@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50147b8e35605149b1116f6d0cb8884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyedStateLayer: Destroyed Nuke
 --- !u!114 &-3710137388361032966
 MonoBehaviour:
   m_ObjectHideFlags: 0
