@@ -68,7 +68,7 @@ PrefabInstance:
       addedObject: {fileID: 8923623980498974969}
     - targetCorrespondingSourceObject: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 243413659907210740}
+      addedObject: {fileID: 3906164796503390330}
   m_SourcePrefab: {fileID: 100100000, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
 --- !u!1 &6712889474181035811 stripped
 GameObject:
@@ -110,10 +110,10 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 243413659907210740}
-        m_TargetAssemblyTypeName: GameObjectDestroyer, Assembly-CSharp
-        m_MethodName: Destroy
-        m_Mode: 4
+      - m_Target: {fileID: 3906164796503390330}
+        m_TargetAssemblyTypeName: FortressMetalTransformation, Assembly-CSharp
+        m_MethodName: TransformSelf
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -122,7 +122,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &243413659907210740
+--- !u!114 &3906164796503390330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6712889474181035811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662340b5d97e29c48b6a35db826b837d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53386c351e17d454393449b03ac4147e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bricksTile: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
