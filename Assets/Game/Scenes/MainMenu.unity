@@ -844,6 +844,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.25
   countFromTheStart: 0
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
   onEnd:
     m_PersistentCalls:
       m_Calls:
@@ -1309,6 +1312,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 5
   countFromTheStart: 1
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
   onEnd:
     m_PersistentCalls:
       m_Calls:
@@ -1807,7 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 16
+  m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 256, y: 224}
   m_ScreenMatchMode: 0
