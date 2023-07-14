@@ -12,6 +12,7 @@ public class PlayerRobotRespawn : MonoBehaviour
 			GameObject spawner = GameObject.FindGameObjectWithTag(spawnerTag);
 			Timer timer = spawner.GetComponent<Timer>();
 
+			data.Rank = 1;
 			timer.ResetTimer();
 		}
 		else
