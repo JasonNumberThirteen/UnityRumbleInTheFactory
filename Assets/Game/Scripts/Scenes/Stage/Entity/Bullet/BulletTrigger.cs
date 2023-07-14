@@ -23,7 +23,7 @@ public class BulletTrigger : MonoBehaviour
 
 				if(triggerable != null)
 				{
-					triggerable.TriggerEffect();
+					triggerable.TriggerEffect(gameObject);
 				}
 			}
 		}

@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface ITriggerable
 {
-	void TriggerEffect();
+	void TriggerEffect(GameObject sender);
 }

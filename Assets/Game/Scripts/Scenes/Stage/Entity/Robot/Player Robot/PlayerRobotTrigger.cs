@@ -6,7 +6,7 @@ public class PlayerRobotTrigger : RobotTrigger
 	
 	private PlayerRobotMovement movement;
 
-	public override void TriggerEffect()
+	public override void TriggerEffect(GameObject sender)
 	{
 		PlayerRobotRespawn respawn = GetComponent<PlayerRobotRespawn>();
 		
@@ -15,7 +15,7 @@ public class PlayerRobotTrigger : RobotTrigger
 			StageManager.instance.InitiatePlayerRespawn(respawn);
 		}
 
-		base.TriggerEffect();
+		base.TriggerEffect(sender);
 	}
 
 	protected override void Awake()

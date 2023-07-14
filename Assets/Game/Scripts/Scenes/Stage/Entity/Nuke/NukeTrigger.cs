@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NukeTrigger : MonoBehaviour, ITriggerable
 {
-	public void TriggerEffect()
+	public void TriggerEffect(GameObject sender)
 	{
 		NukeRenderer nr = GetComponent<NukeRenderer>();
 		EntityExploder ee = GetComponent<EntityExploder>();
