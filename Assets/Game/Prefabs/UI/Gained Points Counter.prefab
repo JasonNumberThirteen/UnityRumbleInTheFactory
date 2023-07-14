@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5933951694232788661}
   - component: {fileID: 8518243959234390300}
   m_Layer: 5
-  m_Name: Gained Points
+  m_Name: Gained Points Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

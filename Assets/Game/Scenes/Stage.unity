@@ -12525,7 +12525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 120467784}
-  gainedPointsText: {fileID: 9125841890133855812, guid: 12394f4d279dd384e9e5b656dc6c4709, type: 3}
+  gainedPointsCounter: {fileID: 9125841890133855812, guid: 12394f4d279dd384e9e5b656dc6c4709, type: 3}
 --- !u!4 &1237164744
 Transform:
   m_ObjectHideFlags: 0

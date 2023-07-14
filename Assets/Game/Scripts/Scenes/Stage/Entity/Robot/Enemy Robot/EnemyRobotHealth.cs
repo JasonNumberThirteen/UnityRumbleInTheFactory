@@ -8,7 +8,7 @@ public class EnemyRobotHealth : RobotHealth
 
 		playerData.score += erp.pointsForDestruction;
 
-		StageManager.instance.uiManager.CreateGainedPointsText(gameObject.transform.position, erp.pointsForDestruction);
+		StageManager.instance.uiManager.CreateGainedPointsCounter(gameObject.transform.position, erp.pointsForDestruction);
 		base.Explode();
 	}
 }

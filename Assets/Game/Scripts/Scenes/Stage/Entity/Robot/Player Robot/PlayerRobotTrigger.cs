@@ -42,7 +42,7 @@ public class PlayerRobotTrigger : RobotTrigger
 			
 			data.score += StageManager.instance.pointsForBonus;
 			
-			StageManager.instance.uiManager.CreateGainedPointsText(gameObject.transform.position, StageManager.instance.pointsForBonus);
+			StageManager.instance.uiManager.CreateGainedPointsCounter(gameObject.transform.position, StageManager.instance.pointsForBonus);
 			Destroy(collider.gameObject);
 		}
 	}
