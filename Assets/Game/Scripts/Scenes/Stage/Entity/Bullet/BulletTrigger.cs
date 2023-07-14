@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletTrigger : MonoBehaviour
 {
 	public GameObject splatterEffect;
-	public string[] excludedTags, triggerableTags;
+	public string[] excludedTags;
 	
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
@@ -15,17 +15,11 @@ public class BulletTrigger : MonoBehaviour
 			}
 		}
 
-		foreach (string tt in triggerableTags)
-		{
-			if(collider.CompareTag(tt))
-			{
-				ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
+		ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
 
-				if(triggerable != null)
-				{
-					triggerable.TriggerEffect(gameObject);
-				}
-			}
+		if(triggerable != null)
+		{
+			triggerable.TriggerEffect(gameObject);
 		}
 		
 		Instantiate(splatterEffect, gameObject.transform.position, Quaternion.identity);
