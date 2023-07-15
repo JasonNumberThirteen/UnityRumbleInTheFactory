@@ -29,19 +29,26 @@ public class StageUIManager : MonoBehaviour
 		stageCounter.SetTo(gameData.stage);
 	}
 
-	public void RemoveLeftEnemyIcon() => Destroy(leftEnemyIcons[leftEnemyIconIndex--]);
+	public void RemoveLeftEnemyIcon()
+	{
+		if(--leftEnemyIconIndex < leftEnemyIcons.Length)
+		{
+			Destroy(leftEnemyIcons[leftEnemyIconIndex]);
+		}
+	}
 	
 	private void Start() => CreateLeftEnemyIcons();
 
 	private void CreateLeftEnemyIcons()
 	{
 		int limit = 20;
-		int amount = Mathf.Min(StageManager.instance.enemySpawnManager.enemies.Length, limit);
+		int amountOfEnemies = StageManager.instance.enemySpawnManager.enemies.Length;
+		int amountOfIcons = Mathf.Min(amountOfEnemies, limit);
 
-		leftEnemyIcons = new GameObject[amount];
-		leftEnemyIconIndex = amount - 1;
+		leftEnemyIcons = new GameObject[amountOfIcons];
+		leftEnemyIconIndex = amountOfEnemies;
 
-		for (int i = 0; i < amount; ++i)
+		for (int i = 0; i < amountOfIcons; ++i)
 		{
 			GameObject instance = Instantiate(leftEnemyIcon, hud.transform);
 			RectTransform rt = instance.GetComponent<RectTransform>();
