@@ -27,7 +27,10 @@ public class FortressBonusTrigger : TimedBonusTrigger
 				
 				if(!nukeCollider.OverlapPoint(finalPosition))
 				{
-					Instantiate(metalTile, finalPosition, Quaternion.identity);
+					GameObject instance = Instantiate(metalTile, finalPosition, Quaternion.identity);
+					Timer timer = instance.GetComponent<Timer>();
+
+					timer.duration = duration;
 				}
 			}
 		}
