@@ -13,6 +13,10 @@ PrefabInstance:
       value: Enemy Robot
       objectReference: {fileID: 0}
     - target: {fileID: 7131367110452112014, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131367110452112014, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
