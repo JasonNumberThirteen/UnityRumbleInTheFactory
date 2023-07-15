@@ -54,15 +54,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6405080330063127808, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
       propertyPath: m_Name
-      value: Enemy Robot With Bonus
+      value: Bonus Enemy Robot
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3997983750430264336, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6405080330063127808, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5085520150346759385}
+    - targetCorrespondingSourceObject: {fileID: 6405080330063127808, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6178120390279464084}
   m_SourcePrefab: {fileID: 100100000, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
 --- !u!1 &5527104383488183646 stripped
 GameObject:
@@ -88,3 +92,15 @@ MonoBehaviour:
   - {fileID: 5665056847014531674, guid: 73564722e472e4e4e80dfc7c84a23c7a, type: 3}
   - {fileID: 1793592744161352667, guid: cca1d5c557ea5354db0895a2336ad72d, type: 3}
   - {fileID: 2474896001265453612, guid: afaf4a4f95818594ba2f59245b834734, type: 3}
+--- !u!114 &-6178120390279464084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527104383488183646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2859738f9efe0ea4a9dde17d69657889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
