@@ -233,3 +233,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bottomLeftArea: {x: -6.5, y: -6}
   topRightArea: {x: 5.5, y: 6}
+  gridSize: 0.5
