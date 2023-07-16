@@ -12,7 +12,7 @@ public class StageManager : MonoBehaviour
 	public PlayerData playerData;
 	public Timer gameOverTimer;
 
-	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => prr.Respawn();
+	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => StartCoroutine(RespawnPlayer(prr));
 
 	public void SetGameAsOver()
 	{
@@ -31,6 +31,18 @@ public class StageManager : MonoBehaviour
 		else if(instance != this)
 		{
 			Destroy(gameObject);
+		}
+	}
+
+	private IEnumerator RespawnPlayer(PlayerRobotRespawn prr)
+	{
+		yield return new WaitForSeconds(playerRespawnDelay);
+
+		prr.Respawn();
+
+		if(playerData.Lives == 0)
+		{
+			gameOverTimer.duration = 0;
 		}
 	}
 }
