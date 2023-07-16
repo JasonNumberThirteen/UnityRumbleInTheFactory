@@ -8,6 +8,16 @@ public class PlayerRobotTrigger : RobotTrigger
 
 	public override void TriggerEffect(GameObject sender)
 	{
+		PlayerRobotShield shield = GetComponent<PlayerRobotShield>();
+
+		if(shield != null)
+		{
+			if(shield.ShieldTimer.gameObject.activeInHierarchy)
+			{
+				return;
+			}
+		}
+		
 		PlayerRobotRespawn respawn = GetComponent<PlayerRobotRespawn>();
 		
 		if(respawn != null)
