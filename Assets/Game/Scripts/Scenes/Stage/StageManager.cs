@@ -10,13 +10,44 @@ public class StageManager : MonoBehaviour
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
 	public PlayerData playerData;
-	public Timer gameOverTimer;
+	public Timer gameOverTimer, freezeTimer;
 
 	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => StartCoroutine(RespawnPlayer(prr));
 
 	public void SetGameAsOver()
 	{
 		gameOverTimer.StartTimer();
+	}
+
+	public void InitiateFreeze(float duration)
+	{
+		freezeTimer.duration = duration;
+
+		freezeTimer.ResetTimer();
+	}
+
+	public void FreezeAllEnemies()
+	{
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+		foreach (GameObject enemy in enemies)
+		{
+			EnemyRobotFreeze erf = enemy.GetComponent<EnemyRobotFreeze>();
+
+			erf.Freeze();
+		}
+	}
+
+	public void UnfreezeAllEnemies()
+	{
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+		foreach (GameObject enemy in enemies)
+		{
+			EnemyRobotFreeze erf = enemy.GetComponent<EnemyRobotFreeze>();
+
+			erf.Unfreeze();
+		}
 	}
 	
 	private void Awake() => CheckSingleton();

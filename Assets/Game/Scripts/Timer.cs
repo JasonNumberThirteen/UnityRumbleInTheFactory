@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour
 		Finished = false;
 		timer = 0f;
 
+		StartTimer();
 		onReset.Invoke();
 	}
 

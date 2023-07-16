@@ -13206,6 +13206,7 @@ MonoBehaviour:
   enemySpawnManager: {fileID: 1295888590}
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   gameOverTimer: {fileID: 1049923159}
+  freezeTimer: {fileID: 1610503212}
 --- !u!4 &1342973423
 Transform:
   m_ObjectHideFlags: 0
@@ -15542,6 +15543,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6000890838716230585, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
   m_PrefabInstance: {fileID: 1608744003}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1610503211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1610503213}
+  - component: {fileID: 1610503212}
+  m_Layer: 0
+  m_Name: Freeze Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1610503212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610503211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 10
+  countFromTheStart: 0
+  onReset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1342973422}
+        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+        m_MethodName: FreezeAllEnemies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1342973422}
+        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+        m_MethodName: UnfreezeAllEnemies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1610503213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610503211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1615489387
 PrefabInstance:
   m_ObjectHideFlags: 0

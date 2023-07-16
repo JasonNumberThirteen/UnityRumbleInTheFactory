@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class EnemyRobotFreeze : MonoBehaviour
 {
@@ -8,19 +7,20 @@ public class EnemyRobotFreeze : MonoBehaviour
 	private EnemyRobotMovement movement;
 	private Vector2 lastDirection;
 
-	public void Freeze(float duration) => StartCoroutine(FreezeYourself(duration));
-
-	private void Awake() => movement = GetComponent<EnemyRobotMovement>();
-	
-	private IEnumerator FreezeYourself(float duration)
+	public void Freeze()
 	{
 		lastDirection = movement.Direction;
 		
 		SetState(true);
+	}
 
-		yield return new WaitForSeconds(duration);
+	public void Unfreeze() => SetState(false);
+	
+	private void Awake() => movement = GetComponent<EnemyRobotMovement>();
 
-		SetState(false);
+	private void Start()
+	{
+		lastDirection = movement.Direction;
 	}
 
 	private void SetState(bool freeze)
