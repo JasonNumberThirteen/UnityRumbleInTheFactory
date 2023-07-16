@@ -41,7 +41,7 @@ public class EnemyRobotMovement : EntityMovement
 		DetectObstacles();
 	}
 
-	private void Start() => RandomiseDirection();
+	private void Start() => Direction = Vector2.down;
 	
 	private void DetectObstacles()
 	{
