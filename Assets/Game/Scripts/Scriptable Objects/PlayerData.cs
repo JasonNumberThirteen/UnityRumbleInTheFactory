@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Player Data")]
 public class PlayerData : ScriptableObject
 {
+	public GameData gameData;
+	
 	public int Score
 	{
 		get
@@ -14,6 +16,7 @@ public class PlayerData : ScriptableObject
 			score = Mathf.Clamp(value, 0, int.MaxValue);
 
 			CheckBonusLifeThreshold();
+			CheckHighScore();
 		}
 	}
 
@@ -62,6 +65,17 @@ public class PlayerData : ScriptableObject
 		{
 			++Lives;
 			bonusLifeThreshold += initialBonusLifeThreshold;
+
+			StageManager.instance.uiManager.UpdateCounters();
+		}
+	}
+
+	private void CheckHighScore()
+	{
+		if(score >= gameData.highScore && !gameData.beatenHighScore)
+		{
+			gameData.beatenHighScore = true;
+			++Lives;
 
 			StageManager.instance.uiManager.UpdateCounters();
 		}

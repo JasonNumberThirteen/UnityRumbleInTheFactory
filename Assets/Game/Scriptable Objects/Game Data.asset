@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 1
   highScore: 20000
+  beatenHighScore: 0

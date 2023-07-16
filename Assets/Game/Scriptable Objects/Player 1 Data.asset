@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb88cf406c132814ba01fa96e5037bab, type: 3}
   m_Name: Player 1 Data
   m_EditorClassIdentifier: 
-  score: 0
-  lives: 2
-  rank: 1
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+  initialScore: 0
+  initialLives: 2
+  initialRank: 1
+  initialBonusLifeThreshold: 20000
