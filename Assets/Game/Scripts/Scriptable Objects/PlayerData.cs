@@ -12,6 +12,8 @@ public class PlayerData : ScriptableObject
 		set
 		{
 			score = Mathf.Clamp(value, 0, int.MaxValue);
+
+			CheckBonusLifeThreshold();
 		}
 	}
 
@@ -42,13 +44,26 @@ public class PlayerData : ScriptableObject
 	[SerializeField] private int initialScore;
 	[SerializeField] private int initialLives = 2;
 	[SerializeField] private int initialRank = 1;
+	[SerializeField] private int initialBonusLifeThreshold = 20000;
 
-	private int score, lives, rank;
+	private int score, lives, rank, bonusLifeThreshold;
 
 	public void ResetData()
 	{
 		score = initialScore;
 		lives = initialLives;
 		rank = initialRank;
+		bonusLifeThreshold = initialBonusLifeThreshold;
+	}
+
+	private void CheckBonusLifeThreshold()
+	{
+		if(score >= bonusLifeThreshold)
+		{
+			++Lives;
+			bonusLifeThreshold += initialBonusLifeThreshold;
+
+			StageManager.instance.uiManager.UpdateCounters();
+		}
 	}
 }
