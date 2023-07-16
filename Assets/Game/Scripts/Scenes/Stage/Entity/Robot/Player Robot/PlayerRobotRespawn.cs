@@ -19,7 +19,5 @@ public class PlayerRobotRespawn : MonoBehaviour
 		{
 			StageManager.instance.SetGameAsOver();
 		}
-
-		StageManager.instance.uiManager.UpdateCounters();
 	}
 }

@@ -29,6 +29,8 @@ public class PlayerData : ScriptableObject
 		set
 		{
 			lives = Mathf.Clamp(value, 0, 9);
+
+			StageManager.instance.uiManager.UpdateCounters();
 		}
 	}
 
@@ -65,8 +67,6 @@ public class PlayerData : ScriptableObject
 		{
 			++Lives;
 			bonusLifeThreshold += initialBonusLifeThreshold;
-
-			StageManager.instance.uiManager.UpdateCounters();
 		}
 	}
 
@@ -76,8 +76,6 @@ public class PlayerData : ScriptableObject
 		{
 			gameData.beatenHighScore = true;
 			++Lives;
-
-			StageManager.instance.uiManager.UpdateCounters();
 		}
 	}
 }
