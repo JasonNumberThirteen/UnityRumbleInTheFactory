@@ -49,6 +49,8 @@ public class StageManager : MonoBehaviour
 			erf.Unfreeze();
 		}
 	}
+
+	public bool EnemiesAreFrozen() => freezeTimer.Started;
 	
 	private void Awake() => CheckSingleton();
 	private void Start() => playerData.ResetData();

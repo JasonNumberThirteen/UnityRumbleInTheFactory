@@ -21,6 +21,11 @@ public class EnemyRobotFreeze : MonoBehaviour
 	private void Start()
 	{
 		lastDirection = movement.Direction;
+
+		if(StageManager.instance.EnemiesAreFrozen())
+		{
+			SetState(true);
+		}
 	}
 
 	private void SetState(bool freeze)
