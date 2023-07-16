@@ -7,16 +7,16 @@ public class StageManager : MonoBehaviour
 
 	[Min(0)] public int pointsForBonus = 500;
 	[Min(0.01f)] public float playerRespawnDelay = 1f;
-	public Timer gameOverTextTimer;
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
 	public PlayerData playerData;
+	public Timer gameOverTimer;
 
-	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => StartCoroutine(RespawnPlayer(prr));
+	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => prr.Respawn();
 
 	public void SetGameAsOver()
 	{
-		gameOverTextTimer.StartTimer();
+		gameOverTimer.StartTimer();
 	}
 	
 	private void Awake() => CheckSingleton();
@@ -32,12 +32,5 @@ public class StageManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-	}
-
-	private IEnumerator RespawnPlayer(PlayerRobotRespawn prr)
-	{
-		yield return new WaitForSeconds(playerRespawnDelay);
-
-		prr.Respawn();
 	}
 }
