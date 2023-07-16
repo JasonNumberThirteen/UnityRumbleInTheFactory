@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SlipperyFloorTrigger : MonoBehaviour, ITriggerable
+public class SlipperyFloorTrigger : MonoBehaviour, ITriggerable, IReversibleTrigger
 {
 	public void TriggerEffect(GameObject sender)
 	{
@@ -9,6 +9,16 @@ public class SlipperyFloorTrigger : MonoBehaviour, ITriggerable
 		if(movement != null)
 		{
 			movement.IsSliding = true;
+		}
+	}
+
+	public void ReverseTriggerEffect(GameObject sender)
+	{
+		PlayerRobotMovement movement = sender.GetComponent<PlayerRobotMovement>();
+
+		if(movement != null)
+		{
+			movement.IsSliding = false;
 		}
 	}
 }
