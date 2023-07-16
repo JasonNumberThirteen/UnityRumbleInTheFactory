@@ -18,13 +18,6 @@ public class PlayerRobotTrigger : RobotTrigger
 			}
 		}
 		
-		PlayerRobotRespawn respawn = GetComponent<PlayerRobotRespawn>();
-		
-		if(respawn != null)
-		{
-			StageManager.instance.InitiatePlayerRespawn(respawn);
-		}
-
 		base.TriggerEffect(sender);
 	}
 
