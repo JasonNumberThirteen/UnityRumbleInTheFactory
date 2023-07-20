@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5574881032673031147}
   - component: {fileID: 2362420311212077659}
   - component: {fileID: -6153362195523077573}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bonus
   m_TagString: Bonus
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7830409765496102310
 SpriteRenderer:
@@ -234,6 +234,9 @@ MonoBehaviour:
   bottomLeftArea: {x: -6.5, y: -6}
   topRightArea: {x: 5.5, y: 6}
   gridSize: 0.5
+  overlapCircleRadius: 0.5
   excludedLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 7680
+  excludedLayersDetectorCollider: {fileID: 0}
+  debugPosition: {x: 0, y: 0}

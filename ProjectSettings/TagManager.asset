@@ -16,6 +16,7 @@ TagManager:
   - Bonus
   - Enemy Spawner
   - Player Spawner
+  - Stage Board
   layers:
   - Default
   - TransparentFX
