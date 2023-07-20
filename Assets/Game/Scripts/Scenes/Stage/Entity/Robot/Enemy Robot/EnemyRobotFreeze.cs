@@ -6,6 +6,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 	
 	private EnemyRobotMovement movement;
 	private Vector2 lastDirection;
+	private Timer shootTimer;
 
 	public void Freeze()
 	{
@@ -16,7 +17,11 @@ public class EnemyRobotFreeze : MonoBehaviour
 
 	public void Unfreeze() => SetState(false);
 	
-	private void Awake() => movement = GetComponent<EnemyRobotMovement>();
+	private void Awake()
+	{
+		movement = GetComponent<EnemyRobotMovement>();
+		shootTimer = GetComponent<Timer>();
+	}
 
 	private void Start()
 	{
@@ -32,5 +37,6 @@ public class EnemyRobotFreeze : MonoBehaviour
 	{
 		Frozen = freeze;
 		movement.Direction = (Frozen) ? Vector2.zero : lastDirection;
+		shootTimer.enabled = !Frozen;
 	}
 }
