@@ -280,8 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  rayDistance: 0.65
-  raycastAngle: 38
+  rayDistance: 0.75
+  raycastAngle: 30
   raycastExcludedLayers:
     serializedVersion: 2
     m_Bits: 12
