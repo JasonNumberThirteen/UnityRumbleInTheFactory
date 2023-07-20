@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class EnemyRobotFreeze : MonoBehaviour
 {
+	public Timer shootTimer;
+	
 	public bool Frozen {get; private set;}
 	
 	private EnemyRobotMovement movement;
 	private Vector2 lastDirection;
-	private Timer shootTimer;
 
 	public void Freeze()
 	{
@@ -24,11 +25,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 		}
 	}
 	
-	private void Awake()
-	{
-		movement = GetComponent<EnemyRobotMovement>();
-		shootTimer = GetComponent<Timer>();
-	}
+	private void Awake() => movement = GetComponent<EnemyRobotMovement>();
 
 	private void Start()
 	{
