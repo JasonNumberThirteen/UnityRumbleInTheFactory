@@ -10,7 +10,6 @@ public class EnemyRobotFreeze : MonoBehaviour
 
 	public void Freeze()
 	{
-		//lastDirection = movement.Direction;
 		SetLastDirection(movement.Direction);
 		SetState(true);
 	}
@@ -33,7 +32,6 @@ public class EnemyRobotFreeze : MonoBehaviour
 
 	private void Start()
 	{
-		//lastDirection = movement.Direction;
 		SetLastDirection(movement.Direction);
 
 		if(StageManager.instance.EnemiesAreFrozen())
