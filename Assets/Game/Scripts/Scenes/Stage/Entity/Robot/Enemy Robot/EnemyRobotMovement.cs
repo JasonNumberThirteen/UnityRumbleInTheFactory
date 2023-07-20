@@ -9,9 +9,17 @@ public class EnemyRobotMovement : EntityMovement
 	public Timer timer;
 
 	private bool detectedCollision;
+	private EnemyRobotFreeze freeze;
 
 	public void RandomiseDirection() => Direction = RandomDirection();
 	public void EnableCollisionDetection() => detectedCollision = false;
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		freeze = GetComponent<EnemyRobotFreeze>();
+	}
 
 	protected override void FixedUpdate()
 	{
@@ -46,7 +54,7 @@ public class EnemyRobotMovement : EntityMovement
 
 			Debug.DrawLine(rb2D.position, rb2D.position + rayPosition, Color.red);
 
-			if(hit.collider != null && !detectedCollision)
+			if(hit.collider != null && !detectedCollision && !freeze.Frozen)
 			{
 				timer.ResetTimer();
 
