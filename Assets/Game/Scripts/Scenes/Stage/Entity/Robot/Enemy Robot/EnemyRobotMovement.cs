@@ -10,38 +10,8 @@ public class EnemyRobotMovement : EntityMovement
 
 	private bool detectedCollision;
 
-	public void EnableCollisionDetection()
-	{
-		detectedCollision = false;
-	}
-
-	public void RandomiseDirection()
-	{
-		float randomValue = Random.value;
-		Vector2 currentDirection = Direction;
-
-		if(randomValue <= 0.25f)
-		{
-			Direction = Vector2.up;
-		}
-		else if(randomValue <= 0.5f)
-		{
-			Direction = Vector2.down;
-		}
-		else if(randomValue <= 0.75f)
-		{
-			Direction = Vector2.left;
-		}
-		else if(randomValue <= 1f)
-		{
-			Direction = Vector2.right;
-		}
-
-		if(currentDirection == Direction)
-		{
-			RandomiseDirection();
-		}
-	}
+	public void RandomiseDirection() => Direction = RandomDirection();
+	public void EnableCollisionDetection() => detectedCollision = false;
 
 	protected override void FixedUpdate()
 	{
@@ -50,6 +20,20 @@ public class EnemyRobotMovement : EntityMovement
 	}
 
 	private void Start() => Direction = Vector2.down;
+
+	private Vector2 RandomDirection()
+	{
+		Vector2[] directions = {Vector2.up, Vector2.down, Vector2.left, Vector2.right};
+		int randomIndex = Random.Range(0, directions.Length - 1);
+		Vector2 randomDirection = directions[randomIndex];
+
+		if(randomDirection == Direction)
+		{
+			return RandomDirection();
+		}
+
+		return randomDirection;
+	}
 	
 	private void DetectObstacles()
 	{
