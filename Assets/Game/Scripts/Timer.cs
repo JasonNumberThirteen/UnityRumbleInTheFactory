@@ -54,9 +54,9 @@ public class Timer : MonoBehaviour
 
 	private void Finish()
 	{
-		onEnd.Invoke();
-
 		Started = false;
 		Finished = true;
+
+		onEnd.Invoke();
 	}
 }
