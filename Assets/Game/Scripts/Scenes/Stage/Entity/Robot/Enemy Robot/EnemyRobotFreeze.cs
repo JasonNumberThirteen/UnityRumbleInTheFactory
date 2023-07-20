@@ -10,12 +10,20 @@ public class EnemyRobotFreeze : MonoBehaviour
 
 	public void Freeze()
 	{
-		lastDirection = movement.Direction;
-		
+		//lastDirection = movement.Direction;
+		SetLastDirection(movement.Direction);
 		SetState(true);
 	}
 
 	public void Unfreeze() => SetState(false);
+
+	private void SetLastDirection(Vector2 direction)
+	{
+		if(direction != Vector2.zero)
+		{
+			lastDirection = movement.Direction;
+		}
+	}
 	
 	private void Awake()
 	{
@@ -25,7 +33,8 @@ public class EnemyRobotFreeze : MonoBehaviour
 
 	private void Start()
 	{
-		lastDirection = movement.Direction;
+		//lastDirection = movement.Direction;
+		SetLastDirection(movement.Direction);
 
 		if(StageManager.instance.EnemiesAreFrozen())
 		{
