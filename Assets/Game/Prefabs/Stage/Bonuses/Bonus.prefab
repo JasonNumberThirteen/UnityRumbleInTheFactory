@@ -234,3 +234,6 @@ MonoBehaviour:
   bottomLeftArea: {x: -6.5, y: -6}
   topRightArea: {x: 5.5, y: 6}
   gridSize: 0.5
+  excludedLayers:
+    serializedVersion: 2
+    m_Bits: 0
