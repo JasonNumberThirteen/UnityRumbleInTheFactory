@@ -10,9 +10,14 @@ public class EnemyRobotMovement : EntityMovement
 
 	private bool detectedCollision;
 	private EnemyRobotFreeze freeze;
+	private float lastMovementSpeed;
 
 	public void RandomiseDirection() => Direction = RandomDirection();
-	public void EnableCollisionDetection() => detectedCollision = false;
+	public void EnableCollisionDetection()
+	{
+		detectedCollision = false;
+		movementSpeed = lastMovementSpeed;
+	}
 
 	protected override void Awake()
 	{
@@ -59,6 +64,8 @@ public class EnemyRobotMovement : EntityMovement
 				timer.ResetTimer();
 
 				detectedCollision = true;
+				lastMovementSpeed = movementSpeed;
+				movementSpeed = 0f;
 			}
 		}
 	}
