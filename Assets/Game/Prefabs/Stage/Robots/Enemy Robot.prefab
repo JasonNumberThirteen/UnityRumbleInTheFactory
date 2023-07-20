@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2195094568905733578}
   - component: {fileID: 7210368457427765414}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Movement Direction Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8175523787870141219}
   - component: {fileID: 6644520547820070141}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Shoot Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,10 +163,6 @@ PrefabInstance:
     - target: {fileID: 7131367110452112014, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
       propertyPath: m_Name
       value: Enemy Robot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7131367110452112014, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7131367110452112014, guid: 3bc68ef637dd8e94ab78cbc46875e5a1, type: 3}
       propertyPath: m_TagString
