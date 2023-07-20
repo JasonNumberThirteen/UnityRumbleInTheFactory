@@ -6,6 +6,14 @@ public class EnemyRobotMovement : EntityMovement
 	[Min(0.01f)] public float rayDistance = 0.5f;
 	[Range(1, 90)] public int raycastAngle = 30;
 	public LayerMask raycastExcludedLayers;
+	public Timer timer;
+
+	private bool detectedCollision;
+
+	public void EnableCollisionDetection()
+	{
+		detectedCollision = false;
+	}
 
 	public void RandomiseDirection()
 	{
@@ -54,9 +62,11 @@ public class EnemyRobotMovement : EntityMovement
 
 			Debug.DrawLine(rb2D.position, rb2D.position + rayPosition, Color.red);
 
-			if(hit.collider != null)
+			if(hit.collider != null && !detectedCollision)
 			{
-				RandomiseDirection();
+				timer.ResetTimer();
+
+				detectedCollision = true;
 			}
 		}
 	}
