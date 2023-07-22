@@ -12,6 +12,8 @@ public class StageManager : MonoBehaviour
 	public PlayerData playerData;
 	public Timer gameOverTimer, freezeTimer;
 
+	public bool GameIsPaused {get; private set;}
+	public bool GameIsInterrupted {get; private set;}
 	public bool GameIsOver {get; private set;}
 
 	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => StartCoroutine(RespawnPlayer(prr));
@@ -19,6 +21,8 @@ public class StageManager : MonoBehaviour
 	public void InterruptGame()
 	{
 		gameOverTimer.StartTimer();
+
+		GameIsInterrupted = true;
 	}
 
 	public void InitiateFreeze(float duration)
@@ -59,6 +63,17 @@ public class StageManager : MonoBehaviour
 		GameIsOver = true;
 
 		DisablePlayer();
+	}
+
+	public void PauseGame()
+	{
+		if(GameIsInterrupted)
+		{
+			return;
+		}
+		
+		GameIsPaused = !GameIsPaused;
+		Time.timeScale = GameIsPaused ? 0f : 1f;
 	}
 
 	public void DisablePlayer()

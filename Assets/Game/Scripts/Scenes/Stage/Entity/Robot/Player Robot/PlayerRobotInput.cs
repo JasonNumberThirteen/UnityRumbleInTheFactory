@@ -33,4 +33,6 @@ public class PlayerRobotInput : MonoBehaviour
 			shoot.FireBullet();
 		}
 	}
+
+	private void OnPause(InputValue iv) => StageManager.instance.PauseGame();
 }
