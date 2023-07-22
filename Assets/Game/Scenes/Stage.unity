@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 28531383}
   - component: {fileID: 28531382}
   - component: {fileID: 28531384}
+  - component: {fileID: 28531385}
   m_Layer: 5
   m_Name: Pause
   m_TagString: Untagged
@@ -734,6 +735,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkDelay: 0.5
+--- !u!114 &28531385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28531379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &36913827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12704,6 +12717,7 @@ MonoBehaviour:
   hud: {fileID: 1843182811}
   gainedPointsCounter: {fileID: 944822935104944545, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
   leftEnemyIcon: {fileID: 4662676234940326363, guid: 46ebf53728db48e4e883a50b53f38e99, type: 3}
+  pauseText: {fileID: 28531379}
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playerOneLivesCounter: {fileID: 1403960475}

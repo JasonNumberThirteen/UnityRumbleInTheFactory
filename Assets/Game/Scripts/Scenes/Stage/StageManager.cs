@@ -74,6 +74,8 @@ public class StageManager : MonoBehaviour
 		
 		GameIsPaused = !GameIsPaused;
 		Time.timeScale = GameIsPaused ? 0f : 1f;
+
+		uiManager.ControlPauseTextDisplay();
 	}
 
 	public void DisablePlayer()

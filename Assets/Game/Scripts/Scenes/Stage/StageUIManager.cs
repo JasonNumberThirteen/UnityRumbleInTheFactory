@@ -4,7 +4,7 @@ using UnityEngine;
 public class StageUIManager : MonoBehaviour
 {
 	public RectTransform parent, hud;
-	public GameObject gainedPointsCounter, leftEnemyIcon;
+	public GameObject gainedPointsCounter, leftEnemyIcon, pauseText;
 	public PlayerData playerData;
 	public GameData gameData;
 	public Counter playerOneLivesCounter, stageCounter;
@@ -28,6 +28,8 @@ public class StageUIManager : MonoBehaviour
 		playerOneLivesCounter.SetTo(playerData.Lives);
 		stageCounter.SetTo(gameData.stage);
 	}
+
+	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.GameIsPaused);
 
 	public void RemoveLeftEnemyIcon()
 	{
