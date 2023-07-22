@@ -10,6 +10,14 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void Awake() => shoot = GetComponent<RobotShoot>();
 
+	private void Start()
+	{
+		if(StageManager.instance.GameIsOver)
+		{
+			Destroy(this);
+		}
+	}
+
 	private void OnMove(InputValue iv)
 	{
 		Vector2 movement = iv.Get<Vector2>();
