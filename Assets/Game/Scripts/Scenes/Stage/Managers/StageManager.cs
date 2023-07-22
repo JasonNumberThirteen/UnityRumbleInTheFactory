@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class StageManager : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class StageManager : MonoBehaviour
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
 	public PlayerData playerData;
-	public Timer gameOverTimer, freezeTimer;
+	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer;
 	
 	public GameStates State {get; private set;} = GameStates.ACTIVE;
 
@@ -19,7 +18,22 @@ public class StageManager : MonoBehaviour
 		ACTIVE, PAUSED, INTERRUPTED, OVER
 	}
 
-	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => StartCoroutine(RespawnPlayer(prr));
+	public void InitiatePlayerRespawn() => playerRespawnTimer.ResetTimer();
+
+	public void AttemptToRespawnPlayer()
+	{
+		if(playerData.Lives-- > 0)
+		{
+			playerData.Rank = 1;
+
+			playerSpawnerTimer.ResetTimer();
+		}
+		else
+		{
+			gameOverTimer.onEnd.Invoke();
+			InterruptGame();
+		}
+	}
 
 	public void InterruptGame()
 	{
@@ -116,18 +130,6 @@ public class StageManager : MonoBehaviour
 		else if(instance != this)
 		{
 			Destroy(gameObject);
-		}
-	}
-
-	private IEnumerator RespawnPlayer(PlayerRobotRespawn prr)
-	{
-		yield return new WaitForSeconds(playerRespawnDelay);
-
-		prr.Respawn();
-
-		if(playerData.Lives == 0)
-		{
-			gameOverTimer.duration = 0;
 		}
 	}
 }

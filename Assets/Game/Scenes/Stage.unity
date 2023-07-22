@@ -5844,6 +5844,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6000890838716230585, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
   m_PrefabInstance: {fileID: 510099981}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &520258299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520258301}
+  - component: {fileID: 520258300}
+  m_Layer: 0
+  m_Name: Player Respawn Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &520258300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520258299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  countFromTheStart: 0
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1342973422}
+        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+        m_MethodName: AttemptToRespawnPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &520258301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520258299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &521885839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13383,6 +13447,8 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   gameOverTimer: {fileID: 1049923159}
   freezeTimer: {fileID: 1610503212}
+  playerRespawnTimer: {fileID: 520258300}
+  playerSpawnerTimer: {fileID: 1688385655}
 --- !u!4 &1342973423
 Transform:
   m_ObjectHideFlags: 0
@@ -16658,6 +16724,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1644964867222774889, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
   m_PrefabInstance: {fileID: 1681612194}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1688385655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5600352724050783624, guid: c6a53d874e5ea144c82731d5cd132e42, type: 3}
+  m_PrefabInstance: {fileID: 8808828601082308141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1695368815
 PrefabInstance:
   m_ObjectHideFlags: 0
