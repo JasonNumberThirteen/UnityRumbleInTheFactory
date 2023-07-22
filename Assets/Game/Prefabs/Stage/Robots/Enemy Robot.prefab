@@ -366,7 +366,7 @@ MonoBehaviour:
   movementSpeed: 1
   collisionDetectionLayers:
     serializedVersion: 2
-    m_Bits: 32512
+    m_Bits: 98048
   timer: {fileID: 7210368457427765414}
   collisionDetector: {fileID: 8751731183067674284}
 --- !u!114 &7808446297203798788

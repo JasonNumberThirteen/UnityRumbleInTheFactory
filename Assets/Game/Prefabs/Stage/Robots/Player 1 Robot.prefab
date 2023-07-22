@@ -98,6 +98,10 @@ PrefabInstance:
       value: Player 1 Robot
       objectReference: {fileID: 0}
     - target: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
