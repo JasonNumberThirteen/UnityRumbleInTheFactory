@@ -53,7 +53,7 @@ public class EnemyRobotMovement : EntityMovement
 	private Vector2 RandomDirection()
 	{
 		Vector2[] directions = {Vector2.up, Vector2.down, Vector2.left, Vector2.right};
-		int randomIndex = Random.Range(0, directions.Length - 1);
+		int randomIndex = Random.Range(0, directions.Length);
 		Vector2 randomDirection = directions[randomIndex];
 
 		if(randomDirection == Direction)
