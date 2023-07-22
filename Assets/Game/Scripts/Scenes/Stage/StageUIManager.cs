@@ -29,7 +29,7 @@ public class StageUIManager : MonoBehaviour
 		stageCounter.SetTo(gameData.stage);
 	}
 
-	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.GameIsPaused);
+	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.State == StageManager.GameStates.PAUSED);
 
 	public void RemoveLeftEnemyIcon()
 	{
