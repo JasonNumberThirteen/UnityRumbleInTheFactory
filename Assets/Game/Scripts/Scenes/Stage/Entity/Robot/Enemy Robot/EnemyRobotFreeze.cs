@@ -34,6 +34,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 		if(StageManager.instance.EnemiesAreFrozen())
 		{
 			SetState(true);
+			GetComponent<Animator>().SetInteger("MovementY", -1);
 		}
 	}
 
