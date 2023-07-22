@@ -3,20 +3,36 @@ using UnityEngine;
 
 public class EnemyRobotMovement : EntityMovement
 {
-	[Min(0.01f)] public float rayDistance = 0.5f;
-	[Range(1, 90)] public int raycastAngle = 30;
-	public LayerMask raycastExcludedLayers;
+	public LayerMask collisionDetectionLayers;
 	public Timer timer;
+	public Collider2D collisionDetector;
 
 	private bool detectedCollision;
 	private EnemyRobotFreeze freeze;
 	private float lastMovementSpeed;
 
-	public void RandomiseDirection() => Direction = RandomDirection();
+	public void RandomiseDirection() => SetDirection(RandomDirection());
+
+	private void SetDirection(Vector2 direction)
+	{
+		Direction = direction;
+
+		AdjustCollisionDetectorRotation();
+	}
+	
 	public void EnableCollisionDetection()
 	{
 		detectedCollision = false;
 		movementSpeed = lastMovementSpeed;
+	}
+
+	private void DisableCollisionDetection()
+	{
+		timer.ResetTimer();
+
+		detectedCollision = true;
+		lastMovementSpeed = movementSpeed;
+		movementSpeed = 0f;
 	}
 
 	protected override void Awake()
@@ -32,7 +48,7 @@ public class EnemyRobotMovement : EntityMovement
 		DetectObstacles();
 	}
 
-	private void Start() => Direction = Vector2.down;
+	private void Start() => SetDirection(Vector2.down);
 
 	private Vector2 RandomDirection()
 	{
@@ -47,26 +63,58 @@ public class EnemyRobotMovement : EntityMovement
 
 		return randomDirection;
 	}
-	
+
 	private void DetectObstacles()
 	{
-		for (int angle = -raycastAngle; angle <= raycastAngle; angle += raycastAngle)
+		if(detectedCollision || freeze.Frozen)
 		{
-			Quaternion rayRotation = Quaternion.Euler(0, 0, angle);
-			Vector2 rayDirection = rayRotation*Direction;
-			Vector2 rayPosition = rayDirection*rayDistance;
-			RaycastHit2D hit = Physics2D.Raycast(rb2D.position, rayDirection, rayDistance, ~raycastExcludedLayers);
+			return;
+		}
+		
+		Collider2D[] colliders = Physics2D.OverlapBoxAll(collisionDetector.bounds.center, collisionDetector.bounds.size, 0f, collisionDetectionLayers);
 
-			Debug.DrawLine(rb2D.position, rb2D.position + rayPosition, Color.red);
+		if(colliders.Length > 1)
+		{
+			DisableCollisionDetection();
+		}
+	}
 
-			if(hit.collider != null && !detectedCollision && !freeze.Frozen)
-			{
-				timer.ResetTimer();
+	private void AdjustCollisionDetectorRotation()
+	{
+		Transform collisionDetectorTransform = collisionDetector.gameObject.transform;
+		
+		if(Direction == Vector2.up)
+		{
+			collisionDetectorTransform.rotation = Quaternion.Euler(0, 0, 0);
+		}
+		else if(Direction == Vector2.down)
+		{
+			collisionDetectorTransform.rotation = Quaternion.Euler(0, 0, 180);
+		}
+		else if(Direction == Vector2.left)
+		{
+			collisionDetectorTransform.rotation = Quaternion.Euler(0, 0, 90);
+		}
+		else if(Direction == Vector2.right)
+		{
+			collisionDetectorTransform.rotation = Quaternion.Euler(0, 0, 270);
+		}
+	}
 
-				detectedCollision = true;
-				lastMovementSpeed = movementSpeed;
-				movementSpeed = 0f;
-			}
+	private void OnDrawGizmos()
+	{
+		if(collisionDetector == null)
+		{
+			return;
+		}
+		
+		Collider2D[] colliders = Physics2D.OverlapBoxAll(collisionDetector.bounds.center, collisionDetector.bounds.size, 0f, collisionDetectionLayers);
+
+		foreach (Collider2D collider in colliders)
+		{
+			Gizmos.color = Color.red;
+			
+			Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
 		}
 	}
 }

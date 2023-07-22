@@ -31,9 +31,9 @@ TagManager:
   - Metal
   - Toxic Waste
   - Nuke
-  - 
-  - 
-  - 
+  - Enemy
+  - Wall
+  - Collision Detector
   - 
   - 
   - 
