@@ -12,9 +12,11 @@ public class StageManager : MonoBehaviour
 	public PlayerData playerData;
 	public Timer gameOverTimer, freezeTimer;
 
+	public bool GameIsOver {get; private set;}
+
 	public void InitiatePlayerRespawn(PlayerRobotRespawn prr) => StartCoroutine(RespawnPlayer(prr));
 
-	public void SetGameAsOver()
+	public void InterruptGame()
 	{
 		gameOverTimer.StartTimer();
 	}
@@ -51,6 +53,36 @@ public class StageManager : MonoBehaviour
 	}
 
 	public bool EnemiesAreFrozen() => freezeTimer.Started;
+
+	public void SetGameAsOver()
+	{
+		GameIsOver = true;
+
+		DisablePlayer();
+	}
+
+	public void DisablePlayer()
+	{
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+		if(player != null)
+		{
+			EntityMovement em = player.GetComponent<EntityMovement>();
+			RobotShoot rs = player.GetComponent<RobotShoot>();
+
+			if(em != null)
+			{
+				em.Direction = Vector2.zero;
+
+				Destroy(em);
+			}
+
+			if(rs != null)
+			{
+				Destroy(rs);
+			}
+		}
+	}
 	
 	private void Awake() => CheckSingleton();
 	private void Start() => playerData.ResetData();

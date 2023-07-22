@@ -22,6 +22,6 @@ public class NukeTrigger : MonoBehaviour, ITriggerable
 
 		gameObject.layer = LayerMask.NameToLayer(destroyedStateLayer);
 
-		StageManager.instance.SetGameAsOver();
+		StageManager.instance.InterruptGame();
 	}
 }

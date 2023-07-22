@@ -17,7 +17,7 @@ public class PlayerRobotRespawn : MonoBehaviour
 		}
 		else
 		{
-			StageManager.instance.SetGameAsOver();
+			StageManager.instance.InterruptGame();
 		}
 	}
 }
