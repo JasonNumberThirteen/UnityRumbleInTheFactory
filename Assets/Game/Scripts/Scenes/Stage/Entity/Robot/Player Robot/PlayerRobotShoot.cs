@@ -13,7 +13,7 @@ public class PlayerRobotShoot : RobotShoot
 	
 	public override void FireBullet()
 	{
-		if(GameObject.FindGameObjectsWithTag("Player Bullet").Length > rank.CurrentRank.bulletLimit)
+		if(GameObject.FindGameObjectsWithTag("Player Bullet").Length >= rank.CurrentRank.bulletLimit)
 		{
 			return;
 		}
