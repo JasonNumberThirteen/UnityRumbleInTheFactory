@@ -6,6 +6,9 @@ public class RankBonusTrigger : BonusTrigger
 	{
 		++playerData.Rank;
 
+		PlayerRobotRank prr = sender.GetComponent<PlayerRobotRank>();
+
+		prr.SetRank();
 		base.TriggerEffect(sender);
 	}
 }
