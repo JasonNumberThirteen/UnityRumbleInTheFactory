@@ -13,6 +13,7 @@ public class PlayerRobotRank : MonoBehaviour
 [System.Serializable]
 public class Rank
 {
+	[Min(1)] public int health;
 	[Min(1)] public int damage;
 	[Min(1)] public int bulletLimit;
 	[Min(0.01f)] public float movementSpeed;
