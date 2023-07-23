@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Game/Player Data")]
 public class PlayerData : ScriptableObject
@@ -52,6 +53,7 @@ public class PlayerData : ScriptableObject
 	[SerializeField] private int initialBonusLifeThreshold = 20000;
 
 	private int score, lives, rank, bonusLifeThreshold;
+	private List<EnemyData> defeatedEnemies;
 
 	public void ResetData()
 	{
@@ -59,7 +61,10 @@ public class PlayerData : ScriptableObject
 		lives = initialLives;
 		rank = initialRank;
 		bonusLifeThreshold = initialBonusLifeThreshold;
+		defeatedEnemies = new List<EnemyData>();
 	}
+
+	public void AddDefeatedEnemy(EnemyData enemyData) => defeatedEnemies.Add(enemyData);
 
 	private void CheckBonusLifeThreshold()
 	{

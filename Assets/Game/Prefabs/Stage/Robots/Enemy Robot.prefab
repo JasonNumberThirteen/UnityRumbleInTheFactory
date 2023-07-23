@@ -408,4 +408,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 1
+  data: {fileID: 11400000, guid: 41da66c57a0c0b247bdd01eda268e1d6, type: 2}
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}

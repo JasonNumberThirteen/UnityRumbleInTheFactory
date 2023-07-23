@@ -1,14 +1,14 @@
 public class EnemyRobotHealth : RobotHealth
 {
+	public EnemyData data;
 	public PlayerData playerData;
 	
 	protected override void Explode()
 	{
-		EnemyRobotPoints erp = GetComponent<EnemyRobotPoints>();
+		playerData.Score += data.score;
 
-		playerData.Score += erp.pointsForDestruction;
-
-		StageManager.instance.uiManager.CreateGainedPointsCounter(gameObject.transform.position, erp.pointsForDestruction);
+		playerData.AddDefeatedEnemy(data);
+		StageManager.instance.uiManager.CreateGainedPointsCounter(gameObject.transform.position, data.score);
 		base.Explode();
 	}
 }
