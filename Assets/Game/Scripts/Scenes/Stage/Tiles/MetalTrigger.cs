@@ -4,7 +4,7 @@ public class MetalTrigger : MonoBehaviour, ITriggerable
 {
 	public void TriggerEffect(GameObject sender)
 	{
-		BulletStats bs = GetComponent<BulletStats>();
+		BulletStats bs = sender.GetComponent<BulletStats>();
 
 		if(bs != null && bs.canDestroyMetal)
 		{
