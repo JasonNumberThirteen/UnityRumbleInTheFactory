@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3e4779f1fb586418d5db6ee6e03f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 6.5
 --- !u!114 &8438295727497518047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,9 +211,6 @@ MonoBehaviour:
   splatterEffect: {fileID: 4882441606795613529, guid: f1c0785e07f2be945a779be11629fb76, type: 3}
   excludedTags:
   - Bonus
-  triggerableTags:
-  - Nuke
-  - Bricks
 --- !u!114 &3234668162895731857
 MonoBehaviour:
   m_ObjectHideFlags: 0
