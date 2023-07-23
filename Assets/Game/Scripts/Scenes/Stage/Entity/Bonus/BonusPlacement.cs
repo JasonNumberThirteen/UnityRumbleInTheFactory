@@ -25,15 +25,11 @@ public class BonusPlacement : MonoBehaviour
 			if(collider.OverlapPoint(position))
 			{
 				++excludedPositions;
-
-				Debug.Log("Excluded positions: " + excludedPositions);
 			}
 		}
 
 		if(colliders.Length > 0 && excludedPositions == colliders.Length)
 		{
-			Debug.Log("Recursion at: (" + position.x + "; " + position.y + ")");
-
 			return RandomPosition();
 		}
 

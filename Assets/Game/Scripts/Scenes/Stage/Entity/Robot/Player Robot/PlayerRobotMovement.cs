@@ -79,8 +79,6 @@ public class PlayerRobotMovement : EntityMovement
 		if(c != null)
 		{
 			rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-
-			Debug.Log(c.gameObject.tag);
 		}
 		else if(rb2D.constraints != RigidbodyConstraints2D.FreezeRotation)
 		{
