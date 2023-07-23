@@ -9,7 +9,23 @@ public class PlayerRobotRank : MonoBehaviour
 
 	private void Start() => SetRank();
 	
-	public void SetRank() => CurrentRank = ranks[data.Rank - 1];
+	public void SetRank()
+	{
+		RobotHealth rh = GetComponent<RobotHealth>();
+		EntityMovement em = GetComponent<EntityMovement>();
+		
+		CurrentRank = ranks[data.Rank - 1];
+
+		if(rh != null)
+		{
+			rh.CurrentHealth = CurrentRank.health;
+		}
+
+		if(em != null)
+		{
+			em.movementSpeed = CurrentRank.movementSpeed;
+		}
+	}
 }
 
 [System.Serializable]
