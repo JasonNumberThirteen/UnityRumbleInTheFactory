@@ -172,9 +172,6 @@ PrefabInstance:
       addedObject: {fileID: 443281679821928262}
     - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -6081467104119204561}
-    - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -1771166760998177112}
     - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
       insertIndex: -1
@@ -188,6 +185,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1677497256208957338}
+    - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4866269956919355778}
   m_SourcePrefab: {fileID: 100100000, guid: b243df00ecf005341914640827158bb8, type: 3}
 --- !u!4 &4649277262984454597 stripped
 Transform:
@@ -258,20 +258,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   collisionDetector: {fileID: 904215369781252687}
---- !u!114 &-6081467104119204561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6879066138954518474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51eb5726b32903146a9c7b7f4c7c3535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 8514831330534971138, guid: 0d0c300c481bc73418ff6a6165776a64, type: 3}
-  offsetFromObject: 0.1
 --- !u!114 &-1771166760998177112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,26 +324,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   ranks:
-  - damage: 1
+  - health: 0
+    damage: 1
     bulletLimit: 1
     movementSpeed: 3
     bulletSpeed: 6.5
     canDestroyMetal: 0
-  - damage: 1
+  - health: 0
+    damage: 1
     bulletLimit: 1
     movementSpeed: 4
     bulletSpeed: 7.5
     canDestroyMetal: 0
-  - damage: 1
+  - health: 0
+    damage: 1
     bulletLimit: 2
     movementSpeed: 5
     bulletSpeed: 8
     canDestroyMetal: 0
-  - damage: 2
+  - health: 0
+    damage: 2
     bulletLimit: 2
     movementSpeed: 5.5
     bulletSpeed: 8
     canDestroyMetal: 1
+--- !u!114 &-4866269956919355778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6879066138954518474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84ff31884cd3134db1dcd6317fa2917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8514831330534971138, guid: 0d0c300c481bc73418ff6a6165776a64, type: 3}
+  offsetFromObject: 0.1
 --- !u!1001 &4324362989984493490
 PrefabInstance:
   m_ObjectHideFlags: 0
