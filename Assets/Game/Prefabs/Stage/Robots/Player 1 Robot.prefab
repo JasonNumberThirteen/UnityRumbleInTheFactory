@@ -324,25 +324,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   ranks:
-  - health: 0
+  - health: 1
     damage: 1
     bulletLimit: 1
     movementSpeed: 3
     bulletSpeed: 6.5
     canDestroyMetal: 0
-  - health: 0
+  - health: 1
     damage: 1
     bulletLimit: 1
     movementSpeed: 4
     bulletSpeed: 7.5
     canDestroyMetal: 0
-  - health: 0
+  - health: 2
     damage: 1
     bulletLimit: 2
     movementSpeed: 5
     bulletSpeed: 8
     canDestroyMetal: 0
-  - health: 0
+  - health: 2
     damage: 2
     bulletLimit: 2
     movementSpeed: 5.5

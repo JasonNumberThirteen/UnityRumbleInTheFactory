@@ -17,6 +17,7 @@ TagManager:
   - Enemy Spawner
   - Player Spawner
   - Stage Board
+  - Player Bullet
   layers:
   - Default
   - TransparentFX
