@@ -1,11 +1,13 @@
 using Random = UnityEngine.Random;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyRobotMovement : EntityMovement
 {
-	public LayerMask collisionDetectionLayers;
+	public LayerMask collisionDetectionLayers, linecastDetectionLayers;
 	public Timer timer;
 	public Collider2D collisionDetector;
+	[Min(0.01f)] public float linecastDetectionDistance = 0.5f;
 
 	private bool detectedCollision;
 	private EnemyRobotFreeze freeze;
@@ -52,11 +54,15 @@ public class EnemyRobotMovement : EntityMovement
 
 	private Vector2 RandomDirection()
 	{
-		Vector2[] directions = {Vector2.up, Vector2.down, Vector2.left, Vector2.right};
-		int randomIndex = Random.Range(0, directions.Length);
+		List<Vector2> directions = new List<Vector2>{Vector2.up, Vector2.down, Vector2.left, Vector2.right};
+		Vector2 start = transform.position;
+
+		directions.RemoveAll(e => Physics2D.Linecast(start, start + e*linecastDetectionDistance, linecastDetectionLayers));
+
+		int randomIndex = Random.Range(0, directions.Count);
 		Vector2 randomDirection = directions[randomIndex];
 
-		if(randomDirection == Direction)
+		if(directions.Count > 1 && randomDirection == Direction)
 		{
 			return RandomDirection();
 		}
@@ -115,6 +121,23 @@ public class EnemyRobotMovement : EntityMovement
 			Gizmos.color = Color.red;
 			
 			Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
+		}
+
+		Vector2[] directions = {Vector2.up, Vector2.down, Vector2.left, Vector2.right};
+
+		foreach (Vector2 direction in directions)
+		{
+			Vector2 start = transform.position;
+			Vector2 end = start + direction*linecastDetectionDistance;
+
+			Gizmos.color = Color.white;
+
+			if(Physics2D.Linecast(start, end, linecastDetectionLayers))
+			{
+				Gizmos.color = Color.red;
+			}
+			
+			Gizmos.DrawLine(start, start + direction*linecastDetectionDistance);
 		}
 	}
 }

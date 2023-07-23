@@ -364,8 +364,12 @@ MonoBehaviour:
   collisionDetectionLayers:
     serializedVersion: 2
     m_Bits: 98048
+  linecastDetectionLayers:
+    serializedVersion: 2
+    m_Bits: 19968
   timer: {fileID: 7210368457427765414}
   collisionDetector: {fileID: 8751731183067674284}
+  linecastDetectionDistance: 0.65
 --- !u!114 &7808446297203798788
 MonoBehaviour:
   m_ObjectHideFlags: 0
