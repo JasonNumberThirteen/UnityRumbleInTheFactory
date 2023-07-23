@@ -6,6 +6,8 @@ public class PlayerRobotRank : MonoBehaviour
 	
 	public PlayerData data;
 	public Rank[] ranks;
+
+	private void Start() => SetRank();
 	
 	public void SetRank() => CurrentRank = ranks[data.Rank - 1];
 }
