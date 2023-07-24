@@ -9,22 +9,14 @@ public class EnemyRobotFreeze : MonoBehaviour
 	private EnemyRobotMovement movement;
 	private Vector2 lastDirection;
 
+	public void Unfreeze() => SetState(false);
+
 	public void Freeze()
 	{
 		SetLastDirection(movement.Direction);
 		SetState(true);
 	}
 
-	public void Unfreeze() => SetState(false);
-
-	private void SetLastDirection(Vector2 direction)
-	{
-		if(direction != Vector2.zero)
-		{
-			lastDirection = movement.Direction;
-		}
-	}
-	
 	private void Awake() => movement = GetComponent<EnemyRobotMovement>();
 
 	private void Start()
@@ -35,6 +27,14 @@ public class EnemyRobotFreeze : MonoBehaviour
 		{
 			SetState(true);
 			GetComponent<Animator>().SetInteger("MovementY", -1);
+		}
+	}
+
+	private void SetLastDirection(Vector2 direction)
+	{
+		if(direction != Vector2.zero)
+		{
+			lastDirection = movement.Direction;
 		}
 	}
 
