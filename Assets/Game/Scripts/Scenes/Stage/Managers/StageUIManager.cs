@@ -12,24 +12,13 @@ public class StageUIManager : MonoBehaviour
 	private GameObject[] leftEnemyIcons;
 	private int leftEnemyIconIndex;
 
-	public void CreateGainedPointsCounter(Vector2 position, int points)
-	{
-		GameObject instance = Instantiate(gainedPointsCounter, parent.transform);
-		RectTransform rt = instance.GetComponent<RectTransform>();
-		TextMeshProUGUI text = instance.GetComponent<TextMeshProUGUI>();
-		Vector2 textPosition = new Vector2(position.x*16, position.y*16);
-
-		rt.anchoredPosition = textPosition;
-		text.text = points.ToString();
-	}
+	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.State == StageManager.GameStates.PAUSED);
 
 	public void UpdateCounters()
 	{
 		playerOneLivesCounter.SetTo(playerData.Lives);
 		stageCounter.SetTo(gameData.stage);
 	}
-
-	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.State == StageManager.GameStates.PAUSED);
 
 	public void RemoveLeftEnemyIcon()
 	{
@@ -38,14 +27,42 @@ public class StageUIManager : MonoBehaviour
 			Destroy(leftEnemyIcons[leftEnemyIconIndex]);
 		}
 	}
+
+	public void CreateGainedPointsCounter(Vector2 position, int points)
+	{
+		GameObject instance = Instantiate(gainedPointsCounter, parent.transform);
+		RectTransform rt = instance.GetComponent<RectTransform>();
+		TextMeshProUGUI text = instance.GetComponent<TextMeshProUGUI>();
+
+		rt.anchoredPosition = GainedPointsCounterPosition(position);
+		text.text = points.ToString();
+	}
 	
 	private void Start() => CreateLeftEnemyIcons();
+	private Vector2 GainedPointsCounterPosition(Vector2 position) => position*16;
+	private int LeftEnemyIconX(int index) => 8*(index % 2);
+	private int LeftEnemyIconY(int index) => -8*(index >> 1);
+	private Vector2 LeftEnemyIconPosition(int index)
+	{
+		int offsetX = LeftEnemyIconX(index);
+		int offsetY = LeftEnemyIconY(index);
+		Vector2 initialPosition = new Vector2(-16, -16);
+		Vector2 offset = new Vector2(offsetX, offsetY);
+		
+		return initialPosition + offset;
+	}
+
+	private int LeftEnemyIconsCount(int amountOfEnemies)
+	{
+		int limit = 20;
+		
+		return Mathf.Min(amountOfEnemies, limit);
+	}
 
 	private void CreateLeftEnemyIcons()
 	{
-		int limit = 20;
 		int amountOfEnemies = StageManager.instance.enemySpawnManager.enemies.Length;
-		int amountOfIcons = Mathf.Min(amountOfEnemies, limit);
+		int amountOfIcons = LeftEnemyIconsCount(amountOfEnemies);
 
 		leftEnemyIcons = new GameObject[amountOfIcons];
 		leftEnemyIconIndex = amountOfEnemies;
@@ -54,9 +71,8 @@ public class StageUIManager : MonoBehaviour
 		{
 			GameObject instance = Instantiate(leftEnemyIcon, hud.transform);
 			RectTransform rt = instance.GetComponent<RectTransform>();
-			Vector2 iconPositionOffset = new Vector2(-16 + 8*(i % 2), -16 - 8*(i / 2));
 
-			rt.anchoredPosition = iconPositionOffset;
+			rt.anchoredPosition = LeftEnemyIconPosition(i);
 			leftEnemyIcons[i] = instance;
 		}
 	}
