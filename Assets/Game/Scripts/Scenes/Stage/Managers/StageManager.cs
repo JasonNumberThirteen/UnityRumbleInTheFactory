@@ -9,16 +9,27 @@ public class StageManager : MonoBehaviour
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
 	public PlayerData playerData;
-	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer;
+	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer, sceneManagerTimer;
 	
 	public GameStates State {get; private set;} = GameStates.ACTIVE;
+	public int DefeatedEnemies {get; set;}
 
 	public enum GameStates
 	{
-		ACTIVE, PAUSED, INTERRUPTED, OVER
+		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
 	}
 
 	public void InitiatePlayerRespawn() => playerRespawnTimer.ResetTimer();
+
+	public void CheckEnemiesCount()
+	{
+		if(DefeatedEnemies == enemySpawnManager.enemies.Length && enemySpawnManager.NoEnemiesLeft())
+		{
+			State = GameStates.WON;
+
+			sceneManagerTimer.StartTimer();
+		}
+	}
 
 	public void AttemptToRespawnPlayer()
 	{
@@ -84,7 +95,7 @@ public class StageManager : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if(State == GameStates.INTERRUPTED || State == GameStates.OVER)
+		if(State == GameStates.INTERRUPTED || State == GameStates.WON || State == GameStates.OVER)
 		{
 			return;
 		}

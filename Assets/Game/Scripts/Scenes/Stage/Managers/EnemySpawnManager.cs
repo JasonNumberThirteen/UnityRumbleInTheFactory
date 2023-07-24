@@ -11,6 +11,8 @@ public class EnemySpawnManager : MonoBehaviour
 	private GameObject[] spawners;
 	private int enemyIndex, enemiesToSpawn, spawnerIndex;
 
+	public bool NoEnemiesLeft() => enemyIndex >= enemies.Length;
+
 	public void StartSpawn()
 	{
 		FindSpawners();

@@ -13558,6 +13558,7 @@ MonoBehaviour:
   freezeTimer: {fileID: 1610503212}
   playerRespawnTimer: {fileID: 520258300}
   playerSpawnerTimer: {fileID: 1688385655}
+  sceneManagerTimer: {fileID: 1086106392}
 --- !u!4 &1342973423
 Transform:
   m_ObjectHideFlags: 0
