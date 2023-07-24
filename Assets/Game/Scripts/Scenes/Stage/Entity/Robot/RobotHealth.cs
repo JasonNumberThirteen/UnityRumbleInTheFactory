@@ -26,11 +26,11 @@ public class RobotHealth : MonoBehaviour
 	{
 		if(CurrentHealth <= 0)
 		{
-			Explode();
+			Die();
 		}
 	}
 
-	protected virtual void Explode()
+	protected virtual void Die()
 	{
 		EntityExploder ee = GetComponent<EntityExploder>();
 

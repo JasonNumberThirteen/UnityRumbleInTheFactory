@@ -1,8 +1,8 @@
 public class PlayerRobotHealth : RobotHealth
 {
-	protected override void Explode()
+	protected override void Die()
 	{
 		StageManager.instance.InitiatePlayerRespawn();
-		base.Explode();
+		base.Die();
 	}
 }
