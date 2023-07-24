@@ -12,8 +12,37 @@ public class EnemyRobotMovement : EntityMovement
 	private bool detectedCollision;
 	private EnemyRobotFreeze freeze;
 	private float lastMovementSpeed;
+	private Vector2 lastDirection;
 
-	public void RandomiseDirection() => SetDirection(RandomDirection());
+	public void Freeze()
+	{
+		if(LastDirectionIsNotZero())
+		{
+			lastDirection = Direction;
+		}
+	}
+
+	public void Unfreeze()
+	{
+		if(LastDirectionIsNotZero())
+		{
+			SetDirection(lastDirection);
+		}
+	}
+
+	public void RandomiseDirection()
+	{
+		Vector2 direction = RandomDirection();
+
+		if(freeze.Frozen)
+		{
+			lastDirection = direction;
+		}
+		else
+		{
+			SetDirection(direction);
+		}
+	}
 
 	private void SetDirection(Vector2 direction)
 	{
@@ -51,6 +80,7 @@ public class EnemyRobotMovement : EntityMovement
 	}
 
 	private void Start() => SetDirection(Vector2.down);
+	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
 
 	private Vector2 RandomDirection()
 	{
