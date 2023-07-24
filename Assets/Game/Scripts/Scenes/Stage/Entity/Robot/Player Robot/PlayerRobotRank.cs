@@ -6,8 +6,13 @@ public class PlayerRobotRank : MonoBehaviour
 	
 	public PlayerData data;
 	public Rank[] ranks;
+	
+	public void Promote()
+	{
+		++data.Rank;
 
-	private void Start() => SetRank();
+		SetRank();
+	}
 	
 	public void SetRank()
 	{
@@ -26,6 +31,8 @@ public class PlayerRobotRank : MonoBehaviour
 			em.movementSpeed = CurrentRank.movementSpeed;
 		}
 	}
+
+	private void Start() => SetRank();
 }
 
 [System.Serializable]
