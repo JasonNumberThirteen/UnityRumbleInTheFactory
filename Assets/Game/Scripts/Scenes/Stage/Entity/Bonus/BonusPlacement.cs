@@ -8,15 +8,41 @@ public class BonusPlacement : MonoBehaviour
 	[Min(0.01f)] public float overlapCircleRadius = 0.5f;
 	public LayerMask excludedLayers;
 
-	private void Start() => transform.position = RandomPosition();
+	private void Start() => transform.position = BonusPosition();
+	private float RandomCoordinate(float min, float max) => Random.Range(min, max);
+	private float GridCoordinate(float coordinate) => Mathf.Round(coordinate / gridSize)*gridSize;
+
+	private Vector2 BonusPosition()
+	{
+		Vector2 randomPosition = RandomPosition();
+		Vector2 gridPosition = GridPosition(randomPosition);
+		
+		if(PositionIsInaccessible(gridPosition))
+		{
+			return BonusPosition();
+		}
+
+		return gridPosition;
+	}
 
 	private Vector2 RandomPosition()
 	{
-		float x = Random.Range(bottomLeftArea.x, topRightArea.x);
-		float y = Random.Range(bottomLeftArea.y, topRightArea.y);
-		float gridX = Mathf.Round(x / gridSize)*gridSize;
-		float gridY = Mathf.Round(y / gridSize)*gridSize;
-		Vector2 position = new Vector2(gridX, gridY);
+		float x = RandomCoordinate(bottomLeftArea.x, topRightArea.x);
+		float y = RandomCoordinate(bottomLeftArea.y, topRightArea.y);
+
+		return new Vector2(x, y);
+	}
+
+	private Vector2 GridPosition(Vector2 position)
+	{
+		float x = GridCoordinate(position.x);
+		float y = GridCoordinate(position.y);
+
+		return new Vector2(x, y);
+	}
+
+	private bool PositionIsInaccessible(Vector2 position)
+	{
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(position, overlapCircleRadius, excludedLayers);
 		int excludedPositions = 0;
 
@@ -28,14 +54,9 @@ public class BonusPlacement : MonoBehaviour
 			}
 		}
 
-		if(colliders.Length > 0 && excludedPositions == colliders.Length)
-		{
-			return RandomPosition();
-		}
-
-		return position;
+		return colliders.Length > 0 && excludedPositions == colliders.Length;
 	}
-
+	
 	private void OnDrawGizmos()
 	{
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, overlapCircleRadius, excludedLayers);
