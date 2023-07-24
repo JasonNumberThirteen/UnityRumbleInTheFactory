@@ -6,18 +6,21 @@ public class GainedPointsCounterColor : MonoBehaviour
 	private TextMeshProUGUI text;
 	private Timer timer;
 
+	private void Update() => text.color = TextColor();
+	private float Alpha() => 1 - timer.ProgressPercent();
+
 	private void Awake()
 	{
 		text = GetComponent<TextMeshProUGUI>();
 		timer = GetComponent<Timer>();
 	}
 
-	private void Update() => text.color = TextColor();
-
 	private Color TextColor()
 	{
-		Color currentColor = text.color;
+		Color color = text.color;
+
+		color.a = Alpha();
 		
-		return new Color(currentColor.r, currentColor.g, currentColor.b, 1 - timer.ProgressPercent());
+		return color;
 	}
 }
