@@ -4,14 +4,21 @@ public class RobotHealth : MonoBehaviour
 {
 	[Min(1)] public int initialHealth = 1;
 
-	public int CurrentHealth {get; set;}
-
-	public virtual void ReceiveDamage(int damage)
+	public int CurrentHealth
 	{
-		CurrentHealth -= damage;
+		get
+		{
+			return health;
+		}
+		set
+		{
+			health = value;
 
-		CheckHealth();
+			CheckHealth();
+		}
 	}
+
+	private int health;
 
 	protected virtual void Start() => CurrentHealth = initialHealth;
 
