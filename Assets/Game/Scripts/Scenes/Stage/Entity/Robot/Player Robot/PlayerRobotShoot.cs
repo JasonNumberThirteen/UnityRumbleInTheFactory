@@ -18,13 +18,15 @@ public class PlayerRobotShoot : RobotShoot
 			return;
 		}
 		
-		GameObject instance = Instantiate(bullet, transform.position + BulletPositionOffset()*offsetFromObject, Quaternion.identity);
+		Vector2 position = transform.position;
+		Vector2 bulletDirection = BulletDirection();
+		GameObject instance = Instantiate(bullet, position + bulletDirection*offsetFromObject, Quaternion.identity);
 		EntityMovement em = instance.GetComponent<EntityMovement>();
 		BulletStats bs = instance.GetComponent<BulletStats>();
 
 		if(em != null)
 		{
-			em.Direction = BulletDirection();
+			em.Direction = bulletDirection;
 		}
 
 		if(bs != null)
