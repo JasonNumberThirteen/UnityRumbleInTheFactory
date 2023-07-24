@@ -12786,6 +12786,7 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playerOneLivesCounter: {fileID: 1403960475}
   stageCounter: {fileID: 2014407416}
+  leftEnemyIconsLimit: 20
 --- !u!4 &1237164744
 Transform:
   m_ObjectHideFlags: 0

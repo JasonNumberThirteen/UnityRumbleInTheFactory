@@ -8,6 +8,7 @@ public class StageUIManager : MonoBehaviour
 	public PlayerData playerData;
 	public GameData gameData;
 	public Counter playerOneLivesCounter, stageCounter;
+	[Min(0)] public int leftEnemyIconsLimit = 20;
 
 	private GameObject[] leftEnemyIcons;
 	private int leftEnemyIconIndex;
@@ -39,6 +40,7 @@ public class StageUIManager : MonoBehaviour
 	}
 	
 	private void Start() => CreateLeftEnemyIcons();
+	private int LeftEnemyIconsCount(int amountOfEnemies) => Mathf.Min(amountOfEnemies, leftEnemyIconsLimit);
 	private Vector2 GainedPointsCounterPosition(Vector2 position) => position*16;
 	private int LeftEnemyIconX(int index) => 8*(index % 2);
 	private int LeftEnemyIconY(int index) => -8*(index >> 1);
@@ -50,13 +52,6 @@ public class StageUIManager : MonoBehaviour
 		Vector2 offset = new Vector2(offsetX, offsetY);
 		
 		return initialPosition + offset;
-	}
-
-	private int LeftEnemyIconsCount(int amountOfEnemies)
-	{
-		int limit = 20;
-		
-		return Mathf.Min(amountOfEnemies, limit);
 	}
 
 	private void CreateLeftEnemyIcons()
