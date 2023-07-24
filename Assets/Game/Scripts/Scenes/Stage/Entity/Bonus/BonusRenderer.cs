@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BonusRenderer : MonoBehaviour
 {
-	public float blinkDelay = 1f;
+	[Min(0.01f)] public float blinkDelay = 1f;
 	
 	private SpriteRenderer spriteRenderer;
 
