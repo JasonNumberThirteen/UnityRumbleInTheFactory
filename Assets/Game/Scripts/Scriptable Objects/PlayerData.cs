@@ -72,6 +72,8 @@ public class PlayerData : ScriptableObject
 		{
 			++Lives;
 			bonusLifeThreshold += initialBonusLifeThreshold;
+			
+			CheckBonusLifeThreshold();
 		}
 	}
 
