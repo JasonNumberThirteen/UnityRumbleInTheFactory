@@ -26,6 +26,7 @@ public class Timer : MonoBehaviour
 	}
 
 	private void Start() => StartTimerImmediately();
+	private void Modify() => timer = Mathf.Clamp(timer + Time.deltaTime, 0f, duration);
 
 	private void StartTimerImmediately()
 	{
@@ -49,9 +50,7 @@ public class Timer : MonoBehaviour
 			}
 		}
 	}
-
-	private void Modify() => timer = Mathf.Clamp(timer + Time.deltaTime, 0f, duration);
-
+	
 	private void Finish()
 	{
 		Started = false;
