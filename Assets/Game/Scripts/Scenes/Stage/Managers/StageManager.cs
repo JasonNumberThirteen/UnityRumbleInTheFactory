@@ -9,6 +9,7 @@ public class StageManager : MonoBehaviour
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
 	public PlayerData playerData;
+	public GameData gameData;
 	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer, sceneManagerTimer;
 	
 	public GameStates State {get; private set;} = GameStates.ACTIVE;
@@ -93,6 +94,7 @@ public class StageManager : MonoBehaviour
 	public void SetGameAsOver()
 	{
 		State = GameStates.OVER;
+		gameData.isOver = true;
 
 		DisablePlayer();
 	}

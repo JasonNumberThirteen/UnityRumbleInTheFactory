@@ -13554,6 +13554,7 @@ MonoBehaviour:
   uiManager: {fileID: 1237164743}
   enemySpawnManager: {fileID: 1295888590}
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gameOverTimer: {fileID: 1049923159}
   freezeTimer: {fileID: 1610503212}
   playerRespawnTimer: {fileID: 520258300}
