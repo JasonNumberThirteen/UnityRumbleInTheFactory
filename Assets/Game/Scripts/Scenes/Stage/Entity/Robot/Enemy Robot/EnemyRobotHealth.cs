@@ -10,7 +10,6 @@ public class EnemyRobotHealth : RobotHealth
 
 		playerData.AddDefeatedEnemy(data);
 		StageManager.instance.uiManager.CreateGainedPointsCounter(gameObject.transform.position, data.score);
-		StageManager.instance.CheckEnemiesCount();
 		base.Explode();
 	}
 }

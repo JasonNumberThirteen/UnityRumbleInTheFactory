@@ -12,7 +12,21 @@ public class StageManager : MonoBehaviour
 	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer, sceneManagerTimer;
 	
 	public GameStates State {get; private set;} = GameStates.ACTIVE;
-	public int DefeatedEnemies {get; set;}
+	public int DefeatedEnemies
+	{
+		get
+		{
+			return defeatedEnemies;
+		}
+		set
+		{
+			defeatedEnemies = value;
+
+			CheckEnemiesCount();
+		}
+	}
+
+	private int defeatedEnemies;
 
 	public enum GameStates
 	{
@@ -20,16 +34,6 @@ public class StageManager : MonoBehaviour
 	}
 
 	public void InitiatePlayerRespawn() => playerRespawnTimer.ResetTimer();
-
-	public void CheckEnemiesCount()
-	{
-		if(DefeatedEnemies == enemySpawnManager.enemies.Length && enemySpawnManager.NoEnemiesLeft())
-		{
-			State = GameStates.WON;
-
-			sceneManagerTimer.StartTimer();
-		}
-	}
 
 	public void AttemptToRespawnPlayer()
 	{
@@ -141,6 +145,16 @@ public class StageManager : MonoBehaviour
 		else if(instance != this)
 		{
 			Destroy(gameObject);
+		}
+	}
+
+	private void CheckEnemiesCount()
+	{
+		if(DefeatedEnemies == enemySpawnManager.enemies.Length && enemySpawnManager.NoEnemiesLeft())
+		{
+			State = GameStates.WON;
+
+			sceneManagerTimer.StartTimer();
 		}
 	}
 }

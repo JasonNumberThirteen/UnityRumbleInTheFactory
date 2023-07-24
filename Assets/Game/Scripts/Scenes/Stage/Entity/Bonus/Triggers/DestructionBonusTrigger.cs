@@ -17,8 +17,7 @@ public class DestructionBonusTrigger : BonusTrigger
 		}
 
 		StageManager.instance.DefeatedEnemies += enemies.Length;
-
-		StageManager.instance.CheckEnemiesCount();
+		
 		base.TriggerEffect(sender);
 	}
 }
