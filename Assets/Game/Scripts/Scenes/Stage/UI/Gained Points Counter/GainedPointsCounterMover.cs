@@ -15,5 +15,5 @@ public class GainedPointsCounterMover : MonoBehaviour
 		timer = GetComponent<Timer>();
 	}
 
-	private void Update() => mover.SetPositionY(rectTransform.anchoredPosition.y + movementSpeed*Time.deltaTime);
+	private void Update() => mover.AddPositionY(movementSpeed*Time.deltaTime);
 }
