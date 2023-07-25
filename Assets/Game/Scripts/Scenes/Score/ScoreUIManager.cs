@@ -5,29 +5,34 @@ public class ScoreUIManager : MonoBehaviour
 {
 	public PlayerData playerData;
 	public RectTransform parent; 
-	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType;
+	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType, enemyTypePointsCounter;
 	public RectTransform totalText, horizontalLine;
 	public Timer enemyTypeSwitch, scoreCountTimer;
 
-	private int enemyTypeIndex, countedEnemies;
-	private TextMeshProUGUI[] defeatedEnemiesCounters;
-	private TextMeshProUGUI currentDefeatedEnemiesCounter;
+	private int enemyTypeIndex, countedEnemies, enemyTypeScore;
+	private TextMeshProUGUI[] defeatedEnemiesCounters, enemyTypePointsCounters;
+	private TextMeshProUGUI currentDefeatedEnemiesCounter, currentEnemyTypePointsCounter;
 
 	public void GoToNextEnemyType()
 	{
 		if(enemyTypeIndex < DefeatedEnemiesTypes())
 		{
-			currentDefeatedEnemiesCounter = defeatedEnemiesCounters[enemyTypeIndex++];
-			countedEnemies = 0;
+			currentDefeatedEnemiesCounter = defeatedEnemiesCounters[enemyTypeIndex];
+			currentEnemyTypePointsCounter = enemyTypePointsCounters[enemyTypeIndex];
+			++enemyTypeIndex;
+			countedEnemies = enemyTypeScore = 0;
 		}
 	}
 
 	public void CountPoints()
 	{
-		if(++countedEnemies <= 20)
+		if(countedEnemies < 20)
 		{
+			++countedEnemies;
+			enemyTypeScore += 100;
+			
 			currentDefeatedEnemiesCounter.text = countedEnemies.ToString();
-
+			currentEnemyTypePointsCounter.text = enemyTypeScore.ToString();
 			scoreCountTimer.ResetTimer();
 		}
 		else if(enemyTypeIndex < DefeatedEnemiesTypes())
@@ -49,6 +54,7 @@ public class ScoreUIManager : MonoBehaviour
 		int amount = DefeatedEnemiesTypes();
 
 		defeatedEnemiesCounters = new TextMeshProUGUI[amount];
+		enemyTypePointsCounters = new TextMeshProUGUI[amount];
 
 		for (int i = 0; i < amount; ++i)
 		{
@@ -58,6 +64,7 @@ public class ScoreUIManager : MonoBehaviour
 			CreateDefeatedEnemiesCounter(96, y, i);
 			CreateElement(leftArrow, 112, y);
 			CreateElement(enemyType, 0, y + 4);
+			CreateEnemyTypePointsCounter(16, y, i);
 		}
 	}
 
@@ -95,6 +102,24 @@ public class ScoreUIManager : MonoBehaviour
 		if(text != null)
 		{
 			defeatedEnemiesCounters[index] = text;
+		}
+	}
+
+	private void CreateEnemyTypePointsCounter(float x, float y, int index)
+	{
+		GameObject instance = Instantiate(enemyTypePointsCounter, parent);
+		RectTransform rt = instance.GetComponent<RectTransform>();
+
+		if(rt != null)
+		{
+			rt.anchoredPosition = new Vector2(x, y);
+		}
+
+		TextMeshProUGUI text = instance.GetComponent<TextMeshProUGUI>();
+
+		if(text != null)
+		{
+			enemyTypePointsCounters[index] = text;
 		}
 	}
 }
