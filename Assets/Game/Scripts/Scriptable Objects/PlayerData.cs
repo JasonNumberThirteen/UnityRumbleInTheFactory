@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class PlayerData : ScriptableObject
 {
 	public GameData gameData;
+
+	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;}
 	
 	public int Score
 	{
@@ -53,7 +55,6 @@ public class PlayerData : ScriptableObject
 	[SerializeField] private int initialBonusLifeThreshold = 20000;
 
 	private int score, lives, rank, bonusLifeThreshold;
-	private Dictionary<EnemyData, int> defeatedEnemies;
 
 	public void ResetData()
 	{
@@ -61,18 +62,18 @@ public class PlayerData : ScriptableObject
 		lives = initialLives;
 		rank = initialRank;
 		bonusLifeThreshold = initialBonusLifeThreshold;
-		defeatedEnemies = new Dictionary<EnemyData, int>();
+		DefeatedEnemies = new Dictionary<EnemyData, int>();
 	}
 
 	public void AddDefeatedEnemy(EnemyData enemyData)
 	{
-		if(defeatedEnemies.ContainsKey(enemyData))
+		if(DefeatedEnemies.ContainsKey(enemyData))
 		{
-			++defeatedEnemies[enemyData];
+			++DefeatedEnemies[enemyData];
 		}
 		else
 		{
-			defeatedEnemies.Add(enemyData, 1);
+			DefeatedEnemies.Add(enemyData, 1);
 		}
 	}
 
