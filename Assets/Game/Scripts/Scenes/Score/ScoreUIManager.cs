@@ -47,10 +47,12 @@ public class ScoreUIManager : MonoBehaviour
 		}
 	}
 
+	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
 	private int DefeatedEnemiesTypes() => 4;
 
 	private void Start()
 	{
+		ResetTotalDefeatedEnemiesCounter();
 		BuildPointsRows();
 		SetTotalTextPosition();
 	}
