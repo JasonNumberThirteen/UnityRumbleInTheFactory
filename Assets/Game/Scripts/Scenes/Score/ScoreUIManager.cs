@@ -13,11 +13,11 @@ public class ScoreUIManager : MonoBehaviour
 		SetTotalTextPosition();
 	}
 
-	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
+	private int DefeatedEnemiesTypes() => 4;
 
 	private void BuildPointsRows()
 	{
-		int amount = 4;
+		int amount = DefeatedEnemiesTypes();
 
 		for (int i = 0; i < amount; ++i)
 		{
@@ -32,7 +32,7 @@ public class ScoreUIManager : MonoBehaviour
 
 	private void SetTotalTextPosition()
 	{
-		int offsetY = -16*4;
+		int offsetY = -16*DefeatedEnemiesTypes();
 		
 		totalText.anchoredPosition = new Vector2(totalText.anchoredPosition.x, totalText.anchoredPosition.y + offsetY);
 		horizontalLine.anchoredPosition = new Vector2(horizontalLine.anchoredPosition.x, horizontalLine.anchoredPosition.y + offsetY);
