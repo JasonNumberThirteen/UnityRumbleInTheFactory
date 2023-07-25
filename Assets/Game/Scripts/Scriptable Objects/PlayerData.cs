@@ -53,7 +53,7 @@ public class PlayerData : ScriptableObject
 	[SerializeField] private int initialBonusLifeThreshold = 20000;
 
 	private int score, lives, rank, bonusLifeThreshold;
-	private List<EnemyData> defeatedEnemies;
+	private Dictionary<EnemyData, int> defeatedEnemies;
 
 	public void ResetData()
 	{
@@ -61,10 +61,20 @@ public class PlayerData : ScriptableObject
 		lives = initialLives;
 		rank = initialRank;
 		bonusLifeThreshold = initialBonusLifeThreshold;
-		defeatedEnemies = new List<EnemyData>();
+		defeatedEnemies = new Dictionary<EnemyData, int>();
 	}
 
-	public void AddDefeatedEnemy(EnemyData enemyData) => defeatedEnemies.Add(enemyData);
+	public void AddDefeatedEnemy(EnemyData enemyData)
+	{
+		if(defeatedEnemies.ContainsKey(enemyData))
+		{
+			++defeatedEnemies[enemyData];
+		}
+		else
+		{
+			defeatedEnemies.Add(enemyData, 1);
+		}
+	}
 
 	private void CheckBonusLifeThreshold()
 	{
