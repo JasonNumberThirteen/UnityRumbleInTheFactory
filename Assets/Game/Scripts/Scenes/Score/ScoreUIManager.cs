@@ -8,8 +8,9 @@ public class ScoreUIManager : MonoBehaviour
 	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType, enemyTypePointsCounter;
 	public RectTransform totalText, horizontalLine;
 	public Timer enemyTypeSwitch, scoreCountTimer;
+	public TextMeshProUGUI totalDefeatedEnemiesCounter;
 
-	private int enemyTypeIndex, countedEnemies, enemyTypeScore;
+	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore;
 	private TextMeshProUGUI[] defeatedEnemiesCounters, enemyTypePointsCounters;
 	private TextMeshProUGUI currentDefeatedEnemiesCounter, currentEnemyTypePointsCounter;
 
@@ -22,6 +23,10 @@ public class ScoreUIManager : MonoBehaviour
 			++enemyTypeIndex;
 			countedEnemies = enemyTypeScore = 0;
 		}
+		else if(totalDefeatedEnemiesCounter.text != totalCountedEnemies.ToString())
+		{
+			totalDefeatedEnemiesCounter.text = totalCountedEnemies.ToString();
+		}
 	}
 
 	public void CountPoints()
@@ -29,13 +34,14 @@ public class ScoreUIManager : MonoBehaviour
 		if(countedEnemies < 20)
 		{
 			++countedEnemies;
+			++totalCountedEnemies;
 			enemyTypeScore += 100;
-			
 			currentDefeatedEnemiesCounter.text = countedEnemies.ToString();
 			currentEnemyTypePointsCounter.text = enemyTypeScore.ToString();
+
 			scoreCountTimer.ResetTimer();
 		}
-		else if(enemyTypeIndex < DefeatedEnemiesTypes())
+		else
 		{
 			enemyTypeSwitch.ResetTimer();
 		}
@@ -74,6 +80,10 @@ public class ScoreUIManager : MonoBehaviour
 		
 		totalText.anchoredPosition = new Vector2(totalText.anchoredPosition.x, totalText.anchoredPosition.y + offsetY);
 		horizontalLine.anchoredPosition = new Vector2(horizontalLine.anchoredPosition.x, horizontalLine.anchoredPosition.y + offsetY);
+
+		RectTransform tdec = totalDefeatedEnemiesCounter.GetComponent<RectTransform>();
+
+		tdec.anchoredPosition = new Vector2(tdec.anchoredPosition.x, totalText.anchoredPosition.y);
 	}
 
 	private void CreateElement(GameObject element, float x, float y)
