@@ -5,8 +5,14 @@ public class ScoreUIManager : MonoBehaviour
 	public PlayerData playerData;
 	public RectTransform parent; 
 	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType;
+	public RectTransform totalText, horizontalLine;
 
-	private void Start() => BuildPointsRows();
+	private void Start()
+	{
+		BuildPointsRows();
+		SetTotalTextPosition();
+	}
+
 	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
 
 	private void BuildPointsRows()
@@ -22,6 +28,14 @@ public class ScoreUIManager : MonoBehaviour
 			CreateElement(leftArrow, 112, y);
 			CreateElement(enemyType, 0, y + 4);
 		}
+	}
+
+	private void SetTotalTextPosition()
+	{
+		int offsetY = -16*4;
+		
+		totalText.anchoredPosition = new Vector2(totalText.anchoredPosition.x, totalText.anchoredPosition.y + offsetY);
+		horizontalLine.anchoredPosition = new Vector2(horizontalLine.anchoredPosition.x, horizontalLine.anchoredPosition.y + offsetY);
 	}
 
 	private void CreateElement(GameObject element, float x, float y)

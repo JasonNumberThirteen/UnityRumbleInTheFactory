@@ -657,6 +657,8 @@ MonoBehaviour:
   defeatedEnemiesCounter: {fileID: 1888134825636643331, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
   leftArrow: {fileID: 7876450272975169952, guid: 25d49807ff08bcf43b0b3ebcd774f93f, type: 3}
   enemyType: {fileID: 1190884643499449020, guid: 406ebc6c0bf1b7d4890e1360ba19d2e3, type: 3}
+  totalText: {fileID: 1774652442}
+  horizontalLine: {fileID: 603174870}
 --- !u!4 &1301211826
 Transform:
   m_ObjectHideFlags: 0
