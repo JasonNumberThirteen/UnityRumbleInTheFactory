@@ -12893,7 +12893,8 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playerOneLivesCounter: {fileID: 1403960475}
-  stageCounter: {fileID: 2014407416}
+  stageCounterText: {fileID: 1922023828}
+  stageCounterIcon: {fileID: 2014407416}
   leftEnemyIconsLimit: 20
 --- !u!4 &1237164744
 Transform:
@@ -19262,6 +19263,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3489673666025870493, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
   m_PrefabInstance: {fileID: 1922023824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1922023828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4224792097506310430, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
+  m_PrefabInstance: {fileID: 1922023824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922023826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1930884758
 PrefabInstance:
   m_ObjectHideFlags: 0

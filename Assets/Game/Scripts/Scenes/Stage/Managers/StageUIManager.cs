@@ -7,7 +7,7 @@ public class StageUIManager : MonoBehaviour
 	public GameObject gainedPointsCounter, leftEnemyIcon, pauseText;
 	public PlayerData playerData;
 	public GameData gameData;
-	public Counter playerOneLivesCounter, stageCounter;
+	public Counter playerOneLivesCounter, stageCounterText, stageCounterIcon;
 	[Min(0)] public int leftEnemyIconsLimit = 20;
 
 	private GameObject[] leftEnemyIcons;
@@ -18,7 +18,7 @@ public class StageUIManager : MonoBehaviour
 	public void UpdateCounters()
 	{
 		playerOneLivesCounter.SetTo(playerData.Lives);
-		stageCounter.SetTo(gameData.stage);
+		stageCounterIcon.SetTo(gameData.stage);
 	}
 
 	public void RemoveLeftEnemyIcon()
@@ -39,7 +39,12 @@ public class StageUIManager : MonoBehaviour
 		text.text = points.ToString();
 	}
 	
-	private void Start() => CreateLeftEnemyIcons();
+	private void Start()
+	{
+		stageCounterText.SetTo(gameData.stage);
+		CreateLeftEnemyIcons();
+	}
+
 	private int LeftEnemyIconsCount(int amountOfEnemies) => Mathf.Min(amountOfEnemies, leftEnemyIconsLimit);
 	private Vector2 GainedPointsCounterPosition(Vector2 position) => position*16;
 	private int LeftEnemyIconX(int index) => 8*(index % 2);
