@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 1
   highScore: 20000
+  twoPlayersMode: 0
   isOver: 0
   beatenHighScore: 0

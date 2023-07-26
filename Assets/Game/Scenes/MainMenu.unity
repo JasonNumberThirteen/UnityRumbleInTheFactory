@@ -1447,9 +1447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d713b9a561591f045a7168d25fba475c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+  playerOneData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+  playerTwoData: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playerOneScoreCounter: {fileID: 468366890}
+  playerTwoScoreCounter: {fileID: 713648128}
   highScoreCounter: {fileID: 1509635513}
 --- !u!4 &1261939961
 Transform:
