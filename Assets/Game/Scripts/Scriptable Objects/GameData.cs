@@ -5,4 +5,6 @@ public class GameData : ScriptableObject
 {
 	public int stage = 1, highScore = 20000;
 	public bool twoPlayersMode, isOver, beatenHighScore;
+
+	public void ResetData() => isOver = beatenHighScore = false;
 }

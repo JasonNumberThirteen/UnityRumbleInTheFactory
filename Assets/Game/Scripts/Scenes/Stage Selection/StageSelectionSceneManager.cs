@@ -8,6 +8,7 @@ public class StageSelectionSceneManager : GameSceneManager
 	{
 		gameData.stage = stage;
 
+		gameData.ResetData();
 		playerOneData.ResetData();
 		playerTwoData.ResetData();
 		LoadScene(stageSceneName);
