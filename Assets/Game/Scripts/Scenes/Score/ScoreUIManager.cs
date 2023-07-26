@@ -8,7 +8,7 @@ public class ScoreUIManager : MonoBehaviour
 	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType, enemyTypePointsCounter;
 	public RectTransform totalText, horizontalLine;
 	public Timer enemyTypeSwitch, scoreCountTimer;
-	public TextMeshProUGUI totalDefeatedEnemiesCounter;
+	public TextMeshProUGUI playerOneScoreCounter, totalDefeatedEnemiesCounter;
 
 	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore;
 	private TextMeshProUGUI[] defeatedEnemiesCounters, enemyTypePointsCounters;
@@ -48,11 +48,13 @@ public class ScoreUIManager : MonoBehaviour
 	}
 
 	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
+	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
 	private int DefeatedEnemiesTypes() => 4;
 
 	private void Start()
 	{
 		ResetTotalDefeatedEnemiesCounter();
+		SetPlayerOneScore();
 		BuildPointsRows();
 		SetTotalTextPosition();
 	}
