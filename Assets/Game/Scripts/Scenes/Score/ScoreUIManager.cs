@@ -8,7 +8,7 @@ public class ScoreUIManager : MonoBehaviour
 	public RectTransform parent; 
 	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType, enemyTypePointsCounter;
 	public RectTransform totalText, horizontalLine;
-	public Timer enemyTypeSwitch, scoreCountTimer;
+	public Timer enemyTypeSwitch, scoreCountTimer, sceneManagerTimer;
 	public TextMeshProUGUI highScoreCounter, playerOneScoreCounter, totalDefeatedEnemiesCounter;
 
 	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore;
@@ -27,6 +27,8 @@ public class ScoreUIManager : MonoBehaviour
 		else if(totalDefeatedEnemiesCounter.text != totalCountedEnemies.ToString())
 		{
 			totalDefeatedEnemiesCounter.text = totalCountedEnemies.ToString();
+
+			sceneManagerTimer.StartTimer();
 		}
 	}
 
