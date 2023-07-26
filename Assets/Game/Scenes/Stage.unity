@@ -19164,6 +19164,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage Counter (SS)
       objectReference: {fileID: 0}
+    - target: {fileID: 4224792097506310430, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
+      propertyPath: setAtStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4238387268320524629, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
