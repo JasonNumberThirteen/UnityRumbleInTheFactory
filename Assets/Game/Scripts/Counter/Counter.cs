@@ -4,6 +4,7 @@ public class Counter : MonoBehaviour
 {
 	public int initialValue;
 	public CounterText text;
+	public bool setAtStart = true;
 
 	public int CurrentValue {get; private set;}
 
@@ -28,7 +29,13 @@ public class Counter : MonoBehaviour
 		UpdateText();
 	}
 
-	private void Start() => SetTo(initialValue);
+	private void Start()
+	{
+		if(setAtStart)
+		{
+			SetTo(initialValue);
+		}
+	}
 
 	private void UpdateText()
 	{
