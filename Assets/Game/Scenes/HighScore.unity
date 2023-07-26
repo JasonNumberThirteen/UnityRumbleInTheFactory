@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c954a66bc4642f46bda8c9a4916af9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetColor: {r: 1, g: 1, b: 0, a: 1}
+  targetColor: {r: 0, g: 1, b: 0.3764706, a: 1}
   blinkDelay: 0.03333334
 --- !u!1 &1640986563
 GameObject:
