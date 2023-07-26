@@ -1264,6 +1264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d870d15022490ff4abb76fe0803f5790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   stageSelectionBackgroundTimer: {fileID: 905126337}
   input: {fileID: 1623448753}
 --- !u!4 &1144572965

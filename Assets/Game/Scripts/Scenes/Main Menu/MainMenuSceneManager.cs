@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MainMenuSceneManager : GameSceneManager
 {
+	public GameData gameData;
 	public Timer stageSelectionBackgroundTimer;
 	public MainMenuInput input;
 	
@@ -11,6 +12,8 @@ public class MainMenuSceneManager : GameSceneManager
 
 	private void StartGame(bool twoPlayersMode)
 	{
+		gameData.twoPlayersMode = twoPlayersMode;
+		
 		stageSelectionBackgroundTimer.StartTimer();
 		input.gameObject.SetActive(false);
 	}

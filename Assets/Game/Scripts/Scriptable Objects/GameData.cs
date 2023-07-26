@@ -4,5 +4,5 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
 	public int stage = 1, highScore = 20000;
-	public bool isOver, beatenHighScore;
+	public bool twoPlayersMode, isOver, beatenHighScore;
 }
