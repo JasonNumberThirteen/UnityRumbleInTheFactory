@@ -1,6 +1,7 @@
 using TMPro;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreUIManager : MonoBehaviour
 {
@@ -87,7 +88,7 @@ public class ScoreUIManager : MonoBehaviour
 			CreateElement(pointsText, 64, y);
 			CreateDefeatedEnemiesCounter(96, y, i);
 			CreateElement(leftArrow, 112, y);
-			CreateElement(enemyType, 0, y + 4);
+			CreateEnemyTypeSprite(0, y + 4, i);
 			CreateEnemyTypePointsCounter(16, y, i);
 		}
 	}
@@ -130,6 +131,24 @@ public class ScoreUIManager : MonoBehaviour
 		if(text != null)
 		{
 			defeatedEnemiesCounters[index] = text;
+		}
+	}
+
+	private void CreateEnemyTypeSprite(float x, float y, int index)
+	{
+		GameObject instance = Instantiate(enemyType, parent);
+		RectTransform rt = instance.GetComponent<RectTransform>();
+
+		if(rt != null)
+		{
+			rt.anchoredPosition = new Vector2(x, y);
+		}
+
+		Image image = instance.GetComponent<Image>();
+
+		if(image != null)
+		{
+			image.sprite = defeatedEnemiesData[index].sprite;
 		}
 	}
 
