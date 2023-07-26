@@ -53,7 +53,7 @@ public class ScoreUIManager : MonoBehaviour
 	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
 	private void SetHighScore() => highScoreCounter.text = gameData.highScore.ToString();
 	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
-	private int DefeatedEnemiesTypes() => 4;
+	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
 
 	private void Start()
 	{
