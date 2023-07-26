@@ -1,4 +1,5 @@
 using TMPro;
+using System.Linq;
 using UnityEngine;
 
 public class ScoreUIManager : MonoBehaviour
@@ -11,9 +12,11 @@ public class ScoreUIManager : MonoBehaviour
 	public Timer enemyTypeSwitch, scoreCountTimer, sceneManagerTimer;
 	public TextMeshProUGUI highScoreCounter, playerOneScoreCounter, totalDefeatedEnemiesCounter;
 
-	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore;
+	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore, defeatedEnemies, scorePerEnemy;
 	private TextMeshProUGUI[] defeatedEnemiesCounters, enemyTypePointsCounters;
 	private TextMeshProUGUI currentDefeatedEnemiesCounter, currentEnemyTypePointsCounter;
+	private EnemyData[] defeatedEnemiesData;
+	private int[] defeatedEnemiesCount;
 
 	public void GoToNextEnemyType()
 	{
@@ -21,6 +24,8 @@ public class ScoreUIManager : MonoBehaviour
 		{
 			currentDefeatedEnemiesCounter = defeatedEnemiesCounters[enemyTypeIndex];
 			currentEnemyTypePointsCounter = enemyTypePointsCounters[enemyTypeIndex];
+			defeatedEnemies = defeatedEnemiesCount[enemyTypeIndex];
+			scorePerEnemy = defeatedEnemiesData[enemyTypeIndex].score;
 			++enemyTypeIndex;
 			countedEnemies = enemyTypeScore = 0;
 		}
@@ -34,11 +39,11 @@ public class ScoreUIManager : MonoBehaviour
 
 	public void CountPoints()
 	{
-		if(countedEnemies < 20)
+		if(countedEnemies < defeatedEnemies)
 		{
 			++countedEnemies;
 			++totalCountedEnemies;
-			enemyTypeScore += 100;
+			enemyTypeScore += scorePerEnemy;
 			currentDefeatedEnemiesCounter.text = countedEnemies.ToString();
 			currentEnemyTypePointsCounter.text = enemyTypeScore.ToString();
 
@@ -53,6 +58,8 @@ public class ScoreUIManager : MonoBehaviour
 	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
 	private void SetHighScore() => highScoreCounter.text = gameData.highScore.ToString();
 	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
+	private void RetrieveEnemiesData() => defeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray<EnemyData>();
+	private void RetrieveEnemiesCount() => defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray<int>();
 	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
 
 	private void Start()
@@ -60,6 +67,8 @@ public class ScoreUIManager : MonoBehaviour
 		ResetTotalDefeatedEnemiesCounter();
 		SetHighScore();
 		SetPlayerOneScore();
+		RetrieveEnemiesData();
+		RetrieveEnemiesCount();
 		BuildPointsRows();
 		SetTotalTextPosition();
 	}
