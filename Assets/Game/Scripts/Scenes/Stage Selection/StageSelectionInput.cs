@@ -6,6 +6,7 @@ public class StageSelectionInput : MonoBehaviour
 	public Counter stageCounter;
 	public GameSceneManager sceneManager;
 	public string stageScene;
+	public GameData gameData;
 
 	private void OnNavigate(InputValue iv)
 	{
@@ -28,5 +29,10 @@ public class StageSelectionInput : MonoBehaviour
 		}
 	}
 
-	private void OnSubmit(InputValue iv) => sceneManager.LoadScene(stageScene);
+	private void OnSubmit(InputValue iv)
+	{
+		gameData.stage = stageCounter.CurrentValue;
+
+		sceneManager.LoadScene(stageScene);
+	}
 }
