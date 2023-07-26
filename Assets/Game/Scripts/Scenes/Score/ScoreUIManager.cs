@@ -4,11 +4,12 @@ using UnityEngine;
 public class ScoreUIManager : MonoBehaviour
 {
 	public PlayerData playerData;
+	public GameData gameData;
 	public RectTransform parent; 
 	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType, enemyTypePointsCounter;
 	public RectTransform totalText, horizontalLine;
 	public Timer enemyTypeSwitch, scoreCountTimer;
-	public TextMeshProUGUI playerOneScoreCounter, totalDefeatedEnemiesCounter;
+	public TextMeshProUGUI highScoreCounter, playerOneScoreCounter, totalDefeatedEnemiesCounter;
 
 	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore;
 	private TextMeshProUGUI[] defeatedEnemiesCounters, enemyTypePointsCounters;
@@ -48,12 +49,14 @@ public class ScoreUIManager : MonoBehaviour
 	}
 
 	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
+	private void SetHighScore() => highScoreCounter.text = gameData.highScore.ToString();
 	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
 	private int DefeatedEnemiesTypes() => 4;
 
 	private void Start()
 	{
 		ResetTotalDefeatedEnemiesCounter();
+		SetHighScore();
 		SetPlayerOneScore();
 		BuildPointsRows();
 		SetTotalTextPosition();

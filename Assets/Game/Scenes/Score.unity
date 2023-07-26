@@ -710,6 +710,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
   m_PrefabInstance: {fileID: 723484578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &723484580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4793411460295164136, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
+  m_PrefabInstance: {fileID: 723484578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &861062299
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   parent: {fileID: 490738117}
   pointsText: {fileID: 5812709399332875870, guid: e269667537b3ef34fb32a9bef772b791, type: 3}
   defeatedEnemiesCounter: {fileID: 1888134825636643331, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
@@ -814,6 +826,7 @@ MonoBehaviour:
   horizontalLine: {fileID: 603174870}
   enemyTypeSwitch: {fileID: 372261218}
   scoreCountTimer: {fileID: 861062300}
+  highScoreCounter: {fileID: 723484580}
   playerOneScoreCounter: {fileID: 513426193}
   totalDefeatedEnemiesCounter: {fileID: 1881734364}
 --- !u!4 &1301211826
