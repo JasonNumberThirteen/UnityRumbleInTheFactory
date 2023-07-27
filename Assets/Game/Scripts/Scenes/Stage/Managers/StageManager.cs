@@ -51,6 +51,8 @@ public class StageManager : MonoBehaviour
 		}
 	}
 
+	public void ResetDefeatedEnemiesByPlayer() => playerData.DefeatedEnemies.Clear();
+
 	public void InterruptGame()
 	{
 		gameOverTimer.StartTimer();

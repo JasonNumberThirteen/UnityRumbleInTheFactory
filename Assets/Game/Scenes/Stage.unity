@@ -5893,6 +5893,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &520258301
 Transform:
   m_ObjectHideFlags: 0
@@ -6245,6 +6248,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1342973422}
+        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+        m_MethodName: ResetDefeatedEnemiesByPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &556736245
 Transform:
   m_ObjectHideFlags: 0
@@ -6435,6 +6453,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &594759922
 Transform:
   m_ObjectHideFlags: 0
@@ -10926,6 +10947,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1049923160
 Transform:
   m_ObjectHideFlags: 0
@@ -11411,6 +11435,9 @@ MonoBehaviour:
           m_StringArgument: Score
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1086106393
 Transform:
   m_ObjectHideFlags: 0
@@ -15618,6 +15645,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1572466354
 Transform:
   m_ObjectHideFlags: 0
@@ -15970,6 +16000,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1610503213
 Transform:
   m_ObjectHideFlags: 0
