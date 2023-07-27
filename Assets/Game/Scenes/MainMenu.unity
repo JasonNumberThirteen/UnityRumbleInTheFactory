@@ -711,7 +711,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1144572964}
         m_TargetAssemblyTypeName: MainMenuSceneManager, Assembly-CSharp
-        m_MethodName: OnePlayer
+        m_MethodName: TwoPlayers
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1327,7 +1327,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1144572964}
         m_TargetAssemblyTypeName: MainMenuSceneManager, Assembly-CSharp
-        m_MethodName: OnePlayer
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
