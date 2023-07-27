@@ -5,7 +5,7 @@ public class Timer : MonoBehaviour
 {
 	[Min(0.01f)] public float duration;
 	public bool countFromTheStart = true;
-	public UnityEvent onReset, onEnd;
+	public UnityEvent onReset, onEnd, onInterrupt;
 	
 	public bool Started {get; private set;}
 	public bool Finished {get; private set;}
@@ -30,6 +30,19 @@ public class Timer : MonoBehaviour
 		
 		SetAsFinished(false);
 		onReset.Invoke();
+	}
+
+	public void InterruptTimer()
+	{
+		if(!Started)
+		{
+			return;
+		}
+
+		timer = duration;
+		
+		SetAsFinished(true);
+		onInterrupt.Invoke();
 	}
 
 	public bool ReachedTheEnd() => timer >= duration;
