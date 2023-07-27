@@ -26,10 +26,9 @@ public class Timer : MonoBehaviour
 
 	public void ResetTimer()
 	{
-		Started = true;
-		Finished = false;
 		timer = 0f;
-
+		
+		SetAsFinished(false);
 		onReset.Invoke();
 	}
 
@@ -64,9 +63,13 @@ public class Timer : MonoBehaviour
 	
 	private void Finish()
 	{
-		Started = false;
-		Finished = true;
-
+		SetAsFinished(true);
 		onEnd.Invoke();
+	}
+
+	private void SetAsFinished(bool finished)
+	{
+		Started = !finished;
+		Finished = finished;
 	}
 }
