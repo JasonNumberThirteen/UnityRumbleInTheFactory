@@ -12,18 +12,29 @@ public class Timer : MonoBehaviour
 
 	private float timer;
 
-	public void StartTimer() => Started = true;
-	public bool ReachedTheEnd() => timer >= duration;
-	public float ProgressPercent() => timer / duration;
+	public void StartTimer()
+	{
+		if(!Started)
+		{
+			Started = true;
+		}
+		else
+		{
+			ResetTimer();
+		}
+	}
 
 	public void ResetTimer()
 	{
+		Started = true;
 		Finished = false;
 		timer = 0f;
 
-		StartTimer();
 		onReset.Invoke();
 	}
+
+	public bool ReachedTheEnd() => timer >= duration;
+	public float ProgressPercent() => timer / duration;
 
 	private void Start() => StartTimerImmediately();
 	private void Modify() => timer = Mathf.Clamp(timer + Time.deltaTime, 0f, duration);
