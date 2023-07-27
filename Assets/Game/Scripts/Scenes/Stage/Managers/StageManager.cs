@@ -136,7 +136,6 @@ public class StageManager : MonoBehaviour
 	}
 	
 	private void Awake() => CheckSingleton();
-	private void Start() => playerData.ResetData();
 
 	private void CheckSingleton()
 	{
