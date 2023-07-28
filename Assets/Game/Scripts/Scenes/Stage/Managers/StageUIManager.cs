@@ -18,7 +18,7 @@ public class StageUIManager : MonoBehaviour
 	public void UpdateCounters()
 	{
 		playerOneLivesCounter.SetTo(playerData.Lives);
-		stageCounterIcon.SetTo(gameData.stage);
+		stageCounterIcon.SetTo(gameData.stageNumber);
 	}
 
 	public void RemoveLeftEnemyIcon()
@@ -41,7 +41,7 @@ public class StageUIManager : MonoBehaviour
 	
 	private void Start()
 	{
-		stageCounterText.SetTo(gameData.stage);
+		stageCounterText.SetTo(gameData.stageNumber);
 		CreateLeftEnemyIcons();
 	}
 

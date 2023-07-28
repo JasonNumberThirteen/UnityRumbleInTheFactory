@@ -11,7 +11,7 @@ public class ScoreSceneManager : GameSceneManager
 		
 		if(!isOver)
 		{
-			++gameData.stage;
+			++gameData.stageNumber;
 		}
 
 		LoadScene(sceneName);

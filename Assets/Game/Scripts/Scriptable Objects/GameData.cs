@@ -3,8 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Game Data")]
 public class GameData : ScriptableObject
 {
-	public int stage = 1, highScore = 20000;
+	public int stageNumber = 1, highScore = 20000;
 	public bool twoPlayersMode, isOver, beatenHighScore;
+	public Stage stage;
 
 	public void ResetData() => isOver = beatenHighScore = false;
 }
