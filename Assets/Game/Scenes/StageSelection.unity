@@ -475,6 +475,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: c5b1db83d5aff7f45ab95d5310d5dc73, type: 3}
   - {fileID: 4900000, guid: 7d54e2f457ae130459cdbfb286dd1186, type: 3}
   - {fileID: 4900000, guid: 0239ec56dd925d748abf3cb18986c4e5, type: 3}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!4 &731514315
 Transform:
   m_ObjectHideFlags: 0
@@ -655,7 +656,6 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playerOneData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   playerTwoData: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
-  stagesLoader: {fileID: 731514314}
 --- !u!1 &1684065794
 GameObject:
   m_ObjectHideFlags: 0

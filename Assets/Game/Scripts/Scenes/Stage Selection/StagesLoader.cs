@@ -3,6 +3,7 @@ using UnityEngine;
 public class StagesLoader : MonoBehaviour
 {
 	public TextAsset[] stagesData;
+	public GameData gameData;
 
 	private Stage[] stages;
 
@@ -19,6 +20,8 @@ public class StagesLoader : MonoBehaviour
 		{
 			stages[i] = JsonUtility.FromJson<Stage>(stagesData[i].text);
 		}
+
+		gameData.stages = stages;
 	}
 }
 
