@@ -11,7 +11,7 @@ public class ScoreSceneManager : GameSceneManager
 		
 		if(!isOver)
 		{
-			++gameData.stageNumber;
+			gameData.stageNumber = (gameData.stageNumber + 1) % gameData.stages.Length;
 		}
 
 		LoadScene(sceneName);
