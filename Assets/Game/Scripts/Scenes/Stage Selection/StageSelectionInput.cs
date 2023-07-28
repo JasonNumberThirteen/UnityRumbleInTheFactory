@@ -5,8 +5,8 @@ public class StageSelectionInput : MonoBehaviour
 {
 	public Counter stageCounter;
 	public StageSelectionSceneManager sceneManager;
-	
 	public GameData gameData;
+	public StagesLoader stagesLoader;
 
 	private void OnNavigate(InputValue iv)
 	{
@@ -22,10 +22,20 @@ public class StageSelectionInput : MonoBehaviour
 		if(stageOffset == -1)
 		{
 			stageCounter.DecreaseBy(1);
+
+			if(stageCounter.CurrentValue <= 0)
+			{
+				stageCounter.SetTo(stagesLoader.DetectedStages());
+			}
 		}
 		else if(stageOffset == 1)
 		{
 			stageCounter.IncreaseBy(1);
+
+			if(stageCounter.CurrentValue > stagesLoader.DetectedStages())
+			{
+				stageCounter.SetTo(1);
+			}
 		}
 	}
 
