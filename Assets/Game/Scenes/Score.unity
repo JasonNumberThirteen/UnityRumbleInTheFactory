@@ -221,7 +221,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 861062300}
         m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: ResetTimer
+        m_MethodName: StartTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -231,6 +231,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &372261219
 Transform:
   m_ObjectHideFlags: 0
@@ -817,6 +820,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &861062301
 Transform:
   m_ObjectHideFlags: 0
@@ -881,6 +887,9 @@ MonoBehaviour:
           m_StringArgument: Stage
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1072028620
 Transform:
   m_ObjectHideFlags: 0
