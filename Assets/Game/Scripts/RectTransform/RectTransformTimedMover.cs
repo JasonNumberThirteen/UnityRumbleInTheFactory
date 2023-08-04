@@ -16,7 +16,7 @@ public class RectTransformTimedMover : RectTransformMover
 
 	private void Update()
 	{
-		if(!ReachedTheTarget())
+		if(timer.Started && !ReachedTheTarget())
 		{
 			SetPosition();
 		}

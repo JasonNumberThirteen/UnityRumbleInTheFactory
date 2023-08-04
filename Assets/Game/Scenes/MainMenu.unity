@@ -2129,6 +2129,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 905126337}
+    - target: {fileID: 7066068774657121137, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1749089707}
     - target: {fileID: 7854550105684968969, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -128
@@ -2137,6 +2141,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 905126337}
+    - target: {fileID: 8697010381207133087, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1749089707}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
