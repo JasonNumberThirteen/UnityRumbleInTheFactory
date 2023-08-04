@@ -6,7 +6,7 @@ public class StageSelectionSceneManager : GameSceneManager
 
 	public void StartGame(int stage)
 	{
-		gameData.stageNumber = stage;
+		gameData.StageNumber = stage;
 
 		gameData.ResetData();
 		playerOneData.ResetData();
