@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class RectTransformTimedMover : MonoBehaviour
+public class RectTransformTimedMover : RectTransformMover
 {
 	public Vector2 targetPosition;
 	public Timer timer;
 
-	private RectTransform rectTransform;
 	private Vector2 initialPosition;
 
-	private void Awake()
+	protected override void Awake()
 	{
-		rectTransform = GetComponent<RectTransform>();
+		base.Awake();
+		
 		initialPosition = rectTransform.anchoredPosition;
 	}
 
