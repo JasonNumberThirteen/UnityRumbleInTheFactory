@@ -6,7 +6,7 @@ public class PlayerData : ScriptableObject
 {
 	public GameData gameData;
 
-	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;}
+	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyData, int>();
 	
 	public int Score
 	{
@@ -62,7 +62,8 @@ public class PlayerData : ScriptableObject
 		lives = initialLives;
 		rank = initialRank;
 		bonusLifeThreshold = initialBonusLifeThreshold;
-		DefeatedEnemies = new Dictionary<EnemyData, int>();
+
+		DefeatedEnemies.Clear();
 	}
 
 	public void AddDefeatedEnemy(EnemyData enemyData)
