@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 5185690586855138589}
   - component: {fileID: 9159079852551321459}
   - component: {fileID: 7755116143451911904}
+  - component: {fileID: 8606166809185048932}
   m_Layer: 0
   m_Name: Entity Spawner
   m_TagString: Untagged
@@ -210,3 +211,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8606166809185048932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725085237384328082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890a9a83bd1296f47be4e2be080e61a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTag: Entities
