@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 202876541}
   - component: {fileID: 202876543}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: Event System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,6 +250,9 @@ MonoBehaviour:
           m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &298982296
 Transform:
   m_ObjectHideFlags: 0
