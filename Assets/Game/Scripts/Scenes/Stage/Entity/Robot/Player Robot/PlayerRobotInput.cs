@@ -20,6 +20,11 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnMove(InputValue iv)
 	{
+		if(StageManager.instance.IsPaused())
+		{
+			return;
+		}
+		
 		Vector2 movement = iv.Get<Vector2>();
 
 		LastMovementVector = MovementVector;
@@ -28,7 +33,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnFire(InputValue iv)
 	{
-		if(shoot != null)
+		if(!StageManager.instance.IsPaused() && shoot != null)
 		{
 			shoot.FireBullet();
 		}
