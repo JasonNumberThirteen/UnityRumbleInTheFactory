@@ -17,7 +17,7 @@ public class StageBuilder : MonoBehaviour
 
 	private void BuildStage()
 	{
-		Stage stage = gameData.stages[gameData.StageNumber - 1];
+		Stage stage = gameData.CurrentStage();
 		int[] tilesIndexes = stage.tiles;
 
 		for (int i = 0; i < tilesIndexes.Length; ++i)

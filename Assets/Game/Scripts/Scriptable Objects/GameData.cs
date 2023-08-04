@@ -21,5 +21,6 @@ public class GameData : ScriptableObject
 
 	private int stageNumber = 1;
 
+	public Stage CurrentStage() => stages[stageNumber - 1];
 	public void ResetData() => isOver = beatenHighScore = false;
 }

@@ -28,7 +28,7 @@ public class EnemySpawnManager : MonoBehaviour
 
 	private void AssignEnemiesFromCurrentStage()
 	{
-		int[] enemyIndexes = gameData.stages[gameData.StageNumber - 1].enemies;
+		int[] enemyIndexes = gameData.CurrentStage().enemies;
 		int count = enemyIndexes.Length;
 		
 		enemies = new GameObject[count];
