@@ -4,7 +4,6 @@ public class StageBuilder : MonoBehaviour
 {
 	public GameData gameData;
 	public GameObject[] tiles;
-	public Transform[] parents;
 	public Vector2 positionOffset;
 
 	private void Start() => BuildStage();
@@ -25,7 +24,7 @@ public class StageBuilder : MonoBehaviour
 				float tileY = y*0.5f;
 				Vector2 tilePosition = new Vector2(tileX, tileY);
 				
-				Instantiate(tiles[tileIndex], tilePosition + positionOffset, Quaternion.identity, parents[tileIndex]);
+				Instantiate(tiles[tileIndex], tilePosition + positionOffset, Quaternion.identity);
 			}
 		}
 	}

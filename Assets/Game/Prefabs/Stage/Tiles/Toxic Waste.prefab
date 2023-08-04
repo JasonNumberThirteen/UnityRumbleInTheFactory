@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5450870899668389620}
   - component: {fileID: 1128193458245805703}
   - component: {fileID: 4695068482316322570}
+  - component: {fileID: 7135391887192394857}
   m_Layer: 11
   m_Name: Toxic Waste
   m_TagString: Toxic Waste
@@ -180,3 +181,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &7135391887192394857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040602581942424668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890a9a83bd1296f47be4e2be080e61a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTag: Toxic Waste Tiles

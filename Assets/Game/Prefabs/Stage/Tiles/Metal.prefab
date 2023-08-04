@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5264876894005889500}
   - component: {fileID: 9081857036767653365}
   - component: {fileID: 701922015639268553}
+  - component: {fileID: -4747447432209969921}
   m_Layer: 10
   m_Name: Metal
   m_TagString: Untagged
@@ -171,3 +172,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324f12d0a4014a743ad0183f93df088a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4747447432209969921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204947701303557811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890a9a83bd1296f47be4e2be080e61a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTag: Metal Tiles

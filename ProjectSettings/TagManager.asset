@@ -18,6 +18,11 @@ TagManager:
   - Player Spawner
   - Stage Board
   - Player Bullet
+  - Bricks Tiles
+  - Metal Tiles
+  - Grid Tiles
+  - Slippery Floor Tiles
+  - Toxic Waste Tiles
   layers:
   - Default
   - TransparentFX
