@@ -49,10 +49,10 @@ public class PlayerData : ScriptableObject
 		}
 	}
 	
-	[SerializeField] private int initialScore;
-	[SerializeField] private int initialLives = 2;
-	[SerializeField] private int initialRank = 1;
-	[SerializeField] private int initialBonusLifeThreshold = 20000;
+	[SerializeField][Min(0)] private int initialScore;
+	[SerializeField][Min(0)] private int initialLives = 2;
+	[SerializeField][Min(1)] private int initialRank = 1;
+	[SerializeField][Min(1)] private int initialBonusLifeThreshold = 20000;
 
 	private int score, lives, rank, bonusLifeThreshold;
 
