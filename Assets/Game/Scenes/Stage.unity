@@ -2275,7 +2275,7 @@ GameObject:
   - component: {fileID: 1237164744}
   - component: {fileID: 1237164743}
   m_Layer: 0
-  m_Name: Stage UI Manager
+  m_Name: UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3705,7 +3705,7 @@ GameObject:
   - component: {fileID: 2065490861}
   - component: {fileID: 2065490863}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: Event System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
