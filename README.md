@@ -71,7 +71,7 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 - [ ] STAGE SELECTION
 	- [ ] Return to the main menu
 	- [ ] Inclusion of case when there are no stages to select
-	- [ ] Fast scroll of the stage numer when one of keys is being held
+	- [X] Fast scroll of the stage numer when one of keys is being held
 - [ ] STAGE
 	- [ ] Music
 	- [ ] Player 2
@@ -88,7 +88,7 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 - [ ] SCORE
 	- [ ] Refactoring of code
 	- [ ] Points count for the player 2
-	- [ ] Compatibility for every aspect ratio
+	- [X] Compatibility for every aspect ratio
 - [ ] GAME OVER
 	- [ ] Music
 - [ ] HIGH SCORE
