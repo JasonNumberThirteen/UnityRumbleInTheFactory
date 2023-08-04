@@ -1,6 +1,6 @@
 public class StageSelectionSceneManager : GameSceneManager
 {
-	public string stageSceneName;
+	public string mainMenuSceneName, stageSceneName;
 	public GameData gameData;
 	public PlayerData playerOneData, playerTwoData;
 
@@ -13,4 +13,6 @@ public class StageSelectionSceneManager : GameSceneManager
 		playerTwoData.ResetData();
 		LoadScene(stageSceneName);
 	}
+
+	public void BackToMainMenu() => LoadScene(mainMenuSceneName);
 }

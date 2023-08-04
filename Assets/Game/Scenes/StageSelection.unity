@@ -652,6 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77deae6813a8324db5e4668e37ca173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuSceneName: MainMenu
   stageSceneName: Stage
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playerOneData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}

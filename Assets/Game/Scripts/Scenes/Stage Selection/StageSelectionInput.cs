@@ -40,4 +40,5 @@ public class StageSelectionInput : MonoBehaviour
 	}
 
 	private void OnSubmit(InputValue iv) => sceneManager.StartGame(stageCounter.CurrentValue);
+	private void OnCancel(InputValue iv) => sceneManager.BackToMainMenu();
 }
