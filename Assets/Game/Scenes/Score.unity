@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 1301211826}
   - component: {fileID: 1301211825}
   m_Layer: 0
-  m_Name: Score UI Manager
+  m_Name: UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -977,7 +977,7 @@ GameObject:
   - component: {fileID: 1338957042}
   - component: {fileID: 1338957041}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: Event System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
