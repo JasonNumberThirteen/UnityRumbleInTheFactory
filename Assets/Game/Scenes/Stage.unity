@@ -1517,13 +1517,10 @@ MonoBehaviour:
   - {fileID: 2159015512042367978, guid: ed3dc77b4d7beb243acb315fe2c50a77, type: 3}
   - {fileID: 3965729446970126673, guid: d07c1574998c0eb46a9299fb356f54f5, type: 3}
   - {fileID: 6040602581942424668, guid: 045777a5e84481948a6f5e7c83619038, type: 3}
-  parents:
-  - {fileID: 362596205}
-  - {fileID: 1059412381}
-  - {fileID: 1527936925}
-  - {fileID: 1511393113}
-  - {fileID: 1460397762}
   positionOffset: {x: -6.75, y: -6.75}
+  stageWidthInTiles: 26
+  stageHeightInTiles: 26
+  tileSize: 0.5
 --- !u!4 &681417467
 Transform:
   m_ObjectHideFlags: 0
