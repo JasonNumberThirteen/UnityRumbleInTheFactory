@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afabcdd18ba018e4f997c593daa2019d, type: 3}
   m_Name: Enemy Robot Data
   m_EditorClassIdentifier: 
+  prefab: {fileID: 6405080330063127808, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
   score: 100
   sprite: {fileID: -1056247388, guid: cb86ba34a2897e049a3a62fafd953cb8, type: 3}
