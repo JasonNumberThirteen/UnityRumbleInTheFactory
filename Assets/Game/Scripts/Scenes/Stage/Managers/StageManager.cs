@@ -159,7 +159,7 @@ public class StageManager : MonoBehaviour
 
 	private void CheckEnemiesCount()
 	{
-		if(DefeatedEnemies == enemySpawnManager.enemies.Length && enemySpawnManager.NoEnemiesLeft())
+		if(DefeatedEnemies == enemySpawnManager.EnemiesCount() && enemySpawnManager.NoEnemiesLeft())
 		{
 			state = GameStates.WON;
 

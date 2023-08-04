@@ -3,15 +3,18 @@ using System.Collections;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-	public GameObject[] enemies;
+	public EnemyData[] enemiesData;
+	public GameData gameData;
 	public string spawnerTag;
 	public int enemiesLimit = 3;
 	public float spawnInterval = 2f;
 
+	private GameObject[] enemies;
 	private GameObject[] spawners;
 	private int enemyIndex, enemiesToSpawn, spawnerIndex;
 
-	public bool NoEnemiesLeft() => enemyIndex >= enemies.Length;
+	public bool NoEnemiesLeft() => enemyIndex >= EnemiesCount();
+	public int EnemiesCount() => enemies.Length;
 
 	public void StartSpawn()
 	{
@@ -20,7 +23,23 @@ public class EnemySpawnManager : MonoBehaviour
 		StartCoroutine(SpawnEnemies());
 	}
 
+	private void Awake() => AssignEnemiesFromCurrentStage();
 	private void FindSpawners() => spawners = GameObject.FindGameObjectsWithTag(spawnerTag);
+
+	private void AssignEnemiesFromCurrentStage()
+	{
+		int[] enemyIndexes = gameData.stages[gameData.stageNumber - 1].enemies;
+		int count = enemyIndexes.Length;
+		
+		enemies = new GameObject[count];
+
+		for (int i = 0; i < count; ++i)
+		{
+			int index = enemyIndexes[i];
+			
+			enemies[i] = enemiesData[index].prefab;
+		}
+	}
 
 	private void AssignEnemiesToSpawners()
 	{

@@ -61,7 +61,7 @@ public class StageUIManager : MonoBehaviour
 
 	private void CreateLeftEnemyIcons()
 	{
-		int amountOfEnemies = StageManager.instance.enemySpawnManager.enemies.Length;
+		int amountOfEnemies = StageManager.instance.enemySpawnManager.EnemiesCount();
 		int amountOfIcons = LeftEnemyIconsCount(amountOfEnemies);
 
 		leftEnemyIcons = new GameObject[amountOfIcons];
