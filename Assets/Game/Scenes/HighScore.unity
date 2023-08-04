@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 13780620}
   - component: {fileID: 13780619}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: Event System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 34691726}
   - component: {fileID: 34691725}
   m_Layer: 0
-  m_Name: High Score UI Manager
+  m_Name: UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -878,6 +878,9 @@ MonoBehaviour:
           m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1786411710
 Transform:
   m_ObjectHideFlags: 0
