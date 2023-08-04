@@ -12,7 +12,8 @@ public class StageManager : MonoBehaviour
 	public GameData gameData;
 	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer, sceneManagerTimer;
 	
-	public GameStates State {get; private set;} = GameStates.ACTIVE;
+	private GameStates state = GameStates.ACTIVE;
+
 	public int DefeatedEnemies
 	{
 		get
@@ -29,12 +30,17 @@ public class StageManager : MonoBehaviour
 
 	private int defeatedEnemies;
 
-	public enum GameStates
+	private enum GameStates
 	{
 		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
 	}
 
 	public void InitiatePlayerRespawn() => playerRespawnTimer.ResetTimer();
+	public bool IsActive() => state == GameStates.ACTIVE;
+	public bool IsPaused() => state == GameStates.PAUSED;
+	public bool IsInterrupted() => state == GameStates.INTERRUPTED;
+	public bool IsWon() => state == GameStates.WON;
+	public bool IsOver() => state == GameStates.OVER;
 
 	public void AttemptToRespawnPlayer()
 	{
@@ -57,7 +63,7 @@ public class StageManager : MonoBehaviour
 	{
 		gameOverTimer.StartTimer();
 
-		State = GameStates.INTERRUPTED;
+		state = GameStates.INTERRUPTED;
 	}
 
 	public void InitiateFreeze(float duration)
@@ -95,7 +101,7 @@ public class StageManager : MonoBehaviour
 
 	public void SetGameAsOver()
 	{
-		State = GameStates.OVER;
+		state = GameStates.OVER;
 		gameData.isOver = true;
 
 		DisablePlayer();
@@ -103,13 +109,13 @@ public class StageManager : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if(State == GameStates.INTERRUPTED || State == GameStates.WON || State == GameStates.OVER)
+		if(IsInterrupted() || IsWon() || IsOver())
 		{
 			return;
 		}
 
-		State = (State == GameStates.ACTIVE) ? GameStates.PAUSED : GameStates.ACTIVE;
-		Time.timeScale = State == GameStates.PAUSED ? 0f : 1f;
+		state = IsActive() ? GameStates.PAUSED : GameStates.ACTIVE;
+		Time.timeScale = IsPaused() ? 0f : 1f;
 
 		uiManager.ControlPauseTextDisplay();
 	}
@@ -155,7 +161,7 @@ public class StageManager : MonoBehaviour
 	{
 		if(DefeatedEnemies == enemySpawnManager.enemies.Length && enemySpawnManager.NoEnemiesLeft())
 		{
-			State = GameStates.WON;
+			state = GameStates.WON;
 
 			sceneManagerTimer.StartTimer();
 		}

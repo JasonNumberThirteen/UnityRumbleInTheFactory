@@ -12,7 +12,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void Start()
 	{
-		if(StageManager.instance.State == StageManager.GameStates.OVER)
+		if(StageManager.instance.IsOver())
 		{
 			Destroy(this);
 		}

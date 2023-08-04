@@ -13,7 +13,7 @@ public class StageUIManager : MonoBehaviour
 	private GameObject[] leftEnemyIcons;
 	private int leftEnemyIconIndex;
 
-	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.State == StageManager.GameStates.PAUSED);
+	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.IsPaused());
 
 	public void UpdateCounters()
 	{
