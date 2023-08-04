@@ -260,6 +260,7 @@ MonoBehaviour:
   sceneManager: {fileID: 1104572919}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   stagesLoader: {fileID: 731514314}
+  inputModule: {fileID: 1684065798}
 --- !u!114 &443464711
 MonoBehaviour:
   m_ObjectHideFlags: 0

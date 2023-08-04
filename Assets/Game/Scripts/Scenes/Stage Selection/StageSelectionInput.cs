@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class StageSelectionInput : MonoBehaviour
 {
@@ -7,12 +8,39 @@ public class StageSelectionInput : MonoBehaviour
 	public StageSelectionSceneManager sceneManager;
 	public GameData gameData;
 	public StagesLoader stagesLoader;
+	public InputSystemUIInputModule inputModule;
+
+	private int navigationDirection;
+	private float navigationTimer;
+
+	private void Update() => NavigateRepeatedly();
+
+	private void NavigateRepeatedly()
+	{
+		if(navigationDirection != 0)
+		{
+			if(navigationTimer >= 0)
+			{
+				navigationTimer -= Time.deltaTime;
+			}
+			else
+			{
+				ChangeStage(navigationDirection);
+
+				navigationTimer = inputModule.moveRepeatRate;
+			}
+		}
+		else if(navigationTimer != 0)
+		{
+			navigationTimer = 0;
+		}
+	}
 
 	private void OnNavigate(InputValue iv)
 	{
 		Vector2 inputVector = iv.Get<Vector2>();
-		
-		ChangeStage(inputVector.x);
+
+		navigationDirection = (int)inputVector.x;
 	}
 
 	private void ChangeStage(float x)
