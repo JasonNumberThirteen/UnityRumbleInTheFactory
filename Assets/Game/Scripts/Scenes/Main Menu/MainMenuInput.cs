@@ -46,5 +46,15 @@ public class MainMenuInput : MonoBehaviour
 		optionsController.SelectOption();
 	}
 
-	private void OnSubmit(InputValue iv) => optionsController.SubmitOption();
+	private void OnSubmit(InputValue iv)
+	{
+		if(mainMenuPanelTimer.Finished)
+		{
+			optionsController.SubmitOption();
+		}
+		else
+		{
+			mainMenuPanelTimer.InterruptTimer();
+		}
+	}
 }
