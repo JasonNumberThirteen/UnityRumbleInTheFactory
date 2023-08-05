@@ -75,13 +75,27 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 ```[tasklist]
 - [ ] STAGE SELECTION
 	- [X] Return to the main menu
+	- [ ] Automatic load of JSON files in directory
 	- [ ] Inclusion of case when there are no stages to select
 	- [X] Fast scroll of the stage numer when one of keys is being held
 - [ ] STAGE
 	- [ ] Music
 	- [ ] Player 2
+		- [ ] Input
+		- [ ] Spawn
+		- [ ] Points gain
+		- [ ] Sprite sheet
+		- [ ] Bullet prefab
 	- [ ] Bug fixes
+		- [ ] Clash of timer events when the nuke is destroyed as soon as defeated the last enemy (the score scene is loaded before the "Game Over" text stops moving)
+		- [ ] No bullet movement when the player change movement direction and steps on slippery floor tiles
+		- [ ] Bonus placement in inaccessible areas
+		- [ ] Clash of enemies when one of them is placed on a spawner and it spawned the other one
+		- [ ] Getting stuck by enemies after changing direction (occurs randomly)
 	- [ ] Adjustments
+		- [ ] Balance of the player robots statistics on every rank
+		- [ ] Growth of difficulty everytime when beaten the last stage
+		- [ ] Exclusion of tiles from stage data in occupied places (the nuke with bricks tiles surrounding it & spawners)
 	- [ ] Optimisations
 	- [ ] Sound effects
 	- [X] Flexible input
@@ -89,7 +103,7 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 	- [ ] New enemy types
 	- [ ] Refactoring of code
 	- [X] Compatibility for every aspect ratio
-	- [ ] Graphics of the player robot for every rank
+	- [ ] Graphics of the player robot for every rank (both players)
 - [ ] SCORE
 	- [ ] Refactoring of code
 	- [ ] Points count for the player 2
