@@ -5,6 +5,7 @@
 * [General information](#general-information)
 * [Used technologies](#used-technologies)
 * [Features](#features)
+* [Usage](#usage)
 * [Differences](#differences)
 * [Project status](#project-status)
 * [Screenshots](#screenshots)
@@ -48,6 +49,11 @@
 	- **Life** (gives the player additional life)
 - Enemy AI detecting which direction choose when it detects an obstacle (**uses raycasting with a layer mask**)
 
+## Usage
+- Press W / S / A / D keys or arrow keys to navigate through menus & control the player one robot
+- Press LMB / Space to shoot
+- Press RMB / Esc to pause
+
 ## Differences
 Although I did my best to keep the biggest part of the original game unchanged, there **ARE** some significant differences (some of them improve flexibility) and may not be noticeable at first sight.
 - Overall
@@ -78,7 +84,7 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 	- [ ] Adjustments
 	- [ ] Optimisations
 	- [ ] Sound effects
-	- [ ] Flexible input
+	- [X] Flexible input
 	- [ ] Gameplay tests
 	- [ ] New enemy types
 	- [ ] Refactoring of code
