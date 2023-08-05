@@ -2,23 +2,58 @@ using UnityEngine;
 
 public class RectTransformStretchTimedMover : MonoBehaviour
 {
-	public Vector2 targetOffsetMin, targetOffsetMax;
+	public enum WidthSide
+	{
+		NONE, LEFT, RIGHT
+	}
+
+	public enum HeightSide
+	{
+		NONE, TOP, BOTTOM
+	}
+	
 	public Timer timer;
+	public WidthSide widthSide;
+	public HeightSide heightSide;
+	public bool reverseDirection = false;
 
 	private RectTransform rectTransform;
-	private Vector2 initialOffsetMin, initialOffsetMax;
+	private Vector2 initialOffsetMin, initialOffsetMax, targetOffsetMin, targetOffsetMax;
 
 	private void Awake() => rectTransform = GetComponent<RectTransform>();
+	private void Start() => SetValues();
 	private bool ReachedTheTarget() => rectTransform.offsetMin == targetOffsetMin && rectTransform.offsetMax == targetOffsetMax;
 	private float MinimumOffsetDifferenceX() => targetOffsetMin.x - initialOffsetMin.x;
 	private float MinimumOffsetDifferenceY() => targetOffsetMin.y - initialOffsetMin.y;
 	private float MaximumOffsetDifferenceX() => targetOffsetMax.x - initialOffsetMax.x;
 	private float MaximumOffsetDifferenceY() => targetOffsetMax.y - initialOffsetMax.y;
 
-	private void Start()
+	private void SetValues()
 	{
+		rectTransform.offsetMin = InitialMinimumOffset();
+		rectTransform.offsetMax = InitialMaximumOffset();
 		initialOffsetMin = rectTransform.offsetMin;
 		initialOffsetMax = rectTransform.offsetMax;
+		targetOffsetMin = reverseDirection ? rectTransform.offsetMin*2 : rectTransform.offsetMin*0.5f;
+		targetOffsetMax = reverseDirection ? rectTransform.offsetMax*2 : rectTransform.offsetMax*0.5f;
+	}
+
+	private Vector2 InitialMinimumOffset()
+	{
+		int x = widthSide == WidthSide.LEFT ? Screen.width : 0;
+		int y = heightSide == HeightSide.BOTTOM ? Screen.height : 0;
+		Vector2 offset = new Vector2(x, y);
+
+		return reverseDirection ? offset*0.5f : offset;
+	}
+
+	private Vector2 InitialMaximumOffset()
+	{
+		int x = widthSide == WidthSide.RIGHT ? -Screen.width : 0;
+		int y = heightSide == HeightSide.TOP ? -Screen.height : 0;
+		Vector2 offset = new Vector2(x, y);
+
+		return reverseDirection ? offset*0.5f : offset;
 	}
 
 	private void Update()
