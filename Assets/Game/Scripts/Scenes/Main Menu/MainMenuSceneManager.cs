@@ -12,6 +12,7 @@ public class MainMenuSceneManager : GameSceneManager
 
 	private void StartGame(bool twoPlayersMode)
 	{
+		gameData.enteredStageSelection = true;
 		gameData.twoPlayersMode = twoPlayersMode;
 		
 		stageSelectionBackgroundTimer.StartTimer();

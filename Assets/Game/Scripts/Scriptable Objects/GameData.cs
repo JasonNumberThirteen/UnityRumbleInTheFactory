@@ -16,11 +16,11 @@ public class GameData : ScriptableObject
 	}
 	
 	public int highScore = 20000;
-	public bool twoPlayersMode, isOver, beatenHighScore;
+	public bool twoPlayersMode, isOver, beatenHighScore, enteredStageSelection;
 	public Stage[] stages;
 
 	private int stageNumber = 1;
 
 	public Stage CurrentStage() => stages[stageNumber - 1];
-	public void ResetData() => isOver = beatenHighScore = false;
+	public void ResetData() => isOver = beatenHighScore = enteredStageSelection = false;
 }
