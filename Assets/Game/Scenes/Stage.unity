@@ -1179,10 +1179,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1843182810}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1843182814}
+        m_TargetAssemblyTypeName: RectTransformMover, Assembly-CSharp
+        m_MethodName: SetPositionX
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3431,7 +3431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 32, y: 0}
   m_SizeDelta: {x: 32, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1843182812
@@ -3481,7 +3481,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1843182810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
+  m_Script: {fileID: 11500000, guid: df27e48cb539b5a4c998f033f4dcab09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1922023824
