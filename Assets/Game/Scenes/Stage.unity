@@ -699,10 +699,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 120467784}
     m_Modifications:
+    - target: {fileID: 870306800510336756, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 594759921}
     - target: {fileID: 2892230003766674560, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 120467784}
+    - target: {fileID: 3653667742059613410, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 594759921}
     - target: {fileID: 4209765517072453317, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: m_Name
       value: Stage Selection Background Panel
