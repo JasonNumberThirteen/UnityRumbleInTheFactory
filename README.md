@@ -7,6 +7,7 @@
 * [Features](#features)
 * [Differences](#differences)
 * [Project status](#project-status)
+* [Screenshots](#screenshots)
 * [Credits](#credits)
 
 ## General information
@@ -66,10 +67,8 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 **The project is completed in ~80%**. It still requires fixes, optimisations and upgrades. Detailed information about left tasks were written below (tasks are split by the scenes):
 
 ```[tasklist]
-- [ ] MAIN MENU
-	- [ ] Compatibility for every aspect ratio
 - [ ] STAGE SELECTION
-	- [ ] Return to the main menu
+	- [X] Return to the main menu
 	- [ ] Inclusion of case when there are no stages to select
 	- [X] Fast scroll of the stage numer when one of keys is being held
 - [ ] STAGE
@@ -83,7 +82,7 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 	- [ ] Gameplay tests
 	- [ ] New enemy types
 	- [ ] Refactoring of code
-	- [ ] Compatibility for every aspect ratio
+	- [X] Compatibility for every aspect ratio
 	- [ ] Graphics of the player robot for every rank
 - [ ] SCORE
 	- [ ] Refactoring of code
@@ -94,6 +93,14 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 - [ ] HIGH SCORE
 	- [ ] Music
 ```
+
+## Screenshots
+!["Rumble In The Factory"](./Screenshots/1.png?raw=true)
+!["Rumble In The Factory"](./Screenshots/2.png?raw=true)
+!["Rumble In The Factory"](./Screenshots/3.png?raw=true)
+!["Rumble In The Factory"](./Screenshots/4.png?raw=true)
+!["Rumble In The Factory"](./Screenshots/5.png?raw=true)
+!["Rumble In The Factory"](./Screenshots/6.png?raw=true)
 
 ## Credits
 This project was made by [Jason](https://jasonxiii.pl "Jason. Cała informatyka w jednym miejscu! Oficjalna strona internetowa! Setki artykułów na różne tematy! Wszystko stworzone przez jedną osobę!").
