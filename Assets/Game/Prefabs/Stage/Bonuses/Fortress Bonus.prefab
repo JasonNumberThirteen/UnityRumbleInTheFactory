@@ -122,5 +122,5 @@ MonoBehaviour:
   overlapBoxSize: 1.5
   overlapLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   metalTile: {fileID: 6712889474181035811, guid: bde2028975b227a49a3e4cd077f2c60c, type: 3}
