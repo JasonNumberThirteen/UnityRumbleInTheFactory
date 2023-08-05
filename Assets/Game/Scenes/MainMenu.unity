@@ -2105,6 +2105,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1749089707}
     m_Modifications:
+    - target: {fileID: 2892230003766674560, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1749089707}
     - target: {fileID: 4209765517072453317, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: m_Name
       value: Stage Selection Background Panel
@@ -2142,6 +2146,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 905126337}
     - target: {fileID: 7066068774657121137, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1749089707}
+    - target: {fileID: 7540451276290792055, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1749089707}
