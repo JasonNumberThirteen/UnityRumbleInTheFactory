@@ -2555,6 +2555,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 41da66c57a0c0b247bdd01eda268e1d6, type: 2}
   - {fileID: 11400000, guid: 67ba0b7c652cff046ae8c98bc2bfd72c, type: 2}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+  enemyTag: Enemy
   spawnerTag: Enemy Spawner
   enemiesLimit: 3
   spawnInterval: 2

@@ -1,16 +1,16 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
 	public EnemyData[] enemiesData;
 	public GameData gameData;
-	public string spawnerTag;
-	public int enemiesLimit = 3;
-	public float spawnInterval = 2f;
+	public string enemyTag, spawnerTag;
+	[Min(1)] public int enemiesLimit = 3;
+	[Min(0.01f)] public float spawnInterval = 2f;
 
-	private GameObject[] enemies;
-	private GameObject[] spawners;
+	private GameObject[] enemies, spawners;
 	private int enemyIndex, enemiesToSpawn, spawnerIndex;
 
 	public bool NoEnemiesLeft() => enemyIndex >= EnemiesCount();
@@ -45,15 +45,31 @@ public class EnemySpawnManager : MonoBehaviour
 	{
 		foreach (GameObject spawner in spawners)
 		{
-			EntitySpawner es = spawner.GetComponent<EntitySpawner>();
-
-			if(es != null)
-			{
-				es.entity = enemies[enemyIndex++];
-
-				StageManager.instance.uiManager.RemoveLeftEnemyIcon();
-			}
+			AssignEnemyToSpawner(spawner, OnEnemyAssignAtStart);
 		}
+	}
+
+	private void AssignEnemyToSpawner(GameObject spawner, Action<EntitySpawner> OnAssign)
+	{
+		if(spawner.TryGetComponent(out EntitySpawner es))
+		{
+			OnAssign(es);
+		}
+	}
+
+	private void OnEnemySpawnContinued(EntitySpawner es)
+	{
+		OnEnemyAssignAtStart(es);
+
+		--enemiesToSpawn;
+		spawnerIndex = (spawnerIndex + 1) % spawners.Length;
+	}
+
+	private void OnEnemyAssignAtStart(EntitySpawner es)
+	{
+		es.entity = enemies[enemyIndex++];
+
+		StageManager.instance.uiManager.RemoveLeftEnemyIcon();
 	}
 
 	private IEnumerator SpawnEnemies()
@@ -67,32 +83,30 @@ public class EnemySpawnManager : MonoBehaviour
 		}
 	}
 
+	private void DetermineEnemiesToSpawn()
+	{
+		int aliveEnemies = GameObject.FindGameObjectsWithTag(enemyTag).Length;
+		int missingEnemies = enemiesLimit - aliveEnemies;
+		
+		enemiesToSpawn = Mathf.Max(0, missingEnemies);
+	}
+
 	private void ResetSpawnersTimers()
 	{
 		while (enemiesToSpawn > 0 && enemyIndex < enemies.Length)
 		{
 			GameObject spawner = spawners[spawnerIndex];
-			Timer timer = spawner.GetComponent<Timer>();
-			EntitySpawner es = spawner.GetComponent<EntitySpawner>();
 
-			timer.ResetTimer();
-
-			if(es != null)
-			{
-				es.entity = enemies[enemyIndex++];
-				--enemiesToSpawn;
-				spawnerIndex = (spawnerIndex + 1) % spawners.Length;
-
-				StageManager.instance.uiManager.RemoveLeftEnemyIcon();
-			}
+			ResetSpawnerTimer(spawner);
+			AssignEnemyToSpawner(spawner, OnEnemySpawnContinued);
 		}
 	}
 
-	private void DetermineEnemiesToSpawn()
+	private void ResetSpawnerTimer(GameObject spawner)
 	{
-		int aliveEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-		int missingEnemies = enemiesLimit - aliveEnemies;
-		
-		enemiesToSpawn = Mathf.Max(0, missingEnemies);
+		if(spawner.TryGetComponent(out Timer timer))
+		{
+			timer.ResetTimer();
+		}
 	}
 }
