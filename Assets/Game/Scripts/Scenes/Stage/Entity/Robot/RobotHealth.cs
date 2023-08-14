@@ -32,9 +32,7 @@ public class RobotHealth : MonoBehaviour
 
 	protected virtual void Die()
 	{
-		EntityExploder ee = GetComponent<EntityExploder>();
-
-		if(ee != null)
+		if(TryGetComponent(out EntityExploder ee))
 		{
 			ee.Explode();
 		}
