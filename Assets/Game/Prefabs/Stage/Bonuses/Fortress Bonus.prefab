@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   duration: 20
+  nukeTag: Nuke
   overlapBoxSize: 1.5
   overlapLayers:
     serializedVersion: 2

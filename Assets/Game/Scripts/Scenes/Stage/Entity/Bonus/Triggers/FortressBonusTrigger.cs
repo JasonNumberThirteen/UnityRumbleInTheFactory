@@ -2,39 +2,75 @@ using UnityEngine;
 
 public class FortressBonusTrigger : TimedBonusTrigger
 {
+	public string nukeTag;
 	[Min(0f)] public float overlapBoxSize = 1.5f;
 	public LayerMask overlapLayers;
 	public GameObject metalTile;
+
+	private GameObject nuke;
 	
 	public override void TriggerEffect(GameObject sender)
 	{
-		GameObject nuke = GameObject.FindGameObjectWithTag("Nuke");
-		Collider2D nukeCollider = nuke.GetComponent<Collider2D>();
-		Collider2D[] colliders = Physics2D.OverlapBoxAll(nuke.transform.position, Vector2.one*overlapBoxSize, 0f, overlapLayers);
+		nuke = GameObject.FindGameObjectWithTag(nukeTag);
+
+		if(nuke != null)
+		{
+			DestroyAllObjectsAroundTheNuke();
+			InstantiateMetalTilesAroundTheNuke();
+		}
+
+		base.TriggerEffect(sender);
+	}
+	
+	private void DestroyAllObjectsAroundTheNuke()
+	{
+		Vector2 size = Vector2.one*overlapBoxSize;
+		Collider2D[] colliders = Physics2D.OverlapBoxAll(nuke.transform.position, size, 0f, overlapLayers);
 
 		foreach (Collider2D collider in colliders)
 		{
 			Destroy(collider.gameObject);
 		}
+	}
 
+	private void InstantiateMetalTilesAroundTheNuke()
+	{
 		for (int y = 0; y <= 2; ++y)
 		{
 			for (int x = 0; x <= 3; ++x)
 			{
-				Vector2 topLeftPosition = new Vector2(-1.25f, -6.25f);
-				Vector2 offset = new Vector2(x, y)*0.5f;
-				Vector2 finalPosition = topLeftPosition + offset;
-				
-				if(!nukeCollider.OverlapPoint(finalPosition))
-				{
-					GameObject instance = Instantiate(metalTile, finalPosition, Quaternion.identity);
-					Timer timer = instance.GetComponent<Timer>();
-
-					timer.duration = duration;
-				}
+				InstantiateMetalTile(x, y);
 			}
 		}
+	}
 
-		base.TriggerEffect(sender);
+	private void InstantiateMetalTile(int x, int y)
+	{
+		Vector2 position = MetalTilePosition(x, y);
+
+		if(MetalTileCanBePlaced(position))
+		{
+			GameObject instance = Instantiate(metalTile, position, Quaternion.identity);
+			
+			SetMetalTileTimer(instance);
+		}
+	}
+
+	private Vector2 MetalTilePosition(int x, int y)
+	{
+		Vector2 topLeftPosition = new Vector2(-1.25f, -6.25f);
+		Vector2 offset = new Vector2(x, y)*0.5f;
+		
+		return topLeftPosition + offset;
+	}
+
+	private bool MetalTileCanBePlaced(Vector2 position) => nuke.TryGetComponent(out Collider2D nukeCollider) && !nukeCollider.OverlapPoint(position);
+
+	private void SetMetalTileTimer(GameObject metalTile)
+	{
+		if(metalTile.TryGetComponent(out Timer timer))
+		{
+			timer.duration = duration;
+		}
 	}
 }
