@@ -2,7 +2,17 @@ using UnityEngine;
 
 public class PlayerRobotShoot : RobotShoot
 {
+	public string bulletTag;
+	
 	private PlayerRobotRank rank;
+
+	public override void FireBullet()
+	{
+		if(!FiredAllBulletsAlready())
+		{
+			InstantiateBullet();
+		}
+	}
 
 	protected override void Awake()
 	{
@@ -10,26 +20,29 @@ public class PlayerRobotShoot : RobotShoot
 
 		rank = GetComponent<PlayerRobotRank>();
 	}
-	
-	public override void FireBullet()
+
+	private bool FiredAllBulletsAlready() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= rank.CurrentRank.bulletLimit;
+	private Vector2 BulletPosition() => (Vector2)transform.position + BulletDirection()*offsetFromObject;
+
+	private void InstantiateBullet()
 	{
-		if(GameObject.FindGameObjectsWithTag("Player Bullet").Length >= rank.CurrentRank.bulletLimit)
-		{
-			return;
-		}
+		GameObject instance = Instantiate(bullet, BulletPosition(), Quaternion.identity);
 		
-		Vector2 position = transform.position;
-		Vector2 bulletDirection = BulletDirection();
-		GameObject instance = Instantiate(bullet, position + bulletDirection*offsetFromObject, Quaternion.identity);
-		EntityMovement em = instance.GetComponent<EntityMovement>();
-		BulletStats bs = instance.GetComponent<BulletStats>();
+		SetMovementDirectionToBullet(instance);
+		SetStatsToBullet(instance);
+	}
 
-		if(em != null)
+	private void SetMovementDirectionToBullet(GameObject bullet)
+	{
+		if(bullet.TryGetComponent(out EntityMovement em))
 		{
-			em.Direction = bulletDirection;
+			em.Direction = BulletDirection();
 		}
+	}
 
-		if(bs != null)
+	private void SetStatsToBullet(GameObject bullet)
+	{
+		if(bullet.TryGetComponent(out BulletStats bs))
 		{
 			bs.damage = rank.CurrentRank.damage;
 			bs.speed = rank.CurrentRank.bulletSpeed;
