@@ -46,8 +46,7 @@ public class StageManager : MonoBehaviour
 	{
 		if(playerData.Lives-- > 0)
 		{
-			playerData.Rank = 1;
-
+			playerData.OnRespawn();
 			playerSpawnerTimer.ResetTimer();
 		}
 		else

@@ -60,11 +60,13 @@ public class PlayerData : ScriptableObject
 	{
 		score = initialScore;
 		lives = initialLives;
-		rank = initialRank;
 		bonusLifeThreshold = initialBonusLifeThreshold;
 
+		ResetRank();
 		DefeatedEnemies.Clear();
 	}
+
+	public void OnRespawn() => ResetRank();
 
 	public void AddDefeatedEnemy(EnemyData enemyData)
 	{
@@ -77,6 +79,8 @@ public class PlayerData : ScriptableObject
 			DefeatedEnemies.Add(enemyData, 1);
 		}
 	}
+
+	private void ResetRank() => rank = initialRank;
 
 	private void CheckBonusLifeThreshold()
 	{
