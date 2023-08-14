@@ -4,6 +4,7 @@ public class StageManager : MonoBehaviour
 {
 	public static StageManager instance = null;
 
+	public string playerTag, enemyTag;
 	[Min(0)] public int pointsForBonus = 500;
 	[Min(0.01f)] public float playerRespawnDelay = 1f;
 	public StageUIManager uiManager;
@@ -11,8 +12,6 @@ public class StageManager : MonoBehaviour
 	public PlayerData playerData;
 	public GameData gameData;
 	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer, sceneManagerTimer;
-	
-	private GameStates state = GameStates.ACTIVE;
 
 	public int DefeatedEnemies
 	{
@@ -28,6 +27,7 @@ public class StageManager : MonoBehaviour
 		}
 	}
 
+	private GameStates state = GameStates.ACTIVE;
 	private int defeatedEnemies;
 
 	private enum GameStates
@@ -35,7 +35,12 @@ public class StageManager : MonoBehaviour
 		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
 	}
 
+	public void FreezeAllEnemies() => SetEnemiesFreeze(true);
+	public void UnfreezeAllEnemies() => SetEnemiesFreeze(false);
+	public GameObject[] FoundEnemies() => GameObject.FindGameObjectsWithTag(enemyTag);
+	public void ResetDefeatedEnemiesByPlayer() => playerData.DefeatedEnemies.Clear();
 	public void InitiatePlayerRespawn() => playerRespawnTimer.ResetTimer();
+	public bool EnemiesAreFrozen() => freezeTimer.Started;
 	public bool IsActive() => state == GameStates.ACTIVE;
 	public bool IsPaused() => state == GameStates.PAUSED;
 	public bool IsInterrupted() => state == GameStates.INTERRUPTED;
@@ -56,56 +61,6 @@ public class StageManager : MonoBehaviour
 		}
 	}
 
-	public void ResetDefeatedEnemiesByPlayer() => playerData.DefeatedEnemies.Clear();
-
-	public void InterruptGame()
-	{
-		gameOverTimer.StartTimer();
-
-		state = GameStates.INTERRUPTED;
-	}
-
-	public void InitiateFreeze(float duration)
-	{
-		freezeTimer.duration = duration;
-
-		freezeTimer.ResetTimer();
-	}
-
-	public void FreezeAllEnemies()
-	{
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-		foreach (GameObject enemy in enemies)
-		{
-			EnemyRobotFreeze erf = enemy.GetComponent<EnemyRobotFreeze>();
-
-			erf.Freeze();
-		}
-	}
-
-	public void UnfreezeAllEnemies()
-	{
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-		foreach (GameObject enemy in enemies)
-		{
-			EnemyRobotFreeze erf = enemy.GetComponent<EnemyRobotFreeze>();
-
-			erf.Unfreeze();
-		}
-	}
-
-	public bool EnemiesAreFrozen() => freezeTimer.Started;
-
-	public void SetGameAsOver()
-	{
-		state = GameStates.OVER;
-		gameData.isOver = true;
-
-		DisablePlayer();
-	}
-
 	public void PauseGame()
 	{
 		if(IsInterrupted() || IsWon() || IsOver())
@@ -119,30 +74,70 @@ public class StageManager : MonoBehaviour
 		uiManager.ControlPauseTextDisplay();
 	}
 
+	public void InterruptGame()
+	{
+		state = GameStates.INTERRUPTED;
+		
+		gameOverTimer.StartTimer();
+	}
+
+	public void SetGameAsOver()
+	{
+		state = GameStates.OVER;
+		gameData.isOver = true;
+
+		DisablePlayer();
+	}
+
 	public void DisablePlayer()
 	{
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		GameObject player = GameObject.FindGameObjectWithTag(playerTag);
 
 		if(player != null)
 		{
-			EntityMovement em = player.GetComponent<EntityMovement>();
-			RobotShoot rs = player.GetComponent<RobotShoot>();
-
-			if(em != null)
+			if(player.TryGetComponent(out EntityMovement em))
 			{
 				em.Direction = Vector2.zero;
 
 				Destroy(em);
 			}
 
-			if(rs != null)
+			if(player.TryGetComponent(out RobotShoot rs))
 			{
 				Destroy(rs);
 			}
 		}
 	}
+
+	public void InitiateFreeze(float duration)
+	{
+		freezeTimer.duration = duration;
+
+		freezeTimer.ResetTimer();
+	}
+
+	public void SetEnemiesFreeze(bool freeze)
+	{
+		GameObject[] enemies = FoundEnemies();
+
+		foreach (GameObject enemy in enemies)
+		{
+			if(enemy.TryGetComponent(out EnemyRobotFreeze erf))
+			{
+				if(freeze)
+				{
+					erf.Freeze();
+				}
+				else
+				{
+					erf.Unfreeze();
+				}
+			}
+		}
+	}
 	
 	private void Awake() => CheckSingleton();
+	private bool WonTheGame() => DefeatedEnemies == enemySpawnManager.EnemiesCount() && enemySpawnManager.NoEnemiesLeft();
 
 	private void CheckSingleton()
 	{
@@ -158,7 +153,7 @@ public class StageManager : MonoBehaviour
 
 	private void CheckEnemiesCount()
 	{
-		if(DefeatedEnemies == enemySpawnManager.EnemiesCount() && enemySpawnManager.NoEnemiesLeft())
+		if(WonTheGame())
 		{
 			state = GameStates.WON;
 

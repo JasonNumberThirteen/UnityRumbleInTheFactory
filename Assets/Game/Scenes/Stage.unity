@@ -2616,6 +2616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d005eff31c507f448ac71f32913ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTag: Player
+  enemyTag: Enemy
   pointsForBonus: 500
   playerRespawnDelay: 1
   uiManager: {fileID: 1237164743}
