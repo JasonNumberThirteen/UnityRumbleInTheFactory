@@ -22,6 +22,6 @@ public class FortressMetalRenderer : MonoBehaviour
 		Timer timer = GetComponent<Timer>();
 		float blinkDelay = timer.duration - timeForBlinkStart;
 		
-		InvokeRepeating("SwapSprite", blinkDelay, blinkDuration);
+		InvokeRepeating(nameof(SwapSprite), blinkDelay, blinkDuration);
 	}
 }
