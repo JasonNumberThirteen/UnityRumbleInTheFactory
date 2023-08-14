@@ -6,18 +6,27 @@ public class DestructionBonusTrigger : BonusTrigger
 	
 	public override void TriggerEffect(GameObject sender)
 	{
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		DestroyAllFoundEnemies();
+		base.TriggerEffect(sender);
+	}
 
+	private void DestroyAllFoundEnemies()
+	{
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		
 		foreach (GameObject enemy in enemies)
 		{
-			if(enemy.TryGetComponent<EntityExploder>(out EntityExploder ee))
-			{
-				ee.Explode();
-			}
+			DestroyEnemy(enemy);
+		}
+	}
+
+	private void DestroyEnemy(GameObject enemy)
+	{
+		if(enemy.TryGetComponent(out EntityExploder ee))
+		{
+			ee.Explode();
 		}
 
-		StageManager.instance.DefeatedEnemies += enemies.Length;
-		
-		base.TriggerEffect(sender);
+		++StageManager.instance.DefeatedEnemies;
 	}
 }
