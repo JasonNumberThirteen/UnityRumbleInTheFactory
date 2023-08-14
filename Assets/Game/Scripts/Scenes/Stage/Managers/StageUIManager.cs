@@ -32,7 +32,7 @@ public class StageUIManager : MonoBehaviour
 	public void InstantiateGainedPointsCounter(Vector2 position, int points)
 	{
 		GameObject instance = Instantiate(gainedPointsCounter, parent.transform);
-
+		
 		if(instance.TryGetComponent(out RectTransform rt))
 		{
 			rt.anchoredPosition = GainedPointsCounterPosition(position);
@@ -82,9 +82,9 @@ public class StageUIManager : MonoBehaviour
 	{
 		GameObject instance = Instantiate(leftEnemyIcon, hud.transform);
 		
-		if(instance.TryGetComponent(out RectTransform rt))
+		if(instance.TryGetComponent(out RectTransformMover rtm))
 		{
-			rt.anchoredPosition = LeftEnemyIconPosition(index);
+			rtm.SetPosition(LeftEnemyIconPosition(index));
 		}
 
 		leftEnemyIcons[index] = instance;

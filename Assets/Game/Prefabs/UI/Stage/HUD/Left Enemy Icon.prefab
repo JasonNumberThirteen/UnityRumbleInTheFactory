@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7207713706045363268}
   - component: {fileID: 4580809863579532483}
   - component: {fileID: 567548434196797363}
+  - component: {fileID: 1279877971073311193}
   m_Layer: 5
   m_Name: Left Enemy Icon
   m_TagString: Untagged
@@ -76,3 +77,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1279877971073311193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662676234940326363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df27e48cb539b5a4c998f033f4dcab09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
