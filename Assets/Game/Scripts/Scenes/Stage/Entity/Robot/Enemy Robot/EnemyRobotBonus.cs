@@ -7,9 +7,9 @@ public class EnemyRobotBonus : MonoBehaviour
 
 	public void SpawnBonus()
 	{
-		int index = Random.Range(0, bonuses.Length);
-
-		Instantiate(bonuses[index]);
+		Instantiate(bonuses[BonusIndex()]);
 		Destroy(this);
 	}
+
+	private int BonusIndex() => Random.Range(0, bonuses.Length);
 }
