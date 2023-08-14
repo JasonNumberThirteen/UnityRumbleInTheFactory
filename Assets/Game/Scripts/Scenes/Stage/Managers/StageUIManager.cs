@@ -33,9 +33,9 @@ public class StageUIManager : MonoBehaviour
 	{
 		GameObject instance = Instantiate(gainedPointsCounter, parent.transform);
 		
-		if(instance.TryGetComponent(out RectTransform rt))
+		if(instance.TryGetComponent(out RectTransformMover rtm))
 		{
-			rt.anchoredPosition = GainedPointsCounterPosition(position);
+			rtm.SetPosition(GainedPointsCounterPosition(position));
 		}
 
 		if(instance.TryGetComponent(out TextMeshProUGUI text))
