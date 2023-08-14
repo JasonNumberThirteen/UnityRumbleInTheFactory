@@ -10,7 +10,7 @@ public class PlayerRobotShoot : RobotShoot
 	{
 		if(!FiredAllBulletsAlready())
 		{
-			InstantiateBullet();
+			base.FireBullet();
 		}
 	}
 
@@ -21,24 +21,13 @@ public class PlayerRobotShoot : RobotShoot
 		rank = GetComponent<PlayerRobotRank>();
 	}
 
+	protected override void SetBullet(GameObject bullet)
+	{
+		base.SetBullet(bullet);
+		SetStatsToBullet(bullet);
+	}
+
 	private bool FiredAllBulletsAlready() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= rank.CurrentRank.bulletLimit;
-	private Vector2 BulletPosition() => (Vector2)transform.position + BulletDirection()*offsetFromObject;
-
-	private void InstantiateBullet()
-	{
-		GameObject instance = Instantiate(bullet, BulletPosition(), Quaternion.identity);
-		
-		SetMovementDirectionToBullet(instance);
-		SetStatsToBullet(instance);
-	}
-
-	private void SetMovementDirectionToBullet(GameObject bullet)
-	{
-		if(bullet.TryGetComponent(out EntityMovement em))
-		{
-			em.Direction = BulletDirection();
-		}
-	}
 
 	private void SetStatsToBullet(GameObject bullet)
 	{

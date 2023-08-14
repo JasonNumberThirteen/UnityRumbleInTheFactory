@@ -7,20 +7,11 @@ public class RobotShoot : MonoBehaviour
 
 	protected Animator animator;
 
-	public virtual void FireBullet()
-	{
-		Vector2 position = transform.position;
-		Vector2 bulletDirection = BulletDirection();
-		GameObject instance = Instantiate(bullet, position + bulletDirection*offsetFromObject, Quaternion.identity);
-		EntityMovement em = instance.GetComponent<EntityMovement>();
-
-		if(em != null)
-		{
-			em.Direction = bulletDirection;
-		}
-	}
-
+	public virtual void FireBullet() => SetBullet(BulletInstance());
 	protected virtual void Awake() => animator = GetComponent<Animator>();
+	protected virtual void SetBullet(GameObject bullet) => SetMovementDirectionToBullet(bullet);
+	protected GameObject BulletInstance() => Instantiate(bullet, BulletPosition(), Quaternion.identity);
+	protected Vector2 BulletPosition() => (Vector2)transform.position + BulletDirection()*offsetFromObject;
 
 	protected virtual Vector2 BulletDirection()
 	{
@@ -28,5 +19,13 @@ public class RobotShoot : MonoBehaviour
 		int y = animator.GetInteger("MovementY");
 
 		return new Vector2(x, y);
+	}
+
+	protected void SetMovementDirectionToBullet(GameObject bullet)
+	{
+		if(bullet.TryGetComponent(out EntityMovement em))
+		{
+			em.Direction = BulletDirection();
+		}
 	}
 }
