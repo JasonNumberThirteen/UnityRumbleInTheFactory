@@ -15,6 +15,6 @@ public class HighScoreTextMaskColor : MonoBehaviour
 		startColor = image.color;
 	}
 
-	private void Start() => InvokeRepeating("ChangeColor", blinkDelay, blinkDelay);
+	private void Start() => InvokeRepeating(nameof(ChangeColor), blinkDelay, blinkDelay);
 	private void ChangeColor() => image.color = (image.color == startColor) ? targetColor : startColor;
 }
