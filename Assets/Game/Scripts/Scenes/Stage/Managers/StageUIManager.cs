@@ -38,9 +38,9 @@ public class StageUIManager : MonoBehaviour
 			rtm.SetPosition(GainedPointsCounterPosition(position));
 		}
 
-		if(instance.TryGetComponent(out TextMeshProUGUI text))
+		if(instance.TryGetComponent(out Counter counter))
 		{
-			text.text = points.ToString();
+			counter.SetTo(points);
 		}
 	}
 	
