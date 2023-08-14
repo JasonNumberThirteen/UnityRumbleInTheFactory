@@ -11,6 +11,7 @@ public class NukeRenderer : MonoBehaviour
 		if(SpriteIsDifferent())
 		{
 			SetSprite();
+			Destroy(this);
 		}
 	}
 

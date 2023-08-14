@@ -19,7 +19,6 @@ public class NukeTrigger : MonoBehaviour, ITriggerable
 		if(TryGetComponent(out NukeRenderer nr))
 		{
 			nr.ChangeToDestroyedState();
-			Destroy(nr);
 		}
 	}
 
