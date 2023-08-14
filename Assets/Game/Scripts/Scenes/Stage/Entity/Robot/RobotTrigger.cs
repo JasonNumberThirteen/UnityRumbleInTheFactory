@@ -6,9 +6,7 @@ public class RobotTrigger : MonoBehaviour, ITriggerable
 	
 	public virtual void TriggerEffect(GameObject sender)
 	{
-		BulletStats bs = sender.GetComponent<BulletStats>();
-
-		if(bs != null)
+		if(sender.TryGetComponent(out BulletStats bs))
 		{
 			health.CurrentHealth -= bs.damage;
 		}
