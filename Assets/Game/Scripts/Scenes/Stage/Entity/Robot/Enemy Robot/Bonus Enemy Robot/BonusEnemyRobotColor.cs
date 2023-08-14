@@ -8,9 +8,13 @@ public class BonusEnemyRobotColor : MonoBehaviour
 	private SpriteRenderer spriteRenderer;
 	private Color initialColor;
 
-	private void Awake() => spriteRenderer = GetComponent<SpriteRenderer>();
-	private void Start() => initialColor = spriteRenderer.color;
 	private void Update() => LerpColor();
+
+	private void Awake()
+	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		initialColor = spriteRenderer.color;
+	}
 
 	private void LerpColor()
 	{
