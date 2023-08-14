@@ -4,13 +4,11 @@ public class BricksParentDestroyer : MonoBehaviour
 {
 	[Min(0.01f)] public float childCheckDelay = 5f;
 	
-	private void Start() => InvokeRepeating("CheckChildCount", childCheckDelay, childCheckDelay);
+	private void Start() => InvokeRepeating(nameof(CheckChildCount), childCheckDelay, childCheckDelay);
 
 	private void CheckChildCount()
 	{
-		int count = gameObject.transform.childCount;
-
-		if(count == 0)
+		if(gameObject.transform.childCount == 0)
 		{
 			Destroy(gameObject);
 		}
