@@ -15,14 +15,16 @@ public class BulletTrigger : MonoBehaviour
 			}
 		}
 
-		ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
+		TriggerEffectOnCollider(collider);
+		Instantiate(splatterEffect, gameObject.transform.position, Quaternion.identity);
+		Destroy(gameObject);
+	}
 
-		if(triggerable != null)
+	private void TriggerEffectOnCollider(Collider2D collider)
+	{
+		if(collider.gameObject.TryGetComponent(out ITriggerable triggerable))
 		{
 			triggerable.TriggerEffect(gameObject);
 		}
-		
-		Instantiate(splatterEffect, gameObject.transform.position, Quaternion.identity);
-		Destroy(gameObject);
 	}
 }
