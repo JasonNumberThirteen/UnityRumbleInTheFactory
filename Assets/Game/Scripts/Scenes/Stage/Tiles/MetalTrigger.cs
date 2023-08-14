@@ -4,11 +4,11 @@ public class MetalTrigger : MonoBehaviour, ITriggerable
 {
 	public void TriggerEffect(GameObject sender)
 	{
-		BulletStats bs = sender.GetComponent<BulletStats>();
-
-		if(bs != null && bs.canDestroyMetal)
+		if(CanBeDestroyedByBullet(sender))
 		{
 			Destroy(gameObject);
 		}
 	}
+
+	private bool CanBeDestroyedByBullet(GameObject sender) => sender.TryGetComponent(out BulletStats bs) && bs.canDestroyMetal;
 }
