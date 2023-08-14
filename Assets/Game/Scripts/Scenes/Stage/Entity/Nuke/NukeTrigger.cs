@@ -6,22 +6,28 @@ public class NukeTrigger : MonoBehaviour, ITriggerable
 	
 	public void TriggerEffect(GameObject sender)
 	{
-		NukeRenderer nr = GetComponent<NukeRenderer>();
-		EntityExploder ee = GetComponent<EntityExploder>();
+		ChangeLayer();
+		ChangeRendererSprite();
+		Explode();
+		StageManager.instance.InterruptGame();
+	}
 
-		if(nr != null)
+	private void ChangeLayer() => gameObject.layer = LayerMask.NameToLayer(destroyedStateLayer);
+
+	private void ChangeRendererSprite()
+	{
+		if(TryGetComponent(out NukeRenderer nr))
 		{
 			nr.ChangeToDestroyedState();
 			Destroy(nr);
 		}
-		
-		if(ee != null)
+	}
+
+	private void Explode()
+	{
+		if(TryGetComponent(out EntityExploder ee))
 		{
 			ee.Explode();
 		}
-
-		gameObject.layer = LayerMask.NameToLayer(destroyedStateLayer);
-
-		StageManager.instance.InterruptGame();
 	}
 }
