@@ -3,36 +3,20 @@ using UnityEngine;
 public class PlayerRobotTrigger : RobotTrigger
 {
 	public PlayerData data;
-	
-	private PlayerRobotMovement movement;
 
 	public override void TriggerEffect(GameObject sender)
 	{
-		PlayerRobotShield shield = GetComponent<PlayerRobotShield>();
-
-		if(shield != null)
+		if(!ShieldIsActive())
 		{
-			if(shield.ShieldTimer.gameObject.activeInHierarchy)
-			{
-				return;
-			}
+			base.TriggerEffect(sender);
 		}
-		
-		base.TriggerEffect(sender);
 	}
 
-	protected override void Awake()
-	{
-		base.Awake();
-		
-		movement = GetComponent<PlayerRobotMovement>();
-	}
+	private bool ShieldIsActive() => TryGetComponent(out PlayerRobotShield prs) && prs.ShieldTimer.gameObject.activeInHierarchy;
 
 	private void OnTriggerStay2D(Collider2D collider)
 	{
-		ITriggerable triggerable = collider.gameObject.GetComponent<ITriggerable>();
-
-		if(triggerable != null)
+		if(collider.gameObject.TryGetComponent(out ITriggerable triggerable))
 		{
 			triggerable.TriggerEffect(gameObject);
 		}
@@ -40,11 +24,9 @@ public class PlayerRobotTrigger : RobotTrigger
 
 	private void OnTriggerExit2D(Collider2D collider)
 	{
-		IReversibleTrigger reversibleTrigger = collider.gameObject.GetComponent<IReversibleTrigger>();
-
-		if(reversibleTrigger != null)
+		if(collider.gameObject.TryGetComponent(out IReversibleTrigger rt))
 		{
-			reversibleTrigger.ReverseTriggerEffect(gameObject);
+			rt.ReverseTriggerEffect(gameObject);
 		}
 	}
 }
