@@ -9,6 +9,7 @@ public class StageBuilder : MonoBehaviour
 	[Min(0.01f)] public float tileSize;
 
 	private void Start() => BuildStage();
+	private Vector2 BoardPosition(int index) => new Vector2(BoardPositionX(index), BoardPositionY(index));
 	private int BoardPositionX(int index) => index % stageWidthInTiles;
 	private int BoardPositionY(int index) => stageHeightInTiles - BoardPositionOffsetY(index);
 	private int BoardPositionOffsetY(int index) => Mathf.FloorToInt(index / stageHeightInTiles);
@@ -17,22 +18,21 @@ public class StageBuilder : MonoBehaviour
 
 	private void BuildStage()
 	{
-		Stage stage = gameData.CurrentStage();
-		int[] tilesIndexes = stage.tiles;
+		int[] tilesIndexes = gameData.CurrentStage().tiles;
 
 		for (int i = 0; i < tilesIndexes.Length; ++i)
 		{
-			int tileIndex = tilesIndexes[i] - 1;
+			InstantiateTile(i, tilesIndexes[i] - 1);
+		}
+	}
 
-			if(TileExistsOnTheIndex(tileIndex))
-			{
-				int boardX = BoardPositionX(i);
-				int boardY = BoardPositionY(i);
-				Vector2 boardPosition = new Vector2(boardX, boardY);
-				Vector2 tilePosition = TilePosition(boardPosition);
-				
-				Instantiate(tiles[tileIndex], tilePosition, Quaternion.identity);
-			}
+	private void InstantiateTile(int loopIndex, int tileIndex)
+	{
+		if(TileExistsOnTheIndex(tileIndex))
+		{
+			Vector2 position = TilePosition(BoardPosition(loopIndex));
+			
+			Instantiate(tiles[tileIndex], position, Quaternion.identity);
 		}
 	}
 }
