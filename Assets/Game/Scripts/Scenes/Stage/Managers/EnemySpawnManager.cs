@@ -69,7 +69,7 @@ public class EnemySpawnManager : MonoBehaviour
 	{
 		es.entity = enemies[enemyIndex++];
 
-		StageManager.instance.uiManager.RemoveLeftEnemyIcon();
+		StageManager.instance.uiManager.DestroyLeftEnemyIcon();
 	}
 
 	private IEnumerator SpawnEnemies()
