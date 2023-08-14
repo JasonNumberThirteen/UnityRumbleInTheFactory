@@ -4,11 +4,9 @@ public class BonusEnemyRobotTrigger : RobotTrigger
 {
 	public override void TriggerEffect(GameObject sender)
 	{
-		EnemyRobotBonus bonus = GetComponent<EnemyRobotBonus>();
-		
-		if(bonus != null)
+		if(TryGetComponent(out EnemyRobotBonus erb))
 		{
-			bonus.SpawnBonus();
+			erb.SpawnBonus();
 		}
 
 		base.TriggerEffect(sender);
