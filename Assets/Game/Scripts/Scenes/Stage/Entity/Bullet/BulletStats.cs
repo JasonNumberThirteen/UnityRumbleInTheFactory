@@ -6,11 +6,11 @@ public class BulletStats : MonoBehaviour
 	[Min(0.01f)] public float speed;
 	public bool canDestroyMetal;
 
-	private void Start()
-	{
-		EntityMovement em = GetComponent<EntityMovement>();
+	private void Start() => SetMovementSpeed();
 
-		if(em != null)
+	private void SetMovementSpeed()
+	{
+		if(TryGetComponent(out EntityMovement em))
 		{
 			em.movementSpeed = speed;
 		}
