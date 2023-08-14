@@ -4,7 +4,7 @@ public class ParentSetter : MonoBehaviour
 {
 	public string parentTag;
 
-	private void Start()
+	private void SetParent()
 	{
 		GameObject parent = FoundParent();
 
@@ -14,5 +14,6 @@ public class ParentSetter : MonoBehaviour
 		}
 	}
 
+	private void Start() => SetParent();
 	private GameObject FoundParent() => GameObject.FindGameObjectWithTag(parentTag);
 }
