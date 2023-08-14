@@ -4,27 +4,22 @@ public class StagesLoader : MonoBehaviour
 {
 	public GameData gameData;
 
-	private Stage[] stages;
+	private void Start() => gameData.stages = DetectedStages();
 
-	public int DetectedStages() => stages.Length;
-	public Stage StageByIndex(int index) => stages[index];
-
-	private void Start() => DetectStages();
-
-	private void DetectStages()
+	private Stage[] DetectedStages()
 	{
-		Object[] stagesData = Resources.LoadAll("Stages", typeof(TextAsset));
-		
-		stages = new Stage[stagesData.Length];
+		Object[] data = Resources.LoadAll("Stages", typeof(TextAsset));
+		int dataLength = data.Length;
+		Stage[] stages = new Stage[dataLength];
 
-		for (int i = 0; i < stagesData.Length; ++i)
+		for (int i = 0; i < dataLength; ++i)
 		{
-			TextAsset ta = (TextAsset)stagesData[i];
+			TextAsset ta = (TextAsset)data[i];
 			
 			stages[i] = JsonUtility.FromJson<Stage>(ta.text);
 		}
 
-		gameData.stages = stages;
+		return stages;
 	}
 }
 

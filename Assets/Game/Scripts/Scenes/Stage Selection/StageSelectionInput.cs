@@ -53,14 +53,14 @@ public class StageSelectionInput : MonoBehaviour
 
 			if(stageCounter.CurrentValue <= 0)
 			{
-				stageCounter.SetTo(stagesLoader.DetectedStages());
+				stageCounter.SetTo(gameData.stages.Length);
 			}
 		}
 		else if(stageOffset == 1)
 		{
 			stageCounter.IncreaseBy(1);
 
-			if(stageCounter.CurrentValue > stagesLoader.DetectedStages())
+			if(stageCounter.CurrentValue > gameData.stages.Length)
 			{
 				stageCounter.SetTo(1);
 			}
