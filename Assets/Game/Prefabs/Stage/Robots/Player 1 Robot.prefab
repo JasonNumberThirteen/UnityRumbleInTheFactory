@@ -175,9 +175,6 @@ PrefabInstance:
       addedObject: {fileID: -1771166760998177112}
     - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8014517836353926290}
-    - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2755370287333617725}
     - targetCorrespondingSourceObject: {fileID: 5555385191539460971, guid: b243df00ecf005341914640827158bb8, type: 3}
       insertIndex: -1
@@ -271,20 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
---- !u!114 &8014517836353926290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6879066138954518474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3359390a03ad5444aa0e5b67192efec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
-  spawnerTag: Player Spawner
 --- !u!114 &2755370287333617725
 MonoBehaviour:
   m_ObjectHideFlags: 0
