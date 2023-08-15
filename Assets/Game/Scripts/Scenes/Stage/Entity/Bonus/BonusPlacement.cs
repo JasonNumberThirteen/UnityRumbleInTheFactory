@@ -43,36 +43,42 @@ public class BonusPlacement : MonoBehaviour
 
 	private bool PositionIsInaccessible(Vector2 position)
 	{
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(position, overlapCircleRadius, excludedLayers);
-		int excludedPositions = 0;
-
-		foreach (Collider2D collider in colliders)
+		if(TryGetComponent(out Collider2D collider2D))
 		{
-			if(collider.OverlapPoint(position))
+			Collider2D[] colliders = Physics2D.OverlapBoxAll(position, collider2D.bounds.size, 0f, excludedLayers);
+			int excludedPositions = 0;
+
+			foreach (Collider2D collider in colliders)
 			{
-				++excludedPositions;
+				if(collider.OverlapPoint(position))
+				{
+					++excludedPositions;
+				}
 			}
+
+			return colliders.Length > 0 && excludedPositions == 4;
 		}
 
-		return colliders.Length > 0 && excludedPositions == colliders.Length;
+		return false;
 	}
 	
 	private void OnDrawGizmos()
 	{
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, overlapCircleRadius, excludedLayers);
-		int excludedPositions = 0;
-		
-		foreach (Collider2D collider in colliders)
+		if(TryGetComponent(out Collider2D collider2D))
 		{
-			Gizmos.color = Color.green;
-
-			if(collider.OverlapPoint(transform.position))
+			Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, collider2D.bounds.size, 0f, excludedLayers);
+		
+			foreach (Collider2D collider in colliders)
 			{
-				Gizmos.color = Color.red;
-				++excludedPositions;
+				Gizmos.color = Color.green;
+
+				if(collider.OverlapPoint(transform.position))
+				{
+					Gizmos.color = Color.red;
+				}
+				
+				Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
 			}
-			
-			Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
 		}
 	}
 }
