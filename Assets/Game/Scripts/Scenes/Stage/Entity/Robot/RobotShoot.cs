@@ -9,9 +9,14 @@ public class RobotShoot : MonoBehaviour
 
 	public virtual void FireBullet() => SetBullet(BulletInstance());
 	protected virtual void Awake() => animator = GetComponent<Animator>();
-	protected virtual void SetBullet(GameObject bullet) => SetMovementDirectionToBullet(bullet);
 	protected GameObject BulletInstance() => Instantiate(bullet, BulletPosition(), Quaternion.identity);
 	protected Vector2 BulletPosition() => (Vector2)transform.position + BulletDirection()*offsetFromObject;
+
+	protected virtual void SetBullet(GameObject bullet)
+	{
+		SetParentToBullet(bullet);
+		SetMovementDirectionToBullet(bullet);
+	}
 
 	protected virtual Vector2 BulletDirection()
 	{
@@ -19,6 +24,14 @@ public class RobotShoot : MonoBehaviour
 		int y = animator.GetInteger("MovementY");
 
 		return new Vector2(x, y);
+	}
+
+	protected void SetParentToBullet(GameObject bullet)
+	{
+		if(bullet.TryGetComponent(out BulletStats bs))
+		{
+			bs.parent = gameObject;
+		}
 	}
 
 	protected void SetMovementDirectionToBullet(GameObject bullet)

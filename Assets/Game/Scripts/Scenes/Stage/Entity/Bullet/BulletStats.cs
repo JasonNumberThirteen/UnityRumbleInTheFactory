@@ -5,6 +5,7 @@ public class BulletStats : MonoBehaviour
 	[Min(1)] public int damage;
 	[Min(0.01f)] public float speed;
 	public bool canDestroyMetal;
+	public GameObject parent;
 
 	private void Start() => SetMovementSpeed();
 
