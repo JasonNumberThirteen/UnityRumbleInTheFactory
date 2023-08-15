@@ -8,11 +8,11 @@ public class EnemyRobotHealth : RobotHealth
 	{
 		++StageManager.instance.DefeatedEnemies;
 
-		AddYourselfAsDefeatedByPlayer(sender);
+		OnDefeatByPlayer(sender);
 		base.Die(sender);
 	}
 
-	private void AddYourselfAsDefeatedByPlayer(GameObject sender)
+	private void OnDefeatByPlayer(GameObject sender)
 	{
 		if(sender.TryGetComponent(out PlayerRobotData prd))
 		{
