@@ -18,7 +18,7 @@ public class BonusEnemyRobotColor : MonoBehaviour
 
 	private void LerpColor()
 	{
-		float t = Mathf.PingPong(Time.unscaledTime, fadeTime);
+		float t = Mathf.PingPong(Time.time, fadeTime);
 		Color color = Color.Lerp(initialColor, targetColor, t);
 
 		spriteRenderer.color = color;
