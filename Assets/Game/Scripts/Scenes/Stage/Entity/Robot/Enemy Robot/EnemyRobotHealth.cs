@@ -9,7 +9,6 @@ public class EnemyRobotHealth : RobotHealth
 		++StageManager.instance.DefeatedEnemies;
 
 		AddYourselfAsDefeatedByPlayer(sender);
-		StageManager.instance.AddPoints(gameObject, data.score);
 		base.Die(sender);
 	}
 
@@ -18,6 +17,7 @@ public class EnemyRobotHealth : RobotHealth
 		if(sender.TryGetComponent(out PlayerRobotData prd))
 		{
 			prd.Data.AddDefeatedEnemy(data);
+			StageManager.instance.AddPoints(gameObject, prd.Data, data.score);
 		}
 	}
 }
