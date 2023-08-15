@@ -4,24 +4,26 @@ public class PlayerRobotRank : MonoBehaviour
 {
 	public Rank CurrentRank {get; private set;}
 	
-	public PlayerData data;
 	public Rank[] ranks;
+
+	private PlayerRobotData data;
 	
 	public void Promote()
 	{
-		++data.Rank;
+		++data.Data.Rank;
 
 		SetRank();
 	}
 	
 	public void SetRank()
 	{
-		CurrentRank = ranks[data.Rank - 1];
+		CurrentRank = ranks[data.Data.Rank - 1];
 
 		SetHealth();
 		SetMovementSpeed();
 	}
 
+	private void Awake() => data = GetComponent<PlayerRobotData>();
 	private void Start() => SetRank();
 
 	private void SetHealth()

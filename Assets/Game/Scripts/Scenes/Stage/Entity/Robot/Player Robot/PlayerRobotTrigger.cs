@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PlayerRobotTrigger : RobotTrigger
 {
-	public PlayerData data;
-
 	public override void TriggerEffect(GameObject sender)
 	{
 		if(!ShieldIsActive())
