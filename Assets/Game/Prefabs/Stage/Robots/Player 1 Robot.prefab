@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5d966068b4ba84abff0ee3bebebdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
 --- !u!114 &2755370287333617725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5a600641e43474dbecfc8651e16f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldTag: Shield
 --- !u!114 &-6098158792994831678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fdfc74f21426444adb2b9150b3f47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   ranks:
   - health: 1
     damage: 1
