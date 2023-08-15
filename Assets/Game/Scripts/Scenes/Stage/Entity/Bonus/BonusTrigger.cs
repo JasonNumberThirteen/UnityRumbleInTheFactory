@@ -6,9 +6,7 @@ public abstract class BonusTrigger : MonoBehaviour, ITriggerable
 	
 	public virtual void TriggerEffect(GameObject sender)
 	{
-		playerData.Score += StageManager.instance.pointsForBonus;
-
-		StageManager.instance.uiManager.InstantiateGainedPointsCounter(gameObject.transform.position, StageManager.instance.pointsForBonus);
+		StageManager.instance.AddPoints(gameObject, StageManager.instance.pointsForBonus);
 		Destroy(gameObject);
 	}
 }

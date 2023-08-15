@@ -47,6 +47,13 @@ public class StageManager : MonoBehaviour
 	public bool IsWon() => state == GameStates.WON;
 	public bool IsOver() => state == GameStates.OVER;
 
+	public void AddPoints(GameObject go, int points)
+	{
+		playerData.Score += points;
+
+		uiManager.InstantiateGainedPointsCounter(go.transform.position, points);
+	}
+
 	public void AttemptToRespawnPlayer()
 	{
 		if(playerData.Lives-- > 0)

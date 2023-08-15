@@ -5,11 +5,10 @@ public class EnemyRobotHealth : RobotHealth
 	
 	protected override void Die()
 	{
-		playerData.Score += data.score;
 		++StageManager.instance.DefeatedEnemies;
 
 		playerData.AddDefeatedEnemy(data);
-		StageManager.instance.uiManager.InstantiateGainedPointsCounter(gameObject.transform.position, data.score);
+		StageManager.instance.AddPoints(gameObject, data.score);
 		base.Die();
 	}
 }
