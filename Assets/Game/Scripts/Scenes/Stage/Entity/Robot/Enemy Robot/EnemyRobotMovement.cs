@@ -1,13 +1,13 @@
 using Random = UnityEngine.Random;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyRobotMovement : EntityMovement
 {
-	public LayerMask collisionDetectionLayers, linecastDetectionLayers;
-	public Timer timer;
-	public Collider2D collisionDetector;
+	public LayerMask linecastDetectionLayers;
 	[Min(0.01f)] public float linecastDetectionDistance = 0.5f;
+	public Timer timer;
+	public RobotCollisionDetector collisionDetector;
 
 	private bool detectedCollision;
 	private EnemyRobotFreeze freeze;
@@ -48,7 +48,7 @@ public class EnemyRobotMovement : EntityMovement
 	{
 		Direction = direction;
 
-		AdjustCollisionDetectorRotation();
+		collisionDetector.AdjustRotation(Direction);
 	}
 	
 	public void EnableCollisionDetection()
@@ -107,33 +107,11 @@ public class EnemyRobotMovement : EntityMovement
 			return;
 		}
 		
-		Collider2D[] colliders = Physics2D.OverlapBoxAll(collisionDetector.bounds.center, collisionDetector.bounds.size, 0f, collisionDetectionLayers);
+		Collider2D[] colliders = collisionDetector.OverlapBoxAll();
 
 		if(colliders.Length > 1)
 		{
 			DisableCollisionDetection();
-		}
-	}
-
-	private void AdjustCollisionDetectorRotation()
-	{
-		Transform collisionDetectorTransform = collisionDetector.gameObject.transform;
-		
-		if(Direction == Vector2.up)
-		{
-			collisionDetectorTransform.rotation = Quaternion.Euler(0, 0, 0);
-		}
-		else if(Direction == Vector2.down)
-		{
-			collisionDetectorTransform.rotation = Quaternion.Euler(0, 0, 180);
-		}
-		else if(Direction == Vector2.left)
-		{
-			collisionDetectorTransform.rotation = Quaternion.Euler(0, 0, 90);
-		}
-		else if(Direction == Vector2.right)
-		{
-			collisionDetectorTransform.rotation = Quaternion.Euler(0, 0, 270);
 		}
 	}
 
@@ -144,7 +122,7 @@ public class EnemyRobotMovement : EntityMovement
 			return;
 		}
 		
-		Collider2D[] colliders = Physics2D.OverlapBoxAll(collisionDetector.bounds.center, collisionDetector.bounds.size, 0f, collisionDetectionLayers);
+		Collider2D[] colliders = collisionDetector.OverlapBoxAll();
 
 		foreach (Collider2D collider in colliders)
 		{
