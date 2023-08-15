@@ -321,16 +321,16 @@ MonoBehaviour:
     movementSpeed: 3.25
     bulletSpeed: 7.5
     canDestroyMetal: 0
-  - health: 2
+  - health: 1
     damage: 1
     bulletLimit: 2
-    movementSpeed: 3.5
+    movementSpeed: 3.4
     bulletSpeed: 8
     canDestroyMetal: 0
   - health: 2
     damage: 2
     bulletLimit: 2
-    movementSpeed: 3.75
+    movementSpeed: 3.5
     bulletSpeed: 8
     canDestroyMetal: 1
 --- !u!114 &-4866269956919355778
