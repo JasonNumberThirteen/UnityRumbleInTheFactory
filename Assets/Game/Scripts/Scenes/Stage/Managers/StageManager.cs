@@ -93,25 +93,18 @@ public class StageManager : MonoBehaviour
 		state = GameStates.OVER;
 		gameData.isOver = true;
 
-		DisablePlayer();
+		DisablePlayers();
 	}
 
-	public void DisablePlayer()
+	public void DisablePlayers()
 	{
-		GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+		GameObject[] players = GameObject.FindGameObjectsWithTag(playerTag);
 
-		if(player != null)
+		foreach (GameObject player in players)
 		{
-			if(player.TryGetComponent(out EntityMovement em))
+			if(player.TryGetComponent(out PlayerRobotDisabler prd))
 			{
-				em.Direction = Vector2.zero;
-
-				Destroy(em);
-			}
-
-			if(player.TryGetComponent(out RobotShoot rs))
-			{
-				Destroy(rs);
+				prd.DisableYourself();
 			}
 		}
 	}
