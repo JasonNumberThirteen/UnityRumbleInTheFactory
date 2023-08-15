@@ -7,6 +7,6 @@ public class BonusRenderer : MonoBehaviour
 	private SpriteRenderer spriteRenderer;
 
 	private void Awake() => spriteRenderer = GetComponent<SpriteRenderer>();
-	private void Update() => spriteRenderer.enabled = ReachedBlinkDelay();
-	private bool ReachedBlinkDelay() => Time.timeSinceLevelLoad % (blinkDelay*2) >= blinkDelay;
+	private void Start() => InvokeRepeating(nameof(SwitchRendererEnable), blinkDelay, blinkDelay);
+	private void SwitchRendererEnable() => spriteRenderer.enabled = !spriteRenderer.enabled;
 }
