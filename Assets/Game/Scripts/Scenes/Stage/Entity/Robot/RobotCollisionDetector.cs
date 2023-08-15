@@ -13,19 +13,19 @@ public class RobotCollisionDetector : MonoBehaviour
 	{
 		if(direction == Vector2.up)
 		{
-			gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+			gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
 		}
 		else if(direction == Vector2.down)
 		{
-			gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+			gameObject.transform.rotation = Quaternion.Euler(Vector3.forward*180);
 		}
 		else if(direction == Vector2.left)
 		{
-			gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+			gameObject.transform.rotation = Quaternion.Euler(Vector3.forward*90);
 		}
 		else if(direction == Vector2.right)
 		{
-			gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
+			gameObject.transform.rotation = Quaternion.Euler(Vector3.forward*270);
 		}
 	}
 
