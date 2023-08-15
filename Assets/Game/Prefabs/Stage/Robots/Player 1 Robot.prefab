@@ -270,10 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  movementFreezeLayers:
-    serializedVersion: 2
-    m_Bits: 8192
-  collisionDetector: {fileID: 904215369781252687}
+  collisionDetector: {fileID: 7093578898371394698}
 --- !u!114 &-1771166760998177112
 MonoBehaviour:
   m_ObjectHideFlags: 0
