@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7173786888246510160}
   - component: {fileID: 8751731183067674284}
+  - component: {fileID: 1002186216528324733}
   m_Layer: 15
   m_Name: Collision Detector
   m_TagString: Untagged
@@ -77,6 +78,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.1}
   m_EdgeRadius: 0
+--- !u!114 &1002186216528324733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538409915547898978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67539fa7da496d24ea92e5aa98693030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionLayers:
+    serializedVersion: 2
+    m_Bits: 98048
 --- !u!1 &2236899697389276234
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +169,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4473261137159122849
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +248,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &4185214069242318734
 PrefabInstance:
   m_ObjectHideFlags: 0
