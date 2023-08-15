@@ -44,13 +44,6 @@ public class EnemyRobotFreeze : MonoBehaviour
 		movement.Direction = (Frozen) ? Vector2.zero : lastDirection;
 		shootTimer.enabled = !Frozen;
 
-		if(!freeze)
-		{
-			movement.Unfreeze();
-		}
-		else
-		{
-			movement.Freeze();
-		}
+		movement.SetMovementLock();
 	}
 }

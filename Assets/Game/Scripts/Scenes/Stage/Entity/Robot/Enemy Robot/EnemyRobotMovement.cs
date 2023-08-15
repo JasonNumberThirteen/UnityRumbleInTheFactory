@@ -14,19 +14,11 @@ public class EnemyRobotMovement : EntityMovement
 	private float lastMovementSpeed;
 	private Vector2 lastDirection;
 
-	public void Freeze()
+	public void SetMovementLock()
 	{
 		if(LastDirectionIsNotZero())
 		{
-			lastDirection = Direction;
-		}
-	}
-
-	public void Unfreeze()
-	{
-		if(LastDirectionIsNotZero())
-		{
-			SetDirection(lastDirection);
+			SetDirections(Direction, lastDirection);
 		}
 	}
 
@@ -34,36 +26,13 @@ public class EnemyRobotMovement : EntityMovement
 	{
 		Vector2 direction = RandomDirection();
 
-		if(freeze.Frozen)
-		{
-			lastDirection = direction;
-		}
-		else
-		{
-			SetDirection(direction);
-		}
+		SetDirections(direction, direction);
 	}
 
-	private void SetDirection(Vector2 direction)
-	{
-		Direction = direction;
-
-		collisionDetector.AdjustRotation(Direction);
-	}
-	
 	public void EnableCollisionDetection()
 	{
 		detectedCollision = false;
 		movementSpeed = lastMovementSpeed;
-	}
-
-	private void DisableCollisionDetection()
-	{
-		timer.ResetTimer();
-
-		detectedCollision = true;
-		lastMovementSpeed = movementSpeed;
-		movementSpeed = 0f;
 	}
 
 	protected override void Awake()
@@ -79,18 +48,32 @@ public class EnemyRobotMovement : EntityMovement
 		DetectObstacles();
 	}
 
+	private void SetDirections(Vector2 newLastDirection, Vector2 newDirection)
+	{
+		if(freeze.Frozen)
+		{
+			lastDirection = newLastDirection;
+		}
+		else
+		{
+			SetDirection(newDirection);
+		}
+	}
+
+	private void SetDirection(Vector2 direction)
+	{
+		Direction = direction;
+
+		collisionDetector.AdjustRotation(Direction);
+	}
+
 	private void Start() => SetDirection(Vector2.down);
 	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
 
 	private Vector2 RandomDirection()
 	{
-		List<Vector2> directions = new List<Vector2>{Vector2.up, Vector2.down, Vector2.left, Vector2.right};
-		Vector2 start = transform.position;
-
-		directions.RemoveAll(e => Physics2D.Linecast(start, start + e*linecastDetectionDistance, linecastDetectionLayers));
-
-		int randomIndex = Random.Range(0, directions.Count);
-		Vector2 randomDirection = directions[randomIndex];
+		List<Vector2> directions = AvailableDirections();
+		Vector2 randomDirection = RandomAvailableDirection(directions);
 
 		if(directions.Count > 1 && randomDirection == Direction)
 		{
@@ -100,19 +83,42 @@ public class EnemyRobotMovement : EntityMovement
 		return randomDirection;
 	}
 
+	private List<Vector2> AvailableDirections()
+	{
+		List<Vector2> directions = new List<Vector2>{Vector2.up, Vector2.down, Vector2.left, Vector2.right};
+		Vector2 start = transform.position;
+
+		directions.RemoveAll(e => Physics2D.Linecast(start, start + e*linecastDetectionDistance, linecastDetectionLayers));
+
+		return directions;
+	}
+
+	private Vector2 RandomAvailableDirection(List<Vector2> directions)
+	{
+		int index = RandomAvailableDirectionIndex(directions);
+
+		return directions[index];
+	}
+
+	private int RandomAvailableDirectionIndex(List<Vector2> directions) => Random.Range(0, directions.Count);
+	
 	private void DetectObstacles()
 	{
-		if(detectedCollision || freeze.Frozen)
-		{
-			return;
-		}
-		
-		Collider2D[] colliders = collisionDetector.OverlapBoxAll();
-
-		if(colliders.Length > 1)
+		if(DetectedCollision())
 		{
 			DisableCollisionDetection();
 		}
+	}
+
+	private bool DetectedCollision() => !detectedCollision && !freeze.Frozen && collisionDetector.OverlapBoxAll().Length > 1;
+
+	private void DisableCollisionDetection()
+	{
+		timer.ResetTimer();
+
+		detectedCollision = true;
+		lastMovementSpeed = movementSpeed;
+		movementSpeed = 0f;
 	}
 
 	private void OnDrawGizmos()
