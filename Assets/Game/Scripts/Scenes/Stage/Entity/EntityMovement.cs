@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EntityMovement : MonoBehaviour
+public class EntityMovement : MonoBehaviour, IUpgradeable
 {
 	[Min(0f)] public float movementSpeed = 5f;
 
@@ -8,6 +8,7 @@ public class EntityMovement : MonoBehaviour
 
 	protected Rigidbody2D rb2D;
 
+	public virtual void UpdateValues(Rank rank) => movementSpeed = rank.movementSpeed;
 	protected virtual void Awake() => rb2D = GetComponent<Rigidbody2D>();
 	protected virtual void FixedUpdate() => Move();
 

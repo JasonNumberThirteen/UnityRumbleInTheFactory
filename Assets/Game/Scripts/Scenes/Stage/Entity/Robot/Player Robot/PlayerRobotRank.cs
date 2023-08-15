@@ -19,26 +19,19 @@ public class PlayerRobotRank : MonoBehaviour
 	{
 		CurrentRank = ranks[data.Data.Rank - 1];
 
-		SetHealth();
-		SetMovementSpeed();
+		UpdateValues();
 	}
 
 	private void Awake() => data = GetComponent<PlayerRobotData>();
 	private void Start() => SetRank();
 
-	private void SetHealth()
+	private void UpdateValues()
 	{
-		if(TryGetComponent(out RobotHealth rh))
-		{
-			rh.CurrentHealth = CurrentRank.health;
-		}
-	}
+		IUpgradeable[] upgradeables = GetComponents<IUpgradeable>();
 
-	private void SetMovementSpeed()
-	{
-		if(TryGetComponent(out EntityMovement em))
+		foreach (IUpgradeable upgradeable in upgradeables)
 		{
-			em.movementSpeed = CurrentRank.movementSpeed;
+			upgradeable.UpdateValues(CurrentRank);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RobotHealth : MonoBehaviour
+public class RobotHealth : MonoBehaviour, IUpgradeable
 {
 	[Min(1)] public int initialHealth = 1;
 
@@ -20,6 +20,7 @@ public class RobotHealth : MonoBehaviour
 
 	private int health;
 
+	public virtual void UpdateValues(Rank rank) => CurrentHealth = rank.health;
 	protected virtual void Start() => CurrentHealth = initialHealth;
 
 	protected virtual void CheckHealth()
