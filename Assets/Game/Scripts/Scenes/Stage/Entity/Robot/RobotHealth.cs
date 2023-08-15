@@ -8,24 +8,24 @@ public class RobotHealth : MonoBehaviour, IUpgradeable
 
 	public virtual void UpdateValues(Rank rank) => Health = rank.health;
 
-	public virtual void TakeDamage(int damage)
+	public virtual void TakeDamage(GameObject sender, int damage)
 	{
 		Health -= damage;
 
-		CheckHealth();
+		CheckHealth(sender);
 	}
 
 	protected virtual void Start() => Health = initialHealth;
 
-	protected virtual void CheckHealth()
+	protected virtual void CheckHealth(GameObject sender)
 	{
 		if(Health <= 0)
 		{
-			Die();
+			Die(sender);
 		}
 	}
 
-	protected virtual void Die()
+	protected virtual void Die(GameObject sender)
 	{
 		if(TryGetComponent(out EntityExploder ee))
 		{
