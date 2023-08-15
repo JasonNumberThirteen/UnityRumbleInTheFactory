@@ -108,34 +108,36 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 	- [ ] Player 2
 		- [ ] Input
 		- [ ] Spawn
-		- [ ] Points gain
+		- [X] Points gain
 		- [ ] Sprite sheet
 		- [ ] Bullet prefab
 	- [ ] Bug fixes
-		- [ ] Clash of timer events when the nuke is destroyed as soon as defeated the last enemy (the score scene is loaded before the "Game Over" text stops moving)
-		- [ ] No bullet movement when the player change movement direction and steps on slippery floor tiles
-		- [ ] Bonus placement in inaccessible areas
-		- [ ] Clash of enemies when one of them is placed on a spawner and it spawned the other one
+		- [ ] Bonus placement in inaccessible areas (required test of case when it is placed on the nuke or next to it)
 		- [ ] Getting stuck by enemies after changing direction (occurs randomly)
+		- [ ] Clash of enemies when one of them is placed on a spawner and it spawned the other one
+		- [ ] No bullet movement when the player change movement direction and steps on slippery floor tiles
+		- [ ] Clash of timer events when the nuke is destroyed as soon as defeated the last enemy (the score scene is loaded before the "Game Over" text stops moving)
 	- [ ] Adjustments
-		- [ ] Balance of the player robots statistics on every rank
+		- [X] Balance of the player robots statistics on every rank
 		- [ ] Growth of difficulty everytime when beaten the last stage
-		- [ ] Color lerp of the bonus enemy robot dependant of time scale
+		- [X] Color lerp of the bonus enemy robot dependant of time scale
 		- [ ] Exclusion of tiles from stage data in occupied places (the nuke with bricks tiles surrounding it & spawners)
 	- [ ] Optimisations
+		- [X] BonusRenderer (replacement of the Update method with the InvokeRepeating to avoid calls per frame)
+		- [ ] PlayerRobotMovement (update of collision detector rotation only once when it is necessary)
 	- [ ] Sound effects
 	- [X] Flexible input
 	- [ ] Gameplay tests
 	- [ ] New enemy types
 	- [ ] Refactoring of code
-		- [ ] BonusTrigger (call of a method adding points to the player and displaying gained points counter simultaneously)
-		- [ ] StageManager (addition of a method adding points to the player and displaying gained points counter simultaneously)
-		- [ ] StageUIManager (reduction of code complexity)
-		- [ ] PlayerRobotRank (updating of components' values in a loop using an interface)
-		- [ ] EnemyRobotHealth (call of a method adding points to the player and displaying gained points counter simultaneously, detecting what player points must be given to)
+		- [X] BonusTrigger
+		- [ ] StageManager (reduction of code complexity)
+		- [ ] StageUIManager (reduction of code complexity, resetting both players' lists of defeated enemies when the stage starts, methods for updating counters separately)
+		- [X] PlayerRobotRank
+		- [ ] EnemyRobotFreeze (editing movement outside of the EnemyRobotMovement script)
+		- [X] EnemyRobotHealth
 		- [ ] EnemySpawnManager (reduction of code complexity)
-		- [ ] EnemyRobotMovement (reduction of code complexity, separate script for the collision detector code, editing movement outside of the EnemyRobotFreeze script)
-		- [ ] PlayerRobotMovement (separate script for the collision detector code)
+		- [ ] EnemyRobotMovement (additional tweaks)
 	- [X] Compatibility for every aspect ratio
 	- [ ] Graphics of the player robot for every rank (both players)
 - [ ] SCORE
