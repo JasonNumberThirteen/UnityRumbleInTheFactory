@@ -9,26 +9,16 @@ public class PlayerRobotMovement : EntityMovement
 	private PlayerRobotInput input;
 	private Vector2 lastDirection;
 
-	public Vector2 MovementVector()
+	public Vector2 MovementDirection()
 	{
 		if(IsSliding)
 		{
 			return input.LastMovementVector;
 		}
 		
-		int x = Mathf.RoundToInt(input.MovementVector.x);
-		int y = Mathf.RoundToInt(input.MovementVector.y);
+		Vector2 movementVector = MovementVector();
 
-		if(Mathf.Abs(x) > Mathf.Abs(y))
-		{
-			y = 0;
-		}
-		else
-		{
-			x = 0;
-		}
-
-		return new Vector2(x, y);
+		return PressedHorizontalMovementKey(movementVector) ? Vector2.right*movementVector.x : Vector2.up*movementVector.y;
 	}
 
 	protected override void Awake()
@@ -38,29 +28,43 @@ public class PlayerRobotMovement : EntityMovement
 		input = GetComponent<PlayerRobotInput>();
 	}
 
-	protected override void FixedUpdate()
+	protected virtual void Update()
+	{
+		UpdateLastDirection();
+		UpdateDirection();
+		UpdateCollisionDetector();
+		LockMovementWhenHitObject();
+	}
+
+	private void UpdateDirection() => Direction = MovementDirection();
+	private int MovementAxis(float a) => Mathf.RoundToInt(a);
+	private bool PressedHorizontalMovementKey(Vector2 movement) => Mathf.Abs(movement.x) > Mathf.Abs(movement.y);
+	private bool IsMovingInDifferentDirection() => !DirectionIsZero() && Direction != lastDirection;
+
+	private void UpdateLastDirection()
 	{
 		if(IsMovingInDifferentDirection())
 		{
 			lastDirection = Direction;
 		}
-		
-		Direction = MovementVector();
-
-		LockMovementWhenHitObject();
-		base.FixedUpdate();
 	}
 
-	private void Update()
+	private Vector2 MovementVector()
+	{
+		int x = MovementAxis(input.MovementVector.x);
+		int y = MovementAxis(input.MovementVector.y);
+
+		return new Vector2(x, y);
+	}
+
+	private void UpdateCollisionDetector()
 	{
 		if(IsMovingInDifferentDirection())
 		{
 			collisionDetector.AdjustRotation(Direction);
 		}
 	}
-
-	private bool IsMovingInDifferentDirection() => !DirectionIsZero() && Direction != lastDirection;
-
+	
 	private void LockMovementWhenHitObject()
 	{
 		if(collisionDetector.OverlapBox() != null)
