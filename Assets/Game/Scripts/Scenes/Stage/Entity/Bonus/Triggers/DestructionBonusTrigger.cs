@@ -27,6 +27,6 @@ public class DestructionBonusTrigger : BonusTrigger
 			ee.Explode();
 		}
 
-		++StageManager.instance.DefeatedEnemies;
+		StageManager.instance.CountDefeatedEnemy();
 	}
 }

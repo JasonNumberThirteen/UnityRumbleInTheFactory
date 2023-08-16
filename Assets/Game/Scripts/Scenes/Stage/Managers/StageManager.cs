@@ -13,20 +13,6 @@ public class StageManager : MonoBehaviour
 	public GameData gameData;
 	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer, sceneManagerTimer;
 
-	public int DefeatedEnemies
-	{
-		get
-		{
-			return defeatedEnemies;
-		}
-		set
-		{
-			defeatedEnemies = value;
-
-			CheckEnemiesCount();
-		}
-	}
-
 	private GameStates state = GameStates.ACTIVE;
 	private int defeatedEnemies;
 
@@ -37,7 +23,7 @@ public class StageManager : MonoBehaviour
 
 	public void FreezeAllEnemies() => SetEnemiesFreeze(true);
 	public void UnfreezeAllEnemies() => SetEnemiesFreeze(false);
-	public GameObject[] FoundEnemies() => GameObject.FindGameObjectsWithTag(enemyTag);
+	public GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 	public void ResetDefeatedEnemiesByPlayer() => playerData.DefeatedEnemies.Clear();
 	public void InitiatePlayerRespawn() => playerRespawnTimer.ResetTimer();
 	public bool EnemiesAreFrozen() => freezeTimer.Started;
@@ -46,6 +32,13 @@ public class StageManager : MonoBehaviour
 	public bool IsInterrupted() => state == GameStates.INTERRUPTED;
 	public bool IsWon() => state == GameStates.WON;
 	public bool IsOver() => state == GameStates.OVER;
+
+	public void CountDefeatedEnemy()
+	{
+		++defeatedEnemies;
+
+		CheckIfWonTheGame();
+	}
 
 	public void AddPoints(GameObject go, PlayerData pd, int points)
 	{
@@ -98,7 +91,7 @@ public class StageManager : MonoBehaviour
 
 	public void DisablePlayers()
 	{
-		GameObject[] players = GameObject.FindGameObjectsWithTag(playerTag);
+		GameObject[] players = FoundObjectsWithTag(playerTag);
 
 		foreach (GameObject player in players)
 		{
@@ -118,7 +111,7 @@ public class StageManager : MonoBehaviour
 
 	public void SetEnemiesFreeze(bool freeze)
 	{
-		GameObject[] enemies = FoundEnemies();
+		GameObject[] enemies = FoundObjectsWithTag(enemyTag);
 
 		foreach (GameObject enemy in enemies)
 		{
@@ -130,7 +123,8 @@ public class StageManager : MonoBehaviour
 	}
 	
 	private void Awake() => CheckSingleton();
-	private bool WonTheGame() => DefeatedEnemies == enemySpawnManager.EnemiesCount() && enemySpawnManager.NoEnemiesLeft();
+	private bool WonTheGame() => DefeatedAllEnemies() && enemySpawnManager.NoEnemiesLeft();
+	private bool DefeatedAllEnemies() => defeatedEnemies == enemySpawnManager.EnemiesCount();
 
 	private void CheckSingleton()
 	{
@@ -144,7 +138,7 @@ public class StageManager : MonoBehaviour
 		}
 	}
 
-	private void CheckEnemiesCount()
+	private void CheckIfWonTheGame()
 	{
 		if(WonTheGame())
 		{
