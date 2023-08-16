@@ -6,7 +6,7 @@ public class EnemyRobotMovementDirectionSelector : MonoBehaviour
 {
 	public LayerMask obstacleDetectionLayers;
 	[Min(0.01f)] public float obstacleDetectionDistance = 0.5f;
-	
+
 	public Vector2 RandomDirection(Vector2 currentDirection)
 	{
 		List<Vector2> directions = AvailableDirections();
@@ -20,12 +20,15 @@ public class EnemyRobotMovementDirectionSelector : MonoBehaviour
 		return randomDirection;
 	}
 
+	public List<Vector2> AllDirections() => new List<Vector2>{Vector2.up, Vector2.down, Vector2.left, Vector2.right};
+	public RaycastHit2D Linecast(Vector2 start, Vector2 direction) => Physics2D.Linecast(start, LinecastEnd(start, direction), obstacleDetectionLayers);
+	public Vector2 LinecastEnd(Vector2 start, Vector2 direction) => start + direction*obstacleDetectionDistance;
+
 	private List<Vector2> AvailableDirections()
 	{
-		List<Vector2> directions = new List<Vector2>{Vector2.up, Vector2.down, Vector2.left, Vector2.right};
-		Vector2 start = transform.position;
+		List<Vector2> directions = AllDirections();
 
-		directions.RemoveAll(e => Physics2D.Linecast(start, start + e*obstacleDetectionDistance, obstacleDetectionLayers));
+		directions.RemoveAll(e => Linecast(transform.position, e));
 
 		return directions;
 	}
