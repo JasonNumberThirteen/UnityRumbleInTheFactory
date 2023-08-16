@@ -7,6 +7,7 @@ public class PlayerRobotMovement : EntityMovement
 	public bool IsSliding {get; set;}
 
 	private PlayerRobotInput input;
+	private Vector2 lastDirection;
 
 	public Vector2 MovementVector()
 	{
@@ -39,13 +40,26 @@ public class PlayerRobotMovement : EntityMovement
 
 	protected override void FixedUpdate()
 	{
+		if(IsMovingInDifferentDirection())
+		{
+			lastDirection = Direction;
+		}
+		
 		Direction = MovementVector();
 
 		LockMovementWhenHitObject();
 		base.FixedUpdate();
 	}
 
-	private void Update() => collisionDetector.AdjustRotation(Direction);
+	private void Update()
+	{
+		if(IsMovingInDifferentDirection())
+		{
+			collisionDetector.AdjustRotation(Direction);
+		}
+	}
+
+	private bool IsMovingInDifferentDirection() => !DirectionIsZero() && Direction != lastDirection;
 
 	private void LockMovementWhenHitObject()
 	{
