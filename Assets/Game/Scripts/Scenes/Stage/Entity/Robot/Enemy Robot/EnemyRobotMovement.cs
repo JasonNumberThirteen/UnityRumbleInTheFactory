@@ -26,10 +26,17 @@ public class EnemyRobotMovement : EntityMovement
 		SetDirections(direction, direction);
 	}
 
-	public void EnableCollisionDetection()
+	public void SetCollisionDetectionState(bool detected)
 	{
-		detectedCollision = false;
-		movementSpeed = lastMovementSpeed;
+		if(detected)
+		{
+			timer.ResetTimer();
+
+			lastMovementSpeed = movementSpeed;
+		}
+
+		detectedCollision = detected;
+		movementSpeed = detected ? 0f : lastMovementSpeed;
 	}
 
 	protected override void Awake()
@@ -73,17 +80,8 @@ public class EnemyRobotMovement : EntityMovement
 	{
 		if(DetectedCollision())
 		{
-			DisableCollisionDetection();
+			SetCollisionDetectionState(true);
 		}
-	}
-
-	private void DisableCollisionDetection()
-	{
-		timer.ResetTimer();
-
-		detectedCollision = true;
-		lastMovementSpeed = movementSpeed;
-		movementSpeed = 0f;
 	}
 
 	private void OnDrawGizmos()
@@ -116,19 +114,14 @@ public class EnemyRobotMovement : EntityMovement
 			return;
 		}
 
-		Vector2[] directions = {Vector2.up, Vector2.down, Vector2.left, Vector2.right};
+		Vector2[] directions = movementDirectionSelector.AllDirections().ToArray();
 
 		foreach (Vector2 direction in directions)
 		{
 			Vector2 start = transform.position;
-			Vector2 end = start + direction*movementDirectionSelector.obstacleDetectionDistance;
+			Vector2 end = movementDirectionSelector.LinecastEnd(start, direction);
 
-			Gizmos.color = Color.white;
-
-			if(Physics2D.Linecast(start, end, movementDirectionSelector.obstacleDetectionLayers))
-			{
-				Gizmos.color = Color.red;
-			}
+			Gizmos.color = movementDirectionSelector.Linecast(start, direction) ? Color.red : Color.white;
 			
 			Gizmos.DrawLine(start, end);
 		}

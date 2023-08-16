@@ -159,8 +159,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4936867783617591281}
         m_TargetAssemblyTypeName: EnemyRobotMovement, Assembly-CSharp
-        m_MethodName: EnableCollisionDetection
-        m_Mode: 1
+        m_MethodName: SetCollisionDetectionState
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -386,10 +386,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  linecastDetectionLayers:
-    serializedVersion: 2
-    m_Bits: 19968
-  linecastDetectionDistance: 0.65
   timer: {fileID: 7210368457427765414}
   collisionDetector: {fileID: 1002186216528324733}
 --- !u!114 &1521571793034761498
@@ -435,4 +431,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 1
   data: {fileID: 11400000, guid: 41da66c57a0c0b247bdd01eda268e1d6, type: 2}
-  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
