@@ -9,41 +9,46 @@ public class EnemyRobotFreeze : MonoBehaviour
 	private EnemyRobotMovement movement;
 	private Vector2 lastDirection;
 
-	public void Unfreeze() => SetState(false);
-
-	public void Freeze()
+	public void SetFreezeState(bool freeze)
 	{
-		SetLastDirection(movement.Direction);
-		SetState(true);
+		if(freeze)
+		{
+			SetLastDirection();
+		}
+		
+		Frozen = freeze;
+		movement.Direction = freeze ? Vector2.zero : lastDirection;
+		shootTimer.enabled = !freeze;
+
+		movement.SetMovementLock();
 	}
 
 	private void Awake() => movement = GetComponent<EnemyRobotMovement>();
 
 	private void Start()
 	{
-		SetLastDirection(movement.Direction);
+		SetLastDirection();
 
 		if(StageManager.instance.EnemiesAreFrozen())
 		{
-			SetState(true);
-			GetComponent<Animator>().SetInteger("MovementY", -1);
+			SetFreezeState(true);
+			AdjustAnimation();
 		}
 	}
 
-	private void SetLastDirection(Vector2 direction)
+	private void AdjustAnimation()
 	{
-		if(direction != Vector2.zero)
+		if(TryGetComponent(out Animator animator))
+		{
+			animator.SetInteger("MovementY", -1);
+		}
+	}
+
+	private void SetLastDirection()
+	{
+		if(movement.Direction != Vector2.zero)
 		{
 			lastDirection = movement.Direction;
 		}
-	}
-
-	private void SetState(bool freeze)
-	{
-		Frozen = freeze;
-		movement.Direction = (Frozen) ? Vector2.zero : lastDirection;
-		shootTimer.enabled = !Frozen;
-
-		movement.SetMovementLock();
 	}
 }

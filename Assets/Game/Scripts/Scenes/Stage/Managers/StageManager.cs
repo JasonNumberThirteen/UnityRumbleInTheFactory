@@ -124,14 +124,7 @@ public class StageManager : MonoBehaviour
 		{
 			if(enemy.TryGetComponent(out EnemyRobotFreeze erf))
 			{
-				if(freeze)
-				{
-					erf.Freeze();
-				}
-				else
-				{
-					erf.Unfreeze();
-				}
+				erf.SetFreezeState(freeze);
 			}
 		}
 	}
