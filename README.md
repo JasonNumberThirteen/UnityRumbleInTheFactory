@@ -112,7 +112,7 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 		- [ ] Sprite sheet
 		- [ ] Bullet prefab
 	- [ ] Bug fixes
-		- [ ] Bonus placement in inaccessible areas (required test of case when it is placed on the nuke or next to it)
+		- [X] Bonus placement in inaccessible areas
 		- [ ] Getting stuck by enemies after changing direction (occurs randomly)
 		- [ ] Clash of enemies when one of them is placed on a spawner and it spawned the other one
 		- [ ] No bullet movement when the player change movement direction and steps on slippery floor tiles
@@ -122,22 +122,22 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 		- [ ] Growth of difficulty everytime when beaten the last stage
 		- [X] Color lerp of the bonus enemy robot dependant of time scale
 		- [ ] Exclusion of tiles from stage data in occupied places (the nuke with bricks tiles surrounding it & spawners)
-	- [ ] Optimisations
+	- [X] Optimisations
 		- [X] BonusRenderer (replacement of the Update method with the InvokeRepeating to avoid calls per frame)
-		- [ ] PlayerRobotMovement (update of collision detector rotation only once when it is necessary)
+		- [X] PlayerRobotMovement (update of collision detector rotation only once when it is necessary)
 	- [ ] Sound effects
 	- [X] Flexible input
 	- [ ] Gameplay tests
 	- [ ] New enemy types
 	- [ ] Refactoring of code
 		- [X] BonusTrigger
-		- [ ] StageManager (reduction of code complexity)
+		- [ ] StageManager (reduction of code complexity, decomposition of the class)
 		- [ ] StageUIManager (reduction of code complexity, resetting both players' lists of defeated enemies when the stage starts, methods for updating counters separately)
 		- [X] PlayerRobotRank
-		- [ ] EnemyRobotFreeze (editing movement outside of the EnemyRobotMovement script)
+		- [ ] EnemyRobotFreeze (editing movement directly outside of the EnemyRobotMovement script)
 		- [X] EnemyRobotHealth
 		- [ ] EnemySpawnManager (reduction of code complexity)
-		- [ ] EnemyRobotMovement (additional tweaks)
+		- [X] EnemyRobotMovement
 	- [X] Compatibility for every aspect ratio
 	- [ ] Graphics of the player robot for every rank (both players)
 - [ ] SCORE
