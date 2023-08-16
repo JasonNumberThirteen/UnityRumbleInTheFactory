@@ -7,6 +7,7 @@ public class BonusPlacement : MonoBehaviour
 	[Min(0.01f)] public float gridSize = 0.5f;
 	[Min(0.01f)] public float overlapCircleRadius = 0.5f;
 	public LayerMask excludedLayers;
+	public string nukeTag;
 
 	private void Start() => transform.position = BonusPosition();
 	private float RandomCoordinate(float min, float max) => Random.Range(min, max);
@@ -52,6 +53,11 @@ public class BonusPlacement : MonoBehaviour
 			{
 				if(collider.OverlapPoint(position))
 				{
+					if(collider.CompareTag(nukeTag))
+					{
+						return true;
+					}
+					
 					++excludedPositions;
 				}
 			}
@@ -70,7 +76,7 @@ public class BonusPlacement : MonoBehaviour
 		
 			foreach (Collider2D collider in colliders)
 			{
-				Gizmos.color = collider.OverlapPoint(transform.position) ? Color.red : Color.green;
+				Gizmos.color = collider.OverlapPoint(transform.position) || collider.CompareTag(nukeTag) ? Color.red : Color.green;
 				
 				Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
 			}

@@ -242,6 +242,7 @@ MonoBehaviour:
   excludedLayers:
     serializedVersion: 2
     m_Bits: 7680
+  nukeTag: Nuke
 --- !u!114 &5446431637566457120
 MonoBehaviour:
   m_ObjectHideFlags: 0
