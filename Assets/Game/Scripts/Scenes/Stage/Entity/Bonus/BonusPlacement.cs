@@ -70,12 +70,7 @@ public class BonusPlacement : MonoBehaviour
 		
 			foreach (Collider2D collider in colliders)
 			{
-				Gizmos.color = Color.green;
-
-				if(collider.OverlapPoint(transform.position))
-				{
-					Gizmos.color = Color.red;
-				}
+				Gizmos.color = collider.OverlapPoint(transform.position) ? Color.red : Color.green;
 				
 				Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
 			}
