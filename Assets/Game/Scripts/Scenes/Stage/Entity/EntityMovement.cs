@@ -8,6 +8,7 @@ public class EntityMovement : MonoBehaviour, IUpgradeable
 
 	protected Rigidbody2D rb2D;
 
+	public bool DirectionIsZero() => Direction == Vector2.zero;
 	public virtual void UpdateValues(Rank rank) => movementSpeed = rank.movementSpeed;
 	protected virtual void Awake() => rb2D = GetComponent<Rigidbody2D>();
 	protected virtual void FixedUpdate() => Move();

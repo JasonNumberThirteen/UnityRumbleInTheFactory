@@ -46,7 +46,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 
 	private void SetLastDirection()
 	{
-		if(movement.Direction != Vector2.zero)
+		if(!movement.DirectionIsZero())
 		{
 			lastDirection = movement.Direction;
 		}
