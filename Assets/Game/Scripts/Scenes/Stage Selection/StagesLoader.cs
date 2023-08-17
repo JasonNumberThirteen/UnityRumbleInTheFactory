@@ -3,12 +3,13 @@ using UnityEngine;
 public class StagesLoader : MonoBehaviour
 {
 	public GameData gameData;
+	public string directory;
 
 	private void Awake() => gameData.stages = DetectedStages();
 
 	private Stage[] DetectedStages()
 	{
-		Object[] data = Resources.LoadAll("Stages", typeof(TextAsset));
+		Object[] data = Resources.LoadAll(directory, typeof(TextAsset));
 		int dataLength = data.Length;
 		Stage[] stages = new Stage[dataLength];
 
