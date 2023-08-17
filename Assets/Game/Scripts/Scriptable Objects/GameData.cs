@@ -21,7 +21,7 @@ public class GameData : MainMenuData
 
 	private int stageNumber = 1;
 
-	public override string MainMenuCounterText() => highScore.ToString();
+	public override int MainMenuCounterValue() => highScore;
 	public Stage CurrentStage() => stages[stageNumber - 1];
 	public void ResetData() => isOver = beatenHighScore = enteredStageSelection = false;
 }

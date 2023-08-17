@@ -56,7 +56,7 @@ public class PlayerData : MainMenuData
 
 	private int score, lives, rank, bonusLifeThreshold;
 
-	public override string MainMenuCounterText() => score.ToString();
+	public override int MainMenuCounterValue() => score;
 
 	public void ResetData()
 	{
