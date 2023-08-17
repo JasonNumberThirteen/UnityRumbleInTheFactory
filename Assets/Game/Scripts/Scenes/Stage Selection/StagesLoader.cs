@@ -4,7 +4,7 @@ public class StagesLoader : MonoBehaviour
 {
 	public GameData gameData;
 
-	private void Start() => gameData.stages = DetectedStages();
+	private void Awake() => gameData.stages = DetectedStages();
 
 	private Stage[] DetectedStages()
 	{
