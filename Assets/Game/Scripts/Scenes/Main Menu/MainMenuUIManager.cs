@@ -1,18 +1,25 @@
-using TMPro;
 using UnityEngine;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-	public PlayerData playerOneData, playerTwoData;
-	public GameData gameData;
-	public TextMeshProUGUI playerOneScoreCounter, playerTwoScoreCounter, highScoreCounter;
+	public MainMenuCounter[] counters;
 
-	private string FormattedScore(int score) => string.Format("{0,6}", score);
-
-	private void Start()
+	private void Awake() => SetCounterValues();
+	
+	private void SetCounterValues()
 	{
-		playerOneScoreCounter.text = "I-" + FormattedScore(playerOneData.Score);
-		playerTwoScoreCounter.text = gameData.twoPlayersMode ? "II-" + FormattedScore(playerTwoData.Score) : string.Empty;
-		highScoreCounter.text = "HI-" + FormattedScore(gameData.highScore);
+		foreach (MainMenuCounter mmc in counters)
+		{
+			mmc.SetCounterValue();
+		}
 	}
+}
+
+[System.Serializable]
+public class MainMenuCounter
+{
+	[SerializeField] private MainMenuData data;
+	[SerializeField] private Counter counter;
+
+	public void SetCounterValue() => counter.SetTo(data.MainMenuCounterValue());
 }
