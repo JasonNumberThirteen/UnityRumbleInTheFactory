@@ -34,17 +34,28 @@
 ## Scenes
 ### Main Menu
 A starting scene with option selection.
+
+!["Rumble In The Factory (Main Menu)"](./Screenshots/MainMenu.png?raw=true)
 ### Stage Selection
 A scene wherein you can select which stage you want to start from (accessible from the main menu scene after selecting one of the game modes).
+
+!["Rumble In The Factory (Stage Selection)"](./Screenshots/StageSelection.png?raw=true)
 ### Stage
 A scene wherein the game is played on current stage, firstly selected and later when the player is advanced to the next one (accessible from the stage selection scene after selecting the stage & from the score scene when all points for enemies were counted).
+
+!["Rumble In The Factory (Stage)"](./Screenshots/Stage.png?raw=true)
 ### Score
 A scene which displays details about defeated enemies, what types and how many units have been destroyed (accessible from the stage scene when the game is over, no matter if won or failed).
+
+!["Rumble In The Factory (Score)"](./Screenshots/Score.png?raw=true)
 ### Game Over
 A scene which shows a big "**GAME OVER**" text (accessible from the score scene when the game is over & the player lost).
+
+!["Rumble In The Factory (Game Over)"](./Screenshots/GameOver.png?raw=true)
 ### High Score
 A scene which shows a big "**HISCORE**" text with a new high score (accessible from the game over scene when the player has beaten high score).
 
+!["Rumble In The Factory (High Score)"](./Screenshots/HighScore.png?raw=true)
 ## Usage
 - Press W / S / A / D keys or arrow keys to navigate through menus & control the player one robot
 - Press LMB / Space to shoot
