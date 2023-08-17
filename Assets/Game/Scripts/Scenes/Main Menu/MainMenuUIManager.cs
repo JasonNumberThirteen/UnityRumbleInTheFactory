@@ -4,7 +4,7 @@ public class MainMenuUIManager : MonoBehaviour
 {
 	public MainMenuCounter[] counters;
 
-	private void Awake() => SetCounterValues();
+	private void Start() => SetCounterValues();
 	
 	private void SetCounterValues()
 	{
