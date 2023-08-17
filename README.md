@@ -75,63 +75,10 @@ Although I did my best to keep the biggest part of the original game unchanged, 
 
 ## Project status
 <p align = "center"><b>IN PROGRESS</b></p>
+<p align = "center"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Gasr80percent.png"/></p>
 
 ---
-**The project is completed in ~80%**. It still requires fixes, optimisations and upgrades. Detailed information about left tasks were written below (tasks are split by the scenes):
-
-```[tasklist]
-- [X] STAGE SELECTION
-	- [X] Return to the main menu
-	- [X] Automatic load of JSON files in directory
-	- [X] Inclusion of case when there are no stages to select
-	- [X] Fast scroll of the stage numer when one of keys is being held
-- [ ] STAGE
-	- [ ] Music
-	- [ ] Player 2
-		- [ ] Input
-		- [ ] Spawn
-		- [X] Points gain
-		- [ ] Sprite sheet
-		- [ ] Bullet prefab
-	- [ ] Bug fixes
-		- [X] Bonus placement in inaccessible areas
-		- [ ] Getting stuck by enemies after changing direction (occurs randomly)
-		- [ ] Clash of enemies when one of them is placed on a spawner and it spawned the other one
-		- [ ] No bullet movement when the player change movement direction and steps on slippery floor tiles
-		- [ ] Clash of timer events when the nuke is destroyed as soon as defeated the last enemy (the score scene is loaded before the "Game Over" text stops moving)
-	- [ ] Adjustments
-		- [X] Balance of the player robots statistics on every rank
-		- [X] Growth of difficulty everytime when beaten the last stage
-		- [X] Color lerp of the bonus enemy robot dependant of time scale
-		- [ ] Exclusion of tiles from stage data in occupied places (the nuke with bricks tiles surrounding it & spawners)
-	- [X] Optimisations
-		- [X] BonusRenderer (replacement of the Update method with the InvokeRepeating to avoid calls per frame)
-		- [X] PlayerRobotMovement (update of collision detector rotation only once when it is necessary)
-	- [ ] Sound effects
-	- [X] Flexible input
-	- [ ] Gameplay tests
-	- [ ] New enemy types
-	- [ ] Refactoring of code
-		- [X] BonusTrigger
-		- [ ] StageManager (reduction of code complexity, decomposition of the class)
-		- [ ] StageUIManager (reduction of code complexity, resetting both players' lists of defeated enemies when the stage starts, methods for updating counters separately)
-		- [X] PlayerRobotRank
-		- [ ] EnemyRobotFreeze (editing movement directly outside of the EnemyRobotMovement script)
-		- [X] EnemyRobotHealth
-		- [ ] EnemySpawnManager (reduction of code complexity)
-		- [X] EnemyRobotMovement
-	- [X] Compatibility for every aspect ratio
-	- [ ] Graphics of the player robot for every rank (both players)
-- [ ] SCORE
-	- [ ] Refactoring of code
-	- [ ] Points count for the player 2
-	- [X] Compatibility for every aspect ratio
-- [ ] GAME OVER
-	- [ ] Music
-- [ ] HIGH SCORE
-	- [ ] Music
-	- [X] Refactoring of code
-```
+**The project is complete in ~80%**. It still requires fixes, optimisations and upgrades. For more information about left tasks to complete, please see the Wiki page linked [here](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Project-status).
 
 ## Credits
 This project was made by [Jason](https://jasonxiii.pl "Jason. Cała informatyka w jednym miejscu! Oficjalna strona internetowa! Setki artykułów na różne tematy! Wszystko stworzone przez jedną osobę!").
