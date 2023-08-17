@@ -8,8 +8,9 @@ public class CounterText : MonoBehaviour
 	
 	private TextMeshProUGUI text;
 
+	public virtual string FormattedCounterValue() => counter.CurrentValue.ToString();
 	public void UpdateText() => text.text = FormattedText();
 
 	private void Awake() => text = GetComponent<TextMeshProUGUI>();
-	private string FormattedText() => string.IsNullOrEmpty(header) ? counter.CurrentValue.ToString() : string.Format("{0} {1}", header, counter.CurrentValue);
+	private string FormattedText() => string.IsNullOrEmpty(header) ? FormattedCounterValue() : string.Format("{0} {1}", header, FormattedCounterValue());
 }
