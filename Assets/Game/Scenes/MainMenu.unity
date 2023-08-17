@@ -1514,7 +1514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d713b9a561591f045a7168d25fba475c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   counters:
   - data: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     counter: {fileID: 1633096516}
@@ -1870,6 +1869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counter: {fileID: 1571427408}
   header: HI-
+  addSpaceAfterHeader: 0
   width: 6
 --- !u!114 &1571427408
 MonoBehaviour:
@@ -2000,6 +2000,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1601528631}
+    - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1601528633}
   m_SourcePrefab: {fileID: 100100000, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
 --- !u!224 &1601528628 stripped
 RectTransform:
@@ -2020,6 +2023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counter: {fileID: 1601528632}
   header: II-
+  addSpaceAfterHeader: 0
   width: 6
 --- !u!114 &1601528632
 MonoBehaviour:
@@ -2036,6 +2040,19 @@ MonoBehaviour:
   initialValue: 0
   text: {fileID: 1601528631}
   setAtStart: 0
+--- !u!114 &1601528633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274700614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0d74beb6dc09d4c8158157b362c9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!224 &1612145309 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7057306263802749971, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
@@ -2137,6 +2154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counter: {fileID: 1633096516}
   header: I-
+  addSpaceAfterHeader: 0
   width: 6
 --- !u!114 &1633096516
 MonoBehaviour:
