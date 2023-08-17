@@ -3,33 +3,32 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Game Data")]
 public class GameData : MainMenuData
 {
-	public int StageNumber
-	{
-		get
-		{
-			return stageNumber;
-		}
-		set
-		{
-			stageNumber = (value - 1) % stages.Length + 1;
-		}
-	}
-	
+	public int StageNumber {get; private set;}
+
 	public int highScore = 20000;
 	public bool twoPlayersMode, isOver, beatenHighScore, enteredStageSelection;
 	public Stage[] stages;
 	public GameDifficulty difficulty;
 
-	private int stageNumber = 1;
-
 	public override int MainMenuCounterValue() => highScore;
-	public Stage CurrentStage() => stages[stageNumber - 1];
+	public Stage CurrentStage() => stages[StageNumber - 1];
 
-	public void ResetData()
+	public void ResetData(int initialStage)
 	{
+		StageNumber = initialStage;
 		isOver = beatenHighScore = enteredStageSelection = false;
 
 		difficulty.ResetData();
+	}
+
+	public void AdvanceToNextStage()
+	{
+		StageNumber = StageNumber % stages.Length + 1;
+		
+		if(StageNumber == 1)
+		{
+			difficulty.IncreaseDifficulty();
+		}
 	}
 }
 
