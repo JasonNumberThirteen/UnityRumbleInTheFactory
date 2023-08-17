@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Game Data")]
-public class GameData : ScriptableObject
+public class GameData : MainMenuData
 {
 	public int StageNumber
 	{
@@ -21,6 +21,7 @@ public class GameData : ScriptableObject
 
 	private int stageNumber = 1;
 
+	public override string MainMenuCounterText() => highScore.ToString();
 	public Stage CurrentStage() => stages[stageNumber - 1];
 	public void ResetData() => isOver = beatenHighScore = enteredStageSelection = false;
 }

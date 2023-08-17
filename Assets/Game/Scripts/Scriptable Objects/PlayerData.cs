@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Game/Player Data")]
-public class PlayerData : ScriptableObject
+public class PlayerData : MainMenuData
 {
 	public GameData gameData;
 
@@ -55,6 +55,8 @@ public class PlayerData : ScriptableObject
 	[SerializeField][Min(1)] private int initialBonusLifeThreshold = 20000;
 
 	private int score, lives, rank, bonusLifeThreshold;
+
+	public override string MainMenuCounterText() => score.ToString();
 
 	public void ResetData()
 	{
