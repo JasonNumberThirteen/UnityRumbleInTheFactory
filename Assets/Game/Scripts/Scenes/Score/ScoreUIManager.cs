@@ -1,4 +1,5 @@
 using TMPro;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,13 +57,6 @@ public class ScoreUIManager : MonoBehaviour
 		}
 	}
 
-	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
-	private void SetHighScore() => highScoreCounter.text = gameData.highScore.ToString();
-	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
-	private void RetrieveEnemiesData() => defeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray<EnemyData>();
-	private void RetrieveEnemiesCount() => defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray<int>();
-	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
-
 	private void Start()
 	{
 		ResetTotalDefeatedEnemiesCounter();
@@ -73,6 +67,13 @@ public class ScoreUIManager : MonoBehaviour
 		BuildPointsRows();
 		SetTotalTextPosition();
 	}
+
+	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
+	private void SetHighScore() => highScoreCounter.text = gameData.highScore.ToString();
+	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
+	private void RetrieveEnemiesData() => defeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray();
+	private void RetrieveEnemiesCount() => defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray();
+	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
 
 	private void BuildPointsRows()
 	{
@@ -85,11 +86,56 @@ public class ScoreUIManager : MonoBehaviour
 		{
 			int y = -80 - 16*i;
 			
-			CreateElement(pointsText, 64, y);
-			CreateDefeatedEnemiesCounter(96, y, i);
-			CreateElement(leftArrow, 112, y);
-			CreateEnemyTypeSprite(0, y + 4, i);
-			CreateEnemyTypePointsCounter(16, y, i);
+			InstantiateElement(pointsText, new Vector2(64, y));
+			InstantiateElement(defeatedEnemiesCounter, new Vector2(96, y), i, OnDefeatedEnemiesCounterInstantiate);
+			InstantiateElement(leftArrow, new Vector2(112, y));
+			InstantiateElement(enemyType, new Vector2(0, y + 4), i, OnEnemyTypeSpriteInstantiate);
+			InstantiateElement(enemyTypePointsCounter, new Vector2(16, y), i, OnEnemyTypePointsCounterInstantiate);
+		}
+	}
+
+	private GameObject InstantiateElement(GameObject element, Vector2 position)
+	{
+		GameObject instance = Instantiate(element, parent);
+		
+		if(instance.TryGetComponent(out RectTransform rt))
+		{
+			rt.anchoredPosition = position;
+		}
+
+		return instance;
+	}
+
+	private GameObject InstantiateElement(GameObject element, Vector2 position, int index, Action<GameObject, int> onInstantiate)
+	{
+		GameObject instance = InstantiateElement(element, position);
+
+		onInstantiate(instance, index);
+
+		return instance;
+	}
+
+	private void OnDefeatedEnemiesCounterInstantiate(GameObject instance, int index)
+	{
+		if(instance.TryGetComponent(out TextMeshProUGUI text))
+		{
+			defeatedEnemiesCounters[index] = text;
+		}
+	}
+
+	private void OnEnemyTypeSpriteInstantiate(GameObject instance, int index)
+	{
+		if(instance.TryGetComponent(out Image image))
+		{
+			image.sprite = defeatedEnemiesData[index].sprite;
+		}
+	}
+
+	private void OnEnemyTypePointsCounterInstantiate(GameObject instance, int index)
+	{
+		if(instance.TryGetComponent(out TextMeshProUGUI text))
+		{
+			enemyTypePointsCounters[index] = text;
 		}
 	}
 
@@ -100,73 +146,9 @@ public class ScoreUIManager : MonoBehaviour
 		totalText.anchoredPosition = new Vector2(totalText.anchoredPosition.x, totalText.anchoredPosition.y + offsetY);
 		horizontalLine.anchoredPosition = new Vector2(horizontalLine.anchoredPosition.x, horizontalLine.anchoredPosition.y + offsetY);
 
-		RectTransform tdec = totalDefeatedEnemiesCounter.GetComponent<RectTransform>();
-
-		tdec.anchoredPosition = new Vector2(tdec.anchoredPosition.x, totalText.anchoredPosition.y);
-	}
-
-	private void CreateElement(GameObject element, float x, float y)
-	{
-		GameObject instance = Instantiate(element, parent);
-		RectTransform rt = instance.GetComponent<RectTransform>();
-
-		if(rt != null)
+		if(totalDefeatedEnemiesCounter.TryGetComponent(out RectTransform rt))
 		{
-			rt.anchoredPosition = new Vector2(x, y);
-		}
-	}
-
-	private void CreateDefeatedEnemiesCounter(float x, float y, int index)
-	{
-		GameObject instance = Instantiate(defeatedEnemiesCounter, parent);
-		RectTransform rt = instance.GetComponent<RectTransform>();
-
-		if(rt != null)
-		{
-			rt.anchoredPosition = new Vector2(x, y);
-		}
-
-		TextMeshProUGUI text = instance.GetComponent<TextMeshProUGUI>();
-
-		if(text != null)
-		{
-			defeatedEnemiesCounters[index] = text;
-		}
-	}
-
-	private void CreateEnemyTypeSprite(float x, float y, int index)
-	{
-		GameObject instance = Instantiate(enemyType, parent);
-		RectTransform rt = instance.GetComponent<RectTransform>();
-
-		if(rt != null)
-		{
-			rt.anchoredPosition = new Vector2(x, y);
-		}
-
-		Image image = instance.GetComponent<Image>();
-
-		if(image != null)
-		{
-			image.sprite = defeatedEnemiesData[index].sprite;
-		}
-	}
-
-	private void CreateEnemyTypePointsCounter(float x, float y, int index)
-	{
-		GameObject instance = Instantiate(enemyTypePointsCounter, parent);
-		RectTransform rt = instance.GetComponent<RectTransform>();
-
-		if(rt != null)
-		{
-			rt.anchoredPosition = new Vector2(x, y);
-		}
-
-		TextMeshProUGUI text = instance.GetComponent<TextMeshProUGUI>();
-
-		if(text != null)
-		{
-			enemyTypePointsCounters[index] = text;
+			rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, totalText.anchoredPosition.y);
 		}
 	}
 }
