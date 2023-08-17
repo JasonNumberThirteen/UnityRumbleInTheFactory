@@ -7,7 +7,6 @@ public class EnemySpawnManager : MonoBehaviour
 	public EnemyData[] enemiesData;
 	public GameData gameData;
 	public string enemyTag, spawnerTag;
-	[Min(1)] public int enemiesLimit = 3;
 	[Min(0.01f)] public float spawnInterval = 2f;
 
 	private GameObject[] enemies, spawners;
@@ -86,7 +85,7 @@ public class EnemySpawnManager : MonoBehaviour
 	private void DetermineEnemiesToSpawn()
 	{
 		int aliveEnemies = GameObject.FindGameObjectsWithTag(enemyTag).Length;
-		int missingEnemies = enemiesLimit - aliveEnemies;
+		int missingEnemies = gameData.difficulty.EnemiesLimit() - aliveEnemies;
 		
 		enemiesToSpawn = Mathf.Max(0, missingEnemies);
 	}

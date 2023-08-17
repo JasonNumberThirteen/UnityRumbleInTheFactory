@@ -12,6 +12,11 @@ public class ScoreSceneManager : GameSceneManager
 		if(!isOver)
 		{
 			++gameData.StageNumber;
+			
+			if(gameData.StageNumber == 1)
+			{
+				gameData.difficulty.IncreaseDifficulty();
+			}
 		}
 
 		LoadScene(sceneName);

@@ -72,7 +72,13 @@ public class EnemyRobotMovement : EntityMovement
 		collisionDetector.AdjustRotation(Direction);
 	}
 
-	private void Start() => SetDirection(Vector2.down);
+	private void Start()
+	{
+		movementSpeed *= StageManager.instance.gameData.difficulty.EnemiesMovementSpeedMultiplier();
+
+		SetDirection(Vector2.down);
+	}
+
 	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
 	private bool DetectedCollision() => !detectedCollision && !freeze.Frozen && collisionDetector.OverlapBoxAll().Length > 1;
 	
