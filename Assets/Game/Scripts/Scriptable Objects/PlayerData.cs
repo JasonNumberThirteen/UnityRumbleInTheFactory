@@ -97,10 +97,15 @@ public class PlayerData : MainMenuData
 
 	private void CheckHighScore()
 	{
-		if(score >= gameData.highScore && !gameData.beatenHighScore)
+		if(score >= gameData.highScore)
 		{
-			gameData.beatenHighScore = true;
-			++Lives;
+			gameData.highScore = score;
+
+			if(!gameData.beatenHighScore)
+			{
+				gameData.beatenHighScore = true;
+				++Lives;
+			}
 		}
 	}
 }
