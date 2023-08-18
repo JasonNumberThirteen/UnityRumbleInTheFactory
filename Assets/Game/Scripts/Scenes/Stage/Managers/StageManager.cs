@@ -26,6 +26,7 @@ public class StageManager : MonoBehaviour
 	public GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 	public void ResetDefeatedEnemiesByPlayer() => playerData.DefeatedEnemies.Clear();
 	public void InitiatePlayerRespawn() => playerRespawnTimer.ResetTimer();
+	public bool GameIsOver() => IsInterrupted() || IsOver();
 	public bool EnemiesAreFrozen() => freezeTimer.Started;
 	public bool IsActive() => state == GameStates.ACTIVE;
 	public bool IsPaused() => state == GameStates.PAUSED;
