@@ -12,6 +12,7 @@ public class GameData : MainMenuData
 
 	public override int MainMenuCounterValue() => highScore;
 	public Stage CurrentStage() => stages[StageNumber - 1];
+	public bool StagesDoNotExist() => stages.Length == 0;
 
 	public void ResetData(int initialStage)
 	{

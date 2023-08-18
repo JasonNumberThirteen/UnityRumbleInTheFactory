@@ -17,6 +17,11 @@ public class StageSelectionInput : MonoBehaviour
 
 	private void NavigateRepeatedly()
 	{
+		if(gameData.StagesDoNotExist())
+		{
+			return;
+		}
+
 		if(navigationDirection != 0)
 		{
 			if(navigationTimer >= 0)
@@ -38,6 +43,11 @@ public class StageSelectionInput : MonoBehaviour
 
 	private void OnNavigate(InputValue iv)
 	{
+		if(gameData.StagesDoNotExist())
+		{
+			return;
+		}
+		
 		Vector2 inputVector = iv.Get<Vector2>();
 
 		navigationDirection = (int)inputVector.x;
@@ -67,6 +77,13 @@ public class StageSelectionInput : MonoBehaviour
 		}
 	}
 
-	private void OnSubmit(InputValue iv) => sceneManager.StartGame(stageCounter.CurrentValue);
+	private void OnSubmit(InputValue iv)
+	{
+		if(!gameData.StagesDoNotExist())
+		{
+			sceneManager.StartGame(stageCounter.CurrentValue);
+		}
+	}
+
 	private void OnCancel(InputValue iv) => sceneManager.BackToMainMenu();
 }
