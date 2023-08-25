@@ -1,9 +1,8 @@
-using TMPro;
 using UnityEngine;
 
 public class StageUIManager : MonoBehaviour
 {
-	public RectTransform parent, hud;
+	public RectTransform parent, hud, difficultyTier;
 	public GameObject gainedPointsCounter, leftEnemyIcon, pauseText;
 	public PlayerData playerData;
 	public GameData gameData;
@@ -62,6 +61,8 @@ public class StageUIManager : MonoBehaviour
 	{
 		stageCounterText.SetTo(gameData.StageNumber);
 		InstantiateLeftEnemyIcons();
+
+		difficultyTier.sizeDelta = new Vector2(16*gameData.difficulty.CurrentTier(), 16);
 	}
 
 	private void InstantiateLeftEnemyIcons()

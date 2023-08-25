@@ -2367,6 +2367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 120467784}
   hud: {fileID: 1843182811}
+  difficultyTier: {fileID: 183213088}
   gainedPointsCounter: {fileID: 944822935104944545, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
   leftEnemyIcon: {fileID: 4662676234940326363, guid: 46ebf53728db48e4e883a50b53f38e99, type: 3}
   pauseText: {fileID: 28531379}

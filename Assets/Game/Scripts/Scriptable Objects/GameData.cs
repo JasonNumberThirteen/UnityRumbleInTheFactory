@@ -45,6 +45,7 @@ public class GameDifficulty
 	public void ResetData() => tier = 0;
 	public float EnemiesMovementSpeedMultiplier() => enemiesMovementSpeedMultiplierPerTier[tier];
 	public int EnemiesLimit() => enemiesLimitPerTier[tier];
+	public int CurrentTier() => tier;
 
 	public void IncreaseDifficulty() => tier = Mathf.Clamp(tier + 1, 0, maxTier);
 }
