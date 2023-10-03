@@ -8,7 +8,7 @@ public class StageSelectionUIManager : MonoBehaviour
 
 	private void Start()
 	{
-		bool foundAnyStage = gameData.stages.Length > 0;
+		bool foundAnyStage = !gameData.StagesDoNotExist();
 		
 		stageCounter.enabled = foundAnyStage;
 		noStagesMessage.enabled = !foundAnyStage;
