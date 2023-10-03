@@ -7,8 +7,13 @@ public class EntitySpawner : MonoBehaviour
 
 	public void Spawn()
 	{
-		GameObject instance = Instantiate(entity, gameObject.transform.position, Quaternion.identity);
+		GameObject parent = GameObject.FindGameObjectWithTag(parentTag);
 
-		instance.transform.SetParent(GameObject.FindGameObjectWithTag(parentTag).transform);
+		if(parent != null)
+		{
+			GameObject instance = Instantiate(entity, gameObject.transform.position, Quaternion.identity);
+
+			instance.transform.SetParent(parent.transform);
+		}
 	}
 }
