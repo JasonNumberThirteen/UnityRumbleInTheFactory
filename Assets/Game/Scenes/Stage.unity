@@ -4466,6 +4466,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1939610192}
     m_Modifications:
     - target: {fileID: 6430103099845323803, guid: c6a53d874e5ea144c82731d5cd132e42, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 7717036919670727948, guid: 08170033af8b36347bc9be3e9859cd27, type: 3}
+    - target: {fileID: 6430103099845323803, guid: c6a53d874e5ea144c82731d5cd132e42, type: 3}
       propertyPath: parent
       value: 
       objectReference: {fileID: 1939610192}
