@@ -4,20 +4,30 @@ public class StageUIManager : MonoBehaviour
 {
 	public RectTransform parent, hud, difficultyTier;
 	public GameObject gainedPointsCounter, leftEnemyIcon, pauseText;
-	public PlayerData playerData;
 	public GameData gameData;
-	public Counter playerOneLivesCounter, stageCounterText, stageCounterIcon;
+	public PlayerData[] playersData;
+	public Counter[] playerLivesCounters;
+	public Counter stageCounterText, stageCounterIcon;
 	[Min(0)] public int leftEnemyIconsLimit = 20;
 
 	private GameObject[] leftEnemyIcons;
 	private int leftEnemyIconIndex;
 
 	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.IsPaused());
+	public void UpdateStageCounterIcon() => stageCounterIcon.SetTo(gameData.StageNumber);
 
 	public void UpdateCounters()
 	{
-		playerOneLivesCounter.SetTo(playerData.Lives);
-		stageCounterIcon.SetTo(gameData.StageNumber);
+		UpdateLivesCounters();
+		UpdateStageCounterIcon();
+	}
+
+	public void UpdateLivesCounters()
+	{
+		for (int i = 0; i < playersData.Length; ++i)
+		{
+			playerLivesCounters[i].SetTo(playersData[i].Lives);
+		}
 	}
 
 	public void DestroyLeftEnemyIcon()
