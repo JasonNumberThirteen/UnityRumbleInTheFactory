@@ -8,10 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6502274134588380994, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
-      propertyPath: collisionDetector
-      value: 
-      objectReference: {fileID: 1315673896150961643}
     - target: {fileID: -2978857606154982737, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_Actions
       value: 
@@ -121,14 +117,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
---- !u!114 &1315673896150961643 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6203776159191331477, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
-  m_PrefabInstance: {fileID: 4925262320230727550}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67539fa7da496d24ea92e5aa98693030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

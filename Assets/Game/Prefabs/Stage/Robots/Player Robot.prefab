@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  collisionDetector: {fileID: 0}
+  collisionDetector: {fileID: 6203776159191331477}
 --- !u!114 &9195606272638975018
 MonoBehaviour:
   m_ObjectHideFlags: 0
