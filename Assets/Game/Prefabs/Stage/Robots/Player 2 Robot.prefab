@@ -55,7 +55,11 @@ PrefabInstance:
     - target: {fileID: 3415699233984565831, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 8514831330534971138, guid: 0d0c300c481bc73418ff6a6165776a64, type: 3}
+      objectReference: {fileID: 8514831330534971138, guid: 1ecf5334b514fe0429454dd4864365af, type: 3}
+    - target: {fileID: 3415699233984565831, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
+      propertyPath: bulletTag
+      value: Player 2 Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 3508498655664141437, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_RootOrder
       value: 0
