@@ -23,6 +23,7 @@ TagManager:
   - Grid Tiles
   - Slippery Floor Tiles
   - Toxic Waste Tiles
+  - Player 1 Bullet
   layers:
   - Default
   - TransparentFX
