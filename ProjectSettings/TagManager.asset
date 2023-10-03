@@ -24,6 +24,7 @@ TagManager:
   - Slippery Floor Tiles
   - Toxic Waste Tiles
   - Player 1 Bullet
+  - Player 2 Bullet
   layers:
   - Default
   - TransparentFX
