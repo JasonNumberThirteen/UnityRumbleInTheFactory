@@ -2,15 +2,22 @@ public class StageSelectionSceneManager : GameSceneManager
 {
 	public string mainMenuSceneName, stageSceneName;
 	public GameData gameData;
-	public PlayerData playerOneData, playerTwoData;
+	public PlayerData[] playersData;
 
 	public void BackToMainMenu() => LoadScene(mainMenuSceneName);
 
 	public void StartGame(int stage)
 	{
 		gameData.ResetData(stage);
-		playerOneData.ResetData();
-		playerTwoData.ResetData();
+		ResetPlayersData();
 		LoadScene(stageSceneName);
+	}
+
+	private void ResetPlayersData()
+	{
+		foreach (PlayerData pd in playersData)
+		{
+			pd.ResetData();
+		}
 	}
 }
