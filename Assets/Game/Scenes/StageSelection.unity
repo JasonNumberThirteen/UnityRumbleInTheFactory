@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42fcdcdca31a428448329ef2996efb09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageCounter: {fileID: 0}
+  stageCounter: {fileID: 832648717}
   sceneManager: {fileID: 1104572919}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   stagesLoader: {fileID: 731514314}

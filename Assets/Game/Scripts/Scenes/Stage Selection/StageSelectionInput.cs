@@ -4,7 +4,7 @@ using UnityEngine.InputSystem.UI;
 
 public class StageSelectionInput : MonoBehaviour
 {
-	public Counter stageCounter;
+	public LoopingCounter stageCounter;
 	public StageSelectionSceneManager sceneManager;
 	public GameData gameData;
 	public StagesLoader stagesLoader;
@@ -60,20 +60,10 @@ public class StageSelectionInput : MonoBehaviour
 		if(stageOffset == -1)
 		{
 			stageCounter.DecreaseBy(1);
-
-			if(stageCounter.CurrentValue <= 0)
-			{
-				stageCounter.SetTo(gameData.stages.Length);
-			}
 		}
 		else if(stageOffset == 1)
 		{
 			stageCounter.IncreaseBy(1);
-
-			if(stageCounter.CurrentValue > gameData.stages.Length)
-			{
-				stageCounter.SetTo(1);
-			}
 		}
 	}
 
