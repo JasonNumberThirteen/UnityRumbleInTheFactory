@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class StagesLoader : MonoBehaviour
 {
+	public LoopingCounter stageCounter;
 	public GameData gameData;
 	public string directory;
 
 	private void Awake() => gameData.stages = DetectedStages();
+	private void Start() => stageCounter.max = gameData.stages.Length;
 
 	private Stage[] DetectedStages()
 	{
