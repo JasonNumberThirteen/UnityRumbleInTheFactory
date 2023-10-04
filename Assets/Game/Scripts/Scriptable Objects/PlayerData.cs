@@ -33,7 +33,7 @@ public class PlayerData : MainMenuData
 		{
 			lives = Mathf.Clamp(value, 0, 9);
 
-			StageManager.instance.uiManager.UpdateCounters();
+			StageManager.instance.uiManager.UpdateLivesCounters();
 		}
 	}
 
