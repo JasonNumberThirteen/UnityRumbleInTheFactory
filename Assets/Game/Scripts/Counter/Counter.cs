@@ -8,24 +8,25 @@ public class Counter : MonoBehaviour
 
 	public int CurrentValue {get; private set;}
 
+	protected virtual void SetValue(int value) => CurrentValue = value;
+	protected virtual void IncreaseValue(int value) => CurrentValue += value;
+	protected virtual void DecreaseValue(int value) => CurrentValue -= value;
+
 	public void SetTo(int value)
 	{
-		CurrentValue = value;
-
+		SetValue(value);
 		UpdateText();
 	}
 
 	public void IncreaseBy(int value)
 	{
-		CurrentValue += value;
-
+		IncreaseValue(value);
 		UpdateText();
 	}
 
 	public void DecreaseBy(int value)
 	{
-		CurrentValue -= value;
-
+		DecreaseValue(value);
 		UpdateText();
 	}
 
