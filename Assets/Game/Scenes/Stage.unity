@@ -2682,6 +2682,8 @@ MonoBehaviour:
   enemiesData:
   - {fileID: 11400000, guid: 41da66c57a0c0b247bdd01eda268e1d6, type: 2}
   - {fileID: 11400000, guid: 67ba0b7c652cff046ae8c98bc2bfd72c, type: 2}
+  - {fileID: 11400000, guid: 71477fc3dc671ba429a99018a05356b7, type: 2}
+  - {fileID: 11400000, guid: 06192fdb84e356e4f9708014159fe4d1, type: 2}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   enemyTag: Enemy
   spawnerTag: Enemy Spawner
