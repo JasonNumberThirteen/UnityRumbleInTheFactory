@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YellowRobotLeftAnimation
+  m_Name: OrangeRobotRightAnimation
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1302563404, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
+      value: {fileID: 345342295, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
     - time: 0.016666668
-      value: {fileID: -189018443, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
+      value: {fileID: -1035893452, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1302563404, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
-    - {fileID: -189018443, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
+    - {fileID: 345342295, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
+    - {fileID: -1035893452, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

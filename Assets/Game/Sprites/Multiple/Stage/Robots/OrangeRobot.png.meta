@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: YellowRobotUp1
+      name: OrangeRobotUp1
       rect:
         serializedVersion: 2
         x: 0
@@ -144,7 +144,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,7 +157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YellowRobotUp2
+      name: OrangeRobotUp2
       rect:
         serializedVersion: 2
         x: 16
@@ -165,7 +165,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YellowRobotDown1
+      name: OrangeRobotDown1
       rect:
         serializedVersion: 2
         x: 32
@@ -186,7 +186,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,7 +199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YellowRobotDown2
+      name: OrangeRobotDown2
       rect:
         serializedVersion: 2
         x: 48
@@ -207,7 +207,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YellowRobotLeft1
+      name: OrangeRobotLeft1
       rect:
         serializedVersion: 2
         x: 64
@@ -228,7 +228,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,7 +241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YellowRobotLeft2
+      name: OrangeRobotLeft2
       rect:
         serializedVersion: 2
         x: 80
@@ -249,7 +249,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,7 +262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YellowRobotRight1
+      name: OrangeRobotRight1
       rect:
         serializedVersion: 2
         x: 96
@@ -270,7 +270,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,7 +283,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YellowRobotRight2
+      name: OrangeRobotRight2
       rect:
         serializedVersion: 2
         x: 112
@@ -291,7 +291,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -314,14 +314,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      YellowRobotDown1: -2082800295
-      YellowRobotDown2: 261536760
-      YellowRobotLeft1: 1302563404
-      YellowRobotLeft2: -189018443
-      YellowRobotRight1: 345342295
-      YellowRobotRight2: -1035893452
-      YellowRobotUp1: -1321011705
-      YellowRobotUp2: 1488003502
+      OrangeRobotDown1: -2082800295
+      OrangeRobotDown2: 261536760
+      OrangeRobotLeft1: 1302563404
+      OrangeRobotLeft2: -189018443
+      OrangeRobotRight1: 345342295
+      OrangeRobotRight2: -1035893452
+      OrangeRobotUp1: -1321011705
+      OrangeRobotUp2: 1488003502
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
