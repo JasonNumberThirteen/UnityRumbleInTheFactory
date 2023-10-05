@@ -52,7 +52,7 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: -2978630073550354148}
         m_TargetAssemblyTypeName: EnemyRobotMovement, Assembly-CSharp
         m_MethodName: RandomiseDirection
         m_Mode: 1
@@ -64,7 +64,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: -2978630073550354148}
         m_TargetAssemblyTypeName: EnemyRobotMovement, Assembly-CSharp
         m_MethodName: SetCollisionDetectionState
         m_Mode: 6
@@ -224,7 +224,7 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1097374135248273911}
         m_TargetAssemblyTypeName: RobotShoot, Assembly-CSharp
         m_MethodName: FireBullet
         m_Mode: 1
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64e1510ae35de74dbcac45a5c1b8845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootTimer: {fileID: 6644520547820070141, guid: bd1bb0a7bdc7b3047a6d96297b5be934, type: 3}
+  shootTimer: {fileID: 7952846313805569692}
 --- !u!114 &-7789898313100651961
 MonoBehaviour:
   m_ObjectHideFlags: 0
