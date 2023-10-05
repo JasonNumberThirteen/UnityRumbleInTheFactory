@@ -16,7 +16,7 @@
 ## General information
 - This is a "Unity" game project of my arcade game inspired by "**Battle City**", a popular top down shooter developed by [Namco](https://en.wikipedia.org/wiki/Namco "Namco - Wikipedia") in 1985.
 - The project presents my programming skills and how I write code taking care of several optimisations.
-- The game consists of defending the nuke against incoming robots. The player controls the yellow robot (player 2 controls the green one) and must shoot projectiles to destroy enemy robots which spawn on the top of the map.
+- The game consists of defending the nuke against incoming robots. The player controls the orange robot (player 2 controls the green one) and must shoot projectiles to destroy enemy robots which spawn on the top of the map.
 - Win condition: all incoming enemy robots are destroyed
 - Lose condition: the player lost all lives or the nuke is destroyed
 
@@ -32,6 +32,7 @@
 - 3 stages
 - [5 types of tiles](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Tiles "Tiles")
 - [6 bonuses](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Bonuses "Bonuses")
+- 3 enemy types
 
 ## Scenes
 ### Main Menu
@@ -68,10 +69,10 @@ The game **has some important differences** compared to the original, both visua
 
 ## Project status
 <p align = "center"><b>IN PROGRESS</b></p>
-<p align = "center"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Gasr80percent.png"/></p>
+<p align = "center"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Gasr85percent.png"/></p>
 
 ---
-**The project is completed in ~80%**. It still requires fixes, optimisations and upgrades. For more information about left tasks to complete, please see the Wiki page linked [here](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Project-status "Project status").
+**The project is completed in ~85%**. It still requires fixes, optimisations and upgrades. For more information about left tasks to complete, please see the Wiki page linked [here](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Project-status "Project status").
 
 ## Credits
 This project was made by [Jason](https://jasonxiii.pl "Jason. Cała informatyka w jednym miejscu! Oficjalna strona internetowa! Setki artykułów na różne tematy! Wszystko stworzone przez jedną osobę!").
