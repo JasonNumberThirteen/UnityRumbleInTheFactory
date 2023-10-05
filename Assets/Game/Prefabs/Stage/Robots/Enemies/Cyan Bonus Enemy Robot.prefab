@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cyan Bonus Enemy Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 6120605195028768972, guid: 4d9b4212648ee7e4d9a078a0c6db7e06, type: 3}
+      propertyPath: movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8926040349072336332, guid: 4d9b4212648ee7e4d9a078a0c6db7e06, type: 3}
       propertyPath: m_Size.x
       value: 0.63
