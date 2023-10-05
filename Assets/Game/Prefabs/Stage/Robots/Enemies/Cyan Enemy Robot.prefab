@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7789898313100651961, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 71477fc3dc671ba429a99018a05356b7, type: 2}
     - target: {fileID: 3656771208232311577, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: m_Offset.y
       value: 0.21
