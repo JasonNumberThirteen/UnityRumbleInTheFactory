@@ -307,6 +307,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4366984621820829096, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     m_RemovedGameObjects: []
