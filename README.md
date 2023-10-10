@@ -25,6 +25,7 @@
 - [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code - Code Editing. Redefined") IDE for writing code
 - [GIMP](https://www.gimp.org/ "GIMP - GNU Image Manipulation Program") & [Paint.NET](https://www.getpaint.net/ "Paint.NET - Free Software for Digital Photo Editing") for making graphics
 - [Tiled](https://www.mapeditor.org/ "Tiled | Flexible level editor") for making stage layouts
+- [FamiStudio](https://famistudio.org/ "FamiStudio - NES Music Editor") for making music
 
 ## Features
 - [6 scenes](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Scenes "Scenes")
@@ -60,9 +61,12 @@ A scene which shows a big "**HISCORE**" text with a new high score when the play
 
 ![Rumble In The Factory (High Score)](./Screenshots/HighScore.png?raw=true)
 ## Usage
-- Press W / S / A / D keys or arrow keys to navigate through menus & control the player one robot
-- Press LMB / Space to shoot
-- Press RMB / Esc to pause
+- W / S / A / D or arrow keys - **Navigation through menus**
+- W / S / A / D - **Movement (player one)**
+- arrow keys - **Movement (player two)**
+- LMB / Space - **Shoot (player one)**
+- Right Ctrl - **Shoot (player two)**
+- RMB / Esc - **Pause**
 
 ## Differences
 The game **has some important differences** compared to the original, both visually and functionally. Please see the Wiki page linked [here](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Differences-to-the-original-game "Differences to the original game") to display detailed information.
