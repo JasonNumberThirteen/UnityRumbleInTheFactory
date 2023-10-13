@@ -1,7 +1,7 @@
 using Random = UnityEngine.Random;
 using UnityEngine;
 
-public class EnemyRobotBonus : MonoBehaviour
+public class BonusEnemyRobotBonus : MonoBehaviour
 {
 	public GameObject[] bonuses;
 
