@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1278387343851352983, guid: 4d9b4212648ee7e4d9a078a0c6db7e06, type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: 67ba0b7c652cff046ae8c98bc2bfd72c, type: 2}
+      objectReference: {fileID: 11400000, guid: 41da66c57a0c0b247bdd01eda268e1d6, type: 2}
     - target: {fileID: 3523627246343813833, guid: 4d9b4212648ee7e4d9a078a0c6db7e06, type: 3}
       propertyPath: m_Offset.y
       value: 0.325
