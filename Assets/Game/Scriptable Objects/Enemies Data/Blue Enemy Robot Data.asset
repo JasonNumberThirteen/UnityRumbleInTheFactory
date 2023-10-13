@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Blue Enemy Robot Data
   m_EditorClassIdentifier: 
   prefab: {fileID: 5260229412919861021, guid: 587ad42afb1edc0438ef9ac802550fdf, type: 3}
+  bonusTypePrefab: {fileID: 9156780832142550845, guid: 89f03247ad9cd4147beea3a0d2e76aad, type: 3}
   score: 100
   sprite: {fileID: -1056247388, guid: cb86ba34a2897e049a3a62fafd953cb8, type: 3}

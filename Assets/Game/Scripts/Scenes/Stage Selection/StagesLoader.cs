@@ -29,5 +29,6 @@ public class StagesLoader : MonoBehaviour
 [System.Serializable]
 public class Stage
 {
-	public int[] tiles, enemies;
+	public int[] tiles;
+	public string[] enemies;
 }
