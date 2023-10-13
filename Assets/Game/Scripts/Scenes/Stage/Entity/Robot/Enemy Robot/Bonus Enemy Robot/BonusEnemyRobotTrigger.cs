@@ -9,6 +9,11 @@ public class BonusEnemyRobotTrigger : RobotTrigger
 			erb.SpawnBonus();
 		}
 
+		if(TryGetComponent(out BonusEnemyRobotColor berc))
+		{
+			Destroy(berc);
+		}
+
 		base.TriggerEffect(sender);
 	}
 }
