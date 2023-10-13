@@ -6,7 +6,8 @@ public class StageBuilder : MonoBehaviour
 	public GameObject[] tiles;
 	public Vector2 positionOffset;
 	[Min(1)] public int stageWidthInTiles, stageHeightInTiles;
-	[Min(0.01f)] public float tileSize;
+	[Min(0.01f)] public float tileSize, prohibitedAreaOverlapSize;
+	public Rect[] prohibitedAreas;
 
 	private void Start() => BuildStage();
 	private Vector2 BoardPosition(int index) => new Vector2(BoardPositionX(index), BoardPositionY(index));
@@ -31,8 +32,36 @@ public class StageBuilder : MonoBehaviour
 		if(TileExistsOnTheIndex(tileIndex))
 		{
 			Vector2 position = TilePosition(BoardPosition(loopIndex));
+
+			if(TileCanBePlaced(position))
+			{
+				Instantiate(tiles[tileIndex], position, Quaternion.identity);
+			}
+		}
+	}
+
+	private bool TileCanBePlaced(Vector2 position)
+	{
+		foreach (Rect r in prohibitedAreas)
+		{
+			Rect tileRect = new Rect(position, Vector2.one*prohibitedAreaOverlapSize);
 			
-			Instantiate(tiles[tileIndex], position, Quaternion.identity);
+			if(r.Overlaps(tileRect))
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		
+		foreach (Rect r in prohibitedAreas)
+		{
+			Gizmos.DrawWireCube(r.center, r.size);
 		}
 	}
 }

@@ -1490,6 +1490,38 @@ MonoBehaviour:
   stageWidthInTiles: 26
   stageHeightInTiles: 26
   tileSize: 0.5
+  prohibitedAreaOverlapSize: 0.25
+  prohibitedAreas:
+  - serializedVersion: 2
+    x: -7
+    y: 5.5
+    width: 1
+    height: 1
+  - serializedVersion: 2
+    x: -1
+    y: 5.5
+    width: 1
+    height: 1
+  - serializedVersion: 2
+    x: 5
+    y: 5.5
+    width: 1
+    height: 1
+  - serializedVersion: 2
+    x: -3
+    y: -6.5
+    width: 1
+    height: 1
+  - serializedVersion: 2
+    x: -1.5
+    y: -6.5
+    width: 2
+    height: 1.5
+  - serializedVersion: 2
+    x: 1
+    y: -6.5
+    width: 1
+    height: 1
 --- !u!4 &681417467
 Transform:
   m_ObjectHideFlags: 0
