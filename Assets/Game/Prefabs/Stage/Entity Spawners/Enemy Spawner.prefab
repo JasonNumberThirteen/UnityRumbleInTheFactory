@@ -61,9 +61,21 @@ PrefabInstance:
       value: Enemy Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onReset.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: -2211959474914024363}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onReset.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
@@ -73,6 +85,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6378980317984595466}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Telefrag
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onReset.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -81,12 +101,20 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Telefragger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onReset.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onReset.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onReset.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -99,8 +127,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2211959474914024363}
   m_SourcePrefab: {fileID: 100100000, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+--- !u!1 &1529488581660020816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+  m_PrefabInstance: {fileID: 5218995384597652418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2211959474914024363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529488581660020816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb900682bee0a046ba4898bd844ae1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0.3
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!1 &6378980317984595466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1219112567750180296, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
