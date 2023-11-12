@@ -1154,7 +1154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: Player 1
+      value: Player 1 Header
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -1551,7 +1551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: Player 1 Total
+      value: Player 1 Total Text
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
