@@ -5,7 +5,7 @@ public class EntitySpawner : MonoBehaviour
 	public GameObject entity;
 	public string parentTag;
 
-	public void Spawn()
+	public virtual void Spawn()
 	{
 		GameObject parent = GameObject.FindGameObjectWithTag(parentTag);
 
