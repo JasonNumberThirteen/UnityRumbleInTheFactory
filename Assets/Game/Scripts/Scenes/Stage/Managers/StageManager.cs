@@ -173,7 +173,7 @@ public class StageManager : MonoBehaviour
 	{
 		foreach (PlayerData pd in playersData)
 		{
-			if(pd.Lives > 0)
+			if(!pd.lostAllLives)
 			{
 				return false;
 			}

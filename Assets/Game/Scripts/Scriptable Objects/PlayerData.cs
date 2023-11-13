@@ -6,6 +6,7 @@ public class PlayerData : MainMenuData
 {
 	public GameData gameData;
 	public PlayerSpawner spawner;
+	public bool lostAllLives;
 
 	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyData, int>();
 	
@@ -64,6 +65,7 @@ public class PlayerData : MainMenuData
 		score = initialScore;
 		lives = initialLives;
 		bonusLifeThreshold = initialBonusLifeThreshold;
+		lostAllLives = false;
 
 		ResetRank();
 		DefeatedEnemies.Clear();
