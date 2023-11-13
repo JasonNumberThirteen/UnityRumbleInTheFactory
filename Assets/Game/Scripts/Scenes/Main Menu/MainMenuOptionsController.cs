@@ -4,6 +4,7 @@ public class MainMenuOptionsController : MonoBehaviour
 {
 	public Option[] options;
 	public LoopingCounter counter;
+	public GameData gameData;
 
 	public void SelectOption() => CurrentOption().onSelect.Invoke();
 	public void SubmitOption() => CurrentOption().onSubmit.Invoke();
