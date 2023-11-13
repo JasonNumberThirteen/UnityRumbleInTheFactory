@@ -58,7 +58,6 @@ public class StageManager : MonoBehaviour
 		if(AllPlayersLostAllLives())
 		{
 			gameOverTimer.onEnd.Invoke();
-			InterruptGame();
 		}
 	}
 
