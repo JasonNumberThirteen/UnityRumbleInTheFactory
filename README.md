@@ -25,7 +25,7 @@
 - [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code - Code Editing. Redefined") IDE for writing code
 - [GIMP](https://www.gimp.org/ "GIMP - GNU Image Manipulation Program") & [Paint.NET](https://www.getpaint.net/ "Paint.NET - Free Software for Digital Photo Editing") for making graphics
 - [Tiled](https://www.mapeditor.org/ "Tiled | Flexible level editor") for making stage layouts
-- [FamiStudio](https://famistudio.org/ "FamiStudio - NES Music Editor") for making music
+- [FamiStudio](https://famistudio.org/ "FamiStudio - NES Music Editor") for making music & sound effects
 
 ## Features
 - [6 scenes](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Scenes "Scenes")
