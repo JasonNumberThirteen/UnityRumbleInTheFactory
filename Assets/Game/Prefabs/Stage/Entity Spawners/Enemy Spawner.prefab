@@ -89,10 +89,6 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
-      propertyPath: onReset.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6378980317984595466}
-    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -105,16 +101,8 @@ PrefabInstance:
       value: Telefrag
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
-      propertyPath: onReset.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
-      propertyPath: onReset.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemySpawner, Assembly-CSharp
+      value: EntitySpawner, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -187,8 +175,3 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 65536
---- !u!1 &6378980317984595466 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1219112567750180296, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
-  m_PrefabInstance: {fileID: 5218995384597652418}
-  m_PrefabAsset: {fileID: 0}
