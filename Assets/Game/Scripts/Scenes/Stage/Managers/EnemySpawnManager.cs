@@ -11,6 +11,7 @@ public class EnemySpawnManager : MonoBehaviour
 
 	private GameObject[] enemies, spawners;
 	private int enemyIndex, enemiesToSpawn, spawnerIndex;
+	private EnemyType[] enemyTypes;
 
 	public bool NoEnemiesLeft() => enemyIndex >= EnemiesCount();
 	public int EnemiesCount() => enemies.Length;
@@ -27,16 +28,17 @@ public class EnemySpawnManager : MonoBehaviour
 
 	private void AssignEnemiesFromCurrentStage()
 	{
-		EnemyType[] types = EnemiesTypes();
-		int count = types.Length;
+		enemyTypes = EnemiesTypes();
+
+		int count = enemyTypes.Length;
 		
 		enemies = new GameObject[count];
 
 		for (int i = 0; i < count; ++i)
 		{
-			int index = types[i].index;
+			int index = enemyTypes[i].index;
 			
-			enemies[i] = types[i].isBonus ? enemiesData[index].bonusTypePrefab : enemiesData[index].prefab;
+			enemies[i] = enemiesData[index].prefab;
 		}
 	}
 
@@ -70,15 +72,15 @@ public class EnemySpawnManager : MonoBehaviour
 		}
 	}
 
-	private void AssignEnemyToSpawner(GameObject spawner, Action<EntitySpawner> OnAssign)
+	private void AssignEnemyToSpawner(GameObject spawner, Action<EnemySpawner> OnAssign)
 	{
-		if(spawner.TryGetComponent(out EntitySpawner es))
+		if(spawner.TryGetComponent(out EnemySpawner es))
 		{
 			OnAssign(es);
 		}
 	}
 
-	private void OnEnemySpawnContinued(EntitySpawner es)
+	private void OnEnemySpawnContinued(EnemySpawner es)
 	{
 		OnEnemyAssignAtStart(es);
 
@@ -86,9 +88,11 @@ public class EnemySpawnManager : MonoBehaviour
 		spawnerIndex = (spawnerIndex + 1) % spawners.Length;
 	}
 
-	private void OnEnemyAssignAtStart(EntitySpawner es)
+	private void OnEnemyAssignAtStart(EnemySpawner es)
 	{
-		es.entity = enemies[enemyIndex++];
+		es.entity = enemies[enemyIndex];
+		es.IsBonus = enemyTypes[enemyIndex].isBonus;
+		++enemyIndex;
 
 		StageManager.instance.uiManager.leftEnemyIconsManager.DestroyLeftEnemyIcon();
 	}
