@@ -3,13 +3,19 @@ using UnityEngine;
 
 public class BonusEnemyRobotBonus : MonoBehaviour
 {
-	public GameObject[] bonuses;
-
 	public void SpawnBonus()
 	{
-		Instantiate(bonuses[BonusIndex()]);
+		Instantiate(RandomBonus());
 		Destroy(this);
 	}
 
-	private int BonusIndex() => Random.Range(0, bonuses.Length);
+	private GameObject RandomBonus()
+	{
+		GameObject[] bonuses = StageManager.instance.enemySpawnManager.bonuses;
+		int index = BonusIndex(bonuses);
+
+		return bonuses[index];
+	}
+
+	private int BonusIndex(GameObject[] bonuses) => Random.Range(0, bonuses.Length);
 }

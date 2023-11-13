@@ -42,11 +42,5 @@ public class EnemySpawner : EntitySpawner
 		berc.fadeTime = esm.bonusEnemyColorFadeTime;
 	}
 
-	private void AddBonusComponent(GameObject instance)
-	{
-		BonusEnemyRobotBonus berb = instance.AddComponent<BonusEnemyRobotBonus>();
-		EnemySpawnManager esm = StageManager.instance.enemySpawnManager;
-
-		berb.bonuses = esm.bonuses;
-	}
+	private void AddBonusComponent(GameObject instance) => instance.AddComponent<BonusEnemyRobotBonus>();
 }
