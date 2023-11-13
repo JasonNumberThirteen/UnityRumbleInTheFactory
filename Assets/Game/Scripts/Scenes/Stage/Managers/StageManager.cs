@@ -8,12 +8,12 @@ public class StageManager : MonoBehaviour
 	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
-	public PlayerData[] playersData;
 	public GameData gameData;
 	public Timer gameOverTimer, freezeTimer, sceneManagerTimer;
 
 	private GameStates state = GameStates.ACTIVE;
 	private int defeatedEnemies;
+	private PlayerData[] playersData;
 
 	private enum GameStates
 	{
@@ -128,7 +128,12 @@ public class StageManager : MonoBehaviour
 		}
 	}
 	
-	private void Awake() => CheckSingleton();
+	private void Awake()
+	{
+		CheckSingleton();
+		DetectPlayers();
+	}
+
 	private bool WonTheGame() => DefeatedAllEnemies() && enemySpawnManager.NoEnemiesLeft();
 	private bool DefeatedAllEnemies() => defeatedEnemies == enemySpawnManager.EnemiesCount();
 
@@ -141,6 +146,21 @@ public class StageManager : MonoBehaviour
 		else if(instance != this)
 		{
 			Destroy(gameObject);
+		}
+	}
+
+	private void DetectPlayers()
+	{
+		GameObject[] spawners = GameObject.FindGameObjectsWithTag("Player Spawner");
+
+		playersData = new PlayerData[spawners.Length];
+
+		for (int i = 0; i < spawners.Length; ++i)
+		{
+			if(spawners[i].TryGetComponent(out PlayerSpawner ps))
+			{
+				playersData[i] = ps.playerData;
+			}
 		}
 	}
 
