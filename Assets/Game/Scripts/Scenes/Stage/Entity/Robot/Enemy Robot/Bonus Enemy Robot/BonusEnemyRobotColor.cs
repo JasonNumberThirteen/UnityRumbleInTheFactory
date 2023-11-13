@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class BonusEnemyRobotColor : MonoBehaviour
 {
-	public Color targetColor;
-	[Min(0.01f)] public float fadeTime = 1f;
-	
 	private SpriteRenderer spriteRenderer;
 	private Color initialColor;
+	private EnemySpawnManager enemySpawnManager;
 
 	private void Update() => LerpColor();
 
@@ -14,12 +12,13 @@ public class BonusEnemyRobotColor : MonoBehaviour
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		initialColor = spriteRenderer.color;
+		enemySpawnManager = StageManager.instance.enemySpawnManager;
 	}
 
 	private void LerpColor()
 	{
-		float t = Mathf.PingPong(Time.time, fadeTime);
-		Color color = Color.Lerp(initialColor, targetColor, t);
+		float t = Mathf.PingPong(Time.time, enemySpawnManager.bonusEnemyColorFadeTime);
+		Color color = Color.Lerp(initialColor, enemySpawnManager.bonusEnemyTargetColor, t);
 
 		spriteRenderer.color = color;
 	}

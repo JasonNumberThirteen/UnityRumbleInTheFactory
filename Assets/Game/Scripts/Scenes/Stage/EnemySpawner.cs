@@ -33,14 +33,6 @@ public class EnemySpawner : EntitySpawner
 		instance.AddComponent<BonusEnemyRobotTrigger>();
 	}
 
-	private void AddColorComponent(GameObject instance)
-	{
-		BonusEnemyRobotColor berc = instance.AddComponent<BonusEnemyRobotColor>();
-		EnemySpawnManager esm = StageManager.instance.enemySpawnManager;
-
-		berc.targetColor = esm.bonusEnemyTargetColor;
-		berc.fadeTime = esm.bonusEnemyColorFadeTime;
-	}
-
+	private void AddColorComponent(GameObject instance) => instance.AddComponent<BonusEnemyRobotColor>();
 	private void AddBonusComponent(GameObject instance) => instance.AddComponent<BonusEnemyRobotBonus>();
 }
