@@ -175,7 +175,7 @@ MonoBehaviour:
   parentTag: Entities
   playerData: {fileID: 0}
   spawnTimer: {fileID: 1630605288066693323}
-  respawnTimer: {fileID: 0}
+  respawnTimer: {fileID: 7213713297131995710}
 --- !u!4 &4236165176561888054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5185690586855138589, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
