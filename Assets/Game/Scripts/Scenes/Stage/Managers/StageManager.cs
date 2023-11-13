@@ -55,15 +55,10 @@ public class StageManager : MonoBehaviour
 
 	public void CheckPlayersLives()
 	{
-		foreach (PlayerData pd in playersData)
+		if(AllPlayersLostAllLives())
 		{
-			if(pd.Lives == 0)
-			{
-				gameOverTimer.onEnd.Invoke();
-				InterruptGame();
-
-				break;
-			}
+			gameOverTimer.onEnd.Invoke();
+			InterruptGame();
 		}
 	}
 
@@ -172,5 +167,18 @@ public class StageManager : MonoBehaviour
 
 			sceneManagerTimer.StartTimer();
 		}
+	}
+
+	private bool AllPlayersLostAllLives()
+	{
+		foreach (PlayerData pd in playersData)
+		{
+			if(pd.Lives > 0)
+			{
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
