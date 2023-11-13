@@ -6,12 +6,11 @@ public class StageManager : MonoBehaviour
 
 	public string playerTag, enemyTag;
 	[Min(0)] public int pointsForBonus = 500;
-	[Min(0.01f)] public float playerRespawnDelay = 1f;
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
 	public PlayerData playerData;
 	public GameData gameData;
-	public Timer gameOverTimer, freezeTimer, playerRespawnTimer, playerSpawnerTimer, sceneManagerTimer;
+	public Timer gameOverTimer, freezeTimer, sceneManagerTimer;
 
 	private GameStates state = GameStates.ACTIVE;
 	private int defeatedEnemies;
@@ -25,7 +24,6 @@ public class StageManager : MonoBehaviour
 	public void UnfreezeAllEnemies() => SetEnemiesFreeze(false);
 	public GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 	public void ResetDefeatedEnemiesByPlayer() => playerData.DefeatedEnemies.Clear();
-	public void InitiatePlayerRespawn() => playerRespawnTimer.ResetTimer();
 	public bool GameIsOver() => IsInterrupted() || IsOver();
 	public bool EnemiesAreFrozen() => freezeTimer.Started;
 	public bool IsActive() => state == GameStates.ACTIVE;
@@ -46,20 +44,6 @@ public class StageManager : MonoBehaviour
 		pd.Score += points;
 
 		uiManager.InstantiateGainedPointsCounter(go.transform.position, points);
-	}
-
-	public void AttemptToRespawnPlayer()
-	{
-		if(playerData.Lives-- > 0)
-		{
-			playerData.OnRespawn();
-			playerSpawnerTimer.ResetTimer();
-		}
-		else
-		{
-			gameOverTimer.onEnd.Invoke();
-			InterruptGame();
-		}
 	}
 
 	public void CheckPlayerLives()
