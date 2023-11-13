@@ -11,9 +11,9 @@ public class EntitySpawner : MonoBehaviour
 
 		if(parent != null)
 		{
-			GameObject instance = Instantiate(entity, gameObject.transform.position, Quaternion.identity);
-
-			instance.transform.SetParent(parent.transform);
+			EntityInstance().transform.SetParent(parent.transform);
 		}
 	}
+
+	protected virtual GameObject EntityInstance() => Instantiate(entity, gameObject.transform.position, Quaternion.identity);
 }
