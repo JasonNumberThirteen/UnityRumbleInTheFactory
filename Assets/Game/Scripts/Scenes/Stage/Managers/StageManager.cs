@@ -8,7 +8,7 @@ public class StageManager : MonoBehaviour
 	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
-	public PlayerData playerData;
+	public PlayerData[] playersData;
 	public GameData gameData;
 	public Timer gameOverTimer, freezeTimer, sceneManagerTimer;
 
@@ -23,7 +23,6 @@ public class StageManager : MonoBehaviour
 	public void FreezeAllEnemies() => SetEnemiesFreeze(true);
 	public void UnfreezeAllEnemies() => SetEnemiesFreeze(false);
 	public GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
-	public void ResetDefeatedEnemiesByPlayer() => playerData.DefeatedEnemies.Clear();
 	public bool GameIsOver() => IsInterrupted() || IsOver();
 	public bool EnemiesAreFrozen() => freezeTimer.Started;
 	public bool IsActive() => state == GameStates.ACTIVE;
@@ -31,6 +30,14 @@ public class StageManager : MonoBehaviour
 	public bool IsInterrupted() => state == GameStates.INTERRUPTED;
 	public bool IsWon() => state == GameStates.WON;
 	public bool IsOver() => state == GameStates.OVER;
+
+	public void ResetDefeatedEnemiesByPlayer()
+	{
+		foreach (PlayerData pd in playersData)
+		{
+			pd.DefeatedEnemies.Clear();
+		}
+	}
 
 	public void CountDefeatedEnemy()
 	{
@@ -46,12 +53,17 @@ public class StageManager : MonoBehaviour
 		uiManager.InstantiateGainedPointsCounter(go.transform.position, points);
 	}
 
-	public void CheckPlayerLives()
+	public void CheckPlayersLives()
 	{
-		if(playerData.Lives == 0)
+		foreach (PlayerData pd in playersData)
 		{
-			gameOverTimer.onEnd.Invoke();
-			InterruptGame();
+			if(pd.Lives == 0)
+			{
+				gameOverTimer.onEnd.Invoke();
+				InterruptGame();
+
+				break;
+			}
 		}
 	}
 
