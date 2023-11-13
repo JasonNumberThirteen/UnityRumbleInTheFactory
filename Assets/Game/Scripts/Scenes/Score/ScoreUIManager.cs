@@ -13,6 +13,7 @@ public class ScoreUIManager : MonoBehaviour
 	public RectTransform totalText, horizontalLine;
 	public Timer enemyTypeSwitch, scoreCountTimer, sceneManagerTimer;
 	public TextMeshProUGUI highScoreCounter, playerOneScoreCounter, totalDefeatedEnemiesCounter;
+	public AudioSource audioSource;
 
 	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore, defeatedEnemies, scorePerEnemy;
 	private TextMeshProUGUI[] defeatedEnemiesCounters, enemyTypePointsCounters;
@@ -50,6 +51,7 @@ public class ScoreUIManager : MonoBehaviour
 			currentEnemyTypePointsCounter.text = enemyTypeScore.ToString();
 
 			scoreCountTimer.ResetTimer();
+			audioSource.Play();
 		}
 		else
 		{
