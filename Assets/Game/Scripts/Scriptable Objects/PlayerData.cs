@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerData : MainMenuData
 {
 	public GameData gameData;
+	public PlayerSpawner spawner;
 
 	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyData, int>();
 	

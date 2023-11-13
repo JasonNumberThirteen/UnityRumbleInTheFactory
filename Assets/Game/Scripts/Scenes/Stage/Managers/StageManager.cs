@@ -62,6 +62,15 @@ public class StageManager : MonoBehaviour
 		}
 	}
 
+	public void CheckPlayerLives()
+	{
+		if(playerData.Lives == 0)
+		{
+			gameOverTimer.onEnd.Invoke();
+			InterruptGame();
+		}
+	}
+
 	public void PauseGame()
 	{
 		if(IsInterrupted() || IsWon() || IsOver())
