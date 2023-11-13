@@ -4,38 +4,49 @@ public class EnemySpawner : EntitySpawner
 {
 	public bool IsBonus {get; set;}
 	
-	public override void Spawn()
+	protected override GameObject EntityInstance()
 	{
-		GameObject parent = GameObject.FindGameObjectWithTag(parentTag);
+		GameObject instance = base.EntityInstance();
 
-		if(parent != null)
+		AddBonusEnemyComponents(instance);
+
+		return instance;
+	}
+
+	private void AddBonusEnemyComponents(GameObject instance)
+	{
+		if(IsBonus)
 		{
-			GameObject instance = Instantiate(entity, gameObject.transform.position, Quaternion.identity);
-
-			if(IsBonus)
-			{
-				if(instance.TryGetComponent(out RobotTrigger rt))
-				{
-					Destroy(rt);
-				}
-
-				instance.AddComponent<BonusEnemyRobotTrigger>();
-				instance.AddComponent<BonusEnemyRobotColor>();
-				instance.AddComponent<BonusEnemyRobotBonus>();
-
-				if(instance.TryGetComponent(out BonusEnemyRobotColor berc))
-				{
-					berc.targetColor = StageManager.instance.enemySpawnManager.bonusEnemyTargetColor;
-					berc.fadeTime = StageManager.instance.enemySpawnManager.bonusEnemyColorFadeTime;
-				}
-
-				if(instance.TryGetComponent(out BonusEnemyRobotBonus berb))
-				{
-					berb.bonuses = StageManager.instance.enemySpawnManager.bonuses;
-				}
-			}
-
-			instance.transform.SetParent(parent.transform);
+			AddTriggerComponent(instance);
+			AddColorComponent(instance);
+			AddBonusComponent(instance);
 		}
+	}
+
+	private void AddTriggerComponent(GameObject instance)
+	{
+		if(instance.TryGetComponent(out RobotTrigger rt))
+		{
+			Destroy(rt);
+		}
+
+		instance.AddComponent<BonusEnemyRobotTrigger>();
+	}
+
+	private void AddColorComponent(GameObject instance)
+	{
+		BonusEnemyRobotColor berc = instance.AddComponent<BonusEnemyRobotColor>();
+		EnemySpawnManager esm = StageManager.instance.enemySpawnManager;
+
+		berc.targetColor = esm.bonusEnemyTargetColor;
+		berc.fadeTime = esm.bonusEnemyColorFadeTime;
+	}
+
+	private void AddBonusComponent(GameObject instance)
+	{
+		BonusEnemyRobotBonus berb = instance.AddComponent<BonusEnemyRobotBonus>();
+		EnemySpawnManager esm = StageManager.instance.enemySpawnManager;
+
+		berb.bonuses = esm.bonuses;
 	}
 }
