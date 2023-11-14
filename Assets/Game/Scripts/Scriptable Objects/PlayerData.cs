@@ -72,6 +72,7 @@ public class PlayerData : MainMenuData
 	}
 
 	public void OnRespawn() => ResetRank();
+	public void ResetDefeatedEnemies() => DefeatedEnemies.Clear();
 
 	public void AddDefeatedEnemy(EnemyData enemyData)
 	{

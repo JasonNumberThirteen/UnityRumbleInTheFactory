@@ -12,7 +12,7 @@ public class StageManager : MonoBehaviour
 	public StageStateManager stageStateManager;
 	public GameData gameData;
 	public Timer gameOverTimer, sceneManagerTimer;
-	
+
 	private int defeatedEnemies;
 	private PlayerData[] playersData;
 
@@ -23,7 +23,7 @@ public class StageManager : MonoBehaviour
 	{
 		foreach (PlayerData pd in playersData)
 		{
-			pd.DefeatedEnemies.Clear();
+			pd.ResetDefeatedEnemies();
 		}
 	}
 
