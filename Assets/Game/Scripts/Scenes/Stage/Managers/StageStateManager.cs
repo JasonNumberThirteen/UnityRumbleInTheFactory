@@ -9,6 +9,18 @@ public class StageStateManager : MonoBehaviour
 		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
 	}
 
+	public void SwitchPauseState()
+	{
+		if(IsActive())
+		{
+			SetAsPaused();
+		}
+		else
+		{
+			SetAsActive();
+		}
+	}
+
 	public bool GameIsOver() => IsInterrupted() || IsOver();
 	public bool IsActive() => state == GameStates.ACTIVE;
 	public bool IsPaused() => state == GameStates.PAUSED;

@@ -53,18 +53,10 @@ public class StageManager : MonoBehaviour
 			return;
 		}
 
-		if(stateManager.IsActive())
-		{
-			stateManager.SetAsPaused();
-		}
-		else
-		{
-			stateManager.SetAsActive();
-		}
+		stateManager.SwitchPauseState();
+		uiManager.ControlPauseTextDisplay();
 
 		Time.timeScale = stateManager.IsPaused() ? 0f : 1f;
-
-		uiManager.ControlPauseTextDisplay();
 	}
 
 	public void InterruptGame()
