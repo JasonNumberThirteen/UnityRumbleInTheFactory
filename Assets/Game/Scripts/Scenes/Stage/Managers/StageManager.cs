@@ -16,7 +16,6 @@ public class StageManager : MonoBehaviour
 	private int defeatedEnemies;
 	private PlayerData[] playersData;
 
-	public GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 	public bool GameIsOver() => stageStateManager.IsInterrupted() || stageStateManager.IsOver();
 
 	public void ResetDefeatedEnemiesByPlayer()
@@ -86,7 +85,7 @@ public class StageManager : MonoBehaviour
 
 	public void DisablePlayers()
 	{
-		GameObject[] players = FoundObjectsWithTag(playerTag);
+		GameObject[] players = GameObject.FindGameObjectsWithTag(playerTag);
 
 		foreach (GameObject player in players)
 		{
