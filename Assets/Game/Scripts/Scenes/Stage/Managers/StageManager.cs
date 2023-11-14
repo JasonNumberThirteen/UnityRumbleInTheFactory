@@ -9,25 +9,15 @@ public class StageManager : MonoBehaviour
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
 	public EnemyFreezeManager enemyFreezeManager;
+	public StageStateManager stageStateManager;
 	public GameData gameData;
 	public Timer gameOverTimer, sceneManagerTimer;
-
-	private GameStates state = GameStates.ACTIVE;
+	
 	private int defeatedEnemies;
 	private PlayerData[] playersData;
 
-	private enum GameStates
-	{
-		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
-	}
-
 	public GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
-	public bool GameIsOver() => IsInterrupted() || IsOver();
-	public bool IsActive() => state == GameStates.ACTIVE;
-	public bool IsPaused() => state == GameStates.PAUSED;
-	public bool IsInterrupted() => state == GameStates.INTERRUPTED;
-	public bool IsWon() => state == GameStates.WON;
-	public bool IsOver() => state == GameStates.OVER;
+	public bool GameIsOver() => stageStateManager.IsInterrupted() || stageStateManager.IsOver();
 
 	public void ResetDefeatedEnemiesByPlayer()
 	{
@@ -61,29 +51,36 @@ public class StageManager : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if(IsInterrupted() || IsWon() || IsOver())
+		if(stageStateManager.IsInterrupted() || stageStateManager.IsWon() || stageStateManager.IsOver())
 		{
 			return;
 		}
 
-		state = IsActive() ? GameStates.PAUSED : GameStates.ACTIVE;
-		Time.timeScale = IsPaused() ? 0f : 1f;
+		if(stageStateManager.IsActive())
+		{
+			stageStateManager.SetAsPaused();
+		}
+		else
+		{
+			stageStateManager.SetAsActive();
+		}
+
+		Time.timeScale = stageStateManager.IsPaused() ? 0f : 1f;
 
 		uiManager.ControlPauseTextDisplay();
 	}
 
 	public void InterruptGame()
 	{
-		state = GameStates.INTERRUPTED;
-		
+		stageStateManager.SetAsInterrupted();
 		gameOverTimer.StartTimer();
 	}
 
 	public void SetGameAsOver()
 	{
-		state = GameStates.OVER;
 		gameData.isOver = true;
 
+		stageStateManager.SetAsOver();
 		DisablePlayers();
 	}
 
@@ -140,8 +137,7 @@ public class StageManager : MonoBehaviour
 	{
 		if(WonTheGame())
 		{
-			state = GameStates.WON;
-
+			stageStateManager.SetAsWon();
 			sceneManagerTimer.StartTimer();
 		}
 	}

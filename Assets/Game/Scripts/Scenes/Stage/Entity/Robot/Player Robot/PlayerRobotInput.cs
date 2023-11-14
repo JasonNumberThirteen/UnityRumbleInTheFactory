@@ -12,7 +12,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void Start()
 	{
-		if(StageManager.instance.IsOver())
+		if(StageManager.instance.stageStateManager.IsOver())
 		{
 			Destroy(this);
 		}
@@ -28,7 +28,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnFire(InputValue iv)
 	{
-		if(!StageManager.instance.IsPaused() && shoot != null)
+		if(!StageManager.instance.stageStateManager.IsPaused() && shoot != null)
 		{
 			shoot.FireBullet();
 		}
