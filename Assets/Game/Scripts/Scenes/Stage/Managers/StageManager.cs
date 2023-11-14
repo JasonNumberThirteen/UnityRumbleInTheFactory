@@ -7,9 +7,9 @@ public class StageManager : MonoBehaviour
 	public string playerTag, playerSpawnerTag;
 	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
+	public StageStateManager stateManager;
 	public EnemySpawnManager enemySpawnManager;
 	public EnemyFreezeManager enemyFreezeManager;
-	public StageStateManager stateManager;
 	public GameData gameData;
 	public Timer gameOverTimer, sceneManagerTimer;
 
@@ -75,7 +75,7 @@ public class StageManager : MonoBehaviour
 
 	public void DisablePlayers()
 	{
-		GameObject[] players = GameObject.FindGameObjectsWithTag(playerTag);
+		GameObject[] players = FoundObjectsWithTag(playerTag);
 
 		foreach (GameObject player in players)
 		{
@@ -89,9 +89,10 @@ public class StageManager : MonoBehaviour
 	private void Awake()
 	{
 		CheckSingleton();
-		DetectPlayers();
+		FindPlayers();
 	}
 
+	private GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 	private bool WonTheGame() => DefeatedAllEnemies() && enemySpawnManager.NoEnemiesLeft();
 	private bool DefeatedAllEnemies() => defeatedEnemies == enemySpawnManager.EnemiesCount();
 
@@ -107,13 +108,14 @@ public class StageManager : MonoBehaviour
 		}
 	}
 
-	private void DetectPlayers()
+	private void FindPlayers()
 	{
-		GameObject[] spawners = GameObject.FindGameObjectsWithTag(playerSpawnerTag);
+		GameObject[] spawners = FoundObjectsWithTag(playerSpawnerTag);
+		int length = spawners.Length;
 
-		playersData = new PlayerData[spawners.Length];
+		playersData = new PlayerData[length];
 
-		for (int i = 0; i < spawners.Length; ++i)
+		for (int i = 0; i < length; ++i)
 		{
 			if(spawners[i].TryGetComponent(out PlayerSpawner ps))
 			{
@@ -124,11 +126,13 @@ public class StageManager : MonoBehaviour
 
 	private void CheckIfWonTheGame()
 	{
-		if(WonTheGame())
+		if(!WonTheGame())
 		{
-			stateManager.SetAsWon();
-			sceneManagerTimer.StartTimer();
+			return;
 		}
+
+		stateManager.SetAsWon();
+		sceneManagerTimer.StartTimer();
 	}
 
 	private bool AllPlayersLostAllLives()
