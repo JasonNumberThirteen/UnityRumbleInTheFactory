@@ -10,7 +10,7 @@ public class StageUIManager : MonoBehaviour
 	public Counter stageCounterText, stageCounterIcon;
 	public LeftEnemyIconsManager leftEnemyIconsManager;
 
-	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.stageStateManager.IsPaused());
+	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.stateManager.IsPaused());
 	public void UpdateStageCounterIcon() => stageCounterIcon.SetTo(gameData.StageNumber);
 
 	public void UpdateCounters()

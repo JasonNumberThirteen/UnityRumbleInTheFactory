@@ -9,14 +9,14 @@ public class StageManager : MonoBehaviour
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
 	public EnemyFreezeManager enemyFreezeManager;
-	public StageStateManager stageStateManager;
+	public StageStateManager stateManager;
 	public GameData gameData;
 	public Timer gameOverTimer, sceneManagerTimer;
 
 	private int defeatedEnemies;
 	private PlayerData[] playersData;
 
-	public bool GameIsOver() => stageStateManager.IsInterrupted() || stageStateManager.IsOver();
+	public bool GameIsOver() => stateManager.IsInterrupted() || stateManager.IsOver();
 
 	public void ResetDefeatedEnemiesByPlayer()
 	{
@@ -50,28 +50,28 @@ public class StageManager : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if(stageStateManager.IsInterrupted() || stageStateManager.IsWon() || stageStateManager.IsOver())
+		if(stateManager.IsInterrupted() || stateManager.IsWon() || stateManager.IsOver())
 		{
 			return;
 		}
 
-		if(stageStateManager.IsActive())
+		if(stateManager.IsActive())
 		{
-			stageStateManager.SetAsPaused();
+			stateManager.SetAsPaused();
 		}
 		else
 		{
-			stageStateManager.SetAsActive();
+			stateManager.SetAsActive();
 		}
 
-		Time.timeScale = stageStateManager.IsPaused() ? 0f : 1f;
+		Time.timeScale = stateManager.IsPaused() ? 0f : 1f;
 
 		uiManager.ControlPauseTextDisplay();
 	}
 
 	public void InterruptGame()
 	{
-		stageStateManager.SetAsInterrupted();
+		stateManager.SetAsInterrupted();
 		gameOverTimer.StartTimer();
 	}
 
@@ -79,7 +79,7 @@ public class StageManager : MonoBehaviour
 	{
 		gameData.isOver = true;
 
-		stageStateManager.SetAsOver();
+		stateManager.SetAsOver();
 		DisablePlayers();
 	}
 
@@ -136,7 +136,7 @@ public class StageManager : MonoBehaviour
 	{
 		if(WonTheGame())
 		{
-			stageStateManager.SetAsWon();
+			stateManager.SetAsWon();
 			sceneManagerTimer.StartTimer();
 		}
 	}

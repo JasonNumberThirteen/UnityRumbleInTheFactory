@@ -2879,7 +2879,7 @@ MonoBehaviour:
   uiManager: {fileID: 1237164743}
   enemySpawnManager: {fileID: 1295888590}
   enemyFreezeManager: {fileID: 1892637674}
-  stageStateManager: {fileID: 879573808}
+  stateManager: {fileID: 879573808}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gameOverTimer: {fileID: 1049923159}
   sceneManagerTimer: {fileID: 1086106392}
