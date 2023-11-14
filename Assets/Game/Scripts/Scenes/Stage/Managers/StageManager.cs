@@ -4,7 +4,7 @@ public class StageManager : MonoBehaviour
 {
 	public static StageManager instance = null;
 
-	public string playerTag;
+	public string playerTag, playerSpawnerTag;
 	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
@@ -20,7 +20,7 @@ public class StageManager : MonoBehaviour
 	{
 		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
 	}
-	
+
 	public GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 	public bool GameIsOver() => IsInterrupted() || IsOver();
 	public bool IsActive() => state == GameStates.ACTIVE;
@@ -123,7 +123,7 @@ public class StageManager : MonoBehaviour
 
 	private void DetectPlayers()
 	{
-		GameObject[] spawners = GameObject.FindGameObjectsWithTag("Player Spawner");
+		GameObject[] spawners = GameObject.FindGameObjectsWithTag(playerSpawnerTag);
 
 		playersData = new PlayerData[spawners.Length];
 

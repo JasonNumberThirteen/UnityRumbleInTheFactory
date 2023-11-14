@@ -2830,6 +2830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
+  playerSpawnerTag: Player Spawner
   pointsForBonus: 500
   uiManager: {fileID: 1237164743}
   enemySpawnManager: {fileID: 1295888590}
