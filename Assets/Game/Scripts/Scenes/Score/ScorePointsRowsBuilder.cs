@@ -1,5 +1,6 @@
 using TMPro;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,17 +10,18 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 	public RectTransform parent; 
 	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType, enemyTypePointsCounter;
 
-	private TextMeshProUGUI[] defeatedEnemiesCounters, enemyTypePointsCounters;
-	private EnemyData[] defeatedEnemiesData;
+	public TextMeshProUGUI[] DefeatedEnemiesCounters {get; private set;}
+	public TextMeshProUGUI[] EnemyTypePointsCounters {get; private set;}
+	public EnemyData[] DefeatedEnemiesData {get; private set;}
+	
+	public void RetrieveEnemiesData() => DefeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray();
 
-	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
-
-	private void BuildPointsRows()
+	public void BuildPointsRows()
 	{
 		int amount = DefeatedEnemiesTypes();
 
-		defeatedEnemiesCounters = new TextMeshProUGUI[amount];
-		enemyTypePointsCounters = new TextMeshProUGUI[amount];
+		DefeatedEnemiesCounters = new TextMeshProUGUI[amount];
+		EnemyTypePointsCounters = new TextMeshProUGUI[amount];
 
 		for (int i = 0; i < amount; ++i)
 		{
@@ -32,6 +34,8 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 			InstantiateElement(enemyTypePointsCounter, new Vector2(16, y), i, OnEnemyTypePointsCounterInstantiate);
 		}
 	}
+
+	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
 
 	private GameObject InstantiateElement(GameObject element, Vector2 position)
 	{
@@ -58,7 +62,7 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 	{
 		if(instance.TryGetComponent(out TextMeshProUGUI text))
 		{
-			defeatedEnemiesCounters[index] = text;
+			DefeatedEnemiesCounters[index] = text;
 		}
 	}
 
@@ -66,7 +70,7 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 	{
 		if(instance.TryGetComponent(out Image image))
 		{
-			image.sprite = defeatedEnemiesData[index].sprite;
+			image.sprite = DefeatedEnemiesData[index].sprite;
 		}
 	}
 
@@ -74,7 +78,7 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 	{
 		if(instance.TryGetComponent(out TextMeshProUGUI text))
 		{
-			enemyTypePointsCounters[index] = text;
+			EnemyTypePointsCounters[index] = text;
 		}
 	}
 }

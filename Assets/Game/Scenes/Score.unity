@@ -1350,14 +1350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c664603ddeb636046b681519fa4fe5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsRowsBuilder: {fileID: 1422606808}
   playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  parent: {fileID: 490738117}
-  pointsText: {fileID: 5812709399332875870, guid: e269667537b3ef34fb32a9bef772b791, type: 3}
-  defeatedEnemiesCounter: {fileID: 1888134825636643331, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
-  leftArrow: {fileID: 7876450272975169952, guid: 25d49807ff08bcf43b0b3ebcd774f93f, type: 3}
-  enemyType: {fileID: 1190884643499449020, guid: 406ebc6c0bf1b7d4890e1360ba19d2e3, type: 3}
-  enemyTypePointsCounter: {fileID: 8402788749485441137, guid: bb62d872c94ef144ab61049356223801, type: 3}
   totalText: {fileID: 1774652442}
   horizontalLine: {fileID: 603174870}
   enemyTypeSwitch: {fileID: 372261218}
@@ -1590,6 +1585,57 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
   m_PrefabInstance: {fileID: 1365850942}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1422606807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1422606809}
+  - component: {fileID: 1422606808}
+  m_Layer: 0
+  m_Name: Score Points Rows Builder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1422606808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422606807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f64a793cc0158348a999d026adf60c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+  parent: {fileID: 490738117}
+  pointsText: {fileID: 5812709399332875870, guid: e269667537b3ef34fb32a9bef772b791, type: 3}
+  defeatedEnemiesCounter: {fileID: 1888134825636643331, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
+  leftArrow: {fileID: 7876450272975169952, guid: 25d49807ff08bcf43b0b3ebcd774f93f, type: 3}
+  enemyType: {fileID: 1190884643499449020, guid: 406ebc6c0bf1b7d4890e1360ba19d2e3, type: 3}
+  enemyTypePointsCounter: {fileID: 8402788749485441137, guid: bb62d872c94ef144ab61049356223801, type: 3}
+--- !u!4 &1422606809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422606807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1620193370
 PrefabInstance:
   m_ObjectHideFlags: 0
