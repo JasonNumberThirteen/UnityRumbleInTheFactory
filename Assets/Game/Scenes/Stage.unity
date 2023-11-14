@@ -2705,7 +2705,7 @@ MonoBehaviour:
   - {fileID: 1793592744161352667, guid: cca1d5c557ea5354db0895a2336ad72d, type: 3}
   - {fileID: 2474896001265453612, guid: afaf4a4f95818594ba2f59245b834734, type: 3}
   bonusEnemyTargetColor: {r: 0, g: 0, b: 1, a: 1}
-  bonusEnemyColorFadeTime: 0.25
+  bonusEnemyColorFadeTime: 0.5
 --- !u!4 &1295888591
 Transform:
   m_ObjectHideFlags: 0
@@ -2834,9 +2834,6 @@ MonoBehaviour:
   pointsForBonus: 500
   uiManager: {fileID: 1237164743}
   enemySpawnManager: {fileID: 1295888590}
-  playersData:
-  - {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
-  - {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gameOverTimer: {fileID: 1049923159}
   freezeTimer: {fileID: 1610503212}
@@ -4672,10 +4669,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1939610192}
     m_Modifications:
-    - target: {fileID: 6430103099845323803, guid: c6a53d874e5ea144c82731d5cd132e42, type: 3}
-      propertyPath: parent
-      value: 
-      objectReference: {fileID: 1939610192}
     - target: {fileID: 2815371805309261868, guid: 7efb95089c018d8488d843034ee3bc98, type: 3}
       propertyPath: m_Name
       value: Player 1 Spawner
@@ -4724,6 +4717,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6430103099845323803, guid: c6a53d874e5ea144c82731d5cd132e42, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1939610192}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
