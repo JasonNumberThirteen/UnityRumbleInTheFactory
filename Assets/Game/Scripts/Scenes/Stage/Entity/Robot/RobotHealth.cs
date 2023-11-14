@@ -6,6 +6,8 @@ public class RobotHealth : MonoBehaviour, IUpgradeable
 
 	public int Health {get; private set;}
 
+	private RobotAudioSource audioSource;
+
 	public virtual void UpdateValues(Rank rank) => Health = rank.health;
 
 	public virtual void TakeDamage(GameObject sender, int damage)
@@ -15,6 +17,7 @@ public class RobotHealth : MonoBehaviour, IUpgradeable
 		CheckHealth(sender);
 	}
 
+	protected virtual void Awake() => audioSource = GetComponent<RobotAudioSource>();
 	protected virtual void Start() => Health = initialHealth;
 
 	protected virtual void CheckHealth(GameObject sender)
@@ -22,6 +25,10 @@ public class RobotHealth : MonoBehaviour, IUpgradeable
 		if(Health <= 0)
 		{
 			Die(sender);
+		}
+		else
+		{
+			audioSource.PlayDamageSound();
 		}
 	}
 
