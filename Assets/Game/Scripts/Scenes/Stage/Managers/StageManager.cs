@@ -8,21 +8,13 @@ public class StageManager : MonoBehaviour
 	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
 	public StageStateManager stateManager;
+	public PlayersManager playersManager;
 	public EnemySpawnManager enemySpawnManager;
 	public EnemyFreezeManager enemyFreezeManager;
 	public GameData gameData;
 	public Timer gameOverTimer, sceneManagerTimer;
 
 	private int defeatedEnemies;
-	private PlayerData[] playersData;
-
-	public void ResetDefeatedEnemiesByPlayer()
-	{
-		foreach (PlayerData pd in playersData)
-		{
-			pd.ResetDefeatedEnemies();
-		}
-	}
 
 	public void CountDefeatedEnemy()
 	{
@@ -36,14 +28,6 @@ public class StageManager : MonoBehaviour
 		pd.Score += points;
 
 		uiManager.InstantiateGainedPointsCounter(go.transform.position, points);
-	}
-
-	public void CheckPlayersLives()
-	{
-		if(AllPlayersLostAllLives())
-		{
-			gameOverTimer.onEnd.Invoke();
-		}
 	}
 
 	public void PauseGame()
@@ -70,29 +54,15 @@ public class StageManager : MonoBehaviour
 		gameData.isOver = true;
 
 		stateManager.SetAsOver();
-		DisablePlayers();
-	}
-
-	public void DisablePlayers()
-	{
-		GameObject[] players = FoundObjectsWithTag(playerTag);
-
-		foreach (GameObject player in players)
-		{
-			if(player.TryGetComponent(out PlayerRobotDisabler prd))
-			{
-				prd.DisableYourself();
-			}
-		}
+		playersManager.DisablePlayers();
 	}
 	
 	private void Awake()
 	{
 		CheckSingleton();
-		FindPlayers();
+		playersManager.FindPlayers();
 	}
 
-	private GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 	private bool WonTheGame() => DefeatedAllEnemies() && enemySpawnManager.NoEnemiesLeft();
 	private bool DefeatedAllEnemies() => defeatedEnemies == enemySpawnManager.EnemiesCount();
 
@@ -108,22 +78,6 @@ public class StageManager : MonoBehaviour
 		}
 	}
 
-	private void FindPlayers()
-	{
-		GameObject[] spawners = FoundObjectsWithTag(playerSpawnerTag);
-		int length = spawners.Length;
-
-		playersData = new PlayerData[length];
-
-		for (int i = 0; i < length; ++i)
-		{
-			if(spawners[i].TryGetComponent(out PlayerSpawner ps))
-			{
-				playersData[i] = ps.playerData;
-			}
-		}
-	}
-
 	private void CheckIfWonTheGame()
 	{
 		if(!WonTheGame())
@@ -133,18 +87,5 @@ public class StageManager : MonoBehaviour
 
 		stateManager.SetAsWon();
 		sceneManagerTimer.StartTimer();
-	}
-
-	private bool AllPlayersLostAllLives()
-	{
-		foreach (PlayerData pd in playersData)
-		{
-			if(!pd.lostAllLives)
-			{
-				return false;
-			}
-		}
-
-		return true;
 	}
 }

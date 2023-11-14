@@ -1109,8 +1109,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1342973422}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+      - m_Target: {fileID: 1263742803}
+        m_TargetAssemblyTypeName: PlayersManager, Assembly-CSharp
         m_MethodName: ResetDefeatedEnemiesByPlayer
         m_Mode: 1
         m_Arguments:
@@ -2450,6 +2450,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1263742802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263742804}
+  - component: {fileID: 1263742803}
+  m_Layer: 0
+  m_Name: Players Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1263742803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263742802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99159e35c14d0ba44854283840ee3c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  playerSpawnerTag: Player Spawner
+  gameOverTimer: {fileID: 1049923159}
+--- !u!4 &1263742804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263742802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1264001230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2877,9 +2924,10 @@ MonoBehaviour:
   playerSpawnerTag: Player Spawner
   pointsForBonus: 500
   uiManager: {fileID: 1237164743}
+  stateManager: {fileID: 879573808}
+  playersManager: {fileID: 1263742803}
   enemySpawnManager: {fileID: 1295888590}
   enemyFreezeManager: {fileID: 1892637674}
-  stateManager: {fileID: 879573808}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gameOverTimer: {fileID: 1049923159}
   sceneManagerTimer: {fileID: 1086106392}
