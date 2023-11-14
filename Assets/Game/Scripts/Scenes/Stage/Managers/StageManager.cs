@@ -16,8 +16,6 @@ public class StageManager : MonoBehaviour
 	private int defeatedEnemies;
 	private PlayerData[] playersData;
 
-	public bool GameIsOver() => stateManager.IsInterrupted() || stateManager.IsOver();
-
 	public void ResetDefeatedEnemiesByPlayer()
 	{
 		foreach (PlayerData pd in playersData)
