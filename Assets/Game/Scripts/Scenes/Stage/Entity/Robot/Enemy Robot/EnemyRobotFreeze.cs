@@ -29,7 +29,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 	{
 		SetLastDirection();
 
-		if(StageManager.instance.EnemiesAreFrozen())
+		if(StageManager.instance.enemyFreezeManager.EnemiesAreFrozen())
 		{
 			SetFreezeState(true);
 			AdjustAnimation();

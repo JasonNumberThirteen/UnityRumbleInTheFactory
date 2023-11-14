@@ -4,12 +4,13 @@ public class StageManager : MonoBehaviour
 {
 	public static StageManager instance = null;
 
-	public string playerTag, enemyTag;
+	public string playerTag;
 	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
 	public EnemySpawnManager enemySpawnManager;
+	public EnemyFreezeManager enemyFreezeManager;
 	public GameData gameData;
-	public Timer gameOverTimer, freezeTimer, sceneManagerTimer;
+	public Timer gameOverTimer, sceneManagerTimer;
 
 	private GameStates state = GameStates.ACTIVE;
 	private int defeatedEnemies;
@@ -19,12 +20,9 @@ public class StageManager : MonoBehaviour
 	{
 		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
 	}
-
-	public void FreezeAllEnemies() => SetEnemiesFreeze(true);
-	public void UnfreezeAllEnemies() => SetEnemiesFreeze(false);
+	
 	public GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 	public bool GameIsOver() => IsInterrupted() || IsOver();
-	public bool EnemiesAreFrozen() => freezeTimer.Started;
 	public bool IsActive() => state == GameStates.ACTIVE;
 	public bool IsPaused() => state == GameStates.PAUSED;
 	public bool IsInterrupted() => state == GameStates.INTERRUPTED;
@@ -98,26 +96,6 @@ public class StageManager : MonoBehaviour
 			if(player.TryGetComponent(out PlayerRobotDisabler prd))
 			{
 				prd.DisableYourself();
-			}
-		}
-	}
-
-	public void InitiateFreeze(float duration)
-	{
-		freezeTimer.duration = duration;
-
-		freezeTimer.ResetTimer();
-	}
-
-	public void SetEnemiesFreeze(bool freeze)
-	{
-		GameObject[] enemies = FoundObjectsWithTag(enemyTag);
-
-		foreach (GameObject enemy in enemies)
-		{
-			if(enemy.TryGetComponent(out EnemyRobotFreeze erf))
-			{
-				erf.SetFreezeState(freeze);
 			}
 		}
 	}

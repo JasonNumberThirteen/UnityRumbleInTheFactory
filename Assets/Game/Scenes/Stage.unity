@@ -2830,13 +2830,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  enemyTag: Enemy
   pointsForBonus: 500
   uiManager: {fileID: 1237164743}
   enemySpawnManager: {fileID: 1295888590}
+  enemyFreezeManager: {fileID: 1892637674}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gameOverTimer: {fileID: 1049923159}
-  freezeTimer: {fileID: 1610503212}
   sceneManagerTimer: {fileID: 1086106392}
 --- !u!4 &1342973423
 Transform:
@@ -3165,8 +3164,8 @@ MonoBehaviour:
   onReset:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1342973422}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+      - m_Target: {fileID: 1892637674}
+        m_TargetAssemblyTypeName: EnemyFreezeManager, Assembly-CSharp
         m_MethodName: FreezeAllEnemies
         m_Mode: 1
         m_Arguments:
@@ -3180,8 +3179,8 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1342973422}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+      - m_Target: {fileID: 1892637674}
+        m_TargetAssemblyTypeName: EnemyFreezeManager, Assembly-CSharp
         m_MethodName: UnfreezeAllEnemies
         m_Mode: 1
         m_Arguments:

@@ -16,7 +16,7 @@ public class EnemyFreezeManager : MonoBehaviour
 		freezeTimer.ResetTimer();
 	}
 
-	public void SetEnemiesFreeze(bool freeze)
+	private void SetEnemiesFreeze(bool freeze)
 	{
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
