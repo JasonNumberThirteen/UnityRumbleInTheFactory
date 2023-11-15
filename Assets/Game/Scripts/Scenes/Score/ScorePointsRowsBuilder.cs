@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ScorePointsRowsBuilder : MonoBehaviour
 {
 	public PlayerData playerData;
-	public RectTransform parent; 
-	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, enemyType, enemyTypePointsCounter;
+	public GameData gameData;
+	public RectTransform parent;
+	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, rightArrow, enemyType, enemyTypePointsCounter;
 
 	public TextMeshProUGUI[] DefeatedEnemiesCounters {get; private set;}
 	public TextMeshProUGUI[] EnemyTypePointsCounters {get; private set;}
@@ -32,6 +33,14 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 			InstantiateElement(leftArrow, new Vector2(112, y));
 			InstantiateElement(enemyType, new Vector2(0, y + 4), i, OnEnemyTypeSpriteInstantiate);
 			InstantiateElement(enemyTypePointsCounter, new Vector2(16, y), i, OnEnemyTypePointsCounterInstantiate);
+
+			if(gameData.twoPlayersMode)
+			{
+				InstantiateElement(pointsText, new Vector2(208, y));
+				InstantiateElement(defeatedEnemiesCounter, new Vector2(144, y), i, OnDefeatedEnemiesCounterInstantiate);
+				InstantiateElement(rightArrow, new Vector2(136, y));
+				InstantiateElement(enemyTypePointsCounter, new Vector2(160, y), i, OnEnemyTypePointsCounterInstantiate);
+			}
 		}
 	}
 
