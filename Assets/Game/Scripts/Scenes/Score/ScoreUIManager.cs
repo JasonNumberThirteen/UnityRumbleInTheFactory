@@ -14,6 +14,7 @@ public class ScoreUIManager : MonoBehaviour
 
 	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore, defeatedEnemies, scorePerEnemy;
 	private TextMeshProUGUI currentDefeatedEnemiesCounter, currentEnemyTypePointsCounter;
+	private EnemyData[] defeatedEnemiesData;
 	private int[] defeatedEnemiesCount;
 
 	public void GoToNextEnemyType()
@@ -23,7 +24,7 @@ public class ScoreUIManager : MonoBehaviour
 			currentDefeatedEnemiesCounter = pointsRowsBuilder.DefeatedEnemiesCounters[enemyTypeIndex];
 			currentEnemyTypePointsCounter = pointsRowsBuilder.EnemyTypePointsCounters[enemyTypeIndex];
 			defeatedEnemies = defeatedEnemiesCount[enemyTypeIndex];
-			scorePerEnemy = pointsRowsBuilder.DefeatedEnemiesData[enemyTypeIndex].score;
+			scorePerEnemy = defeatedEnemiesData[enemyTypeIndex].score;
 			++enemyTypeIndex;
 			countedEnemies = enemyTypeScore = 0;
 		}
@@ -58,8 +59,9 @@ public class ScoreUIManager : MonoBehaviour
 		ResetTotalDefeatedEnemiesCounter();
 		SetHighScore();
 		SetPlayerOneScore();
-		pointsRowsBuilder.RetrieveEnemiesData();
+		RetrieveEnemiesData();
 		RetrieveEnemiesCount();
+		pointsRowsBuilder.SetDefeatedEnemiesSprites(defeatedEnemiesData.Select(e => e.sprite).ToArray());
 		pointsRowsBuilder.BuildPointsRows();
 		SetLastElementsPosition();
 	}
@@ -67,6 +69,7 @@ public class ScoreUIManager : MonoBehaviour
 	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
 	private void SetHighScore() => highScoreCounter.text = gameData.highScore.ToString();
 	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
+	public void RetrieveEnemiesData() => defeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray();
 	private void RetrieveEnemiesCount() => defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray();
 	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
 	private bool TotalDefeatedEnemiesCounterIsNotAssignedYet() => totalDefeatedEnemiesCounter.text != TotalDefeatedEnemiesCounterText();

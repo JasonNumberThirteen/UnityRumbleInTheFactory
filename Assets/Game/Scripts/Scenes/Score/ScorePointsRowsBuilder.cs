@@ -1,6 +1,5 @@
 using TMPro;
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +11,10 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 
 	public TextMeshProUGUI[] DefeatedEnemiesCounters {get; private set;}
 	public TextMeshProUGUI[] EnemyTypePointsCounters {get; private set;}
-	public EnemyData[] DefeatedEnemiesData {get; private set;}
-	
-	public void RetrieveEnemiesData() => DefeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray();
+
+	private Sprite[] defeatedEnemiesSprites;
+
+	public void SetDefeatedEnemiesSprites(Sprite[] sprites) => defeatedEnemiesSprites = sprites;
 
 	public void BuildPointsRows()
 	{
@@ -37,6 +37,15 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 
 	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
 
+	private GameObject InstantiateElement(GameObject element, Vector2 position, int index, Action<GameObject, int> onInstantiate)
+	{
+		GameObject instance = InstantiateElement(element, position);
+
+		onInstantiate(instance, index);
+
+		return instance;
+	}
+
 	private GameObject InstantiateElement(GameObject element, Vector2 position)
 	{
 		GameObject instance = Instantiate(element, parent);
@@ -45,15 +54,6 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 		{
 			rt.anchoredPosition = position;
 		}
-
-		return instance;
-	}
-
-	private GameObject InstantiateElement(GameObject element, Vector2 position, int index, Action<GameObject, int> onInstantiate)
-	{
-		GameObject instance = InstantiateElement(element, position);
-
-		onInstantiate(instance, index);
 
 		return instance;
 	}
@@ -70,7 +70,7 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 	{
 		if(instance.TryGetComponent(out Image image))
 		{
-			image.sprite = DefeatedEnemiesData[index].sprite;
+			image.sprite = defeatedEnemiesSprites[index];
 		}
 	}
 
