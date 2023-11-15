@@ -9,16 +9,19 @@ public class EnemyTypesReader : MonoBehaviour
 	public GameObject[] Enemies {get; private set;}
 	
 	private void Awake() => AssignEnemiesFromCurrentStage();
+	private int EnemyIndex(string data) => EnemyDataPointsToBonusType(data) ? int.Parse(data[1..]) : int.Parse(data);
+	private bool EnemyIsBonusType(string data) => EnemyDataPointsToBonusType(data);
+	private bool EnemyDataPointsToBonusType(string data) => data.StartsWith("B");
 
 	private void AssignEnemiesFromCurrentStage()
 	{
-		EnemyTypes = EnemiesTypes();
-
-		int count = EnemyTypes.Length;
+		int length;
 		
-		Enemies = new GameObject[count];
+		EnemyTypes = ReadEnemyTypes();
+		length = EnemyTypes.Length;
+		Enemies = new GameObject[length];
 
-		for (int i = 0; i < count; ++i)
+		for (int i = 0; i < length; ++i)
 		{
 			int index = EnemyTypes[i].index;
 			
@@ -26,7 +29,7 @@ public class EnemyTypesReader : MonoBehaviour
 		}
 	}
 
-	private EnemyType[] EnemiesTypes()
+	private EnemyType[] ReadEnemyTypes()
 	{
 		Stage stage = gameData.CurrentStage();
 		int length = stage.enemies.Length;
@@ -43,10 +46,6 @@ public class EnemyTypesReader : MonoBehaviour
 
 		return types;
 	}
-
-	private int EnemyIndex(string data) => EnemyDataPointsToBonusType(data) ? int.Parse(data[1..]) : int.Parse(data);
-	private bool EnemyIsBonusType(string data) => EnemyDataPointsToBonusType(data);
-	private bool EnemyDataPointsToBonusType(string data) => data.StartsWith("B");
 }
 
 public class EnemyType
