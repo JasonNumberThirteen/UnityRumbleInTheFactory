@@ -7,7 +7,7 @@ public class ScoreUIManager : MonoBehaviour
 	public ScorePointsRowsBuilder pointsRowsBuilder;
 	public PlayerData playerData;
 	public GameData gameData;
-	public RectTransform totalText, horizontalLine;
+	public RectTransformMover totalTextMover, horizontalLineMover, totalDefeatedEnemiesCounterMover;
 	public Timer enemyTypeSwitch, scoreCountTimer, sceneManagerTimer;
 	public TextMeshProUGUI highScoreCounter, playerOneScoreCounter, totalDefeatedEnemiesCounter;
 	public AudioSource audioSource;
@@ -27,10 +27,9 @@ public class ScoreUIManager : MonoBehaviour
 			++enemyTypeIndex;
 			countedEnemies = enemyTypeScore = 0;
 		}
-		else if(totalDefeatedEnemiesCounter.text != totalCountedEnemies.ToString())
+		else if(TotalDefeatedEnemiesCounterIsNotAssignedYet())
 		{
-			totalDefeatedEnemiesCounter.text = totalCountedEnemies.ToString();
-
+			SetTotalDefeatedEnemiesCounterText();
 			sceneManagerTimer.StartTimer();
 		}
 	}
@@ -62,7 +61,7 @@ public class ScoreUIManager : MonoBehaviour
 		pointsRowsBuilder.RetrieveEnemiesData();
 		RetrieveEnemiesCount();
 		pointsRowsBuilder.BuildPointsRows();
-		SetTotalTextPosition();
+		SetLastElementsPosition();
 	}
 
 	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
@@ -70,17 +69,16 @@ public class ScoreUIManager : MonoBehaviour
 	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
 	private void RetrieveEnemiesCount() => defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray();
 	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
+	private bool TotalDefeatedEnemiesCounterIsNotAssignedYet() => totalDefeatedEnemiesCounter.text != TotalDefeatedEnemiesCounterText();
+	private void SetTotalDefeatedEnemiesCounterText() => totalDefeatedEnemiesCounter.text = TotalDefeatedEnemiesCounterText();
+	private string TotalDefeatedEnemiesCounterText() => totalCountedEnemies.ToString();
 
-	private void SetTotalTextPosition()
+	private void SetLastElementsPosition()
 	{
 		int offsetY = -16*DefeatedEnemiesTypes();
 		
-		totalText.anchoredPosition = new Vector2(totalText.anchoredPosition.x, totalText.anchoredPosition.y + offsetY);
-		horizontalLine.anchoredPosition = new Vector2(horizontalLine.anchoredPosition.x, horizontalLine.anchoredPosition.y + offsetY);
-
-		if(totalDefeatedEnemiesCounter.TryGetComponent(out RectTransform rt))
-		{
-			rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, totalText.anchoredPosition.y);
-		}
+		totalTextMover.AddPositionY(offsetY);
+		horizontalLineMover.AddPositionY(offsetY);
+		totalDefeatedEnemiesCounterMover.SetPositionY(totalTextMover.GetPositionY());
 	}
 }
