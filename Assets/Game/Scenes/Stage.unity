@@ -2833,6 +2833,7 @@ MonoBehaviour:
   enemyTag: Enemy
   spawnerTag: Enemy Spawner
   spawnInterval: 2
+  bonusEnemyColorFadeTime: 0.5
   bonuses:
   - {fileID: 2262667808754140118, guid: 1970bad78d8376243b9a871f0af245c7, type: 3}
   - {fileID: 5288424573387977449, guid: 07a564b7e417d2743baefeffb2fc0e72, type: 3}
@@ -2840,8 +2841,7 @@ MonoBehaviour:
   - {fileID: 5665056847014531674, guid: 73564722e472e4e4e80dfc7c84a23c7a, type: 3}
   - {fileID: 1793592744161352667, guid: cca1d5c557ea5354db0895a2336ad72d, type: 3}
   - {fileID: 2474896001265453612, guid: afaf4a4f95818594ba2f59245b834734, type: 3}
-  bonusEnemyTargetColor: {r: 0, g: 0, b: 1, a: 1}
-  bonusEnemyColorFadeTime: 0.5
+  bonusEnemyColor: {r: 0, g: 0, b: 1, a: 1}
   enemyTypesReader: {fileID: 756287910}
 --- !u!4 &1295888591
 Transform:
