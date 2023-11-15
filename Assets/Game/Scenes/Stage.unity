@@ -1517,6 +1517,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &756287909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 756287911}
+  - component: {fileID: 756287910}
+  m_Layer: 0
+  m_Name: Enemy Types Reader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &756287910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756287909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0ca1721c1ff594ca2308673a29a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesData:
+  - {fileID: 11400000, guid: 41da66c57a0c0b247bdd01eda268e1d6, type: 2}
+  - {fileID: 11400000, guid: 71477fc3dc671ba429a99018a05356b7, type: 2}
+  - {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+--- !u!4 &756287911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756287909}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811824557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,10 +2829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aec3dec5d51dd49bd2295f4a0f4876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesData:
-  - {fileID: 11400000, guid: 41da66c57a0c0b247bdd01eda268e1d6, type: 2}
-  - {fileID: 11400000, guid: 71477fc3dc671ba429a99018a05356b7, type: 2}
-  - {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   enemyTag: Enemy
   spawnerTag: Enemy Spawner
@@ -2797,6 +2842,7 @@ MonoBehaviour:
   - {fileID: 2474896001265453612, guid: afaf4a4f95818594ba2f59245b834734, type: 3}
   bonusEnemyTargetColor: {r: 0, g: 0, b: 1, a: 1}
   bonusEnemyColorFadeTime: 0.5
+  enemyTypesReader: {fileID: 756287910}
 --- !u!4 &1295888591
 Transform:
   m_ObjectHideFlags: 0
@@ -2920,8 +2966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d005eff31c507f448ac71f32913ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
-  playerSpawnerTag: Player Spawner
   pointsForBonus: 500
   uiManager: {fileID: 1237164743}
   stateManager: {fileID: 879573808}

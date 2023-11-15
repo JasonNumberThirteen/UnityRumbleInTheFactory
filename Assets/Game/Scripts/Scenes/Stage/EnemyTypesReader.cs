@@ -6,8 +6,7 @@ public class EnemyTypesReader : MonoBehaviour
 	public GameData gameData;
 
 	public EnemyType[] EnemyTypes {get; private set;}
-
-	private GameObject[] enemies;
+	public GameObject[] Enemies {get; private set;}
 	
 	private void Awake() => AssignEnemiesFromCurrentStage();
 
@@ -17,13 +16,13 @@ public class EnemyTypesReader : MonoBehaviour
 
 		int count = EnemyTypes.Length;
 		
-		enemies = new GameObject[count];
+		Enemies = new GameObject[count];
 
 		for (int i = 0; i < count; ++i)
 		{
 			int index = EnemyTypes[i].index;
 			
-			enemies[i] = enemiesData[index].prefab;
+			Enemies[i] = enemiesData[index].prefab;
 		}
 	}
 
@@ -48,4 +47,16 @@ public class EnemyTypesReader : MonoBehaviour
 	private int EnemyIndex(string data) => EnemyDataPointsToBonusType(data) ? int.Parse(data[1..]) : int.Parse(data);
 	private bool EnemyIsBonusType(string data) => EnemyDataPointsToBonusType(data);
 	private bool EnemyDataPointsToBonusType(string data) => data.StartsWith("B");
+}
+
+public class EnemyType
+{
+	public int index;
+	public bool isBonus;
+
+	public EnemyType(int index, bool isBonus)
+	{
+		this.index = index;
+		this.isBonus = isBonus;
+	}
 }
