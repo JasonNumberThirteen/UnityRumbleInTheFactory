@@ -13,10 +13,13 @@ public class EnemyRobotHealth : RobotHealth
 
 	private void OnDefeatByPlayer(GameObject sender)
 	{
-		if(sender.TryGetComponent(out PlayerRobotData prd) && !StageManager.instance.stateManager.GameIsOver())
+		StageManager sm = StageManager.instance;
+		
+		if(sender.TryGetComponent(out PlayerRobotData prd) && !sm.stateManager.GameIsOver())
 		{
 			prd.Data.AddDefeatedEnemy(data);
-			StageManager.instance.AddPoints(gameObject, prd.Data, data.score);
+			sm.AddPoints(gameObject, prd.Data, data.score);
+			sm.audioManager.PlaySound(sm.audioManager.enemyRobotExplosion);
 		}
 	}
 }
