@@ -3300,6 +3300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRobotExplosion: {fileID: 8300000, guid: 2720389b74928a6419af122c6e585d37, type: 3}
+  bonusCollect: {fileID: 8300000, guid: bb59b197d6495354f93c4c133f5c3a92, type: 3}
 --- !u!4 &1579829972
 Transform:
   m_ObjectHideFlags: 0

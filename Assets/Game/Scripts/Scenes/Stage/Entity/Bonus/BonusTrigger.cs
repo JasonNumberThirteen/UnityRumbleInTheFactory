@@ -10,9 +10,12 @@ public abstract class BonusTrigger : MonoBehaviour, ITriggerable
 
 	private void AddPointsToPlayer(GameObject sender)
 	{
-		if(sender.TryGetComponent(out PlayerRobotData prd) && !StageManager.instance.stateManager.GameIsOver())
+		StageManager sm = StageManager.instance;
+		
+		if(sender.TryGetComponent(out PlayerRobotData prd) && !sm.stateManager.GameIsOver())
 		{
-			StageManager.instance.AddPoints(gameObject, prd.Data, StageManager.instance.pointsForBonus);
+			sm.AddPoints(gameObject, prd.Data, sm.pointsForBonus);
+			sm.audioManager.PlaySound(sm.audioManager.bonusCollect);
 		}
 	}
 }
