@@ -2969,6 +2969,7 @@ MonoBehaviour:
   pointsForBonus: 500
   uiManager: {fileID: 1237164743}
   stateManager: {fileID: 879573808}
+  audioManager: {fileID: 1579829971}
   playersManager: {fileID: 1263742803}
   enemySpawnManager: {fileID: 1295888590}
   enemyFreezeManager: {fileID: 1892637674}
