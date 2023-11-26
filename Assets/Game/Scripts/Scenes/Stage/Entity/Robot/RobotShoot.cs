@@ -7,10 +7,22 @@ public class RobotShoot : MonoBehaviour
 
 	protected Animator animator;
 
-	public virtual void FireBullet() => SetBullet(BulletInstance());
-	protected virtual void Awake() => animator = GetComponent<Animator>();
+	private RobotAudioSource audioSource;
+
+	public virtual void FireBullet()
+	{
+		audioSource.PlayShootSound();
+		SetBullet(BulletInstance());
+	}
+
 	protected GameObject BulletInstance() => Instantiate(bullet, BulletPosition(), Quaternion.identity);
 	protected Vector2 BulletPosition() => (Vector2)transform.position + BulletDirection()*offsetFromObject;
+
+	protected virtual void Awake()
+	{
+		animator = GetComponent<Animator>();
+		audioSource = GetComponent<RobotAudioSource>();
+	}
 
 	protected virtual void SetBullet(GameObject bullet)
 	{
