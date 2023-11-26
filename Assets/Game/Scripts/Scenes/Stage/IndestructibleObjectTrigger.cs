@@ -6,7 +6,7 @@ public class IndestructibleObjectTrigger : MonoBehaviour, ITriggerable
 	{
 		if(sender.tag.Contains("Player"))
 		{
-			StageManager.instance.audioManager.PlaySound(StageManager.instance.audioManager.playerRobotBulletWallHit);
+			StageManager.instance.audioManager.PlaySound(StageManager.instance.audioManager.playerRobotBulletHit);
 		}
 	}
 }

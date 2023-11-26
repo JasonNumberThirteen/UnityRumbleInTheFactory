@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StageAudioManager : MonoBehaviour
 {
-	public AudioClip playerRobotBulletWallHit, enemyRobotExplosion, bonusCollect;
+	public AudioClip playerRobotBulletHit, enemyRobotExplosion, bonusCollect;
 
 	private AudioSource audioSource;
 
