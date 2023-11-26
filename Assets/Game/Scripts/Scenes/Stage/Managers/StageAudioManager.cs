@@ -6,7 +6,17 @@ public class StageAudioManager : MonoBehaviour
 
 	private AudioSource audioSource;
 
-	public void PlaySound(AudioClip audioClip) => audioSource.PlayOneShot(audioClip);
+	public void PlayPlayerRobotBulletHitSound() => PlaySound(playerRobotBulletHit);
+	public void PlayEnemyRobotExplosionSound() => PlaySound(enemyRobotExplosion);
+	public void PlayBonusCollectSound() => PlaySound(bonusCollect);
 
 	private void Awake() => audioSource = GetComponent<AudioSource>();
+
+	private void PlaySound(AudioClip audioClip)
+	{
+		if(audioClip != null)
+		{
+			audioSource.PlayOneShot(audioClip);
+		}
+	}
 }

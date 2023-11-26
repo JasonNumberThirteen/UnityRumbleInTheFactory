@@ -15,7 +15,7 @@ public abstract class BonusTrigger : MonoBehaviour, ITriggerable
 		if(sender.TryGetComponent(out PlayerRobotData prd) && !sm.stateManager.GameIsOver())
 		{
 			sm.AddPoints(gameObject, prd.Data, sm.pointsForBonus);
-			sm.audioManager.PlaySound(sm.audioManager.bonusCollect);
+			sm.audioManager.PlayBonusCollectSound();
 		}
 	}
 }
