@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StageAudioManager : MonoBehaviour
 {
-	public AudioClip playerRobotIdle, playerRobotMovement, playerRobotBulletHit, enemyRobotExplosion, bonusCollect;
+	public AudioClip playerRobotIdle, playerRobotMovement, playerRobotBulletHit, enemyRobotExplosion, bonusSpawn, bonusCollect;
 
 	private AudioSource[] audioSources;
 	private AudioSource playerRobotMovementChannel;
@@ -11,6 +11,13 @@ public class StageAudioManager : MonoBehaviour
 	public void StopPlayerRobotMovementChannel() => playerRobotMovementChannel.Stop();
 	public void PlayPlayerRobotBulletHitSound() => PlaySound(playerRobotBulletHit);
 	public void PlayEnemyRobotExplosionSound() => PlaySound(enemyRobotExplosion);
+
+	public void PlayBonusSpawnSound()
+	{
+		PlaySound(bonusSpawn);
+		MutePlayerRobotMovementChannelTemporarily(1);
+	}
+
 	public void PlayBonusCollectSound()
 	{
 		PlaySound(bonusCollect);

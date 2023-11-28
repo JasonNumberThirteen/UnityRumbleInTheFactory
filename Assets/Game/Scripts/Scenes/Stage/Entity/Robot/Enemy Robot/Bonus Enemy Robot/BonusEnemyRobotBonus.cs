@@ -5,6 +5,7 @@ public class BonusEnemyRobotBonus : MonoBehaviour
 {
 	public void SpawnBonus()
 	{
+		StageManager.instance.audioManager.PlayBonusSpawnSound();
 		Instantiate(RandomBonus());
 		Destroy(this);
 	}
