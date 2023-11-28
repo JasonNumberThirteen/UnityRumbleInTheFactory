@@ -6,11 +6,23 @@ public class StageAudioManager : MonoBehaviour
 
 	private AudioSource[] audioSources;
 	private AudioSource playerRobotMovementChannel;
+	private float playerRobotMovementChannelVolume;
 
 	public void StopPlayerRobotMovementChannel() => playerRobotMovementChannel.Stop();
 	public void PlayPlayerRobotBulletHitSound() => PlaySound(playerRobotBulletHit);
 	public void PlayEnemyRobotExplosionSound() => PlaySound(enemyRobotExplosion);
-	public void PlayBonusCollectSound() => PlaySound(bonusCollect);
+	public void PlayBonusCollectSound()
+	{
+		PlaySound(bonusCollect);
+		MutePlayerRobotMovementChannelTemporarily(1);
+	}
+
+	public void MutePlayerRobotMovementChannelTemporarily(float duration)
+	{
+		playerRobotMovementChannel.volume = 0;
+
+		Invoke(nameof(RestorePlayerRobotMovementChannelVolume), duration);
+	}
 
 	public void SwitchPlayerRobotMovementChannel()
 	{
@@ -48,10 +60,13 @@ public class StageAudioManager : MonoBehaviour
 		playerRobotMovementChannel.Play();
 	}
 
+	private void RestorePlayerRobotMovementChannelVolume() => playerRobotMovementChannel.volume = playerRobotMovementChannelVolume;
+
 	private void Awake()
 	{
 		audioSources = GetComponentsInChildren<AudioSource>();
 		playerRobotMovementChannel = audioSources[0];
+		playerRobotMovementChannelVolume = playerRobotMovementChannel.volume;
 	}
 
 	private void PlaySound(AudioClip audioClip)
