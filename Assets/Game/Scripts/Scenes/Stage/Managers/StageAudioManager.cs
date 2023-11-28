@@ -21,7 +21,7 @@ public class StageAudioManager : MonoBehaviour
 	public void PlayBonusCollectSound()
 	{
 		PlaySound(bonusCollect);
-		MutePlayerRobotMovementChannelTemporarily(1);
+		MutePlayerRobotMovementChannelTemporarily(0.9f);
 	}
 
 	public void MutePlayerRobotMovementChannelTemporarily(float duration)
