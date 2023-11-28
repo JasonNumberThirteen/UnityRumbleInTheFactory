@@ -18,6 +18,8 @@ public class DestructionBonusTrigger : BonusTrigger
 		{
 			DestroyEnemy(enemy);
 		}
+
+		PlayExplosionSound(enemies);
 	}
 
 	private void DestroyEnemy(GameObject enemy)
@@ -28,5 +30,13 @@ public class DestructionBonusTrigger : BonusTrigger
 		}
 
 		StageManager.instance.CountDefeatedEnemy();
+	}
+
+	private void PlayExplosionSound(GameObject[] enemies)
+	{
+		if(enemies.Length > 0)
+		{
+			StageManager.instance.audioManager.PlayEnemyRobotExplosionSound();
+		}
 	}
 }
