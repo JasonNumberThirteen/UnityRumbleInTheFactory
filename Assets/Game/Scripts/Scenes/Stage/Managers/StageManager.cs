@@ -39,6 +39,7 @@ public class StageManager : MonoBehaviour
 
 		stateManager.SwitchPauseState();
 		uiManager.ControlPauseTextDisplay();
+		audioManager.SwitchPlayerRobotMovementChannel();
 
 		Time.timeScale = stateManager.IsPaused() ? 0f : 1f;
 	}

@@ -12,6 +12,18 @@ public class StageAudioManager : MonoBehaviour
 	public void PlayEnemyRobotExplosionSound() => PlaySound(enemyRobotExplosion);
 	public void PlayBonusCollectSound() => PlaySound(bonusCollect);
 
+	public void SwitchPlayerRobotMovementChannel()
+	{
+		if(playerRobotMovementChannel.isPlaying)
+		{
+			playerRobotMovementChannel.Pause();
+		}
+		else
+		{
+			playerRobotMovementChannel.UnPause();
+		}
+	}
+
 	public void PlayPlayerRobotIdleSound()
 	{
 		if(playerRobotMovementChannel.clip == playerRobotIdle)

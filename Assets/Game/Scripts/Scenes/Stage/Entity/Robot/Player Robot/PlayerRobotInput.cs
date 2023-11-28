@@ -21,6 +21,11 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnMove(InputValue iv)
 	{
+		if(StageManager.instance.stateManager.IsPaused())
+		{
+			return;
+		}
+		
 		Vector2 movement = iv.Get<Vector2>();
 
 		LastMovementVector = MovementVector;
