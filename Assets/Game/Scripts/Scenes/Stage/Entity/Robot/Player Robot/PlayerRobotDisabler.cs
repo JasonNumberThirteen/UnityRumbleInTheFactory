@@ -15,5 +15,10 @@ public class PlayerRobotDisabler : MonoBehaviour
 		{
 			Destroy(rs);
 		}
+
+		if(TryGetComponent(out PlayerRobotInput pri))
+		{
+			Destroy(pri);
+		}
 	}
 }
