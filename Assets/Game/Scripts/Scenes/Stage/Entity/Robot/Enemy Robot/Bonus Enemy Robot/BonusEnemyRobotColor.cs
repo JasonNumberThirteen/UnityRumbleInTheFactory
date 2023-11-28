@@ -6,6 +6,8 @@ public class BonusEnemyRobotColor : MonoBehaviour
 	private Color initialColor;
 	private EnemySpawnManager enemySpawnManager;
 
+	public void RestoreInitialColor() => spriteRenderer.color = initialColor;
+
 	private void Update() => LerpColor();
 
 	private void Awake()

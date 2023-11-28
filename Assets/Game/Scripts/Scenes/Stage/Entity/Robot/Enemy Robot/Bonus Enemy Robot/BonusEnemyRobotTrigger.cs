@@ -11,6 +11,7 @@ public class BonusEnemyRobotTrigger : RobotTrigger
 
 		if(TryGetComponent(out BonusEnemyRobotColor berc))
 		{
+			berc.RestoreInitialColor();
 			Destroy(berc);
 		}
 
