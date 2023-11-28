@@ -3769,6 +3769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca906d1af7a926d4497b223dfd0ab539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRobotIdle: {fileID: 8300000, guid: a45af856d780abe47b6c8161e4764223, type: 3}
+  playerRobotMovement: {fileID: 8300000, guid: fc25995ca1a276f41a55f257b3355d01, type: 3}
   playerRobotBulletHit: {fileID: 8300000, guid: 27fdf53cec0538c4ab93448032492606, type: 3}
   enemyRobotExplosion: {fileID: 8300000, guid: 2720389b74928a6419af122c6e585d37, type: 3}
   bonusCollect: {fileID: 8300000, guid: bb59b197d6495354f93c4c133f5c3a92, type: 3}

@@ -2,15 +2,44 @@ using UnityEngine;
 
 public class StageAudioManager : MonoBehaviour
 {
-	public AudioClip playerRobotBulletHit, enemyRobotExplosion, bonusCollect;
+	public AudioClip playerRobotIdle, playerRobotMovement, playerRobotBulletHit, enemyRobotExplosion, bonusCollect;
 
 	private AudioSource[] audioSources;
+	private AudioSource playerRobotMovementChannel;
 
 	public void PlayPlayerRobotBulletHitSound() => PlaySound(playerRobotBulletHit);
 	public void PlayEnemyRobotExplosionSound() => PlaySound(enemyRobotExplosion);
 	public void PlayBonusCollectSound() => PlaySound(bonusCollect);
 
-	private void Awake() => audioSources = GetComponentsInChildren<AudioSource>();
+	public void PlayPlayerRobotIdleSound()
+	{
+		if(playerRobotMovementChannel.clip == playerRobotIdle)
+		{
+			return;
+		}
+		
+		playerRobotMovementChannel.clip = playerRobotIdle;
+
+		playerRobotMovementChannel.Play();
+	}
+
+	public void PlayPlayerRobotMovementSound()
+	{
+		if(playerRobotMovementChannel.clip == playerRobotMovement)
+		{
+			return;
+		}
+		
+		playerRobotMovementChannel.clip = playerRobotMovement;
+
+		playerRobotMovementChannel.Play();
+	}
+
+	private void Awake()
+	{
+		audioSources = GetComponentsInChildren<AudioSource>();
+		playerRobotMovementChannel = audioSources[0];
+	}
 
 	private void PlaySound(AudioClip audioClip)
 	{

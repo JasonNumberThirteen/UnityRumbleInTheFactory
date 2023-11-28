@@ -9,6 +9,7 @@ public class PlayerRobotInput : MonoBehaviour
 	private RobotShoot shoot;
 
 	private void Awake() => shoot = GetComponent<RobotShoot>();
+	
 
 	private void Start()
 	{
@@ -24,6 +25,22 @@ public class PlayerRobotInput : MonoBehaviour
 
 		LastMovementVector = MovementVector;
 		MovementVector = movement;
+
+		SetMovementSound();
+	}
+
+	private void SetMovementSound()
+	{
+		StageAudioManager sam = StageManager.instance.audioManager;
+		
+		if(MovementVector == Vector2.zero)
+		{
+			sam.PlayPlayerRobotIdleSound();
+		}
+		else
+		{
+			sam.PlayPlayerRobotMovementSound();
+		}
 	}
 
 	private void OnFire(InputValue iv)
