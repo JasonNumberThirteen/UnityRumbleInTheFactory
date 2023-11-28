@@ -57,6 +57,16 @@ public class StageManager : MonoBehaviour
 		playersManager.DisablePlayers();
 		audioManager.StopPlayerRobotMovementChannel();
 	}
+
+	public void EnableAudioManager()
+	{
+		if(stateManager.IsOver())
+		{
+			return;
+		}
+
+		audioManager.gameObject.SetActive(true);
+	}
 	
 	private void Awake()
 	{
