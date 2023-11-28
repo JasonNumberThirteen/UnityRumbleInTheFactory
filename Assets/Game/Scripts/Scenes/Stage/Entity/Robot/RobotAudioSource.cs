@@ -13,7 +13,7 @@ public class RobotAudioSource : MonoBehaviour
 
 	private void PlaySound(AudioClip audioClip)
 	{
-		if(audioClip == null)
+		if(audioClip == null || !StageManager.instance.audioManager.gameObject.activeSelf)
 		{
 			return;
 		}
