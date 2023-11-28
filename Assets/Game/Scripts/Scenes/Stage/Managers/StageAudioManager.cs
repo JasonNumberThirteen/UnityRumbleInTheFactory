@@ -7,6 +7,7 @@ public class StageAudioManager : MonoBehaviour
 	private AudioSource[] audioSources;
 	private AudioSource playerRobotMovementChannel;
 
+	public void StopPlayerRobotMovementChannel() => playerRobotMovementChannel.Stop();
 	public void PlayPlayerRobotBulletHitSound() => PlaySound(playerRobotBulletHit);
 	public void PlayEnemyRobotExplosionSound() => PlaySound(enemyRobotExplosion);
 	public void PlayBonusCollectSound() => PlaySound(bonusCollect);

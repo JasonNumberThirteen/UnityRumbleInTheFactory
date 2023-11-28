@@ -55,6 +55,7 @@ public class StageManager : MonoBehaviour
 
 		stateManager.SetAsOver();
 		playersManager.DisablePlayers();
+		audioManager.StopPlayerRobotMovementChannel();
 	}
 	
 	private void Awake()
