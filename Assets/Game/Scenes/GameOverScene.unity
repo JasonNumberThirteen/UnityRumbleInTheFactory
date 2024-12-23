@@ -313,8 +313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  mainMenuSceneName: MainMenu
-  highScoreSceneName: HighScore
+  mainMenuSceneName: MainMenuScene
+  highScoreSceneName: HighScoreScene
 --- !u!1 &596290232
 GameObject:
   m_ObjectHideFlags: 0
