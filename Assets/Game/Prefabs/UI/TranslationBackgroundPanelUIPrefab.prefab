@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7914790078249506595}
   - component: {fileID: 8604690408110189986}
   m_Layer: 5
-  m_Name: Stage Selection Background Panel
+  m_Name: TranslationBackgroundPanelUIPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
