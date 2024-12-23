@@ -4,9 +4,9 @@ public class LifeBonusTrigger : BonusTrigger
 {
 	public override void TriggerEffect(GameObject sender)
 	{
-		if(sender.TryGetComponent(out PlayerRobotData prd))
+		if(sender.TryGetComponent(out PlayerRobotData playerRobotData))
 		{
-			++prd.Data.Lives;
+			++playerRobotData.Data.Lives;
 		}
 
 		base.TriggerEffect(sender);
