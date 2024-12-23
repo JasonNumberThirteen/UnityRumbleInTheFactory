@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerOneLivesCounterIcon
+      name: Player1LivesCounterIcon
       rect:
         serializedVersion: 2
         x: 16
@@ -207,7 +207,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerTwoLivesCounterIcon
+      name: Player2LivesCounterIcon
       rect:
         serializedVersion: 2
         x: 24
@@ -228,7 +228,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,8 +253,8 @@ TextureImporter:
     nameFileIdTable:
       DifficultyTierIcon: -829989423
       LeftEnemyIcon: -1963472494
-      PlayerOneLivesCounterIcon: -107748682
-      PlayerTwoLivesCounterIcon: 1747157189
+      Player1LivesCounterIcon: -107748682
+      Player2LivesCounterIcon: 1747157189
       StageCounterIcon: 85913762
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
