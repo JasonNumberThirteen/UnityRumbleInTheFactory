@@ -23,15 +23,15 @@ public class NukeRenderer : MonoBehaviour
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
-	private void SetSpriteToRenderer(Sprite sprite)
-	{
-		spriteRenderer.sprite = sprite;
-	}
-
 	private bool RendererHasSetSprite(Sprite sprite)
 	{
 		var spriteInRenderer = spriteRenderer.sprite;
 
 		return sprite != null && spriteInRenderer != null && spriteInRenderer == sprite;
+	}
+
+	private void SetSpriteToRenderer(Sprite sprite)
+	{
+		spriteRenderer.sprite = sprite;
 	}
 }
