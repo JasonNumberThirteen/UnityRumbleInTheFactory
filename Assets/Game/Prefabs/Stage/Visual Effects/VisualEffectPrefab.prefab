@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1806615934405384734}
   - component: {fileID: 4934427086894330333}
   m_Layer: 0
-  m_Name: Visual Effect
+  m_Name: VisualEffectPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
