@@ -70,7 +70,7 @@ public class FortressBonusTrigger : TimedBonusTrigger
 	{
 		if(metalTile.TryGetComponent(out Timer timer))
 		{
-			timer.duration = duration;
+			timer.duration = GetDuration();
 		}
 	}
 }

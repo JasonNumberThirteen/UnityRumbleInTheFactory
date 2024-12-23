@@ -6,7 +6,7 @@ public class ShieldBonusTrigger : TimedBonusTrigger
 	{
 		if(sender.TryGetComponent(out PlayerRobotShield prs))
 		{
-			prs.ShieldTimer.duration = duration;
+			prs.ShieldTimer.duration = GetDuration();
 
 			prs.ShieldTimer.ResetTimer();
 		}
