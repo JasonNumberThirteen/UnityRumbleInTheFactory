@@ -1,4 +1,4 @@
-public class GameOverSceneManager : GameSceneManager
+public class GameOverGameSceneManager : GameSceneManager
 {
 	public GameData gameData;
 	
