@@ -6,10 +6,10 @@ public class BricksParentDestroyer : MonoBehaviour
 	
 	private void Start()
 	{
-		InvokeRepeating(nameof(CheckChildCount), childCheckDelay, childCheckDelay);
+		InvokeRepeating(nameof(DestroyIfGOHasNoChildren), childCheckDelay, childCheckDelay);
 	}
 
-	private void CheckChildCount()
+	private void DestroyIfGOHasNoChildren()
 	{
 		if(gameObject.transform.childCount == 0)
 		{
