@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BricksParentDestroyer : MonoBehaviour
+public class EmptyParentDestroyer : MonoBehaviour
 {
 	[SerializeField, Min(0.01f)] private float childCheckDelay = 5f;
 	
