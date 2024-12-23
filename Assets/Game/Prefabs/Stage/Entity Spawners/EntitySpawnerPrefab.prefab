@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 7755116143451911904}
   - component: {fileID: 8606166809185048932}
   m_Layer: 0
-  m_Name: Entity Spawner
+  m_Name: EntitySpawnerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
