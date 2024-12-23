@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class NukeRenderer : MonoBehaviour
 {
-	public Sprite destroyedNukeSprite;
+	[SerializeField] private Sprite destroyedNukeSprite;
 
 	private SpriteRenderer spriteRenderer;
 
