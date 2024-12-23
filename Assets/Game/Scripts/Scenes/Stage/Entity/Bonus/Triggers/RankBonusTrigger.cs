@@ -4,9 +4,9 @@ public class RankBonusTrigger : BonusTrigger
 {
 	public override void TriggerEffect(GameObject sender)
 	{
-		if(sender.TryGetComponent(out PlayerRobotRank prr))
+		if(sender.TryGetComponent(out PlayerRobotRank playerRobotRank))
 		{
-			prr.Promote();
+			playerRobotRank.Promote();
 		}
 
 		base.TriggerEffect(sender);
