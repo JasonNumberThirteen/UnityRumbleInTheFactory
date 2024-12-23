@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afabcdd18ba018e4f997c593daa2019d, type: 3}
-  m_Name: Blue Enemy Robot Data
+  m_Name: CyanEnemyRobotDataScriptableObject
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5260229412919861021, guid: 587ad42afb1edc0438ef9ac802550fdf, type: 3}
-  bonusTypePrefab: {fileID: 9156780832142550845, guid: 89f03247ad9cd4147beea3a0d2e76aad, type: 3}
-  score: 100
-  sprite: {fileID: -1056247388, guid: cb86ba34a2897e049a3a62fafd953cb8, type: 3}
+  prefab: {fileID: 7494953504550476265, guid: e3ac4914fbe686049b0d44ee85f097e5, type: 3}
+  bonusTypePrefab: {fileID: 7641911959356627597, guid: 89e3b57de4f8e6445b4a523ad2dd5774, type: 3}
+  score: 200
+  sprite: {fileID: 740022647, guid: 6e1a492aa2ae7e14c82445f0195c559e, type: 3}

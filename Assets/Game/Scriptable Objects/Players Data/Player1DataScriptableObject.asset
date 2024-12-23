@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb88cf406c132814ba01fa96e5037bab, type: 3}
-  m_Name: Player 1 Data
+  m_Name: Player1DataScriptableObject
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   initialScore: 0
