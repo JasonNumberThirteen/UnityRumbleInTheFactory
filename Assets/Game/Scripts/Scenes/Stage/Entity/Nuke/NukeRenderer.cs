@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class NukeRenderer : MonoBehaviour
 {
 	public Sprite destroyState;
