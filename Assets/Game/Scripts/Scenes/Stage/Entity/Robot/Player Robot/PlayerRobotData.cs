@@ -6,5 +6,8 @@ public class PlayerRobotData : MonoBehaviour
 	
 	[SerializeField] private PlayerData data;
 
-	private void Awake() => Data = data;
+	private void Awake()
+	{
+		Data = data;
+	}
 }
