@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BricksParentDestroyer : MonoBehaviour
 {
-	[Min(0.01f)] public float childCheckDelay = 5f;
+	[SerializeField, Min(0.01f)] private float childCheckDelay = 5f;
 	
 	private void Start()
 	{
