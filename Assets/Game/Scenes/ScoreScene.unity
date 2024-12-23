@@ -285,8 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  stageSceneName: Stage
-  gameOverSceneName: GameOver
+  stageSceneName: StageScene
+  gameOverSceneName: GameOverScene
 --- !u!1 &372261217
 GameObject:
   m_ObjectHideFlags: 0
