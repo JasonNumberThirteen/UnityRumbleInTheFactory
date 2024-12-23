@@ -3,17 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class NukeRenderer : MonoBehaviour
 {
-	public Sprite destroyState;
+	public Sprite destroyedNukeSprite;
 
 	private SpriteRenderer spriteRenderer;
 
 	public void ChangeToDestroyedState()
 	{
-		if(SpriteIsDifferent())
+		if(RendererHasSetSprite(destroyedNukeSprite))
 		{
-			SetSprite();
-			Destroy(this);
+			return;
 		}
+		
+		SetSpriteToRenderer(destroyedNukeSprite);
+		Destroy(this);
 	}
 
 	private void Awake()
@@ -21,10 +23,15 @@ public class NukeRenderer : MonoBehaviour
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
-	private void SetSprite()
+	private void SetSpriteToRenderer(Sprite sprite)
 	{
-		spriteRenderer.sprite = destroyState;
+		spriteRenderer.sprite = sprite;
 	}
 
-	private bool SpriteIsDifferent() => spriteRenderer.sprite != destroyState;
+	private bool RendererHasSetSprite(Sprite sprite)
+	{
+		var spriteInRenderer = spriteRenderer.sprite;
+
+		return sprite != null && spriteInRenderer != null && spriteInRenderer == sprite;
+	}
 }
