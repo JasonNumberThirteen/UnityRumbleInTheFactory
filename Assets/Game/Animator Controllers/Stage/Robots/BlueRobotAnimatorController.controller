@@ -35,7 +35,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GoldenRobotUpAnimation
+  m_Name: BlueRobotUpAnimation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -51,7 +51,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 67783d51fb6019d4485c35d79d061b63, type: 2}
+  m_Motion: {fileID: 7400000, guid: ccfd43354bf13c14782151886509df12, type: 2}
   m_Tag: 
   m_SpeedParameter: MovementSpeed
   m_MirrorParameter: 
@@ -235,7 +235,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GoldenRobotDownAnimation
+  m_Name: BlueRobotDownAnimation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -251,7 +251,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 51b668d33888aa045a6530ea5c613f7a, type: 2}
+  m_Motion: {fileID: 7400000, guid: bf13c1aeb847c004dbafb671c386bc1f, type: 2}
   m_Tag: 
   m_SpeedParameter: MovementSpeed
   m_MirrorParameter: 
@@ -292,7 +292,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GoldenRobotLeftAnimation
+  m_Name: BlueRobotLeftAnimation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -308,7 +308,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 077e9e7f66ac64a44b442b3398d74853, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0e9fcbac10c814546a339a6fc2afe067, type: 2}
   m_Tag: 
   m_SpeedParameter: MovementSpeed
   m_MirrorParameter: 
@@ -320,7 +320,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GoldenRobotAC
+  m_Name: BlueRobotAnimatorController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: MovementX
@@ -501,7 +501,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GoldenRobotRightAnimation
+  m_Name: BlueRobotRightAnimation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -517,7 +517,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 19b3d79c8aa825240a652545740acb58, type: 2}
+  m_Motion: {fileID: 7400000, guid: a5e1c995a4618794dba8b9702dde1655, type: 2}
   m_Tag: 
   m_SpeedParameter: MovementSpeed
   m_MirrorParameter: 
