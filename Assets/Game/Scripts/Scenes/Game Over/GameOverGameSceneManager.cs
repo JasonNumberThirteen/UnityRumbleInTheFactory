@@ -1,8 +1,10 @@
+using UnityEngine;
+
 public class GameOverGameSceneManager : GameSceneManager
 {
-	public GameData gameData;
-	
-	public string mainMenuSceneName, highScoreSceneName;
+	[SerializeField] private GameData gameData;
+	[SerializeField] private string mainMenuSceneName;
+	[SerializeField] private string highScoreSceneName;
 
 	public void GoToNextScene()
 	{
