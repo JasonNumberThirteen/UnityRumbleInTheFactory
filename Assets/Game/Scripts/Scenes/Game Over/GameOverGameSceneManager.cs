@@ -6,8 +6,8 @@ public class GameOverGameSceneManager : GameSceneManager
 
 	public void GoToNextScene()
 	{
-		bool beatenHighScore = gameData.beatenHighScore;
-		string sceneName = beatenHighScore ? highScoreSceneName : mainMenuSceneName;
+		var beatenHighScore = gameData.beatenHighScore;
+		var sceneName = beatenHighScore ? highScoreSceneName : mainMenuSceneName;
 
 		LoadScene(sceneName);
 	}
