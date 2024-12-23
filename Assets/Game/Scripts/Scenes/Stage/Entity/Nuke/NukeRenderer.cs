@@ -15,7 +15,15 @@ public class NukeRenderer : MonoBehaviour
 		}
 	}
 
-	private void Awake() => spriteRenderer = GetComponent<SpriteRenderer>();
+	private void Awake()
+	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
+	}
+
+	private void SetSprite()
+	{
+		spriteRenderer.sprite = destroyState;
+	}
+
 	private bool SpriteIsDifferent() => spriteRenderer.sprite != destroyState;
-	private void SetSprite() => spriteRenderer.sprite = destroyState;
 }
