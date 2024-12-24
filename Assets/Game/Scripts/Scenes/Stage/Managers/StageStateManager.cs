@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class StageStateManager : MonoBehaviour
 {
-	private GameStates state = GameStates.ACTIVE;
+	private GameState state = GameState.ACTIVE;
 
-	private enum GameStates
+	private enum GameState
 	{
 		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
 	}
@@ -22,14 +22,14 @@ public class StageStateManager : MonoBehaviour
 	}
 
 	public bool GameIsOver() => IsInterrupted() || IsOver();
-	public bool IsActive() => state == GameStates.ACTIVE;
-	public bool IsPaused() => state == GameStates.PAUSED;
-	public bool IsInterrupted() => state == GameStates.INTERRUPTED;
-	public bool IsWon() => state == GameStates.WON;
-	public bool IsOver() => state == GameStates.OVER;
-	public void SetAsActive() => state = GameStates.ACTIVE;
-	public void SetAsPaused() => state = GameStates.PAUSED;
-	public void SetAsInterrupted() => state = GameStates.INTERRUPTED;
-	public void SetAsWon() => state = GameStates.WON;
-	public void SetAsOver() => state = GameStates.OVER;
+	public bool IsActive() => state == GameState.ACTIVE;
+	public bool IsPaused() => state == GameState.PAUSED;
+	public bool IsInterrupted() => state == GameState.INTERRUPTED;
+	public bool IsWon() => state == GameState.WON;
+	public bool IsOver() => state == GameState.OVER;
+	public void SetAsActive() => state = GameState.ACTIVE;
+	public void SetAsPaused() => state = GameState.PAUSED;
+	public void SetAsInterrupted() => state = GameState.INTERRUPTED;
+	public void SetAsWon() => state = GameState.WON;
+	public void SetAsOver() => state = GameState.OVER;
 }
