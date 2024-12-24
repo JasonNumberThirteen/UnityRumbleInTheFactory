@@ -5,22 +5,22 @@ public class EnemyFreezeManager : MonoBehaviour
 {
 	public string enemyTag;
 
-	private Timer freezeTimer;
+	private Timer timer;
 	
 	public void FreezeAllEnemies() => SetEnemiesFreeze(true);
 	public void UnfreezeAllEnemies() => SetEnemiesFreeze(false);
-	public bool EnemiesAreFrozen() => freezeTimer.Started;
+	public bool EnemiesAreFrozen() => timer.Started;
 	
 	public void InitiateFreeze(float duration)
 	{
-		freezeTimer.duration = duration;
+		timer.duration = duration;
 
-		freezeTimer.ResetTimer();
+		timer.ResetTimer();
 	}
 
 	private void Awake()
 	{
-		freezeTimer = GetComponent<Timer>();
+		timer = GetComponent<Timer>();
 	}
 
 	private void SetEnemiesFreeze(bool freeze)
