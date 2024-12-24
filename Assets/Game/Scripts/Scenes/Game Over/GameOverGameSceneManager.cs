@@ -3,13 +3,11 @@ using UnityEngine;
 public class GameOverGameSceneManager : GameSceneManager
 {
 	[SerializeField] private GameData gameData;
-	[SerializeField] private string mainMenuSceneName;
-	[SerializeField] private string highScoreSceneName;
 
 	public void GoToNextScene()
 	{
 		var beatenHighScore = gameData.beatenHighScore;
-		var sceneName = beatenHighScore ? highScoreSceneName : mainMenuSceneName;
+		var sceneName = beatenHighScore ? HIGH_SCORE_SCENE_NAME : MAIN_MENU_SCENE_NAME;
 
 		LoadSceneByName(sceneName);
 	}
