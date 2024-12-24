@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(RectTransform))]
 public class RectTransformMover : MonoBehaviour
 {
 	protected RectTransform rectTransform;
