@@ -50,7 +50,7 @@ public class LeftEnemyIconsManager : MonoBehaviour
 	{
 		GameObject instance = Instantiate(leftEnemyIcon, hud.transform);
 		
-		if(instance.TryGetComponent(out RectTransformMover rtm))
+		if(instance.TryGetComponent(out RectTransformPositionController rtm))
 		{
 			rtm.SetPosition(LeftEnemyIconPosition(index));
 		}

@@ -7,7 +7,7 @@ public class ScoreUIManager : MonoBehaviour
 	public ScorePointsRowsBuilder pointsRowsBuilder;
 	public PlayerData playerData;
 	public GameData gameData;
-	public RectTransformMover totalTextMover, horizontalLineMover, totalDefeatedEnemiesCounterMover;
+	public RectTransformPositionController totalTextMover, horizontalLineMover, totalDefeatedEnemiesCounterMover;
 	public Timer enemyTypeSwitch, scoreCountTimer, sceneManagerTimer;
 	public TextMeshProUGUI highScoreCounter, playerOneScoreCounter, totalDefeatedEnemiesCounter;
 	public AudioSource audioSource;

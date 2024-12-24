@@ -31,7 +31,7 @@ public class StageUIManager : MonoBehaviour
 	{
 		GameObject instance = Instantiate(gainedPointsCounter, parent.transform);
 		
-		if(instance.TryGetComponent(out RectTransformMover rtm))
+		if(instance.TryGetComponent(out RectTransformPositionController rtm))
 		{
 			rtm.SetPosition(GainedPointsCounterPosition(position));
 		}

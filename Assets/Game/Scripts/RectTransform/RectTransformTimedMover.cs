@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RectTransformTimedMover : RectTransformMover
+public class RectTransformTimedMover : RectTransformPositionController
 {
 	public Vector2 targetPosition;
 	public Timer timer;
