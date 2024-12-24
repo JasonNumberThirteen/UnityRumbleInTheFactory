@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HighScoreTextMaskColor : MonoBehaviour
+public class ImageUIColorBlinker : MonoBehaviour
 {
 	public Color targetColor;
 	[Min(0.01f)] public float blinkDelay;
