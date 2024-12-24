@@ -16,6 +16,13 @@ public class ImageUIColorBlinker : MonoBehaviour
 		startColor = image.color;
 	}
 
-	private void Start() => InvokeRepeating(nameof(ChangeColor), blinkDelay, blinkDelay);
-	private void ChangeColor() => image.color = (image.color == startColor) ? targetColor : startColor;
+	private void Start()
+	{
+		InvokeRepeating(nameof(ChangeColor), blinkDelay, blinkDelay);
+	}
+
+	private void ChangeColor()
+	{
+		image.color = (image.color == startColor) ? targetColor : startColor;
+	}
 }
