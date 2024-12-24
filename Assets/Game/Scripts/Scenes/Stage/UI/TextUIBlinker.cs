@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class PauseText : MonoBehaviour
+public class TextUIBlinker : MonoBehaviour
 {
 	[Min(0.01f)] public float blinkDelay = 1f;
 	
