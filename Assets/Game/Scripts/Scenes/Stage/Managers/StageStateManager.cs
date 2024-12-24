@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class StageStateManager : MonoBehaviour
 {
-	private GameState gameState = GameState.ACTIVE;
+	private StageState stageState = StageState.ACTIVE;
 
-	public bool StateIsSetTo(GameState gameState) => this.gameState == gameState;
-	public bool GameIsOver() => StateIsSetTo(GameState.INTERRUPTED) || StateIsSetTo(GameState.OVER);
+	public bool StateIsSetTo(StageState stageState) => this.stageState == stageState;
+	public bool GameIsOver() => StateIsSetTo(StageState.INTERRUPTED) || StateIsSetTo(StageState.OVER);
 
-	public void SetStateTo(GameState gameState)
+	public void SetStateTo(StageState stageState)
 	{
-		this.gameState = gameState;
+		this.stageState = stageState;
 	}
 }

@@ -32,21 +32,21 @@ public class StageManager : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if(stateManager.StateIsSetTo(GameState.INTERRUPTED) || stateManager.StateIsSetTo(GameState.WON) || stateManager.StateIsSetTo(GameState.OVER))
+		if(stateManager.StateIsSetTo(StageState.INTERRUPTED) || stateManager.StateIsSetTo(StageState.WON) || stateManager.StateIsSetTo(StageState.OVER))
 		{
 			return;
 		}
 
-		stateManager.SetStateTo(stateManager.StateIsSetTo(GameState.ACTIVE) ? GameState.PAUSED : GameState.ACTIVE);
+		stateManager.SetStateTo(stateManager.StateIsSetTo(StageState.ACTIVE) ? StageState.PAUSED : StageState.ACTIVE);
 		uiManager.ControlPauseTextDisplay();
 		audioManager.SwitchPlayerRobotMovementChannel();
 
-		Time.timeScale = stateManager.StateIsSetTo(GameState.PAUSED) ? 0f : 1f;
+		Time.timeScale = stateManager.StateIsSetTo(StageState.PAUSED) ? 0f : 1f;
 	}
 
 	public void InterruptGame()
 	{
-		stateManager.SetStateTo(GameState.INTERRUPTED);
+		stateManager.SetStateTo(StageState.INTERRUPTED);
 		gameOverTimer.StartTimer();
 	}
 
@@ -54,14 +54,14 @@ public class StageManager : MonoBehaviour
 	{
 		gameData.isOver = true;
 
-		stateManager.SetStateTo(GameState.OVER);
+		stateManager.SetStateTo(StageState.OVER);
 		playersManager.DisablePlayers();
 		audioManager.StopPlayerRobotMovementChannel();
 	}
 
 	public void EnableAudioManager()
 	{
-		if(stateManager.StateIsSetTo(GameState.OVER))
+		if(stateManager.StateIsSetTo(StageState.OVER))
 		{
 			return;
 		}
@@ -97,7 +97,7 @@ public class StageManager : MonoBehaviour
 			return;
 		}
 
-		stateManager.SetStateTo(GameState.WON);
+		stateManager.SetStateTo(StageState.WON);
 		sceneManagerTimer.StartTimer();
 	}
 }
