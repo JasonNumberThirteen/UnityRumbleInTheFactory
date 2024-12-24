@@ -4,11 +4,6 @@ public class StageStateManager : MonoBehaviour
 {
 	private GameState state = GameState.ACTIVE;
 
-	private enum GameState
-	{
-		ACTIVE, PAUSED, INTERRUPTED, WON, OVER
-	}
-
 	public void SwitchPauseState()
 	{
 		if(IsActive())
