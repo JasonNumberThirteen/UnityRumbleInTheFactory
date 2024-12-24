@@ -14,6 +14,6 @@ public class ScoreSceneManager : GameSceneManager
 			gameData.AdvanceToNextStage();
 		}
 
-		LoadScene(sceneName);
+		LoadSceneByName(sceneName);
 	}
 }

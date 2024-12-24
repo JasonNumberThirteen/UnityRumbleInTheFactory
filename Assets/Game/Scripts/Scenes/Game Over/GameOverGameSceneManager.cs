@@ -11,6 +11,6 @@ public class GameOverGameSceneManager : GameSceneManager
 		var beatenHighScore = gameData.beatenHighScore;
 		var sceneName = beatenHighScore ? highScoreSceneName : mainMenuSceneName;
 
-		LoadScene(sceneName);
+		LoadSceneByName(sceneName);
 	}
 }

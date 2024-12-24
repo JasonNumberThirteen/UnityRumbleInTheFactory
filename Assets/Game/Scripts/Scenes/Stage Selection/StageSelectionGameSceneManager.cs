@@ -7,13 +7,13 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerData[] playersData;
 
-	public void BackToMainMenu() => LoadScene(mainMenuSceneName);
+	public void BackToMainMenu() => LoadSceneByName(mainMenuSceneName);
 
 	public void StartGame(int stage)
 	{
 		gameData.ResetData(stage);
 		ResetPlayersData();
-		LoadScene(stageSceneName);
+		LoadSceneByName(stageSceneName);
 	}
 
 	private void ResetPlayersData()
