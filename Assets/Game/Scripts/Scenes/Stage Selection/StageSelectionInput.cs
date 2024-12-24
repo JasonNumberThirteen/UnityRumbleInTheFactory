@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.UI;
 public class StageSelectionInput : MonoBehaviour
 {
 	public LoopingCounter stageCounter;
-	public StageSelectionSceneManager sceneManager;
+	public StageSelectionGameSceneManager sceneManager;
 	public GameData gameData;
 	public StagesLoader stagesLoader;
 	public InputSystemUIInputModule inputModule;

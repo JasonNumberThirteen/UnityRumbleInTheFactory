@@ -1,4 +1,4 @@
-public class StageSelectionSceneManager : GameSceneManager
+public class StageSelectionGameSceneManager : GameSceneManager
 {
 	public string mainMenuSceneName, stageSceneName;
 	public GameData gameData;
