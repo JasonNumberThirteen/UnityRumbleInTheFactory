@@ -8,21 +8,23 @@ public class ImageUIColorBlinker : MonoBehaviour
 	[SerializeField, Min(0.01f)] private float blinkDelay;
 
 	private Image image;
-	private Color startColor;
+	private Color initialColor;
 
 	private void Awake()
 	{
 		image = GetComponent<Image>();
-		startColor = image.color;
+		initialColor = image.color;
 	}
 
 	private void Start()
 	{
-		InvokeRepeating(nameof(ChangeColor), blinkDelay, blinkDelay);
+		InvokeRepeating(nameof(SwitchColor), blinkDelay, blinkDelay);
 	}
 
-	private void ChangeColor()
+	private void SwitchColor()
 	{
-		image.color = (image.color == startColor) ? targetColor : startColor;
+		var imageHasInitialColor = image.color == initialColor;
+		
+		image.color = imageHasInitialColor ? targetColor : initialColor;
 	}
 }
