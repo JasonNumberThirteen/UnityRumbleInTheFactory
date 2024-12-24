@@ -37,7 +37,7 @@ public class StageManager : MonoBehaviour
 			return;
 		}
 
-		stateManager.SwitchPauseState();
+		stateManager.SetStateTo(stateManager.StateIsSetTo(GameState.ACTIVE) ? GameState.PAUSED : GameState.ACTIVE);
 		uiManager.ControlPauseTextDisplay();
 		audioManager.SwitchPlayerRobotMovementChannel();
 
