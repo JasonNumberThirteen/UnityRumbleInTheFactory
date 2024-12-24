@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StageStateManager : MonoBehaviour
 {
+	public UnityEvent<StageState> stageStateChangedEvent;
+	
 	private StageState stageState = StageState.ACTIVE;
 
 	public bool StateIsSetTo(StageState stageState) => this.stageState == stageState;
@@ -10,5 +13,7 @@ public class StageStateManager : MonoBehaviour
 	public void SetStateTo(StageState stageState)
 	{
 		this.stageState = stageState;
+
+		stageStateChangedEvent?.Invoke(stageState);
 	}
 }
