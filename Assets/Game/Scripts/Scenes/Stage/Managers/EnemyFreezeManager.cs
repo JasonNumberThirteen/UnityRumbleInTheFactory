@@ -1,9 +1,11 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Timer))]
 public class EnemyFreezeManager : MonoBehaviour
 {
-	public Timer freezeTimer;
 	public string enemyTag;
+
+	private Timer freezeTimer;
 	
 	public void FreezeAllEnemies() => SetEnemiesFreeze(true);
 	public void UnfreezeAllEnemies() => SetEnemiesFreeze(false);
@@ -14,6 +16,11 @@ public class EnemyFreezeManager : MonoBehaviour
 		freezeTimer.duration = duration;
 
 		freezeTimer.ResetTimer();
+	}
+
+	private void Awake()
+	{
+		freezeTimer = GetComponent<Timer>();
 	}
 
 	private void SetEnemiesFreeze(bool freeze)
