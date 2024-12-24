@@ -13,7 +13,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void Start()
 	{
-		if(StageManager.instance.stateManager.IsOver())
+		if(StageManager.instance.stateManager.StateIsSetTo(GameState.OVER))
 		{
 			Destroy(this);
 		}
@@ -21,7 +21,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnMove(InputValue iv)
 	{
-		if(StageManager.instance.stateManager.IsPaused())
+		if(StageManager.instance.stateManager.StateIsSetTo(GameState.PAUSED))
 		{
 			return;
 		}
@@ -50,7 +50,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnFire(InputValue iv)
 	{
-		if(!StageManager.instance.stateManager.IsPaused() && shoot != null)
+		if(!StageManager.instance.stateManager.StateIsSetTo(GameState.PAUSED) && shoot != null)
 		{
 			shoot.FireBullet();
 		}

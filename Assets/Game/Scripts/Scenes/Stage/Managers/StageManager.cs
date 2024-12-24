@@ -32,7 +32,7 @@ public class StageManager : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if(stateManager.IsInterrupted() || stateManager.IsWon() || stateManager.IsOver())
+		if(stateManager.StateIsSetTo(GameState.INTERRUPTED) || stateManager.StateIsSetTo(GameState.WON) || stateManager.StateIsSetTo(GameState.OVER))
 		{
 			return;
 		}
@@ -41,12 +41,12 @@ public class StageManager : MonoBehaviour
 		uiManager.ControlPauseTextDisplay();
 		audioManager.SwitchPlayerRobotMovementChannel();
 
-		Time.timeScale = stateManager.IsPaused() ? 0f : 1f;
+		Time.timeScale = stateManager.StateIsSetTo(GameState.PAUSED) ? 0f : 1f;
 	}
 
 	public void InterruptGame()
 	{
-		stateManager.SetAsInterrupted();
+		stateManager.SetStateTo(GameState.INTERRUPTED);
 		gameOverTimer.StartTimer();
 	}
 
@@ -54,14 +54,14 @@ public class StageManager : MonoBehaviour
 	{
 		gameData.isOver = true;
 
-		stateManager.SetAsOver();
+		stateManager.SetStateTo(GameState.OVER);
 		playersManager.DisablePlayers();
 		audioManager.StopPlayerRobotMovementChannel();
 	}
 
 	public void EnableAudioManager()
 	{
-		if(stateManager.IsOver())
+		if(stateManager.StateIsSetTo(GameState.OVER))
 		{
 			return;
 		}
@@ -97,7 +97,7 @@ public class StageManager : MonoBehaviour
 			return;
 		}
 
-		stateManager.SetAsWon();
+		stateManager.SetStateTo(GameState.WON);
 		sceneManagerTimer.StartTimer();
 	}
 }
