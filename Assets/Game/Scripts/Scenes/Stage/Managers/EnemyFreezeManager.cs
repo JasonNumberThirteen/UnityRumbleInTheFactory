@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Timer))]
 public class EnemyFreezeManager : MonoBehaviour
 {
-	public string enemyTag;
-
 	private Timer timer;
 	
 	public bool EnemiesAreFrozen() => timer.Started;
@@ -54,14 +52,11 @@ public class EnemyFreezeManager : MonoBehaviour
 
 	private void SetEnemiesFreeze(bool freeze)
 	{
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		var enemyRobotFreezeComponents = FindObjectsByType<EnemyRobotFreeze>(FindObjectsSortMode.None);
 
-		foreach (GameObject enemy in enemies)
+		foreach (var enemyRobotFreeze in enemyRobotFreezeComponents)
 		{
-			if(enemy.TryGetComponent(out EnemyRobotFreeze erf))
-			{
-				erf.SetFreezeState(freeze);
-			}
+			enemyRobotFreeze.SetFreezeState(freeze);
 		}
 	}
 }
