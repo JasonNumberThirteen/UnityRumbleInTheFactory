@@ -1,6 +1,7 @@
 public class StageSelectionGameSceneManager : GameSceneManager
 {
-	public string mainMenuSceneName, stageSceneName;
+	public string mainMenuSceneName;
+	public string stageSceneName;
 	public GameData gameData;
 	public PlayerData[] playersData;
 
