@@ -7,8 +7,6 @@ public class EnemyFreezeManager : MonoBehaviour
 
 	private Timer timer;
 	
-	public void FreezeAllEnemies() => SetEnemiesFreeze(true);
-	public void UnfreezeAllEnemies() => SetEnemiesFreeze(false);
 	public bool EnemiesAreFrozen() => timer.Started;
 	
 	public void InitiateFreeze(float duration)
@@ -46,12 +44,12 @@ public class EnemyFreezeManager : MonoBehaviour
 
 	private void OnTimerReset()
 	{
-		FreezeAllEnemies();
+		SetEnemiesFreeze(true);
 	}
 
 	private void OnTimerEnd()
 	{
-		UnfreezeAllEnemies();
+		SetEnemiesFreeze(false);
 	}
 
 	private void SetEnemiesFreeze(bool freeze)
