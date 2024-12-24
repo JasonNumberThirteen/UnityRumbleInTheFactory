@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class TextUIBlinker : MonoBehaviour
 {
 	[Min(0.01f)] public float blinkDelay = 1f;
