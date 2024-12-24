@@ -1,9 +1,11 @@
+using UnityEngine;
+
 public class StageSelectionGameSceneManager : GameSceneManager
 {
-	public string mainMenuSceneName;
-	public string stageSceneName;
-	public GameData gameData;
-	public PlayerData[] playersData;
+	[SerializeField] private string mainMenuSceneName;
+	[SerializeField] private string stageSceneName;
+	[SerializeField] private GameData gameData;
+	[SerializeField] private PlayerData[] playersData;
 
 	public void BackToMainMenu() => LoadScene(mainMenuSceneName);
 
