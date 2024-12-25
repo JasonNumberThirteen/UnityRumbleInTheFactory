@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public abstract class MenuOptionsInput : MonoBehaviour
+public class MenuOptionsInput : MonoBehaviour
 {
 	public UnityEvent<int> navigateKeyPressedEvent;
 	public UnityEvent submitKeyPressedEvent;

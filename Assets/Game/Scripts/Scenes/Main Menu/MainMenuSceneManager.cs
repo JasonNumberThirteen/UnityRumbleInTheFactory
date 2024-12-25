@@ -4,7 +4,7 @@ public class MainMenuSceneManager : GameSceneManager
 {
 	public GameData gameData;
 	public Timer stageSelectionBackgroundTimer;
-	public MainMenuOptionsInput input;
+	public MenuOptionsInput input;
 	
 	public void OnePlayer() => StartGame(false);
 	public void TwoPlayers() => StartGame(true);
