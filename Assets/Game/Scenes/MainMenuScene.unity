@@ -379,7 +379,6 @@ MonoBehaviour:
   - {fileID: 826487614}
   - {fileID: 1072800032}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  mainMenuPanelUITimer: {fileID: 1052427270}
 --- !u!4 &639037320
 Transform:
   m_ObjectHideFlags: 0
@@ -410,6 +409,9 @@ MonoBehaviour:
   initialValue: 1
   text: {fileID: 0}
   setAtStart: 1
+  valueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   min: 0
   max: 0
 --- !u!1 &680709370
@@ -845,8 +847,8 @@ MonoBehaviour:
   onSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1002192799}
-        m_TargetAssemblyTypeName: RectTransformMover, Assembly-CSharp
+      - m_Target: {fileID: 1002192800}
+        m_TargetAssemblyTypeName: MainMenuOptionsCursor, Assembly-CSharp
         m_MethodName: SetPositionY
         m_Mode: 4
         m_Arguments:
@@ -1076,8 +1078,8 @@ MonoBehaviour:
   onSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1002192799}
-        m_TargetAssemblyTypeName: RectTransformMover, Assembly-CSharp
+      - m_Target: {fileID: 1002192800}
+        m_TargetAssemblyTypeName: MainMenuOptionsCursor, Assembly-CSharp
         m_MethodName: SetPositionY
         m_Mode: 4
         m_Arguments:
@@ -1116,6 +1118,7 @@ GameObject:
   - component: {fileID: 1002192795}
   - component: {fileID: 1002192797}
   - component: {fileID: 1002192799}
+  - component: {fileID: 1002192800}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -1212,6 +1215,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df27e48cb539b5a4c998f033f4dcab09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1002192800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002192793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d06eed9b7d8db4abc6d9e0c7dcab7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1052427265
@@ -1492,8 +1507,8 @@ MonoBehaviour:
   onSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1002192799}
-        m_TargetAssemblyTypeName: RectTransformMover, Assembly-CSharp
+      - m_Target: {fileID: 1002192800}
+        m_TargetAssemblyTypeName: MainMenuOptionsCursor, Assembly-CSharp
         m_MethodName: SetPositionY
         m_Mode: 4
         m_Arguments:
@@ -1768,6 +1783,9 @@ MonoBehaviour:
   initialValue: 0
   text: {fileID: 1571427407}
   setAtStart: 1
+  valueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   mainMenuData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!1001 &1601528627
 PrefabInstance:
@@ -1936,6 +1954,9 @@ MonoBehaviour:
   initialValue: 0
   text: {fileID: 1601528631}
   setAtStart: 1
+  valueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   mainMenuData: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
 --- !u!224 &1612145309 stripped
 RectTransform:
@@ -2063,6 +2084,9 @@ MonoBehaviour:
   initialValue: 0
   text: {fileID: 1633096515}
   setAtStart: 1
+  valueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   mainMenuData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
 --- !u!1 &1696782604
 GameObject:

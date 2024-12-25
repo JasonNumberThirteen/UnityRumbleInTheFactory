@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-	[SerializeField] private GameObject optionsCursorGO;
-
 	private MainMenuPanelUI mainMenuPanelUI;
+	private MainMenuOptionsCursor mainMenuOptionsCursor;
 
 	private void Awake()
 	{
 		mainMenuPanelUI = FindAnyObjectByType<MainMenuPanelUI>();
+		mainMenuOptionsCursor = FindAnyObjectByType<MainMenuOptionsCursor>(FindObjectsInactive.Include);
 		
 		RegisterToListeners(true);
 	}
@@ -24,23 +24,23 @@ public class MainMenuUIManager : MonoBehaviour
 		{
 			if(mainMenuPanelUI != null)
 			{
-				mainMenuPanelUI.panelReachedTargetPositionEvent.AddListener(ActivateOptionsCursorGO);
+				mainMenuPanelUI.panelReachedTargetPositionEvent.AddListener(ActivateOptionsCursor);
 			}
 		}
 		else
 		{
 			if(mainMenuPanelUI != null)
 			{
-				mainMenuPanelUI.panelReachedTargetPositionEvent.RemoveListener(ActivateOptionsCursorGO);
+				mainMenuPanelUI.panelReachedTargetPositionEvent.RemoveListener(ActivateOptionsCursor);
 			}
 		}
 	}
 
-	private void ActivateOptionsCursorGO()
+	private void ActivateOptionsCursor()
 	{
-		if(optionsCursorGO != null)
+		if(mainMenuOptionsCursor != null)
 		{
-			optionsCursorGO.SetActive(true);
+			mainMenuOptionsCursor.SetActive(true);
 		}
 	}
 }
