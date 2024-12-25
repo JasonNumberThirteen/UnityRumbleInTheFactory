@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-	[SerializeField] private MainMenuPanelUI mainMenuPanelUI;
 	[SerializeField] private GameObject optionsCursorGO;
+
+	private MainMenuPanelUI mainMenuPanelUI;
 
 	private void Awake()
 	{
+		mainMenuPanelUI = FindAnyObjectByType<MainMenuPanelUI>();
+		
 		RegisterToListeners(true);
 	}
 
