@@ -4,50 +4,37 @@ using UnityEngine;
 [RequireComponent(typeof(LoopingCounter))]
 public class MainMenuOptionsController : MonoBehaviour
 {
-	[SerializeField] private Option[] options;
 	[SerializeField] private GameData gameData;
 
 	private LoopingCounter loopingCounter;
 	private MenuOptionsInput menuOptionsInput;
 	private MainMenuPanelUI mainMenuPanelUI;
-
-	public void SelectOption()
-	{
-		var currentOption = GetCurrentOption();
-
-		if(currentOption != null)
-		{
-			currentOption.Select();
-		}
-	}
-
-	public void SubmitOption()
-	{
-		var currentOption = GetCurrentOption();
-
-		if(currentOption != null)
-		{
-			currentOption.Submit();
-		}
-	}
-
-	private Option GetCurrentOption() => options[loopingCounter.CurrentValue - 1];
+	private OptionsManager optionsManager;
 
 	private void Awake()
 	{
 		loopingCounter = GetComponent<LoopingCounter>();
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
 		mainMenuPanelUI = FindFirstObjectByType<MainMenuPanelUI>();
+		optionsManager = FindFirstObjectByType<OptionsManager>();
 		
-		loopingCounter.SetRange(1, Mathf.Max(1, options.Length));
+		SetCounterRange();
 		RegisterToListeners(true);
+	}
+
+	private void SetCounterRange()
+	{
+		var numberOfOptions = optionsManager != null ? optionsManager.GetNumberOfOptions() : 0;
+		var max = Mathf.Max(1, numberOfOptions);
+		
+		loopingCounter.SetRange(1, max);
 	}
 
 	private void Start()
 	{
-		if(gameData != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
+		if(gameData != null && optionsManager != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
 		{
-			loopingCounter.SetTo(2);
+			optionsManager.SelectOption(OptionType.TwoPlayersMode);
 		}
 	}
 
@@ -97,7 +84,10 @@ public class MainMenuOptionsController : MonoBehaviour
 
 	private void OnSubmitKeyPressed()
 	{
-		TriggerOnKeyPressed(SubmitOption);
+		if(optionsManager != null)
+		{
+			TriggerOnKeyPressed(() => optionsManager.SubmitOption(GetOptionTypeByCounterValue()));
+		}
 	}
 
 	private void TriggerOnKeyPressed(Action onKeyPressed)
@@ -119,6 +109,16 @@ public class MainMenuOptionsController : MonoBehaviour
 
 	private void OnCounterValueChanged()
 	{
-		SelectOption();
+		if(optionsManager != null)
+		{
+			optionsManager.SelectOption(GetOptionTypeByCounterValue());
+		}
+	}
+
+	private OptionType GetOptionTypeByCounterValue()
+	{
+		var index = loopingCounter.CurrentValue - 1;
+
+		return (OptionType)index;
 	}
 }
