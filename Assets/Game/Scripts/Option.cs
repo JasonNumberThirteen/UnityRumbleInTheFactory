@@ -5,6 +5,8 @@ public class Option : MonoBehaviour
 {
 	public UnityEvent onSelect, onSubmit;
 
+	public OptionType GetOptionType() => optionType;
+
 	public void Select()
 	{
 		onSelect?.Invoke();
@@ -14,4 +16,6 @@ public class Option : MonoBehaviour
 	{
 		onSubmit?.Invoke();
 	}
+
+	[SerializeField] private OptionType optionType;
 }
