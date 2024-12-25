@@ -30,7 +30,7 @@ public class IntCounter : MonoBehaviour
 		UpdateText();
 	}
 
-	private void Start()
+	protected virtual void Start()
 	{
 		if(setAtStart)
 		{

@@ -2,18 +2,12 @@ using UnityEngine;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-	[SerializeField] private MainMenuCounter[] counters;
 	[SerializeField] private MainMenuPanelUI mainMenuPanelUI;
 	[SerializeField] private GameObject optionsCursorGO;
 
 	private void Awake()
 	{
 		RegisterToListeners(true);
-	}
-
-	private void Start()
-	{
-		SetCounterValues();
 	}
 
 	private void OnDestroy()
@@ -38,14 +32,6 @@ public class MainMenuUIManager : MonoBehaviour
 			}
 		}
 	}
-	
-	private void SetCounterValues()
-	{
-		foreach (MainMenuCounter mmc in counters)
-		{
-			mmc.SetCounterValue();
-		}
-	}
 
 	private void ActivateOptionsCursorGO()
 	{
@@ -54,13 +40,4 @@ public class MainMenuUIManager : MonoBehaviour
 			optionsCursorGO.SetActive(true);
 		}
 	}
-}
-
-[System.Serializable]
-public class MainMenuCounter
-{
-	[SerializeField] private MainMenuData data;
-	[SerializeField] private IntCounter counter;
-
-	public void SetCounterValue() => counter.SetTo(data.MainMenuCounterValue());
 }
