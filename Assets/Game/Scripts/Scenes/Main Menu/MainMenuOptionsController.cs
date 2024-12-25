@@ -1,27 +1,43 @@
 using UnityEngine;
 
+[RequireComponent(typeof(LoopingCounter))]
 public class MainMenuOptionsController : MonoBehaviour
 {
-	public Option[] options;
-	public LoopingCounter counter;
-	public GameData gameData;
-	public Timer mainMenuPanelTimer;
+	[SerializeField] private Option[] options;
+	[SerializeField] private GameData gameData;
+	[SerializeField] private Timer mainMenuPanelUITimer;
 
+	private LoopingCounter loopingCounter;
 	private MenuOptionsInput menuOptionsInput;
 
-	public void SelectOption() => CurrentOption().onSelect.Invoke();
-	public void SubmitOption() => CurrentOption().onSubmit.Invoke();
-	public void IncreaseOptionValue() => counter.IncreaseBy(1);
-	public void DecreaseOptionValue() => counter.DecreaseBy(1);
+	public void SelectOption()
+	{
+		var currentOption = GetCurrentOption();
 
-	private Option CurrentOption() => options[CounterValueIndex()];
-	private int CounterValueIndex() => counter.CurrentValue - 1;
+		if(currentOption != null)
+		{
+			currentOption.onSelect.Invoke();
+		}
+	}
+
+	public void SubmitOption()
+	{
+		var currentOption = GetCurrentOption();
+
+		if(currentOption != null)
+		{
+			currentOption.onSubmit.Invoke();
+		}
+	}
+
+	private Option GetCurrentOption() => options[loopingCounter.CurrentValue - 1];
 
 	private void Awake()
 	{
+		loopingCounter = GetComponent<LoopingCounter>();
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
 		
-		SetCounterRange();
+		SetLoopingCounterRange();
 		RegisterToListeners(true);
 	}
 
@@ -29,7 +45,7 @@ public class MainMenuOptionsController : MonoBehaviour
 	{
 		if(gameData != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
 		{
-			counter.SetTo(2);
+			loopingCounter.SetTo(2);
 			SelectOption();
 		}
 	}
@@ -61,40 +77,50 @@ public class MainMenuOptionsController : MonoBehaviour
 
 	private void OnNavigateKeyPressed(int direction)
 	{
-		if(mainMenuPanelTimer.Finished)
+		if(mainMenuPanelUITimer == null)
+		{
+			return;
+		}
+		
+		if(mainMenuPanelUITimer.Finished)
 		{
 			if(direction == -1)
 			{
-				DecreaseOptionValue();
+				loopingCounter.DecreaseBy(1);
 				SelectOption();
 			}
 			else if(direction == 1)
 			{
-				IncreaseOptionValue();
+				loopingCounter.IncreaseBy(1);
 				SelectOption();
 			}
 		}
 		else
 		{
-			mainMenuPanelTimer.InterruptTimer();
+			mainMenuPanelUITimer.InterruptTimer();
 		}
 	}
 
 	private void OnSubmitKeyPressed()
 	{
-		if(mainMenuPanelTimer.Finished)
+		if(mainMenuPanelUITimer == null)
+		{
+			return;
+		}
+		
+		if(mainMenuPanelUITimer.Finished)
 		{
 			SubmitOption();
 		}
 		else
 		{
-			mainMenuPanelTimer.InterruptTimer();
+			mainMenuPanelUITimer.InterruptTimer();
 		}
 	}
 
-	private void SetCounterRange()
+	private void SetLoopingCounterRange()
 	{
-		counter.min = 1;
-		counter.max = options.Length;
+		loopingCounter.min = 1;
+		loopingCounter.max = Mathf.Max(1, options.Length);
 	}
 }

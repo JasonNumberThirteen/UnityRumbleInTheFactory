@@ -378,9 +378,8 @@ MonoBehaviour:
   - {fileID: 927950813}
   - {fileID: 826487614}
   - {fileID: 1072800032}
-  counter: {fileID: 639037321}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  mainMenuPanelTimer: {fileID: 1052427270}
+  mainMenuPanelUITimer: {fileID: 1052427270}
 --- !u!4 &639037320
 Transform:
   m_ObjectHideFlags: 0
