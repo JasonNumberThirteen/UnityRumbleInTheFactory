@@ -18,8 +18,17 @@ public class MainMenuOptionsController : MonoBehaviour
 		mainMenuPanelUI = FindFirstObjectByType<MainMenuPanelUI>();
 		optionsManager = FindFirstObjectByType<OptionsManager>();
 		
-		SetCounterRange();
 		RegisterToListeners(true);
+	}
+
+	private void Start()
+	{
+		SetCounterRange();
+
+		if(gameData != null && optionsManager != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
+		{
+			optionsManager.SelectOption(OptionType.TwoPlayersMode);
+		}
 	}
 
 	private void SetCounterRange()
@@ -28,14 +37,6 @@ public class MainMenuOptionsController : MonoBehaviour
 		var max = Mathf.Max(1, numberOfOptions);
 		
 		loopingCounter.SetRange(1, max);
-	}
-
-	private void Start()
-	{
-		if(gameData != null && optionsManager != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
-		{
-			optionsManager.SelectOption(OptionType.TwoPlayersMode);
-		}
 	}
 
 	private void OnDestroy()
