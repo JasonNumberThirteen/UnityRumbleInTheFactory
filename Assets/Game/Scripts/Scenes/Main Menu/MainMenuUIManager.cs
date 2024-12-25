@@ -4,7 +4,18 @@ public class MainMenuUIManager : MonoBehaviour
 {
 	public MainMenuCounter[] counters;
 
-	private void Start() => SetCounterValues();
+	[SerializeField] private GameData gameData;
+	[SerializeField] private Timer mainMenuPanelTimer;
+
+	private void Start()
+	{
+		SetCounterValues();
+
+		if(gameData != null && mainMenuPanelTimer != null && gameData.enteredStageSelection)
+		{
+			mainMenuPanelTimer.InterruptTimer();
+		}
+	}
 	
 	private void SetCounterValues()
 	{
