@@ -6,8 +6,8 @@ public class StageUIManager : MonoBehaviour
 	public GameObject gainedPointsCounter, pauseText;
 	public GameData gameData;
 	public PlayerData[] playersData;
-	public Counter[] playerLivesCounters;
-	public Counter stageCounterText, stageCounterIcon;
+	public IntCounter[] playerLivesCounters;
+	public IntCounter stageCounterText, stageCounterIcon;
 	public LeftEnemyIconsManager leftEnemyIconsManager;
 
 	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.stateManager.StateIsSetTo(StageState.PAUSED));
@@ -36,7 +36,7 @@ public class StageUIManager : MonoBehaviour
 			rtm.SetPosition(GainedPointsCounterPosition(position));
 		}
 
-		if(instance.TryGetComponent(out Counter counter))
+		if(instance.TryGetComponent(out IntCounter counter))
 		{
 			counter.SetTo(points);
 		}

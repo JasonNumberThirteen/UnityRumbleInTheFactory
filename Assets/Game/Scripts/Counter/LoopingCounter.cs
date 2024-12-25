@@ -1,4 +1,4 @@
-public class LoopingCounter : Counter
+public class LoopingCounter : IntCounter
 {
 	public int min, max;
 

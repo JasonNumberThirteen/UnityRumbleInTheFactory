@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CounterText : MonoBehaviour
 {
-	public Counter counter;
+	public IntCounter counter;
 	public string header;
 	public bool addSpaceAfterHeader = true;
 	

@@ -19,7 +19,7 @@ public class MainMenuUIManager : MonoBehaviour
 public class MainMenuCounter
 {
 	[SerializeField] private MainMenuData data;
-	[SerializeField] private Counter counter;
+	[SerializeField] private IntCounter counter;
 
 	public void SetCounterValue() => counter.SetTo(data.MainMenuCounterValue());
 }

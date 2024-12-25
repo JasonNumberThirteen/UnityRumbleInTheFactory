@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Counter : MonoBehaviour
+public class IntCounter : MonoBehaviour
 {
 	public int initialValue;
 	public CounterText text;
