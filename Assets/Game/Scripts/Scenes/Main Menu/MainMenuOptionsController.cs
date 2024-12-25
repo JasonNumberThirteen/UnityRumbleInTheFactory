@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(LoopingCounter))]
@@ -5,10 +6,10 @@ public class MainMenuOptionsController : MonoBehaviour
 {
 	[SerializeField] private Option[] options;
 	[SerializeField] private GameData gameData;
-	[SerializeField] private Timer mainMenuPanelUITimer;
 
 	private LoopingCounter loopingCounter;
 	private MenuOptionsInput menuOptionsInput;
+	private MainMenuPanelUI mainMenuPanelUI;
 
 	public void SelectOption()
 	{
@@ -36,8 +37,9 @@ public class MainMenuOptionsController : MonoBehaviour
 	{
 		loopingCounter = GetComponent<LoopingCounter>();
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
+		mainMenuPanelUI = FindFirstObjectByType<MainMenuPanelUI>();
 		
-		SetLoopingCounterRange();
+		loopingCounter.SetRange(1, Mathf.Max(1, options.Length));
 		RegisterToListeners(true);
 	}
 
@@ -46,7 +48,6 @@ public class MainMenuOptionsController : MonoBehaviour
 		if(gameData != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
 		{
 			loopingCounter.SetTo(2);
-			SelectOption();
 		}
 	}
 
@@ -64,6 +65,8 @@ public class MainMenuOptionsController : MonoBehaviour
 				menuOptionsInput.navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
 				menuOptionsInput.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
 			}
+
+			loopingCounter.valueChangedEvent.AddListener(OnCounterValueChanged);
 		}
 		else
 		{
@@ -72,55 +75,50 @@ public class MainMenuOptionsController : MonoBehaviour
 				menuOptionsInput.navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
 				menuOptionsInput.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
 			}
+
+			loopingCounter.valueChangedEvent.RemoveListener(OnCounterValueChanged);
 		}
 	}
 
 	private void OnNavigateKeyPressed(int direction)
 	{
-		if(mainMenuPanelUITimer == null)
-		{
-			return;
-		}
-		
-		if(mainMenuPanelUITimer.Finished)
+		TriggerOnKeyPressed(() =>
 		{
 			if(direction == -1)
 			{
 				loopingCounter.DecreaseBy(1);
-				SelectOption();
 			}
 			else if(direction == 1)
 			{
 				loopingCounter.IncreaseBy(1);
-				SelectOption();
 			}
-		}
-		else
-		{
-			mainMenuPanelUITimer.InterruptTimer();
-		}
+		});
 	}
 
 	private void OnSubmitKeyPressed()
 	{
-		if(mainMenuPanelUITimer == null)
+		TriggerOnKeyPressed(SubmitOption);
+	}
+
+	private void TriggerOnKeyPressed(Action onKeyPressed)
+	{
+		if(mainMenuPanelUI == null)
 		{
 			return;
 		}
-		
-		if(mainMenuPanelUITimer.Finished)
+
+		if(mainMenuPanelUI.ReachedTargetPosition())
 		{
-			SubmitOption();
+			onKeyPressed?.Invoke();
 		}
 		else
 		{
-			mainMenuPanelUITimer.InterruptTimer();
+			mainMenuPanelUI.SetTargetPosition();
 		}
 	}
 
-	private void SetLoopingCounterRange()
+	private void OnCounterValueChanged()
 	{
-		loopingCounter.min = 1;
-		loopingCounter.max = Mathf.Max(1, options.Length);
+		SelectOption();
 	}
 }

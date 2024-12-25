@@ -2,6 +2,12 @@ public class LoopingCounter : IntCounter
 {
 	public int min, max;
 
+	public void SetRange(int min, int max)
+	{
+		this.min = min;
+		this.max = max;
+	}
+
 	protected override void IncreaseValue(int value)
 	{
 		int nextValue = NextValue(value);

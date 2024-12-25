@@ -12,6 +12,22 @@ public class MainMenuPanelUI : MonoBehaviour
 	private RectTransformTimedMover rectTransformTimedMover;
 	private bool reachedTargetPosition;
 
+	public bool ReachedTargetPosition() => reachedTargetPosition;
+
+	public void SetTargetPosition()
+	{
+		if(reachedTargetPosition)
+		{
+			return;
+		}
+
+		reachedTargetPosition = true;
+		
+		timer.InterruptTimer();
+		rectTransformTimedMover.SetPositionY(0);
+		panelReachedTargetPositionEvent?.Invoke();
+	}
+
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
@@ -35,12 +51,10 @@ public class MainMenuPanelUI : MonoBehaviour
 		if(register)
 		{
 			timer.onEnd.AddListener(SetTargetPosition);
-			timer.onInterrupt.AddListener(SetTargetPosition);
 		}
 		else
 		{
 			timer.onEnd.RemoveListener(SetTargetPosition);
-			timer.onInterrupt.RemoveListener(SetTargetPosition);
 		}
 	}
 
@@ -50,18 +64,5 @@ public class MainMenuPanelUI : MonoBehaviour
 		{
 			SetTargetPosition();
 		}
-	}
-
-	private void SetTargetPosition()
-	{
-		if(reachedTargetPosition)
-		{
-			return;
-		}
-
-		reachedTargetPosition = true;
-		
-		rectTransformTimedMover.SetPositionY(0);
-		panelReachedTargetPositionEvent?.Invoke();
 	}
 }
