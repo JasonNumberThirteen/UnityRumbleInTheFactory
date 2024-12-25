@@ -847,61 +847,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   optionType: 1
---- !u!1 &905126336
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 905126338}
-  - component: {fileID: 905126337}
-  m_Layer: 0
-  m_Name: Stage Selection Background Timer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &905126337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905126336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.25
-  countFromTheStart: 0
-  onReset:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &905126338
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905126336}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1696782605}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &927950810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1482,7 +1427,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  stageSelectionBackgroundTimer: {fileID: 905126337}
   input: {fileID: 1623448757}
 --- !u!4 &1144572965
 Transform:
@@ -2005,38 +1949,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   mainMenuData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
---- !u!1 &1696782604
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1696782605}
-  m_Layer: 0
-  m_Name: Timers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1696782605
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696782604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 905126338}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1749089703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,10 +2277,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 707964622}
     m_Modifications:
     - target: {fileID: 870306800510336756, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
-      propertyPath: timer
-      value: 
-      objectReference: {fileID: 905126337}
-    - target: {fileID: 870306800510336756, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: widthSide
       value: 1
       objectReference: {fileID: 0}
@@ -2396,10 +2304,6 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1749089707}
-    - target: {fileID: 3653667742059613410, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
-      propertyPath: timer
-      value: 
-      objectReference: {fileID: 905126337}
     - target: {fileID: 3653667742059613410, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: widthSide
       value: 2
@@ -2519,7 +2423,7 @@ PrefabInstance:
     - target: {fileID: 7066068774657121137, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: timer
       value: 
-      objectReference: {fileID: 905126337}
+      objectReference: {fileID: 0}
     - target: {fileID: 7066068774657121137, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: canvas
       value: 
@@ -2539,7 +2443,7 @@ PrefabInstance:
     - target: {fileID: 8697010381207133087, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: timer
       value: 
-      objectReference: {fileID: 905126337}
+      objectReference: {fileID: 0}
     - target: {fileID: 8697010381207133087, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: canvas
       value: 

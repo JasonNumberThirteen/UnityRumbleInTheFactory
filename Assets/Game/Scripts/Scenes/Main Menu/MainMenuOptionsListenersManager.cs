@@ -6,7 +6,6 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 	public UnityEvent gameStartOptionSelectedEvent;
 	
 	public GameData gameData;
-	public Timer stageSelectionBackgroundTimer;
 	public MenuOptionsInput input;
 
 	private OptionsManager optionsManager;
@@ -67,7 +66,6 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 		gameData.enteredStageSelection = true;
 		gameData.twoPlayersMode = twoPlayersMode;
 		
-		stageSelectionBackgroundTimer.StartTimer();
 		input.gameObject.SetActive(false);
 		gameStartOptionSelectedEvent?.Invoke();
 	}
