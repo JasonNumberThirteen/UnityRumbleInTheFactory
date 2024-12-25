@@ -2,18 +2,40 @@ using UnityEngine;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-	public MainMenuCounter[] counters;
+	[SerializeField] private MainMenuCounter[] counters;
+	[SerializeField] private MainMenuPanelUI mainMenuPanelUI;
+	[SerializeField] private GameObject optionsCursorGO;
 
-	[SerializeField] private GameData gameData;
-	[SerializeField] private Timer mainMenuPanelTimer;
+	private void Awake()
+	{
+		RegisterToListeners(true);
+	}
 
 	private void Start()
 	{
 		SetCounterValues();
+	}
 
-		if(gameData != null && mainMenuPanelTimer != null && gameData.enteredStageSelection)
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
 		{
-			mainMenuPanelTimer.InterruptTimer();
+			if(mainMenuPanelUI != null)
+			{
+				mainMenuPanelUI.panelReachedTargetPositionEvent.AddListener(ActivateOptionsCursorGO);
+			}
+		}
+		else
+		{
+			if(mainMenuPanelUI != null)
+			{
+				mainMenuPanelUI.panelReachedTargetPositionEvent.RemoveListener(ActivateOptionsCursorGO);
+			}
 		}
 	}
 	
@@ -22,6 +44,14 @@ public class MainMenuUIManager : MonoBehaviour
 		foreach (MainMenuCounter mmc in counters)
 		{
 			mmc.SetCounterValue();
+		}
+	}
+
+	private void ActivateOptionsCursorGO()
+	{
+		if(optionsCursorGO != null)
+		{
+			optionsCursorGO.SetActive(true);
 		}
 	}
 }

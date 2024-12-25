@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Timer), typeof(RectTransformTimedMover))]
 public class MainMenuPanelUI : MonoBehaviour
 {
-	[SerializeField] private GameObject optionsCursorGO;
+	public UnityEvent panelReachedTargetPositionEvent;
+	
+	[SerializeField] private GameData gameData;
 	
 	private Timer timer;
 	private RectTransformTimedMover rectTransformTimedMover;
+	private bool reachedTargetPosition;
 
 	private void Awake()
 	{
@@ -14,6 +18,11 @@ public class MainMenuPanelUI : MonoBehaviour
 		rectTransformTimedMover = GetComponent<RectTransformTimedMover>();
 
 		RegisterToListeners(true);
+	}
+
+	private void Start()
+	{
+		SetTargetPositionImmediatelyIfNeeded();
 	}
 
 	private void OnDestroy()
@@ -25,27 +34,34 @@ public class MainMenuPanelUI : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.onEnd.AddListener(ActivateOptionsCursorGO);
-			timer.onInterrupt.AddListener(OnTimerInterrupt);
+			timer.onEnd.AddListener(SetTargetPosition);
+			timer.onInterrupt.AddListener(SetTargetPosition);
 		}
 		else
 		{
-			timer.onEnd.RemoveListener(ActivateOptionsCursorGO);
-			timer.onInterrupt.RemoveListener(OnTimerInterrupt);
+			timer.onEnd.RemoveListener(SetTargetPosition);
+			timer.onInterrupt.RemoveListener(SetTargetPosition);
 		}
 	}
 
-	private void OnTimerInterrupt()
+	private void SetTargetPositionImmediatelyIfNeeded()
 	{
-		rectTransformTimedMover.SetPositionY(0);
-		ActivateOptionsCursorGO();
-	}
-
-	private void ActivateOptionsCursorGO()
-	{
-		if(optionsCursorGO != null)
+		if(gameData != null && gameData.enteredStageSelection)
 		{
-			optionsCursorGO.SetActive(true);
+			SetTargetPosition();
 		}
+	}
+
+	private void SetTargetPosition()
+	{
+		if(reachedTargetPosition)
+		{
+			return;
+		}
+
+		reachedTargetPosition = true;
+		
+		rectTransformTimedMover.SetPositionY(0);
+		panelReachedTargetPositionEvent?.Invoke();
 	}
 }

@@ -1115,7 +1115,6 @@ GameObject:
   - component: {fileID: 1002192796}
   - component: {fileID: 1002192795}
   - component: {fileID: 1002192797}
-  - component: {fileID: 1002192798}
   - component: {fileID: 1002192799}
   m_Layer: 5
   m_Name: Cursor
@@ -1123,7 +1122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1002192794
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1203,18 +1202,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1002192798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002192793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1002192799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,7 +1351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bc6233bd410bf4593089e986c9dd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionsCursorGO: {fileID: 1002192793}
+  panelReachedTargetPositionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!1001 &1072800029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1612,8 +1602,8 @@ MonoBehaviour:
     counter: {fileID: 1571427408}
   - data: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
     counter: {fileID: 1601528632}
-  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  mainMenuPanelTimer: {fileID: 1052427270}
+  mainMenuPanelUI: {fileID: 1052427271}
+  optionsCursorGO: {fileID: 1002192793}
 --- !u!4 &1261939961
 Transform:
   m_ObjectHideFlags: 0
