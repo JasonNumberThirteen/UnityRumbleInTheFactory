@@ -90,8 +90,9 @@ GameObject:
   - component: {fileID: 6197224194114951690}
   - component: {fileID: 602336812393532682}
   - component: {fileID: 3653667742059613410}
+  - component: {fileID: 7819981458445300924}
   m_Layer: 5
-  m_Name: Stage Selection Background Right Half
+  m_Name: TranslationBackgroundRightHalfPanelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,9 +165,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73de0bdaaca8f1e45b578e97b2043bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetOffsetMin: {x: 0, y: 0}
-  targetOffsetMax: {x: 0, y: 0}
   timer: {fileID: 0}
+  widthSide: 0
+  heightSide: 0
+  reverseDirection: 0
+--- !u!114 &7819981458445300924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448693611940417116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.25
+  countFromTheStart: 1
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7600486037615177576
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,8 +204,9 @@ GameObject:
   - component: {fileID: 7051148489659945117}
   - component: {fileID: 1495905572270853516}
   - component: {fileID: 870306800510336756}
+  - component: {fileID: 4079729337278338311}
   m_Layer: 5
-  m_Name: Stage Selection Background Left Half
+  m_Name: TranslationBackgroundLeftHalfPanelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,6 +279,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73de0bdaaca8f1e45b578e97b2043bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetOffsetMin: {x: 0, y: 0}
-  targetOffsetMax: {x: 0, y: 0}
-  timer: {fileID: 0}
+  timer: {fileID: 4079729337278338311}
+  widthSide: 0
+  heightSide: 0
+  reverseDirection: 0
+--- !u!114 &4079729337278338311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600486037615177576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.25
+  countFromTheStart: 1
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
