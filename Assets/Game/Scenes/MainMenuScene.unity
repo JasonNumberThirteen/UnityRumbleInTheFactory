@@ -404,7 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialValue: 1
   text: {fileID: 0}
-  setAtStart: 1
+  setAtStart: 0
   valueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -842,34 +842,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1002192800}
-        m_TargetAssemblyTypeName: MainMenuOptionsCursor, Assembly-CSharp
-        m_MethodName: SetPositionY
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: -60
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onSubmit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1144572964}
-        m_TargetAssemblyTypeName: MainMenuSceneManager, Assembly-CSharp
-        m_MethodName: TwoPlayers
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   optionType: 1
 --- !u!1 &905126336
 GameObject:
@@ -907,19 +883,7 @@ MonoBehaviour:
       m_Calls: []
   onEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1144572964}
-        m_TargetAssemblyTypeName: GameSceneManager, Assembly-CSharp
-        m_MethodName: LoadSceneByName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: StageSelectionScene
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onInterrupt:
     m_PersistentCalls:
       m_Calls: []
@@ -1074,34 +1038,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1002192800}
-        m_TargetAssemblyTypeName: MainMenuOptionsCursor, Assembly-CSharp
-        m_MethodName: SetPositionY
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: -44
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onSubmit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1144572964}
-        m_TargetAssemblyTypeName: MainMenuSceneManager, Assembly-CSharp
-        m_MethodName: OnePlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   optionType: 0
 --- !u!1 &1002192793
 GameObject:
@@ -1504,34 +1444,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1002192800}
-        m_TargetAssemblyTypeName: MainMenuOptionsCursor, Assembly-CSharp
-        m_MethodName: SetPositionY
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: -76
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onSubmit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1144572964}
-        m_TargetAssemblyTypeName: MainMenuSceneManager, Assembly-CSharp
-        m_MethodName: Exit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   optionType: 2
 --- !u!1 &1144572963
 GameObject:
@@ -1544,7 +1460,7 @@ GameObject:
   - component: {fileID: 1144572965}
   - component: {fileID: 1144572964}
   m_Layer: 0
-  m_Name: Scene Manager
+  m_Name: Options Listeners Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1562,6 +1478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d870d15022490ff4abb76fe0803f5790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStartOptionSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   stageSelectionBackgroundTimer: {fileID: 905126337}
   input: {fileID: 1623448757}

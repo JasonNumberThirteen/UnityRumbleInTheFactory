@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OptionsManager : MonoBehaviour
 {
@@ -20,6 +21,27 @@ public class OptionsManager : MonoBehaviour
 		if(optionsDictionary.ContainsKey(optionType))
 		{
 			optionsDictionary[optionType].Submit();
+		}
+	}
+
+	public void RegisterToOptionListeners(bool register, OptionType optionType, UnityAction onSelect, UnityAction onSubmit)
+	{
+		if(!optionsDictionary.ContainsKey(optionType))
+		{
+			return;
+		}
+
+		var option = optionsDictionary[optionType];
+
+		if(register)
+		{
+			option.onSelect.AddListener(onSelect);
+			option.onSubmit.AddListener(onSubmit);
+		}
+		else
+		{
+			option.onSelect.RemoveListener(onSelect);
+			option.onSubmit.RemoveListener(onSubmit);
 		}
 	}
 
