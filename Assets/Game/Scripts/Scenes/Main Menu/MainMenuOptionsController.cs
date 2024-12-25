@@ -17,7 +17,7 @@ public class MainMenuOptionsController : MonoBehaviour
 
 		if(currentOption != null)
 		{
-			currentOption.onSelect.Invoke();
+			currentOption.Select();
 		}
 	}
 
@@ -27,7 +27,7 @@ public class MainMenuOptionsController : MonoBehaviour
 
 		if(currentOption != null)
 		{
-			currentOption.onSubmit.Invoke();
+			currentOption.Submit();
 		}
 	}
 
