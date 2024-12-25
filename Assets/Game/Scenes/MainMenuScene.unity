@@ -1981,7 +1981,7 @@ MonoBehaviour:
   cancelKeyPressedEvent:
     m_PersistentCalls:
       m_Calls: []
-  movementAxis: 1
+  navigationAxis: 1
   optionsController: {fileID: 639037319}
   mainMenuPanelTimer: {fileID: 1052427270}
 --- !u!4 &1623448754

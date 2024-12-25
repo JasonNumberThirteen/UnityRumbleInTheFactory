@@ -8,7 +8,7 @@ public abstract class MenuOptionsInput : MonoBehaviour
 	public UnityEvent submitKeyPressedEvent;
 	public UnityEvent cancelKeyPressedEvent;
 	
-	[SerializeField] private Axis movementAxis;
+	[SerializeField] private Axis navigationAxis;
 	
 	private void OnNavigate(InputValue inputValue)
 	{
@@ -29,7 +29,7 @@ public abstract class MenuOptionsInput : MonoBehaviour
 
 	private int GetNavigationValue(Vector2 inputVector)
 	{
-		return movementAxis switch
+		return navigationAxis switch
 		{
 			Axis.HORIZONTAL => Mathf.RoundToInt(inputVector.x),
 			Axis.VERTICAL => Mathf.RoundToInt(-inputVector.y),
