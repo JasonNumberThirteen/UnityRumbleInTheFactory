@@ -6,6 +6,7 @@ public class MainMenuUIManager : MonoBehaviour
 	private MainMenuOptionsCursor mainMenuOptionsCursor;
 	private MainMenuOptionsListenersManager mainMenuOptionsListenersManager;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
+	private GameSceneManager gameSceneManager;
 
 	private void Awake()
 	{
@@ -13,6 +14,7 @@ public class MainMenuUIManager : MonoBehaviour
 		mainMenuOptionsCursor = FindAnyObjectByType<MainMenuOptionsCursor>(FindObjectsInactive.Include);
 		mainMenuOptionsListenersManager = FindAnyObjectByType<MainMenuOptionsListenersManager>(FindObjectsInactive.Include);
 		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
+		gameSceneManager = FindAnyObjectByType<GameSceneManager>(FindObjectsInactive.Include);
 		
 		RegisterToListeners(true);
 	}
@@ -35,6 +37,11 @@ public class MainMenuUIManager : MonoBehaviour
 			{
 				mainMenuOptionsListenersManager.gameStartOptionSubmittedEvent.AddListener(OnGameStartOptionSubmitted);
 			}
+
+			if(translationBackgroundPanelUI != null)
+			{
+				translationBackgroundPanelUI.panelFinishedTranslationEvent.AddListener(OnPanelFinishedTranslation);
+			}
 		}
 		else
 		{
@@ -46,6 +53,11 @@ public class MainMenuUIManager : MonoBehaviour
 			if(mainMenuOptionsListenersManager != null)
 			{
 				mainMenuOptionsListenersManager.gameStartOptionSubmittedEvent.RemoveListener(OnGameStartOptionSubmitted);
+			}
+
+			if(translationBackgroundPanelUI != null)
+			{
+				translationBackgroundPanelUI.panelFinishedTranslationEvent.RemoveListener(OnPanelFinishedTranslation);
 			}
 		}
 	}
@@ -63,6 +75,14 @@ public class MainMenuUIManager : MonoBehaviour
 		if(translationBackgroundPanelUI != null)
 		{
 			translationBackgroundPanelUI.StartTranslation();
+		}
+	}
+
+	private void OnPanelFinishedTranslation()
+	{
+		if(gameSceneManager != null)
+		{
+			gameSceneManager.LoadSceneByName(gameSceneManager.STAGE_SELECTION_SCENE_NAME);
 		}
 	}
 }
