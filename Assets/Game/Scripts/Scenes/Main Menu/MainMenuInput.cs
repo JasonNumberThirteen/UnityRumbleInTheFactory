@@ -1,18 +1,44 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class MainMenuInput : MonoBehaviour
+public class MainMenuInput : MenuOptionsInput
 {
 	public MainMenuOptionsController optionsController;
 	public Timer mainMenuPanelTimer;
 
-	private void OnNavigate(InputValue iv)
+	private void Awake()
 	{
-		Vector2 inputVector = iv.Get<Vector2>();
+		RegisterToListeners(true);
+	}
 
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
+			submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
+		}
+		else
+		{
+			navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
+			submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
+		}
+	}
+
+	private void OnNavigateKeyPressed(int direction)
+	{
 		if(mainMenuPanelTimer.Finished)
 		{
-			ChangeOption(inputVector.y);
+			if(direction == -1)
+			{
+				SelectPreviousOption();
+			}
+			else if(direction == 1)
+			{
+				SelectNextOption();
+			}
 		}
 		else
 		{
@@ -20,17 +46,15 @@ public class MainMenuInput : MonoBehaviour
 		}
 	}
 
-	private void ChangeOption(float y)
+	private void OnSubmitKeyPressed()
 	{
-		int optionOffset = Mathf.RoundToInt(-y);
-		
-		if(optionOffset == -1)
+		if(mainMenuPanelTimer.Finished)
 		{
-			SelectPreviousOption();
+			optionsController.SubmitOption();
 		}
-		else if(optionOffset == 1)
+		else
 		{
-			SelectNextOption();
+			mainMenuPanelTimer.InterruptTimer();
 		}
 	}
 
@@ -44,17 +68,5 @@ public class MainMenuInput : MonoBehaviour
 	{
 		optionsController.IncreaseOptionValue();
 		optionsController.SelectOption();
-	}
-
-	private void OnSubmit(InputValue iv)
-	{
-		if(mainMenuPanelTimer.Finished)
-		{
-			optionsController.SubmitOption();
-		}
-		else
-		{
-			mainMenuPanelTimer.InterruptTimer();
-		}
 	}
 }
