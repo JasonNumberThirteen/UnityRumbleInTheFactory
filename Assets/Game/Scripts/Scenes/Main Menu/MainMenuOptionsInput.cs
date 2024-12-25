@@ -1,4 +1,4 @@
-public class MainMenuInput : MenuOptionsInput
+public class MainMenuOptionsInput : MenuOptionsInput
 {
 	public MainMenuOptionsController optionsController;
 	public Timer mainMenuPanelTimer;
