@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 639037319}
   - component: {fileID: 639037321}
   m_Layer: 0
-  m_Name: Options Controller
+  m_Name: Option Selection Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

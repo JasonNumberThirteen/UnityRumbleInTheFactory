@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(LoopingCounter))]
-public class MainMenuOptionsController : MonoBehaviour
+public class MainMenuOptionSelectionManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
