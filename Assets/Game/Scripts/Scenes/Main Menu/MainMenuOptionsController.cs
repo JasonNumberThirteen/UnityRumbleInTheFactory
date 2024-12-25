@@ -25,9 +25,9 @@ public class MainMenuOptionsController : MonoBehaviour
 	{
 		SetCounterRange();
 
-		if(gameData != null && optionsManager != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
+		if(gameData != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
 		{
-			optionsManager.SelectOption(OptionType.TwoPlayersMode);
+			loopingCounter.SetTo((int)OptionType.TwoPlayersMode + 1);
 		}
 	}
 
