@@ -9,6 +9,11 @@ public class MenuOptionsInput : MonoBehaviour
 	public UnityEvent cancelKeyPressedEvent;
 	
 	[SerializeField] private Axis navigationAxis;
+
+	public void SetActive(bool active)
+	{
+		gameObject.SetActive(active);
+	}
 	
 	private void OnNavigate(InputValue inputValue)
 	{

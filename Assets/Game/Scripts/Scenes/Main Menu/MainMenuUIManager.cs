@@ -33,7 +33,7 @@ public class MainMenuUIManager : MonoBehaviour
 
 			if(mainMenuOptionsListenersManager != null)
 			{
-				mainMenuOptionsListenersManager.gameStartOptionSelectedEvent.AddListener(OnGameStartOptionSelected);
+				mainMenuOptionsListenersManager.gameStartOptionSubmittedEvent.AddListener(OnGameStartOptionSubmitted);
 			}
 		}
 		else
@@ -45,7 +45,7 @@ public class MainMenuUIManager : MonoBehaviour
 
 			if(mainMenuOptionsListenersManager != null)
 			{
-				mainMenuOptionsListenersManager.gameStartOptionSelectedEvent.RemoveListener(OnGameStartOptionSelected);
+				mainMenuOptionsListenersManager.gameStartOptionSubmittedEvent.RemoveListener(OnGameStartOptionSubmitted);
 			}
 		}
 	}
@@ -58,7 +58,7 @@ public class MainMenuUIManager : MonoBehaviour
 		}
 	}
 
-	private void OnGameStartOptionSelected()
+	private void OnGameStartOptionSubmitted()
 	{
 		if(translationBackgroundPanelUI != null)
 		{

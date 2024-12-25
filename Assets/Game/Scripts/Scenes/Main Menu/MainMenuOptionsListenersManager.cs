@@ -3,17 +3,18 @@ using UnityEngine.Events;
 
 public class MainMenuOptionsListenersManager : MonoBehaviour
 {
-	public UnityEvent gameStartOptionSelectedEvent;
+	public UnityEvent gameStartOptionSubmittedEvent;
 	
-	public GameData gameData;
-	public MenuOptionsInput input;
-
+	[SerializeField] private GameData gameData;
+	
 	private OptionsManager optionsManager;
+	private MenuOptionsInput menuOptionsInput;
 	private MainMenuOptionsCursor mainMenuOptionsCursor;
 
 	private void Awake()
 	{
 		optionsManager = FindFirstObjectByType<OptionsManager>();
+		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>(FindObjectsInactive.Include);
 		mainMenuOptionsCursor = FindFirstObjectByType<MainMenuOptionsCursor>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
@@ -38,17 +39,25 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 
 	private void OnOnePlayerModeSelected()
 	{
-		mainMenuOptionsCursor.SetPositionY(-44);
+		SetPositionYToOptionsCursor(-44);
 	}
 
 	private void OnTwoPlayersModeSelected()
 	{
-		mainMenuOptionsCursor.SetPositionY(-60);
+		SetPositionYToOptionsCursor(-60);
 	}
 
 	private void OnExitGameSelected()
 	{
-		mainMenuOptionsCursor.SetPositionY(-76);
+		SetPositionYToOptionsCursor(-76);
+	}
+
+	private void SetPositionYToOptionsCursor(float y)
+	{
+		if(mainMenuOptionsCursor != null)
+		{
+			mainMenuOptionsCursor.SetPositionY(y);
+		}
 	}
 
 	private void OnOnePlayerModeSubmitted()
@@ -63,11 +72,28 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 
 	private void StartGame(bool twoPlayersMode)
 	{
+		SetupGameData(twoPlayersMode);
+		DeactivateMenuOptionsInput();
+		gameStartOptionSubmittedEvent?.Invoke();
+	}
+
+	private void SetupGameData(bool twoPlayersMode)
+	{
+		if(gameData == null)
+		{
+			return;
+		}
+
 		gameData.enteredStageSelection = true;
 		gameData.twoPlayersMode = twoPlayersMode;
-		
-		input.gameObject.SetActive(false);
-		gameStartOptionSelectedEvent?.Invoke();
+	}
+
+	private void DeactivateMenuOptionsInput()
+	{
+		if(menuOptionsInput != null)
+		{
+			menuOptionsInput.SetActive(false);
+		}
 	}
 
 	private void OnExitGameSubmitted()
