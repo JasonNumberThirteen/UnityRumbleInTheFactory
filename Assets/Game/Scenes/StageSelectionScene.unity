@@ -520,9 +520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70e9fed0c094fc4d9c763ef7e6903bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageCounter: {fileID: 832648717}
+  loopingCounter: {fileID: 832648717}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  directory: Stages
 --- !u!4 &731514315
 Transform:
   m_ObjectHideFlags: 0
