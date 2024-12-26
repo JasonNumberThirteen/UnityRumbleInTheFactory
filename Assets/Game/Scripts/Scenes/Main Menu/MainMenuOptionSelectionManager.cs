@@ -102,7 +102,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 			return;
 		}
 
-		if(mainMenuPanelUI.ReachedTargetPosition())
+		if(mainMenuPanelUI.ReachedTargetPosition)
 		{
 			onKeyPressed?.Invoke();
 		}

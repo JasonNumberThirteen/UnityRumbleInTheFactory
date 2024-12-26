@@ -5,25 +5,23 @@ using UnityEngine.Events;
 public class MainMenuPanelUI : MonoBehaviour
 {
 	public UnityEvent panelReachedTargetPositionEvent;
+
+	public bool ReachedTargetPosition {get; private set;}
 	
 	[SerializeField] private GameData gameData;
 	
 	private Timer timer;
 	private RectTransformTimedMover rectTransformTimedMover;
-	private bool reachedTargetPosition;
-
-	public bool ReachedTargetPosition() => reachedTargetPosition;
 
 	public void SetTargetPosition()
 	{
-		if(reachedTargetPosition)
+		if(ReachedTargetPosition)
 		{
 			return;
 		}
 
-		reachedTargetPosition = true;
+		ReachedTargetPosition = true;
 		
-		timer.InterruptTimer();
 		rectTransformTimedMover.SetPositionY(0);
 		panelReachedTargetPositionEvent?.Invoke();
 	}
