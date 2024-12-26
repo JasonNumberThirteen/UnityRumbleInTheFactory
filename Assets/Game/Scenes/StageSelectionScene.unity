@@ -533,7 +533,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3489673666025870493, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
       propertyPath: m_Name
-      value: Stage Counter (SS)
+      value: Stage Counter Header Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 4238387268320524629, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
       propertyPath: m_Pivot.x
@@ -751,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: No Stages Message
+      value: No Stages Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
