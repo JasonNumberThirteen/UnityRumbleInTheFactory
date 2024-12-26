@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class StageSelectionUIManager : MonoBehaviour
 {
-	public GameData gameData;
-	public TextMeshProUGUI stageCounter, noStagesMessage;
+	[SerializeField] private GameData gameData;
+	[SerializeField] private TextMeshProUGUI stageCounterTextUI;
+	[SerializeField] private TextMeshProUGUI noStagesMessageTextUI;
 
 	private void Start()
 	{
-		bool foundAnyStage = !gameData.StagesDoNotExist();
+		var foundAnyStage = gameData != null && !gameData.StagesDoNotExist();
 		
-		stageCounter.enabled = foundAnyStage;
-		noStagesMessage.enabled = !foundAnyStage;
+		stageCounterTextUI.enabled = foundAnyStage;
+		noStagesMessageTextUI.enabled = !foundAnyStage;
 	}
 }
