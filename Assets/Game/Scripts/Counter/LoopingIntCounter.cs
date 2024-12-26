@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class LoopingIntCounter : IntCounter
 {
-	public int min, max;
+	private int lowerBound;
+	private int upperBound;
 
-	public void SetRange(int min, int max)
+	public void SetRange(int lowerBound, int upperBound)
 	{
-		this.min = min;
-		this.max = max;
+		this.lowerBound = lowerBound;
+		this.upperBound = upperBound;
 
-		if(CurrentValue < this.min || CurrentValue > this.max)
+		if(CurrentValue < this.lowerBound || CurrentValue > this.upperBound)
 		{
-			var valueWithinRange = Mathf.Clamp(CurrentValue, this.min, this.max);
+			var valueWithinRange = Mathf.Clamp(CurrentValue, this.lowerBound, this.upperBound);
 			
 			SetTo(valueWithinRange);
 		}
@@ -19,18 +20,18 @@ public class LoopingIntCounter : IntCounter
 
 	protected override void IncreaseValue(int value)
 	{
-		int nextValue = NextValue(value);
+		var nextValue = GetNextValue(value);
 
 		SetTo(nextValue);
 	}
 
 	protected override void DecreaseValue(int value)
 	{
-		int previousValue = PreviousValue(value);
+		var previousValue = GetPreviousValue(value);
 
 		SetTo(previousValue);
 	}
 
-	private int NextValue(int value) => (CurrentValue + value - 1) % max + min;
-	private int PreviousValue(int value) => (CurrentValue - value + max - 1) % max + min;
+	private int GetNextValue(int value) => (CurrentValue + value - 1) % upperBound + lowerBound;
+	private int GetPreviousValue(int value) => (CurrentValue - value + upperBound - 1) % upperBound + lowerBound;
 }
