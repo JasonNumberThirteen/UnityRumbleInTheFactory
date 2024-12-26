@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class LoopingCounter : IntCounter
 {
 	public int min, max;
@@ -6,6 +8,13 @@ public class LoopingCounter : IntCounter
 	{
 		this.min = min;
 		this.max = max;
+
+		if(CurrentValue < this.min || CurrentValue > this.max)
+		{
+			var valueWithinRange = Mathf.Clamp(CurrentValue, this.min, this.max);
+			
+			SetTo(valueWithinRange);
+		}
 	}
 
 	protected override void IncreaseValue(int value)
