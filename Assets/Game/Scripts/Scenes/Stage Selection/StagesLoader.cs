@@ -25,10 +25,3 @@ public class StagesLoader : MonoBehaviour
 		return stages;
 	}
 }
-
-[System.Serializable]
-public class Stage
-{
-	public int[] tiles;
-	public string[] enemies;
-}
