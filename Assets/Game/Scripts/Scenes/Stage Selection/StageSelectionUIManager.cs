@@ -1,16 +1,16 @@
-using TMPro;
 using UnityEngine;
 
 public class StageSelectionUIManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
-	[SerializeField] private TextMeshProUGUI noStagesMessageTextUI;
 
 	private StageSelectionStageCounterTextUI stageSelectionStageCounterTextUI;
+	private StageSelectionNoStagesTextUI stageSelectionNoStagesTextUI;
 
 	private void Awake()
 	{
 		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageSelectionStageCounterTextUI>();
+		stageSelectionNoStagesTextUI = FindFirstObjectByType<StageSelectionNoStagesTextUI>();
 	}
 
 	private void Start()
@@ -31,9 +31,9 @@ public class StageSelectionUIManager : MonoBehaviour
 
 	private void SetNoStagesMessageTextUIActive(bool active)
 	{
-		if(noStagesMessageTextUI != null)
+		if(stageSelectionNoStagesTextUI != null)
 		{
-			noStagesMessageTextUI.enabled = active;
+			stageSelectionNoStagesTextUI.SetActive(active);
 		}
 	}
 }
