@@ -1,6 +1,13 @@
+using UnityEngine;
+
 public class SpacedIntCounterTextUI : IntCounterTextUI
 {
-	public int width;
+	[SerializeField] private int width;
 
-	public override string GetFormattedCounterValue() => string.Format("{0," + width + "}", base.GetFormattedCounterValue());
+	public override string GetFormattedCounterValue()
+	{
+		var value = base.GetFormattedCounterValue();
+		
+		return string.Format("{0," + width + "}", value);
+	}
 }
