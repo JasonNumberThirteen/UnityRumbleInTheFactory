@@ -3,7 +3,7 @@ using UnityEngine;
 public class MainMenuUIManager : MonoBehaviour
 {
 	private MainMenuPanelUI mainMenuPanelUI;
-	private MainMenuOptionsCursor mainMenuOptionsCursor;
+	private MainMenuOptionsCursorImageUI mainMenuOptionsCursorImageUI;
 	private MainMenuOptionsListenersManager mainMenuOptionsListenersManager;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
 	private GameSceneManager gameSceneManager;
@@ -11,7 +11,7 @@ public class MainMenuUIManager : MonoBehaviour
 	private void Awake()
 	{
 		mainMenuPanelUI = FindAnyObjectByType<MainMenuPanelUI>();
-		mainMenuOptionsCursor = FindAnyObjectByType<MainMenuOptionsCursor>(FindObjectsInactive.Include);
+		mainMenuOptionsCursorImageUI = FindAnyObjectByType<MainMenuOptionsCursorImageUI>(FindObjectsInactive.Include);
 		mainMenuOptionsListenersManager = FindAnyObjectByType<MainMenuOptionsListenersManager>(FindObjectsInactive.Include);
 		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
 		gameSceneManager = FindAnyObjectByType<GameSceneManager>(FindObjectsInactive.Include);
@@ -64,9 +64,9 @@ public class MainMenuUIManager : MonoBehaviour
 
 	private void ActivateOptionsCursor()
 	{
-		if(mainMenuOptionsCursor != null)
+		if(mainMenuOptionsCursorImageUI != null)
 		{
-			mainMenuOptionsCursor.SetActive(true);
+			mainMenuOptionsCursorImageUI.SetActive(true);
 		}
 	}
 

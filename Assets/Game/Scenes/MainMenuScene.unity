@@ -1003,12 +1003,12 @@ GameObject:
   - component: {fileID: 1002192799}
   - component: {fileID: 1002192800}
   m_Layer: 5
-  m_Name: Cursor
+  m_Name: Options Cursor Image UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1002192794
 RectTransform:
   m_ObjectHideFlags: 0

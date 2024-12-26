@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image), typeof(RectTransformPositionController))]
-public class MainMenuOptionsCursor : MonoBehaviour
+public class MainMenuOptionsCursorImageUI : MonoBehaviour
 {
 	private Image image;
 	private RectTransformPositionController rectTransformPositionController;

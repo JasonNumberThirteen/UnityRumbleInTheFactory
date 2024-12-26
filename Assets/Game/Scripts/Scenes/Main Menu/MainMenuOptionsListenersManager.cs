@@ -9,13 +9,13 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 	
 	private OptionsManager optionsManager;
 	private MenuOptionsInput menuOptionsInput;
-	private MainMenuOptionsCursor mainMenuOptionsCursor;
+	private MainMenuOptionsCursorImageUI mainMenuOptionsCursorImageUI;
 
 	private void Awake()
 	{
 		optionsManager = FindFirstObjectByType<OptionsManager>();
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>(FindObjectsInactive.Include);
-		mainMenuOptionsCursor = FindFirstObjectByType<MainMenuOptionsCursor>(FindObjectsInactive.Include);
+		mainMenuOptionsCursorImageUI = FindFirstObjectByType<MainMenuOptionsCursorImageUI>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
 	}
@@ -54,9 +54,9 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 
 	private void SetPositionYToOptionsCursor(float y)
 	{
-		if(mainMenuOptionsCursor != null)
+		if(mainMenuOptionsCursorImageUI != null)
 		{
-			mainMenuOptionsCursor.SetPositionY(y);
+			mainMenuOptionsCursorImageUI.SetPositionY(y);
 		}
 	}
 
