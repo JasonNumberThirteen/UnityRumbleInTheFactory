@@ -154,7 +154,7 @@ Transform:
   - {fileID: 1749089707}
   - {fileID: 707964622}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &107197588
 GameObject:
@@ -248,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: Credits
+      value: Credits Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 680709373}
   - component: {fileID: 680709372}
   m_Layer: 5
-  m_Name: Game Logo
+  m_Name: Game Logo Image UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: Player 1 Score
+      value: Player 1 Score Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -724,7 +724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: 2 Players Option
+      value: 2 Players Option Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -865,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: 1 Player Option
+      value: 1 Player Option Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 1052427270}
   - component: {fileID: 1052427271}
   m_Layer: 5
-  m_Name: Main Menu Panel
+  m_Name: Main Menu Panel UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: Exit Option
+      value: Exit Option Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -1510,7 +1510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: High Score
+      value: High Score Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -1665,7 +1665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: Player 2 Score
+      value: Player 2 Score Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -1835,7 +1835,7 @@ GameObject:
   - component: {fileID: 1623448756}
   - component: {fileID: 1623448757}
   m_Layer: 0
-  m_Name: Input
+  m_Name: Menu Options Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1854,7 +1854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1623448756
 MonoBehaviour:
@@ -2310,7 +2310,7 @@ Transform:
   - {fileID: 1969683317}
   - {fileID: 1906489575}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &996325202010283323
 PrefabInstance:
@@ -2374,7 +2374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4209765517072453317, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: m_Name
-      value: Stage Selection Background Panel
+      value: Translation Background Panel UI
       objectReference: {fileID: 0}
     - target: {fileID: 6448693611940417116, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: m_IsActive
