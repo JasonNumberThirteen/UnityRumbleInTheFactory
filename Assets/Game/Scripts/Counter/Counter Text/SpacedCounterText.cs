@@ -1,4 +1,4 @@
-public class SpacedCounterText : CounterText
+public class SpacedCounterText : IntCounterTextUI
 {
 	public int width;
 

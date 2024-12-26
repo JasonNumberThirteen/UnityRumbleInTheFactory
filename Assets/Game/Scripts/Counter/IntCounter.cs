@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class IntCounter : MonoBehaviour
 {
 	public int initialValue;
-	public CounterText text;
+	public IntCounterTextUI text;
 	public bool setAtStart = true;
 	public UnityEvent valueChangedEvent;
 

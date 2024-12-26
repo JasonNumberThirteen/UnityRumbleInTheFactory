@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class CounterText : MonoBehaviour
+public class IntCounterTextUI : MonoBehaviour
 {
 	public IntCounter counter;
 	public string header;
