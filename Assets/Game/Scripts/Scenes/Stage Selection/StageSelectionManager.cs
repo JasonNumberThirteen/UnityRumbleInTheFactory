@@ -33,8 +33,6 @@ public class StageSelectionManager : MonoBehaviour
 			if(menuOptionsInput != null)
 			{
 				menuOptionsInput.navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
-				menuOptionsInput.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
-				menuOptionsInput.cancelKeyPressedEvent.AddListener(OnCancelKeyPressed);
 			}
 		}
 		else
@@ -42,8 +40,6 @@ public class StageSelectionManager : MonoBehaviour
 			if(menuOptionsInput != null)
 			{
 				menuOptionsInput.navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
-				menuOptionsInput.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
-				menuOptionsInput.cancelKeyPressedEvent.RemoveListener(OnCancelKeyPressed);
 			}
 		}
 	}
@@ -91,18 +87,5 @@ public class StageSelectionManager : MonoBehaviour
 		{
 			navigationDirection = direction;
 		}
-	}
-
-	private void OnSubmitKeyPressed()
-	{
-		if(gameData != null && !gameData.StagesDoNotExist() && sceneManager != null && stageSelectionStageCounterTextUI != null)
-		{
-			sceneManager.StartGame(stageSelectionStageCounterTextUI.GetCurrentCounterValue());
-		}
-	}
-
-	private void OnCancelKeyPressed()
-	{
-		sceneManager.BackToMainMenu();
 	}
 }
