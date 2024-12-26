@@ -3,22 +3,30 @@ using UnityEngine;
 public class StageSelectionGameSceneManager : GameSceneManager
 {
 	[SerializeField] private GameData gameData;
-	[SerializeField] private PlayerData[] playersData;
+	[SerializeField] private PlayersListData playersListData;
 
 	public void BackToMainMenu() => LoadSceneByName(MAIN_MENU_SCENE_NAME);
 
-	public void StartGame(int stage)
+	public void StartGame(int initialStageNumber)
 	{
-		gameData.ResetData(stage);
-		ResetPlayersData();
+		ResetGameData(initialStageNumber);
+		ResetPlayersListData();
 		LoadSceneByName(STAGE_SCENE_NAME);
 	}
 
-	private void ResetPlayersData()
+	private void ResetGameData(int initialStageNumber)
 	{
-		foreach (PlayerData pd in playersData)
+		if(gameData != null)
 		{
-			pd.ResetData();
+			gameData.ResetData(initialStageNumber);
+		}
+	}
+
+	private void ResetPlayersListData()
+	{
+		if(playersListData != null)
+		{
+			playersListData.ResetPlayersData();
 		}
 	}
 }
