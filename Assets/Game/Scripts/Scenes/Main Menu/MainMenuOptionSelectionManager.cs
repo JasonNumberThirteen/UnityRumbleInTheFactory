@@ -1,19 +1,19 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(LoopingCounter))]
+[RequireComponent(typeof(LoopingIntCounter))]
 public class MainMenuOptionSelectionManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
-	private LoopingCounter loopingCounter;
+	private LoopingIntCounter loopingCounter;
 	private MenuOptionsInput menuOptionsInput;
 	private MainMenuPanelUI mainMenuPanelUI;
 	private OptionsManager optionsManager;
 
 	private void Awake()
 	{
-		loopingCounter = GetComponent<LoopingCounter>();
+		loopingCounter = GetComponent<LoopingIntCounter>();
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
 		mainMenuPanelUI = FindFirstObjectByType<MainMenuPanelUI>();
 		optionsManager = FindFirstObjectByType<OptionsManager>();

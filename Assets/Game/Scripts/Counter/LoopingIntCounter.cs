@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LoopingCounter : IntCounter
+public class LoopingIntCounter : IntCounter
 {
 	public int min, max;
 
