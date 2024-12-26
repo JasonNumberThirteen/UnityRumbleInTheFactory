@@ -1,38 +1,39 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Timer))]
 public class TimedRectTransformPositionController : RectTransformPositionController
 {
-	public Vector2 targetPosition;
-	public Timer timer;
-
+	[SerializeField] private Vector2 targetPosition;
+	
+	private Timer timer;
 	private Vector2 initialPosition;
 
 	protected override void Awake()
 	{
 		base.Awake();
 		
+		timer = GetComponent<Timer>();
 		initialPosition = rectTransform.anchoredPosition;
 	}
 
 	private void Update()
 	{
-		if(timer.Started && !ReachedTheTarget())
+		if(timer.Started && !ReachedTargetPosition())
 		{
-			SetPosition();
+			rectTransform.anchoredPosition = GetCurrentPosition();
 		}
 	}
 
-	private bool ReachedTheTarget() => rectTransform.anchoredPosition == targetPosition;
-	private void SetPosition() => rectTransform.anchoredPosition = CurrentPosition();
-	private float DifferenceX() => targetPosition.x - initialPosition.x;
-	private float DifferenceY() => targetPosition.y - initialPosition.y;
-
-	private Vector2 CurrentPosition()
+	private Vector2 GetCurrentPosition()
 	{
-		float percent = timer.ProgressPercent();
-		float x = initialPosition.x + DifferenceX()*percent;
-		float y = initialPosition.y + DifferenceY()*percent;
+		var percent = timer.ProgressPercent();
+		var x = initialPosition.x + GetDifferenceX()*percent;
+		var y = initialPosition.y + GetDifferenceY()*percent;
 
 		return new Vector2(x, y);
 	}
+
+	private bool ReachedTargetPosition() => rectTransform.anchoredPosition == targetPosition;
+	private float GetDifferenceX() => targetPosition.x - initialPosition.x;
+	private float GetDifferenceY() => targetPosition.y - initialPosition.y;
 }
