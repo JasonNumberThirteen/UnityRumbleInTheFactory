@@ -7,11 +7,11 @@ public class GameData : MainMenuData
 
 	public int highScore = 20000;
 	public bool twoPlayersMode, isOver, beatenHighScore, enteredStageSelection;
-	public Stage[] stages;
+	public StageData[] stages;
 	public GameDifficulty difficulty;
 
 	public override int MainMenuCounterValue() => highScore;
-	public Stage CurrentStage() => stages[StageNumber - 1];
+	public StageData CurrentStage() => stages[StageNumber - 1];
 	public bool StagesDoNotExist() => stages.Length == 0;
 
 	public void ResetData(int initialStage)

@@ -31,7 +31,7 @@ public class EnemyTypesReader : MonoBehaviour
 
 	private EnemyType[] ReadEnemyTypes()
 	{
-		Stage stage = gameData.CurrentStage();
+		StageData stage = gameData.CurrentStage();
 		int length = stage.enemies.Length;
 		EnemyType[] types = new EnemyType[length];
 		

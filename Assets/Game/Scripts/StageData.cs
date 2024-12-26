@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class Stage
+public class StageData
 {
 	public int[] tiles;
 	public string[] enemies;

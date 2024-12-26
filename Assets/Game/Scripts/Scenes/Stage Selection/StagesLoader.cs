@@ -9,17 +9,17 @@ public class StagesLoader : MonoBehaviour
 	private void Awake() => gameData.stages = DetectedStages();
 	private void Start() => stageCounter.max = gameData.stages.Length;
 
-	private Stage[] DetectedStages()
+	private StageData[] DetectedStages()
 	{
 		Object[] data = Resources.LoadAll(directory, typeof(TextAsset));
 		int dataLength = data.Length;
-		Stage[] stages = new Stage[dataLength];
+		StageData[] stages = new StageData[dataLength];
 
 		for (int i = 0; i < dataLength; ++i)
 		{
 			TextAsset ta = (TextAsset)data[i];
 			
-			stages[i] = JsonUtility.FromJson<Stage>(ta.text);
+			stages[i] = JsonUtility.FromJson<StageData>(ta.text);
 		}
 
 		return stages;
