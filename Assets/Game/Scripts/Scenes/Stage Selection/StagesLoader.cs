@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class StagesLoader : MonoBehaviour
 {
-	[SerializeField] private LoopingCounter loopingCounter;
 	[SerializeField] private GameData gameData;
 
 	private readonly string STAGES_DATA_PATH = "Stages";
@@ -12,14 +11,6 @@ public class StagesLoader : MonoBehaviour
 		if(gameData != null)
 		{
 			gameData.stages = GetStagesDataFromPath(STAGES_DATA_PATH);
-		}
-	}
-
-	private void Start()
-	{
-		if(loopingCounter != null && gameData != null && gameData.stages != null && gameData.stages.Length > 0)
-		{
-			loopingCounter.SetRange(1, gameData.stages.Length);
 		}
 	}
 

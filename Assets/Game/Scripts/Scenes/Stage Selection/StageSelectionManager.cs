@@ -3,7 +3,6 @@ using UnityEngine.InputSystem.UI;
 
 public class StageSelectionManager : MonoBehaviour
 {
-	[SerializeField] private LoopingCounter loopingCounter;
 	[SerializeField] private StageSelectionGameSceneManager sceneManager;
 	[SerializeField] private GameData gameData;
 	[SerializeField] private StagesLoader stagesLoader;
@@ -12,10 +11,12 @@ public class StageSelectionManager : MonoBehaviour
 	private int navigationDirection;
 	private float navigationTimer;
 	private MenuOptionsInput menuOptionsInput;
+	private StageSelectionStageCounterTextUI stageSelectionStageCounterTextUI;
 
 	private void Awake()
 	{
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
+		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageSelectionStageCounterTextUI>();
 
 		RegisterToListeners(true);
 	}
@@ -67,7 +68,10 @@ public class StageSelectionManager : MonoBehaviour
 			}
 			else
 			{
-				ChangeStage();
+				if(stageSelectionStageCounterTextUI != null)
+				{
+					stageSelectionStageCounterTextUI.ModifyCounterBy(navigationDirection);
+				}
 
 				if(inputModule != null)
 				{
@@ -81,23 +85,6 @@ public class StageSelectionManager : MonoBehaviour
 		}
 	}
 
-	private void ChangeStage()
-	{
-		if(loopingCounter == null)
-		{
-			return;
-		}
-		
-		if(navigationDirection == -1)
-		{
-			loopingCounter.DecreaseBy(1);
-		}
-		else if(navigationDirection == 1)
-		{
-			loopingCounter.IncreaseBy(1);
-		}
-	}
-
 	private void OnNavigateKeyPressed(int direction)
 	{
 		if(gameData != null && !gameData.StagesDoNotExist())
@@ -108,9 +95,9 @@ public class StageSelectionManager : MonoBehaviour
 
 	private void OnSubmitKeyPressed()
 	{
-		if(gameData != null && !gameData.StagesDoNotExist() && sceneManager != null && loopingCounter != null)
+		if(gameData != null && !gameData.StagesDoNotExist() && sceneManager != null && stageSelectionStageCounterTextUI != null)
 		{
-			sceneManager.StartGame(loopingCounter.CurrentValue);
+			sceneManager.StartGame(stageSelectionStageCounterTextUI.GetCurrentCounterValue());
 		}
 	}
 
