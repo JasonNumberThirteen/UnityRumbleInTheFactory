@@ -1,22 +1,21 @@
 using UnityEngine;
-using UnityEngine.InputSystem.UI;
 
+[RequireComponent(typeof(Timer))]
 public class StageSelectionManager : MonoBehaviour
 {
-	[SerializeField] private StageSelectionGameSceneManager sceneManager;
 	[SerializeField] private GameData gameData;
-	[SerializeField] private StagesLoader stagesLoader;
-	[SerializeField] private InputSystemUIInputModule inputModule;
 
 	private int navigationDirection;
 	private float navigationTimer;
 	private MenuOptionsInput menuOptionsInput;
 	private StageSelectionStageCounterTextUI stageSelectionStageCounterTextUI;
+	private Timer timer;
 
 	private void Awake()
 	{
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
 		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageSelectionStageCounterTextUI>();
+		timer = GetComponent<Timer>();
 
 		RegisterToListeners(true);
 	}
@@ -69,10 +68,7 @@ public class StageSelectionManager : MonoBehaviour
 					stageSelectionStageCounterTextUI.ModifyCounterBy(navigationDirection);
 				}
 
-				if(inputModule != null)
-				{
-					navigationTimer = inputModule.moveRepeatRate;
-				}
+				navigationTimer = timer.duration;
 			}
 		}
 		else if(navigationTimer != 0)
