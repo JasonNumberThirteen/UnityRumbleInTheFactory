@@ -24,11 +24,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	private void Start()
 	{
 		SetCounterRange();
-
-		if(gameData != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
-		{
-			loopingCounter.SetTo((int)OptionType.TwoPlayersMode + 1);
-		}
+		SelectTwoPlayersModeIfNeeded();
 	}
 
 	private void SetCounterRange()
@@ -37,6 +33,14 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		var max = Mathf.Max(1, numberOfOptions);
 		
 		loopingCounter.SetRange(1, max);
+	}
+
+	private void SelectTwoPlayersModeIfNeeded()
+	{
+		if(gameData != null && gameData.enteredStageSelection && gameData.twoPlayersMode)
+		{
+			loopingCounter.SetTo((int)OptionType.TwoPlayersMode + 1);
+		}
 	}
 
 	private void OnDestroy()
