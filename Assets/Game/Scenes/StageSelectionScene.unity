@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 731514315}
   - component: {fileID: 731514314}
   m_Layer: 0
-  m_Name: Stages Loader
+  m_Name: Stages Data Loading Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

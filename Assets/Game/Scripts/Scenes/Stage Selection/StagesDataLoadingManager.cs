@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StagesLoader : MonoBehaviour
+public class StagesDataLoadingManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
