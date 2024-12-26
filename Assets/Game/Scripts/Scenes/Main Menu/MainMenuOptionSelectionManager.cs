@@ -91,7 +91,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		if(optionsManager != null)
 		{
-			TriggerOnKeyPressed(() => optionsManager.SubmitOption(GetOptionTypeByCounterValue()));
+			TriggerOnKeyPressed(() => optionsManager.SubmitOptionIfPossible(GetOptionTypeByCounterValue()));
 		}
 	}
 
@@ -116,7 +116,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		if(optionsManager != null)
 		{
-			optionsManager.SelectOption(GetOptionTypeByCounterValue());
+			optionsManager.SelectOptionIfPossible(GetOptionTypeByCounterValue());
 		}
 	}
 
