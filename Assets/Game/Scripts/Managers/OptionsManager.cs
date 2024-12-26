@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[DefaultExecutionOrder(-100)]
 public class OptionsManager : MonoBehaviour
 {
 	private readonly Dictionary<OptionType, Option> optionsDictionary = new();
