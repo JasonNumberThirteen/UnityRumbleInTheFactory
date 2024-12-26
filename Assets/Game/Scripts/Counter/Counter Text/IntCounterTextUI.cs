@@ -1,26 +1,35 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(IntCounter), typeof(TextMeshProUGUI))]
 public class IntCounterTextUI : MonoBehaviour
 {
-	public IntCounter counter;
-	public string header;
-	public bool addSpaceAfterHeader = true;
+	[SerializeField] private string header;
+	[SerializeField] private bool addSpaceAfterHeader = true;
 	
+	private IntCounter intCounter;
 	private TextMeshProUGUI text;
 
-	public virtual string FormattedCounterValue() => counter.CurrentValue.ToString();
-	public void UpdateText() => text.text = FormattedText();
-
-	private void Awake() => text = GetComponent<TextMeshProUGUI>();
+	public virtual string GetFormattedCounterValue() => intCounter.CurrentValue.ToString();
 	
-	private string FormattedText()
+	public void UpdateText()
 	{
-		string value = FormattedCounterValue();
+		text.text = GetFormattedText();
+	}
+
+	private void Awake()
+	{
+		intCounter = GetComponent<IntCounter>();
+		text = GetComponent<TextMeshProUGUI>();
+	}
+	
+	private string GetFormattedText()
+	{
+		var value = GetFormattedCounterValue();
 		
 		if(!string.IsNullOrEmpty(header))
 		{
-			return addSpaceAfterHeader ? string.Format("{0} {1}", header, value) : header + value;
+			return addSpaceAfterHeader ? $"{header} {value}" : header + value;
 		}
 		
 		return value;

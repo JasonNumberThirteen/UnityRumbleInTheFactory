@@ -2,5 +2,5 @@ public class SpacedCounterText : IntCounterTextUI
 {
 	public int width;
 
-	public override string FormattedCounterValue() => string.Format("{0," + width + "}", base.FormattedCounterValue());
+	public override string GetFormattedCounterValue() => string.Format("{0," + width + "}", base.GetFormattedCounterValue());
 }
