@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Timer), typeof(RectTransformTimedMover))]
+[RequireComponent(typeof(Timer), typeof(TimedRectTransformPositionController))]
 public class MainMenuPanelUI : MonoBehaviour
 {
 	public UnityEvent panelReachedTargetPositionEvent;
@@ -11,7 +11,7 @@ public class MainMenuPanelUI : MonoBehaviour
 	[SerializeField] private GameData gameData;
 	
 	private Timer timer;
-	private RectTransformTimedMover rectTransformTimedMover;
+	private TimedRectTransformPositionController timedRectTransformPositionController;
 
 	public void SetTargetPosition()
 	{
@@ -22,14 +22,14 @@ public class MainMenuPanelUI : MonoBehaviour
 
 		ReachedTargetPosition = true;
 		
-		rectTransformTimedMover.SetPositionY(0);
+		timedRectTransformPositionController.SetPositionY(0);
 		panelReachedTargetPositionEvent?.Invoke();
 	}
 
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
-		rectTransformTimedMover = GetComponent<RectTransformTimedMover>();
+		timedRectTransformPositionController = GetComponent<TimedRectTransformPositionController>();
 
 		RegisterToListeners(true);
 	}
