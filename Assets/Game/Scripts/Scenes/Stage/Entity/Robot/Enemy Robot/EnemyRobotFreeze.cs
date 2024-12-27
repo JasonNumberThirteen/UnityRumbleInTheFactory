@@ -7,6 +7,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 	public bool Frozen {get; private set;}
 	
 	private EnemyRobotMovement movement;
+	private EnemyFreezeManager enemyFreezeManager;
 	private Vector2 lastDirection;
 
 	public void SetFreezeState(bool freeze)
@@ -23,13 +24,17 @@ public class EnemyRobotFreeze : MonoBehaviour
 		movement.SetMovementLock();
 	}
 
-	private void Awake() => movement = GetComponent<EnemyRobotMovement>();
+	private void Awake()
+	{
+		movement = GetComponent<EnemyRobotMovement>();
+		enemyFreezeManager = FindAnyObjectByType<EnemyFreezeManager>(FindObjectsInactive.Include);
+	}
 
 	private void Start()
 	{
 		SetLastDirection();
 
-		if(StageManager.instance.enemyFreezeManager.EnemiesAreFrozen())
+		if(enemyFreezeManager != null && enemyFreezeManager.EnemiesAreFrozen())
 		{
 			SetFreezeState(true);
 			AdjustAnimation();

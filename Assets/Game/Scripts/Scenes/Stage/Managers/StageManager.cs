@@ -10,7 +10,6 @@ public class StageManager : MonoBehaviour
 	public StageAudioManager audioManager;
 	public PlayersManager playersManager;
 	public EnemySpawnManager enemySpawnManager;
-	public EnemyFreezeManager enemyFreezeManager;
 	public GameData gameData;
 	public Timer gameOverTimer, sceneManagerTimer;
 

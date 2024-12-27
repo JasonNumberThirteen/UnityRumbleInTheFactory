@@ -2,9 +2,20 @@ using UnityEngine;
 
 public class FreezeBonusTrigger : TimedBonusTrigger
 {
+	private EnemyFreezeManager enemyFreezeManager;
+	
 	public override void TriggerEffect(GameObject sender)
 	{
-		StageManager.instance.enemyFreezeManager.InitiateFreeze(GetDuration());
+		if(enemyFreezeManager != null)
+		{
+			enemyFreezeManager.InitiateFreeze(GetDuration());
+		}
+
 		base.TriggerEffect(sender);
+	}
+
+	private void Awake()
+	{
+		enemyFreezeManager = FindAnyObjectByType<EnemyFreezeManager>(FindObjectsInactive.Include);
 	}
 }
