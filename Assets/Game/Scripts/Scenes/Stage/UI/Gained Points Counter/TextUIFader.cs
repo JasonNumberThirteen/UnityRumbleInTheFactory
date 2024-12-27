@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class GainedPointsCounterColor : MonoBehaviour
+public class TextUIFader : MonoBehaviour
 {
 	private TextMeshProUGUI text;
 	private Timer timer;
