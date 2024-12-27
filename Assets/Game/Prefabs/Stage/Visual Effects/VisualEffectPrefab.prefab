@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1707604139
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -122,21 +122,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 1
   countFromTheStart: 1
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
   onEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4934427086894330333}
-        m_TargetAssemblyTypeName: GameObjectDestroyer, Assembly-CSharp
-        m_MethodName: Destroy
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4934427086894330333
 MonoBehaviour:
   m_ObjectHideFlags: 0
