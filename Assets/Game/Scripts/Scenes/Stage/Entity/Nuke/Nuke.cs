@@ -1,32 +1,39 @@
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(EntityExploder))]
 public class Nuke : MonoBehaviour, ITriggerable
 {
-	public string destroyedStateLayer;
+	public UnityEvent nukeDestroyedEvent;
+
+	private EntityExploder entityExploder;
+
+	private readonly string DESTROYED_STATE_LAYER = "Destroyed Nuke";
 	
 	public void TriggerEffect(GameObject sender)
 	{
-		ChangeLayer();
+		ChangeLayerToDestroyedState();
 		ChangeRendererSprite();
-		Explode();
+		entityExploder.Explode();
 		StageManager.instance.InterruptGame();
+		nukeDestroyedEvent?.Invoke();
 	}
 
-	private void ChangeLayer() => gameObject.layer = LayerMask.NameToLayer(destroyedStateLayer);
+	private void ChangeLayerToDestroyedState()
+	{
+		gameObject.layer = LayerMask.NameToLayer(DESTROYED_STATE_LAYER);
+	}
 
 	private void ChangeRendererSprite()
 	{
-		if(TryGetComponent(out NukeRenderer nr))
+		if(TryGetComponent(out NukeRenderer nukeRenderer))
 		{
-			nr.ChangeToDestroyedState();
+			nukeRenderer.ChangeToDestroyedState();
 		}
 	}
 
-	private void Explode()
+	private void Awake()
 	{
-		if(TryGetComponent(out EntityExploder ee))
-		{
-			ee.Explode();
-		}
+		entityExploder = GetComponent<EntityExploder>();
 	}
 }
