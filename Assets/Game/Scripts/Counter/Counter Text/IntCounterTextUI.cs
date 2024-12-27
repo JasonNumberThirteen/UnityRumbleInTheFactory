@@ -12,15 +12,34 @@ public class IntCounterTextUI : MonoBehaviour
 
 	public virtual string GetFormattedCounterValue() => intCounter.CurrentValue.ToString();
 	
-	public void UpdateText()
-	{
-		text.text = GetFormattedText();
-	}
-
 	private void Awake()
 	{
 		intCounter = GetComponent<IntCounter>();
 		text = GetComponent<TextMeshProUGUI>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			intCounter.valueChangedEvent.AddListener(OnValueChanged);
+		}
+		else
+		{
+			intCounter.valueChangedEvent.RemoveListener(OnValueChanged);
+		}
+	}
+
+	private void OnValueChanged()
+	{
+		text.text = GetFormattedText();
 	}
 	
 	private string GetFormattedText()

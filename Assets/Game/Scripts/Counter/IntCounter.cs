@@ -34,19 +34,16 @@ public class IntCounter : MonoBehaviour
 	public void SetTo(int value)
 	{
 		SetValue(value);
-		UpdateText();
 	}
 
 	public void IncreaseBy(int value)
 	{
 		IncreaseValue(value);
-		UpdateText();
 	}
 
 	public void DecreaseBy(int value)
 	{
 		DecreaseValue(value);
-		UpdateText();
 	}
 
 	protected virtual void Start()
@@ -54,14 +51,6 @@ public class IntCounter : MonoBehaviour
 		if(setAtStart)
 		{
 			SetTo(initialValue);
-		}
-	}
-
-	private void UpdateText()
-	{
-		if(text != null)
-		{
-			text.UpdateText();
 		}
 	}
 }
