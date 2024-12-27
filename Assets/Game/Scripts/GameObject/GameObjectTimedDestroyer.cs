@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameObjectDestroyer : MonoBehaviour
+public class GameObjectTimedDestroyer : MonoBehaviour
 {
 	public void Destroy(float delay)
 	{
