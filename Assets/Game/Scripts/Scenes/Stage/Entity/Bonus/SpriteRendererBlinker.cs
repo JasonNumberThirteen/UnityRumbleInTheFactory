@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BonusRenderer : MonoBehaviour
+public class SpriteRendererBlinker : MonoBehaviour
 {
 	[Min(0.01f)] public float blinkDelay = 1f;
 	
