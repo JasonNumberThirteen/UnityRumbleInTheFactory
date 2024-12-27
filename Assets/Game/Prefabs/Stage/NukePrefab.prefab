@@ -186,7 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50147b8e35605149b1116f6d0cb8884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyedStateLayer: Destroyed Nuke
+  nukeDestroyedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-3710137388361032966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,5 +202,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
-  removesComponent: 1
+  removesComponent: 0
   destroysEntity: 0

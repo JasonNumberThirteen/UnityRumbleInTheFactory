@@ -1,26 +1,44 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Nuke), typeof(SpriteRenderer))]
 public class NukeRenderer : MonoBehaviour
 {
 	[SerializeField] private Sprite destroyedNukeSprite;
 
+	private Nuke nuke;
 	private SpriteRenderer spriteRenderer;
-
-	public void ChangeToDestroyedState()
-	{
-		if(RendererHasSetSprite(destroyedNukeSprite))
-		{
-			return;
-		}
-		
-		SetSpriteToRenderer(destroyedNukeSprite);
-		Destroy(this);
-	}
 
 	private void Awake()
 	{
+		nuke = GetComponent<Nuke>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			nuke.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
+		}
+		else
+		{
+			nuke.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
+		}
+	}
+
+	private void OnNukeDestroyed()
+	{
+		if(!RendererHasSetSprite(destroyedNukeSprite))
+		{
+			spriteRenderer.sprite = destroyedNukeSprite;
+		}
 	}
 
 	private bool RendererHasSetSprite(Sprite sprite)
@@ -28,10 +46,5 @@ public class NukeRenderer : MonoBehaviour
 		var spriteInRenderer = spriteRenderer.sprite;
 
 		return sprite != null && spriteInRenderer != null && spriteInRenderer == sprite;
-	}
-
-	private void SetSpriteToRenderer(Sprite sprite)
-	{
-		spriteRenderer.sprite = sprite;
 	}
 }

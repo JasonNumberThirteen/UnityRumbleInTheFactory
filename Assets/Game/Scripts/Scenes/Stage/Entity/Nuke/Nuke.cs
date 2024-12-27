@@ -13,7 +13,6 @@ public class Nuke : MonoBehaviour, ITriggerable
 	public void TriggerEffect(GameObject sender)
 	{
 		ChangeLayerToDestroyedState();
-		ChangeRendererSprite();
 		entityExploder.Explode();
 		StageManager.instance.InterruptGame();
 		nukeDestroyedEvent?.Invoke();
@@ -22,14 +21,6 @@ public class Nuke : MonoBehaviour, ITriggerable
 	private void ChangeLayerToDestroyedState()
 	{
 		gameObject.layer = LayerMask.NameToLayer(DESTROYED_STATE_LAYER);
-	}
-
-	private void ChangeRendererSprite()
-	{
-		if(TryGetComponent(out NukeRenderer nukeRenderer))
-		{
-			nukeRenderer.ChangeToDestroyedState();
-		}
 	}
 
 	private void Awake()
