@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class MovingRectTransformPositionController : MonoBehaviour
+public class MovingRectTransformPositionController : RectTransformPositionController
 {
-	[Min(0.01f)] public float movementSpeed = 1f;
-	
-	private RectTransformPositionController mover;
+	[SerializeField] private Vector2 movementSpeed;
 
-	private void Awake() => mover = GetComponent<RectTransformPositionController>();
-	private void Update() => mover.AddPositionY(movementSpeed*Time.deltaTime);
+	private void Update()
+	{
+		AddPosition(movementSpeed*Time.deltaTime);
+	}
 }
