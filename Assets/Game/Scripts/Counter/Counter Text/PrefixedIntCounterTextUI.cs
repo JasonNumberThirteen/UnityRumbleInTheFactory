@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpacedIntCounterTextUI : IntCounterTextUI
+public class PrefixedIntCounterTextUI : IntCounterTextUI
 {
 	[SerializeField] private int width;
 
