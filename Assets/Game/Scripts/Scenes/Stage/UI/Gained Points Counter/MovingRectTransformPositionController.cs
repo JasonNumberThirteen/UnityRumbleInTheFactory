@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GainedPointsCounterMover : MonoBehaviour
+public class MovingRectTransformPositionController : MonoBehaviour
 {
 	[Min(0.01f)] public float movementSpeed = 1f;
 	
