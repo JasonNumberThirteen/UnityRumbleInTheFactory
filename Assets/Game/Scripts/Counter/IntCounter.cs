@@ -3,9 +3,6 @@ using UnityEngine.Events;
 
 public class IntCounter : MonoBehaviour
 {
-	public int initialValue;
-	public IntCounterTextUI text;
-	public bool setAtStart = true;
 	public UnityEvent valueChangedEvent;
 
 	public int CurrentValue {get; private set;}
@@ -44,13 +41,5 @@ public class IntCounter : MonoBehaviour
 	public void DecreaseBy(int value)
 	{
 		DecreaseValue(value);
-	}
-
-	protected virtual void Start()
-	{
-		if(setAtStart)
-		{
-			SetTo(initialValue);
-		}
 	}
 }

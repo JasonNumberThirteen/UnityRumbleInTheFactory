@@ -4,10 +4,8 @@ public class HighScoreIntCounter : IntCounter
 {
 	[SerializeField] private GameData gameData;
 
-	protected override void Start()
+	private void Start()
 	{
-		base.Start();
-
 		if(gameData != null)
 		{
 			SetTo(gameData.highScore);

@@ -4,10 +4,8 @@ public class MainMenuIntCounter : IntCounter
 {
 	[SerializeField] private MainMenuData mainMenuData;
 
-	protected override void Start()
+	private void Start()
 	{
-		base.Start();
-
 		if(mainMenuData != null)
 		{
 			SetTo(mainMenuData.MainMenuCounterValue());
