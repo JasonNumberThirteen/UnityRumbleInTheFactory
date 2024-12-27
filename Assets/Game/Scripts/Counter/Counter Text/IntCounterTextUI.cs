@@ -10,7 +10,9 @@ public class IntCounterTextUI : MonoBehaviour
 	private IntCounter intCounter;
 	private TextMeshProUGUI text;
 
-	public virtual string GetCounterValueAsString() => intCounter.CurrentValue.ToString();
+	public virtual string GetCounterValueAsString() => GetCounterValue().ToString();
+
+	public int GetCounterValue() => intCounter.CurrentValue;
 	
 	private void Awake()
 	{
