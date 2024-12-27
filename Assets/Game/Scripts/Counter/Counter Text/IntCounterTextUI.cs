@@ -10,7 +10,7 @@ public class IntCounterTextUI : MonoBehaviour
 	private IntCounter intCounter;
 	private TextMeshProUGUI text;
 
-	public virtual string GetFormattedCounterValue() => intCounter.CurrentValue.ToString();
+	public virtual string GetCounterValueAsString() => intCounter.CurrentValue.ToString();
 	
 	private void Awake()
 	{
@@ -44,7 +44,7 @@ public class IntCounterTextUI : MonoBehaviour
 	
 	private string GetFormattedText()
 	{
-		var value = GetFormattedCounterValue();
+		var value = GetCounterValueAsString();
 		
 		if(!string.IsNullOrEmpty(header))
 		{

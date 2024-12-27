@@ -4,10 +4,8 @@ public class PrefixedIntCounterTextUI : IntCounterTextUI
 {
 	[SerializeField] private int width;
 
-	public override string GetFormattedCounterValue()
+	public override string GetCounterValueAsString()
 	{
-		var value = base.GetFormattedCounterValue();
-		
-		return string.Format("{0," + width + "}", value);
+		return string.Format("{0," + width + "}", base.GetCounterValueAsString());
 	}
 }
