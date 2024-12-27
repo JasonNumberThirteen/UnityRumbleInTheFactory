@@ -1,13 +1,11 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TextMeshProUGUI), typeof(Timer))]
 public class TextUIFader : MonoBehaviour
 {
 	private TextMeshProUGUI text;
 	private Timer timer;
-
-	private void Update() => text.color = TextColor();
-	private float Alpha() => 1 - timer.ProgressPercent();
 
 	private void Awake()
 	{
@@ -15,12 +13,19 @@ public class TextUIFader : MonoBehaviour
 		timer = GetComponent<Timer>();
 	}
 
-	private Color TextColor()
+	private void Update()
 	{
-		Color color = text.color;
+		text.color = GetColorWithSetAlpha();
+	}
 
-		color.a = Alpha();
+	private Color GetColorWithSetAlpha()
+	{
+		var color = text.color;
+
+		color.a = GetAlpha();
 		
 		return color;
 	}
+
+	private float GetAlpha() => 1 - timer.ProgressPercent();
 }
