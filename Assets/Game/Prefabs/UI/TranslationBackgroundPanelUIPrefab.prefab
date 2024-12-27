@@ -115,6 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab28334fb717e7345a6682344d781cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelStartedTranslationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  panelFinishedTranslationEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6448693611940417116
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73de0bdaaca8f1e45b578e97b2043bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 4225136488121737537}
+  timer: {fileID: 0}
   widthSide: 0
   heightSide: 0
   reverseDirection: 0
@@ -291,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73de0bdaaca8f1e45b578e97b2043bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 4225136488121737537}
+  timer: {fileID: 0}
   widthSide: 0
   heightSide: 0
   reverseDirection: 0

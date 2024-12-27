@@ -20,6 +20,11 @@ public class RectTransformStretchTimedMover : MonoBehaviour
 	private RectTransform rectTransform;
 	private Vector2 initialOffsetMin, initialOffsetMax, targetOffsetMin, targetOffsetMax;
 
+	public void SetTimer(Timer timer)
+	{
+		this.timer = timer;
+	}
+
 	private void Awake() => rectTransform = GetComponent<RectTransform>();
 	private void Start() => SetValues();
 	private bool ReachedTheTarget() => rectTransform.offsetMin == targetOffsetMin && rectTransform.offsetMax == targetOffsetMax;

@@ -19,7 +19,18 @@ public class TranslationBackgroundPanelUI : MonoBehaviour
 	{
 		timer = GetComponent<Timer>();
 
+		SetTimerToAllChildrenComponents();
 		RegisterToListeners(true);
+	}
+
+	private void SetTimerToAllChildrenComponents()
+	{
+		var rectTransformStretchTimedMoverComponents = GetComponentsInChildren<RectTransformStretchTimedMover>();
+
+		foreach (var rectTransformStretchTimedMover in rectTransformStretchTimedMoverComponents)
+		{
+			rectTransformStretchTimedMover.SetTimer(timer);
+		}
 	}
 
 	private void OnDestroy()
