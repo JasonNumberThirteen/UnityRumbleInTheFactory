@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
       propertyPath: m_Name
-      value: Fortress Metal
+      value: FortressMetalTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69,6 +69,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3906164796503390330}
+    - targetCorrespondingSourceObject: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8491262313852095261}
   m_SourcePrefab: {fileID: 100100000, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
 --- !u!1 &6712889474181035811 stripped
 GameObject:
@@ -109,19 +112,7 @@ MonoBehaviour:
       m_Calls: []
   onEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3906164796503390330}
-        m_TargetAssemblyTypeName: FortressMetalTransformation, Assembly-CSharp
-        m_MethodName: TransformSelf
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onInterrupt:
     m_PersistentCalls:
       m_Calls: []
@@ -138,3 +129,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bricksTile: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
+--- !u!114 &8491262313852095261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712889474181035811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37673dd1a5f2f1947ae5564dec12f221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bricksTilePrefab: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
