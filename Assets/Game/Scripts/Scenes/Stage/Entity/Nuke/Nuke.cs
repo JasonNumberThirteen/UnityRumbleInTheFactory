@@ -14,7 +14,6 @@ public class Nuke : MonoBehaviour, ITriggerable
 	{
 		ChangeLayerToDestroyedState();
 		entityExploder.Explode();
-		StageManager.instance.InterruptGame();
 		nukeDestroyedEvent?.Invoke();
 	}
 

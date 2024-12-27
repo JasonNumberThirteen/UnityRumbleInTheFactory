@@ -13,6 +13,7 @@ public class StageManager : MonoBehaviour
 	public GameData gameData;
 	public Timer gameOverTimer, sceneManagerTimer;
 
+	private Nuke nuke;
 	private int defeatedEnemies;
 
 	public void CountDefeatedEnemy()
@@ -43,12 +44,6 @@ public class StageManager : MonoBehaviour
 		Time.timeScale = stateManager.StateIsSetTo(StageState.PAUSED) ? 0f : 1f;
 	}
 
-	public void InterruptGame()
-	{
-		stateManager.SetStateTo(StageState.INTERRUPTED);
-		gameOverTimer.StartTimer();
-	}
-
 	public void SetGameAsOver()
 	{
 		gameData.isOver = true;
@@ -72,6 +67,33 @@ public class StageManager : MonoBehaviour
 	{
 		CheckSingleton();
 		playersManager.FindPlayers();
+
+		nuke = FindAnyObjectByType<Nuke>(FindObjectsInactive.Include);
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			nuke.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
+		}
+		else
+		{
+			nuke.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
+		}
+	}
+
+	private void OnNukeDestroyed()
+	{
+		stateManager.SetStateTo(StageState.INTERRUPTED);
+		gameOverTimer.StartTimer();
 	}
 
 	private bool WonTheGame() => DefeatedAllEnemies() && enemySpawnManager.NoEnemiesLeft();
