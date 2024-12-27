@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NukeTrigger : MonoBehaviour, ITriggerable
+public class Nuke : MonoBehaviour, ITriggerable
 {
 	public string destroyedStateLayer;
 	
