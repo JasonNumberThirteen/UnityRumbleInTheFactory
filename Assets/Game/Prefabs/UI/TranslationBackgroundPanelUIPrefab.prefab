@@ -207,10 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73de0bdaaca8f1e45b578e97b2043bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 0}
-  widthSide: 0
-  heightSide: 0
-  reverseDirection: 0
+  horizontalDirection: 2
+  verticalDirection: 0
+  moveFromCenterToEdges: 0
 --- !u!1 &7600486037615177576
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73de0bdaaca8f1e45b578e97b2043bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 0}
-  widthSide: 0
-  heightSide: 0
-  reverseDirection: 0
+  horizontalDirection: 1
+  verticalDirection: 0
+  moveFromCenterToEdges: 0
