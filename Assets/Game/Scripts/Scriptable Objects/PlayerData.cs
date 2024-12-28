@@ -25,7 +25,11 @@ public class PlayerData : MainMenuData
 		}
 	}
 
-	public int BonusLifeThreshold {get; private set;}
+	public int BonusLifeThreshold
+	{
+		get => bonusLifeThreshold;
+		set => Mathf.Clamp(value, 0, int.MaxValue);
+	}
 
 	public int Rank
 	{
@@ -44,6 +48,7 @@ public class PlayerData : MainMenuData
 
 	private int score;
 	private int lives;
+	private int bonusLifeThreshold;
 	private int currentRank;
 	
 	public override int GetMainMenuCounterValue() => score;
@@ -52,7 +57,7 @@ public class PlayerData : MainMenuData
 	{
 		score = 0;
 		lives = initialLives;
-		BonusLifeThreshold = initialBonusLifeThreshold;
+		bonusLifeThreshold = initialBonusLifeThreshold;
 
 		ResetCurrentRank();
 		ResetDefeatedEnemies();
