@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RectTransformStretchTimedMover : MonoBehaviour
+public class TimedRectTransformOffsetController : MonoBehaviour
 {
 	public Timer timer;
 	public HorizontalDirection widthSide;

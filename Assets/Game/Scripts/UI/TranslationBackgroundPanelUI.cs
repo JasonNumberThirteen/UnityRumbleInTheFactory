@@ -25,7 +25,7 @@ public class TranslationBackgroundPanelUI : MonoBehaviour
 
 	private void SetTimerToAllChildrenComponents()
 	{
-		var rectTransformStretchTimedMoverComponents = GetComponentsInChildren<RectTransformStretchTimedMover>();
+		var rectTransformStretchTimedMoverComponents = GetComponentsInChildren<TimedRectTransformOffsetController>();
 
 		foreach (var rectTransformStretchTimedMover in rectTransformStretchTimedMoverComponents)
 		{
