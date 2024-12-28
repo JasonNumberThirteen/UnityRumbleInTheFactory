@@ -61,11 +61,6 @@ public class PlayerData : MainMenuData
 		ResetCurrentRank();
 		ResetDefeatedEnemies();
 	}
-
-	public void OnRespawn()
-	{
-		ResetCurrentRank();
-	}
 	
 	public void ResetDefeatedEnemies()
 	{
@@ -84,7 +79,7 @@ public class PlayerData : MainMenuData
 		}
 	}
 
-	private void ResetCurrentRank()
+	public void ResetCurrentRank()
 	{
 		currentRank = initialRank;
 	}

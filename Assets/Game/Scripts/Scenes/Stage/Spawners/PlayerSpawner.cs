@@ -9,7 +9,6 @@ public class PlayerSpawner : EntitySpawner
 	{
 		if(playerData.Lives-- > 0)
 		{
-			playerData.OnRespawn();
 			spawnTimer.ResetTimer();
 		}
 		else
@@ -18,5 +17,32 @@ public class PlayerSpawner : EntitySpawner
 		}
 	}
 
+	private void Awake()
+	{
+		RegisterToListeners(true);
+	}
+
 	private void Start() => playerData.Spawner = this;
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			entitySpawnedEvent.AddListener(OnEntitySpawned);
+		}
+		else
+		{
+			entitySpawnedEvent.RemoveListener(OnEntitySpawned);
+		}
+	}
+
+	private void OnEntitySpawned()
+	{
+		playerData.ResetCurrentRank();
+	}
 }
