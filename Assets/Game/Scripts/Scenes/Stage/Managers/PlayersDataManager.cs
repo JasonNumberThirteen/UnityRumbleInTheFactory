@@ -54,11 +54,11 @@ public class PlayersDataManager : MonoBehaviour
 			return;
 		}
 
-		var previousRank = playerData.Rank;
+		var previousRank = playerData.RankNumber;
 
-		playerData.Rank += ranks;
+		playerData.RankNumber += ranks;
 
-		if(playerData.Rank != previousRank)
+		if(playerData.RankNumber != previousRank)
 		{
 			playerRankChangedEvent?.Invoke();
 		}

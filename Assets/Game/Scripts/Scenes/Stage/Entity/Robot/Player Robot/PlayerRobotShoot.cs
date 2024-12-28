@@ -27,15 +27,15 @@ public class PlayerRobotShoot : RobotShoot
 		SetStatsToBullet(bullet);
 	}
 
-	private bool FiredAllBulletsAlready() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= rank.CurrentRank.bulletLimit;
+	private bool FiredAllBulletsAlready() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= rank.CurrentRank.GetBulletsLimitAtOnce();
 
 	private void SetStatsToBullet(GameObject bullet)
 	{
 		if(bullet.TryGetComponent(out BulletStats bs))
 		{
-			bs.damage = rank.CurrentRank.damage;
-			bs.speed = rank.CurrentRank.bulletSpeed;
-			bs.canDestroyMetal = rank.CurrentRank.canDestroyMetal;
+			bs.damage = rank.CurrentRank.GetDamage();
+			bs.speed = rank.CurrentRank.GetBulletSpeed();
+			bs.canDestroyMetal = rank.CurrentRank.CanDestroyMetal();
 		}
 	}
 }
