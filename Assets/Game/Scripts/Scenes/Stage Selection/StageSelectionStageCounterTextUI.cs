@@ -36,9 +36,9 @@ public class StageSelectionStageCounterTextUI : MonoBehaviour
 
 	private void Start()
 	{
-		if(gameData != null && gameData.stages != null && gameData.stages.Length > 0)
+		if(gameData != null && gameData.StagesData != null && gameData.StagesData.Length > 0)
 		{
-			loopingCounter.SetRange(1, gameData.stages.Length);
+			loopingCounter.SetRange(1, gameData.StagesData.Length);
 		}
 	}
 }

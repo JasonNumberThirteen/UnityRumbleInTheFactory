@@ -79,13 +79,10 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 
 	private void SetupGameData(bool twoPlayersMode)
 	{
-		if(gameData == null)
+		if(gameData != null)
 		{
-			return;
+			gameData.SetupForGameStart(twoPlayersMode);
 		}
-
-		gameData.enteredStageSelection = true;
-		gameData.twoPlayersMode = twoPlayersMode;
 	}
 
 	private void DeactivateMenuOptionsInput()

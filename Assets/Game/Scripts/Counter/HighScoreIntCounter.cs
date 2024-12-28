@@ -8,7 +8,7 @@ public class HighScoreIntCounter : IntCounter
 	{
 		if(gameData != null)
 		{
-			SetTo(gameData.highScore);
+			SetTo(gameData.HighScore);
 		}
 	}
 }

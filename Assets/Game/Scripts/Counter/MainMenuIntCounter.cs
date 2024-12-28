@@ -8,7 +8,7 @@ public class MainMenuIntCounter : IntCounter
 	{
 		if(mainMenuData != null)
 		{
-			SetTo(mainMenuData.MainMenuCounterValue());
+			SetTo(mainMenuData.GetMainMenuCounterValue());
 		}
 	}
 }

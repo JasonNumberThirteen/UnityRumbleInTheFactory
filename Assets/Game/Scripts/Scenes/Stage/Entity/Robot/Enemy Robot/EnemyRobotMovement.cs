@@ -74,7 +74,7 @@ public class EnemyRobotMovement : EntityMovement
 
 	private void Start()
 	{
-		movementSpeed *= StageManager.instance.gameData.difficulty.GetTierValue(tier => tier.GetEnemyMovementSpeedMultiplier());
+		movementSpeed *= StageManager.instance.gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier());
 
 		SetDirection(Vector2.down);
 	}

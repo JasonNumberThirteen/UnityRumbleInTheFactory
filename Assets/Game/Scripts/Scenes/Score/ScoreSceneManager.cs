@@ -6,7 +6,7 @@ public class ScoreSceneManager : GameSceneManager
 
 	public void GoToNextScene()
 	{
-		bool isOver = gameData.isOver;
+		bool isOver = gameData.GameIsOver;
 		string sceneName = isOver ? gameOverSceneName : stageSceneName;
 		
 		if(!isOver)

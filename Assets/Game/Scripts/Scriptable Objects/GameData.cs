@@ -1,37 +1,81 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Game Data")]
 public class GameData : MainMenuData
 {
+	public bool EnteredStageSelection {get; private set;}
+	public bool SelectedTwoPlayersMode {get; private set;}
+	public bool GameIsOver {get; private set;}
+	public bool BeatenHighScore {get; private set;}
+	public int HighScore {get; private set;} = 20000;
 	public int StageNumber {get; private set;}
+	public StageData[] StagesData {get; private set;}
 
-	public int highScore = 20000;
-	public bool twoPlayersMode, isOver, beatenHighScore, enteredStageSelection;
-	public StageData[] stages;
-	public GameDifficulty difficulty;
+	[SerializeField] private GameDifficulty gameDifficulty;
 
-	public override int MainMenuCounterValue() => highScore;
-	public StageData CurrentStage() => stages[StageNumber - 1];
-	public bool StagesDoNotExist() => stages.Length == 0;
+	public override int GetMainMenuCounterValue() => HighScore;
+	
+	public int GetCurrentDifficultyTierIndex() => gameDifficulty.GetCurrentTierIndex();
+	public StageData GetCurrentStageData() => StagesData != null && StageNumber >= 1 && StageNumber <= StagesData.Length ? StagesData[StageNumber - 1] : null;
+	public bool NoStagesFound() => StagesData.Length == 0;
 
 	public void ResetData(int initialStage)
 	{
 		StageNumber = initialStage;
-		isOver = beatenHighScore = enteredStageSelection = false;
+		GameIsOver = BeatenHighScore = EnteredStageSelection = false;
 
-		difficulty.ResetData();
+		gameDifficulty.ResetData();
+	}
+
+	public void SetupForGameStart(bool selectedTwoPlayersMode)
+	{
+		EnteredStageSelection = true;
+		SelectedTwoPlayersMode = selectedTwoPlayersMode;
+	}
+
+	public void SetGameAsOver()
+	{
+		GameIsOver = true;
+	}
+
+	public void SetHighScoreIfPossible(int score, Action onBeatenHighScore = null)
+	{
+		if(HighScore > score)
+		{
+			return;
+		}
+		
+		HighScore = score;
+
+		if(!BeatenHighScore)
+		{
+			BeatenHighScore = true;
+
+			onBeatenHighScore?.Invoke();
+		}
+	}
+
+	public void SetStagesData(StageData[] stagesData)
+	{
+		StagesData = stagesData;
+	}
+
+	public T GetDifficultyTierValue<T>(Func<GameDifficultyTier, T> tierFunc) where T : struct
+	{
+		return gameDifficulty.GetTierValue(tierFunc);
 	}
 
 	public void IncreaseDifficultyIfNeeded()
 	{
-		if(StageNumber == stages.Length)
+		if(StageNumber == StagesData.Length)
 		{
-			difficulty.IncreaseDifficulty();
+			gameDifficulty.IncreaseDifficulty();
 		}
 	}
 
 	public void AdvanceToNextStage()
 	{
-		StageNumber = StageNumber % stages.Length + 1;
+		StageNumber = StageNumber % StagesData.Length + 1;
 	}
 }

@@ -43,7 +43,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void OnSubmitKeyPressed()
 	{
-		if(stageSelectionStageCounterTextUI == null || gameData == null || gameData.StagesDoNotExist())
+		if(stageSelectionStageCounterTextUI == null || gameData == null || gameData.NoStagesFound())
 		{
 			return;
 		}

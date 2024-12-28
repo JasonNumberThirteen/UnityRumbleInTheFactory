@@ -48,6 +48,6 @@ public class StageUIManager : MonoBehaviour
 	{
 		stageCounterText.SetTo(gameData.StageNumber);
 
-		difficultyTier.sizeDelta = new Vector2(16*gameData.difficulty.GetCurrentTierIndex(), 16);
+		difficultyTier.sizeDelta = new Vector2(16*gameData.GetCurrentDifficultyTierIndex(), 16);
 	}
 }

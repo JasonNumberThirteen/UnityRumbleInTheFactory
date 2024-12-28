@@ -6,7 +6,7 @@ public class OnePlayerModeExcluder : MonoBehaviour
 
 	private void Awake()
 	{
-		var goShouldBeActive = gameData != null && gameData.twoPlayersMode;
+		var goShouldBeActive = gameData != null && gameData.SelectedTwoPlayersMode;
 		
 		gameObject.SetActive(goShouldBeActive);
 	}

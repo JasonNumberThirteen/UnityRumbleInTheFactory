@@ -21,7 +21,7 @@ public class PlayerData : MainMenuData
 			score = Mathf.Clamp(value, 0, int.MaxValue);
 
 			CheckBonusLifeThreshold();
-			CheckHighScore();
+			gameData.SetHighScoreIfPossible(score, () => ++Lives);
 		}
 	}
 
@@ -58,7 +58,7 @@ public class PlayerData : MainMenuData
 
 	private int score, lives, rank, bonusLifeThreshold;
 
-	public override int MainMenuCounterValue() => score;
+	public override int GetMainMenuCounterValue() => score;
 
 	public void ResetData()
 	{
@@ -96,20 +96,6 @@ public class PlayerData : MainMenuData
 			bonusLifeThreshold += initialBonusLifeThreshold;
 			
 			CheckBonusLifeThreshold();
-		}
-	}
-
-	private void CheckHighScore()
-	{
-		if(score >= gameData.highScore)
-		{
-			gameData.highScore = score;
-
-			if(!gameData.beatenHighScore)
-			{
-				gameData.beatenHighScore = true;
-				++Lives;
-			}
 		}
 	}
 }

@@ -33,7 +33,7 @@ public class GameOverGameSceneManager : GameSceneManager
 
 	private void OnTimerEnd()
 	{
-		var beatenHighScore = gameData != null && gameData.beatenHighScore;
+		var beatenHighScore = gameData != null && gameData.BeatenHighScore;
 		var sceneName = beatenHighScore ? HIGH_SCORE_SCENE_NAME : MAIN_MENU_SCENE_NAME;
 
 		LoadSceneByName(sceneName);

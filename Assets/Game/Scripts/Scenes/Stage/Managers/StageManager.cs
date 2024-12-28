@@ -46,8 +46,7 @@ public class StageManager : MonoBehaviour
 
 	public void SetGameAsOver()
 	{
-		gameData.isOver = true;
-
+		gameData.SetGameAsOver();
 		stateManager.SetStateTo(StageState.OVER);
 		playersManager.DisablePlayers();
 		audioManager.StopPlayerRobotMovementChannel();

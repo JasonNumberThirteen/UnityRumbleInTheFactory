@@ -34,7 +34,7 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 			InstantiateElement(enemyType, new Vector2(0, y + 4), i, OnEnemyTypeSpriteInstantiate);
 			InstantiateElement(enemyTypePointsCounter, new Vector2(16, y), i, OnEnemyTypePointsCounterInstantiate);
 
-			if(gameData.twoPlayersMode)
+			if(gameData.SelectedTwoPlayersMode)
 			{
 				InstantiateElement(pointsText, new Vector2(208, y));
 				InstantiateElement(defeatedEnemiesCounter, new Vector2(144, y), i, OnDefeatedEnemiesCounterInstantiate);

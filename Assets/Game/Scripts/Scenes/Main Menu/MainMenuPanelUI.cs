@@ -58,7 +58,7 @@ public class MainMenuPanelUI : MonoBehaviour
 
 	private void SetTargetPositionImmediatelyIfNeeded()
 	{
-		if(gameData != null && gameData.enteredStageSelection)
+		if(gameData != null && gameData.EnteredStageSelection)
 		{
 			SetTargetPosition();
 		}

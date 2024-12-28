@@ -10,7 +10,7 @@ public class StagesDataLoadingManager : MonoBehaviour
 	{
 		if(gameData != null)
 		{
-			gameData.stages = GetStagesDataFromPath(STAGES_DATA_PATH);
+			gameData.SetStagesData(GetStagesDataFromPath(STAGES_DATA_PATH));
 		}
 	}
 

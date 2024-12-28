@@ -50,7 +50,7 @@ public class StageSelectionManager : MonoBehaviour
 
 	private void NavigateRepeatedly()
 	{
-		if(gameData == null || gameData.StagesDoNotExist())
+		if(gameData == null || gameData.NoStagesFound())
 		{
 			return;
 		}
@@ -79,7 +79,7 @@ public class StageSelectionManager : MonoBehaviour
 
 	private void OnNavigateKeyPressed(int direction)
 	{
-		if(gameData != null && !gameData.StagesDoNotExist())
+		if(gameData != null && !gameData.NoStagesFound())
 		{
 			navigationDirection = direction;
 		}
