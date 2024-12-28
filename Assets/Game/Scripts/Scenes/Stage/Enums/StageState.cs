@@ -1,8 +1,8 @@
 public enum StageState
 {
-	ACTIVE,
-	PAUSED,
-	INTERRUPTED,
-	WON,
-	OVER
+	Active,
+	Paused,
+	Interrupted,
+	Won,
+	Over
 }

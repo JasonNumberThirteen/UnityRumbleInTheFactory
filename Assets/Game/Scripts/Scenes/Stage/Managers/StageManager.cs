@@ -32,29 +32,29 @@ public class StageManager : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if(stateManager.StateIsSetTo(StageState.INTERRUPTED) || stateManager.StateIsSetTo(StageState.WON) || stateManager.StateIsSetTo(StageState.OVER))
+		if(stateManager.StateIsSetTo(StageState.Interrupted) || stateManager.StateIsSetTo(StageState.Won) || stateManager.StateIsSetTo(StageState.Over))
 		{
 			return;
 		}
 
-		stateManager.SetStateTo(stateManager.StateIsSetTo(StageState.ACTIVE) ? StageState.PAUSED : StageState.ACTIVE);
+		stateManager.SetStateTo(stateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active);
 		uiManager.ControlPauseTextDisplay();
 		audioManager.SwitchPlayerRobotMovementChannel();
 
-		Time.timeScale = stateManager.StateIsSetTo(StageState.PAUSED) ? 0f : 1f;
+		Time.timeScale = stateManager.StateIsSetTo(StageState.Paused) ? 0f : 1f;
 	}
 
 	public void SetGameAsOver()
 	{
 		gameData.SetGameAsOver();
-		stateManager.SetStateTo(StageState.OVER);
+		stateManager.SetStateTo(StageState.Over);
 		playersManager.DisablePlayers();
 		audioManager.StopPlayerRobotMovementChannel();
 	}
 
 	public void EnableAudioManager()
 	{
-		if(stateManager.StateIsSetTo(StageState.OVER))
+		if(stateManager.StateIsSetTo(StageState.Over))
 		{
 			return;
 		}
@@ -91,7 +91,7 @@ public class StageManager : MonoBehaviour
 
 	private void OnNukeDestroyed()
 	{
-		stateManager.SetStateTo(StageState.INTERRUPTED);
+		stateManager.SetStateTo(StageState.Interrupted);
 		gameOverTimer.StartTimer();
 	}
 
@@ -117,7 +117,7 @@ public class StageManager : MonoBehaviour
 			return;
 		}
 
-		stateManager.SetStateTo(StageState.WON);
+		stateManager.SetStateTo(StageState.Won);
 		sceneManagerTimer.StartTimer();
 	}
 }
