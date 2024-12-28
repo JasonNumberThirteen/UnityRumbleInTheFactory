@@ -33,9 +33,9 @@ public class PlayerData : MainMenuData
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField, Min(0)] private int initialLives = 2;
-	[SerializeField, Min(1)] private int initialRank = 1;
-	[SerializeField, Min(1)] private int initialBonusLifeThreshold = 20000;
 	[SerializeField, Min(0)] private int maxLives = 9;
+	[SerializeField, Min(1)] private int initialBonusLifeThreshold = 20000;
+	[SerializeField, Min(1)] private int initialRank = 1;
 
 	private int score;
 	private int lives;
