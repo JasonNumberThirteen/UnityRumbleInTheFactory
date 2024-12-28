@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Game/Player Data")]
-public class PlayerData : MainMenuData
+public class PlayerData : ScriptableObject
 {
 	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyData, int>();
 	public PlayerSpawner Spawner {get; set;}
@@ -41,8 +41,6 @@ public class PlayerData : MainMenuData
 	private int lives;
 	private int bonusLifeThreshold;
 	private int rankNumber;
-	
-	public override int GetMainMenuCounterValue() => score;
 
 	public PlayerRobotRank GetRank() => ranks[RankNumber - 1];
 

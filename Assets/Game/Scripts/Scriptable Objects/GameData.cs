@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game/Game Data")]
-public class GameData : MainMenuData
+public class GameData : ScriptableObject
 {
 	public bool EnteredStageSelection {get; private set;}
 	public bool SelectedTwoPlayersMode {get; private set;}
@@ -13,8 +13,6 @@ public class GameData : MainMenuData
 	public StageData[] StagesData {get; private set;}
 
 	[SerializeField] private GameDifficulty gameDifficulty;
-
-	public override int GetMainMenuCounterValue() => HighScore;
 	
 	public int GetCurrentDifficultyTierIndex() => gameDifficulty.GetCurrentTierIndex();
 	public StageData GetCurrentStageData() => StagesData != null && StageNumber >= 1 && StageNumber <= StagesData.Length ? StagesData[StageNumber - 1] : null;

@@ -1596,7 +1596,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1571427411}
+      addedObject: {fileID: 1571427413}
     - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1571427412}
@@ -1606,22 +1606,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
   m_PrefabInstance: {fileID: 1571427403}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1571427411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519506954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6175a758460bc24680503932f7a752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valueChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  mainMenuData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!114 &1571427412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,6 +1621,22 @@ MonoBehaviour:
   header: HI-
   addSpaceAfterHeader: 0
   width: 6
+--- !u!114 &1571427413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519506954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6032a9f1cb11ed54eab55fcc7a4e4aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!1001 &1601528627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1788,7 +1788,7 @@ MonoBehaviour:
   valueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  mainMenuData: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
+  playerData: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
 --- !u!114 &1601528637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   valueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  mainMenuData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
 --- !u!114 &1633096520
 MonoBehaviour:
   m_ObjectHideFlags: 0
