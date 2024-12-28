@@ -11,6 +11,7 @@ public class ScoreSceneManager : GameSceneManager
 		
 		if(!isOver)
 		{
+			gameData.IncreaseDifficultyIfNeeded();
 			gameData.AdvanceToNextStage();
 		}
 

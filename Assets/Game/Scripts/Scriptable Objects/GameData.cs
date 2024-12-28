@@ -22,13 +22,16 @@ public class GameData : MainMenuData
 		difficulty.ResetData();
 	}
 
-	public void AdvanceToNextStage()
+	public void IncreaseDifficultyIfNeeded()
 	{
-		StageNumber = StageNumber % stages.Length + 1;
-		
-		if(StageNumber == 1)
+		if(StageNumber == stages.Length)
 		{
 			difficulty.IncreaseDifficulty();
 		}
+	}
+
+	public void AdvanceToNextStage()
+	{
+		StageNumber = StageNumber % stages.Length + 1;
 	}
 }
