@@ -31,7 +31,6 @@ public class PlayerData : MainMenuData
 		set => rankNumber = Mathf.Clamp(value, 1, ranks != null && ranks.Length > 0 ? ranks.Length : 1);
 	}
 	
-	[SerializeField] private GameData gameData;
 	[SerializeField, Min(0)] private int initialLives = 2;
 	[SerializeField, Min(0)] private int maxLives = 9;
 	[SerializeField, Min(1)] private int initialBonusLifeThreshold = 20000;
