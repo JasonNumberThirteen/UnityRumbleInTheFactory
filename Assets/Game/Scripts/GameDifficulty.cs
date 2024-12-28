@@ -8,12 +8,12 @@ public class GameDifficulty
 
 	private int currentTierIndex;
 
+	public int GetCurrentTierIndex() => currentTierIndex;
+
 	public void ResetData()
 	{
 		currentTierIndex = 0;
 	}
-
-	public int GetCurrentTierIndex() => currentTierIndex;
 
 	public void IncreaseDifficulty()
 	{
