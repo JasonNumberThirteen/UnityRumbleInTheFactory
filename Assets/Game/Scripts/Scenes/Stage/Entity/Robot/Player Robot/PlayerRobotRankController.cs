@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRobotRank : MonoBehaviour
+public class PlayerRobotRankController : MonoBehaviour
 {
 	public Rank CurrentRank {get; private set;}
 	

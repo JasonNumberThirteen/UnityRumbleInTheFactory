@@ -4,7 +4,7 @@ public class PlayerRobotShoot : RobotShoot
 {
 	public string bulletTag;
 	
-	private PlayerRobotRank rank;
+	private PlayerRobotRankController rank;
 
 	public override void FireBullet()
 	{
@@ -18,7 +18,7 @@ public class PlayerRobotShoot : RobotShoot
 	{
 		base.Awake();
 
-		rank = GetComponent<PlayerRobotRank>();
+		rank = GetComponent<PlayerRobotRankController>();
 	}
 
 	protected override void SetBullet(GameObject bullet)
