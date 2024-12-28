@@ -73,7 +73,7 @@ public class EnemySpawnManager : MonoBehaviour
 	private void DetermineEnemiesToSpawn()
 	{
 		int aliveEnemies = GameObject.FindGameObjectsWithTag(enemyTag).Length;
-		int missingEnemies = gameData.difficulty.EnemiesLimit() - aliveEnemies;
+		int missingEnemies = gameData.difficulty.GetTierValue(tier => tier.GetEnemiesLimitAtOnce()) - aliveEnemies;
 		
 		enemiesToSpawn = Mathf.Max(0, missingEnemies);
 	}
