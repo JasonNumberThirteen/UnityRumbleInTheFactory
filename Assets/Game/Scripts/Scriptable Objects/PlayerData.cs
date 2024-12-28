@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class PlayerData : MainMenuData
 {
 	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyData, int>();
-	public bool LostAllLives {get; private set;}
 	public PlayerSpawner Spawner {get; set;}
 	
 	public int Score
@@ -26,7 +25,6 @@ public class PlayerData : MainMenuData
 		set
 		{
 			lives = Mathf.Clamp(value, 0, maxLives);
-			LostAllLives = lives <= 0;
 
 			StageManager.instance.uiManager.UpdateLivesCounters();
 		}

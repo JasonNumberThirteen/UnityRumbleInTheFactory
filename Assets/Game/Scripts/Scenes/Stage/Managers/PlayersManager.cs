@@ -58,7 +58,7 @@ public class PlayersManager : MonoBehaviour
 	{
 		foreach (PlayerData pd in playersData)
 		{
-			if(!pd.LostAllLives)
+			if(pd.Lives > 0)
 			{
 				return false;
 			}
