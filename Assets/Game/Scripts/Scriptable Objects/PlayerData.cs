@@ -28,7 +28,7 @@ public class PlayerData : MainMenuData
 	public int Rank
 	{
 		get => rank;
-		set => rank = Mathf.Clamp(value, 1, 4);
+		set => rank = Mathf.Clamp(value, 1, ranks != null && ranks.Length > 0 ? ranks.Length : 1);
 	}
 	
 	[SerializeField] private GameData gameData;
@@ -36,6 +36,7 @@ public class PlayerData : MainMenuData
 	[SerializeField, Min(0)] private int maxLives = 9;
 	[SerializeField, Min(1)] private int initialBonusLifeThreshold = 20000;
 	[SerializeField, Min(1)] private int initialRank = 1;
+	[SerializeField] private PlayerRobotRank[] ranks;
 
 	private int score;
 	private int lives;

@@ -13,7 +13,32 @@ MonoBehaviour:
   m_Name: Player2DataScriptableObject
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  initialScore: 0
   initialLives: 2
-  initialRank: 1
+  maxLives: 9
   initialBonusLifeThreshold: 20000
+  initialRank: 1
+  ranks:
+  - health: 1
+    damage: 1
+    bulletsLimitAtOnce: 1
+    movementSpeed: 3
+    bulletSpeed: 6.5
+    canDestroyMetal: 0
+  - health: 1
+    damage: 1
+    bulletsLimitAtOnce: 1
+    movementSpeed: 3.25
+    bulletSpeed: 7.5
+    canDestroyMetal: 0
+  - health: 1
+    damage: 1
+    bulletsLimitAtOnce: 2
+    movementSpeed: 3.4
+    bulletSpeed: 8
+    canDestroyMetal: 0
+  - health: 2
+    damage: 2
+    bulletsLimitAtOnce: 2
+    movementSpeed: 3.5
+    bulletSpeed: 8
+    canDestroyMetal: 1
