@@ -5,11 +5,11 @@ public class StageSelectionManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
-	private int navigationDirection;
-	private float navigationTimer;
 	private MenuOptionsInput menuOptionsInput;
 	private StageSelectionStageCounterTextUI stageSelectionStageCounterTextUI;
 	private Timer timer;
+	private int navigationDirection;
+	private float navigationTimer;
 
 	private void Awake()
 	{
