@@ -6,14 +6,14 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
-	private LoopingIntCounter loopingCounter;
+	private LoopingIntCounter loopingIntCounter;
 	private MenuOptionsInput menuOptionsInput;
 	private MainMenuPanelUI mainMenuPanelUI;
 	private OptionsManager optionsManager;
 
 	private void Awake()
 	{
-		loopingCounter = GetComponent<LoopingIntCounter>();
+		loopingIntCounter = GetComponent<LoopingIntCounter>();
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
 		mainMenuPanelUI = FindFirstObjectByType<MainMenuPanelUI>();
 		optionsManager = FindFirstObjectByType<OptionsManager>();
@@ -32,14 +32,14 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		var numberOfOptions = optionsManager != null ? optionsManager.GetNumberOfOptions() : 0;
 		var max = Mathf.Max(1, numberOfOptions);
 		
-		loopingCounter.SetRange(1, max);
+		loopingIntCounter.SetRange(1, max);
 	}
 
 	private void SelectTwoPlayersModeIfNeeded()
 	{
 		if(gameData != null && gameData.EnteredStageSelection && gameData.SelectedTwoPlayersMode)
 		{
-			loopingCounter.SetTo((int)OptionType.TwoPlayersMode + 1);
+			loopingIntCounter.SetTo((int)OptionType.TwoPlayersMode + 1);
 		}
 	}
 
@@ -58,7 +58,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 				menuOptionsInput.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
 			}
 
-			loopingCounter.valueChangedEvent.AddListener(OnCounterValueChanged);
+			loopingIntCounter.valueChangedEvent.AddListener(OnCounterValueChanged);
 		}
 		else
 		{
@@ -68,7 +68,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 				menuOptionsInput.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
 			}
 
-			loopingCounter.valueChangedEvent.RemoveListener(OnCounterValueChanged);
+			loopingIntCounter.valueChangedEvent.RemoveListener(OnCounterValueChanged);
 		}
 	}
 
@@ -78,11 +78,11 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		{
 			if(direction == -1)
 			{
-				loopingCounter.DecreaseBy(1);
+				loopingIntCounter.DecreaseBy(1);
 			}
 			else if(direction == 1)
 			{
-				loopingCounter.IncreaseBy(1);
+				loopingIntCounter.IncreaseBy(1);
 			}
 		});
 	}
@@ -122,7 +122,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 
 	private OptionType GetOptionTypeByCounterValue()
 	{
-		var index = loopingCounter.CurrentValue - 1;
+		var index = loopingIntCounter.CurrentValue - 1;
 
 		return (OptionType)index;
 	}
