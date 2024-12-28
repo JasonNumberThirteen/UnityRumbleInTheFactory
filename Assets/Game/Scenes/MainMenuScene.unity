@@ -2323,6 +2323,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 870306800510336756, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+      propertyPath: horizontalDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 870306800510336756, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: rightAspectRatioPercent
       value: 0.5
       objectReference: {fileID: 0}
@@ -2349,6 +2353,10 @@ PrefabInstance:
     - target: {fileID: 3653667742059613410, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: targetOffsetMin.x
       value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653667742059613410, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+      propertyPath: horizontalDirection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3653667742059613410, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: leftAspectRatioPercent

@@ -1,59 +1,70 @@
 using UnityEngine;
 
+[RequireComponent(typeof(RectTransform))]
 public class TranslationBackgroundPartPanelUIRectTransformOffsetController : MonoBehaviour
 {
-	public Timer timer;
-	public HorizontalDirection widthSide;
-	public VerticalDirection heightSide;
-	public bool reverseDirection = false;
+	[SerializeField] private HorizontalDirection horizontalDirection;
+	[SerializeField] private VerticalDirection verticalDirection;
+	[SerializeField] private bool moveFromCenterToEdges;
 
+	private Timer timer;
 	private RectTransform rectTransform;
-	private Vector2 initialOffsetMin, initialOffsetMax, targetOffsetMin, targetOffsetMax;
+	private Vector2 initialOffsetMin;
+	private Vector2 initialOffsetMax;
+	private Vector2 targetOffsetMin;
+	private Vector2 targetOffsetMax;
 
 	public void SetTimer(Timer timer)
 	{
 		this.timer = timer;
 	}
 
-	private void Awake() => rectTransform = GetComponent<RectTransform>();
-	private void Start() => SetValues();
-	private bool ReachedTheTarget() => rectTransform.offsetMin == targetOffsetMin && rectTransform.offsetMax == targetOffsetMax;
-	private float MinimumOffsetDifferenceX() => targetOffsetMin.x - initialOffsetMin.x;
-	private float MinimumOffsetDifferenceY() => targetOffsetMin.y - initialOffsetMin.y;
-	private float MaximumOffsetDifferenceX() => targetOffsetMax.x - initialOffsetMax.x;
-	private float MaximumOffsetDifferenceY() => targetOffsetMax.y - initialOffsetMax.y;
-
-	private void SetValues()
+	private void Awake()
 	{
-		rectTransform.offsetMin = InitialMinimumOffset();
-		rectTransform.offsetMax = InitialMaximumOffset();
-		initialOffsetMin = rectTransform.offsetMin;
-		initialOffsetMax = rectTransform.offsetMax;
-		targetOffsetMin = reverseDirection ? rectTransform.offsetMin*2 : rectTransform.offsetMin*0.5f;
-		targetOffsetMax = reverseDirection ? rectTransform.offsetMax*2 : rectTransform.offsetMax*0.5f;
+		rectTransform = GetComponent<RectTransform>();
 	}
 
-	private Vector2 InitialMinimumOffset()
+	private void Start()
 	{
-		int x = widthSide == HorizontalDirection.Left ? Screen.width : 0;
-		int y = heightSide == VerticalDirection.Bottom ? Screen.height : 0;
-		Vector2 offset = new Vector2(x, y);
-
-		return reverseDirection ? offset*0.5f : offset;
+		initialOffsetMin = initialOffsetMax = rectTransform.offsetMin = rectTransform.offsetMax = GetInitialOffset();
+		targetOffsetMin = GetTargetOffset(initialOffsetMin);
+		targetOffsetMax = GetTargetOffset(initialOffsetMax);
 	}
 
-	private Vector2 InitialMaximumOffset()
+	private Vector2 GetInitialOffset()
 	{
-		int x = widthSide == HorizontalDirection.Right ? -Screen.width : 0;
-		int y = heightSide == VerticalDirection.Bottom ? -Screen.height : 0;
-		Vector2 offset = new Vector2(x, y);
+		var offset = new Vector2(GetInitialOffsetX(), GetInitialOffsetY());
 
-		return reverseDirection ? offset*0.5f : offset;
+		return moveFromCenterToEdges ? offset*0.5f : offset;
+	}
+
+	private float GetInitialOffsetX()
+	{
+		var screenWidth = Screen.width;
+		
+		return horizontalDirection switch
+		{
+			HorizontalDirection.Left => screenWidth,
+			HorizontalDirection.Right => -screenWidth,
+			_ => 0
+		};
+	}
+
+	private float GetInitialOffsetY()
+	{
+		var screenHeight = Screen.height;
+		
+		return verticalDirection switch
+		{
+			VerticalDirection.Top => -screenHeight,
+			VerticalDirection.Bottom => screenHeight,
+			_ => 0
+		};
 	}
 
 	private void Update()
 	{
-		if(timer.Started && !ReachedTheTarget())
+		if(timer.Started && !ReachedTargetPosition())
 		{
 			SetOffset();
 		}
@@ -61,25 +72,21 @@ public class TranslationBackgroundPartPanelUIRectTransformOffsetController : Mon
 	
 	private void SetOffset()
 	{
-		rectTransform.offsetMin = MinimumOffset();
-		rectTransform.offsetMax = MaximumOffset();
+		rectTransform.offsetMin = GetOffset(initialOffsetMin, GetOffsetDifference(targetOffsetMin, initialOffsetMin));
+		rectTransform.offsetMax = GetOffset(initialOffsetMax, GetOffsetDifference(targetOffsetMax, initialOffsetMax));
 	}
-	
-	private Vector2 MinimumOffset()
+
+	private Vector2 GetOffset(Vector2 initialOffset, Vector2 offsetDifference)
 	{
-		float percent = timer.ProgressPercent();
-		float x = initialOffsetMin.x + MinimumOffsetDifferenceX()*percent;
-		float y = initialOffsetMin.y + MinimumOffsetDifferenceY()*percent;
+		var percent = timer.ProgressPercent();
+		var x = GetOffsetCoordinate(initialOffset.x, offsetDifference.x, percent);
+		var y = GetOffsetCoordinate(initialOffset.y, offsetDifference.y, percent);
 
-		return new Vector2(x, y);
+		return new(x, y);
 	}
 
-	private Vector2 MaximumOffset()
-	{
-		float percent = timer.ProgressPercent();
-		float x = initialOffsetMax.x + MaximumOffsetDifferenceX()*percent;
-		float y = initialOffsetMax.y + MaximumOffsetDifferenceY()*percent;
-
-		return new Vector2(x, y);
-	}
+	private Vector2 GetTargetOffset(Vector2 initialOffset) => moveFromCenterToEdges ? initialOffset*2 : initialOffset*0.5f;
+	private Vector2 GetOffsetDifference(Vector2 targetOffset, Vector2 initialOffset) => targetOffset - initialOffset;
+	private bool ReachedTargetPosition() => rectTransform.offsetMin == targetOffsetMin && rectTransform.offsetMax == targetOffsetMax;
+	private float GetOffsetCoordinate(float initialOffsetCoordinate, float offsetDifferenceCoordinate, float percent) => initialOffsetCoordinate + offsetDifferenceCoordinate*percent;
 }
