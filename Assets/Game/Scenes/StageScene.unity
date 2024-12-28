@@ -604,6 +604,60 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &142723055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 142723056}
+  - component: {fileID: 142723057}
+  m_Layer: 0
+  m_Name: Players Data Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &142723056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142723055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 554198272}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &142723057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142723055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc32e7eb544adbb48a6b10359afe6431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScoreChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerLivesChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerRankChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playersListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!1001 &149634469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1204,6 +1258,7 @@ Transform:
   - {fileID: 1237164744}
   - {fileID: 449972476}
   - {fileID: 894496748}
+  - {fileID: 142723056}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1473,6 +1528,7 @@ GameObject:
   - component: {fileID: 600235744}
   - component: {fileID: 600235743}
   - component: {fileID: 600235745}
+  - component: {fileID: 600235746}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -1612,7 +1668,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0}
-  timer: {fileID: 1572466353}
+--- !u!114 &600235746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600235741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0
+  countFromTheStart: 1
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &623931944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3517,7 +3595,6 @@ MonoBehaviour:
   audioManager: {fileID: 1579829971}
   playersManager: {fileID: 1263742803}
   enemySpawnManager: {fileID: 1295888590}
-  enemyFreezeManager: {fileID: 1892637674}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gameOverTimer: {fileID: 1049923159}
   sceneManagerTimer: {fileID: 1086106392}
