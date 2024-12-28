@@ -24,7 +24,7 @@ public class ScoreUIManager : MonoBehaviour
 			currentDefeatedEnemiesCounter = pointsRowsBuilder.DefeatedEnemiesCounters[enemyTypeIndex];
 			currentEnemyTypePointsCounter = pointsRowsBuilder.EnemyTypePointsCounters[enemyTypeIndex];
 			defeatedEnemies = defeatedEnemiesCount[enemyTypeIndex];
-			scorePerEnemy = defeatedEnemiesData[enemyTypeIndex].score;
+			scorePerEnemy = defeatedEnemiesData[enemyTypeIndex].GetPointsForDefeat();
 			++enemyTypeIndex;
 			countedEnemies = enemyTypeScore = 0;
 		}
@@ -61,7 +61,7 @@ public class ScoreUIManager : MonoBehaviour
 		SetPlayerOneScore();
 		RetrieveEnemiesData();
 		RetrieveEnemiesCount();
-		pointsRowsBuilder.SetDefeatedEnemiesSprites(defeatedEnemiesData.Select(e => e.sprite).ToArray());
+		pointsRowsBuilder.SetDefeatedEnemiesSprites(defeatedEnemiesData.Select(e => e.GetDisplayInScoreSceneSprite()).ToArray());
 		pointsRowsBuilder.BuildPointsRows();
 		SetLastElementsPosition();
 	}

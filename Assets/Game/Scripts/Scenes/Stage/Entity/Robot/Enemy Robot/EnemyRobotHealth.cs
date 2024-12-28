@@ -18,7 +18,7 @@ public class EnemyRobotHealth : RobotHealth
 		if(sender.TryGetComponent(out PlayerRobotData prd) && !sm.stateManager.GameIsOver())
 		{
 			prd.Data.AddDefeatedEnemy(data);
-			sm.AddPoints(gameObject, prd.Data, data.score);
+			sm.AddPoints(gameObject, prd.Data, data.GetPointsForDefeat());
 			sm.audioManager.PlayEnemyRobotExplosionSound();
 		}
 	}

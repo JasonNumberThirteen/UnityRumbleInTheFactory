@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: GoldenEnemyRobotDataScriptableObject
   m_EditorClassIdentifier: 
   prefab: {fileID: 3790308775650090290, guid: e4abb37ecae788840b6427574e914bb6, type: 3}
-  bonusTypePrefab: {fileID: 7904759838229080825, guid: 9f95d0c77fe70124fb5868eaa3097929, type: 3}
-  score: 500
-  sprite: {fileID: 2130987304, guid: 3888c98491b80bc44830fb979711cbeb, type: 3}
+  pointsForDefeat: 500
+  displayInScoreSceneSprite: {fileID: 2130987304, guid: 3888c98491b80bc44830fb979711cbeb, type: 3}

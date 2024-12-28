@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: CyanEnemyRobotDataScriptableObject
   m_EditorClassIdentifier: 
   prefab: {fileID: 7494953504550476265, guid: e3ac4914fbe686049b0d44ee85f097e5, type: 3}
-  bonusTypePrefab: {fileID: 7641911959356627597, guid: 89e3b57de4f8e6445b4a523ad2dd5774, type: 3}
-  score: 200
-  sprite: {fileID: 740022647, guid: 6e1a492aa2ae7e14c82445f0195c559e, type: 3}
+  pointsForDefeat: 200
+  displayInScoreSceneSprite: {fileID: 740022647, guid: 6e1a492aa2ae7e14c82445f0195c559e, type: 3}

@@ -3,7 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Enemy Data")]
 public class EnemyData : ScriptableObject
 {
-	public GameObject prefab;
-	[Min(0)] public int score;
-	public Sprite sprite;
+	[SerializeField] private GameObject prefab;
+	[SerializeField, Min(0)] private int pointsForDefeat;
+	[SerializeField] private Sprite displayInScoreSceneSprite;
+
+	public GameObject GetPrefab() => prefab;
+	public int GetPointsForDefeat() => pointsForDefeat;
+	public Sprite GetDisplayInScoreSceneSprite() => displayInScoreSceneSprite;
 }
