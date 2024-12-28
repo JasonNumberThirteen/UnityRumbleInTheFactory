@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TimedRectTransformOffsetController : MonoBehaviour
+public class TranslationBackgroundPartPanelUIRectTransformOffsetController : MonoBehaviour
 {
 	public Timer timer;
 	public HorizontalDirection widthSide;
