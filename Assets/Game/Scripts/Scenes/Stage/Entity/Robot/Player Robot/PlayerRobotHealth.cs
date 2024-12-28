@@ -6,7 +6,7 @@ public class PlayerRobotHealth : RobotHealth
 	{
 		if(TryGetComponent(out PlayerRobotData prd))
 		{
-			prd.Data.spawner.InitiateRespawn();
+			prd.Data.Spawner.InitiateRespawn();
 		}
 		
 		base.Die(sender);

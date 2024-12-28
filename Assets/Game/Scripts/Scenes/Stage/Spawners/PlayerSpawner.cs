@@ -14,11 +14,9 @@ public class PlayerSpawner : EntitySpawner
 		}
 		else
 		{
-			playerData.lostAllLives = true;
-			
 			StageManager.instance.playersManager.CheckPlayersLives();
 		}
 	}
 
-	private void Start() => playerData.spawner = this;
+	private void Start() => playerData.Spawner = this;
 }
