@@ -10,34 +10,25 @@ public class PlayerData : MainMenuData
 	public int Score
 	{
 		get => score;
-		set
-		{
-			score = Mathf.Clamp(value, 0, int.MaxValue);
-		}
+		set => score = Mathf.Clamp(value, 0, int.MaxValue);
 	}
 
 	public int Lives
 	{
 		get => lives;
-		set
-		{
-			lives = Mathf.Clamp(value, 0, maxLives);
-		}
+		set => lives = Mathf.Clamp(value, 0, maxLives);
 	}
 
 	public int BonusLifeThreshold
 	{
 		get => bonusLifeThreshold;
-		set => Mathf.Clamp(value, 0, int.MaxValue);
+		set => bonusLifeThreshold = Mathf.Clamp(value, 0, int.MaxValue);
 	}
 
 	public int Rank
 	{
-		get => currentRank;
-		set
-		{
-			currentRank = Mathf.Clamp(value, 1, 4);
-		}
+		get => rank;
+		set => rank = Mathf.Clamp(value, 1, 4);
 	}
 	
 	[SerializeField] private GameData gameData;
@@ -49,7 +40,7 @@ public class PlayerData : MainMenuData
 	private int score;
 	private int lives;
 	private int bonusLifeThreshold;
-	private int currentRank;
+	private int rank;
 	
 	public override int GetMainMenuCounterValue() => score;
 
@@ -59,8 +50,13 @@ public class PlayerData : MainMenuData
 		lives = initialLives;
 		bonusLifeThreshold = initialBonusLifeThreshold;
 
-		ResetCurrentRank();
+		ResetRank();
 		ResetDefeatedEnemies();
+	}
+
+	public void ResetRank()
+	{
+		rank = initialRank;
 	}
 	
 	public void ResetDefeatedEnemies()
@@ -83,10 +79,5 @@ public class PlayerData : MainMenuData
 	public void IncreaseBonusLifeThreshold()
 	{
 		BonusLifeThreshold += initialBonusLifeThreshold;
-	}
-
-	public void ResetCurrentRank()
-	{
-		currentRank = initialRank;
 	}
 }

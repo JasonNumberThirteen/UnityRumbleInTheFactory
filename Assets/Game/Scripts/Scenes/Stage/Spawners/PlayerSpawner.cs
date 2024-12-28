@@ -43,6 +43,6 @@ public class PlayerSpawner : EntitySpawner
 
 	private void OnEntitySpawned()
 	{
-		playerData.ResetCurrentRank();
+		playerData.ResetRank();
 	}
 }
