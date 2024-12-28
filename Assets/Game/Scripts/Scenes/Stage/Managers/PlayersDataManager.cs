@@ -7,6 +7,7 @@ public class PlayersDataManager : MonoBehaviour
 	public UnityEvent playerLivesChangedEvent;
 	public UnityEvent playerRankChangedEvent;
 	
+	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayersListData playersListData;
 
 	public void ModifyScore(PlayerData playerData, int score)
@@ -22,6 +23,8 @@ public class PlayersDataManager : MonoBehaviour
 
 		if(playerData.Score != previousScore)
 		{
+			AddLifeIfPossible(playerData);
+			gameData.SetHighScoreIfPossible(score, () => ModifyLives(playerData, 1));
 			playerScoreChangedEvent?.Invoke();
 		}
 	}
@@ -39,6 +42,7 @@ public class PlayersDataManager : MonoBehaviour
 
 		if(playerData.Lives != previousLives)
 		{
+			StageManager.instance.uiManager.UpdateLivesCounters();
 			playerLivesChangedEvent?.Invoke();
 		}
 	}
@@ -58,5 +62,17 @@ public class PlayersDataManager : MonoBehaviour
 		{
 			playerRankChangedEvent?.Invoke();
 		}
+	}
+
+	private void AddLifeIfPossible(PlayerData playerData)
+	{
+		if(playerData == null || playerData.Score < playerData.BonusLifeThreshold)
+		{
+			return;
+		}
+		
+		ModifyLives(playerData, 1);
+		playerData.IncreaseBonusLifeThreshold();
+		AddLifeIfPossible(playerData);
 	}
 }

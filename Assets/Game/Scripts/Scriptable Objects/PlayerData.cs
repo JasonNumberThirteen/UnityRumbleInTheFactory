@@ -13,9 +13,6 @@ public class PlayerData : MainMenuData
 		set
 		{
 			score = Mathf.Clamp(value, 0, int.MaxValue);
-
-			AddLifeIfPossible();
-			gameData.SetHighScoreIfPossible(score, () => ++Lives);
 		}
 	}
 
@@ -25,10 +22,10 @@ public class PlayerData : MainMenuData
 		set
 		{
 			lives = Mathf.Clamp(value, 0, maxLives);
-
-			StageManager.instance.uiManager.UpdateLivesCounters();
 		}
 	}
+
+	public int BonusLifeThreshold {get; private set;}
 
 	public int Rank
 	{
@@ -48,7 +45,6 @@ public class PlayerData : MainMenuData
 	private int score;
 	private int lives;
 	private int currentRank;
-	private int bonusLifeThreshold;
 	
 	public override int GetMainMenuCounterValue() => score;
 
@@ -56,7 +52,7 @@ public class PlayerData : MainMenuData
 	{
 		score = 0;
 		lives = initialLives;
-		bonusLifeThreshold = initialBonusLifeThreshold;
+		BonusLifeThreshold = initialBonusLifeThreshold;
 
 		ResetCurrentRank();
 		ResetDefeatedEnemies();
@@ -79,21 +75,13 @@ public class PlayerData : MainMenuData
 		}
 	}
 
+	public void IncreaseBonusLifeThreshold()
+	{
+		BonusLifeThreshold += initialBonusLifeThreshold;
+	}
+
 	public void ResetCurrentRank()
 	{
 		currentRank = initialRank;
-	}
-
-	private void AddLifeIfPossible()
-	{
-		if(score < bonusLifeThreshold)
-		{
-			return;
-		}
-		
-		++Lives;
-		bonusLifeThreshold += initialBonusLifeThreshold;
-		
-		AddLifeIfPossible();
 	}
 }
