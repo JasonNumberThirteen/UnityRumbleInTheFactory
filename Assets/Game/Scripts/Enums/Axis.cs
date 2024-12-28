@@ -1,5 +1,5 @@
 public enum Axis
 {
-	HORIZONTAL,
-	VERTICAL
+	Horizontal,
+	Vertical
 }

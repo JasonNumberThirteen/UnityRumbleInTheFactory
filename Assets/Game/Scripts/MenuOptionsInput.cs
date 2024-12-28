@@ -36,8 +36,8 @@ public class MenuOptionsInput : MonoBehaviour
 	{
 		return navigationAxis switch
 		{
-			Axis.HORIZONTAL => Mathf.RoundToInt(inputVector.x),
-			Axis.VERTICAL => Mathf.RoundToInt(-inputVector.y),
+			Axis.Horizontal => Mathf.RoundToInt(inputVector.x),
+			Axis.Vertical => Mathf.RoundToInt(-inputVector.y),
 			_ => 0
 		};
 	}
