@@ -11,6 +11,11 @@ public class TimedRectTransformPositionController : RectTransformPositionControl
 	private Timer timer;
 	private Vector2 initialPosition;
 
+	public void StartTranslation()
+	{
+		timer.StartTimer();
+	}
+
 	protected override void Awake()
 	{
 		base.Awake();
