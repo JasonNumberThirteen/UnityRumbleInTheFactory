@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class TextUIBlinker : MonoBehaviour
+public class BlinkingTextUI : MonoBehaviour
 {
 	[SerializeField, Min(0.01f)] private float blinkDelay = 1f;
 	
