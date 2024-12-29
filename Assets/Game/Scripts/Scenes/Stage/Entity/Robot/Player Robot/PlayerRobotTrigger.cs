@@ -22,7 +22,7 @@ public class PlayerRobotTrigger : RobotTrigger
 
 	private void OnTriggerExit2D(Collider2D collider)
 	{
-		if(collider.gameObject.TryGetComponent(out IReversibleTrigger rt))
+		if(collider.gameObject.TryGetComponent(out ITriggerableOnExit rt))
 		{
 			rt.ReverseTriggerEffect(gameObject);
 		}

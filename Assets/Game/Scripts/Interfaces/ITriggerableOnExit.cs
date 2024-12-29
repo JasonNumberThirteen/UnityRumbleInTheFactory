@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IReversibleTrigger
+public interface ITriggerableOnExit
 {
 	void ReverseTriggerEffect(GameObject sender);
 }
