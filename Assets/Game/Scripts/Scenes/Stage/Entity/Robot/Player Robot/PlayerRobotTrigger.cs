@@ -24,7 +24,7 @@ public class PlayerRobotTrigger : RobotTrigger
 	{
 		if(collider.gameObject.TryGetComponent(out ITriggerableOnExit rt))
 		{
-			rt.ReverseTriggerEffect(gameObject);
+			rt.TriggerOnExit(gameObject);
 		}
 	}
 }

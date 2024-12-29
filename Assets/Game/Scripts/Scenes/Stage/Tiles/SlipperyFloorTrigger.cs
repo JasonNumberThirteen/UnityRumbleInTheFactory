@@ -7,7 +7,7 @@ public class SlipperyFloorTrigger : MonoBehaviour, ITriggerableOnEnter, ITrigger
 		SetSliding(sender, true);
 	}
 
-	public void ReverseTriggerEffect(GameObject sender)
+	public void TriggerOnExit(GameObject sender)
 	{
 		SetSliding(sender, false);
 	}

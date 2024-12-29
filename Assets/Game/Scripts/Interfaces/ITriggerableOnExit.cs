@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface ITriggerableOnExit
 {
-	void ReverseTriggerEffect(GameObject sender);
+	void TriggerOnExit(GameObject sender);
 }
