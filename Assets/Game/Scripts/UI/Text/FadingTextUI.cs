@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI), typeof(Timer))]
-public class TextUIFader : MonoBehaviour
+public class FadingTextUI : MonoBehaviour
 {
 	private TextMeshProUGUI text;
 	private Timer timer;
