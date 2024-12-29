@@ -5,19 +5,19 @@ public class StageCounterStageSelectionTextUI : StageSelectionTextUI
 {
 	[SerializeField] private GameData gameData;
 	
-	private LoopingIntCounter loopingCounter;
+	private LoopingIntCounter loopingIntCounter;
 
-	public int GetCurrentCounterValue() => loopingCounter.CurrentValue;
+	public int GetCurrentCounterValue() => loopingIntCounter.CurrentValue;
 
 	public void ModifyCounterBy(int value)
 	{
 		if(value > 0)
 		{
-			loopingCounter.IncreaseBy(value);
+			loopingIntCounter.IncreaseBy(value);
 		}
 		else if(value < 0)
 		{
-			loopingCounter.DecreaseBy(Mathf.Abs(value));
+			loopingIntCounter.DecreaseBy(Mathf.Abs(value));
 		}
 	}
 
@@ -25,14 +25,14 @@ public class StageCounterStageSelectionTextUI : StageSelectionTextUI
 	{
 		base.Awake();
 		
-		loopingCounter = GetComponent<LoopingIntCounter>();
+		loopingIntCounter = GetComponent<LoopingIntCounter>();
 	}
 
 	private void Start()
 	{
 		if(gameData != null && gameData.StagesData != null && gameData.StagesData.Length > 0)
 		{
-			loopingCounter.SetRange(1, gameData.StagesData.Length);
+			loopingIntCounter.SetRange(1, gameData.StagesData.Length);
 		}
 	}
 }

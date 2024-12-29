@@ -6,12 +6,12 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	[SerializeField] private PlayersListData playersListData;
 
 	private MenuOptionsInput menuOptionsInput;
-	private StageCounterStageSelectionTextUI stageSelectionStageCounterTextUI;
+	private StageCounterStageSelectionTextUI stageCounterTextUI;
 
 	private void Awake()
 	{
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
-		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
+		stageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
 
 		RegisterToListeners(true);
 	}
@@ -43,7 +43,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void OnSubmitKeyPressed()
 	{
-		if(stageSelectionStageCounterTextUI == null || gameData == null || gameData.NoStagesFound())
+		if(stageCounterTextUI == null || gameData == null || gameData.NoStagesFound())
 		{
 			return;
 		}
@@ -60,9 +60,9 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void ResetGameData()
 	{
-		if(gameData != null && stageSelectionStageCounterTextUI != null)
+		if(gameData != null && stageCounterTextUI != null)
 		{
-			gameData.ResetData(stageSelectionStageCounterTextUI.GetCurrentCounterValue());
+			gameData.ResetData(stageCounterTextUI.GetCurrentCounterValue());
 		}
 	}
 

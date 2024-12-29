@@ -4,13 +4,13 @@ public class StageSelectionUIManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
-	private StageCounterStageSelectionTextUI stageSelectionStageCounterTextUI;
-	private NoStagesStageSelectionTextUI stageSelectionNoStagesTextUI;
+	private StageCounterStageSelectionTextUI stageCounterTextUI;
+	private NoStagesStageSelectionTextUI noStagesTextUI;
 
 	private void Awake()
 	{
-		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
-		stageSelectionNoStagesTextUI = FindFirstObjectByType<NoStagesStageSelectionTextUI>();
+		stageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
+		noStagesTextUI = FindFirstObjectByType<NoStagesStageSelectionTextUI>();
 	}
 
 	private void Start()
@@ -18,22 +18,22 @@ public class StageSelectionUIManager : MonoBehaviour
 		var foundAnyStage = gameData != null && !gameData.NoStagesFound();
 
 		SetStageCounterTextUIActive(foundAnyStage);
-		SetNoStagesMessageTextUIActive(!foundAnyStage);
+		SetNoStagesTextUIActive(!foundAnyStage);
 	}
 
 	private void SetStageCounterTextUIActive(bool active)
 	{
-		if(stageSelectionStageCounterTextUI != null)
+		if(stageCounterTextUI != null)
 		{
-			stageSelectionStageCounterTextUI.SetActive(active);
+			stageCounterTextUI.SetActive(active);
 		}
 	}
 
-	private void SetNoStagesMessageTextUIActive(bool active)
+	private void SetNoStagesTextUIActive(bool active)
 	{
-		if(stageSelectionNoStagesTextUI != null)
+		if(noStagesTextUI != null)
 		{
-			stageSelectionNoStagesTextUI.SetActive(active);
+			noStagesTextUI.SetActive(active);
 		}
 	}
 }
