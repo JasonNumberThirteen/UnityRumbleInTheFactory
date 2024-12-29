@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EntityMovement : MonoBehaviour, IUpgradeable
+public class EntityMovement : MonoBehaviour, IUpgradeableByPlayerRobotRank
 {
 	[Min(0f)] public float movementSpeed = 5f;
 

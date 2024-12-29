@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RobotHealth : MonoBehaviour, IUpgradeable
+public class RobotHealth : MonoBehaviour, IUpgradeableByPlayerRobotRank
 {
 	[Min(1)] public int initialHealth = 1;
 
