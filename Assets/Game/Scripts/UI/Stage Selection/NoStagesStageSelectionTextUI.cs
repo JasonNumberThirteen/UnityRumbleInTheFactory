@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class StageSelectionNoStagesTextUI : MonoBehaviour
+public class NoStagesStageSelectionTextUI : MonoBehaviour
 {
 	private TextMeshProUGUI text;
 
