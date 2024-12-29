@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Timer))]
 public class StageSelectionManager : MonoBehaviour
 {
+	public UnityEvent<int> navigationDirectionChangedEvent;
+	
 	[SerializeField] private GameData gameData;
 
 	private MenuOptionsInput menuOptionsInput;
-	private StageCounterStageSelectionTextUI stageCounterTextUI;
 	private Timer timer;
 	private int navigationDirection;
 	private float navigationTimer;
@@ -14,7 +16,6 @@ public class StageSelectionManager : MonoBehaviour
 	private void Awake()
 	{
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
-		stageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
 		timer = GetComponent<Timer>();
 
 		RegisterToListeners(true);
@@ -63,10 +64,7 @@ public class StageSelectionManager : MonoBehaviour
 			}
 			else
 			{
-				if(stageCounterTextUI != null)
-				{
-					stageCounterTextUI.ModifyCounterBy(navigationDirection);
-				}
+				navigationDirectionChangedEvent?.Invoke(navigationDirection);
 
 				navigationTimer = timer.duration;
 			}
