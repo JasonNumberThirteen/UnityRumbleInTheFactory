@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface ITriggerable
+public interface ITriggerableOnEnter
 {
 	void TriggerEffect(GameObject sender);
 }

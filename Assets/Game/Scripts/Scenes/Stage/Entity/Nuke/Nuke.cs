@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(EntityExploder))]
-public class Nuke : MonoBehaviour, ITriggerable
+public class Nuke : MonoBehaviour, ITriggerableOnEnter
 {
 	public UnityEvent nukeDestroyedEvent;
 

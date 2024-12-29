@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SlipperyFloorTrigger : MonoBehaviour, ITriggerable, IReversibleTrigger
+public class SlipperyFloorTrigger : MonoBehaviour, ITriggerableOnEnter, IReversibleTrigger
 {
 	public void TriggerEffect(GameObject sender)
 	{

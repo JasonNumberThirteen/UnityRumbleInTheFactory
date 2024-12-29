@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BricksTrigger : MonoBehaviour, ITriggerable
+public class BricksTrigger : MonoBehaviour, ITriggerableOnEnter
 {
 	public void TriggerEffect(GameObject sender)
 	{

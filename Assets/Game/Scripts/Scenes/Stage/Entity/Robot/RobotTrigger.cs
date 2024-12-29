@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RobotTrigger : MonoBehaviour, ITriggerable
+public class RobotTrigger : MonoBehaviour, ITriggerableOnEnter
 {
 	protected RobotHealth health;
 	

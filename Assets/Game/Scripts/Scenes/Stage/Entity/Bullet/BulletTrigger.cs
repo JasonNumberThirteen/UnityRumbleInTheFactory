@@ -22,7 +22,7 @@ public class BulletTrigger : MonoBehaviour
 
 	private void TriggerEffectOnCollider(Collider2D collider)
 	{
-		if(collider.gameObject.TryGetComponent(out ITriggerable triggerable))
+		if(collider.gameObject.TryGetComponent(out ITriggerableOnEnter triggerable))
 		{
 			triggerable.TriggerEffect(gameObject);
 		}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MetalTrigger : MonoBehaviour, ITriggerable
+public class MetalTrigger : MonoBehaviour, ITriggerableOnEnter
 {
 	public void TriggerEffect(GameObject sender)
 	{

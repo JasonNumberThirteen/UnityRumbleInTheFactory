@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BonusTrigger : MonoBehaviour, ITriggerable
+public abstract class BonusTrigger : MonoBehaviour, ITriggerableOnEnter
 {
 	public virtual void TriggerEffect(GameObject sender)
 	{
