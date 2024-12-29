@@ -6,12 +6,12 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	[SerializeField] private PlayersListData playersListData;
 
 	private MenuOptionsInput menuOptionsInput;
-	private StageSelectionStageCounterTextUI stageSelectionStageCounterTextUI;
+	private StageCounterStageSelectionTextUI stageSelectionStageCounterTextUI;
 
 	private void Awake()
 	{
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
-		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageSelectionStageCounterTextUI>();
+		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
 
 		RegisterToListeners(true);
 	}

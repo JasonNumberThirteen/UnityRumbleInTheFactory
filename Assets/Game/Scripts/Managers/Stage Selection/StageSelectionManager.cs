@@ -6,7 +6,7 @@ public class StageSelectionManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 
 	private MenuOptionsInput menuOptionsInput;
-	private StageSelectionStageCounterTextUI stageSelectionStageCounterTextUI;
+	private StageCounterStageSelectionTextUI stageSelectionStageCounterTextUI;
 	private Timer timer;
 	private int navigationDirection;
 	private float navigationTimer;
@@ -14,7 +14,7 @@ public class StageSelectionManager : MonoBehaviour
 	private void Awake()
 	{
 		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
-		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageSelectionStageCounterTextUI>();
+		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
 		timer = GetComponent<Timer>();
 
 		RegisterToListeners(true);

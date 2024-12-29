@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI), typeof(LoopingIntCounter))]
-public class StageSelectionStageCounterTextUI : MonoBehaviour
+public class StageCounterStageSelectionTextUI : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 	

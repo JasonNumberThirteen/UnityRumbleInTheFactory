@@ -4,12 +4,12 @@ public class StageSelectionUIManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
-	private StageSelectionStageCounterTextUI stageSelectionStageCounterTextUI;
+	private StageCounterStageSelectionTextUI stageSelectionStageCounterTextUI;
 	private NoStagesStageSelectionTextUI stageSelectionNoStagesTextUI;
 
 	private void Awake()
 	{
-		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageSelectionStageCounterTextUI>();
+		stageSelectionStageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
 		stageSelectionNoStagesTextUI = FindFirstObjectByType<NoStagesStageSelectionTextUI>();
 	}
 
