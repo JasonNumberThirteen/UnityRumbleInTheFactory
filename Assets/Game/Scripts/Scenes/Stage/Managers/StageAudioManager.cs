@@ -7,6 +7,7 @@ public class StageAudioManager : MonoBehaviour
 	private AudioSource[] audioSources;
 	private AudioSource playerRobotMovementChannel;
 	private float playerRobotMovementChannelVolume;
+	private StageMusicManager stageMusicManager;
 
 	public void StopPlayerRobotMovementChannel() => playerRobotMovementChannel.Stop();
 	public void PlayPlayerRobotBulletHitSound() => PlaySound(playerRobotBulletHit);
@@ -74,6 +75,37 @@ public class StageAudioManager : MonoBehaviour
 		audioSources = GetComponentsInChildren<AudioSource>();
 		playerRobotMovementChannel = audioSources[0];
 		playerRobotMovementChannelVolume = playerRobotMovementChannel.volume;
+		stageMusicManager = FindAnyObjectByType<StageMusicManager>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			if(stageMusicManager != null)
+			{
+				stageMusicManager.musicStoppedPlayingEvent.AddListener(OnMusicStoppedPlaying);
+			}
+		}
+		else
+		{
+			if(stageMusicManager != null)
+			{
+				stageMusicManager.musicStoppedPlayingEvent.RemoveListener(OnMusicStoppedPlaying);
+			}
+		}
+	}
+
+	private void OnMusicStoppedPlaying()
+	{
+		StageManager.instance.EnableAudioManager();
 	}
 
 	private void PlaySound(AudioClip audioClip)
