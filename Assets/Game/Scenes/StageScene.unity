@@ -1543,6 +1543,7 @@ GameObject:
   - component: {fileID: 600235743}
   - component: {fileID: 600235745}
   - component: {fileID: 600235746}
+  - component: {fileID: 600235747}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -1681,6 +1682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d822f13543f816b4989dbb0902bbff29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransformReachedTargetPositionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   targetPosition: {x: 0, y: 0}
 --- !u!114 &600235746
 MonoBehaviour:
@@ -1715,6 +1719,21 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &600235747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600235741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79546e476de33aa428d381fed4925b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textReachedTargetPositionEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &623931944
