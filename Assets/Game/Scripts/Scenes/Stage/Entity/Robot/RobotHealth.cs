@@ -8,7 +8,7 @@ public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
 
 	private RobotAudioSource audioSource;
 
-	public virtual void UpdateValuesUpgradeableByPlayerRobotRank(PlayerRobotRank rank) => Health = rank.GetHealth();
+	public virtual void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank) => Health = robotRank.GetHealth();
 
 	public virtual void TakeDamage(GameObject sender, int damage)
 	{
