@@ -1,20 +1,13 @@
-using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TextMeshProUGUI), typeof(LoopingIntCounter))]
-public class StageCounterStageSelectionTextUI : MonoBehaviour
+[RequireComponent(typeof(LoopingIntCounter))]
+public class StageCounterStageSelectionTextUI : StageSelectionTextUI
 {
 	[SerializeField] private GameData gameData;
 	
-	private TextMeshProUGUI text;
 	private LoopingIntCounter loopingCounter;
 
 	public int GetCurrentCounterValue() => loopingCounter.CurrentValue;
-
-	public void SetActive(bool active)
-	{
-		text.enabled = active;
-	}
 
 	public void ModifyCounterBy(int value)
 	{
@@ -28,9 +21,10 @@ public class StageCounterStageSelectionTextUI : MonoBehaviour
 		}
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
-		text = GetComponent<TextMeshProUGUI>();
+		base.Awake();
+		
 		loopingCounter = GetComponent<LoopingIntCounter>();
 	}
 
