@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Timer))]
 public class TimedRectTransformPositionController : RectTransformPositionController
 {
+	public UnityEvent rectTransformReachedTargetPositionEvent;
+	
 	[SerializeField] private Vector2 targetPosition;
 	
 	private Timer timer;
@@ -14,6 +17,30 @@ public class TimedRectTransformPositionController : RectTransformPositionControl
 		
 		timer = GetComponent<Timer>();
 		initialPosition = rectTransform.anchoredPosition;
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			timer.onEnd.AddListener(OnTimerEnd);
+		}
+		else
+		{
+			timer.onEnd.RemoveListener(OnTimerEnd);
+		}
+	}
+
+	private void OnTimerEnd()
+	{
+		rectTransformReachedTargetPositionEvent?.Invoke();
 	}
 
 	private void Update()
