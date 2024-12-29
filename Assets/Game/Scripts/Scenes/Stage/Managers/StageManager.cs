@@ -11,7 +11,7 @@ public class StageManager : MonoBehaviour
 	public PlayersManager playersManager;
 	public EnemySpawnManager enemySpawnManager;
 	public GameData gameData;
-	public Timer gameOverTimer, sceneManagerTimer;
+	public Timer gameOverTimer;
 
 	private Nuke nuke;
 	private int defeatedEnemies;
@@ -112,12 +112,9 @@ public class StageManager : MonoBehaviour
 
 	private void CheckIfWonTheGame()
 	{
-		if(!WonTheGame())
+		if(WonTheGame())
 		{
-			return;
+			stateManager.SetStateTo(StageState.Won);
 		}
-
-		stateManager.SetStateTo(StageState.Won);
-		sceneManagerTimer.StartTimer();
 	}
 }

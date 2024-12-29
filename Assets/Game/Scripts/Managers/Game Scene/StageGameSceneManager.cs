@@ -5,11 +5,13 @@ public class StageGameSceneManager : GameSceneManager
 {
 	private Timer timer;
 	private GameOverTextUI gameOverTextUI;
+	private StageStateManager stageStateManager;
 
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
 		gameOverTextUI = FindAnyObjectByType<GameOverTextUI>();
+		stageStateManager = FindAnyObjectByType<StageStateManager>();
 
 		RegisterToListeners(true);
 	}
@@ -29,6 +31,11 @@ public class StageGameSceneManager : GameSceneManager
 			{
 				gameOverTextUI.textReachedTargetPositionEvent.AddListener(OnGameOverTextUIReachedTargetPosition);
 			}
+
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+			}
 		}
 		else
 		{
@@ -37,6 +44,11 @@ public class StageGameSceneManager : GameSceneManager
 			if(gameOverTextUI != null)
 			{
 				gameOverTextUI.textReachedTargetPositionEvent.RemoveListener(OnGameOverTextUIReachedTargetPosition);
+			}
+
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 	}
@@ -49,5 +61,13 @@ public class StageGameSceneManager : GameSceneManager
 	private void OnGameOverTextUIReachedTargetPosition()
 	{
 		timer.StartTimer();
+	}
+
+	private void OnStageStateChanged(StageState stageState)
+	{
+		if(stageState == StageState.Won)
+		{
+			timer.StartTimer();
+		}
 	}
 }
