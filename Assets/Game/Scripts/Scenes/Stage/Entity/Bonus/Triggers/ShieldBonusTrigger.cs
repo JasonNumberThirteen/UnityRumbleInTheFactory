@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShieldBonusTrigger : TimedBonusTrigger
 {
-	public override void TriggerEffect(GameObject sender)
+	public override void TriggerOnEnter(GameObject sender)
 	{
 		if(sender.TryGetComponent(out PlayerRobotShield prs))
 		{
@@ -11,6 +11,6 @@ public class ShieldBonusTrigger : TimedBonusTrigger
 			prs.ShieldTimer.ResetTimer();
 		}
 		
-		base.TriggerEffect(sender);
+		base.TriggerOnEnter(sender);
 	}
 }

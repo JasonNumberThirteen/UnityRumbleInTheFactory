@@ -4,10 +4,10 @@ public class DestructionBonusTrigger : BonusTrigger
 {
 	public string enemyTag;
 	
-	public override void TriggerEffect(GameObject sender)
+	public override void TriggerOnEnter(GameObject sender)
 	{
 		DestroyAllFoundEnemies();
-		base.TriggerEffect(sender);
+		base.TriggerOnEnter(sender);
 	}
 
 	private void DestroyAllFoundEnemies()

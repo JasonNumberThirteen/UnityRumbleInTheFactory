@@ -4,14 +4,14 @@ public class FreezeBonusTrigger : TimedBonusTrigger
 {
 	private EnemyFreezeManager enemyFreezeManager;
 	
-	public override void TriggerEffect(GameObject sender)
+	public override void TriggerOnEnter(GameObject sender)
 	{
 		if(enemyFreezeManager != null)
 		{
 			enemyFreezeManager.InitiateFreeze(GetDuration());
 		}
 
-		base.TriggerEffect(sender);
+		base.TriggerOnEnter(sender);
 	}
 
 	private void Awake()

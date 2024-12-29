@@ -9,7 +9,7 @@ public class FortressBonusTrigger : TimedBonusTrigger
 
 	private GameObject nuke;
 	
-	public override void TriggerEffect(GameObject sender)
+	public override void TriggerOnEnter(GameObject sender)
 	{
 		nuke = GameObject.FindGameObjectWithTag(nukeTag);
 
@@ -19,7 +19,7 @@ public class FortressBonusTrigger : TimedBonusTrigger
 			InstantiateMetalTilesAroundTheNuke();
 		}
 
-		base.TriggerEffect(sender);
+		base.TriggerOnEnter(sender);
 	}
 	
 	private void DestroyAllObjectsAroundTheNuke()

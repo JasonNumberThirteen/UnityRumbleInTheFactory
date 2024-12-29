@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MetalTrigger : MonoBehaviour, ITriggerableOnEnter
 {
-	public void TriggerEffect(GameObject sender)
+	public void TriggerOnEnter(GameObject sender)
 	{
 		if(CanBeDestroyedByBullet(sender))
 		{

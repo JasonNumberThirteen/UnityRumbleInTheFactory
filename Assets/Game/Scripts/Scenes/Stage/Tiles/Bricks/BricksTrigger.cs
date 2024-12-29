@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BricksTrigger : MonoBehaviour, ITriggerableOnEnter
 {
-	public void TriggerEffect(GameObject sender)
+	public void TriggerOnEnter(GameObject sender)
 	{
 		Destroy(gameObject);
 	}

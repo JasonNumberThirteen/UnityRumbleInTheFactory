@@ -10,7 +10,7 @@ public class Nuke : MonoBehaviour, ITriggerableOnEnter
 
 	private readonly string DESTROYED_STATE_LAYER = "Destroyed Nuke";
 	
-	public void TriggerEffect(GameObject sender)
+	public void TriggerOnEnter(GameObject sender)
 	{
 		ChangeLayerToDestroyedState();
 		entityExploder.Explode();

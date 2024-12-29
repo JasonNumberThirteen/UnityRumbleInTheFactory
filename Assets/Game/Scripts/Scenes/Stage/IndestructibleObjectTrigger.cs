@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class IndestructibleObjectTrigger : MonoBehaviour, ITriggerableOnEnter
 {
-	public void TriggerEffect(GameObject sender)
+	public void TriggerOnEnter(GameObject sender)
 	{
 		if(sender.tag.Contains("Player"))
 		{

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SlipperyFloorTrigger : MonoBehaviour, ITriggerableOnEnter, IReversibleTrigger
 {
-	public void TriggerEffect(GameObject sender)
+	public void TriggerOnEnter(GameObject sender)
 	{
 		SetSliding(sender, true);
 	}

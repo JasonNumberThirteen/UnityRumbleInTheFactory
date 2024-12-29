@@ -24,7 +24,7 @@ public class BulletTrigger : MonoBehaviour
 	{
 		if(collider.gameObject.TryGetComponent(out ITriggerableOnEnter triggerable))
 		{
-			triggerable.TriggerEffect(gameObject);
+			triggerable.TriggerOnEnter(gameObject);
 		}
 	}
 }

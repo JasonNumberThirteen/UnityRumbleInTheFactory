@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class LifeBonusTrigger : BonusTrigger
 {
-	public override void TriggerEffect(GameObject sender)
+	public override void TriggerOnEnter(GameObject sender)
 	{
 		if(sender.TryGetComponent(out PlayerRobotData playerRobotData))
 		{
 			++playerRobotData.Data.Lives;
 		}
 
-		base.TriggerEffect(sender);
+		base.TriggerOnEnter(sender);
 	}
 }

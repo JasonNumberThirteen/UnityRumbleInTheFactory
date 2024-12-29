@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BonusTrigger : MonoBehaviour, ITriggerableOnEnter
 {
-	public virtual void TriggerEffect(GameObject sender)
+	public virtual void TriggerOnEnter(GameObject sender)
 	{
 		AddPointsToPlayer(sender);
 		Destroy(gameObject);

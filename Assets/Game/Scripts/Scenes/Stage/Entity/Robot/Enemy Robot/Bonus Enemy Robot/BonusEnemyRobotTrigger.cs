@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BonusEnemyRobotTrigger : RobotTrigger
 {
-	public override void TriggerEffect(GameObject sender)
+	public override void TriggerOnEnter(GameObject sender)
 	{
 		if(TryGetComponent(out BonusEnemyRobotBonus berb))
 		{
@@ -15,6 +15,6 @@ public class BonusEnemyRobotTrigger : RobotTrigger
 			Destroy(berc);
 		}
 
-		base.TriggerEffect(sender);
+		base.TriggerOnEnter(sender);
 	}
 }

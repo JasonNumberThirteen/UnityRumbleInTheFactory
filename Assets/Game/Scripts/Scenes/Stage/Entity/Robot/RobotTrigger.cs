@@ -4,7 +4,7 @@ public class RobotTrigger : MonoBehaviour, ITriggerableOnEnter
 {
 	protected RobotHealth health;
 	
-	public virtual void TriggerEffect(GameObject sender)
+	public virtual void TriggerOnEnter(GameObject sender)
 	{
 		if(sender.TryGetComponent(out BulletStats bs))
 		{
