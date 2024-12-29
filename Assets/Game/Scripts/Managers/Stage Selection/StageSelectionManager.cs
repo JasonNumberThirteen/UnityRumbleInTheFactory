@@ -46,16 +46,6 @@ public class StageSelectionManager : MonoBehaviour
 
 	private void Update()
 	{
-		NavigateRepeatedly();
-	}
-
-	private void NavigateRepeatedly()
-	{
-		if(gameData == null || gameData.NoStagesFound())
-		{
-			return;
-		}
-
 		if(navigationDirection != 0)
 		{
 			if(navigationTimer >= 0)
@@ -64,9 +54,9 @@ public class StageSelectionManager : MonoBehaviour
 			}
 			else
 			{
-				navigationDirectionChangedEvent?.Invoke(navigationDirection);
-
 				navigationTimer = timer.duration;
+
+				navigationDirectionChangedEvent?.Invoke(navigationDirection);
 			}
 		}
 		else if(navigationTimer != 0)
