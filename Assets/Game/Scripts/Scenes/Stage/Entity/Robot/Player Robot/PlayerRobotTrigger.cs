@@ -14,9 +14,9 @@ public class PlayerRobotTrigger : RobotTrigger
 
 	private void OnTriggerStay2D(Collider2D collider)
 	{
-		if(collider.gameObject.TryGetComponent(out ITriggerable triggerable))
+		if(collider.gameObject.TryGetComponent(out ITriggerableOnStay triggerableOnStay))
 		{
-			triggerable.TriggerEffect(gameObject);
+			triggerableOnStay.TriggerOnStay(gameObject);
 		}
 	}
 
