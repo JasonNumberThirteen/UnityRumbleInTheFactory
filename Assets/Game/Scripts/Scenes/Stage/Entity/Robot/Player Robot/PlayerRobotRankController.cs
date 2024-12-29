@@ -29,7 +29,7 @@ public class PlayerRobotRankController : MonoBehaviour
 
 		foreach (IUpgradeableByPlayerRobotRank upgradeable in upgradeables)
 		{
-			upgradeable.UpdateValues(CurrentRank);
+			upgradeable.UpdateValuesUpgradeableByPlayerRobotRank(CurrentRank);
 		}
 	}
 }

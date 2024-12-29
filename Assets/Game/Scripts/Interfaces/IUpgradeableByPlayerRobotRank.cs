@@ -1,4 +1,4 @@
 public interface IUpgradeableByPlayerRobotRank
 {
-	void UpdateValues(PlayerRobotRank rank);
+	void UpdateValuesUpgradeableByPlayerRobotRank(PlayerRobotRank rank);
 }
