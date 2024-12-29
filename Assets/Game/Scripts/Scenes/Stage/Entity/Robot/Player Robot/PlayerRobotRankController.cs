@@ -25,9 +25,9 @@ public class PlayerRobotRankController : MonoBehaviour
 
 	private void UpdateValues()
 	{
-		IUpgradeableByPlayerRobotRank[] upgradeables = GetComponents<IUpgradeableByPlayerRobotRank>();
+		IUpgradeableByRobotRank[] upgradeables = GetComponents<IUpgradeableByRobotRank>();
 
-		foreach (IUpgradeableByPlayerRobotRank upgradeable in upgradeables)
+		foreach (IUpgradeableByRobotRank upgradeable in upgradeables)
 		{
 			upgradeable.UpdateValuesUpgradeableByPlayerRobotRank(CurrentRank);
 		}
