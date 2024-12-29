@@ -123,6 +123,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &25619686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 25619687}
+  m_Layer: 0
+  m_Name: Canvases
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &25619687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25619686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 120467784}
+  - {fileID: 1069250942}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &28531379
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +170,7 @@ GameObject:
   - component: {fileID: 28531384}
   - component: {fileID: 28531385}
   m_Layer: 5
-  m_Name: Pause
+  m_Name: Pause Text UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -596,8 +629,8 @@ RectTransform:
   - {fileID: 28531380}
   - {fileID: 1922023825}
   - {fileID: 183213088}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 25619687}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -669,7 +702,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_Name
-      value: Bricks
+      value: Bricks Tile
       objectReference: {fileID: 0}
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_IsActive
@@ -739,7 +772,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_Name
-      value: Bricks
+      value: Bricks Tile
       objectReference: {fileID: 0}
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_IsActive
@@ -811,7 +844,7 @@ GameObject:
   - component: {fileID: 183213090}
   - component: {fileID: 183213089}
   m_Layer: 5
-  m_Name: Difficulty Tier
+  m_Name: Difficulty Tier Image UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1049,7 +1082,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_Name
-      value: Bricks
+      value: Bricks Tile
       objectReference: {fileID: 0}
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_IsActive
@@ -1263,7 +1296,7 @@ Transform:
   - {fileID: 1886217740}
   - {fileID: 2136177301}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556736243
 GameObject:
@@ -1546,7 +1579,7 @@ GameObject:
   - component: {fileID: 600235746}
   - component: {fileID: 600235747}
   m_Layer: 5
-  m_Name: Game Over
+  m_Name: Game Over Text UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2292,7 +2325,7 @@ GameObject:
   - component: {fileID: 811824560}
   - component: {fileID: 811824559}
   m_Layer: 5
-  m_Name: Player 1 Lives Counter Icon
+  m_Name: Player 1 Lives Counter Image UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2637,7 +2670,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_Name
-      value: Bricks
+      value: Bricks Tile
       objectReference: {fileID: 0}
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_IsActive
@@ -2760,8 +2793,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1264001232}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 25619687}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2843,7 +2876,7 @@ GameObject:
   - component: {fileID: 1164274188}
   - component: {fileID: 1164274187}
   m_Layer: 5
-  m_Name: Stage Counter Icon
+  m_Name: Stage Counter Image UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3134,7 +3167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4209765517072453317, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: m_Name
-      value: Stage Selection Background Panel
+      value: Translation Background Panel UI
       objectReference: {fileID: 0}
     - target: {fileID: 6448693611940417116, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: m_IsActive
@@ -3749,7 +3782,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_Name
-      value: Bricks
+      value: Bricks Tile
       objectReference: {fileID: 0}
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_IsActive
@@ -3956,7 +3989,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_Name
-      value: Bricks
+      value: Bricks Tile
       objectReference: {fileID: 0}
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_IsActive
@@ -4189,7 +4222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_Name
-      value: Bricks
+      value: Bricks Tile
       objectReference: {fileID: 0}
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_IsActive
@@ -4498,7 +4531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3489673666025870493, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
       propertyPath: m_Name
-      value: Stage Counter (SS)
+      value: Stage Counter Header Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 4224792097506310430, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
       propertyPath: setAtStart
@@ -4674,7 +4707,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_Name
-      value: Bricks
+      value: Bricks Tile
       objectReference: {fileID: 0}
     - target: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
       propertyPath: m_IsActive
@@ -4747,7 +4780,7 @@ GameObject:
   - component: {fileID: 1967636428}
   - component: {fileID: 1967636427}
   m_Layer: 5
-  m_Name: Player 2 Lives Counter Icon
+  m_Name: Player 2 Lives Counter Image UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4980,7 +5013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 878183437993888630, guid: 8cf4b4f90a38e2a4da89f9375e4a0f75, type: 3}
       propertyPath: m_Name
-      value: Stage Counter (Stage)
+      value: Stage Counter Text UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5166,7 +5199,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2065490863
 MonoBehaviour:
