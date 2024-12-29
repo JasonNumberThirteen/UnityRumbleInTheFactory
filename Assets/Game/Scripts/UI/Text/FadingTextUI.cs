@@ -1,15 +1,14 @@
-using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TextMeshProUGUI), typeof(Timer))]
-public class FadingTextUI : MonoBehaviour
+[RequireComponent(typeof(Timer))]
+public class FadingTextUI : TextUI
 {
-	private TextMeshProUGUI text;
 	private Timer timer;
 
-	private void Awake()
+	protected override void Awake()
 	{
-		text = GetComponent<TextMeshProUGUI>();
+		base.Awake();
+
 		timer = GetComponent<Timer>();
 	}
 
