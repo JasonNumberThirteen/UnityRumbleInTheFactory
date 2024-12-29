@@ -3,6 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Timer))]
 public class StageFlowManager : MonoBehaviour
 {
+	[SerializeField] private Timer startTimer;
+	[SerializeField] private float delayOnStart = 1.5f;
+	[SerializeField] private float delayAfterInterrupting = 1f;
+	
 	private Timer timer;
 	private StageStateManager stageStateManager;
 
@@ -10,6 +14,7 @@ public class StageFlowManager : MonoBehaviour
 	{
 		timer = GetComponent<Timer>();
 		stageStateManager = FindAnyObjectByType<StageStateManager>();
+		timer.duration = delayOnStart;
 
 		RegisterToListeners(true);
 	}
@@ -43,7 +48,16 @@ public class StageFlowManager : MonoBehaviour
 
 	private void OnTimerEnd()
 	{
-		if(stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Interrupted))
+		if(stageStateManager == null)
+		{
+			return;
+		}
+
+		if(startTimer != null && stageStateManager.StateIsSetTo(StageState.Active))
+		{
+			startTimer.onEnd.Invoke();
+		}
+		else if(stageStateManager.StateIsSetTo(StageState.Interrupted))
 		{
 			StageManager.instance.SetGameAsOver();
 		}
@@ -53,7 +67,9 @@ public class StageFlowManager : MonoBehaviour
 	{
 		if(stageState == StageState.Interrupted)
 		{
-			timer.StartTimer();
+			timer.duration = delayAfterInterrupting;
+			
+			timer.ResetTimer();
 		}
 	}
 }

@@ -1295,7 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1.5
-  countFromTheStart: 1
+  countFromTheStart: 0
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -3460,7 +3460,6 @@ MonoBehaviour:
   playersManager: {fileID: 1263742803}
   enemySpawnManager: {fileID: 1295888590}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  gameOverTimer: {fileID: 0}
 --- !u!4 &1342973423
 Transform:
   m_ObjectHideFlags: 0
@@ -5244,6 +5243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f593c30dd60bf84cae6df7c67e1d2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTimer: {fileID: 556736244}
+  delayOnStart: 1.5
+  delayAfterInterrupting: 1
 --- !u!114 &2136177303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5257,7 +5259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
-  countFromTheStart: 0
+  countFromTheStart: 1
   onReset:
     m_PersistentCalls:
       m_Calls: []
