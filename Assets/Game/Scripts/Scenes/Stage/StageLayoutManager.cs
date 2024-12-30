@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StageBuilder : MonoBehaviour
+public class StageLayoutManager : MonoBehaviour
 {
 	public GameData gameData;
 	public GameObject[] tiles;
