@@ -9,6 +9,7 @@ public class StageStateManager : MonoBehaviour
 
 	public bool StateIsSetTo(StageState stageState) => this.stageState == stageState;
 	public bool GameIsOver() => StateIsSetTo(StageState.Interrupted) || StateIsSetTo(StageState.Over);
+	public StageState GetCurrentState() => stageState;
 
 	public void SetStateTo(StageState stageState)
 	{
