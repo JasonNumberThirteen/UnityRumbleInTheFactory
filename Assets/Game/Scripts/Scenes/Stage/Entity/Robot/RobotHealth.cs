@@ -36,7 +36,7 @@ public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
 	{
 		if(TryGetComponent(out EntityExploder ee))
 		{
-			ee.Explode();
+			ee.TriggerExplosion();
 		}
 	}
 }

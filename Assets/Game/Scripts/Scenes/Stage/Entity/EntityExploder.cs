@@ -2,18 +2,26 @@ using UnityEngine;
 
 public class EntityExploder : MonoBehaviour
 {
-	public GameObject explosionEffect;
-	public bool destroysEntity;
+	[SerializeField] private GameObject explosionEffectPrefab;
+	[SerializeField] private bool destroyGOAfterExplosion = true;
 
-	public void Explode()
+	public void TriggerExplosion()
 	{
-		Instantiate(explosionEffect, transform.position, Quaternion.identity);
-		DestroyEntity();
+		InstantiateEffectPrefab();
+		DestroyGOIfNeeded();
+	}
+
+	private void InstantiateEffectPrefab()
+	{
+		if(explosionEffectPrefab != null)
+		{
+			Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+		}
 	}
 	
-	private void DestroyEntity()
+	private void DestroyGOIfNeeded()
 	{
-		if(destroysEntity)
+		if(destroyGOAfterExplosion)
 		{
 			Destroy(gameObject);
 		}

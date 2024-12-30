@@ -26,7 +26,7 @@ public class DestructionBonusTrigger : BonusTrigger
 	{
 		if(enemy.TryGetComponent(out EntityExploder ee))
 		{
-			ee.Explode();
+			ee.TriggerExplosion();
 		}
 
 		StageManager.instance.CountDefeatedEnemy();

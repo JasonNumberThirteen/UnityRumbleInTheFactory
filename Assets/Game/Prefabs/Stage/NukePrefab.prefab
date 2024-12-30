@@ -201,6 +201,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a7e1ec98212664bb12bc138c01920f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
-  removesComponent: 0
-  destroysEntity: 0
+  explosionEffectPrefab: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
+  destroyGOAfterExplosion: 0

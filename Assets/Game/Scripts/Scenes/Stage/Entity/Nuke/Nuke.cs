@@ -13,7 +13,7 @@ public class Nuke : MonoBehaviour, ITriggerableOnEnter
 	public void TriggerOnEnter(GameObject sender)
 	{
 		ChangeLayerToDestroyedState();
-		entityExploder.Explode();
+		entityExploder.TriggerExplosion();
 		nukeDestroyedEvent?.Invoke();
 	}
 

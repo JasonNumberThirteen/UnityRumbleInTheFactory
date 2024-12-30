@@ -19,7 +19,7 @@ public class Telefragger : MonoBehaviour
 			}
 			else if(go.TryGetComponent(out EntityExploder ee))
 			{
-				ee.Explode();
+				ee.TriggerExplosion();
 			}
 			else
 			{

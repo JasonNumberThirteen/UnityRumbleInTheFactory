@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7bb0de0d46da4458b082c3353c879c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoot: {fileID: 0}
   damage: {fileID: 8300000, guid: 928473f8c3ec85d44a2b2294d252ea67, type: 3}
 --- !u!114 &6410641849965248143
 MonoBehaviour:
@@ -345,9 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a7e1ec98212664bb12bc138c01920f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
-  removesComponent: 1
-  destroysEntity: 1
+  explosionEffectPrefab: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
+  destroyGOAfterExplosion: 1
 --- !u!114 &5126605066933689641
 MonoBehaviour:
   m_ObjectHideFlags: 0
