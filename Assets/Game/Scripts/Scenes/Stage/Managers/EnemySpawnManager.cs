@@ -53,7 +53,7 @@ public class EnemySpawnManager : MonoBehaviour
 	private void OnEnemyAssignAtStart(EnemySpawner es)
 	{
 		es.entity = enemyTypesReader.Enemies[enemyIndex];
-		es.IsBonus = enemyTypesReader.EnemyTypes[enemyIndex].isBonus;
+		es.IsBonus = enemyTypesReader.EnemyTypes[enemyIndex].IsBonus();
 		++enemyIndex;
 
 		StageManager.instance.uiManager.leftEnemyIconsManager.DestroyLeftEnemyIcon();

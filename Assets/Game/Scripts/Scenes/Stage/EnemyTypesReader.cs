@@ -23,7 +23,7 @@ public class EnemyTypesReader : MonoBehaviour
 
 		for (int i = 0; i < length; ++i)
 		{
-			int index = EnemyTypes[i].index;
+			int index = EnemyTypes[i].GetIndex();
 			
 			Enemies[i] = enemiesData[index].GetPrefab();
 		}
