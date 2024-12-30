@@ -2,36 +2,41 @@ using UnityEngine;
 
 public class Telefragger : MonoBehaviour
 {
-	[Min(0.01f)] public float distance = 0.1f;
-	public LayerMask layerMask;
+	[SerializeField, Min(0.01f)] private float radius = 0.3f;
+	[SerializeField] private LayerMask layerMask;
+	[SerializeField] private bool drawGizmos = true;
+	[SerializeField] private Color sphereGizmosColor = Color.black;
 	
-	public void Telefrag()
+	public void TelefragGOsWithinRadius()
 	{
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, distance, layerMask);
+		var colliders = Physics2D.OverlapCircleAll(transform.position, radius, layerMask);
 
-		foreach (Collider2D c in colliders)
+		foreach (var collider in colliders)
 		{
-			GameObject go = c.gameObject;
-			
-			if(go.TryGetComponent(out RobotHealth rh))
-			{
-				rh.TakeDamage(gameObject, int.MaxValue);
-			}
-			else if(go.TryGetComponent(out EntityExploder ee))
-			{
-				ee.TriggerExplosion();
-			}
-			else
-			{
-				Destroy(go);
-			}
+			TelefragGO(collider.gameObject);
+		}
+	}
+
+	private void TelefragGO(GameObject go)
+	{
+		if(go.TryGetComponent(out RobotHealth robotHealth))
+		{
+			robotHealth.TakeDamage(gameObject, int.MaxValue);
+		}
+		else if(go.TryGetComponent(out EntityExploder entityExploder))
+		{
+			entityExploder.TriggerExplosion();
+		}
+		else
+		{
+			Destroy(go);
 		}
 	}
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.black;
+		Gizmos.color = sphereGizmosColor;
 
-		Gizmos.DrawWireSphere(transform.position, distance);
+		Gizmos.DrawWireSphere(transform.position, radius);
 	}
 }
