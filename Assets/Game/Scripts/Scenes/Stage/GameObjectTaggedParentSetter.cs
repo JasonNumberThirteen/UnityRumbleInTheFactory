@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ParentSetter : MonoBehaviour
+public class GameObjectTaggedParentSetter : MonoBehaviour
 {
 	public string parentTag;
 
