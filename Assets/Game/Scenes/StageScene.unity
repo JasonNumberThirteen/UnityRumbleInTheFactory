@@ -2207,7 +2207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  tiles:
+  tilesPrefabs:
   - {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
   - {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
   - {fileID: 2159015512042367978, guid: ed3dc77b4d7beb243acb315fe2c50a77, type: 3}
@@ -2217,7 +2217,6 @@ MonoBehaviour:
   stageWidthInTiles: 26
   stageHeightInTiles: 26
   tileSize: 0.5
-  prohibitedAreaOverlapSize: 0.25
   prohibitedAreas:
   - serializedVersion: 2
     x: -7
@@ -2249,6 +2248,8 @@ MonoBehaviour:
     y: -6.5
     width: 1
     height: 1
+  drawGizmos: 1
+  prohibitedAreasGizmosColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &681417467
 Transform:
   m_ObjectHideFlags: 0

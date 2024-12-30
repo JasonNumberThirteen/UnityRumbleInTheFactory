@@ -2,25 +2,33 @@ using UnityEngine;
 
 public class StageLayoutManager : MonoBehaviour
 {
-	public GameData gameData;
-	public GameObject[] tiles;
-	public Vector2 positionOffset;
-	[Min(1)] public int stageWidthInTiles, stageHeightInTiles;
-	[Min(0.01f)] public float tileSize, prohibitedAreaOverlapSize;
-	public Rect[] prohibitedAreas;
+	[SerializeField] private GameData gameData;
+	[SerializeField] private GameObject[] tilesPrefabs;
+	[SerializeField] private Vector2 positionOffset = new(-6.75f, -6.75f);
+	[SerializeField, Min(1)] private int stageWidthInTiles = 26;
+	[SerializeField, Min(1)] private int stageHeightInTiles = 26;
+	[SerializeField, Min(0.01f)] private float tileSize = 0.5f;
+	[SerializeField] private Rect[] prohibitedAreas;
+	[SerializeField] private bool drawGizmos = true;
+	[SerializeField] private Color prohibitedAreasGizmosColor = Color.red;
 
-	private void Start() => BuildStage();
-	private Vector2 BoardPosition(int index) => new Vector2(BoardPositionX(index), BoardPositionY(index));
-	private int BoardPositionX(int index) => index % stageWidthInTiles;
-	private int BoardPositionY(int index) => stageHeightInTiles - BoardPositionOffsetY(index);
-	private int BoardPositionOffsetY(int index) => Mathf.FloorToInt(index / stageHeightInTiles);
-	private Vector2 TilePosition(Vector2 position) => position*tileSize + positionOffset;
-	private bool TileExistsOnTheIndex(int index) => index >= 0 && index < tiles.Length;
+	private readonly float PROHIBITED_AREA_OVERLAP_SIZE = 0.25f;
 
-	private void BuildStage()
+	private void Start()
 	{
-		int[] tilesIndexes = gameData.GetCurrentStageData().tiles;
+		if(gameData == null)
+		{
+			return;
+		}
 
+		var currentStageData = gameData.GetCurrentStageData();
+		var tilesIndexes = currentStageData != null ? currentStageData.tiles : new int[0];
+		
+		BuildStageLayout(tilesIndexes);
+	}
+
+	private void BuildStageLayout(int[] tilesIndexes)
+	{
 		for (int i = 0; i < tilesIndexes.Length; ++i)
 		{
 			InstantiateTile(i, tilesIndexes[i] - 1);
@@ -29,24 +37,36 @@ public class StageLayoutManager : MonoBehaviour
 
 	private void InstantiateTile(int loopIndex, int tileIndex)
 	{
-		if(TileExistsOnTheIndex(tileIndex))
+		if(!IndexIsWithinTilesLength(tileIndex))
 		{
-			Vector2 position = TilePosition(BoardPosition(loopIndex));
-
-			if(TileCanBePlaced(position))
-			{
-				Instantiate(tiles[tileIndex], position, Quaternion.identity);
-			}
+			return;
 		}
+		
+		var boardPosition = GetBoardPosition(loopIndex);
+		var tilePosition = GetTilePosition(boardPosition);
+
+		if(TileCanBePlaced(tilePosition))
+		{
+			Instantiate(tilesPrefabs[tileIndex], tilePosition, Quaternion.identity);
+		}
+	}
+
+	private Vector2 GetBoardPosition(int index)
+	{
+		var x = GetBoardPositionX(index);
+		var y = GetBoardPositionY(index);
+		
+		return new(x, y);
 	}
 
 	private bool TileCanBePlaced(Vector2 position)
 	{
-		foreach (Rect r in prohibitedAreas)
+		foreach (var prohibitedArea in prohibitedAreas)
 		{
-			Rect tileRect = new Rect(position, Vector2.one*prohibitedAreaOverlapSize);
+			var rectSize = Vector2.one*PROHIBITED_AREA_OVERLAP_SIZE;
+			var rect = new Rect(position, rectSize);
 			
-			if(r.Overlaps(tileRect))
+			if(prohibitedArea.Overlaps(rect))
 			{
 				return false;
 			}
@@ -57,11 +77,22 @@ public class StageLayoutManager : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.color = Color.red;
-		
-		foreach (Rect r in prohibitedAreas)
+		if(!drawGizmos)
 		{
-			Gizmos.DrawWireCube(r.center, r.size);
+			return;
+		}
+		
+		Gizmos.color = prohibitedAreasGizmosColor;
+		
+		foreach (var prohibitedArea in prohibitedAreas)
+		{
+			Gizmos.DrawWireCube(prohibitedArea.center, prohibitedArea.size);
 		}
 	}
+	
+	private bool IndexIsWithinTilesLength(int index) => index >= 0 && index < tilesPrefabs.Length;
+	private int GetBoardPositionX(int index) => index % stageWidthInTiles;
+	private int GetBoardPositionY(int index) => stageHeightInTiles - GetBoardPositionOffsetY(index);
+	private int GetBoardPositionOffsetY(int index) => Mathf.FloorToInt(index / stageHeightInTiles);
+	private Vector2 GetTilePosition(Vector2 position) => position*tileSize + positionOffset;
 }
