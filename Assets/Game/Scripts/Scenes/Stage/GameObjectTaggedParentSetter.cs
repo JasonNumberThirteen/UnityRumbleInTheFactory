@@ -2,18 +2,15 @@ using UnityEngine;
 
 public class GameObjectTaggedParentSetter : MonoBehaviour
 {
-	public string parentTag;
+	[SerializeField] private string parentTag;
 
-	private void SetParent()
+	private void Start()
 	{
-		GameObject parent = FoundParent();
+		var parent = GameObject.FindGameObjectWithTag(parentTag);
 
 		if(parent != null)
 		{
 			gameObject.transform.SetParent(parent.transform);
 		}
 	}
-
-	private void Start() => SetParent();
-	private GameObject FoundParent() => GameObject.FindGameObjectWithTag(parentTag);
 }
