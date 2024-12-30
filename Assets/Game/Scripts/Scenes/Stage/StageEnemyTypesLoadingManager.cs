@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyTypesReader : MonoBehaviour
+public class StageEnemyTypesLoadingManager : MonoBehaviour
 {
 	public EnemyData[] enemiesData;
 	public GameData gameData;

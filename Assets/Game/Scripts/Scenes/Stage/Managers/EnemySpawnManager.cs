@@ -9,7 +9,7 @@ public class EnemySpawnManager : MonoBehaviour
 	[Min(0.01f)] public float spawnInterval = 2f, bonusEnemyColorFadeTime = 1f;
 	public GameObject[] bonuses;
 	public Color bonusEnemyColor;
-	public EnemyTypesReader enemyTypesReader;
+	public StageEnemyTypesLoadingManager enemyTypesReader;
 
 	private GameObject[] spawners;
 	private int enemyIndex, enemiesToSpawn, spawnerIndex;
