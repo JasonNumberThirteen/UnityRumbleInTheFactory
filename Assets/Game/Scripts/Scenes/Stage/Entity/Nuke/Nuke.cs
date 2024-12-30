@@ -17,13 +17,13 @@ public class Nuke : MonoBehaviour, ITriggerableOnEnter
 		nukeDestroyedEvent?.Invoke();
 	}
 
-	private void ChangeLayerToDestroyedState()
-	{
-		gameObject.layer = LayerMask.NameToLayer(DESTROYED_STATE_LAYER);
-	}
-
 	private void Awake()
 	{
 		entityExploder = GetComponent<EntityExploder>();
+	}
+
+	private void ChangeLayerToDestroyedState()
+	{
+		gameObject.layer = LayerMask.NameToLayer(DESTROYED_STATE_LAYER);
 	}
 }
