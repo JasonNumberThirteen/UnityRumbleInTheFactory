@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Telefragger))]
@@ -16,11 +17,14 @@ public class EnemyEntitySpawner : EntitySpawner
 
 	protected override GameObject GetEntityInstance()
 	{
-		GameObject instance = base.GetEntityInstance();
+		var entityInstance = base.GetEntityInstance();
 
-		AddBonusEnemyComponents(instance);
+		if(entityInstance != null)
+		{
+			AddBonusEnemyComponentsToEntityIfNeeded(entityInstance);
+		}
 
-		return instance;
+		return entityInstance;
 	}
 
 	protected override void RegisterToListeners(bool register)
@@ -37,28 +41,33 @@ public class EnemyEntitySpawner : EntitySpawner
 		}
 	}
 
-	private void AddBonusEnemyComponents(GameObject instance)
+	private void AddBonusEnemyComponentsToEntityIfNeeded(GameObject entity)
 	{
-		if(IsBonus)
+		if(!IsBonus || entity == null)
 		{
-			AddTriggerComponent(instance);
-			AddColorComponent(instance);
-			AddBonusComponent(instance);
-		}
-	}
-
-	private void AddTriggerComponent(GameObject instance)
-	{
-		if(instance.TryGetComponent(out RobotTrigger rt))
-		{
-			Destroy(rt);
+			return;
 		}
 
-		instance.AddComponent<BonusEnemyRobotTrigger>();
+		AddComponentToEntityIfPossible<BonusEnemyRobotTrigger>(entity, () =>
+		{
+			if(entity != null && entity.TryGetComponent(out RobotTrigger robotTrigger))
+			{
+				Destroy(robotTrigger);
+			}
+		});
+		AddComponentToEntityIfPossible<BonusEnemyRobotColor>(entity);
+		AddComponentToEntityIfPossible<BonusEnemyRobotBonus>(entity);
 	}
 
-	private void AddColorComponent(GameObject instance) => instance.AddComponent<BonusEnemyRobotColor>();
-	private void AddBonusComponent(GameObject instance) => instance.AddComponent<BonusEnemyRobotBonus>();
+	private void AddComponentToEntityIfPossible<T>(GameObject entity, Action onStart = null) where T : Component
+	{
+		onStart?.Invoke();
+
+		if(entity != null)
+		{
+			entity.AddComponent<T>();
+		}
+	}
 
 	private void OnTimerEnd()
 	{
