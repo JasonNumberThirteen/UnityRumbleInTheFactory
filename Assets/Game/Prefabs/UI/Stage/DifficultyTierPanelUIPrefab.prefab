@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2413927978867555619}
   - component: {fileID: 103623923853666648}
   - component: {fileID: 829171993001400224}
+  - component: {fileID: 7145966792742401352}
   m_Layer: 5
   m_Name: DifficultyTierPanelUIPrefab
   m_TagString: Untagged
@@ -118,3 +119,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &7145966792742401352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958700934983726436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025d33519187ff34397e6b286a84e953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+  difficultyTierImageUIPrefab: {fileID: 7366234859475009155, guid: 16b1afbb414b1914f8a4fbd8b389265b, type: 3}
