@@ -4,7 +4,7 @@ public class IndestructibleGameObjectTriggerEventsReceiver : MonoBehaviour, ITri
 {
 	public void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.tag.Contains("Player"))
+		if(sender != null && sender.TryGetComponent(out PlayerRobotBullet _))
 		{
 			StageManager.instance.audioManager.PlayPlayerRobotBulletHitSound();
 		}
