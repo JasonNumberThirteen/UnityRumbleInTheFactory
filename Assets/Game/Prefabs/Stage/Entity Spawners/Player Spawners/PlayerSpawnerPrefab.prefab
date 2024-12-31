@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: m_Name
-      value: Player Spawner
+      value: PlayerSpawnerPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: m_TagString
@@ -175,13 +175,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b655df3a07f3f4fa1e5e57803f1ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 0}
-  parentTag: Entities
+  entitySpawnedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  spawnVisualEffectGO: {fileID: 7914389967918937059}
+  entityPrefab: {fileID: 0}
   playerData: {fileID: 0}
   spawnTimer: {fileID: 1630605288066693323}
   respawnTimer: {fileID: 7213713297131995710}
 --- !u!4 &4236165176561888054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5185690586855138589, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+  m_PrefabInstance: {fileID: 9024835238954503723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7914389967918937059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1219112567750180296, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
   m_PrefabInstance: {fileID: 9024835238954503723}
   m_PrefabAsset: {fileID: 0}

@@ -17,20 +17,12 @@ public class PlayerEntitySpawner : EntitySpawner
 		}
 	}
 
-	private void Awake()
-	{
-		RegisterToListeners(true);
-	}
-
 	private void Start() => playerData.Spawner = this;
 
-	private void OnDestroy()
+	protected override void RegisterToListeners(bool register)
 	{
-		RegisterToListeners(false);
-	}
-
-	private void RegisterToListeners(bool register)
-	{
+		base.RegisterToListeners(register);
+		
 		if(register)
 		{
 			entitySpawnedEvent.AddListener(OnEntitySpawned);
