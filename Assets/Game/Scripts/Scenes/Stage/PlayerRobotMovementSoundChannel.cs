@@ -1,16 +1,12 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-public class PlayerRobotMovementSoundChannel : MonoBehaviour
+public class PlayerRobotMovementSoundChannel : SoundChannel
 {
-	private AudioSource audioSource;
 	private StageStateManager stageStateManager;
 	private StageSoundManager stageSoundManager;
 	private float initialVolume;
 
-	public AudioSource GetAudioSource() => audioSource;
-
-	public void Play(AudioClip audioClip)
+	public override void Play(AudioClip audioClip)
 	{
 		if(audioSource.clip == audioClip)
 		{
@@ -22,9 +18,10 @@ public class PlayerRobotMovementSoundChannel : MonoBehaviour
 		audioSource.Play();
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
-		audioSource = GetComponent<AudioSource>();
+		base.Awake();
+		
 		stageStateManager = FindAnyObjectByType<StageStateManager>();
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 		initialVolume = audioSource.volume;
