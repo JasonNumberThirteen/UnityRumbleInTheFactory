@@ -168,14 +168,13 @@ GameObject:
   - component: {fileID: 28531383}
   - component: {fileID: 28531382}
   - component: {fileID: 28531384}
-  - component: {fileID: 28531385}
   m_Layer: 5
   m_Name: Pause Text UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &28531380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -306,18 +305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkDelay: 0.5
---- !u!114 &28531385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 28531379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &114478437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7006043213450347271, guid: c63a94bf0fd2d6647909b9ad3b4153a9, type: 3}
