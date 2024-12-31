@@ -7,9 +7,13 @@ public class PlayerRobotInput : MonoBehaviour
 	public Vector2 LastMovementVector {get; private set;}
 
 	private RobotShoot shoot;
+	private StageSoundManager stageSoundManager;
 
-	private void Awake() => shoot = GetComponent<RobotShoot>();
-	
+	private void Awake()
+	{
+		shoot = GetComponent<RobotShoot>();
+		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
+	}
 
 	private void Start()
 	{
@@ -36,15 +40,18 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void SetMovementSound()
 	{
-		StageSoundManager sam = StageManager.instance.audioManager;
+		if(stageSoundManager == null)
+		{
+			return;
+		}
 		
 		if(MovementVector == Vector2.zero)
 		{
-			sam.PlaySound(SoundEffectType.PlayerRobotIdle);
+			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotIdle);
 		}
 		else
 		{
-			sam.PlaySound(SoundEffectType.PlayerRobotMovement);
+			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotMovement);
 		}
 	}
 

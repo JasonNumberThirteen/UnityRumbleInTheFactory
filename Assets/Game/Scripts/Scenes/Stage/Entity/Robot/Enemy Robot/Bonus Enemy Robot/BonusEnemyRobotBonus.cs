@@ -3,11 +3,22 @@ using UnityEngine;
 
 public class BonusEnemyRobotBonus : MonoBehaviour
 {
+	private StageSoundManager stageSoundManager;
+	
 	public void SpawnBonus()
 	{
-		StageManager.instance.audioManager.PlaySound(SoundEffectType.BonusSpawn);
+		if(stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.BonusSpawn);
+		}
+		
 		Instantiate(RandomBonus());
 		Destroy(this);
+	}
+
+	private void Awake()
+	{
+		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 	}
 
 	private GameObject RandomBonus()

@@ -3,7 +3,7 @@ using UnityEngine;
 public class DestructionBonusTrigger : BonusTrigger
 {
 	public string enemyTag;
-	
+
 	public override void TriggerOnEnter(GameObject sender)
 	{
 		DestroyAllFoundEnemies();
@@ -34,9 +34,9 @@ public class DestructionBonusTrigger : BonusTrigger
 
 	private void PlayExplosionSound(GameObject[] enemies)
 	{
-		if(enemies.Length > 0)
+		if(stageSoundManager != null && enemies.Length > 0)
 		{
-			StageManager.instance.audioManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
+			stageSoundManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
 		}
 	}
 }

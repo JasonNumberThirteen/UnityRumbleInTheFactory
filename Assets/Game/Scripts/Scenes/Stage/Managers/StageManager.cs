@@ -7,11 +7,11 @@ public class StageManager : MonoBehaviour
 	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
 	public StageStateManager stateManager;
-	public StageSoundManager audioManager;
 	public PlayersManager playersManager;
 	public EnemySpawnManager enemySpawnManager;
 	public GameData gameData;
 
+	private StageSoundManager stageSoundManager;
 	private Nuke nuke;
 	private int defeatedEnemies;
 
@@ -51,18 +51,19 @@ public class StageManager : MonoBehaviour
 
 	public void EnableAudioManager()
 	{
-		if(stateManager.StateIsSetTo(StageState.Over))
+		if(stageSoundManager == null || stateManager.StateIsSetTo(StageState.Over))
 		{
 			return;
 		}
 
-		audioManager.gameObject.SetActive(true);
+		stageSoundManager.gameObject.SetActive(true);
 	}
 	
 	private void Awake()
 	{
 		CheckSingleton();
-
+		
+		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 		nuke = FindAnyObjectByType<Nuke>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);

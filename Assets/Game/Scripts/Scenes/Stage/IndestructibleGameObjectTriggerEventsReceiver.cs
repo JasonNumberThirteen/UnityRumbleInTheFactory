@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class IndestructibleGameObjectTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
+	private StageSoundManager stageSoundManager;
+	
 	public void TriggerOnEnter(GameObject sender)
 	{
-		if(sender != null && sender.TryGetComponent(out PlayerRobotBullet _))
+		if(stageSoundManager != null && sender != null && sender.TryGetComponent(out PlayerRobotBullet _))
 		{
-			StageManager.instance.audioManager.PlaySound(SoundEffectType.PlayerRobotBulletHit);
+			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotBulletHit);
 		}
+	}
+
+	private void Awake()
+	{
+		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 	}
 }

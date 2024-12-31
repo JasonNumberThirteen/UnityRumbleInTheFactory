@@ -3,7 +3,16 @@ using UnityEngine;
 public class EnemyRobotHealth : RobotHealth
 {
 	public EnemyData data;
-	
+
+	private StageSoundManager stageSoundManager;
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
+	}
+
 	protected override void Die(GameObject sender)
 	{
 		StageManager.instance.CountDefeatedEnemy();
@@ -19,7 +28,11 @@ public class EnemyRobotHealth : RobotHealth
 		{
 			prd.Data.AddDefeatedEnemy(data);
 			sm.AddPoints(gameObject, prd.Data, data.GetPointsForDefeat());
-			sm.audioManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
+
+			if(stageSoundManager != null)
+			{
+				stageSoundManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
+			}
 		}
 	}
 }
