@@ -38,7 +38,6 @@ public class StageManager : MonoBehaviour
 
 		stateManager.SetStateTo(stateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active);
 		uiManager.ControlPauseTextDisplay();
-		audioManager.SwitchPlayerRobotMovementChannel();
 
 		Time.timeScale = stateManager.StateIsSetTo(StageState.Paused) ? 0f : 1f;
 	}
@@ -48,7 +47,6 @@ public class StageManager : MonoBehaviour
 		gameData.SetGameAsOver();
 		stateManager.SetStateTo(StageState.Over);
 		playersManager.DisablePlayers();
-		audioManager.StopPlayerRobotMovementChannel();
 	}
 
 	public void EnableAudioManager()

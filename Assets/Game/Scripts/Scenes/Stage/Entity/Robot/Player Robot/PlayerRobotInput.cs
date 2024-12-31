@@ -40,11 +40,11 @@ public class PlayerRobotInput : MonoBehaviour
 		
 		if(MovementVector == Vector2.zero)
 		{
-			sam.PlayPlayerRobotIdleSound();
+			sam.PlaySound(SoundEffectType.PlayerRobotIdle);
 		}
 		else
 		{
-			sam.PlayPlayerRobotMovementSound();
+			sam.PlaySound(SoundEffectType.PlayerRobotMovement);
 		}
 	}
 

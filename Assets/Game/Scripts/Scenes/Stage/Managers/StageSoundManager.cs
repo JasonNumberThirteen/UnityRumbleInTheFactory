@@ -10,80 +10,25 @@ public class StageSoundManager : MonoBehaviour
 	[SerializeField] private AudioClip bonusCollectSound;
 
 	private AudioSource[] audioSources;
-	private AudioSource playerRobotMovementChannel;
-	private float playerRobotMovementChannelVolume;
+	private PlayerRobotMovementSoundChannel playerRobotMovementSourceChannel;
 	private StageMusicManager stageMusicManager;
-
-	public void StopPlayerRobotMovementChannel()
-	{
-		playerRobotMovementChannel.Stop();
-	}
 
 	public void PlayBonusSpawnSound()
 	{
 		PlaySound(SoundEffectType.BonusSpawn);
-		MutePlayerRobotMovementChannelTemporarily(1);
+		playerRobotMovementSourceChannel.MuteTemporarily(1);
 	}
 
 	public void PlayBonusCollectSound()
 	{
 		PlaySound(SoundEffectType.BonusCollect);
-		MutePlayerRobotMovementChannelTemporarily(0.9f);
-	}
-
-	public void MutePlayerRobotMovementChannelTemporarily(float duration)
-	{
-		playerRobotMovementChannel.volume = 0;
-
-		Invoke(nameof(RestorePlayerRobotMovementChannelVolume), duration);
-	}
-
-	public void SwitchPlayerRobotMovementChannel()
-	{
-		if(playerRobotMovementChannel.isPlaying)
-		{
-			playerRobotMovementChannel.Pause();
-		}
-		else
-		{
-			playerRobotMovementChannel.UnPause();
-		}
-	}
-
-	public void PlayPlayerRobotIdleSound()
-	{
-		if(playerRobotMovementChannel.clip == playerRobotIdleSound)
-		{
-			return;
-		}
-		
-		playerRobotMovementChannel.clip = playerRobotIdleSound;
-
-		playerRobotMovementChannel.Play();
-	}
-
-	public void PlayPlayerRobotMovementSound()
-	{
-		if(playerRobotMovementChannel.clip == playerRobotMovementSound)
-		{
-			return;
-		}
-		
-		playerRobotMovementChannel.clip = playerRobotMovementSound;
-
-		playerRobotMovementChannel.Play();
-	}
-
-	private void RestorePlayerRobotMovementChannelVolume()
-	{
-		playerRobotMovementChannel.volume = playerRobotMovementChannelVolume;
+		playerRobotMovementSourceChannel.MuteTemporarily(0.9f);
 	}
 
 	private void Awake()
 	{
 		audioSources = GetComponentsInChildren<AudioSource>();
-		playerRobotMovementChannel = audioSources[0];
-		playerRobotMovementChannelVolume = playerRobotMovementChannel.volume;
+		playerRobotMovementSourceChannel = GetComponentInChildren<PlayerRobotMovementSoundChannel>();
 		stageMusicManager = FindAnyObjectByType<StageMusicManager>();
 
 		RegisterToListeners(true);
@@ -123,6 +68,12 @@ public class StageSoundManager : MonoBehaviour
 		
 		if(audioClip != null)
 		{
+			if(soundEffectType == SoundEffectType.PlayerRobotIdle || soundEffectType == SoundEffectType.PlayerRobotMovement)
+			{
+				playerRobotMovementSourceChannel.Play(audioClip);
+				return;
+			}
+			
 			AudioSource freeAudioSource = null;
 
 			for (int i = 0; i < audioSources.Length && freeAudioSource == null; ++i)
