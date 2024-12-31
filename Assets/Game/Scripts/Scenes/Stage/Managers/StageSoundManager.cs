@@ -7,7 +7,7 @@ public class StageSoundManager : MonoBehaviour
 {
 	public UnityEvent<SoundEffectType> soundPlayedEvent;
 	
-	[SerializeField, Range(0, 3)] private int additionalSoundChannels = 3;
+	[SerializeField, Range(0, 7)] private int additionalSoundChannels = 7;
 	[SerializeField] private AudioClip robotDamageSound;
 	[SerializeField] private AudioClip playerRobotIdleSound;
 	[SerializeField] private AudioClip playerRobotMovementSound;
