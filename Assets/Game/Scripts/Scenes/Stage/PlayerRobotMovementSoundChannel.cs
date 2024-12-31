@@ -5,6 +5,7 @@ public class PlayerRobotMovementSoundChannel : MonoBehaviour
 {
 	private AudioSource audioSource;
 	private StageStateManager stageStateManager;
+	private StageSoundManager stageSoundManager;
 	private float initialVolume;
 
 	public void Play(AudioClip audioClip)
@@ -19,17 +20,11 @@ public class PlayerRobotMovementSoundChannel : MonoBehaviour
 		audioSource.Play();
 	}
 
-	public void MuteTemporarily(float duration)
-	{
-		audioSource.volume = 0;
-
-		Invoke(nameof(RestoreVolume), duration);
-	}
-
 	private void Awake()
 	{
 		audioSource = GetComponent<AudioSource>();
 		stageStateManager = FindAnyObjectByType<StageStateManager>();
+		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 		initialVolume = audioSource.volume;
 
 		RegisterToListeners(true);
@@ -48,12 +43,22 @@ public class PlayerRobotMovementSoundChannel : MonoBehaviour
 			{
 				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
 			}
+
+			if(stageSoundManager != null)
+			{
+				stageSoundManager.soundPlayedEvent.AddListener(OnSoundPlayed);
+			}
 		}
 		else
 		{
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+			}
+
+			if(stageSoundManager != null)
+			{
+				stageSoundManager.soundPlayedEvent.RemoveListener(OnSoundPlayed);
 			}
 		}
 	}
@@ -72,6 +77,25 @@ public class PlayerRobotMovementSoundChannel : MonoBehaviour
 		{
 			audioSource.UnPause();
 		}
+	}
+
+	private void OnSoundPlayed(SoundEffectType soundEffectType)
+	{
+		if(soundEffectType == SoundEffectType.BonusSpawn)
+		{
+			MuteTemporarily(1);
+		}
+		else if(soundEffectType == SoundEffectType.BonusCollect)
+		{
+			MuteTemporarily(0.9f);
+		}
+	}
+
+	private void MuteTemporarily(float duration)
+	{
+		audioSource.volume = 0;
+
+		Invoke(nameof(RestoreVolume), duration);
 	}
 
 	private void RestoreVolume()

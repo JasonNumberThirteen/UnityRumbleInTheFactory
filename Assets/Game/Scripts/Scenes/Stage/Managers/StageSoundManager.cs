@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StageSoundManager : MonoBehaviour
 {
+	public UnityEvent<SoundEffectType> soundPlayedEvent;
+	
 	[SerializeField] private AudioClip playerRobotIdleSound;
 	[SerializeField] private AudioClip playerRobotMovementSound;
 	[SerializeField] private AudioClip playerRobotBulletHitSound;
@@ -12,18 +15,6 @@ public class StageSoundManager : MonoBehaviour
 	private AudioSource[] audioSources;
 	private PlayerRobotMovementSoundChannel playerRobotMovementSourceChannel;
 	private StageMusicManager stageMusicManager;
-
-	public void PlayBonusSpawnSound()
-	{
-		PlaySound(SoundEffectType.BonusSpawn);
-		playerRobotMovementSourceChannel.MuteTemporarily(1);
-	}
-
-	public void PlayBonusCollectSound()
-	{
-		PlaySound(SoundEffectType.BonusCollect);
-		playerRobotMovementSourceChannel.MuteTemporarily(0.9f);
-	}
 
 	private void Awake()
 	{
@@ -89,6 +80,7 @@ public class StageSoundManager : MonoBehaviour
 			if(freeAudioSource != null)
 			{
 				freeAudioSource.PlayOneShot(audioClip);
+				soundPlayedEvent?.Invoke(soundEffectType);
 			}
 		}
 	}
