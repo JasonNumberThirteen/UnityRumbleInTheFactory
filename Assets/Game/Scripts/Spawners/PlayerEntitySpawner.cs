@@ -1,4 +1,4 @@
-public class PlayerSpawner : EntitySpawner
+public class PlayerEntitySpawner : EntitySpawner
 {
 	public PlayerData playerData;
 	public Timer spawnTimer, respawnTimer;

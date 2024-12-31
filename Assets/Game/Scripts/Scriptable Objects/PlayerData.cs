@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerData : ScriptableObject
 {
 	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyData, int>();
-	public PlayerSpawner Spawner {get; set;}
+	public PlayerEntitySpawner Spawner {get; set;}
 	
 	public int Score
 	{
