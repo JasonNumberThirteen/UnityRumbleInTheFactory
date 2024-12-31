@@ -8,6 +8,8 @@ public class PlayerRobotMovementSoundChannel : MonoBehaviour
 	private StageSoundManager stageSoundManager;
 	private float initialVolume;
 
+	public AudioSource GetAudioSource() => audioSource;
+
 	public void Play(AudioClip audioClip)
 	{
 		if(audioSource.clip == audioClip)

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +7,7 @@ public class StageSoundManager : MonoBehaviour
 {
 	public UnityEvent<SoundEffectType> soundPlayedEvent;
 	
+	[SerializeField, Range(0, 3)] private int additionalSoundChannels = 3;
 	[SerializeField] private AudioClip playerRobotIdleSound;
 	[SerializeField] private AudioClip playerRobotMovementSound;
 	[SerializeField] private AudioClip playerRobotBulletHitSound;
@@ -12,17 +15,24 @@ public class StageSoundManager : MonoBehaviour
 	[SerializeField] private AudioClip bonusSpawnSound;
 	[SerializeField] private AudioClip bonusCollectSound;
 
-	private AudioSource[] audioSources;
+	private readonly List<AudioSource> audioSources = new();
 	private PlayerRobotMovementSoundChannel playerRobotMovementSourceChannel;
 	private StageMusicManager stageMusicManager;
 
 	private void Awake()
 	{
-		audioSources = GetComponentsInChildren<AudioSource>();
 		playerRobotMovementSourceChannel = GetComponentInChildren<PlayerRobotMovementSoundChannel>();
 		stageMusicManager = FindAnyObjectByType<StageMusicManager>();
 
 		RegisterToListeners(true);
+	}
+
+	private void Start()
+	{
+		for (var i = 0; i < additionalSoundChannels; ++i)
+		{
+			audioSources.Add(gameObject.AddComponent<AudioSource>());
+		}
 	}
 
 	private void OnDestroy()
@@ -56,27 +66,21 @@ public class StageSoundManager : MonoBehaviour
 	public void PlaySound(SoundEffectType soundEffectType)
 	{
 		var audioClip = GetAudioClipBySoundEffectType(soundEffectType);
-		
-		if(audioClip != null)
+
+		if(audioClip == null)
 		{
-			if(soundEffectType == SoundEffectType.PlayerRobotIdle || soundEffectType == SoundEffectType.PlayerRobotMovement)
-			{
-				playerRobotMovementSourceChannel.Play(audioClip);
-				return;
-			}
-			
-			AudioSource freeAudioSource = null;
+			return;
+		}
 
-			for (int i = 0; i < audioSources.Length && freeAudioSource == null; ++i)
-			{
-				var current = audioSources[i];
+		if(soundEffectType == SoundEffectType.PlayerRobotIdle || soundEffectType == SoundEffectType.PlayerRobotMovement)
+		{
+			playerRobotMovementSourceChannel.Play(audioClip);
+			soundPlayedEvent?.Invoke(soundEffectType);
+		}
+		else
+		{
+			var freeAudioSource = audioSources.FirstOrDefault(audioSource => !audioSource.isPlaying);
 
-				if(!current.isPlaying)
-				{
-					freeAudioSource = current;
-				}
-			}
-			
 			if(freeAudioSource != null)
 			{
 				freeAudioSource.PlayOneShot(audioClip);
