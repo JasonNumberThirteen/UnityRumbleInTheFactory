@@ -70,7 +70,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	{
 		if(playersListData != null)
 		{
-			playersListData.ResetPlayersData();
+			playersListData.ForEach(playerData => playerData.ResetData());
 		}
 	}
 }
