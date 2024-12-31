@@ -1,9 +1,19 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Telefragger))]
 public class EnemyEntitySpawner : EntitySpawner
 {
 	public bool IsBonus {get; set;}
-	
+
+	private Telefragger telefragger;
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		telefragger = GetComponent<Telefragger>();
+	}
+
 	protected override GameObject GetEntityInstance()
 	{
 		GameObject instance = base.GetEntityInstance();
@@ -11,6 +21,20 @@ public class EnemyEntitySpawner : EntitySpawner
 		AddBonusEnemyComponents(instance);
 
 		return instance;
+	}
+
+	protected override void RegisterToListeners(bool register)
+	{
+		base.RegisterToListeners(register);
+
+		if(register)
+		{
+			timer.onEnd.AddListener(OnTimerEnd);
+		}
+		else
+		{
+			timer.onEnd.RemoveListener(OnTimerEnd);
+		}
 	}
 
 	private void AddBonusEnemyComponents(GameObject instance)
@@ -35,4 +59,9 @@ public class EnemyEntitySpawner : EntitySpawner
 
 	private void AddColorComponent(GameObject instance) => instance.AddComponent<BonusEnemyRobotColor>();
 	private void AddBonusComponent(GameObject instance) => instance.AddComponent<BonusEnemyRobotBonus>();
+
+	private void OnTimerEnd()
+	{
+		telefragger.TelefragGOsWithinRadius();
+	}
 }

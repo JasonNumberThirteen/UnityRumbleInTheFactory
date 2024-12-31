@@ -9,7 +9,7 @@ public class EntitySpawner : MonoBehaviour
 	[SerializeField] private GameObject spawnVisualEffectGO;
 	[SerializeField] private GameObject entityPrefab;
 
-	private Timer timer;
+	protected Timer timer;
 
 	public void SetEntityPrefab(GameObject entityPrefab)
 	{
@@ -32,7 +32,7 @@ public class EntitySpawner : MonoBehaviour
 		}
 	}
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		timer = GetComponent<Timer>();
 
