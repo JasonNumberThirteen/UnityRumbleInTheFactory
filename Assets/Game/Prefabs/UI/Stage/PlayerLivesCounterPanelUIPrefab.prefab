@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4146069158559882054}
   - component: {fileID: 4493301477905477592}
   m_Layer: 5
-  m_Name: Player Lives Counter Image UI
+  m_Name: PlayerLivesCounterImageUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5935000688640614414, guid: ac19060187f899b42a462d82a281954c, type: 3}
       propertyPath: m_Name
-      value: Player Lives Counter Text UI
+      value: PlayerLivesCounterTextUI
       objectReference: {fileID: 0}
     - target: {fileID: 6404491233256197574, guid: ac19060187f899b42a462d82a281954c, type: 3}
       propertyPath: m_Pivot.x
