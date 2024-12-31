@@ -52,7 +52,8 @@ public class EnemySpawnManager : MonoBehaviour
 
 	private void OnEnemyAssignAtStart(EnemySpawner es)
 	{
-		es.entity = enemyTypesReader.Enemies[enemyIndex];
+		es.SetEntityPrefab(enemyTypesReader.Enemies[enemyIndex]);
+
 		es.IsBonus = enemyTypesReader.EnemyTypes[enemyIndex].IsBonus();
 		++enemyIndex;
 

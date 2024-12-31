@@ -4,20 +4,23 @@ using UnityEngine.Events;
 public class EntitySpawner : MonoBehaviour
 {
 	public UnityEvent entitySpawnedEvent;
-	public GameObject entity;
-	public string parentTag;
+
+	[SerializeField] private GameObject entityPrefab;
+
+	public void SetEntityPrefab(GameObject entityPrefab)
+	{
+		this.entityPrefab = entityPrefab;
+	}
 
 	public virtual void Spawn()
 	{
-		GameObject parent = GameObject.FindGameObjectWithTag(parentTag);
+		var entityInstance = GetEntityInstance();
 
-		if(parent != null)
+		if(entityInstance != null)
 		{
-			EntityInstance().transform.SetParent(parent.transform);
+			entitySpawnedEvent?.Invoke();
 		}
-
-		entitySpawnedEvent?.Invoke();
 	}
 
-	protected virtual GameObject EntityInstance() => Instantiate(entity, gameObject.transform.position, Quaternion.identity);
+	protected virtual GameObject GetEntityInstance() => entityPrefab != null ? Instantiate(entityPrefab, gameObject.transform.position, Quaternion.identity) : null;
 }

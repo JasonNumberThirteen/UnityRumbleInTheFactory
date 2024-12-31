@@ -4,9 +4,9 @@ public class EnemySpawner : EntitySpawner
 {
 	public bool IsBonus {get; set;}
 	
-	protected override GameObject EntityInstance()
+	protected override GameObject GetEntityInstance()
 	{
-		GameObject instance = base.EntityInstance();
+		GameObject instance = base.GetEntityInstance();
 
 		AddBonusEnemyComponents(instance);
 
