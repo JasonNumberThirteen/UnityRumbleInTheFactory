@@ -8,8 +8,10 @@ public class StageSoundManager : MonoBehaviour
 	public UnityEvent<SoundEffectType> soundPlayedEvent;
 	
 	[SerializeField, Range(0, 3)] private int additionalSoundChannels = 3;
+	[SerializeField] private AudioClip robotDamageSound;
 	[SerializeField] private AudioClip playerRobotIdleSound;
 	[SerializeField] private AudioClip playerRobotMovementSound;
+	[SerializeField] private AudioClip playerRobotShootSound;
 	[SerializeField] private AudioClip playerRobotBulletHitSound;
 	[SerializeField] private AudioClip enemyRobotExplosionSound;
 	[SerializeField] private AudioClip bonusSpawnSound;
@@ -84,8 +86,10 @@ public class StageSoundManager : MonoBehaviour
 	{
 		return soundEffectType switch
 		{
+			SoundEffectType.RobotDamage => robotDamageSound,
 			SoundEffectType.PlayerRobotIdle => playerRobotIdleSound,
 			SoundEffectType.PlayerRobotMovement => playerRobotMovementSound,
+			SoundEffectType.PlayerRobotShoot => playerRobotShootSound,
 			SoundEffectType.PlayerRobotBulletHit => playerRobotBulletHitSound,
 			SoundEffectType.EnemyRobotExplosion => enemyRobotExplosionSound,
 			SoundEffectType.BonusSpawn => bonusSpawnSound,

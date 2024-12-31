@@ -6,12 +6,10 @@ public class RobotShoot : MonoBehaviour
 	[Min(0f)] public float offsetFromObject = 0.5f;
 
 	protected Animator animator;
-
-	private RobotAudioSource audioSource;
+	protected StageSoundManager stageSoundManager;
 
 	public virtual void FireBullet()
 	{
-		audioSource.PlayShootSound();
 		SetBullet(BulletInstance());
 	}
 
@@ -21,7 +19,7 @@ public class RobotShoot : MonoBehaviour
 	protected virtual void Awake()
 	{
 		animator = GetComponent<Animator>();
-		audioSource = GetComponent<RobotAudioSource>();
+		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 	}
 
 	protected virtual void SetBullet(GameObject bullet)

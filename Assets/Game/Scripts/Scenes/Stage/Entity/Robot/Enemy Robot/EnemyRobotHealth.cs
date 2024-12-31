@@ -4,15 +4,6 @@ public class EnemyRobotHealth : RobotHealth
 {
 	public EnemyData data;
 
-	private StageSoundManager stageSoundManager;
-
-	protected override void Awake()
-	{
-		base.Awake();
-
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
-	}
-
 	protected override void Die(GameObject sender)
 	{
 		StageManager.instance.CountDefeatedEnemy();

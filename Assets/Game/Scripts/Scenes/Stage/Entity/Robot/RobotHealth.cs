@@ -6,7 +6,7 @@ public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
 
 	public int Health {get; private set;}
 
-	private RobotAudioSource audioSource;
+	protected StageSoundManager stageSoundManager;
 
 	public virtual void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank) => Health = robotRank.GetHealth();
 
@@ -17,7 +17,7 @@ public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
 		CheckHealth(sender);
 	}
 
-	protected virtual void Awake() => audioSource = GetComponent<RobotAudioSource>();
+	protected virtual void Awake() => stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 	protected virtual void Start() => Health = initialHealth;
 
 	protected virtual void CheckHealth(GameObject sender)
@@ -26,9 +26,9 @@ public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
 		{
 			Die(sender);
 		}
-		else
+		else if(stageSoundManager != null)
 		{
-			audioSource.PlayDamageSound();
+			stageSoundManager.PlaySound(SoundEffectType.RobotDamage);
 		}
 	}
 

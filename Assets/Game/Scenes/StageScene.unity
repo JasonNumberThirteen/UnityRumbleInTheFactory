@@ -2434,7 +2434,6 @@ MonoBehaviour:
   pointsForBonus: 500
   uiManager: {fileID: 1237164743}
   stateManager: {fileID: 879573808}
-  audioManager: {fileID: 1579829971}
   playersManager: {fileID: 1263742803}
   enemySpawnManager: {fileID: 1295888590}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -2749,8 +2748,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   additionalSoundChannels: 3
+  robotDamageSound: {fileID: 8300000, guid: 928473f8c3ec85d44a2b2294d252ea67, type: 3}
   playerRobotIdleSound: {fileID: 8300000, guid: a45af856d780abe47b6c8161e4764223, type: 3}
   playerRobotMovementSound: {fileID: 8300000, guid: fc25995ca1a276f41a55f257b3355d01, type: 3}
+  playerRobotShootSound: {fileID: 8300000, guid: ef941213f8ebea44d81a7bdb72ec48a7, type: 3}
   playerRobotBulletHitSound: {fileID: 8300000, guid: 27fdf53cec0538c4ab93448032492606, type: 3}
   enemyRobotExplosionSound: {fileID: 8300000, guid: 2720389b74928a6419af122c6e585d37, type: 3}
   bonusSpawnSound: {fileID: 8300000, guid: edf1027ae433ed4439b95007d563cdaa, type: 3}

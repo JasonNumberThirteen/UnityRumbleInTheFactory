@@ -10,6 +10,11 @@ public class PlayerRobotShoot : RobotShoot
 	{
 		if(!FiredAllBulletsAlready())
 		{
+			if(stageSoundManager != null)
+			{
+				stageSoundManager.PlaySound(SoundEffectType.PlayerRobotShoot);
+			}
+			
 			base.FireBullet();
 		}
 	}
