@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayersManager : MonoBehaviour
 {
 	public string playerTag, playerSpawnerTag;
-	public Timer gameOverTimer;
 	
 	private PlayerData[] playersData;
 
@@ -19,7 +18,7 @@ public class PlayersManager : MonoBehaviour
 	{
 		if(AllPlayersLostAllLives())
 		{
-			gameOverTimer.onEnd.Invoke();
+			StageManager.instance.SetGameAsOver();
 		}
 	}
 

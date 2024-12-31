@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StageUIManager : MonoBehaviour
 {
-	public RectTransform parent, difficultyTier;
+	public RectTransform parent;
 	public GameObject gainedPointsCounter, pauseText;
 	public GameData gameData;
 	public PlayerData[] playersData;
@@ -47,7 +47,5 @@ public class StageUIManager : MonoBehaviour
 	private void Start()
 	{
 		stageCounterText.SetTo(gameData.StageNumber);
-
-		difficultyTier.sizeDelta = new Vector2(16*gameData.GetCurrentDifficultyTierIndex(), 16);
 	}
 }
