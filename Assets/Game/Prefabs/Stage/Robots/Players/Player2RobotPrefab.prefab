@@ -50,12 +50,12 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: ba53dbddb333bff4f9809fc7b613937a, type: 2}
     - target: {fileID: 3405398399308765810, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_Name
-      value: Player 2 Robot
+      value: Player2RobotPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3415699233984565831, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 8514831330534971138, guid: 1ecf5334b514fe0429454dd4864365af, type: 3}
+      objectReference: {fileID: 6009289253086430837, guid: dd409d7a21a0691479457478ac028f3b, type: 3}
     - target: {fileID: 3415699233984565831, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: bulletTag
       value: Player 2 Bullet
