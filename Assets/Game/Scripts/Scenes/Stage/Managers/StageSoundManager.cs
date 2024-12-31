@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StageAudioManager : MonoBehaviour
+public class StageSoundManager : MonoBehaviour
 {
 	public AudioClip playerRobotIdle, playerRobotMovement, playerRobotBulletHit, enemyRobotExplosion, bonusSpawn, bonusCollect;
 

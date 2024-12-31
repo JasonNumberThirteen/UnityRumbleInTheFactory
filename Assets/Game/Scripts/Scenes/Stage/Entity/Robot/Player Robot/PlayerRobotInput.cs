@@ -36,7 +36,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void SetMovementSound()
 	{
-		StageAudioManager sam = StageManager.instance.audioManager;
+		StageSoundManager sam = StageManager.instance.audioManager;
 		
 		if(MovementVector == Vector2.zero)
 		{

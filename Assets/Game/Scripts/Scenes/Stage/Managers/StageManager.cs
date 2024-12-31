@@ -7,7 +7,7 @@ public class StageManager : MonoBehaviour
 	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
 	public StageStateManager stateManager;
-	public StageAudioManager audioManager;
+	public StageSoundManager audioManager;
 	public PlayersManager playersManager;
 	public EnemySpawnManager enemySpawnManager;
 	public GameData gameData;
