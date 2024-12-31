@@ -6,7 +6,7 @@ public class IndestructibleGameObjectTriggerEventsReceiver : MonoBehaviour, ITri
 	{
 		if(sender != null && sender.TryGetComponent(out PlayerRobotBullet _))
 		{
-			StageManager.instance.audioManager.PlayPlayerRobotBulletHitSound();
+			StageManager.instance.audioManager.PlaySound(SoundEffectType.PlayerRobotBulletHit);
 		}
 	}
 }

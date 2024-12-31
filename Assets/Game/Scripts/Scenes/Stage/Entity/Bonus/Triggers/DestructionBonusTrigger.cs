@@ -36,7 +36,7 @@ public class DestructionBonusTrigger : BonusTrigger
 	{
 		if(enemies.Length > 0)
 		{
-			StageManager.instance.audioManager.PlayEnemyRobotExplosionSound();
+			StageManager.instance.audioManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
 		}
 	}
 }

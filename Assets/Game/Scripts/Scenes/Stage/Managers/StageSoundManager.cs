@@ -2,26 +2,32 @@ using UnityEngine;
 
 public class StageSoundManager : MonoBehaviour
 {
-	public AudioClip playerRobotIdle, playerRobotMovement, playerRobotBulletHit, enemyRobotExplosion, bonusSpawn, bonusCollect;
+	[SerializeField] private AudioClip playerRobotIdleSound;
+	[SerializeField] private AudioClip playerRobotMovementSound;
+	[SerializeField] private AudioClip playerRobotBulletHitSound;
+	[SerializeField] private AudioClip enemyRobotExplosionSound;
+	[SerializeField] private AudioClip bonusSpawnSound;
+	[SerializeField] private AudioClip bonusCollectSound;
 
 	private AudioSource[] audioSources;
 	private AudioSource playerRobotMovementChannel;
 	private float playerRobotMovementChannelVolume;
 	private StageMusicManager stageMusicManager;
 
-	public void StopPlayerRobotMovementChannel() => playerRobotMovementChannel.Stop();
-	public void PlayPlayerRobotBulletHitSound() => PlaySound(playerRobotBulletHit);
-	public void PlayEnemyRobotExplosionSound() => PlaySound(enemyRobotExplosion);
+	public void StopPlayerRobotMovementChannel()
+	{
+		playerRobotMovementChannel.Stop();
+	}
 
 	public void PlayBonusSpawnSound()
 	{
-		PlaySound(bonusSpawn);
+		PlaySound(SoundEffectType.BonusSpawn);
 		MutePlayerRobotMovementChannelTemporarily(1);
 	}
 
 	public void PlayBonusCollectSound()
 	{
-		PlaySound(bonusCollect);
+		PlaySound(SoundEffectType.BonusCollect);
 		MutePlayerRobotMovementChannelTemporarily(0.9f);
 	}
 
@@ -46,29 +52,32 @@ public class StageSoundManager : MonoBehaviour
 
 	public void PlayPlayerRobotIdleSound()
 	{
-		if(playerRobotMovementChannel.clip == playerRobotIdle)
+		if(playerRobotMovementChannel.clip == playerRobotIdleSound)
 		{
 			return;
 		}
 		
-		playerRobotMovementChannel.clip = playerRobotIdle;
+		playerRobotMovementChannel.clip = playerRobotIdleSound;
 
 		playerRobotMovementChannel.Play();
 	}
 
 	public void PlayPlayerRobotMovementSound()
 	{
-		if(playerRobotMovementChannel.clip == playerRobotMovement)
+		if(playerRobotMovementChannel.clip == playerRobotMovementSound)
 		{
 			return;
 		}
 		
-		playerRobotMovementChannel.clip = playerRobotMovement;
+		playerRobotMovementChannel.clip = playerRobotMovementSound;
 
 		playerRobotMovementChannel.Play();
 	}
 
-	private void RestorePlayerRobotMovementChannelVolume() => playerRobotMovementChannel.volume = playerRobotMovementChannelVolume;
+	private void RestorePlayerRobotMovementChannelVolume()
+	{
+		playerRobotMovementChannel.volume = playerRobotMovementChannelVolume;
+	}
 
 	private void Awake()
 	{
@@ -108,15 +117,17 @@ public class StageSoundManager : MonoBehaviour
 		StageManager.instance.EnableAudioManager();
 	}
 
-	private void PlaySound(AudioClip audioClip)
+	public void PlaySound(SoundEffectType soundEffectType)
 	{
+		var audioClip = GetAudioClipBySoundEffectType(soundEffectType);
+		
 		if(audioClip != null)
 		{
 			AudioSource freeAudioSource = null;
 
 			for (int i = 0; i < audioSources.Length && freeAudioSource == null; ++i)
 			{
-				AudioSource current = audioSources[i];
+				var current = audioSources[i];
 
 				if(!current.isPlaying)
 				{
@@ -129,5 +140,19 @@ public class StageSoundManager : MonoBehaviour
 				freeAudioSource.PlayOneShot(audioClip);
 			}
 		}
+	}
+
+	private AudioClip GetAudioClipBySoundEffectType(SoundEffectType soundEffectType)
+	{
+		return soundEffectType switch
+		{
+			SoundEffectType.PlayerRobotIdle => playerRobotIdleSound,
+			SoundEffectType.PlayerRobotMovement => playerRobotMovementSound,
+			SoundEffectType.PlayerRobotBulletHit => playerRobotBulletHitSound,
+			SoundEffectType.EnemyRobotExplosion => enemyRobotExplosionSound,
+			SoundEffectType.BonusSpawn => bonusSpawnSound,
+			SoundEffectType.BonusCollect => bonusCollectSound,
+			_ => null
+		};
 	}
 }

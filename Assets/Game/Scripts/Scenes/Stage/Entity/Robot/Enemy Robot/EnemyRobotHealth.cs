@@ -19,7 +19,7 @@ public class EnemyRobotHealth : RobotHealth
 		{
 			prd.Data.AddDefeatedEnemy(data);
 			sm.AddPoints(gameObject, prd.Data, data.GetPointsForDefeat());
-			sm.audioManager.PlayEnemyRobotExplosionSound();
+			sm.audioManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
 		}
 	}
 }
