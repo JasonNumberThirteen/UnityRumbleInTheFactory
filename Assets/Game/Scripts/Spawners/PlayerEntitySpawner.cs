@@ -1,23 +1,16 @@
+using UnityEngine;
+
 public class PlayerEntitySpawner : EntitySpawner
 {
-	public PlayerData playerData;
-	public Timer spawnTimer, respawnTimer;
+	[SerializeField] private PlayerData playerData;
+	[SerializeField, Min(0f)] private float respawnDelay = 1f;
 
-	public void InitiateRespawn() => respawnTimer.ResetTimer();
+	public PlayerData GetPlayerData() => playerData;
 
-	public void AttemptToRespawn()
+	public void InitiateRespawn()
 	{
-		if(playerData.Lives-- > 0)
-		{
-			spawnTimer.ResetTimer();
-		}
-		else
-		{
-			StageManager.instance.playersManager.CheckPlayersLives();
-		}
+		Invoke(nameof(ResetTimer), respawnDelay);
 	}
-
-	private void Start() => playerData.Spawner = this;
 
 	protected override void RegisterToListeners(bool register)
 	{
@@ -25,16 +18,46 @@ public class PlayerEntitySpawner : EntitySpawner
 		
 		if(register)
 		{
+			timer.onEnd.AddListener(AttemptToRespawn);
 			entitySpawnedEvent.AddListener(OnEntitySpawned);
 		}
 		else
 		{
+			timer.onEnd.RemoveListener(AttemptToRespawn);
 			entitySpawnedEvent.RemoveListener(OnEntitySpawned);
+		}
+	}
+
+	private void Start()
+	{
+		if(playerData != null)
+		{
+			playerData.Spawner = this;
+		}
+	}
+
+	private void AttemptToRespawn()
+	{
+		if(playerData != null && playerData.Lives-- > 0)
+		{
+			timer.ResetTimer();
+		}
+		else
+		{
+			StageManager.instance.playersManager.CheckPlayersLives();
 		}
 	}
 
 	private void OnEntitySpawned()
 	{
-		playerData.ResetRank();
+		if(playerData != null)
+		{
+			playerData.ResetRank();
+		}
+	}
+
+	private void ResetTimer()
+	{
+		timer.ResetTimer();
 	}
 }

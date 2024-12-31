@@ -47,7 +47,7 @@ public class PlayersManager : MonoBehaviour
 		{
 			if(spawners[i].TryGetComponent(out PlayerEntitySpawner ps))
 			{
-				playersData[i] = ps.playerData;
+				playersData[i] = ps.GetPlayerData();
 			}
 		}
 	}
