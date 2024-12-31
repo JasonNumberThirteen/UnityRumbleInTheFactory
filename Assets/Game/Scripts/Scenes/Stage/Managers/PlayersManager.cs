@@ -4,19 +4,19 @@ public class PlayersManager : MonoBehaviour
 {
 	public string playerTag, playerSpawnerTag;
 	
-	private PlayerData[] playersData;
+	[SerializeField] private PlayersListData playersListData;
 
 	public void ResetDefeatedEnemiesByPlayer()
 	{
-		foreach (PlayerData pd in playersData)
+		if(playersListData != null)
 		{
-			pd.ResetDefeatedEnemies();
+			playersListData.ForEach(playerData => playerData.ResetDefeatedEnemies());
 		}
 	}
 
 	public void CheckPlayersLives()
 	{
-		if(AllPlayersLostAllLives())
+		if(playersListData != null && !playersListData.Any(playerData => playerData.Lives > 0))
 		{
 			StageManager.instance.SetGameAsOver();
 		}
@@ -35,34 +35,5 @@ public class PlayersManager : MonoBehaviour
 		}
 	}
 
-	public void FindPlayers()
-	{
-		GameObject[] spawners = FoundObjectsWithTag(playerSpawnerTag);
-		int length = spawners.Length;
-
-		playersData = new PlayerData[length];
-
-		for (int i = 0; i < length; ++i)
-		{
-			if(spawners[i].TryGetComponent(out PlayerEntitySpawner ps))
-			{
-				playersData[i] = ps.GetPlayerData();
-			}
-		}
-	}
-
 	private GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
-
-	private bool AllPlayersLostAllLives()
-	{
-		foreach (PlayerData pd in playersData)
-		{
-			if(pd.Lives > 0)
-			{
-				return false;
-			}
-		}
-
-		return true;
-	}
 }

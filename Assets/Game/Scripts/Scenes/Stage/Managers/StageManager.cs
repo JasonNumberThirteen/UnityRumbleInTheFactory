@@ -64,7 +64,6 @@ public class StageManager : MonoBehaviour
 	private void Awake()
 	{
 		CheckSingleton();
-		playersManager.FindPlayers();
 
 		nuke = FindAnyObjectByType<Nuke>(FindObjectsInactive.Include);
 
