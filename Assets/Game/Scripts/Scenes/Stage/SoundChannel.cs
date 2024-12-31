@@ -5,9 +5,14 @@ public class SoundChannel : MonoBehaviour
 {
 	protected AudioSource audioSource;
 
+	public bool SoundIsPlaying() => audioSource.isPlaying;
+
 	public virtual void Play(AudioClip audioClip)
 	{
-		audioSource.PlayOneShot(audioClip);
+		if(audioClip != null)
+		{
+			audioSource.PlayOneShot(audioClip);
+		}
 	}
 
 	protected virtual void Awake()

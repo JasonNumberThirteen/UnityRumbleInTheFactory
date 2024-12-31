@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,7 +15,7 @@ public class StageSoundManager : MonoBehaviour
 	[SerializeField] private AudioClip bonusSpawnSound;
 	[SerializeField] private AudioClip bonusCollectSound;
 
-	private readonly List<AudioSource> audioSources = new();
+	private readonly List<SoundChannel> soundChannels = new();
 	private PlayerRobotMovementSoundChannel playerRobotMovementSourceChannel;
 	private StageMusicManager stageMusicManager;
 
@@ -31,7 +31,7 @@ public class StageSoundManager : MonoBehaviour
 	{
 		for (var i = 0; i < additionalSoundChannels; ++i)
 		{
-			audioSources.Add(gameObject.AddComponent<AudioSource>());
+			soundChannels.Add(gameObject.AddComponent<SoundChannel>());
 		}
 	}
 
@@ -65,28 +65,15 @@ public class StageSoundManager : MonoBehaviour
 
 	public void PlaySound(SoundEffectType soundEffectType)
 	{
-		var audioClip = GetAudioClipBySoundEffectType(soundEffectType);
+		var soundChannel = GetSoundChannelBySoundEffectType(soundEffectType);
 
-		if(audioClip == null)
+		if(soundChannel == null)
 		{
 			return;
 		}
 
-		if(soundEffectType == SoundEffectType.PlayerRobotIdle || soundEffectType == SoundEffectType.PlayerRobotMovement)
-		{
-			playerRobotMovementSourceChannel.Play(audioClip);
-			soundPlayedEvent?.Invoke(soundEffectType);
-		}
-		else
-		{
-			var freeAudioSource = audioSources.FirstOrDefault(audioSource => !audioSource.isPlaying);
-
-			if(freeAudioSource != null)
-			{
-				freeAudioSource.PlayOneShot(audioClip);
-				soundPlayedEvent?.Invoke(soundEffectType);
-			}
-		}
+		soundChannel.Play(GetAudioClipBySoundEffectType(soundEffectType));
+		soundPlayedEvent?.Invoke(soundEffectType);
 	}
 
 	private AudioClip GetAudioClipBySoundEffectType(SoundEffectType soundEffectType)
@@ -101,5 +88,16 @@ public class StageSoundManager : MonoBehaviour
 			SoundEffectType.BonusCollect => bonusCollectSound,
 			_ => null
 		};
+	}
+
+	private SoundChannel GetSoundChannelBySoundEffectType(SoundEffectType soundEffectType)
+	{
+		var playerRobotTypes = new List<SoundEffectType>
+		{
+			SoundEffectType.PlayerRobotIdle,
+			SoundEffectType.PlayerRobotMovement
+		};
+
+		return playerRobotTypes.Contains(soundEffectType) ? playerRobotMovementSourceChannel : soundChannels.FirstOrDefault(soundChannel => !soundChannel.SoundIsPlaying());
 	}
 }
