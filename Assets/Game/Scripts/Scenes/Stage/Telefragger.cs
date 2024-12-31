@@ -35,6 +35,11 @@ public class Telefragger : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
+		if(!drawGizmos)
+		{
+			return;
+		}
+		
 		Gizmos.color = gizmosColor;
 
 		Gizmos.DrawWireSphere(transform.position, radius);
