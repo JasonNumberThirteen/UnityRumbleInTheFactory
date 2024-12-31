@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 305457621259813084, guid: e58604b6a861cba438803f742ef3a312, type: 3}
+      propertyPath: m_Name
+      value: Player1LivesCounterTextUI
+      objectReference: {fileID: 0}
     - target: {fileID: 1045184074817809684, guid: e58604b6a861cba438803f742ef3a312, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -119,6 +123,10 @@ PrefabInstance:
     - target: {fileID: 6608250334840104228, guid: e58604b6a861cba438803f742ef3a312, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090050460303453454, guid: e58604b6a861cba438803f742ef3a312, type: 3}
+      propertyPath: m_Name
+      value: Player1LivesCounterImageUI
       objectReference: {fileID: 0}
     - target: {fileID: 9099480364651905435, guid: e58604b6a861cba438803f742ef3a312, type: 3}
       propertyPath: m_Name
