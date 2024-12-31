@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IndestructibleObjectTrigger : MonoBehaviour, ITriggerableOnEnter
+public class IndestructibleGameObjectTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	public void TriggerOnEnter(GameObject sender)
 	{
