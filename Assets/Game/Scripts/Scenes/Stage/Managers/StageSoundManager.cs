@@ -31,7 +31,11 @@ public class StageSoundManager : MonoBehaviour
 	{
 		for (var i = 0; i < additionalSoundChannels; ++i)
 		{
-			soundChannels.Add(gameObject.AddComponent<SoundChannel>());
+			var childChannel = new GameObject($"Channel {i + 1}");
+			var soundChannel = childChannel.AddComponent<SoundChannel>();
+
+			soundChannels.Add(soundChannel);
+			childChannel.transform.SetParent(gameObject.transform);
 		}
 	}
 
