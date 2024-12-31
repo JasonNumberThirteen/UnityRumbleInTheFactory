@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayersManager : MonoBehaviour
 {
-	public string playerTag, playerSpawnerTag;
-	
 	[SerializeField] private PlayersListData playersListData;
+
+	private readonly string PLAYER_TAG = "Player";
 
 	public void ResetDefeatedEnemiesByPlayer()
 	{
@@ -24,16 +24,14 @@ public class PlayersManager : MonoBehaviour
 
 	public void DisablePlayers()
 	{
-		GameObject[] players = FoundObjectsWithTag(playerTag);
+		var players = GameObject.FindGameObjectsWithTag(PLAYER_TAG);
 
-		foreach (GameObject player in players)
+		foreach (var player in players)
 		{
-			if(player.TryGetComponent(out PlayerRobotDisabler prd))
+			if(player.TryGetComponent(out PlayerRobotDisabler playerRobotDisabler))
 			{
-				prd.DisableYourself();
+				playerRobotDisabler.DisableYourself();
 			}
 		}
 	}
-
-	private GameObject[] FoundObjectsWithTag(string tag) => GameObject.FindGameObjectsWithTag(tag);
 }
