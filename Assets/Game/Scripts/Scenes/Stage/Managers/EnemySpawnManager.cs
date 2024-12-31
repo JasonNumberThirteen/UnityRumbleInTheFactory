@@ -34,15 +34,15 @@ public class EnemySpawnManager : MonoBehaviour
 		}
 	}
 
-	private void AssignEnemyToSpawner(GameObject spawner, Action<EnemySpawner> OnAssign)
+	private void AssignEnemyToSpawner(GameObject spawner, Action<EnemyEntitySpawner> OnAssign)
 	{
-		if(spawner.TryGetComponent(out EnemySpawner es))
+		if(spawner.TryGetComponent(out EnemyEntitySpawner es))
 		{
 			OnAssign(es);
 		}
 	}
 
-	private void OnEnemySpawnContinued(EnemySpawner es)
+	private void OnEnemySpawnContinued(EnemyEntitySpawner es)
 	{
 		OnEnemyAssignAtStart(es);
 
@@ -50,7 +50,7 @@ public class EnemySpawnManager : MonoBehaviour
 		spawnerIndex = (spawnerIndex + 1) % spawners.Length;
 	}
 
-	private void OnEnemyAssignAtStart(EnemySpawner es)
+	private void OnEnemyAssignAtStart(EnemyEntitySpawner es)
 	{
 		es.SetEntityPrefab(enemyTypesReader.Enemies[enemyIndex]);
 

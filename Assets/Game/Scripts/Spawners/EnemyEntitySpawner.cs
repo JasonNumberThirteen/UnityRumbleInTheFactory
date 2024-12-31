@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemySpawner : EntitySpawner
+public class EnemyEntitySpawner : EntitySpawner
 {
 	public bool IsBonus {get; set;}
 	
