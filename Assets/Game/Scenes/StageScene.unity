@@ -625,6 +625,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6000890838716230585, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
   m_PrefabInstance: {fileID: 160385435}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &229051406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7041624111148932168, guid: 4257582b44e75ab479f3be607e6c4d49, type: 3}
+  m_PrefabInstance: {fileID: 7088657588023157684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &340759088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7611954035725649028, guid: 5d49c996cbf89034d895b9fae0d74cce, type: 3}
@@ -2332,6 +2343,17 @@ Transform:
   m_Father: {fileID: 1773920524}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1198398495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1194581940350733783, guid: 4257582b44e75ab479f3be607e6c4d49, type: 3}
+  m_PrefabInstance: {fileID: 7088657588023157684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1237164742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,7 +2384,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 120467784}
-  difficultyTier: {fileID: 0}
   gainedPointsCounter: {fileID: 944822935104944545, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
   pauseText: {fileID: 28531379}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -2370,10 +2391,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   - {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
   playerLivesCounters:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1570355440}
+  - {fileID: 1198398495}
   stageCounterText: {fileID: 1922023827}
-  stageCounterIcon: {fileID: 0}
+  stageCounterIcon: {fileID: 229051406}
   leftEnemyIconsManager: {fileID: 449972475}
 --- !u!4 &1237164744
 Transform:
@@ -2419,9 +2440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99159e35c14d0ba44854283840ee3c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
-  playerSpawnerTag: Player Spawner
-  gameOverTimer: {fileID: 0}
+  playersListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!4 &1263742804
 Transform:
   m_ObjectHideFlags: 0
@@ -2974,6 +2993,17 @@ Transform:
   m_Father: {fileID: 1181348151}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1570355440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7077925404716153562, guid: 4257582b44e75ab479f3be607e6c4d49, type: 3}
+  m_PrefabInstance: {fileID: 7088657588023157684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1579829970
 GameObject:
   m_ObjectHideFlags: 0
