@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1806615934405384734, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       propertyPath: onReset.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1806615934405384734, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3754489346627593844, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       propertyPath: m_Name
-      value: Shield
+      value: ShieldVisualEffectPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3754489346627593844, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       propertyPath: m_TagString
@@ -135,6 +135,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3754489346627593844, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2891574348213550397}
+    - targetCorrespondingSourceObject: {fileID: 3754489346627593844, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3824818009708351564}
   m_SourcePrefab: {fileID: 100100000, guid: bdbdfd5924cf0c448be8c2bedb8626b8, type: 3}
 --- !u!1 &3893651801573016522 stripped
 GameObject:
@@ -213,3 +216,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3824818009708351564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893651801573016522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddbf60c55a9d17b45ace474fb6cdc040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
