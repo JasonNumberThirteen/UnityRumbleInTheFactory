@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRobotShield : MonoBehaviour
+public class RobotShield : MonoBehaviour
 {
 	public string shieldTag;
 	
