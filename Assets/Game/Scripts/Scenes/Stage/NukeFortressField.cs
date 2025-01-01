@@ -3,9 +3,11 @@ using UnityEngine;
 [RequireComponent(typeof(Nuke))]
 public class NukeFortressField : MonoBehaviour
 {
-	[SerializeField, Min(0f)] private float overlapBoxSize = 1.5f;
+	[SerializeField] private Rect area;
 	[SerializeField] private LayerMask overlapLayerMask;
-	[SerializeField] private GameObject metalTilePrefab;
+	[SerializeField] private GameObject tilePrefab;
+	[SerializeField] private bool drawGizmos = true;
+	[SerializeField] private Color areaGizmosColor = Color.yellow;
 
 	private Nuke nuke;
 	private float fortressDuration;
@@ -14,8 +16,8 @@ public class NukeFortressField : MonoBehaviour
 	{
 		fortressDuration = duration;
 		
-		DestroyAllGOsAroundNuke();
-		InstantiateMetalTiles();
+		DestroyAllGOsWithinArea();
+		InstantiateTilesWithinArea();
 	}
 
 	private void Awake()
@@ -23,9 +25,9 @@ public class NukeFortressField : MonoBehaviour
 		nuke = GetComponent<Nuke>();
 	}
 	
-	private void DestroyAllGOsAroundNuke()
+	private void DestroyAllGOsWithinArea()
 	{
-		var colliders = Physics2D.OverlapBoxAll(nuke.transform.position, Vector2.one*overlapBoxSize, 0f, overlapLayerMask);
+		var colliders = Physics2D.OverlapBoxAll(area.position, area.size, 0f, overlapLayerMask);
 
 		foreach (var collider in colliders)
 		{
@@ -33,41 +35,54 @@ public class NukeFortressField : MonoBehaviour
 		}
 	}
 
-	private void InstantiateMetalTiles()
+	private void InstantiateTilesWithinArea()
 	{
-		for (int y = 0; y <= 2; ++y)
+		for (var y = area.yMin; y < area.yMax; y += 0.5f)
 		{
-			for (int x = 0; x <= 3; ++x)
+			for (var x = area.xMin; x < area.xMax; x += 0.5f)
 			{
-				InstantiateMetalTile(x, y);
+				InstantiateTile(GetTilePosition(x, y));
 			}
 		}
 	}
 
-	private void InstantiateMetalTile(int x, int y)
+	private Vector2 GetTilePosition(float leftSideX, float topSideY)
 	{
-		var position = MetalTilePosition(x, y);
+		var x = leftSideX - area.width*0.5f + 0.25f;
+		var y = topSideY - area.height*0.5f + 0.25f;
+		
+		return new Vector2(x, y);
+	}
 
-		if(metalTilePrefab == null || !MetalTileCanBePlaced(position))
+	private void InstantiateTile(Vector2 position)
+	{
+		if(tilePrefab == null || nuke.OverlapPoint(position))
 		{
 			return;
 		}
 
-		var instance = Instantiate(metalTilePrefab, position, Quaternion.identity);
-			
+		var instance = Instantiate(tilePrefab, position, Quaternion.identity);
+		
 		if(instance.TryGetComponent(out Timer timer))
 		{
 			timer.duration = fortressDuration;
 		}
 	}
 
-	private Vector2 MetalTilePosition(int x, int y)
+	private void OnDrawGizmos()
 	{
-		var topLeftPosition = new Vector2(-1.25f, -6.25f);
-		var offset = new Vector2(x, y)*0.5f;
-		
-		return topLeftPosition + offset;
-	}
+		if(!drawGizmos)
+		{
+			return;
+		}
 
-	private bool MetalTileCanBePlaced(Vector2 position) => nuke != null && nuke.TryGetComponent(out Collider2D collider2D) && !collider2D.OverlapPoint(position);
+		if(nuke == null)
+		{
+			nuke = GetComponent<Nuke>();
+		}
+
+		Gizmos.color = areaGizmosColor;
+
+		Gizmos.DrawWireCube(area.position, area.size);
+	}
 }

@@ -216,8 +216,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2825eb21edd183408f5706d80c943e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapBoxSize: 1.5
+  area:
+    serializedVersion: 2
+    x: -0.5
+    y: -5.75
+    width: 2
+    height: 1.5
   overlapLayerMask:
     serializedVersion: 2
     m_Bits: 1280
-  metalTilePrefab: {fileID: 6712889474181035811, guid: bde2028975b227a49a3e4cd077f2c60c, type: 3}
+  tilePrefab: {fileID: 6712889474181035811, guid: bde2028975b227a49a3e4cd077f2c60c, type: 3}
+  drawGizmos: 1
+  areaGizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
