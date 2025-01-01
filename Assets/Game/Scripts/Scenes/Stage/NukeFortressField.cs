@@ -76,11 +76,6 @@ public class NukeFortressField : MonoBehaviour
 			return;
 		}
 
-		if(nuke == null)
-		{
-			nuke = GetComponent<Nuke>();
-		}
-
 		Gizmos.color = areaGizmosColor;
 
 		Gizmos.DrawWireCube(area.position, area.size);
