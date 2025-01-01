@@ -34,5 +34,5 @@ public class PlayerRobotTrigger : RobotTrigger
 		}
 	}
 
-	private bool ShieldIsActive() => TryGetComponent(out RobotShield playerRobotShield) && playerRobotShield.ShieldTimer.gameObject.activeInHierarchy;
+	private bool ShieldIsActive() => TryGetComponent(out RobotShield robotShield) && robotShield.IsActive();
 }

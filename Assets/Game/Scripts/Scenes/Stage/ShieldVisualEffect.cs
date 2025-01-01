@@ -4,6 +4,11 @@ using UnityEngine;
 public class ShieldVisualEffect : MonoBehaviour
 {
 	private Timer timer;
+
+	public void SetActive(bool active)
+	{
+		gameObject.SetActive(active);
+	}
 	
 	private void Awake()
 	{
@@ -39,10 +44,5 @@ public class ShieldVisualEffect : MonoBehaviour
 	private void OnTimerEnd()
 	{
 		SetActive(false);
-	}
-
-	private void SetActive(bool active)
-	{
-		gameObject.SetActive(active);
 	}
 }

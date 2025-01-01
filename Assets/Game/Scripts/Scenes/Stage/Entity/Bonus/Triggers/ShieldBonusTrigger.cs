@@ -4,11 +4,9 @@ public class ShieldBonusTrigger : TimedBonusTrigger
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.TryGetComponent(out RobotShield prs))
+		if(sender.TryGetComponent(out Robot robot))
 		{
-			prs.ShieldTimer.duration = GetDuration();
-
-			prs.ShieldTimer.ResetTimer();
+			robot.ActivateShield(GetDuration());
 		}
 		
 		base.TriggerOnEnter(sender);

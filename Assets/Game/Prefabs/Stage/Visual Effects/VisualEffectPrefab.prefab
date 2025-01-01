@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: -8423643055268894845}
   - component: {fileID: 6975690211842807208}
   - component: {fileID: 1806615934405384734}
-  - component: {fileID: 4934427086894330333}
   m_Layer: 0
   m_Name: VisualEffectPrefab
   m_TagString: Untagged
@@ -131,15 +130,3 @@ MonoBehaviour:
   onInterrupt:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4934427086894330333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3754489346627593844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662340b5d97e29c48b6a35db826b837d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
