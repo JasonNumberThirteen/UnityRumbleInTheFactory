@@ -1,40 +1,44 @@
+using System.Linq;
 using UnityEngine;
 
 public class DestructionBonusTrigger : BonusTrigger
 {
-	public string enemyTag;
-
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		DestroyAllFoundEnemies();
+		DestroyAllRobots(sender.TryGetComponent(out Robot robot) && !robot.IsFriendly());
 		base.TriggerOnEnter(sender);
 	}
 
-	private void DestroyAllFoundEnemies()
+	private void DestroyAllRobots(bool destroyFriendly)
 	{
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		var robots = FindObjectsByType<Robot>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == destroyFriendly).ToArray();
 		
-		foreach (GameObject enemy in enemies)
+		foreach (var robot in robots)
 		{
-			DestroyEnemy(enemy);
+			DestroyRobot(robot);
 		}
 
-		PlayExplosionSound(enemies);
+		PlayExplosionSoundIfNeeded(robots);
 	}
 
-	private void DestroyEnemy(GameObject enemy)
+	private void DestroyRobot(Robot robot)
 	{
-		if(enemy.TryGetComponent(out EntityExploder ee))
+		if(robot == null || !robot.TryGetComponent(out EntityExploder entityExploder))
 		{
-			ee.TriggerExplosion();
+			return;
 		}
+		
+		entityExploder.TriggerExplosion();
 
-		StageManager.instance.CountDefeatedEnemy();
+		if(!robot.IsFriendly())
+		{
+			StageManager.instance.CountDefeatedEnemy();
+		}
 	}
 
-	private void PlayExplosionSound(GameObject[] enemies)
+	private void PlayExplosionSoundIfNeeded(Robot[] robots)
 	{
-		if(stageSoundManager != null && enemies.Length > 0)
+		if(stageSoundManager != null && robots.Length > 0)
 		{
 			stageSoundManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
 		}
