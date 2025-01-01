@@ -10,7 +10,13 @@ public class PlayerRobotTrigger : RobotTrigger
 		}
 	}
 
-	private bool ShieldIsActive() => TryGetComponent(out PlayerRobotShield prs) && prs.ShieldTimer.gameObject.activeInHierarchy;
+	private void OnTriggerEnter2D(Collider2D collider)
+	{
+		if(collider.gameObject.TryGetComponent(out ITriggerableOnEnter triggerableOnEnter))
+		{
+			triggerableOnEnter.TriggerOnEnter(gameObject);
+		}
+	}
 
 	private void OnTriggerStay2D(Collider2D collider)
 	{
@@ -22,9 +28,11 @@ public class PlayerRobotTrigger : RobotTrigger
 
 	private void OnTriggerExit2D(Collider2D collider)
 	{
-		if(collider.gameObject.TryGetComponent(out ITriggerableOnExit rt))
+		if(collider.gameObject.TryGetComponent(out ITriggerableOnExit triggerableOnExit))
 		{
-			rt.TriggerOnExit(gameObject);
+			triggerableOnExit.TriggerOnExit(gameObject);
 		}
 	}
+
+	private bool ShieldIsActive() => TryGetComponent(out PlayerRobotShield playerRobotShield) && playerRobotShield.ShieldTimer.gameObject.activeInHierarchy;
 }
