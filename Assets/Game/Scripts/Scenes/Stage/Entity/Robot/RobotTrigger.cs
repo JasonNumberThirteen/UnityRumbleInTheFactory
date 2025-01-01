@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class RobotTrigger : MonoBehaviour, ITriggerableOnEnter
 {
-	protected RobotHealth health;
+	private RobotHealth robotHealth;
 	
 	public virtual void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.TryGetComponent(out BulletStats bs))
+		if(sender.TryGetComponent(out BulletStats bulletStats))
 		{
-			health.TakeDamage(bs.parent, bs.damage);
+			robotHealth.TakeDamage(bulletStats.parent, bulletStats.damage);
 		}
 	}
 	
-	protected virtual void Awake() => health = GetComponent<RobotHealth>();
+	protected virtual void Awake()
+	{
+		robotHealth = GetComponent<RobotHealth>();
+	}
 }
