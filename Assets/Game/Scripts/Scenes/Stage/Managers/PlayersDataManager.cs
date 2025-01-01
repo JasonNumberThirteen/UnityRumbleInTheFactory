@@ -24,7 +24,12 @@ public class PlayersDataManager : MonoBehaviour
 		if(playerData.Score != previousScore)
 		{
 			AddLifeIfPossible(playerData);
-			gameData.SetHighScoreIfPossible(score, () => ModifyLives(playerData, 1));
+
+			if(gameData != null)
+			{
+				gameData.SetHighScoreIfPossible(score, () => ModifyLives(playerData, 1));
+			}
+			
 			playerScoreChangedEvent?.Invoke();
 		}
 	}

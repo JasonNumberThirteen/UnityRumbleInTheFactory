@@ -470,7 +470,7 @@ MonoBehaviour:
   playerRankChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  gameData: {fileID: 0}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playersListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!1001 &149634469
 PrefabInstance:
@@ -2431,7 +2431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d005eff31c507f448ac71f32913ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsForBonus: 500
   uiManager: {fileID: 1237164743}
   stateManager: {fileID: 879573808}
   playersManager: {fileID: 1263742803}

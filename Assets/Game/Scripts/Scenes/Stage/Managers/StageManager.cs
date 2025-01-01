@@ -4,7 +4,6 @@ public class StageManager : MonoBehaviour
 {
 	public static StageManager instance = null;
 
-	[Min(0)] public int pointsForBonus = 500;
 	public StageUIManager uiManager;
 	public StageStateManager stateManager;
 	public PlayersManager playersManager;
