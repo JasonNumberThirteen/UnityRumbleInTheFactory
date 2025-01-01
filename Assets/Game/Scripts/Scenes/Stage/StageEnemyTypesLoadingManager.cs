@@ -32,12 +32,12 @@ public class StageEnemyTypesLoadingManager : MonoBehaviour
 	private EnemyType[] ReadEnemyTypes()
 	{
 		StageData stage = gameData.GetCurrentStageData();
-		int length = stage.enemies.Length;
+		int length = stage.enemyTypes.Length;
 		EnemyType[] types = new EnemyType[length];
 		
 		for (int i = 0; i < length; ++i)
 		{
-			string data = stage.enemies[i];
+			string data = stage.enemyTypes[i];
 			int index = EnemyIndex(data);
 			bool isBonusType = EnemyIsBonusType(data);
 			

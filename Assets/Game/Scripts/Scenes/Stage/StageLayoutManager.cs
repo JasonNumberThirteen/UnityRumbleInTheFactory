@@ -22,9 +22,9 @@ public class StageLayoutManager : MonoBehaviour
 		}
 
 		var currentStageData = gameData.GetCurrentStageData();
-		var tilesIndexes = currentStageData != null ? currentStageData.tiles : new int[0];
+		var tileIndexes = currentStageData != null ? currentStageData.tileIndexes : new int[0];
 		
-		BuildStageLayout(tilesIndexes);
+		BuildStageLayout(tileIndexes);
 	}
 
 	private void BuildStageLayout(int[] tilesIndexes)
