@@ -31,7 +31,7 @@ public class StageLayoutManager : MonoBehaviour
 	{
 		for (int i = 0; i < tilesIndexes.Length; ++i)
 		{
-			InstantiateTile(i, tilesIndexes[i] - 1);
+			InstantiateTile(i, tilesIndexes[i]);
 		}
 	}
 
