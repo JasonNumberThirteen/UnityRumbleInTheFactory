@@ -2,48 +2,55 @@ using UnityEngine;
 
 public class StageEnemyTypesLoadingManager : MonoBehaviour
 {
-	public EnemyData[] enemiesData;
-	public GameData gameData;
-
 	public EnemyType[] EnemyTypes {get; private set;}
-	public GameObject[] Enemies {get; private set;}
+	public GameObject[] EnemyPrefabs {get; private set;}
+
+	[SerializeField] private EnemyData[] enemiesData;
+	[SerializeField] private GameData gameData;
+
+	private readonly char ENEMY_BONUS_TYPE_PREFIX = 'B';
 	
-	private void Awake() => AssignEnemiesFromCurrentStage();
-	private int EnemyIndex(string data) => EnemyDataPointsToBonusType(data) ? int.Parse(data[1..]) : int.Parse(data);
-	private bool EnemyIsBonusType(string data) => EnemyDataPointsToBonusType(data);
-	private bool EnemyDataPointsToBonusType(string data) => data.StartsWith("B");
-
-	private void AssignEnemiesFromCurrentStage()
+	private void Awake()
 	{
-		int length;
+		var stageData = gameData != null ? gameData.GetCurrentStageData() : null;
 		
-		EnemyTypes = ReadEnemyTypes();
-		length = EnemyTypes.Length;
-		Enemies = new GameObject[length];
+		EnemyTypes = GetEnemyTypesFromStageData(stageData);
+		EnemyPrefabs = new GameObject[EnemyTypes.Length];
+		
+		AssignEnemyPrefabsToCurrentStage();
+	}
 
-		for (int i = 0; i < length; ++i)
+	private void AssignEnemyPrefabsToCurrentStage()
+	{
+		for (var i = 0; i < EnemyTypes.Length; ++i)
 		{
-			int index = EnemyTypes[i].GetIndex();
+			var index = EnemyTypes[i].GetIndex();
 			
-			Enemies[i] = enemiesData[index].GetPrefab();
+			EnemyPrefabs[i] = enemiesData[index].GetPrefab();
 		}
 	}
 
-	private EnemyType[] ReadEnemyTypes()
+	private EnemyType[] GetEnemyTypesFromStageData(StageData stageData)
 	{
-		StageData stage = gameData.GetCurrentStageData();
-		int length = stage.enemyTypes.Length;
-		EnemyType[] types = new EnemyType[length];
+		var numberOfEnemiesTypes = stageData != null && stageData.enemyTypes != null ? stageData.enemyTypes.Length : 0;
+		var enemyTypes = new EnemyType[numberOfEnemiesTypes];
 		
-		for (int i = 0; i < length; ++i)
+		for (int i = 0; i < numberOfEnemiesTypes; ++i)
 		{
-			string data = stage.enemyTypes[i];
-			int index = EnemyIndex(data);
-			bool isBonusType = EnemyIsBonusType(data);
+			var enemyDataString = stageData.enemyTypes[i];
 			
-			types[i] = new EnemyType(index, isBonusType);
+			enemyTypes[i] = new EnemyType(GetEnemyIndex(enemyDataString), EnemyDataPointsToBonusType(enemyDataString));
 		}
 
-		return types;
+		return enemyTypes;
 	}
+
+	private int GetEnemyIndex(string dataString)
+	{
+		var dataToParse = EnemyDataPointsToBonusType(dataString) ? dataString[1..] : dataString;
+		
+		return int.Parse(dataToParse);
+	}
+
+	private bool EnemyDataPointsToBonusType(string dataString) => dataString.StartsWith(ENEMY_BONUS_TYPE_PREFIX);
 }

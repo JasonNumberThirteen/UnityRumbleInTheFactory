@@ -15,7 +15,7 @@ public class EnemySpawnManager : MonoBehaviour
 	private int enemyIndex, enemiesToSpawn, spawnerIndex;
 
 	public bool NoEnemiesLeft() => enemyIndex >= EnemiesCount();
-	public int EnemiesCount() => enemyTypesReader.Enemies.Length;
+	public int EnemiesCount() => enemyTypesReader.EnemyPrefabs.Length;
 
 	public void StartSpawn()
 	{
@@ -52,7 +52,7 @@ public class EnemySpawnManager : MonoBehaviour
 
 	private void OnEnemyAssignAtStart(EnemyEntitySpawner es)
 	{
-		es.SetEntityPrefab(enemyTypesReader.Enemies[enemyIndex]);
+		es.SetEntityPrefab(enemyTypesReader.EnemyPrefabs[enemyIndex]);
 
 		es.IsBonus = enemyTypesReader.EnemyTypes[enemyIndex].IsBonus();
 		++enemyIndex;
@@ -81,7 +81,7 @@ public class EnemySpawnManager : MonoBehaviour
 
 	private void ResetSpawnersTimers()
 	{
-		while (enemiesToSpawn > 0 && enemyIndex < enemyTypesReader.Enemies.Length)
+		while (enemiesToSpawn > 0 && enemyIndex < enemyTypesReader.EnemyPrefabs.Length)
 		{
 			GameObject spawner = spawners[spawnerIndex];
 
