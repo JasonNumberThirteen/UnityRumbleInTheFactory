@@ -18,27 +18,20 @@ public class DestructionBonusTrigger : BonusTrigger
 			DestroyRobot(robot);
 		}
 
-		PlayExplosionSoundIfNeeded(robots);
+		PlayExplosionSoundIfNeeded(robots.Length > 0);
 	}
 
 	private void DestroyRobot(Robot robot)
 	{
-		if(robot == null || !robot.TryGetComponent(out EntityExploder entityExploder))
+		if(robot != null && robot.TryGetComponent(out EntityExploder entityExploder))
 		{
-			return;
-		}
-		
-		entityExploder.TriggerExplosion();
-
-		if(!robot.IsFriendly())
-		{
-			StageManager.instance.CountDefeatedEnemy();
+			entityExploder.TriggerExplosion();
 		}
 	}
 
-	private void PlayExplosionSoundIfNeeded(Robot[] robots)
+	private void PlayExplosionSoundIfNeeded(bool playSound)
 	{
-		if(stageSoundManager != null && robots.Length > 0)
+		if(stageSoundManager != null && playSound)
 		{
 			stageSoundManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
 		}

@@ -6,7 +6,6 @@ public class EnemyRobotHealth : RobotHealth
 
 	protected override void Die(GameObject sender)
 	{
-		StageManager.instance.CountDefeatedEnemy();
 		OnDefeatByPlayer(sender);
 		base.Die(sender);
 	}
