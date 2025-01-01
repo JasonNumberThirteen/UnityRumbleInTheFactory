@@ -2,38 +2,40 @@ using UnityEngine;
 
 public class FortressBonusTrigger : TimedBonusTrigger
 {
-	public string nukeTag;
-	[Min(0f)] public float overlapBoxSize = 1.5f;
-	public LayerMask overlapLayers;
-	public GameObject metalTile;
+	[SerializeField, Min(0f)] private float overlapBoxSize = 1.5f;
+	[SerializeField] private LayerMask overlapLayerMask;
+	[SerializeField] private GameObject metalTilePrefab;
 
-	private GameObject nuke;
+	private Nuke nuke;
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		nuke = GameObject.FindGameObjectWithTag(nukeTag);
-
-		if(nuke != null)
-		{
-			DestroyAllObjectsAroundTheNuke();
-			InstantiateMetalTilesAroundTheNuke();
-		}
-
+		DestroyAllGOsAroundNuke();
+		InstantiateMetalTiles();
 		base.TriggerOnEnter(sender);
 	}
-	
-	private void DestroyAllObjectsAroundTheNuke()
-	{
-		Vector2 size = Vector2.one*overlapBoxSize;
-		Collider2D[] colliders = Physics2D.OverlapBoxAll(nuke.transform.position, size, 0f, overlapLayers);
 
-		foreach (Collider2D collider in colliders)
+	private void Awake()
+	{
+		nuke = FindAnyObjectByType<Nuke>();
+	}
+	
+	private void DestroyAllGOsAroundNuke()
+	{
+		if(nuke == null)
+		{
+			return;
+		}
+		
+		var colliders = Physics2D.OverlapBoxAll(nuke.transform.position, Vector2.one*overlapBoxSize, 0f, overlapLayerMask);
+
+		foreach (var collider in colliders)
 		{
 			Destroy(collider.gameObject);
 		}
 	}
 
-	private void InstantiateMetalTilesAroundTheNuke()
+	private void InstantiateMetalTiles()
 	{
 		for (int y = 0; y <= 2; ++y)
 		{
@@ -46,31 +48,28 @@ public class FortressBonusTrigger : TimedBonusTrigger
 
 	private void InstantiateMetalTile(int x, int y)
 	{
-		Vector2 position = MetalTilePosition(x, y);
+		var position = MetalTilePosition(x, y);
 
-		if(MetalTileCanBePlaced(position))
+		if(metalTilePrefab == null || !MetalTileCanBePlaced(position))
 		{
-			GameObject instance = Instantiate(metalTile, position, Quaternion.identity);
+			return;
+		}
+
+		var instance = Instantiate(metalTilePrefab, position, Quaternion.identity);
 			
-			SetMetalTileTimer(instance);
+		if(instance.TryGetComponent(out Timer timer))
+		{
+			timer.duration = GetDuration();
 		}
 	}
 
 	private Vector2 MetalTilePosition(int x, int y)
 	{
-		Vector2 topLeftPosition = new Vector2(-1.25f, -6.25f);
-		Vector2 offset = new Vector2(x, y)*0.5f;
+		var topLeftPosition = new Vector2(-1.25f, -6.25f);
+		var offset = new Vector2(x, y)*0.5f;
 		
 		return topLeftPosition + offset;
 	}
 
-	private bool MetalTileCanBePlaced(Vector2 position) => nuke.TryGetComponent(out Collider2D nukeCollider) && !nukeCollider.OverlapPoint(position);
-
-	private void SetMetalTileTimer(GameObject metalTile)
-	{
-		if(metalTile.TryGetComponent(out Timer timer))
-		{
-			timer.duration = GetDuration();
-		}
-	}
+	private bool MetalTileCanBePlaced(Vector2 position) => nuke != null && nuke.TryGetComponent(out Collider2D collider2D) && !collider2D.OverlapPoint(position);
 }
