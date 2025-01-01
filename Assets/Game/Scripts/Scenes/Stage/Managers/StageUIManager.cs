@@ -10,6 +10,8 @@ public class StageUIManager : MonoBehaviour
 	public IntCounter stageCounterText, stageCounterIcon;
 	public LeftEnemyIconsManager leftEnemyIconsManager;
 
+	private PlayersDataManager playersDataManager;
+
 	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.stateManager.StateIsSetTo(StageState.Paused));
 	public void UpdateStageCounterIcon() => stageCounterIcon.SetTo(gameData.StageNumber);
 
@@ -27,25 +29,58 @@ public class StageUIManager : MonoBehaviour
 		}
 	}
 
-	public void InstantiateGainedPointsCounter(Vector2 position, int points)
+	private void Awake()
 	{
-		GameObject instance = Instantiate(gainedPointsCounter, parent.transform);
-		
-		if(instance.TryGetComponent(out RectTransformPositionController rtm))
+		playersDataManager = FindFirstObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
+
+		RegisterToListeners(true);
+	}
+
+	private void Start()
+	{
+		stageCounterText.SetTo(gameData.StageNumber);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
 		{
-			rtm.SetPosition(GainedPointsCounterPosition(position));
+			if(playersDataManager != null)
+			{
+				playersDataManager.playerScoreChangedEvent.AddListener(OnPlayerScoreChanged);
+			}
+		}
+		else
+		{
+			if(playersDataManager != null)
+			{
+				playersDataManager.playerScoreChangedEvent.RemoveListener(OnPlayerScoreChanged);
+			}
+		}
+	}
+
+	private void OnPlayerScoreChanged(int score, GameObject go)
+	{
+		InstantiateGainedPointsCounter(score, go.transform.position);
+	}
+
+	private void InstantiateGainedPointsCounter(int points, Vector2 position)
+	{
+		var instance = Instantiate(gainedPointsCounter, parent.transform);
+		
+		if(instance.TryGetComponent(out RectTransformPositionController rectTransformPositionController))
+		{
+			rectTransformPositionController.SetPosition(position*16);
 		}
 
 		if(instance.TryGetComponent(out IntCounter counter))
 		{
 			counter.SetTo(points);
 		}
-	}
-	
-	private Vector2 GainedPointsCounterPosition(Vector2 position) => position*16;
-
-	private void Start()
-	{
-		stageCounterText.SetTo(gameData.StageNumber);
 	}
 }

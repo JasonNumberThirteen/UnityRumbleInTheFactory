@@ -3,14 +3,14 @@ using UnityEngine.Events;
 
 public class PlayersDataManager : MonoBehaviour
 {
-	public UnityEvent playerScoreChangedEvent;
+	public UnityEvent<int, GameObject> playerScoreChangedEvent;
 	public UnityEvent playerLivesChangedEvent;
 	public UnityEvent playerRankChangedEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayersListData playersListData;
 
-	public void ModifyScore(PlayerData playerData, int score)
+	public void ModifyScore(PlayerData playerData, int score, GameObject go)
 	{
 		if(playerData == null)
 		{
@@ -30,7 +30,7 @@ public class PlayersDataManager : MonoBehaviour
 				gameData.SetHighScoreIfPossible(score, () => ModifyLives(playerData, 1));
 			}
 			
-			playerScoreChangedEvent?.Invoke();
+			playerScoreChangedEvent?.Invoke(score, go);
 		}
 	}
 

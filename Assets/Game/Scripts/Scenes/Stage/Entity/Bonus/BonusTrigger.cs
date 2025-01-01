@@ -37,7 +37,7 @@ public abstract class BonusTrigger : MonoBehaviour, ITriggerableOnEnter
 	{
 		if(playersDataManager != null && sender.TryGetComponent(out PlayerRobotData playerRobotData) && playerRobotData.Data != null)
 		{
-			playersDataManager.ModifyScore(playerRobotData.Data, points);
+			playersDataManager.ModifyScore(playerRobotData.Data, points, gameObject);
 		}
 	}
 

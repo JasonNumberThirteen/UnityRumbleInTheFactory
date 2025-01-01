@@ -4,25 +4,50 @@ public class EnemyRobotHealth : RobotHealth
 {
 	public EnemyData data;
 
+	private StageStateManager stageStateManager;
+	private PlayersDataManager playersDataManager;
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		stageStateManager = FindAnyObjectByType<StageStateManager>();
+		playersDataManager = FindAnyObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
+	}
+
 	protected override void Die(GameObject sender)
 	{
-		OnDefeatByPlayer(sender);
+		OnDeath(sender);
 		base.Die(sender);
 	}
 
-	private void OnDefeatByPlayer(GameObject sender)
+	private void OnDeath(GameObject sender)
 	{
-		StageManager sm = StageManager.instance;
-		
-		if(sender.TryGetComponent(out PlayerRobotData prd) && !sm.stateManager.GameIsOver())
+		if(stageStateManager == null || stageStateManager.GameIsOver())
 		{
-			prd.Data.AddDefeatedEnemy(data);
-			sm.AddPoints(gameObject, prd.Data, data.GetPointsForDefeat());
+			return;
+		}
 
-			if(stageSoundManager != null)
-			{
-				stageSoundManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
-			}
+		ModifyPlayerDataIfPossible(sender);
+		PlaySound();
+	}
+
+	private void ModifyPlayerDataIfPossible(GameObject sender)
+	{
+		if(playersDataManager == null || !sender.TryGetComponent(out PlayerRobotData playerRobotData) && playerRobotData.Data == null)
+		{
+			return;
+		}
+		
+		playerRobotData.Data.AddDefeatedEnemy(data);
+		playersDataManager.ModifyScore(playerRobotData.Data, data.GetPointsForDefeat(), gameObject);
+	}
+
+	private void PlaySound()
+	{
+		if(stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
 		}
 	}
 }

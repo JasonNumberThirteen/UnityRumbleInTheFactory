@@ -21,13 +21,6 @@ public class StageManager : MonoBehaviour
 		CheckIfWonTheGame();
 	}
 
-	public void AddPoints(GameObject go, PlayerData pd, int points)
-	{
-		pd.Score += points;
-
-		uiManager.InstantiateGainedPointsCounter(go.transform.position, points);
-	}
-
 	public void PauseGame()
 	{
 		if(stateManager.StateIsSetTo(StageState.Interrupted) || stateManager.StateIsSetTo(StageState.Won) || stateManager.StateIsSetTo(StageState.Over))
