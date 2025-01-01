@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8887816664841345866}
   - component: {fileID: 7250390401246617337}
   - component: {fileID: -3710137388361032966}
+  - component: {fileID: 4366361716570162224}
   m_Layer: 12
   m_Name: NukePrefab
   m_TagString: Nuke
@@ -203,3 +204,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionEffectPrefab: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
   destroyGOAfterExplosion: 0
+--- !u!114 &4366361716570162224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414169594087006866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2825eb21edd183408f5706d80c943e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlapBoxSize: 1.5
+  overlapLayerMask:
+    serializedVersion: 2
+    m_Bits: 1280
+  metalTilePrefab: {fileID: 6712889474181035811, guid: bde2028975b227a49a3e4cd077f2c60c, type: 3}
