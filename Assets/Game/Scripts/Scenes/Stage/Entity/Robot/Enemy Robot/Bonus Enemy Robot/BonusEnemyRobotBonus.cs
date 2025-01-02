@@ -1,31 +1,21 @@
-using Random = UnityEngine.Random;
 using UnityEngine;
 
 public class BonusEnemyRobotBonus : MonoBehaviour
 {
-	private StageSoundManager stageSoundManager;
+	private BonusSpawnManager bonusSpawnManager;
 	
 	public void SpawnBonus()
 	{
-		if(stageSoundManager != null)
+		if(bonusSpawnManager != null)
 		{
-			stageSoundManager.PlaySound(SoundEffectType.BonusSpawn);
+			bonusSpawnManager.InstantiateRandomBonus();
 		}
 		
-		Instantiate(GetRandomBonus());
 		Destroy(this);
 	}
 
 	private void Awake()
 	{
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
-	}
-
-	private GameObject GetRandomBonus()
-	{
-		var bonuses = StageManager.instance.enemySpawnManager.bonuses;
-		var index = Random.Range(0, bonuses.Length);
-
-		return bonuses[index];
+		bonusSpawnManager = FindAnyObjectByType<BonusSpawnManager>();
 	}
 }

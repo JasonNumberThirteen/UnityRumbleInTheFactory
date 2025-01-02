@@ -4,7 +4,7 @@ public class BonusEnemyRobotColor : MonoBehaviour
 {
 	private SpriteRenderer spriteRenderer;
 	private Color initialColor;
-	private EnemySpawnManager enemySpawnManager;
+	private BonusSpawnManager bonusSpawnManager;
 
 	public void RestoreInitialColor() => spriteRenderer.color = initialColor;
 
@@ -14,13 +14,13 @@ public class BonusEnemyRobotColor : MonoBehaviour
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		initialColor = spriteRenderer.color;
-		enemySpawnManager = StageManager.instance.enemySpawnManager;
+		bonusSpawnManager = FindAnyObjectByType<BonusSpawnManager>();
 	}
 
 	private void LerpColor()
 	{
-		float t = Mathf.PingPong(Time.time, enemySpawnManager.bonusEnemyColorFadeTime);
-		Color color = Color.Lerp(initialColor, enemySpawnManager.bonusEnemyColor, t);
+		float t = Mathf.PingPong(Time.time, bonusSpawnManager.GetBonusEnemyColorFadeTime());
+		Color color = Color.Lerp(initialColor, bonusSpawnManager.GetBonusEnemyColor(), t);
 
 		spriteRenderer.color = color;
 	}
