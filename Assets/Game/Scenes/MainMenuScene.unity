@@ -244,7 +244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4793411460295164136, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_text
-      value: "\xA9 JASON 2024"
+      value: "\xA9 JASON 2025"
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
@@ -1203,6 +1203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d822f13543f816b4989dbb0902bbff29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransformReachedTargetPositionEvent:
+    m_PersistentCalls:
+      m_Calls: []
   targetPosition: {x: 0, y: 0}
 --- !u!114 &1052427270
 MonoBehaviour:
