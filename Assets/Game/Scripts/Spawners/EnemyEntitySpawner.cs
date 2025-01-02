@@ -56,7 +56,6 @@ public class EnemyEntitySpawner : EntitySpawner
 			}
 		});
 		AddComponentToEntityIfPossible<BonusEnemyRobotColor>(entity);
-		AddComponentToEntityIfPossible<BonusEnemyRobotBonus>(entity);
 	}
 
 	private void AddComponentToEntityIfPossible<T>(GameObject entity, Action onStart = null) where T : Component

@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class BonusEnemyRobotTrigger : RobotTrigger
 {
+	private BonusSpawnManager bonusSpawnManager;
+	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(TryGetComponent(out BonusEnemyRobotBonus berb))
+		if(bonusSpawnManager != null)
 		{
-			berb.SpawnBonus();
+			bonusSpawnManager.InstantiateRandomBonus();
 		}
 
 		if(TryGetComponent(out BonusEnemyRobotColor berc))
@@ -16,5 +18,12 @@ public class BonusEnemyRobotTrigger : RobotTrigger
 		}
 
 		base.TriggerOnEnter(sender);
+	}
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		bonusSpawnManager = FindAnyObjectByType<BonusSpawnManager>();
 	}
 }
