@@ -1,4 +1,4 @@
-public class RobotAnimator : EntityAnimator
+public class RobotEntityAnimator : EntityAnimator
 {
 	private void Update()
 	{
