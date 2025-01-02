@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 4366984621820829096}
   - component: {fileID: 6410641849965248143}
   - component: {fileID: 5126605066933689641}
+  - component: {fileID: 5886565102491951326}
+  - component: {fileID: 831581827609024836}
   m_Layer: 0
   m_Name: RobotPrefab
   m_TagString: Untagged
@@ -250,6 +252,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentTag: Entities
+--- !u!114 &5886565102491951326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880115763377585167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3e4779f1fb586418d5db6ee6e03f78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
+--- !u!114 &831581827609024836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880115763377585167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fed80296f2c93478570480b1e556c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours: []
 --- !u!1001 &8577749972176307599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -336,3 +364,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5a600641e43474dbecfc8651e16f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateOnStart: 0
