@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRobotTrigger : RobotTrigger
+public class PlayerRobotTrigger : RobotTriggerEventsReceiver
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
