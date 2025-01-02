@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class BonusPlacement : MonoBehaviour
+public class BonusTiledPositionSetter : MonoBehaviour
 {
 	[SerializeField] private Rect area;
 	[SerializeField, Min(0.01f)] private float gridSize = 0.5f;
