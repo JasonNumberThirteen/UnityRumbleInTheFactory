@@ -1,28 +1,42 @@
 using UnityEngine;
 
+[RequireComponent(typeof(EntityExploder))]
 public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
 {
-	[Min(1)] public int initialHealth = 1;
-
-	public int Health {get; private set;}
+	public int CurrentHealth {get; private set;}
+	
+	[SerializeField, Min(1)] private int initialHealth;
 
 	protected StageSoundManager stageSoundManager;
 
-	public virtual void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank) => Health = robotRank.GetHealth();
+	private EntityExploder entityExploder;
+
+	public virtual void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank)
+	{
+		CurrentHealth = robotRank.GetHealth();
+	}
 
 	public virtual void TakeDamage(GameObject sender, int damage)
 	{
-		Health -= damage;
+		CurrentHealth -= damage;
 
 		CheckHealth(sender);
 	}
 
-	protected virtual void Awake() => stageSoundManager = FindAnyObjectByType<StageSoundManager>();
-	protected virtual void Start() => Health = initialHealth;
+	protected virtual void Awake()
+	{
+		entityExploder = GetComponent<EntityExploder>();
+		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
+	}
+
+	protected virtual void Start()
+	{
+		CurrentHealth = initialHealth;
+	}
 
 	protected virtual void CheckHealth(GameObject sender)
 	{
-		if(Health <= 0)
+		if(CurrentHealth <= 0)
 		{
 			Die(sender);
 		}
@@ -34,9 +48,6 @@ public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
 
 	protected virtual void Die(GameObject sender)
 	{
-		if(TryGetComponent(out EntityExploder ee))
-		{
-			ee.TriggerExplosion();
-		}
+		entityExploder.TriggerExplosion();
 	}
 }
