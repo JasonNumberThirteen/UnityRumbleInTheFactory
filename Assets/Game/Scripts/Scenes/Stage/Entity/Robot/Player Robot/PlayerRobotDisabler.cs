@@ -6,7 +6,7 @@ public class PlayerRobotDisabler : MonoBehaviour
 	{
 		if(TryGetComponent(out EntityMovement em))
 		{
-			em.Direction = Vector2.zero;
+			em.CurrentMovementDirection = Vector2.zero;
 
 			Destroy(em);
 		}

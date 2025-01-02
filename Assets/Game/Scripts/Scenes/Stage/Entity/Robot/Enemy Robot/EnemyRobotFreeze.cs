@@ -18,7 +18,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 		}
 		
 		Frozen = freeze;
-		movement.Direction = freeze ? Vector2.zero : lastDirection;
+		movement.CurrentMovementDirection = freeze ? Vector2.zero : lastDirection;
 		shootTimer.enabled = !freeze;
 
 		movement.SetMovementLock();
@@ -51,9 +51,9 @@ public class EnemyRobotFreeze : MonoBehaviour
 
 	private void SetLastDirection()
 	{
-		if(!movement.DirectionIsZero())
+		if(!movement.CurrentMovementDirectionIsNone())
 		{
-			lastDirection = movement.Direction;
+			lastDirection = movement.CurrentMovementDirection;
 		}
 	}
 }

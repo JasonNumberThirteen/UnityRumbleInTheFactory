@@ -48,7 +48,7 @@ public class RobotShoot : MonoBehaviour
 	{
 		if(bullet.TryGetComponent(out EntityMovement em))
 		{
-			em.Direction = BulletDirection();
+			em.CurrentMovementDirection = BulletDirection();
 		}
 	}
 }

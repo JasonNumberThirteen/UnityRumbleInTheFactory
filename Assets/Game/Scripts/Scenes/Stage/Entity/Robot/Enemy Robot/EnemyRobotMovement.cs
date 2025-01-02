@@ -15,13 +15,13 @@ public class EnemyRobotMovement : EntityMovement
 	{
 		if(LastDirectionIsNotZero())
 		{
-			SetDirections(Direction, lastDirection);
+			SetDirections(CurrentMovementDirection, lastDirection);
 		}
 	}
 
 	public void RandomiseDirection()
 	{
-		Vector2 direction = movementDirectionSelector.RandomDirection(Direction);
+		Vector2 direction = movementDirectionSelector.RandomDirection(CurrentMovementDirection);
 
 		SetDirections(direction, direction);
 	}
@@ -32,11 +32,12 @@ public class EnemyRobotMovement : EntityMovement
 		{
 			timer.ResetTimer();
 
-			lastMovementSpeed = movementSpeed;
+			lastMovementSpeed = GetMovementSpeed();
 		}
 
 		detectedCollision = detected;
-		movementSpeed = detected ? 0f : lastMovementSpeed;
+
+		SetMovementSpeed(detected ? 0f : lastMovementSpeed);
 	}
 
 	protected override void Awake()
@@ -67,15 +68,14 @@ public class EnemyRobotMovement : EntityMovement
 
 	private void SetDirection(Vector2 direction)
 	{
-		Direction = direction;
+		CurrentMovementDirection = direction;
 
-		collisionDetector.AdjustRotation(Direction);
+		collisionDetector.AdjustRotation(CurrentMovementDirection);
 	}
 
 	private void Start()
 	{
-		movementSpeed *= StageManager.instance.gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier());
-
+		SetMovementSpeed(GetMovementSpeed()*StageManager.instance.gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier()));
 		SetDirection(Vector2.down);
 	}
 

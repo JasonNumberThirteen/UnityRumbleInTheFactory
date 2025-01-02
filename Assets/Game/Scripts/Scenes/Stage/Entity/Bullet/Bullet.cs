@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
 
 	public void SetMovementSpeed(float movementSpeed)
 	{
-		entityMovement.movementSpeed = movementSpeed;
+		entityMovement.SetMovementSpeed(movementSpeed);
 	}
 
 	public void SetCanDestroyMetal(bool canDestroyMetal)
@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
 
 	private void Start()
 	{
-		if(Mathf.Approximately(entityMovement.movementSpeed, 0f))
+		if(Mathf.Approximately(entityMovement.GetMovementSpeed(), 0f))
 		{
 			SetMovementSpeed(initialMovementSpeed);
 		}

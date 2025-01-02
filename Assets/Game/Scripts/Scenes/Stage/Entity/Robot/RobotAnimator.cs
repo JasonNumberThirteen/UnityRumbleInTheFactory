@@ -4,12 +4,12 @@ public class RobotAnimator : EntityAnimator
 	{
 		animator.SetFloat("MovementSpeed", MovementSpeed());
 
-		if(!movement.DirectionIsZero())
+		if(!movement.CurrentMovementDirectionIsNone())
 		{
-			animator.SetInteger("MovementX", (int)movement.Direction.x);
-			animator.SetInteger("MovementY", (int)movement.Direction.y);
+			animator.SetInteger("MovementX", (int)movement.CurrentMovementDirection.x);
+			animator.SetInteger("MovementY", (int)movement.CurrentMovementDirection.y);
 		}
 	}
 
-	private float MovementSpeed() => movement.DirectionIsZero() ? 0f : 1f;
+	private float MovementSpeed() => movement.CurrentMovementDirectionIsNone() ? 0f : 1f;
 }

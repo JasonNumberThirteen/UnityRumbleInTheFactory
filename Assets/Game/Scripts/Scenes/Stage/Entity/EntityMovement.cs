@@ -1,22 +1,36 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EntityMovement : MonoBehaviour, IUpgradeableByRobotRank
 {
-	[Min(0f)] public float movementSpeed = 5f;
+	public Vector2 CurrentMovementDirection {get; set;}
 
-	public Vector2 Direction {get; set;}
+	[SerializeField, Min(0f)] private float movementSpeed = 5f;
 
 	protected Rigidbody2D rb2D;
 
-	public bool DirectionIsZero() => Direction == Vector2.zero;
-	public virtual void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank) => movementSpeed = robotRank.GetMovementSpeed();
-	protected virtual void Awake() => rb2D = GetComponent<Rigidbody2D>();
-	protected virtual void FixedUpdate() => Move();
+	public float GetMovementSpeed() => movementSpeed;
+	public bool CurrentMovementDirectionIsNone() => CurrentMovementDirection == Vector2.zero;
 
-	protected virtual void Move()
+	public virtual void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank)
 	{
-		float speed = movementSpeed*Time.fixedDeltaTime;
+		movementSpeed = robotRank.GetMovementSpeed();
+	}
 
-		rb2D.MovePosition(rb2D.position + Direction*speed);
+	public void SetMovementSpeed(float movementSpeed)
+	{
+		this.movementSpeed = movementSpeed;
+	}
+
+	protected virtual void Awake()
+	{
+		rb2D = GetComponent<Rigidbody2D>();
+	}
+
+	protected virtual void FixedUpdate()
+	{
+		var speed = movementSpeed*Time.fixedDeltaTime;
+
+		rb2D.MovePosition(rb2D.position + CurrentMovementDirection*speed);
 	}
 }

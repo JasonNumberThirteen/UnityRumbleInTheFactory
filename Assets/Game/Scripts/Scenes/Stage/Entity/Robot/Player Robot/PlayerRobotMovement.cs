@@ -36,16 +36,16 @@ public class PlayerRobotMovement : EntityMovement
 		LockMovementWhenHitObject();
 	}
 
-	private void UpdateDirection() => Direction = MovementDirection();
+	private void UpdateDirection() => CurrentMovementDirection = MovementDirection();
 	private int MovementAxis(float a) => Mathf.RoundToInt(a);
 	private bool PressedHorizontalMovementKey(Vector2 movement) => Mathf.Abs(movement.x) > Mathf.Abs(movement.y);
-	private bool IsMovingInDifferentDirection() => !DirectionIsZero() && Direction != lastDirection;
+	private bool IsMovingInDifferentDirection() => !CurrentMovementDirectionIsNone() && CurrentMovementDirection != lastDirection;
 
 	private void UpdateLastDirection()
 	{
 		if(IsMovingInDifferentDirection())
 		{
-			lastDirection = Direction;
+			lastDirection = CurrentMovementDirection;
 		}
 	}
 
@@ -61,7 +61,7 @@ public class PlayerRobotMovement : EntityMovement
 	{
 		if(IsMovingInDifferentDirection())
 		{
-			collisionDetector.AdjustRotation(Direction);
+			collisionDetector.AdjustRotation(CurrentMovementDirection);
 		}
 	}
 	
