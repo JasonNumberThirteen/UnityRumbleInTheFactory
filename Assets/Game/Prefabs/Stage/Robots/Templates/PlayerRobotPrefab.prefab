@@ -111,7 +111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: behaviours.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: behaviours.Array.data[0]
@@ -120,11 +120,11 @@ PrefabInstance:
     - target: {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: behaviours.Array.data[1]
       value: 
-      objectReference: {fileID: 3415699233984565831}
+      objectReference: {fileID: -2978857606154982737}
     - target: {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: behaviours.Array.data[2]
       value: 
-      objectReference: {fileID: 4828307389359312348}
+      objectReference: {fileID: -2978857606154982737}
     - target: {fileID: 3038284362999386624, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -224,9 +224,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3415699233984565831}
-    - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -2639209668893146017}
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
       addedObject: {fileID: -123051218500741914}
@@ -331,18 +328,6 @@ MonoBehaviour:
   bullet: {fileID: 0}
   offsetFromObject: 0.1
   bulletTag: Player Bullet
---- !u!114 &-2639209668893146017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3405398399308765810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61fb6bc503464ca48a329eaa85236587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-123051218500741914
 MonoBehaviour:
   m_ObjectHideFlags: 0

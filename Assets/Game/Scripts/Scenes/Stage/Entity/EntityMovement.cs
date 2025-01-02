@@ -9,6 +9,8 @@ public class EntityMovement : MonoBehaviour, IUpgradeableByRobotRank
 
 	protected Rigidbody2D rb2D;
 
+	private Vector2 lastMovementDirection;
+
 	public float GetMovementSpeed() => movementSpeed;
 	public bool CurrentMovementDirectionIsNone() => CurrentMovementDirection == Vector2.zero;
 
@@ -32,5 +34,16 @@ public class EntityMovement : MonoBehaviour, IUpgradeableByRobotRank
 		var speed = movementSpeed*Time.fixedDeltaTime;
 
 		rb2D.MovePosition(rb2D.position + CurrentMovementDirection*speed);
+	}
+
+	private void OnDisable()
+	{
+		lastMovementDirection = CurrentMovementDirection;
+		CurrentMovementDirection = Vector2.zero;
+	}
+
+	private void OnEnable()
+	{
+		CurrentMovementDirection = lastMovementDirection;
 	}
 }

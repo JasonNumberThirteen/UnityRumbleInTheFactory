@@ -1,10 +1,9 @@
+using System.Linq;
 using UnityEngine;
 
 public class PlayersManager : MonoBehaviour
 {
 	[SerializeField] private PlayersListData playersListData;
-
-	private readonly string PLAYER_TAG = "Player";
 
 	public void ResetDefeatedEnemiesByPlayer()
 	{
@@ -24,14 +23,12 @@ public class PlayersManager : MonoBehaviour
 
 	public void DisablePlayers()
 	{
-		var players = GameObject.FindGameObjectsWithTag(PLAYER_TAG);
+		var robots = FindObjectsByType<Robot>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly());
+		var robotDisablerComponents = robots.Select(robot => robot.GetComponent<RobotDisabler>()).Where(component => component != null);
 
-		foreach (var player in players)
+		foreach (var robotDisabler in robotDisablerComponents)
 		{
-			if(player.TryGetComponent(out PlayerRobotDisabler playerRobotDisabler))
-			{
-				playerRobotDisabler.DisableYourself();
-			}
+			robotDisabler.SetBehavioursActive(false);
 		}
 	}
 }
