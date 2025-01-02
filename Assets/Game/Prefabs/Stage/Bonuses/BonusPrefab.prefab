@@ -226,15 +226,14 @@ MonoBehaviour:
   area:
     serializedVersion: 2
     x: -7
-    y: -6.5
-    width: 13
-    height: 13
+    y: -6
+    width: 12.5
+    height: 12.5
   gridSize: 0.5
   inaccessibleAreaLayers:
     serializedVersion: 2
     m_Bits: 7680
   drawGizmos: 1
-  colliderGizmosColor: {r: 0, g: 0, b: 0, a: 0.5}
   accessiblePositionColor: {r: 0, g: 1, b: 0, a: 0.5}
   inaccessiblePositionColor: {r: 1, g: 0, b: 0, a: 0.5}
 --- !u!114 &5446431637566457120
