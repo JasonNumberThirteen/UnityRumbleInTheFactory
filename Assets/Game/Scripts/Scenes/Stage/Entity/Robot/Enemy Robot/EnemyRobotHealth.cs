@@ -34,13 +34,22 @@ public class EnemyRobotHealth : RobotHealth
 
 	private void ModifyPlayerDataIfPossible(GameObject sender)
 	{
-		if(playersDataManager == null || !sender.TryGetComponent(out PlayerRobotData playerRobotData) && playerRobotData.Data == null)
+		if(!sender.TryGetComponent(out PlayerRobot playerRobot))
 		{
 			return;
 		}
-		
-		playerRobotData.Data.AddDefeatedEnemy(data);
-		playersDataManager.ModifyScore(playerRobotData.Data, data.GetPointsForDefeat(), gameObject);
+
+		var playerData = playerRobot.GetPlayerData();
+
+		if(playerData != null)
+		{
+			playerData.AddDefeatedEnemy(data);
+
+			if(playersDataManager != null)
+			{
+				playersDataManager.ModifyScore(playerData, data.GetPointsForDefeat(), gameObject);
+			}
+		}
 	}
 
 	private void PlaySound()

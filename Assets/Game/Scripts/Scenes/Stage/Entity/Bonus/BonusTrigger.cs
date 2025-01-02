@@ -6,8 +6,9 @@ public abstract class BonusTrigger : MonoBehaviour, ITriggerableOnEnter
 
 	[SerializeField, Min(0)] private int points = 500;
 
+	protected PlayersDataManager playersDataManager;
+
 	private StageStateManager stageStateManager;
-	private PlayersDataManager playersDataManager;
 	
 	public virtual void TriggerOnEnter(GameObject sender)
 	{
@@ -35,9 +36,16 @@ public abstract class BonusTrigger : MonoBehaviour, ITriggerableOnEnter
 
 	private void AddPointsToPlayerIfPossible(GameObject sender)
 	{
-		if(playersDataManager != null && sender.TryGetComponent(out PlayerRobotData playerRobotData) && playerRobotData.Data != null)
+		if(!sender.TryGetComponent(out PlayerRobot playerRobot))
 		{
-			playersDataManager.ModifyScore(playerRobotData.Data, points, gameObject);
+			return;
+		}
+		
+		var playerData = playerRobot.GetPlayerData();
+
+		if(playersDataManager != null && playerData != null)
+		{
+			playersDataManager.ModifyScore(playerData, points, gameObject);
 		}
 	}
 

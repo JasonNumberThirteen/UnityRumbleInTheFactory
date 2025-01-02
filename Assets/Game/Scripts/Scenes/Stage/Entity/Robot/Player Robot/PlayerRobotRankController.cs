@@ -1,26 +1,27 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerRobot))]
 public class PlayerRobotRankController : MonoBehaviour
 {
 	public PlayerRobotRank CurrentRank {get; private set;}
 
-	private PlayerRobotData data;
+	private PlayerRobot playerRobot;
 	
 	public void Promote()
 	{
-		++data.Data.RankNumber;
+		++playerRobot.GetPlayerData().RankNumber;
 
 		SetRank();
 	}
 	
 	public void SetRank()
 	{
-		CurrentRank = data.Data.GetRank();
+		CurrentRank = playerRobot.GetPlayerData().GetRank();
 
 		UpdateValues();
 	}
 
-	private void Awake() => data = GetComponent<PlayerRobotData>();
+	private void Awake() => playerRobot = GetComponent<PlayerRobot>();
 	private void Start() => SetRank();
 
 	private void UpdateValues()

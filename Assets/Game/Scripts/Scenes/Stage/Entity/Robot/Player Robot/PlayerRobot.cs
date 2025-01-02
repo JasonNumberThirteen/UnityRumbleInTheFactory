@@ -1,12 +1,18 @@
+using UnityEngine;
+
 public class PlayerRobot : Robot
 {
+	[SerializeField] private PlayerData playerData;
+	
 	public override bool IsFriendly() => true;
+
+	public PlayerData GetPlayerData() => playerData;
 
 	private void OnDestroy()
 	{
-		if(TryGetComponent(out PlayerRobotData prd))
+		if(playerData != null)
 		{
-			prd.Data.Spawner.InitiateRespawn();
+			playerData.Spawner.InitiateRespawn();
 		}
 	}
 }

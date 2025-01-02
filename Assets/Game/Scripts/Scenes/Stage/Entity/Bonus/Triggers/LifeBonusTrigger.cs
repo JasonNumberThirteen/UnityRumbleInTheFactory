@@ -4,9 +4,14 @@ public class LifeBonusTrigger : BonusTrigger
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.TryGetComponent(out PlayerRobotData playerRobotData))
+		if(sender.TryGetComponent(out PlayerRobot playerRobot))
 		{
-			++playerRobotData.Data.Lives;
+			var playerData = playerRobot.GetPlayerData();
+
+			if(playersDataManager != null && playerData != null)
+			{
+				playersDataManager.ModifyLives(playerData, 1);
+			}
 		}
 
 		base.TriggerOnEnter(sender);
