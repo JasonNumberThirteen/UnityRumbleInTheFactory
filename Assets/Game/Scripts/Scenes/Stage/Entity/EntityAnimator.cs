@@ -3,12 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(EntityMovement), typeof(Animator))]
 public abstract class EntityAnimator : MonoBehaviour
 {
-	protected EntityMovement movement;
+	protected EntityMovement entityMovement;
 	protected Animator animator;
 
 	protected virtual void Awake()
 	{
-		movement = GetComponent<EntityMovement>();
+		entityMovement = GetComponent<EntityMovement>();
 		animator = GetComponent<Animator>();
 	}
 }

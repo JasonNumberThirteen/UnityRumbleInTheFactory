@@ -5,7 +5,7 @@ public class BulletAnimator : EntityAnimator
 	
 	private void Start()
 	{
-		var movementDirection = movement.CurrentMovementDirection;
+		var movementDirection = entityMovement.CurrentMovementDirection;
 
 		animator.SetInteger(HORIZONTAL_MOVEMENT_PARAMETER_NAME, (int)movementDirection.x);
 		animator.SetInteger(VERTICAL_MOVEMENT_PARAMETER_NAME, (int)movementDirection.y);
