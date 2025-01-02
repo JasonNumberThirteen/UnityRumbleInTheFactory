@@ -6,9 +6,10 @@ public class StageManager : MonoBehaviour
 
 	public StageUIManager uiManager;
 	public StageStateManager stateManager;
-	public PlayersManager playersManager;
 	public EnemySpawnManager enemySpawnManager;
 	public GameData gameData;
+
+	[SerializeField] private PlayersListData playersListData;
 
 	private StageSoundManager stageSoundManager;
 	private Nuke nuke;
@@ -40,6 +41,14 @@ public class StageManager : MonoBehaviour
 		stateManager.SetStateTo(StageState.Over);
 	}
 
+	public void CheckPlayersLives()
+	{
+		if(playersListData != null && !playersListData.Any(playerData => playerData.Lives > 0))
+		{
+			SetGameAsOver();
+		}
+	}
+
 	public void EnableAudioManager()
 	{
 		if(stageSoundManager == null || stateManager.StateIsSetTo(StageState.Over))
@@ -56,6 +65,11 @@ public class StageManager : MonoBehaviour
 		
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 		nuke = FindAnyObjectByType<Nuke>(FindObjectsInactive.Include);
+
+		if(playersListData != null)
+		{
+			playersListData.ForEach(playerData => playerData.ResetDefeatedEnemies());
+		}
 
 		RegisterToListeners(true);
 	}

@@ -44,7 +44,7 @@ public class PlayerEntitySpawner : EntitySpawner
 		}
 		else
 		{
-			StageManager.instance.playersManager.CheckPlayersLives();
+			StageManager.instance.CheckPlayersLives();
 		}
 	}
 
