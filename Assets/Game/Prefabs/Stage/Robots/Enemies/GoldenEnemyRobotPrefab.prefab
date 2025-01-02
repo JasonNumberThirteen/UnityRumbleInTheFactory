@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
     - target: {fileID: -7789898313100651961, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
+    - target: {fileID: -7789898313100651961, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: initialHealth
       value: 4
       objectReference: {fileID: 0}
@@ -78,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816500477355214006, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: m_Name
-      value: Golden Enemy Robot
+      value: GoldenEnemyRobotPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 5946033243742624588, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: m_Controller

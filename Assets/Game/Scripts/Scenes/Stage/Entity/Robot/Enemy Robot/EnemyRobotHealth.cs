@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyRobotHealth : RobotHealth
 {
-	public EnemyData data;
+	[SerializeField] private EnemyData enemyData;
 
 	private StageStateManager stageStateManager;
 	private PlayersDataManager playersDataManager;
@@ -34,7 +34,7 @@ public class EnemyRobotHealth : RobotHealth
 
 	private void ModifyPlayerDataIfPossible(GameObject sender)
 	{
-		if(!sender.TryGetComponent(out PlayerRobot playerRobot))
+		if(enemyData == null || !sender.TryGetComponent(out PlayerRobot playerRobot))
 		{
 			return;
 		}
@@ -43,11 +43,11 @@ public class EnemyRobotHealth : RobotHealth
 
 		if(playerData != null)
 		{
-			playerData.AddDefeatedEnemy(data);
+			playerData.AddDefeatedEnemy(enemyData);
 
 			if(playersDataManager != null)
 			{
-				playersDataManager.ModifyScore(playerData, data.GetPointsForDefeat(), gameObject);
+				playersDataManager.ModifyScore(playerData, enemyData.GetPointsForDefeat(), gameObject);
 			}
 		}
 	}
