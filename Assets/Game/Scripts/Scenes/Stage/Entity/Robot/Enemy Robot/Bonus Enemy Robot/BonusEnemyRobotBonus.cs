@@ -12,7 +12,7 @@ public class BonusEnemyRobotBonus : MonoBehaviour
 			stageSoundManager.PlaySound(SoundEffectType.BonusSpawn);
 		}
 		
-		Instantiate(RandomBonus());
+		Instantiate(GetRandomBonus());
 		Destroy(this);
 	}
 
@@ -21,13 +21,11 @@ public class BonusEnemyRobotBonus : MonoBehaviour
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 	}
 
-	private GameObject RandomBonus()
+	private GameObject GetRandomBonus()
 	{
-		GameObject[] bonuses = StageManager.instance.enemySpawnManager.bonuses;
-		int index = BonusIndex(bonuses);
+		var bonuses = StageManager.instance.enemySpawnManager.bonuses;
+		var index = Random.Range(0, bonuses.Length);
 
 		return bonuses[index];
 	}
-
-	private int BonusIndex(GameObject[] bonuses) => Random.Range(0, bonuses.Length);
 }
