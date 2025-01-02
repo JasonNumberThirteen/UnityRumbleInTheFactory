@@ -38,9 +38,9 @@ public class PlayerRobotShoot : RobotShoot
 	{
 		if(bullet.TryGetComponent(out Bullet bs))
 		{
-			bs.damage = rank.CurrentRank.GetDamage();
-			bs.speed = rank.CurrentRank.GetBulletSpeed();
-			bs.canDestroyMetal = rank.CurrentRank.CanDestroyMetal();
+			bs.SetDamage(rank.CurrentRank.GetDamage());
+			bs.SetMovementSpeed(rank.CurrentRank.GetBulletSpeed());
+			bs.SetCanDestroyMetal(rank.CurrentRank.CanDestroyMetal());
 		}
 	}
 }

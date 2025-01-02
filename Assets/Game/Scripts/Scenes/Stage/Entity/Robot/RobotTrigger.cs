@@ -8,7 +8,7 @@ public class RobotTrigger : MonoBehaviour, ITriggerableOnEnter
 	{
 		if(sender.TryGetComponent(out Bullet bulletStats))
 		{
-			robotHealth.TakeDamage(bulletStats.parent, bulletStats.damage);
+			robotHealth.TakeDamage(bulletStats.GetParent(), bulletStats.GetDamage());
 		}
 	}
 	

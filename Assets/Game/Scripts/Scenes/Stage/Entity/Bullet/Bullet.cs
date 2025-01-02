@@ -1,19 +1,49 @@
 using UnityEngine;
 
+[RequireComponent(typeof(EntityMovement))]
 public class Bullet : MonoBehaviour
 {
-	[Min(1)] public int damage;
-	[Min(0.01f)] public float speed;
-	public bool canDestroyMetal;
-	public GameObject parent;
+	[SerializeField, Min(1)] private int damage = 1;
+	[SerializeField, Min(0f)] private float initialMovementSpeed = 6.5f;
+	[SerializeField] private bool canDestroyMetal;
 
-	private void Start() => SetMovementSpeed();
+	private EntityMovement entityMovement;
+	private GameObject parent;
 
-	private void SetMovementSpeed()
+	public int GetDamage() => damage;
+	public bool CanDestroyMetal() => canDestroyMetal;
+	public GameObject GetParent() => parent;
+
+	public void SetDamage(int damage)
 	{
-		if(TryGetComponent(out EntityMovement em))
+		this.damage = damage;
+	}
+
+	public void SetMovementSpeed(float movementSpeed)
+	{
+		entityMovement.movementSpeed = movementSpeed;
+	}
+
+	public void SetCanDestroyMetal(bool canDestroyMetal)
+	{
+		this.canDestroyMetal = canDestroyMetal;
+	}
+
+	public void SetParent(GameObject parent)
+	{
+		this.parent = parent;
+	}
+
+	private void Awake()
+	{
+		entityMovement = GetComponent<EntityMovement>();
+	}
+
+	private void Start()
+	{
+		if(Mathf.Approximately(entityMovement.movementSpeed, 0f))
 		{
-			em.movementSpeed = speed;
+			SetMovementSpeed(initialMovementSpeed);
 		}
 	}
 }
