@@ -50,7 +50,7 @@ public class EnemyEntitySpawner : EntitySpawner
 
 		AddComponentToEntityIfPossible<BonusEnemyRobotTrigger>(entity, () =>
 		{
-			if(entity != null && entity.TryGetComponent(out RobotTriggerEventsReceiver robotTrigger))
+			if(entity != null && entity.TryGetComponent(out RobotTriggerEventsSender robotTrigger))
 			{
 				Destroy(robotTrigger);
 			}
