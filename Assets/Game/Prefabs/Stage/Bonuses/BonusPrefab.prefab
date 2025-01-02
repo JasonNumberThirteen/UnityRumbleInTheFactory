@@ -225,10 +225,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area:
     serializedVersion: 2
-    x: -7
+    x: -6.5
     y: -6
-    width: 12.5
-    height: 12.5
+    width: 12
+    height: 12
   gridSize: 0.5
   inaccessibleAreaLayers:
     serializedVersion: 2
