@@ -1,4 +1,4 @@
-public class RobotEntityAnimator : EntityAnimator
+public class RobotEntityAnimator : EntityAnimatorController
 {
 	private readonly string MOVEMENT_SPEED_PARAMETER_NAME = "MovementSpeed";
 	private readonly string MOVEMENT_X_PARAMETER_NAME = "MovementX";

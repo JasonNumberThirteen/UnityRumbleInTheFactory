@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EntityMovement), typeof(Animator))]
-public abstract class EntityAnimator : MonoBehaviour
+public abstract class EntityAnimatorController : MonoBehaviour
 {
 	protected EntityMovement entityMovement;
 	protected Animator animator;

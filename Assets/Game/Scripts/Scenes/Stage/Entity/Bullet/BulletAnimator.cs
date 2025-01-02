@@ -1,4 +1,4 @@
-public class BulletAnimator : EntityAnimator
+public class BulletAnimator : EntityAnimatorController
 {
 	private readonly string HORIZONTAL_MOVEMENT_PARAMETER_NAME = "MovementX";
 	private readonly string VERTICAL_MOVEMENT_PARAMETER_NAME = "MovementY";
