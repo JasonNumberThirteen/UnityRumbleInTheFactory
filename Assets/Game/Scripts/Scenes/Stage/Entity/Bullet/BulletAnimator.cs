@@ -1,12 +1,13 @@
-using UnityEngine;
-
 public class BulletAnimator : EntityAnimator
 {
-	protected override void SetValues()
+	private readonly string HORIZONTAL_MOVEMENT_PARAMETER_NAME = "MovementX";
+	private readonly string VERTICAL_MOVEMENT_PARAMETER_NAME = "MovementY";
+	
+	private void Start()
 	{
-		Vector2 direction = movement.Direction;
+		var movementDirection = movement.Direction;
 
-		animator.SetInteger("MovementX", (int)direction.x);
-		animator.SetInteger("MovementY", (int)direction.y);
+		animator.SetInteger(HORIZONTAL_MOVEMENT_PARAMETER_NAME, (int)movementDirection.x);
+		animator.SetInteger(VERTICAL_MOVEMENT_PARAMETER_NAME, (int)movementDirection.y);
 	}
 }

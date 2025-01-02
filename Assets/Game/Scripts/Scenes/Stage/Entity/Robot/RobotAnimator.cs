@@ -1,6 +1,6 @@
 public class RobotAnimator : EntityAnimator
 {
-	protected override void SetValues()
+	private void Update()
 	{
 		animator.SetFloat("MovementSpeed", MovementSpeed());
 
