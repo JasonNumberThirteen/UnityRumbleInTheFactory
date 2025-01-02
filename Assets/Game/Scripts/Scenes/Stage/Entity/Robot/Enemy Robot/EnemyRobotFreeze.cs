@@ -7,7 +7,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 	public bool Frozen {get; private set;}
 	
 	private EnemyRobotMovement movement;
-	private EnemyFreezeManager enemyFreezeManager;
+	private RobotDisablingManager enemyFreezeManager;
 	private Vector2 lastDirection;
 
 	public void SetFreezeState(bool freeze)
@@ -27,7 +27,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 	private void Awake()
 	{
 		movement = GetComponent<EnemyRobotMovement>();
-		enemyFreezeManager = FindAnyObjectByType<EnemyFreezeManager>(FindObjectsInactive.Include);
+		enemyFreezeManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
 	}
 
 	private void Start()

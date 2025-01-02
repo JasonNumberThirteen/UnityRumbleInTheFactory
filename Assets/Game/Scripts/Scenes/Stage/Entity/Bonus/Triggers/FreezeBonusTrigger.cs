@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FreezeBonusTrigger : TimedBonusTrigger
 {
-	private EnemyFreezeManager enemyFreezeManager;
+	private RobotDisablingManager enemyFreezeManager;
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
@@ -16,6 +16,6 @@ public class FreezeBonusTrigger : TimedBonusTrigger
 
 	private void Awake()
 	{
-		enemyFreezeManager = FindAnyObjectByType<EnemyFreezeManager>(FindObjectsInactive.Include);
+		enemyFreezeManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
 	}
 }

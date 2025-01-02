@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Timer))]
-public class EnemyFreezeManager : MonoBehaviour
+public class RobotDisablingManager : MonoBehaviour
 {
 	private Timer timer;
 	
