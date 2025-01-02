@@ -1,46 +1,51 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerRobotRankController))]
 public class PlayerRobotShoot : RobotShoot
 {
-	public string bulletTag;
+	[SerializeField] private string bulletTag;
 	
-	private PlayerRobotRankController rank;
+	private PlayerRobotRankController playerRobotRankController;
 
 	public override void FireBullet()
 	{
-		if(!FiredAllBulletsAlready())
+		if(ReachedBulletsLimitAtOnce())
 		{
-			if(stageSoundManager != null)
-			{
-				stageSoundManager.PlaySound(SoundEffectType.PlayerRobotShoot);
-			}
-			
-			base.FireBullet();
+			return;
 		}
+		
+		if(stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotShoot);
+		}
+		
+		base.FireBullet();
 	}
 
 	protected override void Awake()
 	{
 		base.Awake();
 
-		rank = GetComponent<PlayerRobotRankController>();
+		playerRobotRankController = GetComponent<PlayerRobotRankController>();
 	}
 
-	protected override void SetBullet(GameObject bullet)
+	protected override void SetupBullet(GameObject bulletGO)
 	{
-		base.SetBullet(bullet);
-		SetStatsToBullet(bullet);
+		base.SetupBullet(bulletGO);
+		SetupBulletIfPossible(bulletGO);
 	}
 
-	private bool FiredAllBulletsAlready() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= rank.CurrentRank.GetBulletsLimitAtOnce();
-
-	private void SetStatsToBullet(GameObject bullet)
+	private void SetupBulletIfPossible(GameObject bulletGO)
 	{
-		if(bullet.TryGetComponent(out Bullet bs))
+		if(playerRobotRankController.CurrentRank == null || !bulletGO.TryGetComponent(out Bullet bullet))
 		{
-			bs.SetDamage(rank.CurrentRank.GetDamage());
-			bs.SetMovementSpeed(rank.CurrentRank.GetBulletSpeed());
-			bs.SetCanDestroyMetal(rank.CurrentRank.CanDestroyMetal());
+			return;
 		}
+
+		bullet.SetDamage(playerRobotRankController.CurrentRank.GetDamage());
+		bullet.SetMovementSpeed(playerRobotRankController.CurrentRank.GetBulletSpeed());
+		bullet.SetCanDestroyMetal(playerRobotRankController.CurrentRank.CanDestroyMetal());
 	}
+
+	private bool ReachedBulletsLimitAtOnce() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= playerRobotRankController.CurrentRank.GetBulletsLimitAtOnce();
 }

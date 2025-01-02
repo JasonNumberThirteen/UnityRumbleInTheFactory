@@ -10,7 +10,7 @@ public class RobotShoot : MonoBehaviour
 
 	public virtual void FireBullet()
 	{
-		SetBullet(BulletInstance());
+		SetupBullet(BulletInstance());
 	}
 
 	protected GameObject BulletInstance() => Instantiate(bullet, BulletPosition(), Quaternion.identity);
@@ -22,10 +22,10 @@ public class RobotShoot : MonoBehaviour
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 	}
 
-	protected virtual void SetBullet(GameObject bullet)
+	protected virtual void SetupBullet(GameObject bulletGO)
 	{
-		SetParentToBullet(bullet);
-		SetMovementDirectionToBullet(bullet);
+		SetParentToBullet(bulletGO);
+		SetMovementDirectionToBullet(bulletGO);
 	}
 
 	protected virtual Vector2 BulletDirection()
