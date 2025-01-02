@@ -38,7 +38,6 @@ public class StageManager : MonoBehaviour
 	{
 		gameData.SetGameAsOver();
 		stateManager.SetStateTo(StageState.Over);
-		playersManager.DisablePlayers();
 	}
 
 	public void EnableAudioManager()

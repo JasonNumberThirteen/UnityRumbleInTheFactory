@@ -6,6 +6,8 @@ public class RobotDisablingManager : MonoBehaviour
 {
 	private Timer timer;
 	private bool controlFriendlyRobots;
+
+	private StageStateManager stageStateManager;
 	
 	public bool RobotsAreTemporarilyDisabled() => timer.Started;
 	
@@ -17,20 +19,21 @@ public class RobotDisablingManager : MonoBehaviour
 		timer.ResetTimer();
 	}
 
-	public void SetRobotsDisabled(bool freeze, bool disableFriendly)
+	public void SetRobotsActive(bool active, bool disableFriendly)
 	{
 		var robots = FindObjectsByType<Robot>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == disableFriendly);
-		var enemyRobotFreezeComponents = robots.Select(robot => robot.GetComponent<EnemyRobotFreeze>()).Where(component => component != null);
+		var robotDisablerComponents = robots.Select(robot => robot.GetComponent<RobotDisabler>()).Where(component => component != null);
 
-		foreach (var enemyRobotFreeze in enemyRobotFreezeComponents)
+		foreach (var robotDisabler in robotDisablerComponents)
 		{
-			enemyRobotFreeze.SetFreezeState(freeze);
+			robotDisabler.SetBehavioursActive(active);
 		}
 	}
 
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
+		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
 	}
@@ -46,21 +49,39 @@ public class RobotDisablingManager : MonoBehaviour
 		{
 			timer.onReset.AddListener(OnTimerReset);
 			timer.onEnd.AddListener(OnTimerEnd);
+
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+			}
 		}
 		else
 		{
 			timer.onReset.RemoveListener(OnTimerReset);
 			timer.onEnd.RemoveListener(OnTimerEnd);
+
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+			}
 		}
 	}
 
 	private void OnTimerReset()
 	{
-		SetRobotsDisabled(true, controlFriendlyRobots);
+		SetRobotsActive(false, controlFriendlyRobots);
 	}
 
 	private void OnTimerEnd()
 	{
-		SetRobotsDisabled(false, controlFriendlyRobots);
+		SetRobotsActive(true, controlFriendlyRobots);
+	}
+
+	private void OnStageStateChanged(StageState stageState)
+	{
+		if(stageState == StageState.Over)
+		{
+			SetRobotsActive(false, true);
+		}
 	}
 }
