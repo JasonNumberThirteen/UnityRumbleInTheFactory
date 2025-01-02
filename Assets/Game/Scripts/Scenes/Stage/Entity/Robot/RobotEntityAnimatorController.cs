@@ -1,8 +1,8 @@
 public class RobotEntityAnimatorController : EntityAnimatorController
 {
 	private readonly string MOVEMENT_SPEED_PARAMETER_NAME = "MovementSpeed";
-	private readonly string MOVEMENT_X_PARAMETER_NAME = "MovementX";
-	private readonly string MOVEMENT_Y_PARAMETER_NAME = "MovementY";
+	private readonly string HORIZONTAL_MOVEMENT_PARAMETER_NAME = "MovementX";
+	private readonly string VERTICAL_MOVEMENT_PARAMETER_NAME = "MovementY";
 	
 	private void Update()
 	{
@@ -13,8 +13,8 @@ public class RobotEntityAnimatorController : EntityAnimatorController
 			return;
 		}
 
-		animator.SetInteger(MOVEMENT_X_PARAMETER_NAME, (int)entityMovement.CurrentMovementDirection.x);
-		animator.SetInteger(MOVEMENT_Y_PARAMETER_NAME, (int)entityMovement.CurrentMovementDirection.y);
+		animator.SetInteger(HORIZONTAL_MOVEMENT_PARAMETER_NAME, (int)entityMovement.CurrentMovementDirection.x);
+		animator.SetInteger(VERTICAL_MOVEMENT_PARAMETER_NAME, (int)entityMovement.CurrentMovementDirection.y);
 	}
 
 	private float GetCurrentMovementSpeed() => entityMovement.CurrentMovementDirectionIsNone() ? 0f : 1f;
