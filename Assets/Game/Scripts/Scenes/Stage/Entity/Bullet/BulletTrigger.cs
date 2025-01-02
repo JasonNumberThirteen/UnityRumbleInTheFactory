@@ -2,29 +2,37 @@ using UnityEngine;
 
 public class BulletTrigger : MonoBehaviour
 {
-	public GameObject splatterEffect;
-	public string[] excludedTags;
+	[SerializeField] private GameObject splatterPrefab;
+	[SerializeField] private string[] ignoredTags;
 	
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
-		foreach (string et in excludedTags)
+		foreach (var ignoredTag in ignoredTags)
 		{
-			if(collider.CompareTag(et))
+			if(collider.CompareTag(ignoredTag))
 			{
 				return;
 			}
 		}
 
-		TriggerEffectOnCollider(collider);
-		Instantiate(splatterEffect, gameObject.transform.position, Quaternion.identity);
+		TriggerOnEffect(collider);
+		InstantiateSplatterEffectIfPossible();
 		Destroy(gameObject);
 	}
 
-	private void TriggerEffectOnCollider(Collider2D collider)
+	private void TriggerOnEffect(Collider2D collider)
 	{
-		if(collider.gameObject.TryGetComponent(out ITriggerableOnEnter triggerable))
+		if(collider.gameObject.TryGetComponent(out ITriggerableOnEnter triggerableOnEnter))
 		{
-			triggerable.TriggerOnEnter(gameObject);
+			triggerableOnEnter.TriggerOnEnter(gameObject);
+		}
+	}
+
+	private void InstantiateSplatterEffectIfPossible()
+	{
+		if(splatterPrefab != null)
+		{
+			Instantiate(splatterPrefab, gameObject.transform.position, Quaternion.identity);
 		}
 	}
 }

@@ -210,8 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d329f8a2e1872742a754403d93f04fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatterEffect: {fileID: 4882441606795613529, guid: f1c0785e07f2be945a779be11629fb76, type: 3}
-  excludedTags:
+  splatterPrefab: {fileID: 4882441606795613529, guid: f1c0785e07f2be945a779be11629fb76, type: 3}
+  ignoredTags:
   - Bonus
 --- !u!114 &3234668162895731857
 MonoBehaviour:
@@ -238,9 +238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 6.5
+  initialMovementSpeed: 6.5
   canDestroyMetal: 0
-  parent: {fileID: 0}
 --- !u!114 &-5566419768450551203
 MonoBehaviour:
   m_ObjectHideFlags: 0
