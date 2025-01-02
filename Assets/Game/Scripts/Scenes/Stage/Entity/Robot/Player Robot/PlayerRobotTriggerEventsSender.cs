@@ -2,12 +2,21 @@ using UnityEngine;
 
 public class PlayerRobotTriggerEventsSender : RobotTriggerEventsSender
 {
+	private RobotShield robotShield;
+	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(!ShieldIsActive())
+		if(robotShield == null || !robotShield.IsActive())
 		{
 			base.TriggerOnEnter(sender);
 		}
+	}
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		robotShield = GetComponentInChildren<RobotShield>();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collider)
@@ -33,6 +42,4 @@ public class PlayerRobotTriggerEventsSender : RobotTriggerEventsSender
 			triggerableOnExit.TriggerOnExit(gameObject);
 		}
 	}
-
-	private bool ShieldIsActive() => TryGetComponent(out RobotShield robotShield) && robotShield.IsActive();
 }
