@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletStats : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
 	[Min(1)] public int damage;
 	[Min(0.01f)] public float speed;

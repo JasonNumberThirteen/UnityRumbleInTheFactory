@@ -6,7 +6,7 @@ public class RobotTrigger : MonoBehaviour, ITriggerableOnEnter
 	
 	public virtual void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.TryGetComponent(out BulletStats bulletStats))
+		if(sender.TryGetComponent(out Bullet bulletStats))
 		{
 			robotHealth.TakeDamage(bulletStats.parent, bulletStats.damage);
 		}

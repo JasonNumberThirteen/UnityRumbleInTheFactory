@@ -36,7 +36,7 @@ public class PlayerRobotShoot : RobotShoot
 
 	private void SetStatsToBullet(GameObject bullet)
 	{
-		if(bullet.TryGetComponent(out BulletStats bs))
+		if(bullet.TryGetComponent(out Bullet bs))
 		{
 			bs.damage = rank.CurrentRank.GetDamage();
 			bs.speed = rank.CurrentRank.GetBulletSpeed();
