@@ -34,7 +34,7 @@ public class EnemyRobotFreeze : MonoBehaviour
 	{
 		SetLastDirection();
 
-		if(enemyFreezeManager != null && enemyFreezeManager.EnemiesAreFrozen())
+		if(enemyFreezeManager != null && enemyFreezeManager.RobotsAreTemporarilyDisabled())
 		{
 			SetFreezeState(true);
 			AdjustAnimation();

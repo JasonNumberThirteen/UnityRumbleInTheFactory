@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class FreezeBonusTrigger : TimedBonusTrigger
 {
-	private RobotDisablingManager enemyFreezeManager;
+	private RobotDisablingManager robotDisablingManager;
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(enemyFreezeManager != null)
+		if(robotDisablingManager != null && sender.TryGetComponent(out Robot robot))
 		{
-			enemyFreezeManager.InitiateFreeze(GetDuration());
+			robotDisablingManager.DisableRobotsTemporarily(GetDuration(), !robot.IsFriendly());
 		}
 
 		base.TriggerOnEnter(sender);
@@ -16,6 +16,6 @@ public class FreezeBonusTrigger : TimedBonusTrigger
 
 	private void Awake()
 	{
-		enemyFreezeManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
+		robotDisablingManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
 	}
 }

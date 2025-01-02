@@ -1,17 +1,31 @@
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Timer))]
 public class RobotDisablingManager : MonoBehaviour
 {
 	private Timer timer;
+	private bool controlFriendlyRobots;
 	
-	public bool EnemiesAreFrozen() => timer.Started;
+	public bool RobotsAreTemporarilyDisabled() => timer.Started;
 	
-	public void InitiateFreeze(float duration)
+	public void DisableRobotsTemporarily(float duration, bool disableFriendly)
 	{
 		timer.duration = duration;
+		controlFriendlyRobots = disableFriendly;
 
 		timer.ResetTimer();
+	}
+
+	public void SetRobotsDisabled(bool freeze, bool disableFriendly)
+	{
+		var robots = FindObjectsByType<Robot>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == disableFriendly);
+		var enemyRobotFreezeComponents = robots.Select(robot => robot.GetComponent<EnemyRobotFreeze>()).Where(component => component != null);
+
+		foreach (var enemyRobotFreeze in enemyRobotFreezeComponents)
+		{
+			enemyRobotFreeze.SetFreezeState(freeze);
+		}
 	}
 
 	private void Awake()
@@ -42,21 +56,11 @@ public class RobotDisablingManager : MonoBehaviour
 
 	private void OnTimerReset()
 	{
-		SetEnemiesFreeze(true);
+		SetRobotsDisabled(true, controlFriendlyRobots);
 	}
 
 	private void OnTimerEnd()
 	{
-		SetEnemiesFreeze(false);
-	}
-
-	private void SetEnemiesFreeze(bool freeze)
-	{
-		var enemyRobotFreezeComponents = FindObjectsByType<EnemyRobotFreeze>(FindObjectsSortMode.None);
-
-		foreach (var enemyRobotFreeze in enemyRobotFreezeComponents)
-		{
-			enemyRobotFreeze.SetFreezeState(freeze);
-		}
+		SetRobotsDisabled(false, controlFriendlyRobots);
 	}
 }
