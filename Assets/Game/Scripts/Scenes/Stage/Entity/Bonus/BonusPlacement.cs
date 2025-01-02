@@ -1,85 +1,89 @@
 using Random = UnityEngine.Random;
+using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class BonusPlacement : MonoBehaviour
 {
-	public Vector2 bottomLeftArea, topRightArea;
-	[Min(0.01f)] public float gridSize = 0.5f;
-	[Min(0.01f)] public float overlapCircleRadius = 0.5f;
-	public LayerMask excludedLayers;
-	public string nukeTag;
+	[SerializeField] private Rect area;
+	[SerializeField, Min(0.01f)] private float gridSize = 0.5f;
+	[SerializeField] private LayerMask inaccessibleAreaLayers;
+	[SerializeField] private bool drawGizmos = true;
+	[SerializeField] private Color accessiblePositionColor = new(0f, 1f, 0f, 0.5f);
+	[SerializeField] private Color inaccessiblePositionColor = new(1f, 0f, 0f, 0.5f);
 
-	private void Start() => transform.position = BonusPosition();
-	private float RandomCoordinate(float min, float max) => Random.Range(min, max);
-	private float GridCoordinate(float coordinate) => Mathf.Round(coordinate / gridSize)*gridSize;
+	private Collider2D c2D;
 
-	private Vector2 BonusPosition()
+	private void Awake()
 	{
-		Vector2 randomPosition = RandomPosition();
-		Vector2 gridPosition = GridPosition(randomPosition);
+		c2D = GetComponent<Collider2D>();
+	}
+
+	private void Start()
+	{
+		transform.position = GetBonusPosition();
+	}
+
+	private Vector2 GetBonusPosition()
+	{
+		var randomPosition = GetRandomPosition();
+		var gridPosition = GetGridPosition(randomPosition);
 		
 		if(PositionIsInaccessible(gridPosition))
 		{
-			return BonusPosition();
+			return GetBonusPosition();
 		}
 
 		return gridPosition;
 	}
 
-	private Vector2 RandomPosition()
+	private Vector2 GetRandomPosition()
 	{
-		float x = RandomCoordinate(bottomLeftArea.x, topRightArea.x);
-		float y = RandomCoordinate(bottomLeftArea.y, topRightArea.y);
+		var x = Random.Range(area.xMin, area.xMax);
+		var y = Random.Range(area.yMin, area.yMax);
 
 		return new Vector2(x, y);
 	}
 
-	private Vector2 GridPosition(Vector2 position)
+	private Vector2 GetGridPosition(Vector2 position)
 	{
-		float x = GridCoordinate(position.x);
-		float y = GridCoordinate(position.y);
+		var x = GetGridCoordinate(position.x);
+		var y = GetGridCoordinate(position.y);
 
 		return new Vector2(x, y);
-	}
-
-	private bool PositionIsInaccessible(Vector2 position)
-	{
-		if(TryGetComponent(out Collider2D collider2D))
-		{
-			Collider2D[] colliders = Physics2D.OverlapBoxAll(position, collider2D.bounds.size, 0f, excludedLayers);
-			int excludedPositions = 0;
-
-			foreach (Collider2D collider in colliders)
-			{
-				if(collider.OverlapPoint(position))
-				{
-					if(collider.CompareTag(nukeTag))
-					{
-						return true;
-					}
-					
-					++excludedPositions;
-				}
-			}
-
-			return colliders.Length > 0 && excludedPositions == 4;
-		}
-
-		return false;
 	}
 	
 	private void OnDrawGizmos()
 	{
-		if(TryGetComponent(out Collider2D collider2D))
+		if(!drawGizmos)
 		{
-			Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, collider2D.bounds.size, 0f, excludedLayers);
-		
-			foreach (Collider2D collider in colliders)
-			{
-				Gizmos.color = collider.OverlapPoint(transform.position) || collider.CompareTag(nukeTag) ? Color.red : Color.green;
-				
-				Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
-			}
+			return;
 		}
+		
+		if(c2D == null)
+		{
+			c2D = GetComponent<Collider2D>();
+		}
+
+		Gizmos.color = PositionIsInaccessible(transform.position) ? inaccessiblePositionColor : accessiblePositionColor;
+			
+		Gizmos.DrawCube(transform.position, c2D.bounds.size);
 	}
+
+	private bool PositionIsInaccessible(Vector2 position)
+	{
+		var colliders = GetColliders(position);
+
+		return colliders.Length >= 4 || colliders.Any(ColliderFitsEntireBounds);
+	}
+
+	private Collider2D[] GetColliders(Vector2 position)
+	{
+		var colliders = Physics2D.OverlapBoxAll(position, c2D.bounds.size, 0f, inaccessibleAreaLayers);
+
+		return colliders.Where(collider => collider.OverlapPoint(position)).ToArray();
+	}
+
+	private float GetGridCoordinate(float coordinate) => Mathf.Round(coordinate / gridSize)*gridSize;
+	private bool ColliderFitsEntireBounds(Collider2D collider2D) => collider2D.bounds.Contains(c2D.bounds.min) && collider2D.bounds.Contains(c2D.bounds.max);
 }

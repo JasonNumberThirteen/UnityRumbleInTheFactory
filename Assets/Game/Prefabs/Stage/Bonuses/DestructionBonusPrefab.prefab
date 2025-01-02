@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8939861058589864051, guid: 45c1cf0a586e1bb4ba562296bbadc509, type: 3}
       propertyPath: m_Name
-      value: Destruction Bonus
+      value: DestructionBonusPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2816180102894065610, guid: 45c1cf0a586e1bb4ba562296bbadc509, type: 3}
@@ -118,5 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc7ce9dafff85246a090fdb11304f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
-  enemyTag: Enemy
+  points: 500
