@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37673dd1a5f2f1947ae5564dec12f221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bricksTilePrefab: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
+  tileToSpawnPrefab: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}

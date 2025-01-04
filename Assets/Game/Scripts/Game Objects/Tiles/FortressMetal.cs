@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Timer))]
 public class FortressMetal : MonoBehaviour
 {
-	[SerializeField] private GameObject bricksTilePrefab;
+	[SerializeField] private GameObject tileToSpawnPrefab;
 	
 	private Timer timer;
 
@@ -33,15 +33,15 @@ public class FortressMetal : MonoBehaviour
 
 	private void OnTimerEnd()
 	{
-		SpawnBricksTile();
+		SpawnTile();
 		Destroy(gameObject);
 	}
 
-	private void SpawnBricksTile()
+	private void SpawnTile()
 	{
-		if(bricksTilePrefab != null)
+		if(tileToSpawnPrefab != null)
 		{
-			Instantiate(bricksTilePrefab, gameObject.transform.position, Quaternion.identity);
+			Instantiate(tileToSpawnPrefab, transform.position, Quaternion.identity);
 		}
 	}
 }
