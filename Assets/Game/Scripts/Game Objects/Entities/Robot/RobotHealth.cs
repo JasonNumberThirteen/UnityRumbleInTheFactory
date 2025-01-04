@@ -11,7 +11,7 @@ public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
 
 	private EntityExploder entityExploder;
 
-	public virtual void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank)
+	public void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank)
 	{
 		CurrentHealth = robotRank.GetHealth();
 	}
