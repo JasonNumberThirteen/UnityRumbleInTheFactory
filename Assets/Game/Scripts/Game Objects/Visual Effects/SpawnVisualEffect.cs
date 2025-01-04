@@ -1,9 +1,4 @@
-using UnityEngine;
-
-public class SpawnVisualEffect : MonoBehaviour
+public class SpawnVisualEffect : VisualEffectGO
 {
-	public void SetActive(bool active)
-	{
-		gameObject.SetActive(active);
-	}
+	
 }

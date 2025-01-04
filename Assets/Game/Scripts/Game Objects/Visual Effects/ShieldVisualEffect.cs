@@ -1,14 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Timer))]
-public class ShieldVisualEffect : MonoBehaviour
+public class ShieldVisualEffect : VisualEffectGO
 {
 	private Timer timer;
-
-	public void SetActive(bool active)
-	{
-		gameObject.SetActive(active);
-	}
 	
 	private void Awake()
 	{
