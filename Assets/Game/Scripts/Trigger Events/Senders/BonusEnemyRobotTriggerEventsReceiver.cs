@@ -11,10 +11,10 @@ public class BonusEnemyRobotTriggerEventsReceiver : RobotTriggerEventsReceiver
 			bonusSpawnManager.InstantiateRandomBonus();
 		}
 
-		if(TryGetComponent(out BonusEnemyRobotColor berc))
+		if(TryGetComponent(out BonusEnemyRobotColor bonusEnemyRobotColor))
 		{
-			berc.RestoreInitialColor();
-			Destroy(berc);
+			bonusEnemyRobotColor.RestoreInitialColor();
+			Destroy(bonusEnemyRobotColor);
 		}
 
 		base.TriggerOnEnter(sender);
