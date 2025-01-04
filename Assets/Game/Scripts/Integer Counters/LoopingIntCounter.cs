@@ -12,24 +12,18 @@ public class LoopingIntCounter : IntCounter
 
 		if(CurrentValue < this.lowerBound || CurrentValue > this.upperBound)
 		{
-			var valueWithinRange = Mathf.Clamp(CurrentValue, this.lowerBound, this.upperBound);
-			
-			SetTo(valueWithinRange);
+			SetTo(Mathf.Clamp(CurrentValue, this.lowerBound, this.upperBound));
 		}
 	}
 
 	protected override void IncreaseValue(int value)
 	{
-		var nextValue = GetNextValue(value);
-
-		SetTo(nextValue);
+		SetTo(GetNextValue(value));
 	}
 
 	protected override void DecreaseValue(int value)
 	{
-		var previousValue = GetPreviousValue(value);
-
-		SetTo(previousValue);
+		SetTo(GetPreviousValue(value));
 	}
 
 	private int GetNextValue(int value) => (CurrentValue + value - 1) % upperBound + lowerBound;
