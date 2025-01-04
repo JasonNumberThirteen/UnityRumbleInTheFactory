@@ -6,9 +6,9 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(-100)]
 public class OptionsManager : MonoBehaviour
 {
-	private readonly Dictionary<OptionType, Option> optionsDictionary = new();
+	private readonly Dictionary<OptionType, Option> optionsByOptionType = new();
 
-	public int GetNumberOfOptions() => optionsDictionary.Count;
+	public int GetNumberOfOptions() => optionsByOptionType.Count;
 
 	public void SelectOptionIfPossible(OptionType optionType)
 	{
@@ -27,7 +27,7 @@ public class OptionsManager : MonoBehaviour
 			return;
 		}
 
-		var option = optionsDictionary[optionType];
+		var option = optionsByOptionType[optionType];
 
 		if(register)
 		{
@@ -47,7 +47,7 @@ public class OptionsManager : MonoBehaviour
 
 		foreach (var option in options)
 		{
-			optionsDictionary.Add(option.GetOptionType(), option);
+			optionsByOptionType.Add(option.GetOptionType(), option);
 		}
 	}
 
@@ -55,9 +55,9 @@ public class OptionsManager : MonoBehaviour
 	{
 		if(OptionByGivenTypeExists(optionType))
 		{
-			action(optionsDictionary[optionType]);
+			action(optionsByOptionType[optionType]);
 		}
 	}
 
-	private bool OptionByGivenTypeExists(OptionType optionType) => optionsDictionary.ContainsKey(optionType);
+	private bool OptionByGivenTypeExists(OptionType optionType) => optionsByOptionType.ContainsKey(optionType);
 }
