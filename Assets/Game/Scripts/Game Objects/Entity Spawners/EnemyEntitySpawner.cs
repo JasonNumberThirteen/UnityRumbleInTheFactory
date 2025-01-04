@@ -48,7 +48,7 @@ public class EnemyEntitySpawner : EntitySpawner
 			return;
 		}
 
-		AddComponentToEntityGOIfPossible<BonusEnemyRobotTriggerEventsSender>(entityGO, () =>
+		AddComponentToEntityGOIfPossible<BonusEnemyRobotTriggerEventsReceiver>(entityGO, () =>
 		{
 			if(entityGO != null && entityGO.TryGetComponent(out RobotTriggerEventsReceiver robotTriggerEventsReceiver))
 			{
