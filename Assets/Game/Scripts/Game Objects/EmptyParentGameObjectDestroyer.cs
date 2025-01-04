@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EmptyParentDestroyer : MonoBehaviour
+public class EmptyParentGameObjectDestroyer : MonoBehaviour
 {
 	[SerializeField, Min(0.01f)] private float childCheckDelay = 5f;
 	
