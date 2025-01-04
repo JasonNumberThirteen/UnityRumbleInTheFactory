@@ -243,6 +243,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5810354157546716223, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 98048
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810354157546716223, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionLayers.m_Bits
       value: 98048
       objectReference: {fileID: 0}

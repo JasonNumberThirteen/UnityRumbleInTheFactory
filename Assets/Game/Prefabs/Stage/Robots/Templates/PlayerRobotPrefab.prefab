@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: activateOnStart
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5810354157546716223, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
     - target: {fileID: 7184377186673889978, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: initialVerticalDirection
       value: 1
