@@ -4,9 +4,9 @@ public class RankBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.TryGetComponent(out PlayerRobotRankController playerRobotRank))
+		if(sender.TryGetComponent(out PlayerRobotRankController playerRobotRankController))
 		{
-			playerRobotRank.IncreaseRank();
+			playerRobotRankController.IncreaseRank();
 		}
 
 		base.TriggerOnEnter(sender);
