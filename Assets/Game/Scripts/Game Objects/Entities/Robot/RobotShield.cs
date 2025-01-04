@@ -1,12 +1,12 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Timer), typeof(ShieldVisualEffect))]
+[RequireComponent(typeof(Timer), typeof(ShieldGameVisualEffect))]
 public class RobotShield : MonoBehaviour
 {
 	[SerializeField] private bool activateOnStart;
 
 	private Timer timer;
-	private ShieldVisualEffect shieldVisualEffect;
+	private ShieldGameVisualEffect shieldGameVisualEffect;
 
 	public bool IsActive() => gameObject.activeSelf;
 
@@ -20,11 +20,11 @@ public class RobotShield : MonoBehaviour
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
-		shieldVisualEffect = GetComponent<ShieldVisualEffect>();
+		shieldGameVisualEffect = GetComponent<ShieldGameVisualEffect>();
 	}
 
 	private void Start()
 	{
-		shieldVisualEffect.SetActive(activateOnStart);
+		shieldGameVisualEffect.SetActive(activateOnStart);
 	}
 }
