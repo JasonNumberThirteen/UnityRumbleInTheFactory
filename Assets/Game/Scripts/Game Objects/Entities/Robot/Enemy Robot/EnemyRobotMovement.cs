@@ -9,6 +9,7 @@ public class EnemyRobotMovement : EntityMovement
 	private float lastMovementSpeed;
 	private Vector2 lastDirection;
 	private EnemyRobotMovementDirectionSelector movementDirectionSelector;
+	private RobotRotation robotRotation;
 	private RobotDisablingManager robotDisablingManager;
 
 	public void SetMovementLock()
@@ -45,6 +46,7 @@ public class EnemyRobotMovement : EntityMovement
 		base.Awake();
 
 		movementDirectionSelector = GetComponent<EnemyRobotMovementDirectionSelector>();
+		robotRotation = GetComponent<RobotRotation>();
 		robotDisablingManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
 	}
 
@@ -70,7 +72,7 @@ public class EnemyRobotMovement : EntityMovement
 	{
 		CurrentMovementDirection = direction;
 
-		collisionDetector.AdjustRotation(CurrentMovementDirection);
+		robotRotation.RotateByDirection(CurrentMovementDirection);
 	}
 
 	private void Start()

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 5126605066933689641}
   - component: {fileID: 5886565102491951326}
   - component: {fileID: 831581827609024836}
+  - component: {fileID: 1178296341531915705}
   m_Layer: 0
   m_Name: RobotPrefab
   m_TagString: Untagged
@@ -200,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68c6abbda89435449d2ef4763258f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialVerticalDirection: 1
 --- !u!114 &-2720126704085592801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +280,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviours: []
+--- !u!114 &1178296341531915705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880115763377585167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f90ad66ea372c54ca4f1304c7d7b7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8577749972176307599
 PrefabInstance:
   m_ObjectHideFlags: 0

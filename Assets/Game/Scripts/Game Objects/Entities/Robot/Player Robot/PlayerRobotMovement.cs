@@ -7,6 +7,7 @@ public class PlayerRobotMovement : EntityMovement
 	public bool IsSliding {get; set;}
 
 	private PlayerRobotInput input;
+	private RobotRotation robotRotation;
 	private Vector2 lastDirection;
 
 	public Vector2 MovementDirection()
@@ -26,6 +27,7 @@ public class PlayerRobotMovement : EntityMovement
 		base.Awake();
 
 		input = GetComponent<PlayerRobotInput>();
+		robotRotation = GetComponent<RobotRotation>();
 	}
 
 	protected virtual void Update()
@@ -61,7 +63,7 @@ public class PlayerRobotMovement : EntityMovement
 	{
 		if(IsMovingInDifferentDirection())
 		{
-			collisionDetector.AdjustRotation(CurrentMovementDirection);
+			robotRotation.RotateByDirection(CurrentMovementDirection);
 		}
 	}
 	
