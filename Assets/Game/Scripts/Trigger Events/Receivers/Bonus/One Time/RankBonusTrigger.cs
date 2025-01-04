@@ -6,7 +6,7 @@ public class RankBonusTrigger : BonusTrigger
 	{
 		if(sender.TryGetComponent(out PlayerRobotRankController playerRobotRank))
 		{
-			playerRobotRank.Promote();
+			playerRobotRank.IncreaseRank();
 		}
 
 		base.TriggerOnEnter(sender);

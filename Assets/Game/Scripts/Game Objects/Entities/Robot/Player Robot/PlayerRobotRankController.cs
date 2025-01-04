@@ -9,7 +9,7 @@ public class PlayerRobotRankController : MonoBehaviour
 	private PlayerRobot playerRobot;
 	private PlayersDataManager playersDataManager;
 	
-	public void Promote()
+	public void IncreaseRank()
 	{
 		InvokeActionOnPlayerDataIfPossible(playerData =>
 		{
