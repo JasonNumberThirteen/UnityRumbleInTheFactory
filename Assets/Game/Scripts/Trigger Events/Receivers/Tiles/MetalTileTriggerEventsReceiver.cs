@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MetalTrigger : MonoBehaviour, ITriggerableOnEnter
+public class MetalTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	public void TriggerOnEnter(GameObject sender)
 	{
