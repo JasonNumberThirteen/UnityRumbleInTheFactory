@@ -5,7 +5,7 @@ using UnityEngine;
 public class RobotDisablingManager : MonoBehaviour
 {
 	private Timer timer;
-	private bool controlFriendlyRobots;
+	private bool disableFriendly;
 
 	private StageStateManager stageStateManager;
 	
@@ -14,7 +14,7 @@ public class RobotDisablingManager : MonoBehaviour
 	public void DisableRobotsTemporarily(float duration, bool disableFriendly)
 	{
 		timer.duration = duration;
-		controlFriendlyRobots = disableFriendly;
+		this.disableFriendly = disableFriendly;
 
 		timer.ResetTimer();
 	}
@@ -22,9 +22,9 @@ public class RobotDisablingManager : MonoBehaviour
 	public void SetRobotsActive(bool active, bool disableFriendly)
 	{
 		var robots = FindObjectsByType<Robot>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == disableFriendly);
-		var robotDisablerComponents = robots.Select(robot => robot.GetComponent<RobotDisabler>()).Where(component => component != null);
+		var robotDisablers = robots.Select(robot => robot.GetComponent<RobotDisabler>()).Where(component => component != null);
 
-		foreach (var robotDisabler in robotDisablerComponents)
+		foreach (var robotDisabler in robotDisablers)
 		{
 			robotDisabler.SetBehavioursActive(active);
 		}
@@ -69,12 +69,12 @@ public class RobotDisablingManager : MonoBehaviour
 
 	private void OnTimerReset()
 	{
-		SetRobotsActive(false, controlFriendlyRobots);
+		SetRobotsActive(false, disableFriendly);
 	}
 
 	private void OnTimerEnd()
 	{
-		SetRobotsActive(true, controlFriendlyRobots);
+		SetRobotsActive(true, disableFriendly);
 	}
 
 	private void OnStageStateChanged(StageState stageState)
