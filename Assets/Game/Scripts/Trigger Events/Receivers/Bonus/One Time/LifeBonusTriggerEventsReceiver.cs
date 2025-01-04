@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LifeBonusTrigger : BonusTriggerEventsReceiver
+public class LifeBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
