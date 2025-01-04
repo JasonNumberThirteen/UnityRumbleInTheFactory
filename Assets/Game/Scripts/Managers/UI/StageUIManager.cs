@@ -11,8 +11,9 @@ public class StageUIManager : MonoBehaviour
 	public LeftEnemyIconsManager leftEnemyIconsManager;
 
 	private PlayersDataManager playersDataManager;
+	private StageStateManager stageStateManager;
 
-	public void ControlPauseTextDisplay() => pauseText.SetActive(StageManager.instance.stateManager.StateIsSetTo(StageState.Paused));
+	public void ControlPauseTextDisplay() => pauseText.SetActive(stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused));
 	public void UpdateStageCounterIcon() => stageCounterIcon.SetTo(gameData.StageNumber);
 
 	public void UpdateCounters()
@@ -32,6 +33,7 @@ public class StageUIManager : MonoBehaviour
 	private void Awake()
 	{
 		playersDataManager = FindFirstObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
+		stageStateManager = FindFirstObjectByType<StageStateManager>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
 	}

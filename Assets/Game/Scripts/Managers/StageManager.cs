@@ -5,13 +5,13 @@ public class StageManager : MonoBehaviour
 	public static StageManager instance = null;
 
 	public StageUIManager uiManager;
-	public StageStateManager stateManager;
 	public EnemySpawnManager enemySpawnManager;
 	public GameData gameData;
 
 	[SerializeField] private PlayersListData playersListData;
 
 	private StageSoundManager stageSoundManager;
+	private StageStateManager stageStateManager;
 	private Nuke nuke;
 	private int defeatedEnemies;
 
@@ -24,21 +24,21 @@ public class StageManager : MonoBehaviour
 
 	public void PauseGame()
 	{
-		if(stateManager.StateIsSetTo(StageState.Interrupted) || stateManager.StateIsSetTo(StageState.Won) || stateManager.StateIsSetTo(StageState.Over))
+		if(stageStateManager.StateIsSetTo(StageState.Interrupted) || stageStateManager.StateIsSetTo(StageState.Won) || stageStateManager.StateIsSetTo(StageState.Over))
 		{
 			return;
 		}
 
-		stateManager.SetStateTo(stateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active);
+		stageStateManager.SetStateTo(stageStateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active);
 		uiManager.ControlPauseTextDisplay();
 
-		Time.timeScale = stateManager.StateIsSetTo(StageState.Paused) ? 0f : 1f;
+		Time.timeScale = stageStateManager.StateIsSetTo(StageState.Paused) ? 0f : 1f;
 	}
 
 	public void SetGameAsOver()
 	{
 		gameData.SetGameAsOver();
-		stateManager.SetStateTo(StageState.Over);
+		stageStateManager.SetStateTo(StageState.Over);
 	}
 
 	public void CheckPlayersLives()
@@ -51,7 +51,7 @@ public class StageManager : MonoBehaviour
 
 	public void EnableAudioManager()
 	{
-		if(stageSoundManager == null || stateManager.StateIsSetTo(StageState.Over))
+		if(stageSoundManager == null || stageStateManager.StateIsSetTo(StageState.Over))
 		{
 			return;
 		}
@@ -64,6 +64,7 @@ public class StageManager : MonoBehaviour
 		CheckSingleton();
 		
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
+		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
 		nuke = FindAnyObjectByType<Nuke>(FindObjectsInactive.Include);
 
 		if(playersListData != null)
@@ -93,7 +94,7 @@ public class StageManager : MonoBehaviour
 
 	private void OnNukeDestroyed()
 	{
-		stateManager.SetStateTo(StageState.Interrupted);
+		stageStateManager.SetStateTo(StageState.Interrupted);
 	}
 
 	private bool WonTheGame() => DefeatedAllEnemies() && enemySpawnManager.NoEnemiesLeft();
@@ -115,7 +116,7 @@ public class StageManager : MonoBehaviour
 	{
 		if(WonTheGame())
 		{
-			stateManager.SetStateTo(StageState.Won);
+			stageStateManager.SetStateTo(StageState.Won);
 		}
 	}
 }
