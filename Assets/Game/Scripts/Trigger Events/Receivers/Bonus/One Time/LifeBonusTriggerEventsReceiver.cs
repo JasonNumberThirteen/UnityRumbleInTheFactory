@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class LifeBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 {
+	[SerializeField, Min(1)] private int lives = 1;
+	
 	public override void TriggerOnEnter(GameObject sender)
 	{
 		AddLifeToPlayerRobotIfPossible(sender);
@@ -19,7 +21,7 @@ public class LifeBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 
 		if(playersDataManager != null && playerData != null)
 		{
-			playersDataManager.ModifyLives(playerData, 1);
+			playersDataManager.ModifyLives(playerData, lives);
 		}
 	}
 }
