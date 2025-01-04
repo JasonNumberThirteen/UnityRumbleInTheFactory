@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Timer))]
-public class ShieldVisualEffect : VisualEffectGO
+public class ShieldVisualEffect : GameVisualEffect
 {
 	private Timer timer;
 	

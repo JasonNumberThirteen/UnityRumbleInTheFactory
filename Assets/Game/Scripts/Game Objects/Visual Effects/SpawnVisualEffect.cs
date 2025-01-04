@@ -1,4 +1,4 @@
-public class SpawnVisualEffect : VisualEffectGO
+public class SpawnVisualEffect : GameVisualEffect
 {
 	
 }

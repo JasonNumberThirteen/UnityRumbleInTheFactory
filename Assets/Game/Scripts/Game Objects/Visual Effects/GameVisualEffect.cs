@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VisualEffectGO : MonoBehaviour
+public class GameVisualEffect : MonoBehaviour
 {
 	public void SetActive(bool active)
 	{
