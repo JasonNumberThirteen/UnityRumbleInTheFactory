@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IndestructibleGameObjectTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
+public class WallTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	private StageSoundManager stageSoundManager;
 	
