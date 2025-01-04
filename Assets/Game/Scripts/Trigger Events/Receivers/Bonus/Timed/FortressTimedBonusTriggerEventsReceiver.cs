@@ -14,8 +14,10 @@ public class FortressTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRe
 		base.TriggerOnEnter(sender);
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+		
 		nukeFortressField = FindAnyObjectByType<NukeFortressField>();
 	}
 }
