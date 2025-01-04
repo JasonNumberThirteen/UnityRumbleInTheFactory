@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRobotTriggerEventsSender : RobotTriggerEventsSender
+public class PlayerRobotTriggerEventsSender : RobotTriggerEventsReceiver
 {
 	private RobotShield robotShield;
 	
