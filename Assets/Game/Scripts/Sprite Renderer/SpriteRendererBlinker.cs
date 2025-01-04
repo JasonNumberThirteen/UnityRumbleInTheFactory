@@ -13,10 +13,10 @@ public class SpriteRendererBlinker : MonoBehaviour
 
 	private void Start()
 	{
-		InvokeRepeating(nameof(SwitchEnable), blinkDelay, blinkDelay);
+		InvokeRepeating(nameof(SwitchRendererEnabled), blinkDelay, blinkDelay);
 	}
 
-	private void SwitchEnable()
+	private void SwitchRendererEnabled()
 	{
 		spriteRenderer.enabled = !spriteRenderer.enabled;
 	}
