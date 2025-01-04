@@ -10,7 +10,7 @@ public class PlayerRobot : Robot
 
 	private void OnDestroy()
 	{
-		if(playerData != null)
+		if(playerData != null && playerData.Spawner != null)
 		{
 			playerData.Spawner.InitiateRespawn();
 		}
