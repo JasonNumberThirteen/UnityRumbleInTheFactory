@@ -15,10 +15,10 @@ public class StageSelectionUIManager : MonoBehaviour
 
 	private void Start()
 	{
-		var foundAnyStage = gameData != null && !gameData.NoStagesFound();
+		var noStagesFound = gameData != null && gameData.NoStagesFound();
 
-		SetStageCounterTextUIActive(foundAnyStage);
-		SetNoStagesTextUIActive(!foundAnyStage);
+		SetStageCounterTextUIActive(!noStagesFound);
+		SetNoStagesTextUIActive(noStagesFound);
 	}
 
 	private void SetStageCounterTextUIActive(bool active)
