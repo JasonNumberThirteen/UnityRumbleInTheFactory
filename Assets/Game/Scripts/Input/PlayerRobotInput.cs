@@ -1,67 +1,51 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(RobotShoot))]
 public class PlayerRobotInput : MonoBehaviour
 {
 	public Vector2 MovementVector {get; private set;}
 	public Vector2 LastMovementVector {get; private set;}
 
-	private RobotShoot shoot;
+	private RobotShoot robotShoot;
 	private StageSoundManager stageSoundManager;
 
 	private void Awake()
 	{
-		shoot = GetComponent<RobotShoot>();
+		robotShoot = GetComponent<RobotShoot>();
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 	}
 
-	private void Start()
-	{
-		if(StageManager.instance.stateManager.StateIsSetTo(StageState.Over))
-		{
-			Destroy(this);
-		}
-	}
-
-	private void OnMove(InputValue iv)
-	{
-		if(StageManager.instance.stateManager.StateIsSetTo(StageState.Paused))
-		{
-			return;
-		}
-		
-		Vector2 movement = iv.Get<Vector2>();
-
-		LastMovementVector = MovementVector;
-		MovementVector = movement;
-
-		SetMovementSound();
-	}
-
-	private void SetMovementSound()
+	private void PlayMovementSoundIfPossible()
 	{
 		if(stageSoundManager == null)
 		{
 			return;
 		}
+
+		var soundEffectType = MovementVector == Vector2.zero ? SoundEffectType.PlayerRobotIdle : SoundEffectType.PlayerRobotMovement;
 		
-		if(MovementVector == Vector2.zero)
-		{
-			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotIdle);
-		}
-		else
-		{
-			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotMovement);
-		}
+		stageSoundManager.PlaySound(soundEffectType);
 	}
 
-	private void OnFire(InputValue iv)
+	private void OnMove(InputValue inputValue)
 	{
-		if(!StageManager.instance.stateManager.StateIsSetTo(StageState.Paused) && shoot != null)
+		LastMovementVector = MovementVector;
+		MovementVector = inputValue.Get<Vector2>();
+
+		PlayMovementSoundIfPossible();
+	}
+
+	private void OnFire(InputValue inputValue)
+	{
+		if(robotShoot != null)
 		{
-			shoot.FireBullet();
+			robotShoot.FireBullet();
 		}
 	}
 
-	private void OnPause(InputValue iv) => StageManager.instance.PauseGame();
+	private void OnPause(InputValue inputValue)
+	{
+		StageManager.instance.PauseGame();
+	}
 }
