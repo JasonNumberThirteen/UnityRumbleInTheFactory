@@ -21,17 +21,17 @@ public class BonusTiledPositionSetter : MonoBehaviour
 
 	private void Start()
 	{
-		transform.position = GetBonusPosition();
+		transform.position = GetFinalPosition();
 	}
 
-	private Vector2 GetBonusPosition()
+	private Vector2 GetFinalPosition()
 	{
 		var randomPosition = GetRandomPosition();
 		var gridPosition = GetGridPosition(randomPosition);
 		
 		if(PositionIsInaccessible(gridPosition))
 		{
-			return GetBonusPosition();
+			return GetFinalPosition();
 		}
 
 		return gridPosition;
