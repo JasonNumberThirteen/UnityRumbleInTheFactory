@@ -7,6 +7,21 @@ public class IntCounter : MonoBehaviour
 
 	public int CurrentValue {get; private set;}
 
+	public void SetTo(int value)
+	{
+		SetValue(value);
+	}
+
+	public void IncreaseBy(int value)
+	{
+		IncreaseValue(value);
+	}
+
+	public void DecreaseBy(int value)
+	{
+		DecreaseValue(value);
+	}
+
 	protected virtual void SetValue(int value)
 	{
 		CurrentValue = value;
@@ -26,20 +41,5 @@ public class IntCounter : MonoBehaviour
 		CurrentValue -= value;
 
 		valueChangedEvent?.Invoke();
-	}
-
-	public void SetTo(int value)
-	{
-		SetValue(value);
-	}
-
-	public void IncreaseBy(int value)
-	{
-		IncreaseValue(value);
-	}
-
-	public void DecreaseBy(int value)
-	{
-		DecreaseValue(value);
 	}
 }
