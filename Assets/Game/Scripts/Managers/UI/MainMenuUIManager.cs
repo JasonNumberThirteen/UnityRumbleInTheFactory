@@ -28,7 +28,7 @@ public class MainMenuUIManager : MonoBehaviour
 		{
 			if(mainMenuPanelUI != null)
 			{
-				mainMenuPanelUI.panelReachedTargetPositionEvent.AddListener(ActivateOptionsCursor);
+				mainMenuPanelUI.panelReachedTargetPositionEvent.AddListener(ActivateOptionsCursorImageUI);
 			}
 
 			if(mainMenuOptionsListenersManager != null)
@@ -40,7 +40,7 @@ public class MainMenuUIManager : MonoBehaviour
 		{
 			if(mainMenuPanelUI != null)
 			{
-				mainMenuPanelUI.panelReachedTargetPositionEvent.RemoveListener(ActivateOptionsCursor);
+				mainMenuPanelUI.panelReachedTargetPositionEvent.RemoveListener(ActivateOptionsCursorImageUI);
 			}
 
 			if(mainMenuOptionsListenersManager != null)
@@ -50,7 +50,7 @@ public class MainMenuUIManager : MonoBehaviour
 		}
 	}
 
-	private void ActivateOptionsCursor()
+	private void ActivateOptionsCursorImageUI()
 	{
 		if(mainMenuOptionsCursorImageUI != null)
 		{
