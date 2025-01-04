@@ -32,7 +32,7 @@ public class BulletTriggerEventsSender : MonoBehaviour
 	{
 		if(splatterPrefab != null)
 		{
-			Instantiate(splatterPrefab, gameObject.transform.position, Quaternion.identity);
+			Instantiate(splatterPrefab, transform.position, Quaternion.identity);
 		}
 	}
 }
