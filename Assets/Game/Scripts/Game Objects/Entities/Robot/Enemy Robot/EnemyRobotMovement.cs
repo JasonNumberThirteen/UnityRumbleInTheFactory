@@ -1,15 +1,12 @@
 using UnityEngine;
 
-public class EnemyRobotMovement : EntityMovement
+public class EnemyRobotMovement : RobotEntityMovement
 {
 	public Timer timer;
-	public RobotCollisionDetector collisionDetector;
 
 	private bool detectedCollision;
 	private float lastMovementSpeed;
-	private Vector2 lastDirection;
 	private EnemyRobotMovementDirectionSelector movementDirectionSelector;
-	private RobotRotation robotRotation;
 	private RobotDisablingManager robotDisablingManager;
 
 	public void SetMovementLock()
@@ -46,7 +43,6 @@ public class EnemyRobotMovement : EntityMovement
 		base.Awake();
 
 		movementDirectionSelector = GetComponent<EnemyRobotMovementDirectionSelector>();
-		robotRotation = GetComponent<RobotRotation>();
 		robotDisablingManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
 	}
 
@@ -82,7 +78,7 @@ public class EnemyRobotMovement : EntityMovement
 	}
 
 	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
-	private bool DetectedCollision() => !detectedCollision && !robotDisablingManager.RobotsAreTemporarilyDisabled() && collisionDetector.OverlapBoxAll().Length > 1;
+	private bool DetectedCollision() => !detectedCollision && !robotDisablingManager.RobotsAreTemporarilyDisabled() && robotCollisionDetector.OverlapBoxAll().Length > 1;
 	
 	private void DetectObstacles()
 	{
@@ -100,12 +96,12 @@ public class EnemyRobotMovement : EntityMovement
 
 	private void DrawDetectedColliders()
 	{
-		if(collisionDetector == null)
+		if(robotCollisionDetector == null)
 		{
 			return;
 		}
 		
-		Collider2D[] colliders = collisionDetector.OverlapBoxAll();
+		Collider2D[] colliders = robotCollisionDetector.OverlapBoxAll();
 
 		foreach (Collider2D collider in colliders)
 		{

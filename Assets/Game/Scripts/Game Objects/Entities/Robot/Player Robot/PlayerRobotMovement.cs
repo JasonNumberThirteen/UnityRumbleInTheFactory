@@ -1,14 +1,10 @@
 using UnityEngine;
 
-public class PlayerRobotMovement : EntityMovement
+public class PlayerRobotMovement : RobotEntityMovement
 {
-	public RobotCollisionDetector collisionDetector;
-	
 	public bool IsSliding {get; set;}
 
 	private PlayerRobotInput input;
-	private RobotRotation robotRotation;
-	private Vector2 lastDirection;
 
 	public Vector2 MovementDirection()
 	{
@@ -27,7 +23,6 @@ public class PlayerRobotMovement : EntityMovement
 		base.Awake();
 
 		input = GetComponent<PlayerRobotInput>();
-		robotRotation = GetComponent<RobotRotation>();
 	}
 
 	protected virtual void Update()
@@ -69,7 +64,7 @@ public class PlayerRobotMovement : EntityMovement
 	
 	private void LockMovementWhenHitObject()
 	{
-		if(collisionDetector.OverlapBox() != null)
+		if(robotCollisionDetector.OverlapBox() != null)
 		{
 			rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
 		}
