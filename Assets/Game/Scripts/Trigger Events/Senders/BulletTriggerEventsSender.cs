@@ -16,7 +16,7 @@ public class BulletTriggerEventsSender : MonoBehaviour
 		}
 
 		TriggerOnEffect(collider);
-		InstantiateSplatterEffectIfPossible();
+		SpawnSplatterIfPossible();
 		Destroy(gameObject);
 	}
 
@@ -28,7 +28,7 @@ public class BulletTriggerEventsSender : MonoBehaviour
 		}
 	}
 
-	private void InstantiateSplatterEffectIfPossible()
+	private void SpawnSplatterIfPossible()
 	{
 		if(splatterPrefab != null)
 		{
