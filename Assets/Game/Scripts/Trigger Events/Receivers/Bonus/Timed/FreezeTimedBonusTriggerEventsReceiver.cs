@@ -14,8 +14,10 @@ public class FreezeTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRece
 		base.TriggerOnEnter(sender);
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+		
 		robotDisablingManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
 	}
 }
