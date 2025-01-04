@@ -10,5 +10,5 @@ public class MetalTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 		}
 	}
 
-	private bool CanBeDestroyedByBullet(GameObject sender) => sender.TryGetComponent(out Bullet bulletStats) && bulletStats.CanDestroyMetal();
+	private bool CanBeDestroyedByBullet(GameObject sender) => sender.TryGetComponent(out Bullet bullet) && bullet.CanDestroyMetal();
 }
