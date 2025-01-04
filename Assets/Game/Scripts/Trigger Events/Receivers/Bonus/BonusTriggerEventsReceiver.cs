@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BonusTrigger : MonoBehaviour, ITriggerableOnEnter
+public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	protected StageSoundManager stageSoundManager;
 

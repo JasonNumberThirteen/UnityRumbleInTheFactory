@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class DestructionBonusTrigger : BonusTrigger
+public class DestructionBonusTrigger : BonusTriggerEventsReceiver
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
