@@ -34,7 +34,7 @@ public class EnemyRobotHealth : RobotHealth
 
 	private void ModifyPlayerDataIfPossible(GameObject sender)
 	{
-		if(enemyData == null || !sender.TryGetComponent(out PlayerRobot playerRobot))
+		if(enemyData == null || sender == null || !sender.TryGetComponent(out PlayerRobot playerRobot))
 		{
 			return;
 		}
