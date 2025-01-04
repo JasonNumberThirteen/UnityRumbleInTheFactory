@@ -14,9 +14,9 @@ public class SlipperyFloorTriggerEventsReceiver : MonoBehaviour, ITriggerableOnE
 
 	private void SetSlidingToPlayerRobotIfPossible(GameObject sender, bool isSliding)
 	{
-		if(sender.TryGetComponent(out PlayerRobotMovement playerRobotMovement))
+		if(sender.TryGetComponent(out PlayerRobotEntityMovement playerRobotEntityMovement))
 		{
-			playerRobotMovement.IsSliding = isSliding;
+			playerRobotEntityMovement.IsSliding = isSliding;
 		}
 	}
 }

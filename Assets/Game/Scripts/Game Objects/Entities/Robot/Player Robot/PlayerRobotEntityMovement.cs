@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRobotMovement : RobotEntityMovement
+public class PlayerRobotEntityMovement : RobotEntityMovement
 {
 	public bool IsSliding {get; set;}
 
