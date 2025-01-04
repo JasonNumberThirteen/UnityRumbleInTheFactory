@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EmptyParentGameObjectDestroyer : MonoBehaviour
 {
-	[SerializeField, Min(0.01f)] private float childCheckDelay = 5f;
+	[SerializeField, Min(0.01f)] private float checkInterval = 5f;
 	
 	private void Start()
 	{
-		InvokeRepeating(nameof(DestroyIfGOHasNoChildren), childCheckDelay, childCheckDelay);
+		InvokeRepeating(nameof(DestroyIfGOHasNoChildren), checkInterval, checkInterval);
 	}
 
 	private void DestroyIfGOHasNoChildren()
