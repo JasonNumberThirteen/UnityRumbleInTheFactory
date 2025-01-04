@@ -15,12 +15,12 @@ public class BulletTriggerEventsSender : MonoBehaviour
 			}
 		}
 
-		TriggerOnEffect(collider);
+		SendTriggerOnEnter(collider);
 		SpawnSplatterIfPossible();
 		Destroy(gameObject);
 	}
 
-	private void TriggerOnEffect(Collider2D collider)
+	private void SendTriggerOnEnter(Collider2D collider)
 	{
 		if(collider.TryGetComponent(out ITriggerableOnEnter triggerableOnEnter))
 		{
