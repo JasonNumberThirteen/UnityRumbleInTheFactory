@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RankBonusTrigger : BonusTriggerEventsReceiver
+public class RankBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
