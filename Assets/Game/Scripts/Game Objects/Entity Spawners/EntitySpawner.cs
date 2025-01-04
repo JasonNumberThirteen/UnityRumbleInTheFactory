@@ -10,7 +10,7 @@ public class EntitySpawner : MonoBehaviour
 
 	[SerializeField] private GameObject entityPrefab;
 
-	private SpawnVisualEffect spawnVisualEffect;
+	private SpawnGameVisualEffect spawnGameVisualEffect;
 
 	public void SetEntityPrefab(GameObject entityPrefab)
 	{
@@ -36,7 +36,7 @@ public class EntitySpawner : MonoBehaviour
 	protected virtual void Awake()
 	{
 		timer = GetComponent<Timer>();
-		spawnVisualEffect = GetComponentInChildren<SpawnVisualEffect>();
+		spawnGameVisualEffect = GetComponentInChildren<SpawnGameVisualEffect>();
 
 		RegisterToListeners(true);
 	}
@@ -69,9 +69,9 @@ public class EntitySpawner : MonoBehaviour
 
 	private void SetSpawnVisualEffectActive(bool active)
 	{
-		if(spawnVisualEffect != null)
+		if(spawnGameVisualEffect != null)
 		{
-			spawnVisualEffect.SetActive(active);
+			spawnGameVisualEffect.SetActive(active);
 		}
 	}
 }
