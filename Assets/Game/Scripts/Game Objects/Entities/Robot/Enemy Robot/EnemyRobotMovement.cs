@@ -6,10 +6,10 @@ public class EnemyRobotMovement : EntityMovement
 	public RobotCollisionDetector collisionDetector;
 
 	private bool detectedCollision;
-	private EnemyRobotFreeze freeze;
 	private float lastMovementSpeed;
 	private Vector2 lastDirection;
 	private EnemyRobotMovementDirectionSelector movementDirectionSelector;
+	private RobotDisablingManager robotDisablingManager;
 
 	public void SetMovementLock()
 	{
@@ -44,8 +44,8 @@ public class EnemyRobotMovement : EntityMovement
 	{
 		base.Awake();
 
-		freeze = GetComponent<EnemyRobotFreeze>();
 		movementDirectionSelector = GetComponent<EnemyRobotMovementDirectionSelector>();
+		robotDisablingManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
 	}
 
 	protected override void FixedUpdate()
@@ -56,7 +56,7 @@ public class EnemyRobotMovement : EntityMovement
 
 	private void SetDirections(Vector2 newLastDirection, Vector2 newDirection)
 	{
-		if(freeze.Frozen)
+		if(robotDisablingManager.RobotsAreTemporarilyDisabled())
 		{
 			lastDirection = newLastDirection;
 		}
@@ -80,7 +80,7 @@ public class EnemyRobotMovement : EntityMovement
 	}
 
 	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
-	private bool DetectedCollision() => !detectedCollision && !freeze.Frozen && collisionDetector.OverlapBoxAll().Length > 1;
+	private bool DetectedCollision() => !detectedCollision && !robotDisablingManager.RobotsAreTemporarilyDisabled() && collisionDetector.OverlapBoxAll().Length > 1;
 	
 	private void DetectObstacles()
 	{

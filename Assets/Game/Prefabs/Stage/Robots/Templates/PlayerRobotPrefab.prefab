@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: activateOnStart
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7184377186673889978, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: initialVerticalDirection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2720126704085592801, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: 5886565102491951326, guid: 45af5603af150104993ac8c5bdc54084, type: 3}

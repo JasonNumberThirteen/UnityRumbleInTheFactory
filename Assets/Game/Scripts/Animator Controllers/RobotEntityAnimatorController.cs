@@ -1,8 +1,27 @@
+using UnityEngine;
+
 public class RobotEntityAnimatorController : EntityAnimatorController
 {
+	[SerializeField] private VerticalDirection initialVerticalDirection = VerticalDirection.Top;
+	
 	private readonly string MOVEMENT_SPEED_PARAMETER_NAME = "MovementSpeed";
 	private readonly string HORIZONTAL_MOVEMENT_PARAMETER_NAME = "MovementX";
 	private readonly string VERTICAL_MOVEMENT_PARAMETER_NAME = "MovementY";
+
+	private void Start()
+	{
+		animator.SetInteger(VERTICAL_MOVEMENT_PARAMETER_NAME, GetInitialVerticalDirection());
+	}
+
+	private int GetInitialVerticalDirection()
+	{
+		return initialVerticalDirection switch
+		{
+			VerticalDirection.Top => 1,
+			VerticalDirection.Bottom => -1,
+			_ => 0
+		};
+	}
 	
 	private void Update()
 	{

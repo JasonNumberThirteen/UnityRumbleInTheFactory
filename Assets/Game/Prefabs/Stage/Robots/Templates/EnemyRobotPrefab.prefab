@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7184377186673889978, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: initialVerticalDirection
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4366984621820829096, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: 5886565102491951326, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
@@ -352,9 +356,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7222749067493573934}
-    - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -165028709078084384}
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7789898313100651961}
@@ -420,19 +421,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 19968
   obstacleDetectionDistance: 0.65
---- !u!114 &-165028709078084384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5816500477355214006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d64e1510ae35de74dbcac45a5c1b8845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootTimer: {fileID: 7952846313805569692}
 --- !u!114 &-7789898313100651961
 MonoBehaviour:
   m_ObjectHideFlags: 0
