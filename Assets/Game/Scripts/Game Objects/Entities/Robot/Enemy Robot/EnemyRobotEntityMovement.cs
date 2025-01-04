@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyRobotMovement : RobotEntityMovement
+public class EnemyRobotEntityMovement : RobotEntityMovement
 {
 	public Timer timer;
 
