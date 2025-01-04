@@ -89,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeForBlinkStart: 5
   blinkDuration: 0.25
-  bricksTileSprite: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
+  tileSpriteToBlink: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
 --- !u!114 &8923623980498974969
 MonoBehaviour:
   m_ObjectHideFlags: 0

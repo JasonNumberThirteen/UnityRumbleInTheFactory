@@ -5,7 +5,7 @@ public class FortressMetalRenderer : MonoBehaviour
 {
 	[SerializeField, Min(0.01f)] private float timeForBlinkStart = 5f;
 	[SerializeField, Min(0.01f)] private float blinkDuration = 1f;
-	[SerializeField] private Sprite bricksTileSprite;
+	[SerializeField] private Sprite tileSpriteToBlink;
 	
 	private SpriteRenderer spriteRenderer;
 	private Sprite initialSprite;
@@ -28,6 +28,6 @@ public class FortressMetalRenderer : MonoBehaviour
 	{
 		var rendererHasInitialSprite = spriteRenderer.sprite == initialSprite;
 		
-		spriteRenderer.sprite = rendererHasInitialSprite ? bricksTileSprite : initialSprite;
+		spriteRenderer.sprite = rendererHasInitialSprite ? tileSpriteToBlink : initialSprite;
 	}
 }
