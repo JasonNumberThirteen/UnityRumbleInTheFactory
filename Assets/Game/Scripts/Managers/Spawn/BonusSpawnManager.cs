@@ -40,13 +40,15 @@ public class BonusSpawnManager : MonoBehaviour
 
 	private GameObject GetRandomBonusGO()
 	{
-		if(bonusesPrefabs.Length == 0)
+		var numberOfBonuses = bonusesPrefabs.Length;
+		
+		if(numberOfBonuses == 0)
 		{
 			return null;
 		}
 		
-		var index = Random.Range(0, bonusesPrefabs.Length);
+		var randomIndex = Random.Range(0, numberOfBonuses);
 
-		return bonusesPrefabs[index];
+		return bonusesPrefabs[randomIndex];
 	}
 }
