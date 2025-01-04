@@ -56,8 +56,8 @@ public class TranslationBackgroundPartPanelUIRectTransformOffsetController : Mon
 		
 		return verticalDirection switch
 		{
-			VerticalDirection.Top => -screenHeight,
-			VerticalDirection.Bottom => screenHeight,
+			VerticalDirection.Up => -screenHeight,
+			VerticalDirection.Down => screenHeight,
 			_ => 0
 		};
 	}

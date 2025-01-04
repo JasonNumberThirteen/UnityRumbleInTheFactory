@@ -1,6 +1,6 @@
 public enum VerticalDirection
 {
 	None,
-	Top,
-	Bottom
+	Up,
+	Down
 }

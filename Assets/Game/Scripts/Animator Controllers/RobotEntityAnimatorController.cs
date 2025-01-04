@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RobotEntityAnimatorController : EntityAnimatorController
 {
-	[SerializeField] private VerticalDirection initialVerticalDirection = VerticalDirection.Top;
+	[SerializeField] private VerticalDirection initialVerticalDirection = VerticalDirection.Up;
 	
 	private readonly string MOVEMENT_SPEED_PARAMETER_NAME = "MovementSpeed";
 	private readonly string HORIZONTAL_MOVEMENT_PARAMETER_NAME = "MovementX";
@@ -17,8 +17,8 @@ public class RobotEntityAnimatorController : EntityAnimatorController
 	{
 		return initialVerticalDirection switch
 		{
-			VerticalDirection.Top => 1,
-			VerticalDirection.Bottom => -1,
+			VerticalDirection.Up => 1,
+			VerticalDirection.Down => -1,
 			_ => 0
 		};
 	}
