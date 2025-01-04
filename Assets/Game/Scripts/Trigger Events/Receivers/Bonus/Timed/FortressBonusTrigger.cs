@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FortressBonusTrigger : TimedBonusTrigger
+public class FortressBonusTrigger : TimedBonusTriggerEventsReceiver
 {
 	private NukeFortressField nukeFortressField;
 	

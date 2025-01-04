@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FreezeBonusTrigger : TimedBonusTrigger
+public class FreezeBonusTrigger : TimedBonusTriggerEventsReceiver
 {
 	private RobotDisablingManager robotDisablingManager;
 	

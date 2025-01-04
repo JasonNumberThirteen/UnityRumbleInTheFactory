@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShieldBonusTrigger : TimedBonusTrigger
+public class ShieldBonusTrigger : TimedBonusTriggerEventsReceiver
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
