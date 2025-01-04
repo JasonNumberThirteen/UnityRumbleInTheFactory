@@ -4,15 +4,15 @@ public class SlipperyFloorTriggerEventsReceiver : MonoBehaviour, ITriggerableOnE
 {
 	public void TriggerOnEnter(GameObject sender)
 	{
-		SetSliding(sender, true);
+		SetSlidingToPlayerRobotIfPossible(sender, true);
 	}
 
 	public void TriggerOnExit(GameObject sender)
 	{
-		SetSliding(sender, false);
+		SetSlidingToPlayerRobotIfPossible(sender, false);
 	}
 
-	private void SetSliding(GameObject sender, bool isSliding)
+	private void SetSlidingToPlayerRobotIfPossible(GameObject sender, bool isSliding)
 	{
 		if(sender.TryGetComponent(out PlayerRobotMovement playerRobotMovement))
 		{
