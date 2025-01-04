@@ -21,7 +21,7 @@ public class EnemyEntitySpawner : EntitySpawner
 
 		if(entityInstance != null)
 		{
-			AddBonusEnemyComponentsToEntityIfNeeded(entityInstance);
+			AddBonusEnemyComponentsToEntityGOIfNeeded(entityInstance);
 		}
 
 		return entityInstance;
@@ -41,30 +41,30 @@ public class EnemyEntitySpawner : EntitySpawner
 		}
 	}
 
-	private void AddBonusEnemyComponentsToEntityIfNeeded(GameObject entity)
+	private void AddBonusEnemyComponentsToEntityGOIfNeeded(GameObject entityGO)
 	{
-		if(!IsBonus || entity == null)
+		if(!IsBonus || entityGO == null)
 		{
 			return;
 		}
 
-		AddComponentToEntityIfPossible<BonusEnemyRobotTrigger>(entity, () =>
+		AddComponentToEntityGOIfPossible<BonusEnemyRobotTrigger>(entityGO, () =>
 		{
-			if(entity != null && entity.TryGetComponent(out RobotTriggerEventsSender robotTrigger))
+			if(entityGO != null && entityGO.TryGetComponent(out RobotTriggerEventsSender robotTriggerEventsSender))
 			{
-				Destroy(robotTrigger);
+				Destroy(robotTriggerEventsSender);
 			}
 		});
-		AddComponentToEntityIfPossible<BonusEnemyRobotColor>(entity);
+		AddComponentToEntityGOIfPossible<BonusEnemyRobotColor>(entityGO);
 	}
 
-	private void AddComponentToEntityIfPossible<T>(GameObject entity, Action onStart = null) where T : Component
+	private void AddComponentToEntityGOIfPossible<T>(GameObject entityGO, Action onStart = null) where T : Component
 	{
 		onStart?.Invoke();
 
-		if(entity != null)
+		if(entityGO != null)
 		{
-			entity.AddComponent<T>();
+			entityGO.AddComponent<T>();
 		}
 	}
 
