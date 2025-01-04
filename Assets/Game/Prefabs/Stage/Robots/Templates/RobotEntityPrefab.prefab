@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 831581827609024836}
   - component: {fileID: 1178296341531915705}
   m_Layer: 0
-  m_Name: RobotPrefab
+  m_Name: RobotEntityPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
