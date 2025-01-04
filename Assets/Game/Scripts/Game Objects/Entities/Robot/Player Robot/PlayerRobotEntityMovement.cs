@@ -1,44 +1,28 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerRobotInput))]
 public class PlayerRobotEntityMovement : RobotEntityMovement
 {
 	public bool IsSliding {get; set;}
 
-	private PlayerRobotInput input;
-
-	public Vector2 MovementDirection()
-	{
-		if(IsSliding)
-		{
-			return input.LastMovementVector;
-		}
-		
-		Vector2 movementVector = MovementVector();
-
-		return PressedHorizontalMovementKey(movementVector) ? Vector2.right*movementVector.x : Vector2.up*movementVector.y;
-	}
+	private PlayerRobotInput playerRobotInput;
 
 	protected override void Awake()
 	{
 		base.Awake();
 
-		input = GetComponent<PlayerRobotInput>();
+		playerRobotInput = GetComponent<PlayerRobotInput>();
 	}
 
 	protected virtual void Update()
 	{
-		UpdateLastDirection();
-		UpdateDirection();
-		UpdateCollisionDetector();
+		UpdateLastDirectionIfNeeded();
+		UpdateCurrentMovementDirection();
+		RotateByDirectionIfNeeded();
 		LockMovementWhenHitObject();
 	}
 
-	private void UpdateDirection() => CurrentMovementDirection = MovementDirection();
-	private int MovementAxis(float a) => Mathf.RoundToInt(a);
-	private bool PressedHorizontalMovementKey(Vector2 movement) => Mathf.Abs(movement.x) > Mathf.Abs(movement.y);
-	private bool IsMovingInDifferentDirection() => !CurrentMovementDirectionIsNone() && CurrentMovementDirection != lastDirection;
-
-	private void UpdateLastDirection()
+	private void UpdateLastDirectionIfNeeded()
 	{
 		if(IsMovingInDifferentDirection())
 		{
@@ -46,15 +30,27 @@ public class PlayerRobotEntityMovement : RobotEntityMovement
 		}
 	}
 
-	private Vector2 MovementVector()
+	private void UpdateCurrentMovementDirection()
 	{
-		int x = MovementAxis(input.MovementVector.x);
-		int y = MovementAxis(input.MovementVector.y);
+		CurrentMovementDirection = IsSliding ? playerRobotInput.LastMovementVector : GetMovementDirection();
+	}
+
+	private Vector2 GetMovementDirection()
+	{
+		var movementVector = GetMovementVector();
+
+		return PressedHorizontalMovementKey(movementVector) ? Vector2.right*movementVector.x : Vector2.up*movementVector.y;
+	}
+
+	private Vector2 GetMovementVector()
+	{
+		var x = Mathf.RoundToInt(playerRobotInput.MovementVector.x);
+		var y = Mathf.RoundToInt(playerRobotInput.MovementVector.y);
 
 		return new Vector2(x, y);
 	}
 
-	private void UpdateCollisionDetector()
+	private void RotateByDirectionIfNeeded()
 	{
 		if(IsMovingInDifferentDirection())
 		{
@@ -73,4 +69,7 @@ public class PlayerRobotEntityMovement : RobotEntityMovement
 			rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
 	}
+
+	private bool PressedHorizontalMovementKey(Vector2 movement) => Mathf.Abs(movement.x) > Mathf.Abs(movement.y);
+	private bool IsMovingInDifferentDirection() => !CurrentMovementDirectionIsNone() && CurrentMovementDirection != lastDirection;
 }
