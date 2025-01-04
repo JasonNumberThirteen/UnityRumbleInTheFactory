@@ -14,7 +14,7 @@ public class PlayerRobotEntityMovement : RobotEntityMovement
 		playerRobotInput = GetComponent<PlayerRobotInput>();
 	}
 
-	protected virtual void Update()
+	private void Update()
 	{
 		UpdateLastDirectionIfNeeded();
 		UpdateCurrentMovementDirection();
