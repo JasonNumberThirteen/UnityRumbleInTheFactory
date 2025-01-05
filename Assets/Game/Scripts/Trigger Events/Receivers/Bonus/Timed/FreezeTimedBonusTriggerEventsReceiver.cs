@@ -6,9 +6,9 @@ public class FreezeTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRece
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(robotDisablingManager != null && sender.TryGetComponent(out Robot robot))
+		if(robotDisablingManager != null && sender.TryGetComponent(out RobotEntity robotEntity))
 		{
-			robotDisablingManager.DisableRobotsTemporarily(GetDuration(), !robot.IsFriendly());
+			robotDisablingManager.DisableRobotsTemporarily(GetDuration(), !robotEntity.IsFriendly());
 		}
 
 		base.TriggerOnEnter(sender);

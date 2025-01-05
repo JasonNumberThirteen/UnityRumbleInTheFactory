@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Robot : MonoBehaviour
+public abstract class RobotEntity : MonoBehaviour
 {
 	private RobotShield robotShield;
 	

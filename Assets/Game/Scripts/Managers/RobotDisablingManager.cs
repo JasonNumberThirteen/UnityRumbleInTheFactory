@@ -21,8 +21,8 @@ public class RobotDisablingManager : MonoBehaviour
 
 	public void SetRobotsActive(bool active, bool disableFriendly)
 	{
-		var robots = FindObjectsByType<Robot>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == disableFriendly);
-		var robotDisablers = robots.Select(robot => robot.GetComponent<RobotDisabler>()).Where(component => component != null);
+		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == disableFriendly);
+		var robotDisablers = robotEntities.Select(robot => robot.GetComponent<RobotDisabler>()).Where(component => component != null);
 
 		foreach (var robotDisabler in robotDisablers)
 		{

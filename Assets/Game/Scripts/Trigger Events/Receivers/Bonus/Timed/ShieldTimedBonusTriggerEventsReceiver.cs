@@ -4,9 +4,9 @@ public class ShieldTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRece
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.TryGetComponent(out Robot robot))
+		if(sender.TryGetComponent(out RobotEntity robotEntity))
 		{
-			robot.ActivateShield(GetDuration());
+			robotEntity.ActivateShield(GetDuration());
 		}
 		
 		base.TriggerOnEnter(sender);
