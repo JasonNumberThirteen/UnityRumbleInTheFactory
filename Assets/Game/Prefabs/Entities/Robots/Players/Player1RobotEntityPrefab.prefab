@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 35ffb86806e5f9a49a1344decae27683, type: 2}
     - target: {fileID: 3405398399308765810, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_Name
-      value: Player1RobotPrefab
+      value: Player1RobotEntityPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3415699233984565831, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: bullet
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: bulletTag
       value: Player 1 Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 3415699233984565831, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4114864033026002767, guid: cc2d95f93b89ccf4a9cd5294b03ca746, type: 3}
     - target: {fileID: 3508498655664141437, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_RootOrder
       value: 0

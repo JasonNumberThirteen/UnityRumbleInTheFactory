@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
+  gameData: {fileID: 0}
 --- !u!114 &-7222749067493573934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,5 +331,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382e5ccf99bf31a4a8cc3ca28f34a8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1372171276495067033, guid: 8c4e0f4bbc5b492469be53cc62a61ca1, type: 3}
-  offsetFromObject: 0.1
+  bulletPrefab: {fileID: 1372171276495067033, guid: 8c4e0f4bbc5b492469be53cc62a61ca1, type: 3}
+  offsetFromGO: 0.1

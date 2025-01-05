@@ -9,6 +9,14 @@ public abstract class EntityAnimatorController : MonoBehaviour
 	protected EntityMovementController entityMovementController;
 	protected Animator animator;
 
+	public Vector2 GetMovementDirection()
+	{
+		var x = animator.GetInteger(HORIZONTAL_MOVEMENT_PARAMETER_NAME);
+		var y = animator.GetInteger(VERTICAL_MOVEMENT_PARAMETER_NAME);
+
+		return new Vector2(x, y);
+	}
+
 	protected virtual void Awake()
 	{
 		entityMovementController = GetComponent<EntityMovementController>();

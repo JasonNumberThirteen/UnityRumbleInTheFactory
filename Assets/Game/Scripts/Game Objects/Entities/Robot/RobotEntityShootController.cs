@@ -2,53 +2,45 @@ using UnityEngine;
 
 public class RobotEntityShootController : MonoBehaviour
 {
-	public GameObject bullet;
-	[Min(0f)] public float offsetFromObject = 0.5f;
+	[SerializeField] private GameObject bulletPrefab;
+	[SerializeField, Min(0f)] private float offsetFromGO = 0.1f;
 
-	protected Animator animator;
 	protected StageSoundManager stageSoundManager;
+
+	private RobotEntityAnimatorController robotEntityAnimatorController;
 
 	public virtual void FireBullet()
 	{
-		SetupBullet(BulletInstance());
+		SetupBullet(Instantiate(bulletPrefab, GetBulletPosition(), Quaternion.identity));
 	}
-
-	protected GameObject BulletInstance() => Instantiate(bullet, BulletPosition(), Quaternion.identity);
-	protected Vector2 BulletPosition() => (Vector2)transform.position + BulletDirection()*offsetFromObject;
 
 	protected virtual void Awake()
 	{
-		animator = GetComponent<Animator>();
+		robotEntityAnimatorController = GetComponent<RobotEntityAnimatorController>();
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 	}
 
 	protected virtual void SetupBullet(GameObject bulletGO)
 	{
-		SetParentToBullet(bulletGO);
-		SetMovementDirectionToBullet(bulletGO);
+		SetParentToBulletGOIfPossible(bulletGO);
+		SetMovementDirectionToBulletGOIfPossible(bulletGO);
 	}
 
-	protected virtual Vector2 BulletDirection()
+	protected void SetParentToBulletGOIfPossible(GameObject bulletGO)
 	{
-		int x = animator.GetInteger("MovementX");
-		int y = animator.GetInteger("MovementY");
-
-		return new Vector2(x, y);
-	}
-
-	protected void SetParentToBullet(GameObject bullet)
-	{
-		if(bullet.TryGetComponent(out BulletEntity bulletEntity))
+		if(bulletGO.TryGetComponent(out BulletEntity bulletEntity))
 		{
 			bulletEntity.SetParent(gameObject);
 		}
 	}
 
-	protected void SetMovementDirectionToBullet(GameObject bullet)
+	protected void SetMovementDirectionToBulletGOIfPossible(GameObject bulletGO)
 	{
-		if(bullet.TryGetComponent(out EntityMovementController entityMovementController))
+		if(bulletGO.TryGetComponent(out EntityMovementController entityMovementController))
 		{
-			entityMovementController.CurrentMovementDirection = BulletDirection();
+			entityMovementController.CurrentMovementDirection = robotEntityAnimatorController.GetMovementDirection();
 		}
 	}
+
+	private Vector2 GetBulletPosition() => (Vector2)transform.position + robotEntityAnimatorController.GetMovementDirection()*offsetFromGO;
 }
