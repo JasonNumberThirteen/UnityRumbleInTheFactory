@@ -46,9 +46,9 @@ public class RobotEntityShoot : MonoBehaviour
 
 	protected void SetMovementDirectionToBullet(GameObject bullet)
 	{
-		if(bullet.TryGetComponent(out EntityMovement em))
+		if(bullet.TryGetComponent(out EntityMovementController entityMovementController))
 		{
-			em.CurrentMovementDirection = BulletDirection();
+			entityMovementController.CurrentMovementDirection = BulletDirection();
 		}
 	}
 }

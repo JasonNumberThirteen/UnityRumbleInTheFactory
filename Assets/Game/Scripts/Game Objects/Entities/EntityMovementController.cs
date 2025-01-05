@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EntityMovement : MonoBehaviour, IUpgradeableByRobotRank
+public class EntityMovementController : MonoBehaviour, IUpgradeableByRobotRank
 {
 	public Vector2 CurrentMovementDirection {get; set;}
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(RobotEntityRotation))]
-public class RobotEntityMovement : EntityMovement
+public class RobotEntityMovement : EntityMovementController
 {
 	protected RobotEntityRotation robotEntityRotation;
 	protected RobotEntityCollisionDetector robotEntityCollisionDetector;

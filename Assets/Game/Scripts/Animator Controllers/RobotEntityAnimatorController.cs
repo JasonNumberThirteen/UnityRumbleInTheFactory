@@ -25,11 +25,11 @@ public class RobotEntityAnimatorController : EntityAnimatorController
 	{
 		animator.SetFloat(MOVEMENT_SPEED_PARAMETER_NAME, GetCurrentMovementSpeed());
 
-		if(!entityMovement.CurrentMovementDirectionIsNone())
+		if(!entityMovementController.CurrentMovementDirectionIsNone())
 		{
 			UpdateMovementParametersValues();
 		}
 	}
 
-	private float GetCurrentMovementSpeed() => entityMovement.CurrentMovementDirectionIsNone() ? 0f : 1f;
+	private float GetCurrentMovementSpeed() => entityMovementController.CurrentMovementDirectionIsNone() ? 0f : 1f;
 }
