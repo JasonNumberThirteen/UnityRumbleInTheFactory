@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Timer))]
-public class FortressMetal : MonoBehaviour
+public class FortressMetalTile : MonoBehaviour
 {
 	[SerializeField] private GameObject tileToSpawnPrefab;
 	
