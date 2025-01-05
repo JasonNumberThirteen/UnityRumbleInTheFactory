@@ -43,15 +43,14 @@ public class PlayerEntitySpawner : EntitySpawner
 
 	private void AttemptToRespawn()
 	{
-		if(playerData == null && playersDataManager == null)
-		{
-			return;
-		}
-		
-		if(playerData.Lives > 0)
+		if(playerData != null && playerData.Lives > 0)
 		{
 			timer.ResetTimer();
-			playersDataManager.ModifyLives(playerData, -1);
+
+			if(playersDataManager != null)
+			{
+				playersDataManager.ModifyLives(playerData, -1);
+			}
 		}
 		else
 		{
