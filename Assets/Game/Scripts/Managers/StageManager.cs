@@ -43,7 +43,7 @@ public class StageManager : MonoBehaviour
 
 	public void CheckPlayersLives()
 	{
-		if(playersListData != null && !playersListData.Any(playerData => playerData.Lives > 0))
+		if(playersListData != null && !playersListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0))
 		{
 			SetGameAsOver();
 		}

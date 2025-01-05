@@ -5,11 +5,11 @@ public class PlayerEntitySpawner : EntitySpawner
 	[SerializeField] private PlayerData playerData;
 	[SerializeField, Min(0f)] private float respawnDelay = 1f;
 
-	public PlayerData GetPlayerData() => playerData;
+	private PlayersDataManager playersDataManager;
 
 	public void InitiateRespawn()
 	{
-		Invoke(nameof(ResetTimer), respawnDelay);
+		Invoke(nameof(AttemptToRespawn), respawnDelay);
 	}
 
 	protected override void RegisterToListeners(bool register)
@@ -18,14 +18,19 @@ public class PlayerEntitySpawner : EntitySpawner
 		
 		if(register)
 		{
-			timer.onEnd.AddListener(AttemptToRespawn);
 			entitySpawnedEvent.AddListener(OnEntitySpawned);
 		}
 		else
 		{
-			timer.onEnd.RemoveListener(AttemptToRespawn);
 			entitySpawnedEvent.RemoveListener(OnEntitySpawned);
 		}
+	}
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		playersDataManager = FindAnyObjectByType<PlayersDataManager>();
 	}
 
 	private void Start()
@@ -38,9 +43,15 @@ public class PlayerEntitySpawner : EntitySpawner
 
 	private void AttemptToRespawn()
 	{
-		if(playerData != null && playerData.Lives-- > 0)
+		if(playerData == null && playersDataManager == null)
+		{
+			return;
+		}
+		
+		if(playerData.Lives > 0)
 		{
 			timer.ResetTimer();
+			playersDataManager.ModifyLives(playerData, -1);
 		}
 		else
 		{
@@ -54,10 +65,5 @@ public class PlayerEntitySpawner : EntitySpawner
 		{
 			playerData.ResetRank();
 		}
-	}
-
-	private void ResetTimer()
-	{
-		timer.ResetTimer();
 	}
 }
