@@ -5,23 +5,23 @@ public class DestructionBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 {
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		DestroyAllRobots(sender.TryGetComponent(out RobotEntity robotEntity) && !robotEntity.IsFriendly());
+		DestroyAllRobotEntities(sender.TryGetComponent(out RobotEntity robotEntity) && !robotEntity.IsFriendly());
 		base.TriggerOnEnter(sender);
 	}
 
-	private void DestroyAllRobots(bool destroyFriendly)
+	private void DestroyAllRobotEntities(bool destroyFriendly)
 	{
 		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robotEntity => robotEntity.IsFriendly() == destroyFriendly).ToArray();
 		
 		foreach (var robotEntity in robotEntities)
 		{
-			DestroyRobot(robotEntity);
+			DestroyRobotEntity(robotEntity);
 		}
 
 		PlayExplosionSoundIfNeeded(robotEntities.Length > 0);
 	}
 
-	private void DestroyRobot(RobotEntity robot)
+	private void DestroyRobotEntity(RobotEntity robot)
 	{
 		if(robot != null && robot.TryGetComponent(out EntityExploder entityExploder))
 		{
