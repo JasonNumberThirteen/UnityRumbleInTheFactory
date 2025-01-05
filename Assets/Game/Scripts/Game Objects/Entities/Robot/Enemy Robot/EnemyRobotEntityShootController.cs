@@ -1,4 +1,4 @@
-public class EnemyRobotEntityShoot : RobotEntityShootController
+public class EnemyRobotEntityShootController : RobotEntityShootController
 {
 	private EnemyRobotEntityShootTimer enemyRobotEntityShootTimer;
 
