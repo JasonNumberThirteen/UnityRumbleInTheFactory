@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerRobotInput))]
-public class PlayerRobotEntityMovement : RobotEntityMovementController
+public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
 	public bool IsSliding {get; set;}
 
