@@ -31,13 +31,13 @@ public class OptionsManager : MonoBehaviour
 
 		if(register)
 		{
-			option.onSelect.AddListener(onSelect);
-			option.onSubmit.AddListener(onSubmit);
+			option.optionSelectedEvent.AddListener(onSelect);
+			option.optionSubmittedEvent.AddListener(onSubmit);
 		}
 		else
 		{
-			option.onSelect.RemoveListener(onSelect);
-			option.onSubmit.RemoveListener(onSubmit);
+			option.optionSelectedEvent.RemoveListener(onSelect);
+			option.optionSubmittedEvent.RemoveListener(onSubmit);
 		}
 	}
 

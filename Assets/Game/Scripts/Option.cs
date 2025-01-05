@@ -3,19 +3,20 @@ using UnityEngine.Events;
 
 public class Option : MonoBehaviour
 {
-	public UnityEvent onSelect, onSubmit;
+	public UnityEvent optionSelectedEvent;
+	public UnityEvent optionSubmittedEvent;
+
+	[SerializeField] private OptionType optionType;
 
 	public OptionType GetOptionType() => optionType;
 
 	public void Select()
 	{
-		onSelect?.Invoke();
+		optionSelectedEvent?.Invoke();
 	}
 
 	public void Submit()
 	{
-		onSubmit?.Invoke();
+		optionSubmittedEvent?.Invoke();
 	}
-
-	[SerializeField] private OptionType optionType;
 }
