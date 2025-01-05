@@ -8,7 +8,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovementController
 	private bool detectedCollision;
 	private float lastMovementSpeed;
 	private EnemyRobotEntityMovementDirectionSelector enemyRobotEntityMovementDirectionSelector;
-	private EnemyRobotEntityMovementTimer enemyRobotEntityMovementTimer;
+	private EnemyRobotEntityMovementControllerTimer enemyRobotEntityMovementControllerTimer;
 	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
 
 	protected override void Awake()
@@ -16,7 +16,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovementController
 		base.Awake();
 
 		enemyRobotEntityMovementDirectionSelector = GetComponent<EnemyRobotEntityMovementDirectionSelector>();
-		enemyRobotEntityMovementTimer = GetComponentInChildren<EnemyRobotEntityMovementTimer>();
+		enemyRobotEntityMovementControllerTimer = GetComponentInChildren<EnemyRobotEntityMovementControllerTimer>();
 		robotEntitiesDisablingManager = FindAnyObjectByType<RobotEntitiesDisablingManager>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
@@ -60,16 +60,16 @@ public class EnemyRobotEntityMovement : RobotEntityMovementController
 	{
 		if(register)
 		{
-			if(enemyRobotEntityMovementTimer != null)
+			if(enemyRobotEntityMovementControllerTimer != null)
 			{
-				enemyRobotEntityMovementTimer.onEnd.AddListener(OnTimerEnd);
+				enemyRobotEntityMovementControllerTimer.onEnd.AddListener(OnTimerEnd);
 			}
 		}
 		else
 		{
-			if(enemyRobotEntityMovementTimer != null)
+			if(enemyRobotEntityMovementControllerTimer != null)
 			{
-				enemyRobotEntityMovementTimer.onEnd.RemoveListener(OnTimerEnd);
+				enemyRobotEntityMovementControllerTimer.onEnd.RemoveListener(OnTimerEnd);
 			}
 		}
 	}
@@ -110,9 +110,9 @@ public class EnemyRobotEntityMovement : RobotEntityMovementController
 	{
 		if(detected)
 		{
-			if(enemyRobotEntityMovementTimer != null)
+			if(enemyRobotEntityMovementControllerTimer != null)
 			{
-				enemyRobotEntityMovementTimer.ResetTimer();
+				enemyRobotEntityMovementControllerTimer.ResetTimer();
 			}
 
 			lastMovementSpeed = GetMovementSpeed();
