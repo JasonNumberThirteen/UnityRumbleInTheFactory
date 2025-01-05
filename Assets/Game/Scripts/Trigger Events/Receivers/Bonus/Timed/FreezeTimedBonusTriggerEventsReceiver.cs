@@ -8,7 +8,7 @@ public class FreezeTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRece
 	{
 		if(robotDisablingManager != null && sender.TryGetComponent(out RobotEntity robotEntity))
 		{
-			robotDisablingManager.DisableRobotsTemporarily(GetDuration(), !robotEntity.IsFriendly());
+			robotDisablingManager.DisableRobotEntitiesTemporarily(GetDuration(), !robotEntity.IsFriendly());
 		}
 
 		base.TriggerOnEnter(sender);

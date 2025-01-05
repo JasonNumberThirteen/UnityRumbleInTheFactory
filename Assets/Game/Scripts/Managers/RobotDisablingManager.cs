@@ -11,7 +11,7 @@ public class RobotDisablingManager : MonoBehaviour
 	
 	public bool RobotsAreTemporarilyDisabled() => timer.Started;
 	
-	public void DisableRobotsTemporarily(float duration, bool disableFriendly)
+	public void DisableRobotEntitiesTemporarily(float duration, bool disableFriendly)
 	{
 		timer.duration = duration;
 		this.disableFriendly = disableFriendly;
@@ -19,7 +19,7 @@ public class RobotDisablingManager : MonoBehaviour
 		timer.ResetTimer();
 	}
 
-	public void SetRobotsActive(bool active, bool disableFriendly)
+	public void SetRobotEntitiesActive(bool active, bool disableFriendly)
 	{
 		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == disableFriendly);
 		var robotDisablers = robotEntities.Select(robot => robot.GetComponent<RobotDisabler>()).Where(component => component != null);
@@ -69,19 +69,19 @@ public class RobotDisablingManager : MonoBehaviour
 
 	private void OnTimerReset()
 	{
-		SetRobotsActive(false, disableFriendly);
+		SetRobotEntitiesActive(false, disableFriendly);
 	}
 
 	private void OnTimerEnd()
 	{
-		SetRobotsActive(true, disableFriendly);
+		SetRobotEntitiesActive(true, disableFriendly);
 	}
 
 	private void OnStageStateChanged(StageState stageState)
 	{
 		if(stageState == StageState.Over)
 		{
-			SetRobotsActive(false, true);
+			SetRobotEntitiesActive(false, true);
 		}
 	}
 }
