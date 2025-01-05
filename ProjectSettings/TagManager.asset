@@ -26,6 +26,7 @@ TagManager:
   - Player 1 Bullet
   - Player 2 Bullet
   - Bonuses
+  - Spawners
   layers:
   - Default
   - TransparentFX
