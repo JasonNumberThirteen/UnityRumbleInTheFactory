@@ -1,4 +1,4 @@
-public class EnemyRobot : RobotEntity
+public class EnemyRobotEntity : RobotEntity
 {
 	public override bool IsFriendly() => false;
 
