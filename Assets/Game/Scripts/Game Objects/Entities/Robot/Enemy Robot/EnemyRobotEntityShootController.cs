@@ -1,12 +1,12 @@
 public class EnemyRobotEntityShootController : RobotEntityShootController
 {
-	private EnemyRobotEntityShootTimer enemyRobotEntityShootTimer;
+	private EnemyRobotEntityShootControllerTimer enemyRobotEntityShootControllerTimer;
 
 	protected override void Awake()
 	{
 		base.Awake();
 
-		enemyRobotEntityShootTimer = GetComponentInChildren<EnemyRobotEntityShootTimer>();
+		enemyRobotEntityShootControllerTimer = GetComponentInChildren<EnemyRobotEntityShootControllerTimer>();
 
 		RegisterToListeners(true);
 	}
@@ -20,16 +20,16 @@ public class EnemyRobotEntityShootController : RobotEntityShootController
 	{
 		if(register)
 		{
-			if(enemyRobotEntityShootTimer != null)
+			if(enemyRobotEntityShootControllerTimer != null)
 			{
-				enemyRobotEntityShootTimer.onEnd.AddListener(OnTimerEnd);
+				enemyRobotEntityShootControllerTimer.onEnd.AddListener(OnTimerEnd);
 			}
 		}
 		else
 		{
-			if(enemyRobotEntityShootTimer != null)
+			if(enemyRobotEntityShootControllerTimer != null)
 			{
-				enemyRobotEntityShootTimer.onEnd.RemoveListener(OnTimerEnd);
+				enemyRobotEntityShootControllerTimer.onEnd.RemoveListener(OnTimerEnd);
 			}
 		}
 	}
@@ -37,6 +37,6 @@ public class EnemyRobotEntityShootController : RobotEntityShootController
 	private void OnTimerEnd()
 	{
 		FireBullet();
-		enemyRobotEntityShootTimer.ResetTimer();
+		enemyRobotEntityShootControllerTimer.ResetTimer();
 	}
 }
