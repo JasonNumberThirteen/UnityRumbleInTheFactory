@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RobotShoot : MonoBehaviour
+public class RobotEntityShoot : MonoBehaviour
 {
 	public GameObject bullet;
 	[Min(0f)] public float offsetFromObject = 0.5f;
