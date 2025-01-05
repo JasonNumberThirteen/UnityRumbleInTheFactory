@@ -104,9 +104,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 
 		foreach (Collider2D collider in colliders)
 		{
-			Gizmos.color = Color.red;
-			
-			Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
+			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size), Color.red);
 		}
 	}
 }

@@ -65,9 +65,9 @@ public class BonusTiledPositionSetter : MonoBehaviour
 			c2D = GetComponent<Collider2D>();
 		}
 
-		Gizmos.color = PositionIsInaccessible(transform.position) ? inaccessiblePositionColor : accessiblePositionColor;
+		var color = PositionIsInaccessible(transform.position) ? inaccessiblePositionColor : accessiblePositionColor;
 			
-		Gizmos.DrawCube(transform.position, c2D.bounds.size);
+		GizmosMethods.OperateOnGizmos(() => Gizmos.DrawCube(transform.position, c2D.bounds.size), color);
 	}
 
 	private bool PositionIsInaccessible(Vector2 position)

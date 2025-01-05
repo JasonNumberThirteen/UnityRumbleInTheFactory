@@ -71,13 +71,9 @@ public class NukeFortressField : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		if(!drawGizmos)
+		if(drawGizmos)
 		{
-			return;
+			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawWireCube(area.position, area.size), areaGizmosColor);
 		}
-
-		Gizmos.color = areaGizmosColor;
-
-		Gizmos.DrawWireCube(area.position, area.size);
 	}
 }

@@ -68,10 +68,9 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 		{
 			var start = transform.position;
 			var end = GetLinecastEnd(start, direction);
-
-			Gizmos.color = Linecast(start, direction) ? unavailableDirectionGizmosColor : availableDirectionGizmosColor;
+			var color = Linecast(start, direction) ? unavailableDirectionGizmosColor : availableDirectionGizmosColor;
 			
-			Gizmos.DrawLine(start, end);
+			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawLine(start, end), color);
 		}
 	}
 

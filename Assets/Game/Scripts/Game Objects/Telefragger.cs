@@ -35,13 +35,9 @@ public class Telefragger : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		if(!drawGizmos)
+		if(drawGizmos)
 		{
-			return;
+			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawWireSphere(transform.position, radius), gizmosColor);
 		}
-		
-		Gizmos.color = gizmosColor;
-
-		Gizmos.DrawWireSphere(transform.position, radius);
 	}
 }

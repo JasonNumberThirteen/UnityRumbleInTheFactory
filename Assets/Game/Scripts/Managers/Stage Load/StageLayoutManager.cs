@@ -82,12 +82,13 @@ public class StageLayoutManager : MonoBehaviour
 			return;
 		}
 		
-		Gizmos.color = prohibitedAreasGizmosColor;
-		
-		foreach (var prohibitedArea in prohibitedAreas)
+		GizmosMethods.OperateOnGizmos(() =>
 		{
-			Gizmos.DrawWireCube(prohibitedArea.center, prohibitedArea.size);
-		}
+			foreach (var prohibitedArea in prohibitedAreas)
+			{
+				Gizmos.DrawWireCube(prohibitedArea.center, prohibitedArea.size);
+			}
+		}, prohibitedAreasGizmosColor);
 	}
 	
 	private bool IndexIsWithinTilesLength(int index) => index >= 0 && index < tilesPrefabs.Length;
