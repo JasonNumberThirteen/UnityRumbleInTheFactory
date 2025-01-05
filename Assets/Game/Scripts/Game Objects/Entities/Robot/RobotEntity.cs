@@ -2,20 +2,20 @@ using UnityEngine;
 
 public abstract class RobotEntity : MonoBehaviour
 {
-	private RobotShield robotShield;
+	private RobotEntityShield robotEntityShield;
 	
 	public abstract bool IsFriendly();
 
 	public void ActivateShield(float duration)
 	{
-		if(robotShield != null)
+		if(robotEntityShield != null)
 		{
-			robotShield.ActivateShield(duration);
+			robotEntityShield.ActivateShield(duration);
 		}
 	}
 
 	private void Awake()
 	{
-		robotShield = GetComponentInChildren<RobotShield>();
+		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
 	}
 }

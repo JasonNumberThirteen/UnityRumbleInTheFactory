@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Timer), typeof(ShieldGameVisualEffect))]
-public class RobotShield : MonoBehaviour
+public class RobotEntityShield : MonoBehaviour
 {
 	[SerializeField] private bool activateOnStart;
 

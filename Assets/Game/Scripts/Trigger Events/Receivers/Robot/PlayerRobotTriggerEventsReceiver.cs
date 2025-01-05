@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerRobotTriggerEventsReceiver : RobotTriggerEventsReceiver
 {
-	private RobotShield robotShield;
+	private RobotEntityShield robotEntityShield;
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(robotShield == null || !robotShield.IsActive())
+		if(robotEntityShield == null || !robotEntityShield.IsActive())
 		{
 			base.TriggerOnEnter(sender);
 		}
@@ -16,6 +16,6 @@ public class PlayerRobotTriggerEventsReceiver : RobotTriggerEventsReceiver
 	{
 		base.Awake();
 
-		robotShield = GetComponentInChildren<RobotShield>();
+		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
 	}
 }
