@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SlipperyFloorTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter, ITriggerableOnExit
+public class SlipperyFloorTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter, ITriggerableOnExit
 {
 	public void TriggerOnEnter(GameObject sender)
 	{
