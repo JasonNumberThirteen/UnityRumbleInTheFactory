@@ -6,7 +6,7 @@ public class WallTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 	
 	public void TriggerOnEnter(GameObject sender)
 	{
-		if(stageSoundManager != null && sender != null && sender.TryGetComponent(out PlayerRobotBullet _))
+		if(stageSoundManager != null && sender != null && sender.TryGetComponent(out PlayerRobotEntityBulletEntity _))
 		{
 			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotBulletHit);
 		}
