@@ -21,9 +21,9 @@ public class DestructionBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 		PlayExplosionSoundIfNeeded(robotEntities.Length > 0);
 	}
 
-	private void DestroyRobotEntity(RobotEntity robot)
+	private void DestroyRobotEntity(RobotEntity robotEntity)
 	{
-		if(robot != null && robot.TryGetComponent(out EntityExploder entityExploder))
+		if(robotEntity != null && robotEntity.TryGetComponent(out EntityExploder entityExploder))
 		{
 			entityExploder.TriggerExplosion();
 		}
