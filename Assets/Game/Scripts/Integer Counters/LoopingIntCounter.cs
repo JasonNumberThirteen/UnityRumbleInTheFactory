@@ -16,12 +16,12 @@ public class LoopingIntCounter : IntCounter
 		}
 	}
 
-	protected override void IncreaseValue(int value)
+	public override void IncreaseBy(int value)
 	{
 		SetTo(GetNextValue(value));
 	}
 
-	protected override void DecreaseValue(int value)
+	public override void DecreaseBy(int value)
 	{
 		SetTo(GetPreviousValue(value));
 	}
