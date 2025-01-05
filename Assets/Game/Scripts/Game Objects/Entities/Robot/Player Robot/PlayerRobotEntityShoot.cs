@@ -1,11 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerRobotRankController))]
+[RequireComponent(typeof(PlayerRobotEntityRankController))]
 public class PlayerRobotEntityShoot : RobotEntityShoot
 {
 	[SerializeField] private string bulletTag;
 	
-	private PlayerRobotRankController playerRobotRankController;
+	private PlayerRobotEntityRankController playerRobotEntityRankController;
 
 	public override void FireBullet()
 	{
@@ -26,7 +26,7 @@ public class PlayerRobotEntityShoot : RobotEntityShoot
 	{
 		base.Awake();
 
-		playerRobotRankController = GetComponent<PlayerRobotRankController>();
+		playerRobotEntityRankController = GetComponent<PlayerRobotEntityRankController>();
 	}
 
 	protected override void SetupBullet(GameObject bulletGO)
@@ -37,15 +37,15 @@ public class PlayerRobotEntityShoot : RobotEntityShoot
 
 	private void SetupBulletIfPossible(GameObject bulletGO)
 	{
-		if(playerRobotRankController.CurrentRank == null || !bulletGO.TryGetComponent(out BulletEntity bulletEntity))
+		if(playerRobotEntityRankController.CurrentRank == null || !bulletGO.TryGetComponent(out BulletEntity bulletEntity))
 		{
 			return;
 		}
 
-		bulletEntity.SetDamage(playerRobotRankController.CurrentRank.GetDamage());
-		bulletEntity.SetMovementSpeed(playerRobotRankController.CurrentRank.GetBulletSpeed());
-		bulletEntity.SetCanDestroyMetal(playerRobotRankController.CurrentRank.CanDestroyMetal());
+		bulletEntity.SetDamage(playerRobotEntityRankController.CurrentRank.GetDamage());
+		bulletEntity.SetMovementSpeed(playerRobotEntityRankController.CurrentRank.GetBulletSpeed());
+		bulletEntity.SetCanDestroyMetal(playerRobotEntityRankController.CurrentRank.CanDestroyMetal());
 	}
 
-	private bool ReachedBulletsLimitAtOnce() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= playerRobotRankController.CurrentRank.GetBulletsLimitAtOnce();
+	private bool ReachedBulletsLimitAtOnce() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= playerRobotEntityRankController.CurrentRank.GetBulletsLimitAtOnce();
 }

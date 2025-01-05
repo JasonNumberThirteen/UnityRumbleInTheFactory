@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerRobotEntity))]
-public class PlayerRobotRankController : MonoBehaviour
+public class PlayerRobotEntityRankController : MonoBehaviour
 {
 	public PlayerRobotRank CurrentRank {get; private set;}
 
