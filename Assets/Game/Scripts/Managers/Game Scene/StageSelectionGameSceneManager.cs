@@ -49,6 +49,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 		}
 		
 		ResetGameData();
+		SetInitialStageNumber();
 		ResetPlayersListData();
 		LoadSceneByName(STAGE_SCENE_NAME);
 	}
@@ -60,9 +61,17 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void ResetGameData()
 	{
+		if(gameData != null)
+		{
+			gameData.ResetData();
+		}
+	}
+
+	private void SetInitialStageNumber()
+	{
 		if(gameData != null && stageCounterTextUI != null)
 		{
-			gameData.ResetData(stageCounterTextUI.GetCurrentCounterValue());
+			gameData.SetStageNumber(stageCounterTextUI.GetCurrentCounterValue());
 		}
 	}
 

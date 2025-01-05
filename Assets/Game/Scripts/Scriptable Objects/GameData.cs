@@ -18,12 +18,16 @@ public class GameData : ScriptableObject
 	public StageData GetCurrentStageData() => StagesData != null && StageNumber >= 1 && StageNumber <= StagesData.Length ? StagesData[StageNumber - 1] : null;
 	public bool NoStagesFound() => StagesData.Length == 0;
 
-	public void ResetData(int initialStage)
+	public void ResetData()
 	{
-		StageNumber = initialStage;
 		GameIsOver = BeatenHighScore = EnteredStageSelection = false;
 
 		gameDifficulty.ResetData();
+	}
+
+	public void SetStageNumber(int stageNumber)
+	{
+		StageNumber = stageNumber;
 	}
 
 	public void SetupForGameStart(bool selectedTwoPlayersMode)
