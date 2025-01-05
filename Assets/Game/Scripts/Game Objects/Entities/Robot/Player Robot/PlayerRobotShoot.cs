@@ -37,14 +37,14 @@ public class PlayerRobotShoot : RobotShoot
 
 	private void SetupBulletIfPossible(GameObject bulletGO)
 	{
-		if(playerRobotRankController.CurrentRank == null || !bulletGO.TryGetComponent(out Bullet bullet))
+		if(playerRobotRankController.CurrentRank == null || !bulletGO.TryGetComponent(out BulletEntity bulletEntity))
 		{
 			return;
 		}
 
-		bullet.SetDamage(playerRobotRankController.CurrentRank.GetDamage());
-		bullet.SetMovementSpeed(playerRobotRankController.CurrentRank.GetBulletSpeed());
-		bullet.SetCanDestroyMetal(playerRobotRankController.CurrentRank.CanDestroyMetal());
+		bulletEntity.SetDamage(playerRobotRankController.CurrentRank.GetDamage());
+		bulletEntity.SetMovementSpeed(playerRobotRankController.CurrentRank.GetBulletSpeed());
+		bulletEntity.SetCanDestroyMetal(playerRobotRankController.CurrentRank.CanDestroyMetal());
 	}
 
 	private bool ReachedBulletsLimitAtOnce() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= playerRobotRankController.CurrentRank.GetBulletsLimitAtOnce();

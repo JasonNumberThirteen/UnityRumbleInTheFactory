@@ -38,9 +38,9 @@ public class RobotShoot : MonoBehaviour
 
 	protected void SetParentToBullet(GameObject bullet)
 	{
-		if(bullet.TryGetComponent(out Bullet bs))
+		if(bullet.TryGetComponent(out BulletEntity bulletEntity))
 		{
-			bs.SetParent(gameObject);
+			bulletEntity.SetParent(gameObject);
 		}
 	}
 

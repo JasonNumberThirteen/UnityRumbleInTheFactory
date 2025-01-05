@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EntityMovement))]
-public class Bullet : MonoBehaviour
+public class BulletEntity : MonoBehaviour
 {
 	[SerializeField, Min(1)] private int damage = 1;
 	[SerializeField, Min(0f)] private float initialMovementSpeed = 6.5f;

@@ -6,9 +6,9 @@ public class RobotTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 	
 	public virtual void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.TryGetComponent(out Bullet bullet))
+		if(sender.TryGetComponent(out BulletEntity bulletEntity))
 		{
-			robotHealth.TakeDamage(bullet.GetParent(), bullet.GetDamage());
+			robotHealth.TakeDamage(bulletEntity.GetParent(), bulletEntity.GetDamage());
 		}
 	}
 	
