@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerRobotEntityRankController))]
-public class PlayerRobotEntityShoot : RobotEntityShootController
+public class PlayerRobotEntityShootController : RobotEntityShootController
 {
 	[SerializeField] private string bulletTag;
 	
