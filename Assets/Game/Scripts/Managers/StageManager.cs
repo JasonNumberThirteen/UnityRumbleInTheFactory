@@ -12,7 +12,7 @@ public class StageManager : MonoBehaviour
 
 	private StageSoundManager stageSoundManager;
 	private StageStateManager stageStateManager;
-	private Nuke nuke;
+	private NukeEntity nukeEntity;
 	private int defeatedEnemies;
 
 	public void CountDefeatedEnemy()
@@ -65,7 +65,7 @@ public class StageManager : MonoBehaviour
 		
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
-		nuke = FindAnyObjectByType<Nuke>(FindObjectsInactive.Include);
+		nukeEntity = FindAnyObjectByType<NukeEntity>(FindObjectsInactive.Include);
 
 		if(playersListData != null)
 		{
@@ -84,11 +84,11 @@ public class StageManager : MonoBehaviour
 	{
 		if(register)
 		{
-			nuke.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
+			nukeEntity.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
 		}
 		else
 		{
-			nuke.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
+			nukeEntity.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
 		}
 	}
 

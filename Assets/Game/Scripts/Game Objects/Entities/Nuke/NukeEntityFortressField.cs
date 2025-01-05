@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Nuke))]
+[RequireComponent(typeof(NukeEntity))]
 public class NukeEntityFortressField : MonoBehaviour
 {
 	[SerializeField] private Rect area;
@@ -9,7 +9,7 @@ public class NukeEntityFortressField : MonoBehaviour
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color areaGizmosColor = Color.yellow;
 
-	private Nuke nuke;
+	private NukeEntity nukeEntity;
 	private float fortressDuration;
 
 	public void BuildFortress(float duration)
@@ -22,7 +22,7 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	private void Awake()
 	{
-		nuke = GetComponent<Nuke>();
+		nukeEntity = GetComponent<NukeEntity>();
 	}
 	
 	private void DestroyAllGOsWithinArea()
@@ -56,7 +56,7 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	private void InstantiateTile(Vector2 position)
 	{
-		if(tilePrefab == null || nuke.OverlapPoint(position))
+		if(tilePrefab == null || nukeEntity.OverlapPoint(position))
 		{
 			return;
 		}

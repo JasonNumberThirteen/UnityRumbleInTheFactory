@@ -1,16 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Nuke), typeof(SpriteRenderer))]
+[RequireComponent(typeof(NukeEntity), typeof(SpriteRenderer))]
 public class NukeRenderer : MonoBehaviour
 {
 	[SerializeField] private Sprite destroyedNukeSprite;
 
-	private Nuke nuke;
+	private NukeEntity nukeEntity;
 	private SpriteRenderer spriteRenderer;
 
 	private void Awake()
 	{
-		nuke = GetComponent<Nuke>();
+		nukeEntity = GetComponent<NukeEntity>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
 		RegisterToListeners(true);
@@ -25,11 +25,11 @@ public class NukeRenderer : MonoBehaviour
 	{
 		if(register)
 		{
-			nuke.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
+			nukeEntity.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
 		}
 		else
 		{
-			nuke.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
+			nukeEntity.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
 		}
 	}
 
