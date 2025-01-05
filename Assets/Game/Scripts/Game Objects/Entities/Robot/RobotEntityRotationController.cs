@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RobotEntityRotation : MonoBehaviour
+public class RobotEntityRotationController : MonoBehaviour
 {
 	private readonly Dictionary<Vector2, Vector3> eulerAnglesByDirection = new()
 	{
