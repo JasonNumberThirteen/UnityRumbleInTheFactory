@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(RobotEntityShoot))]
+[RequireComponent(typeof(RobotEntityShootController))]
 public class PlayerRobotInput : MonoBehaviour
 {
 	public Vector2 MovementVector {get; private set;}
 	public Vector2 LastMovementVector {get; private set;}
 
-	private RobotEntityShoot robotEntityShoot;
+	private RobotEntityShootController robotEntityShootController;
 	private StageSoundManager stageSoundManager;
 
 	private void Awake()
 	{
-		robotEntityShoot = GetComponent<RobotEntityShoot>();
+		robotEntityShootController = GetComponent<RobotEntityShootController>();
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 	}
 
@@ -38,9 +38,9 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnFire(InputValue inputValue)
 	{
-		if(robotEntityShoot != null)
+		if(robotEntityShootController != null)
 		{
-			robotEntityShoot.FireBullet();
+			robotEntityShootController.FireBullet();
 		}
 	}
 
