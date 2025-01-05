@@ -34,7 +34,7 @@ public class LeftEnemyIconsManager : MonoBehaviour
 
 	private void InstantiateIcons()
 	{
-		int enemiesCount = StageManager.instance.enemySpawnManager.EnemiesCount();
+		int enemiesCount = StageManager.instance.enemyRobotEntitySpawnManager.EnemiesCount();
 		int iconsCount = LeftEnemyIconsCount(enemiesCount);
 
 		leftEnemyIcons = new GameObject[iconsCount];

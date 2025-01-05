@@ -2323,7 +2323,7 @@ GameObject:
   - component: {fileID: 1295888590}
   - component: {fileID: 1295888592}
   m_Layer: 0
-  m_Name: Enemy Spawn Manager
+  m_Name: Enemy Robot Entity Spawn Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2470,7 +2470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1237164743}
-  enemySpawnManager: {fileID: 1295888590}
+  enemyRobotEntitySpawnManager: {fileID: 1295888590}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playersListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!4 &1342973423

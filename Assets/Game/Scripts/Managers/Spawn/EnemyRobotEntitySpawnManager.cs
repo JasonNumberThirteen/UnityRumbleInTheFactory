@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class EnemySpawnManager : MonoBehaviour
+public class EnemyRobotEntitySpawnManager : MonoBehaviour
 {
 	public GameData gameData;
 	public string enemyTag, spawnerTag;

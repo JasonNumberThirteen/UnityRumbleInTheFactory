@@ -5,7 +5,7 @@ public class StageManager : MonoBehaviour
 	public static StageManager instance = null;
 
 	public StageUIManager uiManager;
-	public EnemySpawnManager enemySpawnManager;
+	public EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
 	public GameData gameData;
 
 	[SerializeField] private PlayersListData playersListData;
@@ -97,8 +97,8 @@ public class StageManager : MonoBehaviour
 		stageStateManager.SetStateTo(StageState.Interrupted);
 	}
 
-	private bool WonTheGame() => DefeatedAllEnemies() && enemySpawnManager.NoEnemiesLeft();
-	private bool DefeatedAllEnemies() => defeatedEnemies == enemySpawnManager.EnemiesCount();
+	private bool WonTheGame() => DefeatedAllEnemies() && enemyRobotEntitySpawnManager.NoEnemiesLeft();
+	private bool DefeatedAllEnemies() => defeatedEnemies == enemyRobotEntitySpawnManager.EnemiesCount();
 
 	private void CheckSingleton()
 	{
