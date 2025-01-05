@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(RobotRotation))]
+[RequireComponent(typeof(RobotEntityRotation))]
 public class RobotEntityMovement : EntityMovement
 {
-	protected RobotRotation robotRotation;
+	protected RobotEntityRotation robotEntityRotation;
 	protected RobotEntityCollisionDetector robotEntityCollisionDetector;
 	protected Vector2 lastDirection;
 
@@ -11,7 +11,7 @@ public class RobotEntityMovement : EntityMovement
 	{
 		base.Awake();
 		
-		robotRotation = GetComponent<RobotRotation>();
+		robotEntityRotation = GetComponent<RobotEntityRotation>();
 		robotEntityCollisionDetector = GetComponentInChildren<RobotEntityCollisionDetector>();
 	}
 }

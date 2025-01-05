@@ -68,7 +68,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 	{
 		CurrentMovementDirection = direction;
 
-		robotRotation.RotateByDirection(CurrentMovementDirection);
+		robotEntityRotation.RotateByDirection(CurrentMovementDirection);
 	}
 
 	private void Start()
