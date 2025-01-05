@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -3710137388361032966}
   - component: {fileID: 4366361716570162224}
   m_Layer: 12
-  m_Name: NukePrefab
+  m_Name: NukeEntityPrefab
   m_TagString: Nuke
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
