@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyRobotDisabler : RobotEntityDisabler
+public class EnemyRobotEntityDisabler : RobotEntityDisabler
 {
 	private void Awake()
 	{
