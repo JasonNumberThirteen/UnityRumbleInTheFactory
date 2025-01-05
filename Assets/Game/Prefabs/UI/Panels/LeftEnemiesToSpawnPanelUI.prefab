@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 360783164367923962}
   - component: {fileID: 6651421172082792982}
   - component: {fileID: 500539622209894725}
+  - component: {fileID: 867839430874734045}
   m_Layer: 5
   m_Name: LeftEnemiesToSpawnPanelUI
   m_TagString: Untagged
@@ -101,3 +102,15 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 2
+--- !u!114 &867839430874734045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178608610098069012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cdd1e37a55640469d0d95d5f4db15f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
