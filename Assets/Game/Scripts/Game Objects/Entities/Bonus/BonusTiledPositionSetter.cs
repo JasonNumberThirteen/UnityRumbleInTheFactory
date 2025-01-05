@@ -9,8 +9,8 @@ public class BonusTiledPositionSetter : MonoBehaviour
 	[SerializeField, Min(0.01f)] private float gridSize = 0.5f;
 	[SerializeField] private LayerMask inaccessibleAreaLayers;
 	[SerializeField] private bool drawGizmos = true;
-	[SerializeField] private Color accessiblePositionColor = new(0f, 1f, 0f, 0.5f);
-	[SerializeField] private Color inaccessiblePositionColor = new(1f, 0f, 0f, 0.5f);
+	[SerializeField] private Color accessiblePositionGizmosColor = new(0f, 1f, 0f, 0.5f);
+	[SerializeField] private Color inaccessiblePositionGizmosColor = new(1f, 0f, 0f, 0.5f);
 
 	private Collider2D c2D;
 
@@ -65,7 +65,7 @@ public class BonusTiledPositionSetter : MonoBehaviour
 			c2D = GetComponent<Collider2D>();
 		}
 
-		var color = PositionIsInaccessible(transform.position) ? inaccessiblePositionColor : accessiblePositionColor;
+		var color = PositionIsInaccessible(transform.position) ? inaccessiblePositionGizmosColor : accessiblePositionGizmosColor;
 			
 		GizmosMethods.OperateOnGizmos(() => Gizmos.DrawCube(transform.position, c2D.bounds.size), color);
 	}
