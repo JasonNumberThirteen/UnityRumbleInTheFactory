@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRobot : RobotEntity
+public class PlayerRobotEntity : RobotEntity
 {
 	[SerializeField] private PlayerData playerData;
 	

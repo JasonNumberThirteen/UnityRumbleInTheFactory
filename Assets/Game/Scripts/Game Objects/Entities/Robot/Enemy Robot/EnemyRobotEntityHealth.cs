@@ -34,12 +34,12 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 
 	private void ModifyPlayerDataIfPossible(GameObject sender)
 	{
-		if(enemyData == null || sender == null || !sender.TryGetComponent(out PlayerRobot playerRobot))
+		if(enemyData == null || sender == null || !sender.TryGetComponent(out PlayerRobotEntity playerRobotEntity))
 		{
 			return;
 		}
 
-		var playerData = playerRobot.GetPlayerData();
+		var playerData = playerRobotEntity.GetPlayerData();
 
 		if(playerData != null)
 		{

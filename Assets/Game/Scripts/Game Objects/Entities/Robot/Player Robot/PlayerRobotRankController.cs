@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerRobot))]
+[RequireComponent(typeof(PlayerRobotEntity))]
 public class PlayerRobotRankController : MonoBehaviour
 {
 	public PlayerRobotRank CurrentRank {get; private set;}
 
-	private PlayerRobot playerRobot;
+	private PlayerRobotEntity playerRobotEntity;
 	private PlayersDataManager playersDataManager;
 	
 	public void IncreaseRank()
@@ -22,7 +22,7 @@ public class PlayerRobotRankController : MonoBehaviour
 
 	private void Awake()
 	{
-		playerRobot = GetComponent<PlayerRobot>();
+		playerRobotEntity = GetComponent<PlayerRobotEntity>();
 		playersDataManager = FindAnyObjectByType<PlayersDataManager>();
 
 		RegisterToListeners(true);
@@ -74,7 +74,7 @@ public class PlayerRobotRankController : MonoBehaviour
 
 	private void InvokeActionOnPlayerDataIfPossible(Action<PlayerData> action)
 	{
-		var playerData = playerRobot.GetPlayerData();
+		var playerData = playerRobotEntity.GetPlayerData();
 
 		if(playerData != null)
 		{

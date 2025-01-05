@@ -36,12 +36,12 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 
 	private void AddPointsToPlayerIfPossible(GameObject sender)
 	{
-		if(!sender.TryGetComponent(out PlayerRobot playerRobot))
+		if(!sender.TryGetComponent(out PlayerRobotEntity playerRobotEntity))
 		{
 			return;
 		}
 		
-		var playerData = playerRobot.GetPlayerData();
+		var playerData = playerRobotEntity.GetPlayerData();
 
 		if(playersDataManager != null && playerData != null)
 		{
