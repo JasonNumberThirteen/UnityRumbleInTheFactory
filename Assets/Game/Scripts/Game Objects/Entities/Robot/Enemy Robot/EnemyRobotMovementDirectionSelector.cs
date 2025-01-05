@@ -4,41 +4,78 @@ using System.Collections.Generic;
 
 public class EnemyRobotMovementDirectionSelector : MonoBehaviour
 {
-	public LayerMask obstacleDetectionLayers;
-	[Min(0.01f)] public float obstacleDetectionDistance = 0.5f;
+	[SerializeField] private LayerMask obstacleDetectionLayerMask;
+	[SerializeField, Min(0.01f)] private float obstacleDetectionDistance = 0.5f;
+	[SerializeField] private bool drawGizmos = true;
+	[SerializeField] private Color availableDirectionGizmosColor = Color.white;
+	[SerializeField] private Color unavailableDirectionGizmosColor = Color.red;
 
-	public Vector2 RandomDirection(Vector2 currentDirection)
+	private readonly List<Vector2> allDirections = new()
 	{
-		List<Vector2> directions = AvailableDirections();
-		Vector2 randomDirection = RandomAvailableDirection(directions);
+		Vector2.up,
+		Vector2.down,
+		Vector2.left,
+		Vector2.right
+	};
 
-		if(directions.Count > 1 && randomDirection == currentDirection)
+	public Vector2 GetRandomDirection(Vector2 currentDirection)
+	{
+		var availableDirections = GetAvailableDirections();
+		var randomDirection = GetRandomAvailableDirection(availableDirections);
+
+		if(availableDirections.Count > 1 && randomDirection == currentDirection)
 		{
-			return RandomDirection(currentDirection);
+			return GetRandomDirection(currentDirection);
 		}
 
 		return randomDirection;
 	}
 
-	public List<Vector2> AllDirections() => new List<Vector2>{Vector2.up, Vector2.down, Vector2.left, Vector2.right};
-	public RaycastHit2D Linecast(Vector2 start, Vector2 direction) => Physics2D.Linecast(start, LinecastEnd(start, direction), obstacleDetectionLayers);
-	public Vector2 LinecastEnd(Vector2 start, Vector2 direction) => start + direction*obstacleDetectionDistance;
-
-	private List<Vector2> AvailableDirections()
+	private List<Vector2> GetAvailableDirections()
 	{
-		List<Vector2> directions = AllDirections();
+		var directions = GetAllDirections();
 
-		directions.RemoveAll(e => Linecast(transform.position, e));
+		directions.RemoveAll(direction => Linecast(transform.position, direction));
 
 		return directions;
 	}
 
-	private Vector2 RandomAvailableDirection(List<Vector2> directions)
+	private Vector2 GetRandomAvailableDirection(List<Vector2> availableDirections)
 	{
-		int index = RandomAvailableDirectionIndex(directions);
+		if(availableDirections == null || availableDirections.Count == 0)
+		{
+			return Vector2.zero;
+		}
+		
+		var randomIndex = Random.Range(0, availableDirections.Count);
 
-		return directions[index];
+		return availableDirections[randomIndex];
 	}
 
-	private int RandomAvailableDirectionIndex(List<Vector2> directions) => Random.Range(0, directions.Count);
+	private void OnDrawGizmos()
+	{
+		if(drawGizmos)
+		{
+			DrawAvailableDirections();
+		}
+	}
+
+	private void DrawAvailableDirections()
+	{
+		var directions = GetAllDirections();
+
+		foreach (var direction in directions)
+		{
+			var start = transform.position;
+			var end = GetLinecastEnd(start, direction);
+
+			Gizmos.color = Linecast(start, direction) ? unavailableDirectionGizmosColor : availableDirectionGizmosColor;
+			
+			Gizmos.DrawLine(start, end);
+		}
+	}
+
+	private List<Vector2> GetAllDirections() => allDirections;
+	private RaycastHit2D Linecast(Vector2 start, Vector2 direction) => Physics2D.Linecast(start, GetLinecastEnd(start, direction), obstacleDetectionLayerMask);
+	private Vector2 GetLinecastEnd(Vector2 start, Vector2 direction) => start + direction*obstacleDetectionDistance;
 }

@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_Name
-      value: EnemyRobotPrefab
+      value: EnemyRobotEntityPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_Layer
@@ -337,10 +337,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec868d51399bf1844ada2536eb6b7e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleDetectionLayers:
+  obstacleDetectionLayerMask:
     serializedVersion: 2
     m_Bits: 19968
-  obstacleDetectionDistance: 0.65
+  obstacleDetectionDistance: 0.5
+  drawGizmos: 1
+  availableDirectionGizmosColor: {r: 1, g: 1, b: 1, a: 1}
+  unavailableDirectionGizmosColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &-7789898313100651961
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 
 	public void RandomiseDirection()
 	{
-		Vector2 direction = movementDirectionSelector.RandomDirection(CurrentMovementDirection);
+		Vector2 direction = movementDirectionSelector.GetRandomDirection(CurrentMovementDirection);
 
 		SetDirections(direction, direction);
 	}
@@ -91,7 +91,6 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 	private void OnDrawGizmos()
 	{
 		DrawDetectedColliders();
-		DrawAvailableDirections();
 	}
 
 	private void DrawDetectedColliders()
@@ -108,26 +107,6 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 			Gizmos.color = Color.red;
 			
 			Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
-		}
-	}
-
-	private void DrawAvailableDirections()
-	{
-		if(movementDirectionSelector == null)
-		{
-			return;
-		}
-
-		Vector2[] directions = movementDirectionSelector.AllDirections().ToArray();
-
-		foreach (Vector2 direction in directions)
-		{
-			Vector2 start = transform.position;
-			Vector2 end = movementDirectionSelector.LinecastEnd(start, direction);
-
-			Gizmos.color = movementDirectionSelector.Linecast(start, direction) ? Color.red : Color.white;
-			
-			Gizmos.DrawLine(start, end);
 		}
 	}
 }
