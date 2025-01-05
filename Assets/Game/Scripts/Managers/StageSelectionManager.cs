@@ -67,7 +67,7 @@ public class StageSelectionManager : MonoBehaviour
 
 	private void OnNavigateKeyPressed(int direction)
 	{
-		if(gameData != null && !gameData.NoStagesFound())
+		if(!GameDataMethods.NoStagesFound(gameData))
 		{
 			navigationDirection = direction;
 		}
