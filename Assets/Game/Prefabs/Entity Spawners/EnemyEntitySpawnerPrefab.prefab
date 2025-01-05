@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: m_Name
-      value: EnemySpawnerPrefab
+      value: EnemyEntitySpawnerPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: m_TagString
@@ -192,8 +192,8 @@ MonoBehaviour:
   entitySpawnedEvent:
     m_PersistentCalls:
       m_Calls: []
-  spawnVisualEffectGO: {fileID: 6378980317984595466}
   entityPrefab: {fileID: 0}
+  ordinalNumber: 1
 --- !u!114 &-2211959474914024363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,9 +211,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65536
   drawGizmos: 1
-  gizmosColor: {r: 0, g: 0, b: 0, a: 1}
---- !u!1 &6378980317984595466 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1219112567750180296, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
-  m_PrefabInstance: {fileID: 5218995384597652418}
-  m_PrefabAsset: {fileID: 0}
+  radiusGizmosColor: {r: 0, g: 0, b: 0, a: 1}

@@ -98,7 +98,7 @@ public class StageManager : MonoBehaviour
 	}
 
 	private bool WonTheGame() => DefeatedAllEnemies() && enemyRobotEntitySpawnManager.NoEnemiesLeft();
-	private bool DefeatedAllEnemies() => defeatedEnemies == enemyRobotEntitySpawnManager.EnemiesCount();
+	private bool DefeatedAllEnemies() => defeatedEnemies == enemyRobotEntitySpawnManager.GetTotalNumberOfEnemies();
 
 	private void CheckSingleton()
 	{

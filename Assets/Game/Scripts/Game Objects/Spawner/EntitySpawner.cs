@@ -12,6 +12,11 @@ public class EntitySpawner : MonoBehaviour
 
 	private SpawnGameVisualEffect spawnGameVisualEffect;
 
+	public void ResetTimer()
+	{
+		timer.ResetTimer();
+	}
+
 	public void SetEntityPrefab(GameObject entityPrefab)
 	{
 		this.entityPrefab = entityPrefab;

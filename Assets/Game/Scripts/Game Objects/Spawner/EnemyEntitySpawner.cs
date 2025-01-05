@@ -6,7 +6,11 @@ public class EnemyEntitySpawner : EntitySpawner
 {
 	public bool IsBonus {get; set;}
 
+	[SerializeField, Min(1)] private int ordinalNumber;
+
 	private Telefragger telefragger;
+
+	public int GetOrdinalNumber() => ordinalNumber;
 
 	protected override void Awake()
 	{
