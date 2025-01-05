@@ -234,8 +234,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 7680
   drawGizmos: 1
-  accessiblePositionColor: {r: 0, g: 1, b: 0, a: 0.5}
-  inaccessiblePositionColor: {r: 1, g: 0, b: 0, a: 0.5}
+  accessiblePositionGizmosColor: {r: 0, g: 1, b: 0, a: 0.5}
+  inaccessiblePositionGizmosColor: {r: 1, g: 0, b: 0, a: 0.5}
 --- !u!114 &5446431637566457120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,4 +248,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 890a9a83bd1296f47be4e2be080e61a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTag: Entities
+  parentTag: Bonuses
