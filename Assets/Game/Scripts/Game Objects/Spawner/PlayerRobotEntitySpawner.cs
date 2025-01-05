@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerEntitySpawner : EntitySpawner
+public class PlayerRobotEntitySpawner : EntitySpawner
 {
 	[SerializeField] private PlayerData playerData;
 	[SerializeField, Min(0f)] private float respawnDelay = 1f;
