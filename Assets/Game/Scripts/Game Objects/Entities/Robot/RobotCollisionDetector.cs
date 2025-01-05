@@ -4,6 +4,8 @@ using UnityEngine;
 public class RobotCollisionDetector : MonoBehaviour
 {
 	[SerializeField] private LayerMask layerMask;
+	[SerializeField] private bool drawGizmos = true;
+	[SerializeField] private Color detectedColliderGizmosColor = Color.red;
 	
 	private Collider2D c2D;
 
@@ -16,5 +18,31 @@ public class RobotCollisionDetector : MonoBehaviour
 	private void Awake()
 	{
 		c2D = GetComponent<Collider2D>();
+	}
+
+	private void OnDrawGizmos()
+	{
+		if(drawGizmos)
+		{
+			DrawDetectedColliders();
+		}
+	}
+
+	private void DrawDetectedColliders()
+	{
+		if(c2D == null)
+		{
+			c2D = GetComponent<Collider2D>();
+		}
+		
+		GizmosMethods.OperateOnGizmos(() =>
+		{
+			var colliders = OverlapBoxAll();
+			
+			foreach (var collider in colliders)
+			{
+				Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
+			}
+		}, detectedColliderGizmosColor);
 	}
 }

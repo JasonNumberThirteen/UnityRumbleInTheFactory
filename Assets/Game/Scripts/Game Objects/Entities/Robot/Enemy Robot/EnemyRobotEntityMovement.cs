@@ -87,24 +87,4 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 			SetCollisionDetectionState(true);
 		}
 	}
-
-	private void OnDrawGizmos()
-	{
-		DrawDetectedColliders();
-	}
-
-	private void DrawDetectedColliders()
-	{
-		if(robotCollisionDetector == null)
-		{
-			return;
-		}
-		
-		Collider2D[] colliders = robotCollisionDetector.OverlapBoxAll();
-
-		foreach (Collider2D collider in colliders)
-		{
-			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size), Color.red);
-		}
-	}
 }
