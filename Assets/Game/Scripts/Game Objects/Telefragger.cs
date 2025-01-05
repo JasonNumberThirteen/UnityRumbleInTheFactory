@@ -5,7 +5,7 @@ public class Telefragger : MonoBehaviour
 	[SerializeField, Min(0.01f)] private float radius = 0.3f;
 	[SerializeField] private LayerMask layerMask;
 	[SerializeField] private bool drawGizmos = true;
-	[SerializeField] private Color gizmosColor = Color.black;
+	[SerializeField] private Color radiusGizmosColor = Color.black;
 	
 	public void TelefragGOsWithinRadius()
 	{
@@ -37,7 +37,7 @@ public class Telefragger : MonoBehaviour
 	{
 		if(drawGizmos)
 		{
-			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawWireSphere(transform.position, radius), gizmosColor);
+			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawWireSphere(transform.position, radius), radiusGizmosColor);
 		}
 	}
 }
