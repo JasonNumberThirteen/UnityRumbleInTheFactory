@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class PlayerRobotEntityBulletEntity : MonoBehaviour
+public class PlayerRobotEntityBulletEntity : BulletEntity
 {
 	
 }
