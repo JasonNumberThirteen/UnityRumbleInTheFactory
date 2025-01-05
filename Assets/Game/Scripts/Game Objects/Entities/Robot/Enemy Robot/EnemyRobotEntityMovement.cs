@@ -1,20 +1,15 @@
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyRobotEntityMovementDirectionSelector))]
 public class EnemyRobotEntityMovement : RobotEntityMovement
 {
+	[SerializeField] private GameData gameData;
+	
 	private bool detectedCollision;
 	private float lastMovementSpeed;
 	private EnemyRobotEntityMovementDirectionSelector enemyRobotEntityMovementDirectionSelector;
 	private EnemyRobotEntityMovementTimer enemyRobotEntityMovementTimer;
 	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
-
-	public void SetMovementLock()
-	{
-		if(LastDirectionIsNotZero())
-		{
-			SetDirections(CurrentMovementDirection, lastDirection);
-		}
-	}
 
 	protected override void Awake()
 	{
@@ -30,13 +25,30 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 	protected override void FixedUpdate()
 	{
 		base.FixedUpdate();
-		DetectObstacles();
+		
+		if(DetectedAnyCollision())
+		{
+			SetDetectedCollisionState(true);
+		}
 	}
 
 	private void Start()
 	{
-		SetMovementSpeed(GetMovementSpeed()*StageManager.instance.gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier()));
-		SetDirection(Vector2.down);
+		SetInitialMovementSpeedModifiedByDifficultyTier();
+		SetCurrentMovementDirection(Vector2.down);
+	}
+
+	private void SetInitialMovementSpeedModifiedByDifficultyTier()
+	{
+		if(gameData == null)
+		{
+			return;
+		}
+		
+		var baseMovementSpeed = GetMovementSpeed();
+		var multiplier = gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier());
+		
+		SetMovementSpeed(baseMovementSpeed*multiplier);
 	}
 
 	private void OnDestroy()
@@ -64,37 +76,37 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 
 	private void OnTimerEnd()
 	{
-		RandomiseDirection();
-		SetCollisionDetectionState(false);
+		RandomiseMovementDirection();
+		SetDetectedCollisionState(false);
 	}
 
-	private void RandomiseDirection()
+	private void RandomiseMovementDirection()
 	{
-		Vector2 direction = enemyRobotEntityMovementDirectionSelector.GetRandomDirection(CurrentMovementDirection);
+		var direction = enemyRobotEntityMovementDirectionSelector.GetRandomDirection(CurrentMovementDirection);
 
-		SetDirections(direction, direction);
+		SetLastAndCurrentDirection(direction, direction);
 	}
 
-	private void SetDirections(Vector2 newLastDirection, Vector2 newDirection)
+	private void SetLastAndCurrentDirection(Vector2 lastDirection, Vector2 currentDirection)
 	{
-		if(robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled())
+		if(robotEntitiesDisablingManager != null && robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled())
 		{
-			lastDirection = newLastDirection;
+			this.lastDirection = lastDirection;
 		}
 		else
 		{
-			SetDirection(newDirection);
+			SetCurrentMovementDirection(currentDirection);
 		}
 	}
 
-	private void SetDirection(Vector2 direction)
+	private void SetCurrentMovementDirection(Vector2 currentDirection)
 	{
-		CurrentMovementDirection = direction;
+		CurrentMovementDirection = currentDirection;
 
 		robotEntityRotation.RotateByDirection(CurrentMovementDirection);
 	}
 
-	private void SetCollisionDetectionState(bool detected)
+	private void SetDetectedCollisionState(bool detected)
 	{
 		if(detected)
 		{
@@ -111,14 +123,11 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 		SetMovementSpeed(detected ? 0f : lastMovementSpeed);
 	}
 
-	private void DetectObstacles()
+	private bool DetectedAnyCollision()
 	{
-		if(DetectedCollision())
-		{
-			SetCollisionDetectionState(true);
-		}
+		var robotEntitiesAreActive = robotEntitiesDisablingManager == null || !robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled();
+		var detectedAnyCollision = robotEntityCollisionDetector != null && robotEntityCollisionDetector.OverlapBoxAll().Length > 1;
+		
+		return !detectedCollision && robotEntitiesAreActive && detectedAnyCollision;
 	}
-
-	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
-	private bool DetectedCollision() => !detectedCollision && !robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled() && robotEntityCollisionDetector.OverlapBoxAll().Length > 1;
 }
