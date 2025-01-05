@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -6153362195523077573}
   - component: {fileID: 5446431637566457120}
   m_Layer: 7
-  m_Name: BonusEntityPrefab
+  m_Name: BonusPrefab
   m_TagString: Bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
