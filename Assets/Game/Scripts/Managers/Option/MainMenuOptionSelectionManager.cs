@@ -39,7 +39,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		if(gameData != null && gameData.EnteredStageSelection && gameData.SelectedTwoPlayersMode)
 		{
-			loopingIntCounter.SetTo((int)OptionType.TwoPlayersMode + 1);
+			loopingIntCounter.SetTo((int)OptionType.TwoPlayersMode);
 		}
 	}
 
@@ -120,10 +120,5 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		}
 	}
 
-	private OptionType GetOptionTypeByCounterValue()
-	{
-		var index = loopingIntCounter.CurrentValue - 1;
-
-		return (OptionType)index;
-	}
+	private OptionType GetOptionTypeByCounterValue() => (OptionType)loopingIntCounter.CurrentValue;
 }

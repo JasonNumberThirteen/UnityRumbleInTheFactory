@@ -841,7 +841,7 @@ MonoBehaviour:
   onSubmit:
     m_PersistentCalls:
       m_Calls: []
-  optionType: 1
+  optionType: 2
 --- !u!1001 &927950810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -982,7 +982,7 @@ MonoBehaviour:
   onSubmit:
     m_PersistentCalls:
       m_Calls: []
-  optionType: 0
+  optionType: 1
 --- !u!1 &1002192793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   onSubmit:
     m_PersistentCalls:
       m_Calls: []
-  optionType: 2
+  optionType: 3
 --- !u!1 &1144572963
 GameObject:
   m_ObjectHideFlags: 0
