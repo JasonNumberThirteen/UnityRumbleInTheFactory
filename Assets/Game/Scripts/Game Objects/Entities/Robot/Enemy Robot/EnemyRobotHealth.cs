@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyRobotHealth : RobotHealth
+public class EnemyRobotHealth : RobotEntityHealth
 {
 	[SerializeField] private EnemyData enemyData;
 

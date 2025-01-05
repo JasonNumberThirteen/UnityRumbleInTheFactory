@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EntityExploder))]
-public class RobotHealth : MonoBehaviour, IUpgradeableByRobotRank
+public class RobotEntityHealth : MonoBehaviour, IUpgradeableByRobotRank
 {
 	public int CurrentHealth {get; private set;}
 	

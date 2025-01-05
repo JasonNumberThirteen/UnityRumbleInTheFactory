@@ -19,9 +19,9 @@ public class Telefragger : MonoBehaviour
 
 	private void TelefragGO(GameObject go)
 	{
-		if(go.TryGetComponent(out RobotHealth robotHealth))
+		if(go.TryGetComponent(out RobotEntityHealth robotEntityHealth))
 		{
-			robotHealth.TakeDamage(gameObject, int.MaxValue);
+			robotEntityHealth.TakeDamage(gameObject, int.MaxValue);
 		}
 		else if(go.TryGetComponent(out EntityExploder entityExploder))
 		{
