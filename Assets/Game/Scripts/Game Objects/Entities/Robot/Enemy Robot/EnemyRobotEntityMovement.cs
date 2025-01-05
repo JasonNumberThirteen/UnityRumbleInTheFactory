@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class EnemyRobotEntityMovement : RobotEntityMovement
 {
-	public Timer timer;
-
 	private bool detectedCollision;
 	private float lastMovementSpeed;
 	private EnemyRobotEntityMovementDirectionSelector enemyRobotEntityMovementDirectionSelector;
+	private EnemyRobotEntityMovementTimer enemyRobotEntityMovementTimer;
 	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
 
 	public void SetMovementLock()
@@ -17,39 +16,63 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 		}
 	}
 
-	public void RandomiseDirection()
-	{
-		Vector2 direction = enemyRobotEntityMovementDirectionSelector.GetRandomDirection(CurrentMovementDirection);
-
-		SetDirections(direction, direction);
-	}
-
-	public void SetCollisionDetectionState(bool detected)
-	{
-		if(detected)
-		{
-			timer.ResetTimer();
-
-			lastMovementSpeed = GetMovementSpeed();
-		}
-
-		detectedCollision = detected;
-
-		SetMovementSpeed(detected ? 0f : lastMovementSpeed);
-	}
-
 	protected override void Awake()
 	{
 		base.Awake();
 
 		enemyRobotEntityMovementDirectionSelector = GetComponent<EnemyRobotEntityMovementDirectionSelector>();
+		enemyRobotEntityMovementTimer = GetComponentInChildren<EnemyRobotEntityMovementTimer>();
 		robotEntitiesDisablingManager = FindAnyObjectByType<RobotEntitiesDisablingManager>(FindObjectsInactive.Include);
+
+		RegisterToListeners(true);
 	}
 
 	protected override void FixedUpdate()
 	{
 		base.FixedUpdate();
 		DetectObstacles();
+	}
+
+	private void Start()
+	{
+		SetMovementSpeed(GetMovementSpeed()*StageManager.instance.gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier()));
+		SetDirection(Vector2.down);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			if(enemyRobotEntityMovementTimer != null)
+			{
+				enemyRobotEntityMovementTimer.onEnd.AddListener(OnTimerEnd);
+			}
+		}
+		else
+		{
+			if(enemyRobotEntityMovementTimer != null)
+			{
+				enemyRobotEntityMovementTimer.onEnd.RemoveListener(OnTimerEnd);
+			}
+		}
+	}
+
+	private void OnTimerEnd()
+	{
+		RandomiseDirection();
+		SetCollisionDetectionState(false);
+	}
+
+	private void RandomiseDirection()
+	{
+		Vector2 direction = enemyRobotEntityMovementDirectionSelector.GetRandomDirection(CurrentMovementDirection);
+
+		SetDirections(direction, direction);
 	}
 
 	private void SetDirections(Vector2 newLastDirection, Vector2 newDirection)
@@ -71,15 +94,23 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 		robotEntityRotation.RotateByDirection(CurrentMovementDirection);
 	}
 
-	private void Start()
+	private void SetCollisionDetectionState(bool detected)
 	{
-		SetMovementSpeed(GetMovementSpeed()*StageManager.instance.gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier()));
-		SetDirection(Vector2.down);
+		if(detected)
+		{
+			if(enemyRobotEntityMovementTimer != null)
+			{
+				enemyRobotEntityMovementTimer.ResetTimer();
+			}
+
+			lastMovementSpeed = GetMovementSpeed();
+		}
+
+		detectedCollision = detected;
+
+		SetMovementSpeed(detected ? 0f : lastMovementSpeed);
 	}
 
-	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
-	private bool DetectedCollision() => !detectedCollision && !robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled() && robotEntityCollisionDetector.OverlapBoxAll().Length > 1;
-	
 	private void DetectObstacles()
 	{
 		if(DetectedCollision())
@@ -87,4 +118,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 			SetCollisionDetectionState(true);
 		}
 	}
+
+	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
+	private bool DetectedCollision() => !detectedCollision && !robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled() && robotEntityCollisionDetector.OverlapBoxAll().Length > 1;
 }
