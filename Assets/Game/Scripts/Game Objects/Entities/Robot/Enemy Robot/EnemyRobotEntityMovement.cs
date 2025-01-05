@@ -6,7 +6,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 
 	private bool detectedCollision;
 	private float lastMovementSpeed;
-	private EnemyRobotMovementDirectionSelector movementDirectionSelector;
+	private EnemyRobotEntityMovementDirectionSelector enemyRobotEntityMovementDirectionSelector;
 	private RobotDisablingManager robotDisablingManager;
 
 	public void SetMovementLock()
@@ -19,7 +19,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 
 	public void RandomiseDirection()
 	{
-		Vector2 direction = movementDirectionSelector.GetRandomDirection(CurrentMovementDirection);
+		Vector2 direction = enemyRobotEntityMovementDirectionSelector.GetRandomDirection(CurrentMovementDirection);
 
 		SetDirections(direction, direction);
 	}
@@ -42,7 +42,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 	{
 		base.Awake();
 
-		movementDirectionSelector = GetComponent<EnemyRobotMovementDirectionSelector>();
+		enemyRobotEntityMovementDirectionSelector = GetComponent<EnemyRobotEntityMovementDirectionSelector>();
 		robotDisablingManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
 	}
 

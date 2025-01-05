@@ -2,7 +2,7 @@ using Random = UnityEngine.Random;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class EnemyRobotMovementDirectionSelector : MonoBehaviour
+public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 {
 	[SerializeField] private LayerMask obstacleDetectionLayerMask;
 	[SerializeField, Min(0.01f)] private float obstacleDetectionDistance = 0.5f;
