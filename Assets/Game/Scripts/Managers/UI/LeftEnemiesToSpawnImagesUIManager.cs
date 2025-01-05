@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LeftEnemyIconsManager : MonoBehaviour
+public class LeftEnemiesToSpawnImagesUIManager : MonoBehaviour
 {
 	public RectTransform hud;
 	public GameObject leftEnemyIcon;

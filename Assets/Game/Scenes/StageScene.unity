@@ -828,7 +828,7 @@ GameObject:
   - component: {fileID: 449972476}
   - component: {fileID: 449972475}
   m_Layer: 0
-  m_Name: Left Enemy Icons Manager
+  m_Name: Left Enemies To Spawn Images UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2061,7 +2061,7 @@ MonoBehaviour:
   - {fileID: 1198398495}
   stageCounterText: {fileID: 1922023827}
   stageCounterIcon: {fileID: 229051406}
-  leftEnemyIconsManager: {fileID: 449972475}
+  leftEnemiesToSpawnImagesUIManager: {fileID: 449972475}
 --- !u!4 &1237164744
 Transform:
   m_ObjectHideFlags: 0

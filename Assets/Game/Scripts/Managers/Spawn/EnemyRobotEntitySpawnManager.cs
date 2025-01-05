@@ -52,7 +52,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		
 		++currentEnemyEntityIndex;
 
-		StageManager.instance.uiManager.leftEnemyIconsManager.DestroyLeftEnemyIcon();
+		StageManager.instance.uiManager.leftEnemiesToSpawnImagesUIManager.DestroyLeftEnemyIcon();
 	}
 
 	private IEnumerator StartSpawningEntities()

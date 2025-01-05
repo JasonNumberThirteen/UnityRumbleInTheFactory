@@ -8,7 +8,7 @@ public class StageUIManager : MonoBehaviour
 	public PlayerData[] playersData;
 	public IntCounter[] playerLivesCounters;
 	public IntCounter stageCounterText, stageCounterIcon;
-	public LeftEnemyIconsManager leftEnemyIconsManager;
+	public LeftEnemiesToSpawnImagesUIManager leftEnemiesToSpawnImagesUIManager;
 
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
