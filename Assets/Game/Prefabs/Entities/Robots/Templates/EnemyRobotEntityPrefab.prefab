@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4117364974871369739}
-  - component: {fileID: 7952846313805569692}
+  - component: {fileID: 3117415091800670640}
   m_Layer: 0
   m_Name: Shoot Timer
   m_TagString: Untagged
@@ -111,7 +111,7 @@ Transform:
   m_Father: {fileID: 5713532323854920377}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7952846313805569692
+--- !u!114 &3117415091800670640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5074757979470416933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Script: {fileID: 11500000, guid: 20bf48c55fffa03459bb229cf72a5bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
@@ -130,31 +130,7 @@ MonoBehaviour:
       m_Calls: []
   onEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1097374135248273911}
-        m_TargetAssemblyTypeName: RobotShoot, Assembly-CSharp
-        m_MethodName: FireBullet
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7952846313805569692}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: ResetTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onInterrupt:
     m_PersistentCalls:
       m_Calls: []
@@ -174,10 +150,6 @@ PrefabInstance:
       propertyPath: behaviours.Array.data[0]
       value: 
       objectReference: {fileID: -2978630073550354148}
-    - target: {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
-      propertyPath: behaviours.Array.data[1]
-      value: 
-      objectReference: {fileID: 7952846313805569692}
     - target: {fileID: 1970883123434766749, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_Size.x
       value: 0.72
@@ -270,9 +242,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1097374135248273911}
-    - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -2978630073550354148}
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
@@ -286,6 +255,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
       addedObject: {fileID: -9019198008679688167}
+    - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3992941268564963653}
   m_SourcePrefab: {fileID: 100100000, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
 --- !u!4 &5713532323854920377 stripped
 Transform:
@@ -297,20 +269,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
   m_PrefabInstance: {fileID: 7305028705194506425}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1097374135248273911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5816500477355214006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51eb5726b32903146a9c7b7f4c7c3535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 1372171276495067033, guid: 8c4e0f4bbc5b492469be53cc62a61ca1, type: 3}
-  offsetFromObject: 0.1
 --- !u!114 &-2978630073550354148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,4 +342,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - {fileID: -2978630073550354148}
-  - {fileID: 7952846313805569692}
+  - {fileID: 0}
+--- !u!114 &3992941268564963653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816500477355214006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382e5ccf99bf31a4a8cc3ca28f34a8e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1372171276495067033, guid: 8c4e0f4bbc5b492469be53cc62a61ca1, type: 3}
+  offsetFromObject: 0.1
