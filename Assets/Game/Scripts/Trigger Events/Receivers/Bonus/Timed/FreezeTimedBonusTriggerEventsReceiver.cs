@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class FreezeTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsReceiver
 {
-	private RobotDisablingManager robotDisablingManager;
+	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(robotDisablingManager != null && sender.TryGetComponent(out RobotEntity robotEntity))
+		if(robotEntitiesDisablingManager != null && sender.TryGetComponent(out RobotEntity robotEntity))
 		{
-			robotDisablingManager.DisableRobotEntitiesTemporarily(GetDuration(), !robotEntity.IsFriendly());
+			robotEntitiesDisablingManager.DisableRobotEntitiesTemporarily(GetDuration(), !robotEntity.IsFriendly());
 		}
 
 		base.TriggerOnEnter(sender);
@@ -18,6 +18,6 @@ public class FreezeTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRece
 	{
 		base.Awake();
 		
-		robotDisablingManager = FindAnyObjectByType<RobotDisablingManager>(FindObjectsInactive.Include);
+		robotEntitiesDisablingManager = FindAnyObjectByType<RobotEntitiesDisablingManager>(FindObjectsInactive.Include);
 	}
 }

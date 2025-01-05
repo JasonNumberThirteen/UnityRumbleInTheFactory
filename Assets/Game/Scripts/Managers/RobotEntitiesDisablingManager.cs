@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Timer))]
-public class RobotDisablingManager : MonoBehaviour
+public class RobotEntitiesDisablingManager : MonoBehaviour
 {
 	private Timer timer;
 	private bool disableFriendly;

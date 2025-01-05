@@ -3559,7 +3559,7 @@ GameObject:
   - component: {fileID: 1892637674}
   - component: {fileID: 1892637676}
   m_Layer: 0
-  m_Name: Enemy Freeze Manager
+  m_Name: Robot Entities Disabling Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
