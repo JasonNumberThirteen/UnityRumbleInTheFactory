@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RobotDisabler : MonoBehaviour
+public class RobotEntityDisabler : MonoBehaviour
 {
 	[SerializeField] private Behaviour[] behaviours;
 	

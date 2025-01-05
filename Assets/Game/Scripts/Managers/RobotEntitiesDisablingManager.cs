@@ -22,11 +22,11 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 	public void SetRobotEntitiesActive(bool active, bool disableFriendly)
 	{
 		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == disableFriendly);
-		var robotDisablers = robotEntities.Select(robot => robot.GetComponent<RobotDisabler>()).Where(component => component != null);
+		var robotEntityDisablers = robotEntities.Select(robot => robot.GetComponent<RobotEntityDisabler>()).Where(component => component != null);
 
-		foreach (var robotDisabler in robotDisablers)
+		foreach (var robotEntityDisabler in robotEntityDisablers)
 		{
-			robotDisabler.SetBehavioursActive(active);
+			robotEntityDisabler.SetBehavioursActive(active);
 		}
 	}
 
