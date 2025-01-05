@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Telefragger))]
-public class EnemyEntitySpawner : EntitySpawner
+public class EnemyRobotEntitySpawner : EntitySpawner
 {
 	public bool IsBonus {get; set;}
 

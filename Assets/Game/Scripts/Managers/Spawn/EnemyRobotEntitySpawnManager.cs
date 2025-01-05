@@ -10,8 +10,8 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	[SerializeField, Min(0.01f)] private float spawnInterval = 2f;
 
 	private StageEnemyTypesLoadingManager stageEnemyTypesLoadingManager;
-	private List<EnemyEntitySpawner> enemyEntitySpawners;
-	private int currentEnemyEntitySpawnerIndex;
+	private List<EnemyRobotEntitySpawner> enemyRobotEntitySpawners;
+	private int currentEnemyRobotEntitySpawnerIndex;
 	private int currentEnemyEntityIndex;
 	private int numberOfEnemiesToSpawn;
 
@@ -20,19 +20,19 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 
 	public void StartSpawn()
 	{
-		enemyEntitySpawners.ForEach(AssignEntityToSpawner);
+		enemyRobotEntitySpawners.ForEach(AssignEntityToSpawner);
 		StartCoroutine(StartSpawningEntities());
 	}
 
 	private void Awake()
 	{
 		stageEnemyTypesLoadingManager = FindAnyObjectByType<StageEnemyTypesLoadingManager>();
-		enemyEntitySpawners = FindObjectsByType<EnemyEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList().OrderBy(enemyEntitySpawner => enemyEntitySpawner.GetOrdinalNumber()).ToList();
+		enemyRobotEntitySpawners = FindObjectsByType<EnemyRobotEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).ToList();
 	}
 
-	private void AssignEntityToSpawner(EnemyEntitySpawner enemyEntitySpawner)
+	private void AssignEntityToSpawner(EnemyRobotEntitySpawner enemyRobotEntitySpawner)
 	{
-		if(enemyEntitySpawner == null)
+		if(enemyRobotEntitySpawner == null)
 		{
 			return;
 		}
@@ -41,12 +41,12 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		{
 			if(stageEnemyTypesLoadingManager.EnemyPrefabs != null && currentEnemyEntityIndex < stageEnemyTypesLoadingManager.EnemyPrefabs.Length)
 			{
-				enemyEntitySpawner.SetEntityPrefab(stageEnemyTypesLoadingManager.EnemyPrefabs[currentEnemyEntityIndex]);
+				enemyRobotEntitySpawner.SetEntityPrefab(stageEnemyTypesLoadingManager.EnemyPrefabs[currentEnemyEntityIndex]);
 			}
 			
 			if(stageEnemyTypesLoadingManager.EnemyTypes != null && currentEnemyEntityIndex < stageEnemyTypesLoadingManager.EnemyTypes.Length)
 			{
-				enemyEntitySpawner.IsBonus = stageEnemyTypesLoadingManager.EnemyTypes[currentEnemyEntityIndex].IsBonus();
+				enemyRobotEntitySpawner.IsBonus = stageEnemyTypesLoadingManager.EnemyTypes[currentEnemyEntityIndex].IsBonus();
 			}
 		}
 		
@@ -77,25 +77,25 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 
 	private void ResetSpawnersTimersIfPossible()
 	{
-		while (enemyEntitySpawners != null && numberOfEnemiesToSpawn > 0 && stageEnemyTypesLoadingManager != null && stageEnemyTypesLoadingManager.EnemyPrefabs != null && currentEnemyEntityIndex < stageEnemyTypesLoadingManager.EnemyPrefabs.Length)
+		while (enemyRobotEntitySpawners != null && numberOfEnemiesToSpawn > 0 && stageEnemyTypesLoadingManager != null && stageEnemyTypesLoadingManager.EnemyPrefabs != null && currentEnemyEntityIndex < stageEnemyTypesLoadingManager.EnemyPrefabs.Length)
 		{
-			var currentEnemyEntitySpawner = enemyEntitySpawners[currentEnemyEntitySpawnerIndex];
+			var currentEnemyRobotEntitySpawner = enemyRobotEntitySpawners[currentEnemyRobotEntitySpawnerIndex];
 
-			currentEnemyEntitySpawner.ResetTimer();
-			OnSpawnerTimerReset(currentEnemyEntitySpawner);
+			currentEnemyRobotEntitySpawner.ResetTimer();
+			OnSpawnerTimerReset(currentEnemyRobotEntitySpawner);
 		}
 	}
 
-	private void OnSpawnerTimerReset(EnemyEntitySpawner enemyEntitySpawner)
+	private void OnSpawnerTimerReset(EnemyRobotEntitySpawner enemyRobotEntitySpawner)
 	{
-		if(enemyEntitySpawners == null || enemyEntitySpawner == null)
+		if(enemyRobotEntitySpawners == null || enemyRobotEntitySpawner == null)
 		{
 			return;
 		}
 		
-		AssignEntityToSpawner(enemyEntitySpawner);
+		AssignEntityToSpawner(enemyRobotEntitySpawner);
 
 		--numberOfEnemiesToSpawn;
-		currentEnemyEntitySpawnerIndex = (currentEnemyEntitySpawnerIndex + 1) % enemyEntitySpawners.Count;
+		currentEnemyRobotEntitySpawnerIndex = (currentEnemyRobotEntitySpawnerIndex + 1) % enemyRobotEntitySpawners.Count;
 	}
 }
