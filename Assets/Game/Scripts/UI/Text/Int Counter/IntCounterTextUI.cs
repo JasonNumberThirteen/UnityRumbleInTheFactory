@@ -1,23 +1,22 @@
-using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(IntCounter), typeof(TextMeshProUGUI))]
-public class IntCounterTextUI : MonoBehaviour
+[RequireComponent(typeof(IntCounter))]
+public class IntCounterTextUI : TextUI
 {
 	[SerializeField] private string header;
 	[SerializeField] private bool addSpaceAfterHeader = true;
 	
 	private IntCounter intCounter;
-	private TextMeshProUGUI text;
 
 	public virtual string GetCounterValueAsString() => GetCounterValue().ToString();
 
 	public int GetCounterValue() => intCounter.CurrentValue;
 	
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+		
 		intCounter = GetComponent<IntCounter>();
-		text = GetComponent<TextMeshProUGUI>();
 
 		RegisterToListeners(true);
 	}
