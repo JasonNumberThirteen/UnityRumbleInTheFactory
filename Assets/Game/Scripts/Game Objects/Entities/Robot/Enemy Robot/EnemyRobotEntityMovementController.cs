@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyRobotEntityMovementDirectionSelector))]
-public class EnemyRobotEntityMovement : RobotEntityMovementController
+public class EnemyRobotEntityMovementController : RobotEntityMovementController
 {
 	[SerializeField] private GameData gameData;
 	
