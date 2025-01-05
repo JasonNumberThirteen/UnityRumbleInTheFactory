@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Timer))]
-public class FortressMetalRenderer : MonoBehaviour
+public class FortressMetalTileRenderer : MonoBehaviour
 {
 	[SerializeField, Min(0.01f)] private float timeForBlinkStart = 5f;
 	[SerializeField, Min(0.01f)] private float blinkDuration = 1f;
