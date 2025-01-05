@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class RobotCollisionDetector : MonoBehaviour
+public class RobotEntityCollisionDetector : MonoBehaviour
 {
 	[SerializeField] private LayerMask layerMask;
 	[SerializeField] private bool drawGizmos = true;

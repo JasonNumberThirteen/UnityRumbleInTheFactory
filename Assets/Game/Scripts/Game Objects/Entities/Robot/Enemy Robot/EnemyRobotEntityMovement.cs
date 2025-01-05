@@ -78,7 +78,7 @@ public class EnemyRobotEntityMovement : RobotEntityMovement
 	}
 
 	private bool LastDirectionIsNotZero() => lastDirection != Vector2.zero;
-	private bool DetectedCollision() => !detectedCollision && !robotDisablingManager.RobotsAreTemporarilyDisabled() && robotCollisionDetector.OverlapBoxAll().Length > 1;
+	private bool DetectedCollision() => !detectedCollision && !robotDisablingManager.RobotsAreTemporarilyDisabled() && robotEntityCollisionDetector.OverlapBoxAll().Length > 1;
 	
 	private void DetectObstacles()
 	{

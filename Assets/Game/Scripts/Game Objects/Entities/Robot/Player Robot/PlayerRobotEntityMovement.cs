@@ -60,7 +60,7 @@ public class PlayerRobotEntityMovement : RobotEntityMovement
 	
 	private void LockMovementWhenHitObject()
 	{
-		if(robotCollisionDetector != null && robotCollisionDetector.OverlapBox() != null)
+		if(robotEntityCollisionDetector != null && robotEntityCollisionDetector.OverlapBox() != null)
 		{
 			rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
 		}

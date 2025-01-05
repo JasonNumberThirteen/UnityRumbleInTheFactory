@@ -4,7 +4,7 @@ using UnityEngine;
 public class RobotEntityMovement : EntityMovement
 {
 	protected RobotRotation robotRotation;
-	protected RobotCollisionDetector robotCollisionDetector;
+	protected RobotEntityCollisionDetector robotEntityCollisionDetector;
 	protected Vector2 lastDirection;
 
 	protected override void Awake()
@@ -12,6 +12,6 @@ public class RobotEntityMovement : EntityMovement
 		base.Awake();
 		
 		robotRotation = GetComponent<RobotRotation>();
-		robotCollisionDetector = GetComponentInChildren<RobotCollisionDetector>();
+		robotEntityCollisionDetector = GetComponentInChildren<RobotEntityCollisionDetector>();
 	}
 }
