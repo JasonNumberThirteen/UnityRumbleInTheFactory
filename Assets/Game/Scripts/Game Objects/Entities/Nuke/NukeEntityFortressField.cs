@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Nuke))]
-public class NukeFortressField : MonoBehaviour
+public class NukeEntityFortressField : MonoBehaviour
 {
 	[SerializeField] private Rect area;
 	[SerializeField] private LayerMask overlapLayerMask;

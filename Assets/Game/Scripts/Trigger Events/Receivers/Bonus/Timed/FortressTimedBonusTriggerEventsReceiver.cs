@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class FortressTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsReceiver
 {
-	private NukeFortressField nukeFortressField;
+	private NukeEntityFortressField nukeEntityFortressField;
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(nukeFortressField != null)
+		if(nukeEntityFortressField != null)
 		{
-			nukeFortressField.BuildFortress(GetDuration());
+			nukeEntityFortressField.BuildFortress(GetDuration());
 		}
 		
 		base.TriggerOnEnter(sender);
@@ -18,6 +18,6 @@ public class FortressTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRe
 	{
 		base.Awake();
 		
-		nukeFortressField = FindAnyObjectByType<NukeFortressField>();
+		nukeEntityFortressField = FindAnyObjectByType<NukeEntityFortressField>();
 	}
 }
