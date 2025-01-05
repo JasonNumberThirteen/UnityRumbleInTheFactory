@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6411893797768784338}
-  - component: {fileID: 3799528289645521946}
+  - component: {fileID: 3314772161134264389}
   m_Layer: 0
-  m_Name: Movement Direction Timer
+  m_Name: Movement Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 5713532323854920377}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3799528289645521946
+--- !u!114 &3314772161134264389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4048360104100510366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Script: {fileID: 11500000, guid: bd1a18012b020fd46a2795dd06b9833e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.25
@@ -53,7 +53,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -2978630073550354148}
-        m_TargetAssemblyTypeName: EnemyRobotMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: EnemyRobotEntityMovement, Assembly-CSharp
         m_MethodName: RandomiseDirection
         m_Mode: 1
         m_Arguments:
@@ -65,7 +65,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: -2978630073550354148}
-        m_TargetAssemblyTypeName: EnemyRobotMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: EnemyRobotEntityMovement, Assembly-CSharp
         m_MethodName: SetCollisionDetectionState
         m_Mode: 6
         m_Arguments:
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  timer: {fileID: 3799528289645521946}
+  timer: {fileID: 0}
 --- !u!114 &-7222749067493573934
 MonoBehaviour:
   m_ObjectHideFlags: 0
