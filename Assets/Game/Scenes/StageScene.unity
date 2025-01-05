@@ -846,9 +846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b232fb91c45224590130fdcfe6c3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 1843182811}
-  leftEnemyIcon: {fileID: 4662676234940326363, guid: 46ebf53728db48e4e883a50b53f38e99, type: 3}
-  leftEnemyIconsLimit: 20
+  leftEnemyToSpawnImageUIPrefab: {fileID: 4662676234940326363, guid: 46ebf53728db48e4e883a50b53f38e99, type: 3}
+  maxIconsLimit: 20
 --- !u!4 &449972476
 Transform:
   m_ObjectHideFlags: 0

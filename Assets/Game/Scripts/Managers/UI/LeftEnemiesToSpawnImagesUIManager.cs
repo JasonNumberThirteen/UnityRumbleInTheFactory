@@ -2,59 +2,48 @@ using UnityEngine;
 
 public class LeftEnemiesToSpawnImagesUIManager : MonoBehaviour
 {
-	public RectTransform hud;
-	public GameObject leftEnemyIcon;
-	[Min(0)] public int leftEnemyIconsLimit = 20;
+	[SerializeField] private GameObject leftEnemyToSpawnImageUIPrefab;
+	[SerializeField, Min(0)] private int maxIconsLimit = 20;
 	
-	private GameObject[] leftEnemyIcons;
-	private int leftEnemyIconIndex;
+	private LeftEnemiesToSpawnPanelUI leftEnemiesToSpawnPanelUI;
+	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
+	private GameObject[] iconGOs;
+	private int currentIconIndex;
 
-	public void DestroyLeftEnemyIcon()
+	public void DestroyNextIconIfPossible()
 	{
-		if(--leftEnemyIconIndex < leftEnemyIcons.Length)
+		if(--currentIconIndex < iconGOs.Length)
 		{
-			Destroy(leftEnemyIcons[leftEnemyIconIndex]);
+			Destroy(iconGOs[currentIconIndex]);
 		}
+	}
+
+	private void Awake()
+	{
+		leftEnemiesToSpawnPanelUI = FindAnyObjectByType<LeftEnemiesToSpawnPanelUI>(FindObjectsInactive.Include);
+		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
 	}
 	
-	private void Start() => InstantiateIcons();
-
-	private int LeftEnemyIconsCount(int enemiesCount) => Mathf.Min(enemiesCount, leftEnemyIconsLimit);
-	private int LeftEnemyIconX(int index) => 8*(index % 2);
-	private int LeftEnemyIconY(int index) => -8*(index >> 1);
-	private Vector2 LeftEnemyIconPosition(int index)
+	private void Start()
 	{
-		int offsetX = LeftEnemyIconX(index);
-		int offsetY = LeftEnemyIconY(index);
-		Vector2 initialPosition = new Vector2(-16, -16);
-		Vector2 offset = new Vector2(offsetX, offsetY);
-		
-		return initialPosition + offset;
-	}
+		var numberOfEnemies = enemyRobotEntitySpawnManager != null ? enemyRobotEntitySpawnManager.GetTotalNumberOfEnemies() : 0;
+		var numberOfIcons = GetNumberOfIconsToSpawn(numberOfEnemies);
 
-	private void InstantiateIcons()
-	{
-		int enemiesCount = StageManager.instance.enemyRobotEntitySpawnManager.GetTotalNumberOfEnemies();
-		int iconsCount = LeftEnemyIconsCount(enemiesCount);
+		iconGOs = new GameObject[numberOfIcons];
+		currentIconIndex = numberOfEnemies;
 
-		leftEnemyIcons = new GameObject[iconsCount];
-		leftEnemyIconIndex = enemiesCount;
-
-		for (int i = 0; i < iconsCount; ++i)
+		for (int i = 0; i < numberOfIcons; ++i)
 		{
-			InstantiateLeftEnemyIcon(i);
+			iconGOs[i] = GetIconInstance();
 		}
 	}
 
-	private void InstantiateLeftEnemyIcon(int index)
+	private GameObject GetIconInstance()
 	{
-		GameObject instance = Instantiate(leftEnemyIcon, hud.transform);
+		var transform = leftEnemiesToSpawnPanelUI != null ? leftEnemiesToSpawnPanelUI.transform : null;
 		
-		if(instance.TryGetComponent(out RectTransformPositionController rtm))
-		{
-			rtm.SetPosition(LeftEnemyIconPosition(index));
-		}
-
-		leftEnemyIcons[index] = instance;
+		return Instantiate(leftEnemyToSpawnImageUIPrefab, transform);
 	}
+
+	private int GetNumberOfIconsToSpawn(int numberOfEnemies) => Mathf.Min(numberOfEnemies, maxIconsLimit);
 }
