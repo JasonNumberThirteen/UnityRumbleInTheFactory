@@ -1900,7 +1900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -3298,6 +3298,7 @@ GameObject:
   - component: {fileID: 1843182813}
   - component: {fileID: 1843182812}
   - component: {fileID: 1843182814}
+  - component: {fileID: 1843182815}
   m_Layer: 5
   m_Name: HUD Panel UI
   m_TagString: Untagged
@@ -3375,6 +3376,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df27e48cb539b5a4c998f033f4dcab09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1843182815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843182810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ef018da7f98ea4985e7a8a89a655b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1886217739
