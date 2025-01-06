@@ -1,6 +1,7 @@
 using Random = UnityEngine.Random;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 {
@@ -29,15 +30,6 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 		}
 
 		return randomDirection;
-	}
-
-	private List<Vector2> GetAvailableDirections()
-	{
-		var directions = new List<Vector2>(GetAllDirections());
-
-		directions.RemoveAll(direction => Linecast(transform.position, direction));
-
-		return directions;
 	}
 
 	private Vector2 GetRandomAvailableDirection(List<Vector2> availableDirections)
@@ -74,6 +66,7 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 		}
 	}
 
+	private List<Vector2> GetAvailableDirections() => GetAllDirections().Where(vector => !Linecast(transform.position, vector)).ToList();
 	private List<Vector2> GetAllDirections() => allDirections;
 	private RaycastHit2D Linecast(Vector2 start, Vector2 direction) => Physics2D.Linecast(start, GetLinecastEnd(start, direction), obstacleDetectionLayerMask);
 	private Vector2 GetLinecastEnd(Vector2 start, Vector2 direction) => start + direction*obstacleDetectionDistance;
