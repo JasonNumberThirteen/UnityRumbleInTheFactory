@@ -1061,18 +1061,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 594759921}
         m_TargetAssemblyTypeName: Timer, Assembly-CSharp
         m_MethodName: StartTimer
@@ -1085,33 +1073,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1237164743}
-        m_TargetAssemblyTypeName: StageUIManager, Assembly-CSharp
-        m_MethodName: UpdateCounters
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayersManager, Assembly-CSharp
-        m_MethodName: ResetDefeatedEnemiesByPlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1264001234}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: StartTimer
+      - m_Target: {fileID: 1264001233}
+        m_TargetAssemblyTypeName: TranslationBackgroundPanelUI, Assembly-CSharp
+        m_MethodName: StartTranslation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1240,18 +1204,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: EnemySpawnManager, Assembly-CSharp
         m_MethodName: StartSpawn
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2315,15 +2267,15 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7057306263802749971, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
   m_PrefabInstance: {fileID: 1264001230}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1264001234 stripped
+--- !u!114 &1264001233 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5243136493124728988, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
   m_PrefabInstance: {fileID: 1264001230}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264001231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Script: {fileID: 11500000, guid: ab28334fb717e7345a6682344d781cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1295888589
