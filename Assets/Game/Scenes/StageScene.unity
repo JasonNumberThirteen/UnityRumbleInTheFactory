@@ -1049,18 +1049,6 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1922023826}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 594759921}
         m_TargetAssemblyTypeName: Timer, Assembly-CSharp
         m_MethodName: StartTimer
@@ -3675,10 +3663,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8771805326695850353, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3489673666025870493, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1922023832}
   m_SourcePrefab: {fileID: 100100000, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
 --- !u!224 &1922023825 stripped
 RectTransform:
@@ -3690,6 +3682,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3489673666025870493, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
   m_PrefabInstance: {fileID: 1922023824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1922023832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922023826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791a7b5f787634940a3a0e2c496fb638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!1 &1939610191
 GameObject:
   m_ObjectHideFlags: 0
