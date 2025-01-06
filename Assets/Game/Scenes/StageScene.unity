@@ -2486,7 +2486,7 @@ AudioSource:
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -2675,7 +2675,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1579829972}
   - component: {fileID: 1579829971}
-  - component: {fileID: 1579829973}
   m_Layer: 0
   m_Name: Stage Sound Manager
   m_TagString: Untagged
@@ -2723,18 +2722,6 @@ Transform:
   m_Father: {fileID: 554198272}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1579829973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579829970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1636430522
 PrefabInstance:
   m_ObjectHideFlags: 0

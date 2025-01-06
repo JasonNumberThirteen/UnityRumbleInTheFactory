@@ -20,9 +20,16 @@ public class StageSoundManager : MonoBehaviour
 	private readonly List<SoundChannel> soundChannels = new();
 	private PlayerRobotMovementSoundChannel playerRobotMovementSourceChannel;
 	private StageMusicManager stageMusicManager;
+	private StageStateManager stageStateManager;
+	private bool canPlaySounds;
 
 	public void PlaySound(SoundEffectType soundEffectType)
 	{
+		if(!canPlaySounds)
+		{
+			return;
+		}
+		
 		var soundChannel = GetSoundChannelBySoundEffectType(soundEffectType);
 
 		if(soundChannel == null)
@@ -38,6 +45,7 @@ public class StageSoundManager : MonoBehaviour
 	{
 		playerRobotMovementSourceChannel = GetComponentInChildren<PlayerRobotMovementSoundChannel>();
 		stageMusicManager = FindAnyObjectByType<StageMusicManager>();
+		stageStateManager = FindAnyObjectByType<StageStateManager>();
 
 		RegisterToListeners(true);
 	}
@@ -79,7 +87,10 @@ public class StageSoundManager : MonoBehaviour
 
 	private void OnMusicStoppedPlaying()
 	{
-		StageManager.instance.EnableAudioManager();
+		if(stageStateManager == null || !stageStateManager.StateIsSetTo(StageState.Over))
+		{
+			canPlaySounds = true;
+		}
 	}
 
 	private AudioClip GetAudioClipBySoundEffectType(SoundEffectType soundEffectType)

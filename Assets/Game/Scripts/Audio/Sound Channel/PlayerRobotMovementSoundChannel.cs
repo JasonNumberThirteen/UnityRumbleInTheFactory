@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerRobotMovementSoundChannel : SoundChannel
 {
 	private StageStateManager stageStateManager;
+	private StageMusicManager stageMusicManager;
 	private StageSoundManager stageSoundManager;
-	private float initialVolume;
 
 	public override void Play(AudioClip audioClip)
 	{
@@ -23,8 +24,8 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 		base.Awake();
 		
 		stageStateManager = FindAnyObjectByType<StageStateManager>();
+		stageMusicManager = FindAnyObjectByType<StageMusicManager>();
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
-		initialVolume = audioSource.volume;
 
 		RegisterToListeners(true);
 	}
@@ -43,6 +44,11 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
 			}
 
+			if(stageMusicManager != null)
+			{
+				stageMusicManager.musicStoppedPlayingEvent.AddListener(OnMusicStoppedPlaying);
+			}
+
 			if(stageSoundManager != null)
 			{
 				stageSoundManager.soundPlayedEvent.AddListener(OnSoundPlayed);
@@ -55,6 +61,11 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 
+			if(stageMusicManager != null)
+			{
+				stageMusicManager.musicStoppedPlayingEvent.RemoveListener(OnMusicStoppedPlaying);
+			}
+
 			if(stageSoundManager != null)
 			{
 				stageSoundManager.soundPlayedEvent.RemoveListener(OnSoundPlayed);
@@ -64,18 +75,18 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		if(stageState == StageState.Over)
+		var stageStatesMutingSound = new List<StageState>
 		{
-			audioSource.Stop();
-		}
-		if(stageState == StageState.Paused)
-		{
-			audioSource.Pause();
-		}
-		else
-		{
-			audioSource.UnPause();
-		}
+			StageState.Paused,
+			StageState.Over
+		};
+		
+		audioSource.mute = stageStatesMutingSound.Contains(stageState);
+	}
+
+	private void OnMusicStoppedPlaying()
+	{
+		audioSource.mute = stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Over);
 	}
 
 	private void OnSoundPlayed(SoundEffectType soundEffectType)
@@ -92,13 +103,13 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	private void MuteTemporarily(float duration)
 	{
-		audioSource.volume = 0;
+		audioSource.mute = true;
 
 		Invoke(nameof(RestoreVolume), duration);
 	}
 
 	private void RestoreVolume()
 	{
-		audioSource.volume = initialVolume;
+		audioSource.mute = false;
 	}
 }

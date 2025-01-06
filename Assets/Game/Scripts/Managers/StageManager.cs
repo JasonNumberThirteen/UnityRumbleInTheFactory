@@ -7,7 +7,6 @@ public class StageManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayersListData playersListData;
 
-	private StageSoundManager stageSoundManager;
 	private StageStateManager stageStateManager;
 	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
 	private NukeEntity nukeEntity;
@@ -43,22 +42,11 @@ public class StageManager : MonoBehaviour
 			SetGameAsOver();
 		}
 	}
-
-	public void EnableAudioManager()
-	{
-		if(stageSoundManager == null || stageStateManager.StateIsSetTo(StageState.Over))
-		{
-			return;
-		}
-
-		stageSoundManager.gameObject.SetActive(true);
-	}
 	
 	private void Awake()
 	{
 		CheckSingleton();
 		
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
 		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
 		nukeEntity = FindAnyObjectByType<NukeEntity>(FindObjectsInactive.Include);
