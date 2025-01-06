@@ -7,7 +7,7 @@ public class StageUIManager : MonoBehaviour
 
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
-	private StageFlowManager stageFlowManager;
+	private StageSceneFlowManager stageSceneFlowManager;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
 	private PauseTextUI pauseTextUI;
 
@@ -15,7 +15,7 @@ public class StageUIManager : MonoBehaviour
 	{
 		playersDataManager = FindFirstObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
 		stageStateManager = FindFirstObjectByType<StageStateManager>(FindObjectsInactive.Include);
-		stageFlowManager = FindFirstObjectByType<StageFlowManager>(FindObjectsInactive.Include);
+		stageSceneFlowManager = FindFirstObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
 		translationBackgroundPanelUI = FindFirstObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
 		pauseTextUI = FindFirstObjectByType<PauseTextUI>(FindObjectsInactive.Include);
 
@@ -36,10 +36,10 @@ public class StageUIManager : MonoBehaviour
 				playersDataManager.playerScoreChangedEvent.AddListener(OnPlayerScoreChanged);
 			}
 
-			if(stageFlowManager != null)
+			if(stageSceneFlowManager != null)
 			{
-				stageFlowManager.stageStartedEvent.AddListener(OnStageStarted);
-				stageFlowManager.stageActivatedEvent.AddListener(OnStageActivated);
+				stageSceneFlowManager.stageStartedEvent.AddListener(OnStageStarted);
+				stageSceneFlowManager.stageActivatedEvent.AddListener(OnStageActivated);
 			}
 
 			if(stageStateManager != null)
@@ -54,10 +54,10 @@ public class StageUIManager : MonoBehaviour
 				playersDataManager.playerScoreChangedEvent.RemoveListener(OnPlayerScoreChanged);
 			}
 
-			if(stageFlowManager != null)
+			if(stageSceneFlowManager != null)
 			{
-				stageFlowManager.stageStartedEvent.RemoveListener(OnStageStarted);
-				stageFlowManager.stageActivatedEvent.RemoveListener(OnStageActivated);
+				stageSceneFlowManager.stageStartedEvent.RemoveListener(OnStageStarted);
+				stageSceneFlowManager.stageActivatedEvent.RemoveListener(OnStageActivated);
 			}
 
 			if(stageStateManager != null)

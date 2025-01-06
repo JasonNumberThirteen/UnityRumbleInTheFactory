@@ -13,7 +13,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	[SerializeField, Min(0.01f)] private float spawnInterval = 2f;
 
 	private StageEnemyTypesLoadingManager stageEnemyTypesLoadingManager;
-	private StageFlowManager stageFlowManager;
+	private StageSceneFlowManager stageSceneFlowManager;
 	private List<EnemyRobotEntitySpawner> enemyRobotEntitySpawners;
 	private int currentEnemyRobotEntitySpawnerIndex;
 	private int currentEnemyEntityIndex;
@@ -25,7 +25,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	private void Awake()
 	{
 		stageEnemyTypesLoadingManager = FindAnyObjectByType<StageEnemyTypesLoadingManager>();
-		stageFlowManager = FindAnyObjectByType<StageFlowManager>(FindObjectsInactive.Include);
+		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
 		enemyRobotEntitySpawners = FindObjectsByType<EnemyRobotEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).ToList();
 		
 		RegisterToListeners(true);
@@ -40,16 +40,16 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	{
 		if(register)
 		{
-			if(stageFlowManager != null)
+			if(stageSceneFlowManager != null)
 			{
-				stageFlowManager.stageActivatedEvent.AddListener(StartSpawn);
+				stageSceneFlowManager.stageActivatedEvent.AddListener(StartSpawn);
 			}
 		}
 		else
 		{
-			if(stageFlowManager != null)
+			if(stageSceneFlowManager != null)
 			{
-				stageFlowManager.stageActivatedEvent.RemoveListener(StartSpawn);
+				stageSceneFlowManager.stageActivatedEvent.RemoveListener(StartSpawn);
 			}
 		}
 	}

@@ -3,12 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransformPositionController))]
 public class HUDPanelUI : MonoBehaviour
 {
-	private StageFlowManager stageFlowManager;
+	private StageSceneFlowManager stageSceneFlowManager;
 	private RectTransformPositionController rectTransformPositionController;
 
 	private void Awake()
 	{
-		stageFlowManager = FindAnyObjectByType<StageFlowManager>();
+		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>();
 		rectTransformPositionController = GetComponent<RectTransformPositionController>();
 
 		RegisterToListeners(true);
@@ -23,16 +23,16 @@ public class HUDPanelUI : MonoBehaviour
 	{
 		if(register)
 		{
-			if(stageFlowManager != null)
+			if(stageSceneFlowManager != null)
 			{
-				stageFlowManager.stageActivatedEvent.AddListener(OnStageActivated);
+				stageSceneFlowManager.stageActivatedEvent.AddListener(OnStageActivated);
 			}
 		}
 		else
 		{
-			if(stageFlowManager != null)
+			if(stageSceneFlowManager != null)
 			{
-				stageFlowManager.stageActivatedEvent.RemoveListener(OnStageActivated);
+				stageSceneFlowManager.stageActivatedEvent.RemoveListener(OnStageActivated);
 			}
 		}
 	}

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Timer))]
-public class StageFlowManager : MonoBehaviour
+public class StageSceneFlowManager : MonoBehaviour
 {
 	public UnityEvent stageStartedEvent;
 	public UnityEvent stageActivatedEvent;

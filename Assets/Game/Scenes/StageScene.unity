@@ -3876,7 +3876,7 @@ GameObject:
   - component: {fileID: 2136177303}
   - component: {fileID: 2136177302}
   m_Layer: 0
-  m_Name: Stage Flow Manager
+  m_Name: Stage Scene Flow Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
