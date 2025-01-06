@@ -5,17 +5,20 @@ using UnityEngine.Events;
 public class StageFlowManager : MonoBehaviour
 {
 	public UnityEvent stageStartedEvent;
+	public UnityEvent stageActivatedEvent;
 	
 	[SerializeField] private float delayOnStart = 1.5f;
 	[SerializeField] private float delayAfterInterrupting = 1f;
 	
 	private Timer timer;
 	private StageStateManager stageStateManager;
+	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
 
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
 		stageStateManager = FindAnyObjectByType<StageStateManager>();
+		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
 		timer.duration = delayOnStart;
 
 		RegisterToListeners(true);
@@ -36,6 +39,11 @@ public class StageFlowManager : MonoBehaviour
 			{
 				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
 			}
+
+			if(translationBackgroundPanelUI != null)
+			{
+				translationBackgroundPanelUI.panelFinishedTranslationEvent.AddListener(OnPanelFinishedTranslation);
+			}
 		}
 		else
 		{
@@ -44,6 +52,11 @@ public class StageFlowManager : MonoBehaviour
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+			}
+
+			if(translationBackgroundPanelUI != null)
+			{
+				translationBackgroundPanelUI.panelFinishedTranslationEvent.RemoveListener(OnPanelFinishedTranslation);
 			}
 		}
 	}
@@ -73,5 +86,10 @@ public class StageFlowManager : MonoBehaviour
 			
 			timer.ResetTimer();
 		}
+	}
+
+	private void OnPanelFinishedTranslation()
+	{
+		stageActivatedEvent?.Invoke();
 	}
 }

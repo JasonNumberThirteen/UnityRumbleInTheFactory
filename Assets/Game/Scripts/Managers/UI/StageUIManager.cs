@@ -39,6 +39,7 @@ public class StageUIManager : MonoBehaviour
 			if(stageFlowManager != null)
 			{
 				stageFlowManager.stageStartedEvent.AddListener(OnStageStarted);
+				stageFlowManager.stageActivatedEvent.AddListener(OnStageActivated);
 			}
 
 			if(stageStateManager != null)
@@ -56,6 +57,7 @@ public class StageUIManager : MonoBehaviour
 			if(stageFlowManager != null)
 			{
 				stageFlowManager.stageStartedEvent.RemoveListener(OnStageStarted);
+				stageFlowManager.stageActivatedEvent.RemoveListener(OnStageActivated);
 			}
 
 			if(stageStateManager != null)
@@ -90,6 +92,14 @@ public class StageUIManager : MonoBehaviour
 		if(translationBackgroundPanelUI != null)
 		{
 			translationBackgroundPanelUI.StartTranslation();
+		}
+	}
+
+	private void OnStageActivated()
+	{
+		if(translationBackgroundPanelUI != null)
+		{
+			translationBackgroundPanelUI.gameObject.SetActive(false);
 		}
 	}
 
