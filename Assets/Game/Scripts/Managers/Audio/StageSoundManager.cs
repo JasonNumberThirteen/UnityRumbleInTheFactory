@@ -23,6 +23,8 @@ public class StageSoundManager : MonoBehaviour
 	private StageStateManager stageStateManager;
 	private bool canPlaySounds;
 
+	private readonly string CHANNEL_GO_NAME = "Channel";
+
 	public void PlaySound(SoundEffectType soundEffectType)
 	{
 		if(!canPlaySounds)
@@ -52,13 +54,13 @@ public class StageSoundManager : MonoBehaviour
 
 	private void Start()
 	{
-		for (var i = 0; i < additionalSoundChannels; ++i)
+		for (var i = 1; i <= additionalSoundChannels; ++i)
 		{
-			var childChannel = new GameObject($"Channel {i + 1}");
-			var soundChannel = childChannel.AddComponent<SoundChannel>();
+			var childChannelGO = new GameObject($"{CHANNEL_GO_NAME} {i}");
+			var soundChannel = childChannelGO.AddComponent<SoundChannel>();
 
+			childChannelGO.transform.SetParent(gameObject.transform);
 			soundChannels.Add(soundChannel);
-			childChannel.transform.SetParent(gameObject.transform);
 		}
 	}
 
