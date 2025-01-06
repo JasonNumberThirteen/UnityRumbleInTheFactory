@@ -97,7 +97,7 @@ public class StageUIManager : MonoBehaviour
 
 		if(instance != null)
 		{
-			instance.Setup(position*16, points);
+			instance.Setup(points, position*16);
 		}
 	}
 
