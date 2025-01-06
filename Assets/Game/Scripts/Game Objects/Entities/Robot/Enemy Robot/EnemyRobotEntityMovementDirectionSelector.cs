@@ -33,7 +33,7 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 
 	private List<Vector2> GetAvailableDirections()
 	{
-		var directions = GetAllDirections();
+		var directions = new List<Vector2>(GetAllDirections());
 
 		directions.RemoveAll(direction => Linecast(transform.position, direction));
 
