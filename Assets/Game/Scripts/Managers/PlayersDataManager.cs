@@ -10,6 +10,14 @@ public class PlayersDataManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayersListData playersListData;
 
+	public void CheckPlayersLives()
+	{
+		if(playersListData != null && !playersListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0))
+		{
+			StageManager.instance.SetGameAsOver();
+		}
+	}
+
 	public void ModifyScore(PlayerData playerData, int score, GameObject go)
 	{
 		if(playerData == null)
@@ -65,6 +73,14 @@ public class PlayersDataManager : MonoBehaviour
 		if(playerData.RankNumber != previousRank)
 		{
 			playerRankChangedEvent?.Invoke();
+		}
+	}
+
+	private void Awake()
+	{
+		if(playersListData != null)
+		{
+			playersListData.ForEach(playerData => playerData.ResetDefeatedEnemies());
 		}
 	}
 

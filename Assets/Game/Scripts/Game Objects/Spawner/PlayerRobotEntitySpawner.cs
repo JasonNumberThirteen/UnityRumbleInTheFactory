@@ -52,9 +52,9 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 				playersDataManager.ModifyLives(playerData, -1);
 			}
 		}
-		else
+		else if(playersDataManager != null)
 		{
-			StageManager.instance.CheckPlayersLives();
+			playersDataManager.CheckPlayersLives();
 		}
 	}
 

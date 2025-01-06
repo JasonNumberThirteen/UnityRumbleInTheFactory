@@ -6,7 +6,6 @@ public class StageManager : MonoBehaviour
 	public static StageManager instance = null;
 
 	[SerializeField] private GameData gameData;
-	[SerializeField] private PlayersListData playersListData;
 
 	private StageStateManager stageStateManager;
 	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
@@ -47,14 +46,6 @@ public class StageManager : MonoBehaviour
 		gameData.SetGameAsOver();
 		stageStateManager.SetStateTo(StageState.Over);
 	}
-
-	public void CheckPlayersLives()
-	{
-		if(playersListData != null && !playersListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0))
-		{
-			SetGameAsOver();
-		}
-	}
 	
 	private void Awake()
 	{
@@ -63,11 +54,6 @@ public class StageManager : MonoBehaviour
 		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
 		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
 		nukeEntity = FindAnyObjectByType<NukeEntity>(FindObjectsInactive.Include);
-
-		if(playersListData != null)
-		{
-			playersListData.ForEach(playerData => playerData.ResetDefeatedEnemies());
-		}
 
 		RegisterToListeners(true);
 	}
