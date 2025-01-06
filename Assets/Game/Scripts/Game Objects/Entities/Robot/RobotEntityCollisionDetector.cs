@@ -58,7 +58,7 @@ public class RobotEntityCollisionDetector : MonoBehaviour
 			
 			foreach (var collider in colliders)
 			{
-				Gizmos.DrawWireCube(collider.transform.position, collider.bounds.size);
+				Gizmos.DrawWireCube(collider.bounds.center, collider.bounds.size);
 			}
 		}, detectedColliderGizmosColor);
 	}
