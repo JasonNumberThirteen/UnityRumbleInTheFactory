@@ -1,10 +1,8 @@
 using UnityEngine;
 
-public class PlayerLivesCounterPanelUI : MonoBehaviour
+public class PlayerLivesCounterPanelUI : CounterPanelUI
 {
 	[SerializeField] private PlayerData playerData;
-
-	private IntCounter intCounter;
 
 	public void UpdateCounterIfPossible()
 	{
@@ -12,11 +10,6 @@ public class PlayerLivesCounterPanelUI : MonoBehaviour
 		{
 			intCounter.SetTo(playerData.Lives);
 		}
-	}
-
-	private void Awake()
-	{
-		intCounter = GetComponentInChildren<IntCounter>();
 	}
 
 	private void Start()
