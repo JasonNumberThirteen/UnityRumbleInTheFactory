@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class StageUIManager : MonoBehaviour
 {
-	public RectTransform parent;
-	public GameObject pauseText;
-	public GameData gameData;
-	public PlayerData[] playersData;
-	public IntCounter[] playerLivesCounters;
-	public IntCounter stageCounterText, stageCounterIcon;
-	public LeftEnemiesToSpawnImagesUIManager leftEnemiesToSpawnImagesUIManager;
-
+	[SerializeField] private GameObject canvasGO;
+	[SerializeField] private GameObject pauseTextUIGO;
+	[SerializeField] private PlayerData[] playersData;
+	[SerializeField] private IntCounter[] playerLivesCounters;
+	[SerializeField] private IntCounter stageCounterInHeader;
+	[SerializeField] private IntCounter stageCounterInPanelUI;
+	[SerializeField] private GameData gameData;
 	[SerializeField] private GainedPointsCounterTextUI gainedPointsCounterTextUIPrefab;
 
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
 
-	public void ControlPauseTextDisplay() => pauseText.SetActive(stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused));
-	public void UpdateStageCounterIcon() => stageCounterIcon.SetTo(gameData.StageNumber);
-
 	public void UpdateCounters()
 	{
 		UpdateLivesCounters();
-		UpdateStageCounterIcon();
+
+		if(stageCounterInPanelUI != null && gameData != null)
+		{
+			stageCounterInPanelUI.SetTo(gameData.StageNumber);
+		}
 	}
 
 	public void UpdateLivesCounters()
@@ -42,7 +42,10 @@ public class StageUIManager : MonoBehaviour
 
 	private void Start()
 	{
-		stageCounterText.SetTo(gameData.StageNumber);
+		if(stageCounterInHeader != null && gameData != null)
+		{
+			stageCounterInHeader.SetTo(gameData.StageNumber);
+		}
 	}
 
 	private void OnDestroy()
@@ -58,6 +61,11 @@ public class StageUIManager : MonoBehaviour
 			{
 				playersDataManager.playerScoreChangedEvent.AddListener(OnPlayerScoreChanged);
 			}
+
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+			}
 		}
 		else
 		{
@@ -65,21 +73,39 @@ public class StageUIManager : MonoBehaviour
 			{
 				playersDataManager.playerScoreChangedEvent.RemoveListener(OnPlayerScoreChanged);
 			}
+
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+			}
 		}
 	}
 
 	private void OnPlayerScoreChanged(int score, GameObject go)
 	{
-		InstantiateGainedPointsCounter(score, go.transform.position);
+		SpawnGainedPointsCounterIfPossible(score, go.transform.position);
 	}
 
-	private void InstantiateGainedPointsCounter(int points, Vector2 position)
+	private void SpawnGainedPointsCounterIfPossible(int points, Vector2 position)
 	{
-		var instance = Instantiate(gainedPointsCounterTextUIPrefab, parent.transform);
+		if(gainedPointsCounterTextUIPrefab == null)
+		{
+			return;
+		}
+		
+		var instance = Instantiate(gainedPointsCounterTextUIPrefab, canvasGO.transform);
 
 		if(instance != null)
 		{
 			instance.Setup(position*16, points);
+		}
+	}
+
+	private void OnStageStateChanged(StageState stageState)
+	{
+		if(pauseTextUIGO != null)
+		{
+			pauseTextUIGO.SetActive(stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused));
 		}
 	}
 }

@@ -10,6 +10,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	[SerializeField, Min(0.01f)] private float spawnInterval = 2f;
 
 	private StageEnemyTypesLoadingManager stageEnemyTypesLoadingManager;
+	private LeftEnemiesToSpawnImagesUIManager leftEnemiesToSpawnImagesUIManager;
 	private List<EnemyRobotEntitySpawner> enemyRobotEntitySpawners;
 	private int currentEnemyRobotEntitySpawnerIndex;
 	private int currentEnemyEntityIndex;
@@ -27,6 +28,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	private void Awake()
 	{
 		stageEnemyTypesLoadingManager = FindAnyObjectByType<StageEnemyTypesLoadingManager>();
+		leftEnemiesToSpawnImagesUIManager = FindAnyObjectByType<LeftEnemiesToSpawnImagesUIManager>();
 		enemyRobotEntitySpawners = FindObjectsByType<EnemyRobotEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).ToList();
 	}
 
@@ -52,7 +54,10 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		
 		++currentEnemyEntityIndex;
 
-		StageManager.instance.uiManager.leftEnemiesToSpawnImagesUIManager.DestroyNextIconIfPossible();
+		if(leftEnemiesToSpawnImagesUIManager != null)
+		{
+			leftEnemiesToSpawnImagesUIManager.DestroyNextIconIfPossible();
+		}
 	}
 
 	private IEnumerator StartSpawningEntities()

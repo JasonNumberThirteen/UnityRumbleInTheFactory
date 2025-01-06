@@ -2048,18 +2048,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01acbe22e9ccf3e47bf575720ddcea82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 120467784}
-  pauseText: {fileID: 28531379}
-  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+  canvasGO: {fileID: 120467780}
+  pauseTextUIGO: {fileID: 28531379}
   playersData:
   - {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
   - {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
   playerLivesCounters:
   - {fileID: 1570355440}
   - {fileID: 1198398495}
-  stageCounterText: {fileID: 1922023827}
-  stageCounterIcon: {fileID: 229051406}
-  leftEnemiesToSpawnImagesUIManager: {fileID: 449972475}
+  stageCounterInHeader: {fileID: 1922023827}
+  stageCounterInPanelUI: {fileID: 229051406}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gainedPointsCounterTextUIPrefab: {fileID: -917488883713071552, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
 --- !u!4 &1237164744
 Transform:

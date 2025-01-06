@@ -30,7 +30,6 @@ public class StageManager : MonoBehaviour
 		}
 
 		stageStateManager.SetStateTo(stageStateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active);
-		uiManager.ControlPauseTextDisplay();
 
 		Time.timeScale = stageStateManager.StateIsSetTo(StageState.Paused) ? 0f : 1f;
 	}
