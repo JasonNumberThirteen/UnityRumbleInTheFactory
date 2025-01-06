@@ -8,7 +8,10 @@ public class RobotEntityDisabler : MonoBehaviour
 	{
 		foreach (var behaviour in behaviours)
 		{
-			behaviour.enabled = active;
+			if(behaviour != null)
+			{
+				behaviour.enabled = active;
+			}
 		}
 	}
 }
