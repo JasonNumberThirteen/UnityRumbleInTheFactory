@@ -2049,7 +2049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 120467784}
-  gainedPointsCounter: {fileID: 944822935104944545, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
   pauseText: {fileID: 28531379}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playersData:
@@ -2061,6 +2060,7 @@ MonoBehaviour:
   stageCounterText: {fileID: 1922023827}
   stageCounterIcon: {fileID: 229051406}
   leftEnemiesToSpawnImagesUIManager: {fileID: 449972475}
+  gainedPointsCounterTextUIPrefab: {fileID: -917488883713071552, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
 --- !u!4 &1237164744
 Transform:
   m_ObjectHideFlags: 0

@@ -3,12 +3,14 @@ using UnityEngine;
 public class StageUIManager : MonoBehaviour
 {
 	public RectTransform parent;
-	public GameObject gainedPointsCounter, pauseText;
+	public GameObject pauseText;
 	public GameData gameData;
 	public PlayerData[] playersData;
 	public IntCounter[] playerLivesCounters;
 	public IntCounter stageCounterText, stageCounterIcon;
 	public LeftEnemiesToSpawnImagesUIManager leftEnemiesToSpawnImagesUIManager;
+
+	[SerializeField] private GainedPointsCounterTextUI gainedPointsCounterTextUIPrefab;
 
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
@@ -73,16 +75,11 @@ public class StageUIManager : MonoBehaviour
 
 	private void InstantiateGainedPointsCounter(int points, Vector2 position)
 	{
-		var instance = Instantiate(gainedPointsCounter, parent.transform);
-		
-		if(instance.TryGetComponent(out RectTransformPositionController rectTransformPositionController))
-		{
-			rectTransformPositionController.SetPosition(position*16);
-		}
+		var instance = Instantiate(gainedPointsCounterTextUIPrefab, parent.transform);
 
-		if(instance.TryGetComponent(out IntCounter counter))
+		if(instance != null)
 		{
-			counter.SetTo(points);
+			instance.Setup(position*16, points);
 		}
 	}
 }
