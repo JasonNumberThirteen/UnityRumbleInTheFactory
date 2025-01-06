@@ -6,13 +6,13 @@ public class BonusEnemyRobotEntityTriggerEventsReceiver : RobotEntityTriggerEven
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(bonusSpawnManager != null)
-		{
-			bonusSpawnManager.InstantiateRandomBonus();
-		}
-
 		if(TryGetComponent(out BonusEnemyRobotColor bonusEnemyRobotColor))
 		{
+			if(bonusSpawnManager != null)
+			{
+				bonusSpawnManager.InstantiateRandomBonus();
+			}
+			
 			bonusEnemyRobotColor.RestoreInitialColor();
 			Destroy(bonusEnemyRobotColor);
 		}
