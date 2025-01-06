@@ -4,8 +4,6 @@ public class StageUIManager : MonoBehaviour
 {
 	[SerializeField] private GameObject canvasGO;
 	[SerializeField] private GameObject pauseTextUIGO;
-	[SerializeField] private PlayerData[] playersData;
-	[SerializeField] private IntCounter[] playerLivesCounters;
 	[SerializeField] private IntCounter stageCounterInHeader;
 	[SerializeField] private IntCounter stageCounterInPanelUI;
 	[SerializeField] private GameData gameData;
@@ -13,6 +11,7 @@ public class StageUIManager : MonoBehaviour
 
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
+	private PlayerLivesCounterPanelUI[] playerLivesCounterPanelUIs;
 
 	public void UpdateCounters()
 	{
@@ -26,9 +25,9 @@ public class StageUIManager : MonoBehaviour
 
 	public void UpdateLivesCounters()
 	{
-		for (int i = 0; i < playersData.Length; ++i)
+		for (int i = 0; i < playerLivesCounterPanelUIs.Length; ++i)
 		{
-			playerLivesCounters[i].SetTo(playersData[i].Lives);
+			playerLivesCounterPanelUIs[i].UpdateCounterIfPossible();
 		}
 	}
 
@@ -36,6 +35,7 @@ public class StageUIManager : MonoBehaviour
 	{
 		playersDataManager = FindFirstObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
 		stageStateManager = FindFirstObjectByType<StageStateManager>(FindObjectsInactive.Include);
+		playerLivesCounterPanelUIs = FindObjectsByType<PlayerLivesCounterPanelUI>(FindObjectsSortMode.None);
 
 		RegisterToListeners(true);
 	}
