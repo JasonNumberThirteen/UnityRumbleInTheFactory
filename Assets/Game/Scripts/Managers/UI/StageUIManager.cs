@@ -15,7 +15,7 @@ public class StageUIManager : MonoBehaviour
 
 	public void UpdateCounters()
 	{
-		UpdateLivesCounters();
+		UpdatePlayerLivesCounters();
 
 		if(stageCounterInPanelUI != null && gameData != null)
 		{
@@ -23,7 +23,7 @@ public class StageUIManager : MonoBehaviour
 		}
 	}
 
-	public void UpdateLivesCounters()
+	public void UpdatePlayerLivesCounters()
 	{
 		for (int i = 0; i < playerLivesCounterPanelUIs.Length; ++i)
 		{
