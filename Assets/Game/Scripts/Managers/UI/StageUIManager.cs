@@ -3,7 +3,6 @@ using UnityEngine;
 public class StageUIManager : MonoBehaviour
 {
 	[SerializeField] private GameObject canvasGO;
-	[SerializeField] private GameObject pauseTextUIGO;
 	[SerializeField] private IntCounter stageCounterInHeader;
 	[SerializeField] private IntCounter stageCounterInPanelUI;
 	[SerializeField] private GameData gameData;
@@ -12,6 +11,7 @@ public class StageUIManager : MonoBehaviour
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
 	private PlayerLivesCounterPanelUI[] playerLivesCounterPanelUIs;
+	private PauseTextUI pauseTextUI;
 
 	public void UpdateCounters()
 	{
@@ -36,6 +36,7 @@ public class StageUIManager : MonoBehaviour
 		playersDataManager = FindFirstObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
 		stageStateManager = FindFirstObjectByType<StageStateManager>(FindObjectsInactive.Include);
 		playerLivesCounterPanelUIs = FindObjectsByType<PlayerLivesCounterPanelUI>(FindObjectsSortMode.None);
+		pauseTextUI = FindFirstObjectByType<PauseTextUI>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
 	}
@@ -103,9 +104,9 @@ public class StageUIManager : MonoBehaviour
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		if(pauseTextUIGO != null)
+		if(pauseTextUI != null)
 		{
-			pauseTextUIGO.SetActive(stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused));
+			pauseTextUI.SetActive(stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused));
 		}
 	}
 }
