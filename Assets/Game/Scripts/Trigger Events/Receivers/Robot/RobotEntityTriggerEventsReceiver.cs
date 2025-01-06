@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RobotTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
+public class RobotEntityTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	private RobotEntityHealth robotEntityHealth;
 	
