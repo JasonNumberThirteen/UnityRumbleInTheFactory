@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 818054165873204038}
   - component: {fileID: 6254988867103003860}
   - component: {fileID: 2140678559909157076}
+  - component: {fileID: 3535760077572035210}
   m_Layer: 5
   m_Name: StageCounterPanelUIPrefab
   m_TagString: Untagged
@@ -181,6 +182,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3535760077572035210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718802897943442829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c301931fc6c9f94eb411e48edce600f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!1001 &5187696511981666653
 PrefabInstance:
   m_ObjectHideFlags: 0

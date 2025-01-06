@@ -4,7 +4,6 @@ public class StageUIManager : MonoBehaviour
 {
 	[SerializeField] private GameObject canvasGO;
 	[SerializeField] private IntCounter stageCounterInHeader;
-	[SerializeField] private IntCounter stageCounterInPanelUI;
 	[SerializeField] private GameData gameData;
 	[SerializeField] private GainedPointsCounterTextUI gainedPointsCounterTextUIPrefab;
 
@@ -16,11 +15,6 @@ public class StageUIManager : MonoBehaviour
 	public void UpdateCounters()
 	{
 		UpdatePlayerLivesCounters();
-
-		if(stageCounterInPanelUI != null && gameData != null)
-		{
-			stageCounterInPanelUI.SetTo(gameData.StageNumber);
-		}
 	}
 
 	public void UpdatePlayerLivesCounters()
