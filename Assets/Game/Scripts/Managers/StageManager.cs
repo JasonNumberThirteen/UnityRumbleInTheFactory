@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -10,23 +11,35 @@ public class StageManager : MonoBehaviour
 	private StageStateManager stageStateManager;
 	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
 	private NukeEntity nukeEntity;
-	private int defeatedEnemies;
+	private int numberOfDefeatedEnemies;
 
 	public void CountDefeatedEnemy()
 	{
-		++defeatedEnemies;
+		++numberOfDefeatedEnemies;
 
-		CheckIfWonTheGame();
+		if(stageStateManager != null && WonStage())
+		{
+			stageStateManager.SetStateTo(StageState.Won);
+		}
 	}
 
-	public void PauseGame()
+	public void PauseGameIfPossible()
 	{
-		if(stageStateManager.StateIsSetTo(StageState.Interrupted) || stageStateManager.StateIsSetTo(StageState.Won) || stageStateManager.StateIsSetTo(StageState.Over))
+		var stageStatesBlockingPause = new List<StageState>
+		{
+			StageState.Interrupted,
+			StageState.Won,
+			StageState.Over
+		};
+		
+		if(stageStateManager == null || stageStatesBlockingPause.Contains(stageStateManager.GetStageState()))
 		{
 			return;
 		}
 
-		stageStateManager.SetStateTo(stageStateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active);
+		var stateToSwitch = stageStateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active;
+
+		stageStateManager.SetStateTo(stateToSwitch);
 	}
 
 	public void SetGameAsOver()
@@ -45,7 +58,7 @@ public class StageManager : MonoBehaviour
 	
 	private void Awake()
 	{
-		CheckSingleton();
+		CheckInstanceReference();
 		
 		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
 		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
@@ -57,6 +70,18 @@ public class StageManager : MonoBehaviour
 		}
 
 		RegisterToListeners(true);
+	}
+
+	private void CheckInstanceReference()
+	{
+		if(instance == null)
+		{
+			instance = this;
+		}
+		else if(instance != this)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	private void OnDestroy()
@@ -78,29 +103,18 @@ public class StageManager : MonoBehaviour
 
 	private void OnNukeDestroyed()
 	{
-		stageStateManager.SetStateTo(StageState.Interrupted);
-	}
-
-	private bool WonTheGame() => DefeatedAllEnemies() && enemyRobotEntitySpawnManager.NoEnemiesLeft();
-	private bool DefeatedAllEnemies() => defeatedEnemies == enemyRobotEntitySpawnManager.GetTotalNumberOfEnemies();
-
-	private void CheckSingleton()
-	{
-		if(instance == null)
+		if(stageStateManager != null)
 		{
-			instance = this;
-		}
-		else if(instance != this)
-		{
-			Destroy(gameObject);
+			stageStateManager.SetStateTo(StageState.Interrupted);
 		}
 	}
 
-	private void CheckIfWonTheGame()
+	private bool WonStage()
 	{
-		if(WonTheGame())
-		{
-			stageStateManager.SetStateTo(StageState.Won);
-		}
+		var enemyRobotEntitySpawnManagerExists = enemyRobotEntitySpawnManager != null;
+		var totalNumberOfEnemies = enemyRobotEntitySpawnManagerExists ? enemyRobotEntitySpawnManager.GetTotalNumberOfEnemies() : 0;
+		var noEnemiesLeft = !enemyRobotEntitySpawnManagerExists || enemyRobotEntitySpawnManager.NoEnemiesLeft();
+		
+		return numberOfDefeatedEnemies >= totalNumberOfEnemies && noEnemiesLeft;
 	}
 }

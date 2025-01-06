@@ -46,6 +46,6 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnPause(InputValue inputValue)
 	{
-		StageManager.instance.PauseGame();
+		StageManager.instance.PauseGameIfPossible();
 	}
 }
