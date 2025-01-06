@@ -12,11 +12,6 @@ public class StageUIManager : MonoBehaviour
 	private PlayerLivesCounterPanelUI[] playerLivesCounterPanelUIs;
 	private PauseTextUI pauseTextUI;
 
-	public void UpdateCounters()
-	{
-		UpdatePlayerLivesCounters();
-	}
-
 	public void UpdatePlayerLivesCounters()
 	{
 		for (int i = 0; i < playerLivesCounterPanelUIs.Length; ++i)

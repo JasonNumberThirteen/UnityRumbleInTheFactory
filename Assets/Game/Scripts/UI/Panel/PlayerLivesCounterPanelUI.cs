@@ -18,4 +18,9 @@ public class PlayerLivesCounterPanelUI : MonoBehaviour
 	{
 		intCounter = GetComponentInChildren<IntCounter>();
 	}
+
+	private void Start()
+	{
+		UpdateCounterIfPossible();
+	}
 }
