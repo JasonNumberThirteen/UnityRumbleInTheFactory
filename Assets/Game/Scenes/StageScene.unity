@@ -417,6 +417,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &124401210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124401211}
+  - component: {fileID: 124401212}
+  m_Layer: 0
+  m_Name: Stage Time Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &124401211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124401210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 554198272}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124401212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124401210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf37849f23ee484c8a58135458ddf84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &127018396
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,17 +736,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6000890838716230585, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
   m_PrefabInstance: {fileID: 160385435}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &229051406 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7041624111148932168, guid: 4257582b44e75ab479f3be607e6c4d49, type: 3}
-  m_PrefabInstance: {fileID: 7088657588023157684}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &340759088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7611954035725649028, guid: 5d49c996cbf89034d895b9fae0d74cce, type: 3}
@@ -975,6 +1008,7 @@ Transform:
   - {fileID: 681417467}
   - {fileID: 756287911}
   - {fileID: 1359323840}
+  - {fileID: 124401211}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2008,17 +2042,6 @@ Transform:
   m_Father: {fileID: 1773920524}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1198398495 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1194581940350733783, guid: 4257582b44e75ab479f3be607e6c4d49, type: 3}
-  m_PrefabInstance: {fileID: 7088657588023157684}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1237164742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,16 +2072,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGO: {fileID: 120467780}
-  pauseTextUIGO: {fileID: 28531379}
-  playersData:
-  - {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
-  - {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
-  playerLivesCounters:
-  - {fileID: 1570355440}
-  - {fileID: 1198398495}
-  stageCounterInHeader: {fileID: 1922023827}
-  stageCounterInPanelUI: {fileID: 229051406}
-  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gainedPointsCounterTextUIPrefab: {fileID: -917488883713071552, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
 --- !u!4 &1237164744
 Transform:
@@ -2343,6 +2356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aec3dec5d51dd49bd2295f4a0f4876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityAssignedToSpawnerEvent:
+    m_PersistentCalls:
+      m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   enemyTag: Enemy
   spawnInterval: 2
@@ -2469,8 +2485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d005eff31c507f448ac71f32913ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 1237164743}
-  enemyRobotEntitySpawnManager: {fileID: 1295888590}
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playersListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!4 &1342973423
@@ -2792,17 +2806,6 @@ Transform:
   m_Father: {fileID: 1181348151}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1570355440 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7077925404716153562, guid: 4257582b44e75ab479f3be607e6c4d49, type: 3}
-  m_PrefabInstance: {fileID: 7088657588023157684}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1579829970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3735,17 +3738,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3489673666025870493, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
   m_PrefabInstance: {fileID: 1922023824}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1922023827 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3344802732245185231, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
-  m_PrefabInstance: {fileID: 1922023824}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922023826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c18f53a00d6c034a8179682c5388398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1939610191
 GameObject:
   m_ObjectHideFlags: 0

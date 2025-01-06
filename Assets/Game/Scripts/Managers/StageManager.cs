@@ -28,8 +28,6 @@ public class StageManager : MonoBehaviour
 		}
 
 		stageStateManager.SetStateTo(stageStateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active);
-
-		Time.timeScale = stageStateManager.StateIsSetTo(StageState.Paused) ? 0f : 1f;
 	}
 
 	public void SetGameAsOver()
