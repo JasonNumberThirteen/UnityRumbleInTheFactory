@@ -54,7 +54,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		if(IsMovingInDifferentDirection())
 		{
-			robotEntityRotationController.RotateByDirection(CurrentMovementDirection);
+			robotEntityCollisionDetector.AdjustRotationIfPossible(CurrentMovementDirection);
 		}
 	}
 	

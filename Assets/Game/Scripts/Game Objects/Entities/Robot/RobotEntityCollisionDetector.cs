@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -9,11 +10,27 @@ public class RobotEntityCollisionDetector : MonoBehaviour
 	
 	private Collider2D c2D;
 
+	private readonly Dictionary<Vector2, Vector3> eulerAnglesByDirection = new()
+	{
+		{Vector2.up, Vector3.zero},
+		{Vector2.down, Vector3.forward*180},
+		{Vector2.left, Vector3.forward*90},
+		{Vector2.right, Vector3.forward*270}
+	};
+
 	public Collider2D OverlapBox() => Physics2D.OverlapBox(GetColliderCenter(), GetColliderSize(), 0f, layerMask);
 	public Collider2D[] OverlapBoxAll() => Physics2D.OverlapBoxAll(GetColliderCenter(), GetColliderSize(), 0f, layerMask);
 
 	private Vector2 GetColliderCenter() => c2D.bounds.center;
 	private Vector2 GetColliderSize() => c2D.bounds.size;
+
+	public void AdjustRotationIfPossible(Vector2 direction)
+	{
+		if(eulerAnglesByDirection.ContainsKey(direction))
+		{
+			transform.rotation = Quaternion.Euler(eulerAnglesByDirection[direction]);
+		}
+	}
 
 	private void Awake()
 	{

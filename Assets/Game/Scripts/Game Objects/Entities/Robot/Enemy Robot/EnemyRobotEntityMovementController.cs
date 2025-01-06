@@ -103,7 +103,7 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 	{
 		CurrentMovementDirection = currentDirection;
 
-		robotEntityRotationController.RotateByDirection(CurrentMovementDirection);
+		robotEntityCollisionDetector.AdjustRotationIfPossible(CurrentMovementDirection);
 	}
 
 	private void SetDetectedCollisionState(bool detected)
