@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BlinkingTextUI : TextUI
+public class PauseTextUI : TextUI
 {
 	[SerializeField, Min(0.01f)] private float blinkDelay = 1f;
 
