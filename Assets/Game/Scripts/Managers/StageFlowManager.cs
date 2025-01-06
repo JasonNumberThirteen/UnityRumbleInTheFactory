@@ -7,6 +7,7 @@ public class StageFlowManager : MonoBehaviour
 	public UnityEvent stageStartedEvent;
 	public UnityEvent stageActivatedEvent;
 	
+	[SerializeField] private GameObject[] gosToActivateWhenStageIsActivated;
 	[SerializeField] private float delayOnStart = 1.5f;
 	[SerializeField] private float delayAfterInterrupting = 1f;
 	
@@ -21,6 +22,7 @@ public class StageFlowManager : MonoBehaviour
 		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
 		timer.duration = delayOnStart;
 
+		SetGOsActive(false);
 		RegisterToListeners(true);
 	}
 
@@ -90,6 +92,15 @@ public class StageFlowManager : MonoBehaviour
 
 	private void OnPanelFinishedTranslation()
 	{
+		SetGOsActive(true);
 		stageActivatedEvent?.Invoke();
+	}
+
+	private void SetGOsActive(bool active)
+	{
+		foreach (var go in gosToActivateWhenStageIsActivated)
+		{
+			go.SetActive(active);
+		}
 	}
 }

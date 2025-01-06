@@ -626,7 +626,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149658484}
-  - component: {fileID: 149658485}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Spawners
@@ -654,18 +653,6 @@ Transform:
   m_Father: {fileID: 1773920524}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &149658485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149658483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &160385435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1900,7 +1887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1933,15 +1920,15 @@ PrefabInstance:
     - target: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1939610191}
+      objectReference: {fileID: 1295888589}
     - target: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 149658483}
+      objectReference: {fileID: 1295888589}
     - target: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1342973421}
+      objectReference: {fileID: 1295888589}
     - target: {fileID: 4225136488121737537, guid: 43dd93bed7028e74ea31e374b46788fa, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -2234,7 +2221,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1295888591}
   - component: {fileID: 1295888590}
-  - component: {fileID: 1295888592}
   m_Layer: 0
   m_Name: Enemy Robot Entity Spawn Manager
   m_TagString: Untagged
@@ -2275,18 +2261,6 @@ Transform:
   m_Father: {fileID: 554198272}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1295888592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295888589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1304145712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2363,7 +2337,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1342973423}
   - component: {fileID: 1342973422}
-  - component: {fileID: 1342973424}
   m_Layer: 0
   m_Name: Stage Manager
   m_TagString: Untagged
@@ -2400,18 +2373,6 @@ Transform:
   m_Father: {fileID: 554198272}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1342973424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342973421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1359323839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,7 +3636,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1939610192}
-  - component: {fileID: 1939610193}
   m_Layer: 0
   m_Name: Entities
   m_TagString: Entities
@@ -3699,18 +3659,6 @@ Transform:
   m_Father: {fileID: 1773920524}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1939610193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939610191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f50bf0b46a17ab418df098d61bd4075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1964712106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3980,6 +3928,11 @@ MonoBehaviour:
   stageActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+  gosToActivateWhenStageIsActivated:
+  - {fileID: 1342973421}
+  - {fileID: 1295888589}
+  - {fileID: 1939610191}
+  - {fileID: 149658483}
   delayOnStart: 1.5
   delayAfterInterrupting: 1
 --- !u!114 &2136177303
