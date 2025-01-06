@@ -38,7 +38,7 @@ public class StageUIManager : MonoBehaviour
 
 			if(stageFlowManager != null)
 			{
-				stageFlowManager.gameStartedEvent.AddListener(OnGameStarted);
+				stageFlowManager.stageStartedEvent.AddListener(OnStageStarted);
 			}
 
 			if(stageStateManager != null)
@@ -55,7 +55,7 @@ public class StageUIManager : MonoBehaviour
 
 			if(stageFlowManager != null)
 			{
-				stageFlowManager.gameStartedEvent.RemoveListener(OnGameStarted);
+				stageFlowManager.stageStartedEvent.RemoveListener(OnStageStarted);
 			}
 
 			if(stageStateManager != null)
@@ -85,7 +85,7 @@ public class StageUIManager : MonoBehaviour
 		}
 	}
 
-	private void OnGameStarted()
+	private void OnStageStarted()
 	{
 		if(translationBackgroundPanelUI != null)
 		{

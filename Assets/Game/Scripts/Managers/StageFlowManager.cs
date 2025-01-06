@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class StageFlowManager : MonoBehaviour
 {
-	public UnityEvent gameStartedEvent;
+	public UnityEvent stageStartedEvent;
 	
 	[SerializeField] private float delayOnStart = 1.5f;
 	[SerializeField] private float delayAfterInterrupting = 1f;
@@ -57,7 +57,7 @@ public class StageFlowManager : MonoBehaviour
 
 		if(stageStateManager.StateIsSetTo(StageState.Active))
 		{
-			gameStartedEvent?.Invoke();
+			stageStartedEvent?.Invoke();
 		}
 		else if(stageStateManager.StateIsSetTo(StageState.Interrupted))
 		{
