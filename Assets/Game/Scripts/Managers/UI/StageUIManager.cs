@@ -3,8 +3,6 @@ using UnityEngine;
 public class StageUIManager : MonoBehaviour
 {
 	[SerializeField] private GameObject canvasGO;
-	[SerializeField] private IntCounter stageCounterInHeader;
-	[SerializeField] private GameData gameData;
 	[SerializeField] private GainedPointsCounterTextUI gainedPointsCounterTextUIPrefab;
 
 	private PlayersDataManager playersDataManager;
@@ -28,14 +26,6 @@ public class StageUIManager : MonoBehaviour
 		pauseTextUI = FindFirstObjectByType<PauseTextUI>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
-	}
-
-	private void Start()
-	{
-		if(stageCounterInHeader != null && gameData != null)
-		{
-			stageCounterInHeader.SetTo(gameData.StageNumber);
-		}
 	}
 
 	private void OnDestroy()
