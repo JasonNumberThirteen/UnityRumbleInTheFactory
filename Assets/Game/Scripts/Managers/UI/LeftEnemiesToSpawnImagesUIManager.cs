@@ -10,18 +10,12 @@ public class LeftEnemiesToSpawnImagesUIManager : MonoBehaviour
 	private GameObject[] iconGOs;
 	private int currentIconIndex;
 
-	public void DestroyNextIconIfPossible()
-	{
-		if(--currentIconIndex < iconGOs.Length)
-		{
-			Destroy(iconGOs[currentIconIndex]);
-		}
-	}
-
 	private void Awake()
 	{
 		leftEnemiesToSpawnPanelUI = FindAnyObjectByType<LeftEnemiesToSpawnPanelUI>(FindObjectsInactive.Include);
 		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
+
+		RegisterToListeners(true);
 	}
 	
 	private void Start()
@@ -43,6 +37,37 @@ public class LeftEnemiesToSpawnImagesUIManager : MonoBehaviour
 		var transform = leftEnemiesToSpawnPanelUI != null ? leftEnemiesToSpawnPanelUI.transform : null;
 		
 		return Instantiate(leftEnemyToSpawnImageUIPrefab, transform);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			if(enemyRobotEntitySpawnManager != null)
+			{
+				enemyRobotEntitySpawnManager.entityAssignedToSpawnerEvent.AddListener(OnEntityAssignedToSpawner);
+			}
+		}
+		else
+		{
+			if(enemyRobotEntitySpawnManager != null)
+			{
+				enemyRobotEntitySpawnManager.entityAssignedToSpawnerEvent.RemoveListener(OnEntityAssignedToSpawner);
+			}
+		}
+	}
+
+	private void OnEntityAssignedToSpawner()
+	{
+		if(--currentIconIndex < iconGOs.Length)
+		{
+			Destroy(iconGOs[currentIconIndex]);
+		}
 	}
 
 	private int GetNumberOfIconsToSpawn(int numberOfEnemies) => Mathf.Min(numberOfEnemies, maxIconsLimit);

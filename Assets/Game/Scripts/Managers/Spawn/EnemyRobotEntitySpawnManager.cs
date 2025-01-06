@@ -2,15 +2,17 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyRobotEntitySpawnManager : MonoBehaviour
 {
+	public UnityEvent entityAssignedToSpawnerEvent;
+	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private string enemyTag;
 	[SerializeField, Min(0.01f)] private float spawnInterval = 2f;
 
 	private StageEnemyTypesLoadingManager stageEnemyTypesLoadingManager;
-	private LeftEnemiesToSpawnImagesUIManager leftEnemiesToSpawnImagesUIManager;
 	private List<EnemyRobotEntitySpawner> enemyRobotEntitySpawners;
 	private int currentEnemyRobotEntitySpawnerIndex;
 	private int currentEnemyEntityIndex;
@@ -28,7 +30,6 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	private void Awake()
 	{
 		stageEnemyTypesLoadingManager = FindAnyObjectByType<StageEnemyTypesLoadingManager>();
-		leftEnemiesToSpawnImagesUIManager = FindAnyObjectByType<LeftEnemiesToSpawnImagesUIManager>();
 		enemyRobotEntitySpawners = FindObjectsByType<EnemyRobotEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).ToList();
 	}
 
@@ -54,10 +55,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		
 		++currentEnemyEntityIndex;
 
-		if(leftEnemiesToSpawnImagesUIManager != null)
-		{
-			leftEnemiesToSpawnImagesUIManager.DestroyNextIconIfPossible();
-		}
+		entityAssignedToSpawnerEvent?.Invoke();
 	}
 
 	private IEnumerator StartSpawningEntities()
