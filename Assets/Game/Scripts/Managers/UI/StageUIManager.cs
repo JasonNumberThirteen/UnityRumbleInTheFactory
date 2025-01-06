@@ -7,22 +7,12 @@ public class StageUIManager : MonoBehaviour
 
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
-	private PlayerLivesCounterPanelUI[] playerLivesCounterPanelUIs;
 	private PauseTextUI pauseTextUI;
-
-	public void UpdatePlayerLivesCounters()
-	{
-		for (int i = 0; i < playerLivesCounterPanelUIs.Length; ++i)
-		{
-			playerLivesCounterPanelUIs[i].UpdateCounterIfPossible();
-		}
-	}
 
 	private void Awake()
 	{
 		playersDataManager = FindFirstObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
 		stageStateManager = FindFirstObjectByType<StageStateManager>(FindObjectsInactive.Include);
-		playerLivesCounterPanelUIs = FindObjectsByType<PlayerLivesCounterPanelUI>(FindObjectsSortMode.None);
 		pauseTextUI = FindFirstObjectByType<PauseTextUI>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);

@@ -4,7 +4,7 @@ public class CounterPanelUI : MonoBehaviour
 {
 	protected IntCounter intCounter;
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		intCounter = GetComponentInChildren<IntCounter>();
 	}

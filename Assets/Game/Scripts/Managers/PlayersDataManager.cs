@@ -47,7 +47,6 @@ public class PlayersDataManager : MonoBehaviour
 
 		if(playerData.Lives != previousLives)
 		{
-			StageManager.instance.uiManager.UpdatePlayerLivesCounters();
 			playerLivesChangedEvent?.Invoke();
 		}
 	}
