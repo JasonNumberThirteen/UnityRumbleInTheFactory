@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BonusEnemyRobotTriggerEventsReceiver : RobotEntityTriggerEventsReceiver
+public class BonusEnemyRobotEntityTriggerEventsReceiver : RobotEntityTriggerEventsReceiver
 {
 	private BonusSpawnManager bonusSpawnManager;
 	
