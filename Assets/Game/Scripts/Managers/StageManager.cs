@@ -4,14 +4,12 @@ public class StageManager : MonoBehaviour
 {
 	public static StageManager instance = null;
 
-	public StageUIManager uiManager;
-	public EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
-	public GameData gameData;
-
+	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayersListData playersListData;
 
 	private StageSoundManager stageSoundManager;
 	private StageStateManager stageStateManager;
+	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
 	private NukeEntity nukeEntity;
 	private int defeatedEnemies;
 
@@ -64,6 +62,7 @@ public class StageManager : MonoBehaviour
 		
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
+		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
 		nukeEntity = FindAnyObjectByType<NukeEntity>(FindObjectsInactive.Include);
 
 		if(playersListData != null)
