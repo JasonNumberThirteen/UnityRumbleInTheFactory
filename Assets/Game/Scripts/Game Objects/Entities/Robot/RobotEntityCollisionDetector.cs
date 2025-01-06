@@ -18,12 +18,6 @@ public class RobotEntityCollisionDetector : MonoBehaviour
 		{Vector2.right, Vector3.forward*270}
 	};
 
-	public Collider2D OverlapBox() => Physics2D.OverlapBox(GetColliderCenter(), GetColliderSize(), 0f, layerMask);
-	public Collider2D[] OverlapBoxAll() => Physics2D.OverlapBoxAll(GetColliderCenter(), GetColliderSize(), 0f, layerMask);
-
-	private Vector2 GetColliderCenter() => c2D.bounds.center;
-	private Vector2 GetColliderSize() => c2D.bounds.size;
-
 	public void AdjustRotationIfPossible(Vector2 direction)
 	{
 		if(eulerAnglesByDirection.ContainsKey(direction))
@@ -31,6 +25,12 @@ public class RobotEntityCollisionDetector : MonoBehaviour
 			transform.rotation = Quaternion.Euler(eulerAnglesByDirection[direction]);
 		}
 	}
+
+	public Collider2D OverlapBox() => Physics2D.OverlapBox(GetColliderCenter(), GetColliderSize(), 0f, layerMask);
+	public Collider2D[] OverlapBoxAll() => Physics2D.OverlapBoxAll(GetColliderCenter(), GetColliderSize(), 0f, layerMask);
+
+	private Vector2 GetColliderCenter() => c2D.bounds.center;
+	private Vector2 GetColliderSize() => c2D.bounds.size;
 
 	private void Awake()
 	{
