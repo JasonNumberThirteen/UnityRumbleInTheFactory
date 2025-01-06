@@ -29,15 +29,11 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		playerRobotEntityRankController = GetComponent<PlayerRobotEntityRankController>();
 	}
 
-	protected override void SetupBullet(GameObject bulletGO)
+	protected override void SetupBulletEntity(BulletEntity bulletEntity)
 	{
-		base.SetupBullet(bulletGO);
-		SetupBulletIfPossible(bulletGO);
-	}
+		base.SetupBulletEntity(bulletEntity);
 
-	private void SetupBulletIfPossible(GameObject bulletGO)
-	{
-		if(playerRobotEntityRankController.CurrentRank == null || !bulletGO.TryGetComponent(out BulletEntity bulletEntity))
+		if(playerRobotEntityRankController.CurrentRank == null || bulletEntity == null)
 		{
 			return;
 		}

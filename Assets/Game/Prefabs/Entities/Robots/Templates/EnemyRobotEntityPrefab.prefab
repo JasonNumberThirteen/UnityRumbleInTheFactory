@@ -331,5 +331,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382e5ccf99bf31a4a8cc3ca28f34a8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1372171276495067033, guid: 8c4e0f4bbc5b492469be53cc62a61ca1, type: 3}
+  bulletEntityPrefab: {fileID: 8962964810508572018, guid: 8c4e0f4bbc5b492469be53cc62a61ca1, type: 3}
   offsetFromGO: 0.1

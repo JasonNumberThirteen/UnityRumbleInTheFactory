@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RobotEntityShootController : MonoBehaviour
 {
-	[SerializeField] private GameObject bulletPrefab;
+	[SerializeField] private BulletEntity bulletEntityPrefab;
 	[SerializeField, Min(0f)] private float offsetFromGO = 0.1f;
 
 	protected StageSoundManager stageSoundManager;
@@ -11,7 +11,10 @@ public class RobotEntityShootController : MonoBehaviour
 
 	public virtual void FireBullet()
 	{
-		SetupBullet(Instantiate(bulletPrefab, GetBulletPosition(), Quaternion.identity));
+		if(bulletEntityPrefab != null)
+		{
+			SetupBulletEntity(Instantiate(bulletEntityPrefab, GetBulletPosition(), Quaternion.identity));
+		}
 	}
 
 	protected virtual void Awake()
@@ -20,26 +23,9 @@ public class RobotEntityShootController : MonoBehaviour
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 	}
 
-	protected virtual void SetupBullet(GameObject bulletGO)
+	protected virtual void SetupBulletEntity(BulletEntity bulletEntity)
 	{
-		SetParentToBulletGOIfPossible(bulletGO);
-		SetMovementDirectionToBulletGOIfPossible(bulletGO);
-	}
-
-	protected void SetParentToBulletGOIfPossible(GameObject bulletGO)
-	{
-		if(bulletGO.TryGetComponent(out BulletEntity bulletEntity))
-		{
-			bulletEntity.SetParent(gameObject);
-		}
-	}
-
-	protected void SetMovementDirectionToBulletGOIfPossible(GameObject bulletGO)
-	{
-		if(bulletGO.TryGetComponent(out EntityMovementController entityMovementController))
-		{
-			entityMovementController.CurrentMovementDirection = robotEntityAnimatorController.GetMovementDirection();
-		}
+		bulletEntity.Setup(gameObject, robotEntityAnimatorController.GetMovementDirection());
 	}
 
 	private Vector2 GetBulletPosition() => (Vector2)transform.position + robotEntityAnimatorController.GetMovementDirection()*offsetFromGO;
