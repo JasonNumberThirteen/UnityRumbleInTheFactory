@@ -7,12 +7,16 @@ public class StageUIManager : MonoBehaviour
 
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
+	private StageFlowManager stageFlowManager;
+	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
 	private PauseTextUI pauseTextUI;
 
 	private void Awake()
 	{
 		playersDataManager = FindFirstObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
 		stageStateManager = FindFirstObjectByType<StageStateManager>(FindObjectsInactive.Include);
+		stageFlowManager = FindFirstObjectByType<StageFlowManager>(FindObjectsInactive.Include);
+		translationBackgroundPanelUI = FindFirstObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
 		pauseTextUI = FindFirstObjectByType<PauseTextUI>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
@@ -32,6 +36,11 @@ public class StageUIManager : MonoBehaviour
 				playersDataManager.playerScoreChangedEvent.AddListener(OnPlayerScoreChanged);
 			}
 
+			if(stageFlowManager != null)
+			{
+				stageFlowManager.gameStartedEvent.AddListener(OnGameStarted);
+			}
+
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
@@ -42,6 +51,11 @@ public class StageUIManager : MonoBehaviour
 			if(playersDataManager != null)
 			{
 				playersDataManager.playerScoreChangedEvent.RemoveListener(OnPlayerScoreChanged);
+			}
+
+			if(stageFlowManager != null)
+			{
+				stageFlowManager.gameStartedEvent.RemoveListener(OnGameStarted);
 			}
 
 			if(stageStateManager != null)
@@ -68,6 +82,14 @@ public class StageUIManager : MonoBehaviour
 		if(instance != null)
 		{
 			instance.Setup(points, position*16);
+		}
+	}
+
+	private void OnGameStarted()
+	{
+		if(translationBackgroundPanelUI != null)
+		{
+			translationBackgroundPanelUI.StartTranslation();
 		}
 	}
 
