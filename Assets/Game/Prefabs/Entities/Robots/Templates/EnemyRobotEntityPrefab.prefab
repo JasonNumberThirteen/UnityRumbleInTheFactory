@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  gameData: {fileID: 0}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!114 &-7222749067493573934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - {fileID: -2978630073550354148}
-  - {fileID: 0}
+  - {fileID: 3117415091800670640}
 --- !u!114 &3992941268564963653
 MonoBehaviour:
   m_ObjectHideFlags: 0
