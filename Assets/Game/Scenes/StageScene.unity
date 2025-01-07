@@ -1292,7 +1292,7 @@ GameObject:
   - component: {fileID: 756287911}
   - component: {fileID: 756287910}
   m_Layer: 0
-  m_Name: Stage Enemy Types Loading Reader
+  m_Name: Stage Enemy Types Loading Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2357,7 +2357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  playersListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!4 &1342973423
 Transform:
   m_ObjectHideFlags: 0
