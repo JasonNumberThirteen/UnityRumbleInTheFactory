@@ -39,8 +39,24 @@ public class StageSoundManager : MonoBehaviour
 			return;
 		}
 
-		soundChannel.Play(GetAudioClipBySoundEffectType(soundEffectType));
+		soundChannel.Play(GetAudioClipBySoundEffectTypeIfPossible(soundEffectType));
 		soundPlayedEvent?.Invoke(soundEffectType);
+	}
+
+	public AudioClip GetAudioClipBySoundEffectType(SoundEffectType soundEffectType)
+	{
+		return soundEffectType switch
+		{
+			SoundEffectType.RobotDamage => robotDamageSound,
+			SoundEffectType.PlayerRobotIdle => playerRobotIdleSound,
+			SoundEffectType.PlayerRobotMovement => playerRobotMovementSound,
+			SoundEffectType.PlayerRobotShoot => playerRobotShootSound,
+			SoundEffectType.PlayerRobotBulletHit => playerRobotBulletHitSound,
+			SoundEffectType.EnemyRobotExplosion => enemyRobotExplosionSound,
+			SoundEffectType.BonusSpawn => bonusSpawnSound,
+			SoundEffectType.BonusCollect => bonusCollectSound,
+			_ => null
+		};
 	}
 	
 	private void Awake()
@@ -95,20 +111,14 @@ public class StageSoundManager : MonoBehaviour
 		}
 	}
 
-	private AudioClip GetAudioClipBySoundEffectType(SoundEffectType soundEffectType)
+	private AudioClip GetAudioClipBySoundEffectTypeIfPossible(SoundEffectType soundEffectType)
 	{
-		return soundEffectType switch
+		var conditionsBySoundEffectType = new Dictionary<SoundEffectType, bool>()
 		{
-			SoundEffectType.RobotDamage => robotDamageSound,
-			SoundEffectType.PlayerRobotIdle => playerRobotIdleSound,
-			SoundEffectType.PlayerRobotMovement => playerRobotMovementSound,
-			SoundEffectType.PlayerRobotShoot => playerRobotShootSound,
-			SoundEffectType.PlayerRobotBulletHit => playerRobotBulletHitSound,
-			SoundEffectType.EnemyRobotExplosion => enemyRobotExplosionSound,
-			SoundEffectType.BonusSpawn => bonusSpawnSound,
-			SoundEffectType.BonusCollect => bonusCollectSound,
-			_ => null
+			{SoundEffectType.PlayerRobotIdle, stageStateManager == null || !stageStateManager.StateIsSetTo(StageState.Won)}
 		};
+
+		return !conditionsBySoundEffectType.ContainsKey(soundEffectType) || conditionsBySoundEffectType[soundEffectType] ? GetAudioClipBySoundEffectType(soundEffectType) : null;
 	}
 
 	private SoundChannel GetSoundChannelBySoundEffectType(SoundEffectType soundEffectType)

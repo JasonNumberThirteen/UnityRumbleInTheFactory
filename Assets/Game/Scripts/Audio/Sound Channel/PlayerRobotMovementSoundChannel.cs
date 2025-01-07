@@ -75,6 +75,12 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	private void OnStageStateChanged(StageState stageState)
 	{
+		MuteSoundDependingOnStageState(stageState);
+		StopSoundIfNeeded(stageState);
+	}
+
+	private void MuteSoundDependingOnStageState(StageState stageState)
+	{
 		var stageStatesMutingSound = new List<StageState>
 		{
 			StageState.Paused,
@@ -82,6 +88,18 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 		};
 		
 		audioSource.mute = stageStatesMutingSound.Contains(stageState);
+	}
+
+	private void StopSoundIfNeeded(StageState stageState)
+	{
+		if(stageState != StageState.Won || stageSoundManager == null || audioSource.clip != stageSoundManager.GetAudioClipBySoundEffectType(SoundEffectType.PlayerRobotIdle))
+		{
+			return;
+		}
+
+		audioSource.Stop();
+
+		audioSource.clip = null;
 	}
 
 	private void OnMusicStoppedPlaying()
@@ -105,10 +123,10 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 	{
 		audioSource.mute = true;
 
-		Invoke(nameof(RestoreVolume), duration);
+		Invoke(nameof(Unmute), duration);
 	}
 
-	private void RestoreVolume()
+	private void Unmute()
 	{
 		audioSource.mute = false;
 	}
