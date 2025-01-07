@@ -6,9 +6,16 @@ public class FortressTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRe
 	
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(nukeEntityFortressField != null)
+		if(nukeEntityFortressField != null && sender.TryGetComponent(out RobotEntity robotEntity))
 		{
-			nukeEntityFortressField.BuildFortress(GetDuration());
+			if(robotEntity.IsFriendly())
+			{
+				nukeEntityFortressField.BuildFortress(GetDuration());
+			}
+			else
+			{
+				nukeEntityFortressField.DestroyAllGOsWithinArea();
+			}
 		}
 		
 		base.TriggerOnEnter(sender);

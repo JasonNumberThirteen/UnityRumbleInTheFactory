@@ -19,13 +19,7 @@ public class NukeEntityFortressField : MonoBehaviour
 		SpawnTilesWithinArea();
 	}
 
-	private void Awake()
-	{
-		nukeEntity = GetComponentInParent<NukeEntity>();
-		c2D = GetComponent<Collider2D>();
-	}
-	
-	private void DestroyAllGOsWithinArea()
+	public void DestroyAllGOsWithinArea()
 	{
 		var colliders = Physics2D.OverlapBoxAll(c2D.bounds.center, c2D.bounds.size, 0f, overlapLayerMask);
 
@@ -33,6 +27,12 @@ public class NukeEntityFortressField : MonoBehaviour
 		{
 			Destroy(collider.gameObject);
 		}
+	}
+
+	private void Awake()
+	{
+		nukeEntity = GetComponentInParent<NukeEntity>();
+		c2D = GetComponent<Collider2D>();
 	}
 
 	private void SpawnTilesWithinArea()
