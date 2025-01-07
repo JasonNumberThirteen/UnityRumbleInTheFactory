@@ -9,16 +9,18 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private RobotEntityShootController robotEntityShootController;
 	private StageSoundManager stageSoundManager;
+	private StageStateManager stageStateManager;
 
 	private void Awake()
 	{
 		robotEntityShootController = GetComponent<RobotEntityShootController>();
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
+		stageStateManager = FindAnyObjectByType<StageStateManager>();
 	}
 
 	private void PlayMovementSoundIfPossible()
 	{
-		if(stageSoundManager == null)
+		if(stageSoundManager == null || InputIsLocked())
 		{
 			return;
 		}
@@ -30,6 +32,11 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnMove(InputValue inputValue)
 	{
+		if(InputIsLocked())
+		{
+			return;
+		}
+		
 		LastMovementVector = MovementVector;
 		MovementVector = inputValue.Get<Vector2>();
 
@@ -38,7 +45,7 @@ public class PlayerRobotInput : MonoBehaviour
 
 	private void OnFire(InputValue inputValue)
 	{
-		if(robotEntityShootController != null)
+		if(robotEntityShootController != null && !InputIsLocked())
 		{
 			robotEntityShootController.FireBullet();
 		}
@@ -48,4 +55,6 @@ public class PlayerRobotInput : MonoBehaviour
 	{
 		StageManager.instance.PauseGameIfPossible();
 	}
+
+	private bool InputIsLocked() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
 }
