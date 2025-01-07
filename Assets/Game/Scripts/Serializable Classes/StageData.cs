@@ -1,8 +1,12 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class StageData
 {
-	public int[] tileIndexes;
-	public string[] enemyTypes;
+	[SerializeField] private int[] tileIndexes;
+	[SerializeField] private string[] enemyTypes;
+
+	public int[] GetTileIndexes() => tileIndexes;
+	public string[] GetEnemyTypes() => enemyTypes;
 }

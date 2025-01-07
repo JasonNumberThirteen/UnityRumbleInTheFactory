@@ -20,7 +20,7 @@ public class StageLayoutManager : MonoBehaviour
 		}
 
 		var currentStageData = gameData.GetCurrentStageData();
-		var tileIndexes = currentStageData != null ? currentStageData.tileIndexes : new int[0];
+		var tileIndexes = currentStageData != null ? currentStageData.GetTileIndexes() : new int[0];
 		
 		BuildStageLayout(tileIndexes);
 	}
