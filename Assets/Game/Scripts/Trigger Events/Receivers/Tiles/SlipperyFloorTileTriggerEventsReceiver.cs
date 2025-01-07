@@ -1,8 +1,13 @@
 using UnityEngine;
 
-public class SlipperyFloorTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter, ITriggerableOnExit
+public class SlipperyFloorTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter, ITriggerableOnStay, ITriggerableOnExit
 {
 	public void TriggerOnEnter(GameObject sender)
+	{
+		SetSlidingToPlayerRobotIfPossible(sender, true);
+	}
+
+	public void TriggerOnStay(GameObject sender)
 	{
 		SetSlidingToPlayerRobotIfPossible(sender, true);
 	}
