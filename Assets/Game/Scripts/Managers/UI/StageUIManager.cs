@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class StageUIManager : MonoBehaviour
 {
-	[SerializeField] private GameObject canvasGO;
 	[SerializeField] private GainedPointsCounterTextUI gainedPointsCounterTextUIPrefab;
 
 	private PlayersDataManager playersDataManager;
 	private StageStateManager stageStateManager;
 	private StageSceneFlowManager stageSceneFlowManager;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
+	private MainCanvasUI mainCanvasUI;
 	private PauseTextUI pauseTextUI;
 
 	private void Awake()
@@ -17,6 +17,7 @@ public class StageUIManager : MonoBehaviour
 		stageStateManager = FindFirstObjectByType<StageStateManager>(FindObjectsInactive.Include);
 		stageSceneFlowManager = FindFirstObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
 		translationBackgroundPanelUI = FindFirstObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
+		mainCanvasUI = FindAnyObjectByType<MainCanvasUI>(FindObjectsInactive.Include);
 		pauseTextUI = FindFirstObjectByType<PauseTextUI>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
@@ -79,7 +80,8 @@ public class StageUIManager : MonoBehaviour
 			return;
 		}
 		
-		var instance = Instantiate(gainedPointsCounterTextUIPrefab, canvasGO.transform);
+		var parent = mainCanvasUI != null ? mainCanvasUI.transform : null;
+		var instance = Instantiate(gainedPointsCounterTextUIPrefab, parent);
 
 		if(instance != null)
 		{
