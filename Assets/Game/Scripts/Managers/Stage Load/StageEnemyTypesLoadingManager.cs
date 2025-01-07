@@ -32,14 +32,15 @@ public class StageEnemyTypesLoadingManager : MonoBehaviour
 
 	private EnemyType[] GetEnemyTypesFromStageData(StageData stageData)
 	{
-		var numberOfEnemiesTypes = stageData != null && stageData.GetEnemyTypes() != null ? stageData.GetEnemyTypes().Length : 0;
-		var enemyTypes = new EnemyType[numberOfEnemiesTypes];
+		var enemyTypesData = stageData?.GetEnemyTypes();
+		var numberOfEnemyTypesData = enemyTypesData != null ? enemyTypesData.Length : 0;
+		var enemyTypes = new EnemyType[numberOfEnemyTypesData];
 		
-		for (int i = 0; i < numberOfEnemiesTypes; ++i)
+		for (int i = 0; i < numberOfEnemyTypesData; ++i)
 		{
-			var enemyDataString = stageData.GetEnemyTypes()[i];
+			var enemyTypeData = enemyTypesData[i];
 			
-			enemyTypes[i] = new EnemyType(GetEnemyIndex(enemyDataString), EnemyDataPointsToBonusType(enemyDataString));
+			enemyTypes[i] = new EnemyType(GetEnemyIndex(enemyTypeData), EnemyDataPointsToBonusType(enemyTypeData));
 		}
 
 		return enemyTypes;
