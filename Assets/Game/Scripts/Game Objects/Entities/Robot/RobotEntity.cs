@@ -5,6 +5,7 @@ public abstract class RobotEntity : MonoBehaviour
 	private RobotEntityShield robotEntityShield;
 	
 	public abstract bool IsFriendly();
+	public abstract void OnLifeBonusCollected(int lives);
 
 	public void ActivateShield(float duration)
 	{
@@ -14,7 +15,7 @@ public abstract class RobotEntity : MonoBehaviour
 		}
 	}
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
 	}

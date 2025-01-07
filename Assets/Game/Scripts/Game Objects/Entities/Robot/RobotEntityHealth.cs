@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(EntityExploder))]
 public class RobotEntityHealth : MonoBehaviour, IUpgradeableByRobotRank
 {
-	public int CurrentHealth {get; private set;}
+	public int CurrentHealth {get; protected set;}
 	
 	[SerializeField, Min(1)] private int initialHealth;
 

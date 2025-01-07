@@ -7,6 +7,11 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 	private StageStateManager stageStateManager;
 	private PlayersDataManager playersDataManager;
 
+	public void IncreaseHealthBy(int health)
+	{
+		CurrentHealth += health;
+	}
+
 	protected override void Awake()
 	{
 		base.Awake();

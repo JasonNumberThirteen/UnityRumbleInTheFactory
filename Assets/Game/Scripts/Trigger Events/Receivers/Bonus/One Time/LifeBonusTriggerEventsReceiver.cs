@@ -12,16 +12,9 @@ public class LifeBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 
 	private void AddLifeToPlayerRobotIfPossible(GameObject sender)
 	{
-		if(!sender.TryGetComponent(out PlayerRobotEntity playerRobotEntity))
+		if(sender.TryGetComponent(out RobotEntity robotEntity))
 		{
-			return;
-		}
-		
-		var playerData = playerRobotEntity.GetPlayerData();
-
-		if(playersDataManager != null && playerData != null)
-		{
-			playersDataManager.ModifyLives(playerData, lives);
+			robotEntity.OnLifeBonusCollected(lives);
 		}
 	}
 }
