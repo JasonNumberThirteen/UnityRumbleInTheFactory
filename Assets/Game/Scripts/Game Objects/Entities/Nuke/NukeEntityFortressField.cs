@@ -17,7 +17,7 @@ public class NukeEntityFortressField : MonoBehaviour
 		fortressDuration = duration;
 		
 		DestroyAllGOsWithinArea();
-		InstantiateTilesWithinArea();
+		SpawnTilesWithinArea();
 	}
 
 	private void Awake()
@@ -35,13 +35,13 @@ public class NukeEntityFortressField : MonoBehaviour
 		}
 	}
 
-	private void InstantiateTilesWithinArea()
+	private void SpawnTilesWithinArea()
 	{
 		for (var y = area.yMin; y < area.yMax; y += 0.5f)
 		{
 			for (var x = area.xMin; x < area.xMax; x += 0.5f)
 			{
-				InstantiateTile(GetTilePosition(x, y));
+				SpawnTile(GetTilePosition(x, y));
 			}
 		}
 	}
@@ -54,7 +54,7 @@ public class NukeEntityFortressField : MonoBehaviour
 		return new Vector2(x, y);
 	}
 
-	private void InstantiateTile(Vector2 position)
+	private void SpawnTile(Vector2 position)
 	{
 		if(tilePrefab == null || nukeEntity.OverlapPoint(position))
 		{

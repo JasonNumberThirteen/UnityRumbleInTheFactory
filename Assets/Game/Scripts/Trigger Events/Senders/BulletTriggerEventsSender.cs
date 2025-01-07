@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletTriggerEventsSender : MonoBehaviour
 {
-	[SerializeField] private GameObject splatterPrefab;
+	[SerializeField] private GameObject splatterEffectPrefab;
 	[SerializeField] private string[] ignoredTags;
 	
 	private void OnTriggerEnter2D(Collider2D collider)
@@ -16,7 +16,7 @@ public class BulletTriggerEventsSender : MonoBehaviour
 		}
 
 		SendTriggerOnEnter(collider);
-		SpawnSplatterIfPossible();
+		SpawnSplatterEffect();
 		Destroy(gameObject);
 	}
 
@@ -28,11 +28,11 @@ public class BulletTriggerEventsSender : MonoBehaviour
 		}
 	}
 
-	private void SpawnSplatterIfPossible()
+	private void SpawnSplatterEffect()
 	{
-		if(splatterPrefab != null)
+		if(splatterEffectPrefab != null)
 		{
-			Instantiate(splatterPrefab, transform.position, Quaternion.identity);
+			Instantiate(splatterEffectPrefab, transform.position, Quaternion.identity);
 		}
 	}
 }

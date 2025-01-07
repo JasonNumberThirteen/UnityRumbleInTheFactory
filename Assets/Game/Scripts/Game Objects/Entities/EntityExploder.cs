@@ -7,11 +7,11 @@ public class EntityExploder : MonoBehaviour
 
 	public void TriggerExplosion()
 	{
-		InstantiateEffectPrefab();
+		SpawnExplosionEffect();
 		DestroyGOIfNeeded();
 	}
 
-	private void InstantiateEffectPrefab()
+	private void SpawnExplosionEffect()
 	{
 		if(explosionEffectPrefab != null)
 		{

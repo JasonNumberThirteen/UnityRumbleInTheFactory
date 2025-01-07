@@ -12,7 +12,7 @@ public class BonusSpawnManager : MonoBehaviour
 	public float GetBonusEnemyColorFadeTime() => bonusEnemyColorFadeTime;
 	public Color GetBonusEnemyColor() => bonusEnemyColor;
 
-	public void InstantiateRandomBonus()
+	public void SpawnRandomBonus()
 	{
 		var randomBonusGO = GetRandomBonusGO();
 

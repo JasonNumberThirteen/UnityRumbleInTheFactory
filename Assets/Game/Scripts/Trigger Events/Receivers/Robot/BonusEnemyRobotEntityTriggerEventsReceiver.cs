@@ -10,7 +10,7 @@ public class BonusEnemyRobotEntityTriggerEventsReceiver : RobotEntityTriggerEven
 		{
 			if(bonusSpawnManager != null)
 			{
-				bonusSpawnManager.InstantiateRandomBonus();
+				bonusSpawnManager.SpawnRandomBonus();
 			}
 			
 			bonusEnemyRobotColor.RestoreInitialColor();

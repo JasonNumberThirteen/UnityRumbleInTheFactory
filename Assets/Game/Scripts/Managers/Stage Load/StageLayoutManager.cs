@@ -31,11 +31,11 @@ public class StageLayoutManager : MonoBehaviour
 	{
 		for (int i = 0; i < tilesIndexes.Length; ++i)
 		{
-			InstantiateTile(i, tilesIndexes[i]);
+			SpawnTile(i, tilesIndexes[i]);
 		}
 	}
 
-	private void InstantiateTile(int loopIndex, int tileIndex)
+	private void SpawnTile(int loopIndex, int tileIndex)
 	{
 		if(!IndexIsWithinTilesLength(tileIndex))
 		{
