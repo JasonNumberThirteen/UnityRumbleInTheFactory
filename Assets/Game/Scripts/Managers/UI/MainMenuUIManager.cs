@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MainMenuUIManager : MonoBehaviour
+public class MainMenuUIManager : UIManager
 {
 	private MainMenuPanelUI mainMenuPanelUI;
 	private MainMenuOptionsCursorImageUI mainMenuOptionsCursorImageUI;

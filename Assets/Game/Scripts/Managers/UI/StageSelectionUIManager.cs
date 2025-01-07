@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StageSelectionUIManager : MonoBehaviour
+public class StageSelectionUIManager : UIManager
 {
 	[SerializeField] private GameData gameData;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StageUIManager : MonoBehaviour
+public class StageUIManager : UIManager
 {
 	[SerializeField] private GainedPointsCounterTextUI gainedPointsCounterTextUIPrefab;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LeftEnemiesToSpawnImagesUIManager : MonoBehaviour
+public class LeftEnemiesToSpawnImagesUIManager : UIManager
 {
 	[SerializeField] private GameObject leftEnemyToSpawnImageUIPrefab;
 	[SerializeField, Min(0)] private int maxIconsLimit = 20;

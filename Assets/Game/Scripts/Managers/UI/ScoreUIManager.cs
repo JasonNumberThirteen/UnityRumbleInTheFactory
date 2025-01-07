@@ -2,7 +2,7 @@ using TMPro;
 using System.Linq;
 using UnityEngine;
 
-public class ScoreUIManager : MonoBehaviour
+public class ScoreUIManager : UIManager
 {
 	public ScorePointsRowsBuilder pointsRowsBuilder;
 	public PlayerData playerData;
