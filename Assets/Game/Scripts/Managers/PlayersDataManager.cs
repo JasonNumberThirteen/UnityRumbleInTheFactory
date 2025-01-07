@@ -35,7 +35,7 @@ public class PlayersDataManager : MonoBehaviour
 
 			if(gameData != null)
 			{
-				gameData.SetHighScoreIfPossible(score, () => ModifyLives(playerData, 1));
+				gameData.SetHighScoreIfPossible(playerData.Score, () => ModifyLives(playerData, 1));
 			}
 			
 			playerScoreChangedEvent?.Invoke(score, go);
