@@ -8,11 +8,9 @@ public class StageLayoutManager : MonoBehaviour
 	[SerializeField, Min(1)] private int stageWidthInTiles = 26;
 	[SerializeField, Min(1)] private int stageHeightInTiles = 26;
 	[SerializeField, Min(0.01f)] private float tileSize = 0.5f;
-	[SerializeField] private Rect[] prohibitedAreas;
+	[SerializeField] private Collider2D[] takenAreas;
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color prohibitedAreasGizmosColor = Color.red;
-
-	private readonly float PROHIBITED_AREA_OVERLAP_SIZE = 0.25f;
 
 	private void Start()
 	{
@@ -44,10 +42,11 @@ public class StageLayoutManager : MonoBehaviour
 		
 		var boardPosition = GetBoardPosition(loopIndex);
 		var tilePosition = GetTilePosition(boardPosition);
+		var tilePrefab = tilesPrefabs[tileIndex];
 
-		if(TileCanBePlaced(tilePosition))
+		if(tilePrefab != null && TileCanBePlaced(tilePosition))
 		{
-			Instantiate(tilesPrefabs[tileIndex], tilePosition, Quaternion.identity);
+			Instantiate(tilePrefab, tilePosition, Quaternion.identity);
 		}
 	}
 
@@ -61,12 +60,14 @@ public class StageLayoutManager : MonoBehaviour
 
 	private bool TileCanBePlaced(Vector2 position)
 	{
-		foreach (var prohibitedArea in prohibitedAreas)
+		if(takenAreas == null)
 		{
-			var rectSize = Vector2.one*PROHIBITED_AREA_OVERLAP_SIZE;
-			var rect = new Rect(position, rectSize);
-			
-			if(prohibitedArea.Overlaps(rect))
+			return false;
+		}
+		
+		foreach (var takenArea in takenAreas)
+		{
+			if(takenArea != null && takenArea.OverlapPoint(position))
 			{
 				return false;
 			}
@@ -77,16 +78,19 @@ public class StageLayoutManager : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		if(!drawGizmos)
+		if(!drawGizmos || takenAreas == null)
 		{
 			return;
 		}
 		
 		GizmosMethods.OperateOnGizmos(() =>
 		{
-			foreach (var prohibitedArea in prohibitedAreas)
+			foreach (var takenArea in takenAreas)
 			{
-				Gizmos.DrawWireCube(prohibitedArea.center, prohibitedArea.size);
+				if(takenArea != null)
+				{
+					Gizmos.DrawWireCube(takenArea.bounds.center, takenArea.bounds.size);
+				}
 			}
 		}, prohibitedAreasGizmosColor);
 	}

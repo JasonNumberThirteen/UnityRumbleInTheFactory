@@ -953,6 +953,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1124455954940610271, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
   m_PrefabInstance: {fileID: 521885839}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &521885841 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1780596095647530574, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
+  m_PrefabInstance: {fileID: 521885839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &554198271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,37 +1238,13 @@ MonoBehaviour:
   stageWidthInTiles: 26
   stageHeightInTiles: 26
   tileSize: 0.5
-  prohibitedAreas:
-  - serializedVersion: 2
-    x: -7
-    y: 5.5
-    width: 1
-    height: 1
-  - serializedVersion: 2
-    x: -1
-    y: 5.5
-    width: 1
-    height: 1
-  - serializedVersion: 2
-    x: 5
-    y: 5.5
-    width: 1
-    height: 1
-  - serializedVersion: 2
-    x: -3
-    y: -6.5
-    width: 1
-    height: 1
-  - serializedVersion: 2
-    x: -1.5
-    y: -6.5
-    width: 2
-    height: 1.5
-  - serializedVersion: 2
-    x: 1
-    y: -6.5
-    width: 1
-    height: 1
+  takenAreas:
+  - {fileID: 912258331}
+  - {fileID: 521885841}
+  - {fileID: 1969267209}
+  - {fileID: 8808828601082308142}
+  - {fileID: 1203599836}
+  - {fileID: 1304145714}
   drawGizmos: 1
   prohibitedAreasGizmosColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &681417467
@@ -1511,6 +1492,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1124455954940610271, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
   m_PrefabInstance: {fileID: 912258329}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &912258331 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1780596095647530574, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
+  m_PrefabInstance: {fileID: 912258329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &927457568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1751,6 +1737,11 @@ Transform:
   m_Father: {fileID: 1773920524}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1203599836 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4953811159382910320, guid: c63a94bf0fd2d6647909b9ad3b4153a9, type: 3}
+  m_PrefabInstance: {fileID: 2319065631689431939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1237164742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,6 +2316,11 @@ PrefabInstance:
 --- !u!4 &1304145713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7570806089400328918, guid: 81efebd42ac50fe4e873393335d4a2a3, type: 3}
+  m_PrefabInstance: {fileID: 1304145712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1304145714 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 9097205321425246791, guid: 81efebd42ac50fe4e873393335d4a2a3, type: 3}
   m_PrefabInstance: {fileID: 1304145712}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1342973421
@@ -3785,6 +3781,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1124455954940610271, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
   m_PrefabInstance: {fileID: 1969267207}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1969267209 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1780596095647530574, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
+  m_PrefabInstance: {fileID: 1969267207}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2065490859
 GameObject:
   m_ObjectHideFlags: 0
@@ -4653,3 +4654,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7efb95089c018d8488d843034ee3bc98, type: 3}
+--- !u!61 &8808828601082308142 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3070912647898854962, guid: 7efb95089c018d8488d843034ee3bc98, type: 3}
+  m_PrefabInstance: {fileID: 8808828601082308141}
+  m_PrefabAsset: {fileID: 0}
