@@ -24,7 +24,7 @@ public class StageEnemyTypesLoadingManager : MonoBehaviour
 	{
 		for (var i = 0; i < EnemyTypes.Length; ++i)
 		{
-			var index = EnemyTypes[i].GetIndex();
+			var index = EnemyTypes[i].Index;
 			
 			EnemyPrefabs[i] = enemiesData[index].GetPrefab();
 		}
