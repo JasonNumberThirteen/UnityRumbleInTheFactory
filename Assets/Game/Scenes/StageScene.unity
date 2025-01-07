@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 120467783}
   - component: {fileID: 120467782}
   - component: {fileID: 120467781}
+  - component: {fileID: 120467785}
   m_Layer: 5
   m_Name: Canvas (Scale With Screen Size)
   m_TagString: Untagged
@@ -417,6 +418,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &120467785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120467780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76b941fee7200648814df46dff78e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &124401210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,9 +1252,9 @@ MonoBehaviour:
   stageHeightInTiles: 26
   tileSize: 0.5
   takenAreas:
-  - {fileID: 912258331}
+  - {fileID: 912258335}
   - {fileID: 521885841}
-  - {fileID: 1969267209}
+  - {fileID: 1969267213}
   - {fileID: 8808828601082308142}
   - {fileID: 1203599836}
   - {fileID: 1304145714}
@@ -1492,7 +1505,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1124455954940610271, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
   m_PrefabInstance: {fileID: 912258329}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &912258331 stripped
+--- !u!61 &912258335 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1780596095647530574, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
   m_PrefabInstance: {fileID: 912258329}
@@ -3781,7 +3794,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1124455954940610271, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
   m_PrefabInstance: {fileID: 1969267207}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1969267209 stripped
+--- !u!61 &1969267213 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1780596095647530574, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
   m_PrefabInstance: {fileID: 1969267207}
