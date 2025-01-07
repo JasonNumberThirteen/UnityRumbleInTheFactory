@@ -1,15 +1,14 @@
 using UnityEngine;
 
-[RequireComponent(typeof(NukeEntity))]
+[RequireComponent(typeof(Collider2D))]
 public class NukeEntityFortressField : MonoBehaviour
 {
-	[SerializeField] private Rect area;
 	[SerializeField] private LayerMask overlapLayerMask;
 	[SerializeField] private GameObject tilePrefab;
-	[SerializeField] private bool drawGizmos = true;
-	[SerializeField] private Color areaGizmosColor = Color.yellow;
+	[SerializeField, Min(0.01f)] private float gridSize = 0.5f;
 
 	private NukeEntity nukeEntity;
+	private Collider2D c2D;
 	private float fortressDuration;
 
 	public void BuildFortress(float duration)
@@ -22,12 +21,13 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	private void Awake()
 	{
-		nukeEntity = GetComponent<NukeEntity>();
+		nukeEntity = GetComponentInParent<NukeEntity>();
+		c2D = GetComponent<Collider2D>();
 	}
 	
 	private void DestroyAllGOsWithinArea()
 	{
-		var colliders = Physics2D.OverlapBoxAll(area.position, area.size, 0f, overlapLayerMask);
+		var colliders = Physics2D.OverlapBoxAll(c2D.bounds.center, c2D.bounds.size, 0f, overlapLayerMask);
 
 		foreach (var collider in colliders)
 		{
@@ -37,9 +37,9 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	private void SpawnTilesWithinArea()
 	{
-		for (var y = area.yMin; y < area.yMax; y += 0.5f)
+		for (var y = c2D.bounds.min.y; y < c2D.bounds.max.y; y += gridSize)
 		{
-			for (var x = area.xMin; x < area.xMax; x += 0.5f)
+			for (var x = c2D.bounds.min.x; x < c2D.bounds.max.x; x += gridSize)
 			{
 				SpawnTile(GetTilePosition(x, y));
 			}
@@ -48,15 +48,16 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	private Vector2 GetTilePosition(float leftSideX, float topSideY)
 	{
-		var x = leftSideX - area.width*0.5f + 0.25f;
-		var y = topSideY - area.height*0.5f + 0.25f;
+		var halfOfGridSize = gridSize*0.5f;
+		var x = leftSideX + halfOfGridSize;
+		var y = topSideY + halfOfGridSize;
 		
 		return new Vector2(x, y);
 	}
 
 	private void SpawnTile(Vector2 position)
 	{
-		if(tilePrefab == null || nukeEntity.OverlapPoint(position))
+		if(tilePrefab == null || (nukeEntity != null && nukeEntity.OverlapPoint(position)))
 		{
 			return;
 		}
@@ -66,14 +67,6 @@ public class NukeEntityFortressField : MonoBehaviour
 		if(instance.TryGetComponent(out Timer timer))
 		{
 			timer.duration = fortressDuration;
-		}
-	}
-
-	private void OnDrawGizmos()
-	{
-		if(drawGizmos)
-		{
-			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawWireCube(area.position, area.size), areaGizmosColor);
 		}
 	}
 }
