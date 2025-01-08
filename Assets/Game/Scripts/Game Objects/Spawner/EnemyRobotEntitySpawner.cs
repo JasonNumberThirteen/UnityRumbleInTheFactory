@@ -7,6 +7,8 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 	public bool IsBonus {get; set;}
 
 	[SerializeField, Min(1)] private int ordinalNumber;
+	[SerializeField] private float bonusEnemyColorFadeTime = 0.5f;
+	[SerializeField] private Color bonusEnemyColor = Color.blue;
 
 	private Telefragger telefragger;
 
@@ -59,16 +61,18 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 				Destroy(robotEntityTriggerEventsReceiver);
 			}
 		});
-		AddComponentToEntityGOIfPossible<BonusEnemyRobotEntityRendererColorAdjuster>(entityGO);
+		AddComponentToEntityGOIfPossible<BonusEnemyRobotEntityRendererColorAdjuster>(entityGO, actionOnComponent: component => component.Setup(bonusEnemyColorFadeTime, bonusEnemyColor));
 	}
 
-	private void AddComponentToEntityGOIfPossible<T>(GameObject entityGO, Action onStart = null) where T : Component
+	private void AddComponentToEntityGOIfPossible<T>(GameObject entityGO, Action onStart = null, Action<T> actionOnComponent = null) where T : Component
 	{
 		onStart?.Invoke();
 
 		if(entityGO != null)
 		{
-			entityGO.AddComponent<T>();
+			var component = entityGO.AddComponent<T>();
+
+			actionOnComponent?.Invoke(component);
 		}
 	}
 

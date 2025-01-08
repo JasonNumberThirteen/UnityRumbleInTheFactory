@@ -4,13 +4,8 @@ using UnityEngine;
 public class BonusSpawnManager : MonoBehaviour
 {
 	[SerializeField] private GameObject[] bonusesPrefabs;
-	[SerializeField] private float bonusEnemyColorFadeTime = 0.5f;
-	[SerializeField] private Color bonusEnemyColor;
 
 	private StageSoundManager stageSoundManager;
-
-	public float GetBonusEnemyColorFadeTime() => bonusEnemyColorFadeTime;
-	public Color GetBonusEnemyColor() => bonusEnemyColor;
 
 	public void SpawnRandomBonus()
 	{

@@ -1,27 +1,34 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class BonusEnemyRobotEntityRendererColorAdjuster : MonoBehaviour
 {
 	private SpriteRenderer spriteRenderer;
 	private Color initialColor;
-	private BonusSpawnManager bonusSpawnManager;
+	private float fadeTime;
+	private Color targetColor;
 
-	public void RestoreInitialColor() => spriteRenderer.color = initialColor;
+	public void Setup(float fadeTime, Color targetColor)
+	{
+		this.fadeTime = fadeTime;
+		this.targetColor = targetColor;
+	}
 
-	private void Update() => LerpColor();
+	public void RestoreInitialColor()
+	{
+		spriteRenderer.color = initialColor;
+	}
+
+	private void Update()
+	{
+		var t = Mathf.PingPong(Time.time, fadeTime);
+
+		spriteRenderer.color = Color.Lerp(initialColor, targetColor, t);
+	}
 
 	private void Awake()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		initialColor = spriteRenderer.color;
-		bonusSpawnManager = FindAnyObjectByType<BonusSpawnManager>();
-	}
-
-	private void LerpColor()
-	{
-		float t = Mathf.PingPong(Time.time, bonusSpawnManager.GetBonusEnemyColorFadeTime());
-		Color color = Color.Lerp(initialColor, bonusSpawnManager.GetBonusEnemyColor(), t);
-
-		spriteRenderer.color = color;
 	}
 }
