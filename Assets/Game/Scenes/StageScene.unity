@@ -999,7 +999,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1342973423}
   - {fileID: 879573809}
   - {fileID: 1579829972}
   - {fileID: 1295888591}
@@ -1784,7 +1783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01acbe22e9ccf3e47bf575720ddcea82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGO: {fileID: 120467780}
   gainedPointsCounterTextUIPrefab: {fileID: -917488883713071552, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
 --- !u!4 &1237164744
 Transform:
@@ -2336,51 +2334,6 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 9097205321425246791, guid: 81efebd42ac50fe4e873393335d4a2a3, type: 3}
   m_PrefabInstance: {fileID: 1304145712}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1342973421
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1342973423}
-  - component: {fileID: 1342973422}
-  m_Layer: 0
-  m_Name: Stage Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1342973422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342973421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d005eff31c507f448ac71f32913ebf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
---- !u!4 &1342973423
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342973421}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 554198272}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1359323839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3928,8 +3881,9 @@ MonoBehaviour:
   stageActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+  gameData: {fileID: 0}
   gosToActivateWhenStageIsActivated:
-  - {fileID: 1342973421}
+  - {fileID: 0}
   - {fileID: 1295888589}
   - {fileID: 1939610191}
   - {fileID: 149658483}

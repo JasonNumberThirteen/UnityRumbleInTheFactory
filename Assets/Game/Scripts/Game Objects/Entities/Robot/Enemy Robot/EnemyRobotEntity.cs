@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyRobotEntity : RobotEntity
 {
 	private EnemyRobotEntityHealth enemyRobotEntityHealth;
+	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
 	
 	public override bool IsFriendly() => false;
 
@@ -17,10 +18,14 @@ public class EnemyRobotEntity : RobotEntity
 		base.Awake();
 
 		enemyRobotEntityHealth = GetComponent<EnemyRobotEntityHealth>();
+		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
 	}
 
 	private void OnDestroy()
 	{
-		StageManager.instance.CountDefeatedEnemy();
+		if(enemyRobotEntitySpawnManager != null)
+		{
+			enemyRobotEntitySpawnManager.CountDefeatedEnemy();
+		}
 	}
 }

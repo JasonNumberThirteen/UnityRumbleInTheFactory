@@ -14,18 +14,30 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 
 	private StageEnemyTypesLoadingManager stageEnemyTypesLoadingManager;
 	private StageSceneFlowManager stageSceneFlowManager;
+	private StageStateManager stageStateManager;
 	private List<EnemyRobotEntitySpawner> enemyRobotEntitySpawners;
 	private int currentEnemyRobotEntitySpawnerIndex;
 	private int currentEnemyEntityIndex;
 	private int numberOfEnemiesToSpawn;
-
-	public bool NoEnemiesLeft() => currentEnemyEntityIndex >= GetTotalNumberOfEnemies();
+	private int numberOfDefeatedEnemies;
+	
 	public int GetTotalNumberOfEnemies() => stageEnemyTypesLoadingManager != null && stageEnemyTypesLoadingManager.EnemyPrefabs != null ? stageEnemyTypesLoadingManager.EnemyPrefabs.Length : 0;
+
+	public void CountDefeatedEnemy()
+	{
+		++numberOfDefeatedEnemies;
+
+		if(stageStateManager != null && WonStage())
+		{
+			stageStateManager.SetStateTo(StageState.Won);
+		}
+	}
 
 	private void Awake()
 	{
 		stageEnemyTypesLoadingManager = FindAnyObjectByType<StageEnemyTypesLoadingManager>();
 		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
+		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
 		enemyRobotEntitySpawners = FindObjectsByType<EnemyRobotEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).ToList();
 		
 		RegisterToListeners(true);
@@ -128,4 +140,8 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		--numberOfEnemiesToSpawn;
 		currentEnemyRobotEntitySpawnerIndex = (currentEnemyRobotEntitySpawnerIndex + 1) % enemyRobotEntitySpawners.Count;
 	}
+
+	private bool WonStage() => DefeatedAllEnemies() && NoEnemiesLeft();
+	private bool DefeatedAllEnemies() => numberOfDefeatedEnemies >= GetTotalNumberOfEnemies();
+	private bool NoEnemiesLeft() => currentEnemyEntityIndex >= GetTotalNumberOfEnemies();
 }

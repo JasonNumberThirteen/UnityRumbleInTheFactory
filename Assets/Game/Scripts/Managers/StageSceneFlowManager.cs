@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class StageSceneFlowManager : MonoBehaviour
 	public UnityEvent stageStartedEvent;
 	public UnityEvent stageActivatedEvent;
 	
+	[SerializeField] private GameData gameData;
 	[SerializeField] private GameObject[] gosToActivateWhenStageIsActivated;
 	[SerializeField] private float delayOnStart = 1.5f;
 	[SerializeField] private float delayAfterInterrupting = 1f;
@@ -14,12 +16,46 @@ public class StageSceneFlowManager : MonoBehaviour
 	private Timer timer;
 	private StageStateManager stageStateManager;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
+	private NukeEntity nukeEntity;
+
+	public void PauseGameIfPossible()
+	{
+		var stageStatesBlockingPause = new List<StageState>
+		{
+			StageState.Interrupted,
+			StageState.Won,
+			StageState.Over
+		};
+		
+		if(stageStateManager == null || stageStatesBlockingPause.Contains(stageStateManager.GetStageState()))
+		{
+			return;
+		}
+
+		var stateToSwitch = stageStateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active;
+
+		stageStateManager.SetStateTo(stateToSwitch);
+	}
+
+	public void SetGameAsOver()
+	{
+		if(gameData != null)
+		{
+			gameData.SetGameAsOver();
+		}
+		
+		if(stageStateManager != null)
+		{
+			stageStateManager.SetStateTo(StageState.Over);
+		}
+	}
 
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
 		stageStateManager = FindAnyObjectByType<StageStateManager>();
 		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
+		nukeEntity = FindAnyObjectByType<NukeEntity>(FindObjectsInactive.Include);
 		timer.duration = delayOnStart;
 
 		SetGOsActive(false);
@@ -46,6 +82,11 @@ public class StageSceneFlowManager : MonoBehaviour
 			{
 				translationBackgroundPanelUI.panelFinishedTranslationEvent.AddListener(OnPanelFinishedTranslation);
 			}
+
+			if(nukeEntity != null)
+			{
+				nukeEntity.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
+			}
 		}
 		else
 		{
@@ -59,6 +100,11 @@ public class StageSceneFlowManager : MonoBehaviour
 			if(translationBackgroundPanelUI != null)
 			{
 				translationBackgroundPanelUI.panelFinishedTranslationEvent.RemoveListener(OnPanelFinishedTranslation);
+			}
+
+			if(nukeEntity != null)
+			{
+				nukeEntity.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
 			}
 		}
 	}
@@ -76,7 +122,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		}
 		else if(stageStateManager.StateIsSetTo(StageState.Interrupted))
 		{
-			StageManager.instance.SetGameAsOver();
+			SetGameAsOver();
 		}
 	}
 
@@ -94,6 +140,14 @@ public class StageSceneFlowManager : MonoBehaviour
 	{
 		SetGOsActive(true);
 		stageActivatedEvent?.Invoke();
+	}
+
+	private void OnNukeDestroyed()
+	{
+		if(stageStateManager != null)
+		{
+			stageStateManager.SetStateTo(StageState.Interrupted);
+		}
 	}
 
 	private void SetGOsActive(bool active)

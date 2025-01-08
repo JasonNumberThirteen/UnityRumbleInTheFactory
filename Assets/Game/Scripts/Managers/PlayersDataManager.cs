@@ -10,11 +10,13 @@ public class PlayersDataManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayersListData playersListData;
 
+	private StageSceneFlowManager stageSceneFlowManager;
+
 	public void CheckPlayersLives()
 	{
-		if(playersListData != null && !playersListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0))
+		if(stageSceneFlowManager != null && playersListData != null && !playersListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0))
 		{
-			StageManager.instance.SetGameAsOver();
+			stageSceneFlowManager.SetGameAsOver();
 		}
 	}
 
@@ -78,6 +80,8 @@ public class PlayersDataManager : MonoBehaviour
 
 	private void Awake()
 	{
+		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
+		
 		if(playersListData != null)
 		{
 			playersListData.ForEach(playerData => playerData.ResetDefeatedEnemies());
