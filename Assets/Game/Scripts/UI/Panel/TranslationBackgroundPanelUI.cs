@@ -12,7 +12,6 @@ public class TranslationBackgroundPanelUI : MonoBehaviour
 	public void StartTranslation()
 	{
 		timer.StartTimer();
-		panelStartedTranslationEvent?.Invoke();
 	}
 
 	private void Awake()
@@ -42,12 +41,19 @@ public class TranslationBackgroundPanelUI : MonoBehaviour
 	{
 		if(register)
 		{
+			timer.timerStartedEvent.AddListener(OnTimerStarted);
 			timer.onEnd.AddListener(OnTimerEnd);
 		}
 		else
 		{
+			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
 			timer.onEnd.RemoveListener(OnTimerEnd);
 		}
+	}
+
+	private void OnTimerStarted()
+	{
+		panelStartedTranslationEvent?.Invoke();
 	}
 
 	private void OnTimerEnd()
