@@ -5,6 +5,7 @@ public class Timer : MonoBehaviour
 {
 	[Min(0.01f)] public float duration;
 	public bool countFromTheStart = true;
+	public UnityEvent timerStartedEvent;
 	public UnityEvent onReset, onEnd, onInterrupt;
 	
 	public bool Started {get; private set;}
@@ -17,6 +18,8 @@ public class Timer : MonoBehaviour
 		if(!Started)
 		{
 			Started = true;
+
+			timerStartedEvent?.Invoke();
 		}
 		else
 		{
