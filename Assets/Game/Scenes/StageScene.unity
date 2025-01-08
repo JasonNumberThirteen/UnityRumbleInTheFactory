@@ -1186,6 +1186,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 2
   countFromTheStart: 0
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -1429,6 +1432,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 2
   countFromTheStart: 0
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -3360,6 +3366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0
   countFromTheStart: 1
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -3428,6 +3437,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 10
   countFromTheStart: 0
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -3879,7 +3891,7 @@ MonoBehaviour:
   stageActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
-  gameData: {fileID: 0}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   gosToActivateWhenStageIsActivated:
   - {fileID: 1295888589}
   - {fileID: 1939610191}
@@ -3900,6 +3912,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 1
   countFromTheStart: 1
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
