@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class FortressMetalTileRenderer : MonoBehaviour
+public class NukeEntityFortressFieldTileRenderer : MonoBehaviour
 {
 	private SpriteRenderer spriteRenderer;
 	private Sprite initialSprite;

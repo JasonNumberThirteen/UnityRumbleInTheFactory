@@ -110,9 +110,9 @@ public class NukeEntityFortressField : MonoBehaviour
 		
 		if(instance != null)
 		{
-			var fortressMetalTileRenderer = instance.AddComponent<FortressMetalTileRenderer>();
+			var nukeEntityFortressFieldTileRenderer = instance.AddComponent<NukeEntityFortressFieldTileRenderer>();
 
-			fortressMetalTileRenderer.Setup(timer.duration, timeForBlinkStart, blinkDuration, tileSpriteToBlink);
+			nukeEntityFortressFieldTileRenderer.Setup(timer.duration, timeForBlinkStart, blinkDuration, tileSpriteToBlink);
 			fortressTileGOs.Add(instance);
 		}
 	}
