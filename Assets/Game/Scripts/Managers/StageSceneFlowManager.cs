@@ -39,11 +39,6 @@ public class StageSceneFlowManager : MonoBehaviour
 
 	public void SetGameAsOver()
 	{
-		if(gameData != null)
-		{
-			gameData.SetGameAsOver();
-		}
-		
 		if(stageStateManager != null)
 		{
 			stageStateManager.SetStateTo(StageState.Over);
@@ -144,6 +139,11 @@ public class StageSceneFlowManager : MonoBehaviour
 
 	private void OnNukeDestroyed()
 	{
+		if(gameData != null)
+		{
+			gameData.SetGameAsOver();
+		}
+		
 		if(stageStateManager != null)
 		{
 			stageStateManager.SetStateTo(StageState.Interrupted);

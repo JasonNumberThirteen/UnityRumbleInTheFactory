@@ -65,7 +65,11 @@ public class StageGameSceneManager : GameSceneManager
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		if(stageState == StageState.Won)
+		if(stageState == StageState.Interrupted)
+		{
+			timer.InterruptTimer();
+		}
+		else if(stageState == StageState.Won)
 		{
 			timer.StartTimer();
 		}

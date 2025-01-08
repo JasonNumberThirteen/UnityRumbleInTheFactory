@@ -17,8 +17,9 @@ public class Timer : MonoBehaviour
 	{
 		if(!Started)
 		{
-			Started = true;
-
+			timer = 0f;
+			
+			SetAsFinished(false);
 			timerStartedEvent?.Invoke();
 		}
 		else
