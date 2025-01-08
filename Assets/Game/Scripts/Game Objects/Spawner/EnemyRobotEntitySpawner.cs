@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Telefragger))]
@@ -25,9 +24,9 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 	{
 		var entityInstance = base.GetEntityInstance();
 
-		if(entityInstance != null)
+		if(IsBonus && entityInstance != null && entityInstance.TryGetComponent(out EnemyRobotEntity enemyRobotEntity))
 		{
-			AddBonusEnemyComponentsToEntityGOIfNeeded(entityInstance);
+			enemyRobotEntity.SetupForBonusType(bonusEnemyColorFadeTime, bonusEnemyColor);
 		}
 
 		return entityInstance;
@@ -44,35 +43,6 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 		else
 		{
 			timer.onEnd.RemoveListener(OnTimerEnd);
-		}
-	}
-
-	private void AddBonusEnemyComponentsToEntityGOIfNeeded(GameObject entityGO)
-	{
-		if(!IsBonus || entityGO == null)
-		{
-			return;
-		}
-
-		AddComponentToEntityGOIfPossible<BonusEnemyRobotEntityTriggerEventsReceiver>(entityGO, () =>
-		{
-			if(entityGO != null && entityGO.TryGetComponent(out RobotEntityTriggerEventsReceiver robotEntityTriggerEventsReceiver))
-			{
-				Destroy(robotEntityTriggerEventsReceiver);
-			}
-		});
-		AddComponentToEntityGOIfPossible<BonusEnemyRobotEntityRendererColorAdjuster>(entityGO, actionOnComponent: component => component.Setup(bonusEnemyColorFadeTime, bonusEnemyColor));
-	}
-
-	private void AddComponentToEntityGOIfPossible<T>(GameObject entityGO, Action onStart = null, Action<T> actionOnComponent = null) where T : Component
-	{
-		onStart?.Invoke();
-
-		if(entityGO != null)
-		{
-			var component = entityGO.AddComponent<T>();
-
-			actionOnComponent?.Invoke(component);
 		}
 	}
 

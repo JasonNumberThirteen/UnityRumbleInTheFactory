@@ -207,6 +207,7 @@ PrefabInstance:
     - {fileID: 5886565102491951326, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: 2083158133487335146, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+    - {fileID: -2720126704085592801, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3038284362999386624, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
@@ -234,6 +235,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3992941268564963653}
+    - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9089242049664541064}
   m_SourcePrefab: {fileID: 100100000, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
 --- !u!4 &5713532323854920377 stripped
 Transform:
@@ -333,3 +337,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletEntityPrefab: {fileID: 8962964810508572018, guid: 8c4e0f4bbc5b492469be53cc62a61ca1, type: 3}
   offsetFromGO: 0.1
+--- !u!114 &9089242049664541064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816500477355214006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9e372013021d7469a4c5e494e826db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
