@@ -59,7 +59,7 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 				Destroy(robotEntityTriggerEventsReceiver);
 			}
 		});
-		AddComponentToEntityGOIfPossible<BonusEnemyRobotColor>(entityGO);
+		AddComponentToEntityGOIfPossible<BonusEnemyRobotEntityRendererColorAdjuster>(entityGO);
 	}
 
 	private void AddComponentToEntityGOIfPossible<T>(GameObject entityGO, Action onStart = null) where T : Component

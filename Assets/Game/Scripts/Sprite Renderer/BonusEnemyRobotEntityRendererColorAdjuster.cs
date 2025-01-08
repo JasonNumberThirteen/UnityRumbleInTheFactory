@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BonusEnemyRobotColor : MonoBehaviour
+public class BonusEnemyRobotEntityRendererColorAdjuster : MonoBehaviour
 {
 	private SpriteRenderer spriteRenderer;
 	private Color initialColor;
