@@ -3,6 +3,8 @@ using UnityEngine;
 public class RobotEntityAnimatorController : EntityAnimatorController
 {
 	[SerializeField] private VerticalDirection initialVerticalDirection = VerticalDirection.Up;
+
+	private float movementSpeed;
 	
 	private readonly string MOVEMENT_SPEED_PARAMETER_NAME = "MovementSpeed";
 
@@ -23,13 +25,19 @@ public class RobotEntityAnimatorController : EntityAnimatorController
 	
 	private void Update()
 	{
-		animator.SetFloat(MOVEMENT_SPEED_PARAMETER_NAME, GetCurrentMovementSpeed());
+		var currentMovementDirectionIsNone = entityMovementController.CurrentMovementDirectionIsNone();
+		var currentMovementSpeed = currentMovementDirectionIsNone ? 0f : 1f;
+		
+		if(!Mathf.Approximately(movementSpeed, currentMovementSpeed))
+		{
+			movementSpeed = currentMovementSpeed;
+			
+			animator.SetFloat(MOVEMENT_SPEED_PARAMETER_NAME, movementSpeed);
+		}
 
-		if(!entityMovementController.CurrentMovementDirectionIsNone())
+		if(!currentMovementDirectionIsNone)
 		{
 			UpdateMovementParametersValues();
 		}
 	}
-
-	private float GetCurrentMovementSpeed() => entityMovementController.CurrentMovementDirectionIsNone() ? 0f : 1f;
 }
