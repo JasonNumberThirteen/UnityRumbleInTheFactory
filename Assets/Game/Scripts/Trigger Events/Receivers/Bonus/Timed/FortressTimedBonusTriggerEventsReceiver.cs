@@ -10,7 +10,7 @@ public class FortressTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRe
 		{
 			if(robotEntity.IsFriendly())
 			{
-				nukeEntityFortressField.BuildFortress(GetDuration());
+				nukeEntityFortressField.SpawnFortress(GetDuration());
 			}
 			else
 			{

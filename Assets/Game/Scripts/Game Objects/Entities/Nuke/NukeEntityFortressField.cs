@@ -1,22 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(Timer))]
 public class NukeEntityFortressField : MonoBehaviour
 {
 	[SerializeField] private LayerMask overlapLayerMask;
 	[SerializeField] private GameObject tilePrefab;
+	[SerializeField, Min(0.01f)] private float timeForBlinkStart = 5f;
+	[SerializeField, Min(0.01f)] private float blinkDuration = 0.25f;
+	[SerializeField] private Sprite tileSpriteToBlink;
+	[SerializeField] private GameObject tileToSpawnAfterElapsedTimePrefab;
 	[SerializeField, Min(0.01f)] private float gridSize = 0.5f;
 
 	private NukeEntity nukeEntity;
 	private Collider2D c2D;
-	private float fortressDuration;
+	private Timer timer;
+	private readonly List<GameObject> fortressTileGOs = new();
 
-	public void BuildFortress(float duration)
+	public void SpawnFortress(float duration)
 	{
-		fortressDuration = duration;
+		timer.duration = duration;
 		
+		fortressTileGOs.Clear();
 		DestroyAllGOsWithinArea();
 		SpawnTilesWithinArea();
+		timer.ResetTimer();
 	}
 
 	public void DestroyAllGOsWithinArea()
@@ -33,6 +41,42 @@ public class NukeEntityFortressField : MonoBehaviour
 	{
 		nukeEntity = GetComponentInParent<NukeEntity>();
 		c2D = GetComponent<Collider2D>();
+		timer = GetComponent<Timer>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			timer.onEnd.AddListener(OnTimerEnd);
+		}
+		else
+		{
+			timer.onEnd.RemoveListener(OnTimerEnd);
+		}
+	}
+
+	private void OnTimerEnd()
+	{
+		if(tileToSpawnAfterElapsedTimePrefab == null)
+		{
+			return;
+		}
+
+		fortressTileGOs.ForEach(go =>
+		{
+			Instantiate(tileToSpawnAfterElapsedTimePrefab, go.transform.position, go.transform.rotation);
+			Destroy(go);
+		});
+
+		fortressTileGOs.Clear();
 	}
 
 	private void SpawnTilesWithinArea()
@@ -64,9 +108,12 @@ public class NukeEntityFortressField : MonoBehaviour
 
 		var instance = Instantiate(tilePrefab, position, Quaternion.identity);
 		
-		if(instance.TryGetComponent(out Timer timer))
+		if(instance != null)
 		{
-			timer.duration = fortressDuration;
+			var fortressMetalTileRenderer = instance.AddComponent<FortressMetalTileRenderer>();
+
+			fortressMetalTileRenderer.Setup(timer.duration, timeForBlinkStart, blinkDuration, tileSpriteToBlink);
+			fortressTileGOs.Add(instance);
 		}
 	}
 }

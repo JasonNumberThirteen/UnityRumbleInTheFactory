@@ -1,14 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer), typeof(Timer))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class FortressMetalTileRenderer : MonoBehaviour
 {
-	[SerializeField, Min(0.01f)] private float timeForBlinkStart = 5f;
-	[SerializeField, Min(0.01f)] private float blinkDuration = 1f;
-	[SerializeField] private Sprite tileSpriteToBlink;
-	
 	private SpriteRenderer spriteRenderer;
 	private Sprite initialSprite;
+	private Sprite spriteToBlink;
+
+	public void Setup(float lifetime, float timeForBlinkStart, float blinkDuration, Sprite spriteToBlink)
+	{
+		this.spriteToBlink = spriteToBlink;
+
+		InvokeRepeating(nameof(SwitchSprite), lifetime - timeForBlinkStart, blinkDuration);
+	}
 
 	private void Awake()
 	{
@@ -16,18 +20,10 @@ public class FortressMetalTileRenderer : MonoBehaviour
 		initialSprite = spriteRenderer.sprite;
 	}
 
-	private void Start()
-	{
-		var timer = GetComponent<Timer>();
-		var blinkDelay = timer.duration - timeForBlinkStart;
-		
-		InvokeRepeating(nameof(SwitchSprite), blinkDelay, blinkDuration);
-	}
-
 	private void SwitchSprite()
 	{
 		var rendererHasInitialSprite = spriteRenderer.sprite == initialSprite;
 		
-		spriteRenderer.sprite = rendererHasInitialSprite ? tileSpriteToBlink : initialSprite;
+		spriteRenderer.sprite = rendererHasInitialSprite ? spriteToBlink : initialSprite;
 	}
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3580004110319112981}
   - component: {fileID: 4953811159382910320}
+  - component: {fileID: 8296638607036752338}
   - component: {fileID: 1433802966453193260}
   m_Layer: 12
   m_Name: FortressFieldArea
@@ -78,6 +79,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &8296638607036752338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555151523513049773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0
+  countFromTheStart: 0
+  onReset:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1433802966453193260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +117,11 @@ MonoBehaviour:
   overlapLayerMask:
     serializedVersion: 2
     m_Bits: 1280
-  tilePrefab: {fileID: 6712889474181035811, guid: bde2028975b227a49a3e4cd077f2c60c, type: 3}
+  tilePrefab: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
+  timeForBlinkStart: 5
+  blinkDuration: 0.25
+  tileSpriteToBlink: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
+  tileToSpawnAfterElapsedTimePrefab: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
   gridSize: 0.5
 --- !u!1 &8414169594087006866
 GameObject:
