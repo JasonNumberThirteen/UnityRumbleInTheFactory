@@ -74,17 +74,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 
 	private void OnNavigateKeyPressed(int direction)
 	{
-		TriggerOnKeyPressed(() =>
-		{
-			if(direction == -1)
-			{
-				loopingIntCounter.DecreaseBy(1);
-			}
-			else if(direction == 1)
-			{
-				loopingIntCounter.IncreaseBy(1);
-			}
-		});
+		TriggerOnKeyPressed(() => loopingIntCounter.ModifyBy(direction));
 	}
 
 	private void OnSubmitKeyPressed()

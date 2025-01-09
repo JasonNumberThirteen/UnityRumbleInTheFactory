@@ -19,13 +19,8 @@ public class IntCounter : MonoBehaviour
 		}
 	}
 
-	public virtual void IncreaseBy(int value)
+	public virtual void ModifyBy(int value)
 	{
 		SetTo(CurrentValue + value);
-	}
-
-	public virtual void DecreaseBy(int value)
-	{
-		SetTo(CurrentValue - value);
 	}
 }

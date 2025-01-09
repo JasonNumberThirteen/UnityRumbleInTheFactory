@@ -16,14 +16,16 @@ public class LoopingIntCounter : IntCounter
 		}
 	}
 
-	public override void IncreaseBy(int value)
+	public override void ModifyBy(int value)
 	{
-		SetTo(GetNextValue(value));
-	}
-
-	public override void DecreaseBy(int value)
-	{
-		SetTo(GetPreviousValue(value));
+		if(value > 0)
+		{
+			SetTo(GetNextValue(value));
+		}
+		else if(value < 0)
+		{
+			SetTo(GetPreviousValue(Mathf.Abs(value)));
+		}
 	}
 
 	private int GetNextValue(int value) => (CurrentValue + value - 1) % upperBound + lowerBound;

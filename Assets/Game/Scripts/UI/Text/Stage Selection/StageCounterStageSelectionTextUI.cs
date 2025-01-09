@@ -31,27 +31,15 @@ public class StageCounterStageSelectionTextUI : StageSelectionTextUI
 		{
 			if(stageSelectionManager != null)
 			{
-				stageSelectionManager.navigationDirectionChangedEvent.AddListener(OnNavigationDirectionChanged);
+				stageSelectionManager.navigationDirectionChangedEvent.AddListener(loopingIntCounter.ModifyBy);
 			}
 		}
 		else
 		{
 			if(stageSelectionManager != null)
 			{
-				stageSelectionManager.navigationDirectionChangedEvent.RemoveListener(OnNavigationDirectionChanged);
+				stageSelectionManager.navigationDirectionChangedEvent.RemoveListener(loopingIntCounter.ModifyBy);
 			}
-		}
-	}
-
-	private void OnNavigationDirectionChanged(int navigationDirection)
-	{
-		if(navigationDirection > 0)
-		{
-			loopingIntCounter.IncreaseBy(navigationDirection);
-		}
-		else if(navigationDirection < 0)
-		{
-			loopingIntCounter.DecreaseBy(Mathf.Abs(navigationDirection));
 		}
 	}
 
