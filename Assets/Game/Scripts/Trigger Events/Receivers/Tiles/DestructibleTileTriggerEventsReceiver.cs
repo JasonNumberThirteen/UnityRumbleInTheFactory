@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class BricksTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
+public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	[SerializeField] private LayerMask overlapLayerMask;
 	
