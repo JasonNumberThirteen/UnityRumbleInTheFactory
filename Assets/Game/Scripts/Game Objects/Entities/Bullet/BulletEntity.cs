@@ -13,6 +13,7 @@ public class BulletEntity : MonoBehaviour
 	public int GetDamage() => damage;
 	public bool CanDestroyMetal() => canDestroyMetal;
 	public GameObject GetParent() => parent;
+	public Vector2 GetMovementDirection() => entityMovementController.CurrentMovementDirection;
 
 	public void Setup(GameObject parentGO, Vector2 movementDirection)
 	{
