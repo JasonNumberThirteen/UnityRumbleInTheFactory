@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MetalTileTriggerEventsReceiver : DestructibleTileTriggerEventsReceiver
+public class MetalDestructibleTileTriggerEventsReceiver : DestructibleTileTriggerEventsReceiver
 {
 	private StageSoundManager stageSoundManager;
 	
