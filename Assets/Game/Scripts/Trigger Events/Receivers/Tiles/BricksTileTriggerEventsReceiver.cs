@@ -41,11 +41,11 @@ public class BricksTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnte
 	{
 		var overlapPoint = transform.position;
 		
-		if(movementDirection == Vector2.up || movementDirection == Vector2.down)
+		if(movementDirection.IsVertical())
 		{
 			overlapPoint.x = senderHitPoint.x;
 		}
-		else if(movementDirection == Vector2.left || movementDirection == Vector2.right)
+		else if(movementDirection.IsHorizontal())
 		{
 			overlapPoint.y = senderHitPoint.y;
 		}
@@ -58,11 +58,11 @@ public class BricksTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnte
 		var boundsPadding = Vector2.one*OVERLAP_BOUNDS_PADDING;
 		var overlapSize = (Vector2)c2D.bounds.size;
 		
-		if(movementDirection == Vector2.up || movementDirection == Vector2.down)
+		if(movementDirection.IsVertical())
 		{
 			overlapSize.x = OVERLAP_RANGE;
 		}
-		else if(movementDirection == Vector2.left || movementDirection == Vector2.right)
+		else if(movementDirection.IsHorizontal())
 		{
 			overlapSize.y = OVERLAP_RANGE;
 		}
