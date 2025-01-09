@@ -11,6 +11,16 @@ public class TimedRectTransformPositionController : RectTransformPositionControl
 	private Timer timer;
 	private Vector2 initialPosition;
 
+	public void SetInitialPosition(Vector2 initialPosition)
+	{
+		this.initialPosition = initialPosition;
+	}
+
+	public void SetTargetPosition(Vector2 targetPosition)
+	{
+		this.targetPosition = targetPosition;
+	}
+
 	public void StartTranslation()
 	{
 		timer.StartTimer();

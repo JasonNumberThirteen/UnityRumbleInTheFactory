@@ -1,20 +1,23 @@
 using UnityEngine;
 
-[RequireComponent(typeof(IntCounter), typeof(RectTransformPositionController))]
+[RequireComponent(typeof(IntCounter), typeof(TimedRectTransformPositionController))]
 public class GainedPointsCounterTextUI : MonoBehaviour
 {
+	[SerializeField] private Vector2 targetPositionOffset;
+	
 	private IntCounter intCounter;
-	private RectTransformPositionController rectTransformPositionController;
+	private TimedRectTransformPositionController timedRectTransformPositionController;
 	
 	public void Setup(int points, Vector2 position)
 	{
 		intCounter.SetTo(points);
-		rectTransformPositionController.SetPosition(position);
+		timedRectTransformPositionController.SetInitialPosition(position);
+		timedRectTransformPositionController.SetTargetPosition(position + targetPositionOffset);
 	}
 
 	private void Awake()
 	{
 		intCounter = GetComponent<IntCounter>();
-		rectTransformPositionController = GetComponent<RectTransformPositionController>();
+		timedRectTransformPositionController = GetComponent<TimedRectTransformPositionController>();
 	}
 }

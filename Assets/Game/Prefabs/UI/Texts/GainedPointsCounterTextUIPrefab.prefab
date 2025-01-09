@@ -120,9 +120,6 @@ PrefabInstance:
       addedObject: {fileID: 4709795868737360805}
     - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -4306636900719077029}
-    - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -3346082645398790919}
     - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       insertIndex: -1
@@ -133,6 +130,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       insertIndex: -1
       addedObject: {fileID: -917488883713071552}
+    - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5968404571917027048}
   m_SourcePrefab: {fileID: 100100000, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
 --- !u!1 &944822935104944545 stripped
 GameObject:
@@ -153,6 +153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 2
   countFromTheStart: 1
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -174,19 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662340b5d97e29c48b6a35db826b837d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4306636900719077029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944822935104944545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d8a4adb43a69e498c69f89e0f6b078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: {x: 0, y: 3}
 --- !u!114 &-3346082645398790919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,3 +230,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744154ee81db5754eb86120d0b98be74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPositionOffset: {x: 0, y: 6}
+--- !u!114 &5968404571917027048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944822935104944545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d822f13543f816b4989dbb0902bbff29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransformReachedTargetPositionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  targetPosition: {x: 0, y: 0}
