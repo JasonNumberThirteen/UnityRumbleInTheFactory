@@ -12,7 +12,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 	private readonly float OVERLAP_RANGE = 0.75f;
 	private readonly float OVERLAP_BOUNDS_PADDING = 0.05f;
 	
-	public void TriggerOnEnter(GameObject sender)
+	public virtual void TriggerOnEnter(GameObject sender)
 	{
 		if(!sender.TryGetComponent(out BulletEntity bulletEntity))
 		{
@@ -23,7 +23,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 		DestroyAllDetectedCollidersIfPossible();
 	}
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		c2D = GetComponent<Collider2D>();
 		detectedColliders = new Collider2D[OVERLAP_BUFFER_SIZE];

@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class MetalTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
+public class MetalTileTriggerEventsReceiver : DestructibleTileTriggerEventsReceiver
 {
 	private StageSoundManager stageSoundManager;
 	
-	public void TriggerOnEnter(GameObject sender)
+	public override void TriggerOnEnter(GameObject sender)
 	{
 		if(CanBeDestroyedByBullet(sender))
 		{
-			Destroy(gameObject);
+			base.TriggerOnEnter(sender);
 		}
 		else if(stageSoundManager != null && sender != null && sender.TryGetComponent(out PlayerRobotEntityBulletEntity _))
 		{
@@ -16,8 +16,10 @@ public class MetalTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 		}
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+		
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
 	}
 
