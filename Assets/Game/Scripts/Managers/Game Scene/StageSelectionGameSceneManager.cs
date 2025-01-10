@@ -3,7 +3,7 @@ using UnityEngine;
 public class StageSelectionGameSceneManager : GameSceneManager
 {
 	[SerializeField] private GameData gameData;
-	[SerializeField] private PlayersListData playersListData;
+	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
 	private MenuOptionsInput menuOptionsInput;
 	private StageCounterStageSelectionTextUI stageCounterTextUI;
@@ -50,7 +50,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 		
 		ResetGameData();
 		SetInitialStageNumber();
-		ResetPlayersListData();
+		ResetPlayerRobotsListData();
 		LoadSceneByName(STAGE_SCENE_NAME);
 	}
 
@@ -75,11 +75,11 @@ public class StageSelectionGameSceneManager : GameSceneManager
 		}
 	}
 
-	private void ResetPlayersListData()
+	private void ResetPlayerRobotsListData()
 	{
-		if(playersListData != null)
+		if(playerRobotsListData != null)
 		{
-			playersListData.ForEach(playerData => playerData.ResetData());
+			playerRobotsListData.ForEach(playerRobotData => playerRobotData.ResetData());
 		}
 	}
 }

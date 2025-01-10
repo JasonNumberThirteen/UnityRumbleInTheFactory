@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Players List Data")]
-public class PlayersListData : ScriptableObject
+[CreateAssetMenu(menuName = "Game/Player Robots List Data")]
+public class PlayerRobotsListData : ScriptableObject
 {
 	[SerializeField] private List<PlayerRobotData> playerRobotsData = new();
 

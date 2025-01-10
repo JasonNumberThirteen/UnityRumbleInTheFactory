@@ -257,6 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42fcdcdca31a428448329ef2996efb09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navigationDirectionChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!4 &443464712
 Transform:
@@ -287,6 +290,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.1
   countFromTheStart: 0
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -712,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  playersListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
+  playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!1001 &1459275920
 PrefabInstance:
   m_ObjectHideFlags: 0

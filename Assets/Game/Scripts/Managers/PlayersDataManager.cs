@@ -7,13 +7,13 @@ public class PlayersDataManager : MonoBehaviour
 	public UnityEvent playerLivesChangedEvent;
 	
 	[SerializeField] private GameData gameData;
-	[SerializeField] private PlayersListData playersListData;
+	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
 	private StageSceneFlowManager stageSceneFlowManager;
 
 	public void CheckPlayersLives()
 	{
-		if(stageSceneFlowManager != null && playersListData != null && !playersListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0))
+		if(stageSceneFlowManager != null && playerRobotsListData != null && !playerRobotsListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0))
 		{
 			stageSceneFlowManager.SetGameAsOver();
 		}
@@ -64,9 +64,9 @@ public class PlayersDataManager : MonoBehaviour
 	{
 		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
 		
-		if(playersListData != null)
+		if(playerRobotsListData != null)
 		{
-			playersListData.ForEach(playerRobotData => playerRobotData.ResetDefeatedEnemies());
+			playerRobotsListData.ForEach(playerRobotData => playerRobotData.ResetDefeatedEnemies());
 		}
 	}
 

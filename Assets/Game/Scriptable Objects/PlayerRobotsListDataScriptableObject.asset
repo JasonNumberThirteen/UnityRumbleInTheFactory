@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b794352ba106d44ebd6c5ebfa00244a, type: 3}
-  m_Name: PlayersListDataScriptableObject
+  m_Name: PlayerRobotsListDataScriptableObject
   m_EditorClassIdentifier: 
   playerRobotsData:
   - {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
