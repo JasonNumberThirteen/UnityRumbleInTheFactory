@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 3278257877024703880, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 35ffb86806e5f9a49a1344decae27683, type: 2}
+      objectReference: {fileID: 9100000, guid: 411496a2918f8c54ea48afedd2e4eadc, type: 2}
     - target: {fileID: 3405398399308765810, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_Name
       value: Player1RobotEntityPrefab

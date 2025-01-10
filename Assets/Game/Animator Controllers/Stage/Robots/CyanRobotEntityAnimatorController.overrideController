@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CyanRobotEntityAnimatorController
+  m_Controller: {fileID: 9100000, guid: 411496a2918f8c54ea48afedd2e4eadc, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: da682a65e3957b44a8f0d2694ef1c57d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 21eebf39a18bdcf4f91391306a758846, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 57c1b74ca50a6624488519d84249ca20, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c753666c5873ae049ba471ae9f93e396, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9116199ecd00752459fb92068d149e1c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 077720e853bcb3a40904a637b573dea4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d978d43dabd8d6146b727a1a577d069e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 74ced3ddbb8e539439bdacbae53d9c62, type: 2}

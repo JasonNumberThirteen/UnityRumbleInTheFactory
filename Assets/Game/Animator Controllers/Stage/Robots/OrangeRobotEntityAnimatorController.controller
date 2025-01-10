@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YellowRobotRightAnimation
+  m_Name: RightAnimation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -120,7 +120,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YellowRobotUpAnimation
+  m_Name: UpAnimation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -288,7 +288,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OrangeRobotAnimatorController
+  m_Name: OrangeRobotEntityAnimatorController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: MovementX
@@ -357,7 +357,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YellowRobotDownAnimation
+  m_Name: DownAnimation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -386,7 +386,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YellowRobotLeftAnimation
+  m_Name: LeftAnimation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
