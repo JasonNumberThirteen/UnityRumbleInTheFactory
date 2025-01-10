@@ -132,7 +132,8 @@ PrefabInstance:
       propertyPath: shoot
       value: 
       objectReference: {fileID: 8300000, guid: ef941213f8ebea44d81a7bdb72ec48a7, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2440230729228491330, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

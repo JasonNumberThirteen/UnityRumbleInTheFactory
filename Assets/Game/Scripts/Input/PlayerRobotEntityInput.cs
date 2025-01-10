@@ -9,32 +9,18 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private RobotEntityShootController robotEntityShootController;
 	private StageSoundManager stageSoundManager;
-	private StageStateManager stageStateManager;
 	private StageSceneFlowManager stageSceneFlowManager;
 
 	private void Awake()
 	{
 		robotEntityShootController = GetComponent<RobotEntityShootController>();
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
-		stageStateManager = FindAnyObjectByType<StageStateManager>();
 		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>();
-	}
-
-	private void PlayMovementSoundIfPossible()
-	{
-		if(stageSoundManager == null || InputIsLocked())
-		{
-			return;
-		}
-
-		var soundEffectType = MovementVector == Vector2.zero ? SoundEffectType.PlayerRobotIdle : SoundEffectType.PlayerRobotMovement;
-		
-		stageSoundManager.PlaySound(soundEffectType);
 	}
 
 	private void OnMove(InputValue inputValue)
 	{
-		if(InputIsLocked())
+		if(!enabled)
 		{
 			return;
 		}
@@ -45,9 +31,21 @@ public class PlayerRobotEntityInput : MonoBehaviour
 		PlayMovementSoundIfPossible();
 	}
 
+	private void PlayMovementSoundIfPossible()
+	{
+		if(!enabled || stageSoundManager == null)
+		{
+			return;
+		}
+
+		var soundEffectType = MovementVector == Vector2.zero ? SoundEffectType.PlayerRobotIdle : SoundEffectType.PlayerRobotMovement;
+		
+		stageSoundManager.PlaySound(soundEffectType);
+	}
+
 	private void OnFire(InputValue inputValue)
 	{
-		if(robotEntityShootController != null && !InputIsLocked())
+		if(enabled && robotEntityShootController != null)
 		{
 			robotEntityShootController.FireBullet();
 		}
@@ -60,6 +58,4 @@ public class PlayerRobotEntityInput : MonoBehaviour
 			stageSceneFlowManager.PauseGameIfPossible();
 		}
 	}
-
-	private bool InputIsLocked() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
 }
