@@ -41,7 +41,7 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 			return;
 		}
 		
-		var playerData = playerRobotEntity.GetPlayerData();
+		var playerData = playerRobotEntity.GetPlayerRobotData();
 
 		if(playersDataManager != null && playerData != null)
 		{

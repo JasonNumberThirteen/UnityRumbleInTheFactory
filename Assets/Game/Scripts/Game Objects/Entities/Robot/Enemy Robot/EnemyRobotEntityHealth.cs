@@ -33,26 +33,26 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 			return;
 		}
 
-		ModifyPlayerDataIfPossible(sender);
+		ModifyPlayerRobotDataIfPossible(sender);
 		PlaySound();
 	}
 
-	private void ModifyPlayerDataIfPossible(GameObject sender)
+	private void ModifyPlayerRobotDataIfPossible(GameObject sender)
 	{
 		if(enemyRobotData == null || sender == null || !sender.TryGetComponent(out PlayerRobotEntity playerRobotEntity))
 		{
 			return;
 		}
 
-		var playerData = playerRobotEntity.GetPlayerData();
+		var playerRobotData = playerRobotEntity.GetPlayerRobotData();
 
-		if(playerData != null)
+		if(playerRobotData != null)
 		{
-			playerData.AddDefeatedEnemy(enemyRobotData);
+			playerRobotData.AddDefeatedEnemy(enemyRobotData);
 
 			if(playersDataManager != null)
 			{
-				playersDataManager.ModifyScore(playerData, enemyRobotData.GetPointsForDefeat(), gameObject);
+				playersDataManager.ModifyScore(playerRobotData, enemyRobotData.GetPointsForDefeat(), gameObject);
 			}
 		}
 	}

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerRobotEntitySpawner : EntitySpawner
 {
-	[SerializeField] private PlayerData playerData;
+	[SerializeField] private PlayerRobotData playerRobotData;
 	[SerializeField, Min(0f)] private float respawnDelay = 1f;
 
 	private PlayersDataManager playersDataManager;
@@ -35,21 +35,21 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 
 	private void Start()
 	{
-		if(playerData != null)
+		if(playerRobotData != null)
 		{
-			playerData.Spawner = this;
+			playerRobotData.Spawner = this;
 		}
 	}
 
 	private void AttemptToRespawn()
 	{
-		if(playerData != null && playerData.Lives > 0)
+		if(playerRobotData != null && playerRobotData.Lives > 0)
 		{
 			timer.ResetTimer();
 
 			if(playersDataManager != null)
 			{
-				playersDataManager.ModifyLives(playerData, -1);
+				playersDataManager.ModifyLives(playerRobotData, -1);
 			}
 		}
 		else if(playersDataManager != null)
@@ -60,9 +60,9 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 
 	private void OnEntitySpawned()
 	{
-		if(playerData != null)
+		if(playerRobotData != null)
 		{
-			playerData.ResetRank();
+			playerRobotData.ResetRank();
 		}
 	}
 }

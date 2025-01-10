@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerRobotEntity : RobotEntity
 {
-	[SerializeField] private PlayerData playerData;
+	[SerializeField] private PlayerRobotData playerRobotData;
 
 	private PlayersDataManager playersDataManager;
 	
@@ -10,15 +10,15 @@ public class PlayerRobotEntity : RobotEntity
 
 	public override void OnLifeBonusCollected(int lives)
 	{
-		var playerData = GetPlayerData();
+		var playerRobotData = GetPlayerRobotData();
 
-		if(playersDataManager != null && playerData != null)
+		if(playersDataManager != null && playerRobotData != null)
 		{
-			playersDataManager.ModifyLives(playerData, lives);
+			playersDataManager.ModifyLives(playerRobotData, lives);
 		}
 	}
 
-	public PlayerData GetPlayerData() => playerData;
+	public PlayerRobotData GetPlayerRobotData() => playerRobotData;
 
 	protected override void Awake()
 	{
@@ -29,9 +29,9 @@ public class PlayerRobotEntity : RobotEntity
 
 	private void OnDestroy()
 	{
-		if(playerData != null && playerData.Spawner != null)
+		if(playerRobotData != null && playerRobotData.Spawner != null)
 		{
-			playerData.Spawner.InitiateRespawn();
+			playerRobotData.Spawner.InitiateRespawn();
 		}
 	}
 }

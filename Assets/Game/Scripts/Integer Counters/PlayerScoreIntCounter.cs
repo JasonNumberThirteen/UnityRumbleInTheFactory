@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerScoreIntCounter : IntCounter
 {
-	[SerializeField] private PlayerData playerData;
+	[SerializeField] private PlayerRobotData playerRobotData;
 
 	private void Start()
 	{
-		if(playerData != null)
+		if(playerRobotData != null)
 		{
-			SetTo(playerData.Score);
+			SetTo(playerRobotData.Score);
 		}
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreUIManager : UIManager
 {
 	public ScorePointsRowsBuilder pointsRowsBuilder;
-	public PlayerData playerData;
+	public PlayerRobotData playerData;
 	public GameData gameData;
 	public RectTransformPositionController totalTextMover, horizontalLineMover, totalDefeatedEnemiesCounterMover;
 	public Timer enemyTypeSwitch, scoreCountTimer, sceneManagerTimer;

@@ -8,11 +8,11 @@ public class PlayerRobotEntityRankController : RobotEntityRankController
 	
 	public override void IncreaseRank()
 	{
-		InvokeActionOnPlayerDataIfPossible(playerData =>
+		InvokeActionOnPlayerDataIfPossible(playerRobotData =>
 		{
 			if(playersDataManager != null)
 			{
-				playersDataManager.ModifyRank(playerData, 1);
+				playersDataManager.ModifyRank(playerRobotData, 1);
 			}
 		});
 	}
@@ -60,14 +60,14 @@ public class PlayerRobotEntityRankController : RobotEntityRankController
 		rankChangedEvent?.Invoke(CurrentRank);
 	}
 
-	private void InvokeActionOnPlayerDataIfPossible(Action<PlayerData> action)
+	private void InvokeActionOnPlayerDataIfPossible(Action<PlayerRobotData> action)
 	{
 		if(robotEntity is not PlayerRobotEntity playerRobotEntity)
 		{
 			return;
 		}
 		
-		var playerData = playerRobotEntity.GetPlayerData();
+		var playerData = playerRobotEntity.GetPlayerRobotData();
 
 		if(playerData != null)
 		{

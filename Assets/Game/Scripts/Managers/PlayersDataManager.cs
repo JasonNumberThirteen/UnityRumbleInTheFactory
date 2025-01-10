@@ -20,59 +20,59 @@ public class PlayersDataManager : MonoBehaviour
 		}
 	}
 
-	public void ModifyScore(PlayerData playerData, int score, GameObject go)
+	public void ModifyScore(PlayerRobotData playerRobotData, int score, GameObject go)
 	{
-		if(playerData == null)
+		if(playerRobotData == null)
 		{
 			return;
 		}
 
-		var previousScore = playerData.Score;
+		var previousScore = playerRobotData.Score;
 
-		playerData.Score += score;
+		playerRobotData.Score += score;
 
-		if(playerData.Score != previousScore)
+		if(playerRobotData.Score != previousScore)
 		{
-			AddLifeIfPossible(playerData);
+			AddLifeIfPossible(playerRobotData);
 
 			if(gameData != null)
 			{
-				gameData.SetHighScoreIfPossible(playerData.Score, () => ModifyLives(playerData, 1));
+				gameData.SetHighScoreIfPossible(playerRobotData.Score, () => ModifyLives(playerRobotData, 1));
 			}
 			
 			playerScoreChangedEvent?.Invoke(score, go);
 		}
 	}
 
-	public void ModifyLives(PlayerData playerData, int lives)
+	public void ModifyLives(PlayerRobotData playerRobotData, int lives)
 	{
-		if(playerData == null)
+		if(playerRobotData == null)
 		{
 			return;
 		}
 
-		var previousLives = playerData.Lives;
+		var previousLives = playerRobotData.Lives;
 
-		playerData.Lives += lives;
+		playerRobotData.Lives += lives;
 
-		if(playerData.Lives != previousLives)
+		if(playerRobotData.Lives != previousLives)
 		{
 			playerLivesChangedEvent?.Invoke();
 		}
 	}
 
-	public void ModifyRank(PlayerData playerData, int ranks)
+	public void ModifyRank(PlayerRobotData playerRobotData, int ranks)
 	{
-		if(playerData == null)
+		if(playerRobotData == null)
 		{
 			return;
 		}
 
-		var previousRank = playerData.RankNumber;
+		var previousRank = playerRobotData.RankNumber;
 
-		playerData.RankNumber += ranks;
+		playerRobotData.RankNumber += ranks;
 
-		if(playerData.RankNumber != previousRank)
+		if(playerRobotData.RankNumber != previousRank)
 		{
 			playerRankChangedEvent?.Invoke();
 		}
@@ -84,19 +84,19 @@ public class PlayersDataManager : MonoBehaviour
 		
 		if(playersListData != null)
 		{
-			playersListData.ForEach(playerData => playerData.ResetDefeatedEnemies());
+			playersListData.ForEach(playerRobotData => playerRobotData.ResetDefeatedEnemies());
 		}
 	}
 
-	private void AddLifeIfPossible(PlayerData playerData)
+	private void AddLifeIfPossible(PlayerRobotData playerRobotData)
 	{
-		if(playerData == null || playerData.Score < playerData.BonusLifeThreshold)
+		if(playerRobotData == null || playerRobotData.Score < playerRobotData.BonusLifeThreshold)
 		{
 			return;
 		}
 		
-		ModifyLives(playerData, 1);
-		playerData.IncreaseBonusLifeThreshold();
-		AddLifeIfPossible(playerData);
+		ModifyLives(playerRobotData, 1);
+		playerRobotData.IncreaseBonusLifeThreshold();
+		AddLifeIfPossible(playerRobotData);
 	}
 }

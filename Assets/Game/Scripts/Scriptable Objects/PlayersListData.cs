@@ -6,12 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Players List Data")]
 public class PlayersListData : ScriptableObject
 {
-	[SerializeField] private List<PlayerData> playersData = new();
+	[SerializeField] private List<PlayerRobotData> playerRobotsData = new();
 
-	public bool Any(Func<PlayerData, bool> func) => playersData.Any(func);
+	public bool Any(Func<PlayerRobotData, bool> func) => playerRobotsData.Any(func);
 
-	public void ForEach(Action<PlayerData> action)
+	public void ForEach(Action<PlayerRobotData> action)
 	{
-		playersData.ForEach(action);
+		playerRobotsData.ForEach(action);
 	}
 }

@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: playerData
       value: 
       objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+    - target: {fileID: -123051218500741914, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     - target: {fileID: 467415255727282904, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
       value: 0.5

@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "Game/Player Data")]
-public class PlayerData : RobotData<PlayerRobotRank>
+[CreateAssetMenu(menuName = "Game/Player Robot Data")]
+public class PlayerRobotData : RobotData<PlayerRobotRank>
 {
 	public Dictionary<EnemyRobotData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyRobotData, int>();
 	public PlayerRobotEntitySpawner Spawner {get; set;}

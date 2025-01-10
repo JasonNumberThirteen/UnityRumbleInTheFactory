@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: playerData
       value: 
       objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+    - target: {fileID: 8052873871349828433, guid: e58604b6a861cba438803f742ef3a312, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     - target: {fileID: 9090050460303453454, guid: e58604b6a861cba438803f742ef3a312, type: 3}
       propertyPath: m_Name
       value: Player1LivesCounterImageUI

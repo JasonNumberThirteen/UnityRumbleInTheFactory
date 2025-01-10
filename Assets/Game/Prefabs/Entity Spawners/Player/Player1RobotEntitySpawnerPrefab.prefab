@@ -20,9 +20,13 @@ PrefabInstance:
       propertyPath: entityPrefab
       value: 
       objectReference: {fileID: 7717036919670727948, guid: 08170033af8b36347bc9be3e9859cd27, type: 3}
+    - target: {fileID: -3441933974343905419, guid: 8c8fb64fa2ecda7478a5e3fe0762d999, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     - target: {fileID: 2335937406916345273, guid: 8c8fb64fa2ecda7478a5e3fe0762d999, type: 3}
       propertyPath: m_Name
-      value: Player1SpawnerPrefab
+      value: Player1RobotEntitySpawnerPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 4236165176561888054, guid: 8c8fb64fa2ecda7478a5e3fe0762d999, type: 3}
       propertyPath: m_RootOrder

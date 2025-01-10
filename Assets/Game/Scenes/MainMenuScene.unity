@@ -1790,7 +1790,7 @@ MonoBehaviour:
   valueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  playerData: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
+  playerRobotData: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
 --- !u!114 &1601528637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1916,7 +1916,7 @@ MonoBehaviour:
   valueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+  playerRobotData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
 --- !u!114 &1633096520
 MonoBehaviour:
   m_ObjectHideFlags: 0

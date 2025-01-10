@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerLivesCounterPanelUI : CounterPanelUI
 {
-	[SerializeField] private PlayerData playerData;
+	[SerializeField] private PlayerRobotData playerRobotData;
 
 	private PlayersDataManager playersDataManager;
 
@@ -45,9 +45,9 @@ public class PlayerLivesCounterPanelUI : CounterPanelUI
 
 	private void UpdateCounterIfPossible()
 	{
-		if(playerData != null && intCounter != null)
+		if(playerRobotData != null && intCounter != null)
 		{
-			intCounter.SetTo(playerData.Lives);
+			intCounter.SetTo(playerRobotData.Lives);
 		}
 	}
 }

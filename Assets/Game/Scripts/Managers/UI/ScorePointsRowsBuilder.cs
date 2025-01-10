@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScorePointsRowsBuilder : MonoBehaviour
 {
-	public PlayerData playerData;
+	public PlayerRobotData playerData;
 	public GameData gameData;
 	public RectTransform parent;
 	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, rightArrow, enemyType, enemyTypePointsCounter;
