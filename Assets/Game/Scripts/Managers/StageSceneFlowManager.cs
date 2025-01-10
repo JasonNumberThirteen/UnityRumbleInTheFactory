@@ -123,6 +123,11 @@ public class StageSceneFlowManager : MonoBehaviour
 
 	private void OnStageStateChanged(StageState stageState)
 	{
+		if(gameData != null && !gameData.GameIsOver && (stageState == StageState.Interrupted || stageState == StageState.Over))
+		{
+			gameData.SetGameAsOver();
+		}
+		
 		if(stageState == StageState.Interrupted)
 		{
 			timer.duration = delayAfterInterrupting;
@@ -139,11 +144,6 @@ public class StageSceneFlowManager : MonoBehaviour
 
 	private void OnNukeDestroyed()
 	{
-		if(gameData != null)
-		{
-			gameData.SetGameAsOver();
-		}
-		
 		if(stageStateManager != null)
 		{
 			stageStateManager.SetStateTo(StageState.Interrupted);
