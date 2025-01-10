@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerRobotEntity))]
-public class PlayerRobotEntityRankController : RobotEntityRankController<PlayerRobotRank>
+public class PlayerRobotEntityRankController : RobotEntityRankController
 {
 	private PlayersDataManager playersDataManager;
 	

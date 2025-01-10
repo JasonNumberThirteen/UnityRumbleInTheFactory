@@ -35,9 +35,9 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		}
 	}
 
-	private void OnRankChanged(PlayerRobotRank playerRobotRank)
+	private void OnRankChanged(RobotRank robotRank)
 	{
-		SetMovementSpeed(playerRobotRank.GetMovementSpeed());
+		SetMovementSpeed(robotRank.GetMovementSpeed());
 	}
 
 	private void Update()

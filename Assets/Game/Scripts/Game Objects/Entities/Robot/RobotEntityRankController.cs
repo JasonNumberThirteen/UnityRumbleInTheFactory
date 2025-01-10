@@ -1,8 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(RobotEntity))]
-public abstract class RobotEntityRankController<T> : EntityRankController<T> where T : RobotRank
+public abstract class RobotEntityRankController : MonoBehaviour
 {
+	public UnityEvent<RobotRank> rankChangedEvent;
+	
+	public RobotRank CurrentRank {get; set;}
+
 	protected RobotEntity robotEntity;
 
 	public abstract void IncreaseRank();

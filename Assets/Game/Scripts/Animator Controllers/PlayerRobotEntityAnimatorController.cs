@@ -31,8 +31,8 @@ public class PlayerRobotEntityAnimatorController : RobotEntityAnimatorController
 		}
 	}
 
-	private void OnRankChanged(PlayerRobotRank playerRobotRank)
+	private void OnRankChanged(RobotRank robotRank)
 	{
-		animator.runtimeAnimatorController = playerRobotRank.GetRuntimeAnimatorController();
+		animator.runtimeAnimatorController = robotRank.GetRuntimeAnimatorController();
 	}
 }

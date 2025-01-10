@@ -31,8 +31,8 @@ public class PlayerRobotEntityHealth : RobotEntityHealth
 		}
 	}
 
-	private void OnRankChanged(PlayerRobotRank playerRobotRank)
+	private void OnRankChanged(RobotRank robotRank)
 	{
-		CurrentHealth = playerRobotRank.GetHealth();
+		CurrentHealth = robotRank.GetHealth();
 	}
 }

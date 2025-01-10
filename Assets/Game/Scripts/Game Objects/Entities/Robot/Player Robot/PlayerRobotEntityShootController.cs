@@ -43,5 +43,13 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		bulletEntity.SetCanDestroyMetal(playerRobotEntityRankController.CurrentRank.CanDestroyMetal());
 	}
 
-	private bool ReachedBulletsLimitAtOnce() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= playerRobotEntityRankController.CurrentRank.GetBulletsLimitAtOnce();
+	private bool ReachedBulletsLimitAtOnce()
+	{
+		if(playerRobotEntityRankController.CurrentRank is not PlayerRobotRank playerRobotRank)
+		{
+			return false;
+		}
+
+		return GameObject.FindGameObjectsWithTag(bulletTag).Length >= playerRobotRank.GetBulletsLimitAtOnce();
+	}
 }
