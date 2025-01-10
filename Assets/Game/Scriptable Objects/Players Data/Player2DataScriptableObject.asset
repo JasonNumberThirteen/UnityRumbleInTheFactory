@@ -12,33 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb88cf406c132814ba01fa96e5037bab, type: 3}
   m_Name: Player2DataScriptableObject
   m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   initialLives: 2
   maxLives: 9
   initialBonusLifeThreshold: 20000
-  initialRank: 1
+  initialRankNumber: 1
   ranks:
   - health: 1
     damage: 1
-    bulletsLimitAtOnce: 1
     movementSpeed: 3
     bulletSpeed: 6.5
     canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 22100000, guid: e0acb152246c90f42a2cff59ed526379, type: 2}
+    bulletsLimitAtOnce: 1
   - health: 1
     damage: 1
-    bulletsLimitAtOnce: 1
     movementSpeed: 3.25
     bulletSpeed: 7.5
     canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 22100000, guid: cce599784573f9f46bc45ae22bdc9093, type: 2}
+    bulletsLimitAtOnce: 1
   - health: 1
     damage: 1
-    bulletsLimitAtOnce: 2
     movementSpeed: 3.4
     bulletSpeed: 8
     canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 22100000, guid: ca6e9472847a209469337489aadc82b0, type: 2}
+    bulletsLimitAtOnce: 2
   - health: 2
     damage: 2
-    bulletsLimitAtOnce: 2
     movementSpeed: 3.5
     bulletSpeed: 8
     canDestroyMetal: 1
+    runtimeAnimatorController: {fileID: 22100000, guid: 06b82a2a2b5e3c0478a140495b0066ed, type: 2}
+    bulletsLimitAtOnce: 2

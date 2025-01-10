@@ -22,22 +22,26 @@ MonoBehaviour:
     movementSpeed: 3
     bulletSpeed: 6.5
     canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 9100000, guid: 411496a2918f8c54ea48afedd2e4eadc, type: 2}
     bulletsLimitAtOnce: 1
   - health: 1
     damage: 1
     movementSpeed: 3.25
     bulletSpeed: 7.5
     canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 22100000, guid: b5ea70e0115eb004593e8febb0e46e35, type: 2}
     bulletsLimitAtOnce: 1
   - health: 1
     damage: 1
     movementSpeed: 3.4
     bulletSpeed: 8
     canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 22100000, guid: 7fee2198f0021e242a79ee96e75ee27f, type: 2}
     bulletsLimitAtOnce: 2
   - health: 2
     damage: 2
     movementSpeed: 3.5
     bulletSpeed: 8
     canDestroyMetal: 1
+    runtimeAnimatorController: {fileID: 22100000, guid: c5450b0c80eee9a4592f9348c42176a9, type: 2}
     bulletsLimitAtOnce: 2
