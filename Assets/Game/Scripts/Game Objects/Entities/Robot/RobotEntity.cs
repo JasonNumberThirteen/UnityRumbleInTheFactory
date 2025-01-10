@@ -7,6 +7,14 @@ public abstract class RobotEntity : MonoBehaviour
 	public abstract bool IsFriendly();
 	public abstract void OnLifeBonusCollected(int lives);
 
+	public void OnRankBonusCollected()
+	{
+		if(TryGetComponent(out PlayerRobotEntityRankController playerRobotEntityRankController))
+		{
+			playerRobotEntityRankController.IncreaseRank();
+		}
+	}
+
 	public void ActivateShield(float duration)
 	{
 		if(robotEntityShield != null)
