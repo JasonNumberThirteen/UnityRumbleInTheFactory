@@ -1,18 +1,17 @@
 using UnityEngine;
 
+[RequireComponent(typeof(RobotEntityRankController))]
 public abstract class RobotEntity : MonoBehaviour
 {
 	private RobotEntityShield robotEntityShield;
+	private RobotEntityRankController robotEntityRankController;
 	
 	public abstract bool IsFriendly();
 	public abstract void OnLifeBonusCollected(int lives);
 
 	public void OnRankBonusCollected()
 	{
-		if(TryGetComponent(out PlayerRobotEntityRankController playerRobotEntityRankController))
-		{
-			playerRobotEntityRankController.IncreaseRank();
-		}
+		robotEntityRankController.IncreaseRank();
 	}
 
 	public void ActivateShield(float duration)
@@ -26,5 +25,6 @@ public abstract class RobotEntity : MonoBehaviour
 	protected virtual void Awake()
 	{
 		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
+		robotEntityRankController = GetComponent<RobotEntityRankController>();
 	}
 }

@@ -1,77 +1,37 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerRobotEntity))]
 public class PlayerRobotEntityRankController : RobotEntityRankController
 {
-	private PlayersDataManager playersDataManager;
+	public RobotRank CurrentRank {get; private set;}
+
+	private PlayerRobotEntity playerRobotEntity;
 	
 	public override void IncreaseRank()
 	{
-		InvokeActionOnPlayerDataIfPossible(playerRobotData =>
-		{
-			if(playersDataManager != null)
-			{
-				playersDataManager.ModifyRank(playerRobotData, 1);
-			}
-		});
+		base.IncreaseRank();
+		UpdateCurrentRankIfPossible();
 	}
 
-	protected override void Awake()
+	private void Awake()
 	{
-		base.Awake();
-		
-		playersDataManager = FindAnyObjectByType<PlayersDataManager>();
-
-		RegisterToListeners(true);
+		playerRobotEntity = GetComponent<PlayerRobotEntity>();
 	}
 
 	private void Start()
 	{
-		OnPlayerRankChanged();
+		UpdateCurrentRankIfPossible();
 	}
 
-	private void OnDestroy()
+	private void UpdateCurrentRankIfPossible()
 	{
-		RegisterToListeners(false);
-	}
+		var playerRobotData = playerRobotEntity.GetPlayerRobotData();
 
-	private void RegisterToListeners(bool register)
-	{
-		if(register)
+		if(playerRobotData != null)
 		{
-			if(playersDataManager != null)
-			{
-				playersDataManager.playerRankChangedEvent.AddListener(OnPlayerRankChanged);
-			}
-		}
-		else
-		{
-			if(playersDataManager != null)
-			{
-				playersDataManager.playerRankChangedEvent.RemoveListener(OnPlayerRankChanged);
-			}
-		}
-	}
+			CurrentRank = playerRobotData.GetRank();
 
-	private void OnPlayerRankChanged()
-	{
-		InvokeActionOnPlayerDataIfPossible(playerData => CurrentRank = playerData.GetRank());
-		rankChangedEvent?.Invoke(CurrentRank);
-	}
-
-	private void InvokeActionOnPlayerDataIfPossible(Action<PlayerRobotData> action)
-	{
-		if(robotEntity is not PlayerRobotEntity playerRobotEntity)
-		{
-			return;
-		}
-		
-		var playerData = playerRobotEntity.GetPlayerRobotData();
-
-		if(playerData != null)
-		{
-			action?.Invoke(playerData);
+			rankChangedEvent?.Invoke(CurrentRank);
 		}
 	}
 }

@@ -5,7 +5,6 @@ public class PlayersDataManager : MonoBehaviour
 {
 	public UnityEvent<int, GameObject> playerScoreChangedEvent;
 	public UnityEvent playerLivesChangedEvent;
-	public UnityEvent playerRankChangedEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayersListData playersListData;
@@ -58,23 +57,6 @@ public class PlayersDataManager : MonoBehaviour
 		if(playerRobotData.Lives != previousLives)
 		{
 			playerLivesChangedEvent?.Invoke();
-		}
-	}
-
-	public void ModifyRank(PlayerRobotData playerRobotData, int ranks)
-	{
-		if(playerRobotData == null)
-		{
-			return;
-		}
-
-		var previousRank = playerRobotData.RankNumber;
-
-		playerRobotData.RankNumber += ranks;
-
-		if(playerRobotData.RankNumber != previousRank)
-		{
-			playerRankChangedEvent?.Invoke();
 		}
 	}
 

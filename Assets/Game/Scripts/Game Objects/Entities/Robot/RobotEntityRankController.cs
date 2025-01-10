@@ -1,19 +1,21 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(RobotEntity))]
-public abstract class RobotEntityRankController : MonoBehaviour
+public class RobotEntityRankController : MonoBehaviour
 {
-	public UnityEvent<RobotRank> rankChangedEvent;
+	[SerializeField] private RobotData robotData;
 	
-	public RobotRank CurrentRank {get; set;}
+	public UnityEvent<RobotRank> rankChangedEvent;
 
-	protected RobotEntity robotEntity;
-
-	public abstract void IncreaseRank();
-
-	protected virtual void Awake()
+	public virtual void IncreaseRank()
 	{
-		robotEntity = GetComponent<RobotEntity>();
+		if(robotData == null)
+		{
+			return;
+		}
+
+		++robotData.RankNumber;
+		
+		rankChangedEvent?.Invoke(robotData.GetRank());
 	}
 }

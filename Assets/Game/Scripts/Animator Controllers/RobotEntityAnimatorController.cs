@@ -1,12 +1,45 @@
 using UnityEngine;
 
+[RequireComponent(typeof(RobotEntityRankController))]
 public class RobotEntityAnimatorController : EntityAnimatorController
 {
 	[SerializeField] private VerticalDirection initialVerticalDirection = VerticalDirection.Up;
 
 	private float movementSpeed;
+	private RobotEntityRankController robotEntityRankController;
 	
 	private readonly string MOVEMENT_SPEED_PARAMETER_NAME = "MovementSpeed";
+
+	protected override void Awake()
+	{
+		base.Awake();
+		
+		robotEntityRankController = GetComponent<RobotEntityRankController>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			robotEntityRankController.rankChangedEvent.AddListener(OnRankChanged);
+		}
+		else
+		{
+			robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
+		}
+	}
+
+	private void OnRankChanged(RobotRank robotRank)
+	{
+		animator.runtimeAnimatorController = robotRank.GetRuntimeAnimatorController();
+	}
 
 	private void Start()
 	{

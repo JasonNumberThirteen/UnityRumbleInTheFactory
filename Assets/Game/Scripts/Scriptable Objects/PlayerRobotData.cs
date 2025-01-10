@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Game/Player Robot Data")]
-public class PlayerRobotData : RobotData<PlayerRobotRank>
+public class PlayerRobotData : RobotData
 {
 	public Dictionary<EnemyRobotData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyRobotData, int>();
 	public PlayerRobotEntitySpawner Spawner {get; set;}
@@ -24,7 +24,14 @@ public class PlayerRobotData : RobotData<PlayerRobotRank>
 		get => bonusLifeThreshold;
 		set => bonusLifeThreshold = Mathf.Clamp(value, 0, int.MaxValue);
 	}
+
+	public override int RankNumber
+	{
+		get => rankNumber;
+		set => rankNumber = Mathf.Clamp(value, 1, ranks != null && ranks.Length > 0 ? ranks.Length : 1);
+	}
 	
+	[SerializeField] private PlayerRobotRank[] ranks;
 	[SerializeField, Min(0)] private int initialLives = 2;
 	[SerializeField, Min(0)] private int maxLives = 9;
 	[SerializeField, Min(1)] private int initialBonusLifeThreshold = 20000;
@@ -33,6 +40,9 @@ public class PlayerRobotData : RobotData<PlayerRobotRank>
 	private int score;
 	private int lives;
 	private int bonusLifeThreshold;
+	private int rankNumber;
+
+	public override RobotRank GetRank() => ranks[RankNumber - 1];
 
 	public void ResetData()
 	{

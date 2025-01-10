@@ -12,20 +12,6 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 		Invoke(nameof(AttemptToRespawn), respawnDelay);
 	}
 
-	protected override void RegisterToListeners(bool register)
-	{
-		base.RegisterToListeners(register);
-		
-		if(register)
-		{
-			entitySpawnedEvent.AddListener(OnEntitySpawned);
-		}
-		else
-		{
-			entitySpawnedEvent.RemoveListener(OnEntitySpawned);
-		}
-	}
-
 	protected override void Awake()
 	{
 		base.Awake();
@@ -46,6 +32,7 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 		if(playerRobotData != null && playerRobotData.Lives > 0)
 		{
 			timer.ResetTimer();
+			playerRobotData.ResetRank();
 
 			if(playersDataManager != null)
 			{
@@ -55,14 +42,6 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 		else if(playersDataManager != null)
 		{
 			playersDataManager.CheckPlayersLives();
-		}
-	}
-
-	private void OnEntitySpawned()
-	{
-		if(playerRobotData != null)
-		{
-			playerRobotData.ResetRank();
 		}
 	}
 }

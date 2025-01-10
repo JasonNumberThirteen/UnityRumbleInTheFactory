@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8615373432809089523, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
+      propertyPath: robotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     - target: {fileID: -2978857606154982737, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_Actions
       value: 

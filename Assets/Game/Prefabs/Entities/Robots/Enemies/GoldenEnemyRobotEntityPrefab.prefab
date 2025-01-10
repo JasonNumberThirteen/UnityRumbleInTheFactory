@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: ddf9bc2ead5f0624381635a9f06ba7d1, type: 2}
+    - target: {fileID: 6851361470305692488, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
+      propertyPath: robotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
     - target: {fileID: 8756875787931960348, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: m_Size.x
       value: 0.75

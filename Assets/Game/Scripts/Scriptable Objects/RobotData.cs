@@ -1,16 +1,8 @@
 using UnityEngine;
 
-public abstract class RobotData<T> : ScriptableObject where T : RobotRank
+public abstract class RobotData : ScriptableObject
 {
-	public int RankNumber
-	{
-		get => rankNumber;
-		set => rankNumber = Mathf.Clamp(value, 1, ranks != null && ranks.Length > 0 ? ranks.Length : 1);
-	}
+	public abstract int RankNumber {get; set;}
 
-	[SerializeField] private T[] ranks;
-
-	private int rankNumber;
-
-	public T GetRank() => ranks[RankNumber - 1];
+	public abstract RobotRank GetRank();
 }
