@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(RobotEntityShootController))]
-public class PlayerRobotInput : MonoBehaviour
+public class PlayerRobotEntityInput : MonoBehaviour
 {
 	public Vector2 MovementVector {get; private set;}
 	public Vector2 LastMovementVector {get; private set;}

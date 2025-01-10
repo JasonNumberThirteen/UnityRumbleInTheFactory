@@ -1,17 +1,17 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerRobotInput))]
+[RequireComponent(typeof(PlayerRobotEntityInput))]
 public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
 	public bool IsSliding {get; set;}
 
-	private PlayerRobotInput playerRobotInput;
+	private PlayerRobotEntityInput playerRobotEntityInput;
 
 	protected override void Awake()
 	{
 		base.Awake();
 
-		playerRobotInput = GetComponent<PlayerRobotInput>();
+		playerRobotEntityInput = GetComponent<PlayerRobotEntityInput>();
 	}
 
 	private void Update()
@@ -32,7 +32,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void UpdateCurrentMovementDirection()
 	{
-		CurrentMovementDirection = IsSliding ? playerRobotInput.LastMovementVector : GetMovementDirection();
+		CurrentMovementDirection = IsSliding ? playerRobotEntityInput.LastMovementVector : GetMovementDirection();
 	}
 
 	private Vector2 GetMovementDirection()
@@ -44,8 +44,8 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private Vector2 GetMovementVector()
 	{
-		var x = Mathf.RoundToInt(playerRobotInput.MovementVector.x);
-		var y = Mathf.RoundToInt(playerRobotInput.MovementVector.y);
+		var x = Mathf.RoundToInt(playerRobotEntityInput.MovementVector.x);
+		var y = Mathf.RoundToInt(playerRobotEntityInput.MovementVector.y);
 
 		return new Vector2(x, y);
 	}
