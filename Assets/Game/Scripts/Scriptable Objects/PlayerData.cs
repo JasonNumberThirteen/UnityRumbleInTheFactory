@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Game/Player Data")]
 public class PlayerData : RobotData<PlayerRobotRank>
 {
-	public Dictionary<EnemyData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyData, int>();
+	public Dictionary<EnemyRobotData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyRobotData, int>();
 	public PlayerRobotEntitySpawner Spawner {get; set;}
 	
 	public int Score
@@ -54,15 +54,15 @@ public class PlayerData : RobotData<PlayerRobotRank>
 		DefeatedEnemies.Clear();
 	}
 
-	public void AddDefeatedEnemy(EnemyData enemyData)
+	public void AddDefeatedEnemy(EnemyRobotData enemyRobotData)
 	{
-		if(DefeatedEnemies.ContainsKey(enemyData))
+		if(DefeatedEnemies.ContainsKey(enemyRobotData))
 		{
-			++DefeatedEnemies[enemyData];
+			++DefeatedEnemies[enemyRobotData];
 		}
 		else
 		{
-			DefeatedEnemies.Add(enemyData, 1);
+			DefeatedEnemies.Add(enemyRobotData, 1);
 		}
 	}
 

@@ -14,7 +14,7 @@ public class ScoreUIManager : UIManager
 
 	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore, defeatedEnemies, scorePerEnemy;
 	private TextMeshProUGUI currentDefeatedEnemiesCounter, currentEnemyTypePointsCounter;
-	private EnemyData[] defeatedEnemiesData;
+	private EnemyRobotData[] defeatedEnemiesData;
 	private int[] defeatedEnemiesCount;
 
 	public void GoToNextEnemyType()

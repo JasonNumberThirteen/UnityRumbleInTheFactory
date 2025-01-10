@@ -5,7 +5,7 @@ public class StageEnemyTypesLoadingManager : MonoBehaviour
 	public EnemyType[] EnemyTypes {get; private set;}
 	public GameObject[] EnemyPrefabs {get; private set;}
 
-	[SerializeField] private EnemyData[] enemiesData;
+	[SerializeField] private EnemyRobotData[] enemyRobotsData;
 	[SerializeField] private GameData gameData;
 
 	private readonly char ENEMY_BONUS_TYPE_PREFIX = 'B';
@@ -26,7 +26,7 @@ public class StageEnemyTypesLoadingManager : MonoBehaviour
 		{
 			var index = EnemyTypes[i].Index;
 			
-			EnemyPrefabs[i] = enemiesData[index].GetPrefab();
+			EnemyPrefabs[i] = enemyRobotsData[index].GetPrefab();
 		}
 	}
 

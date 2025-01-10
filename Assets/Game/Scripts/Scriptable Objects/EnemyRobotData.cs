@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Game/Enemy Data")]
-public class EnemyData : RobotData<RobotRank>
+[CreateAssetMenu(menuName = "Game/Enemy Robot Data")]
+public class EnemyRobotData : RobotData<RobotRank>
 {
 	[SerializeField] private GameObject prefab;
 	[SerializeField, Min(0)] private int pointsForDefeat;

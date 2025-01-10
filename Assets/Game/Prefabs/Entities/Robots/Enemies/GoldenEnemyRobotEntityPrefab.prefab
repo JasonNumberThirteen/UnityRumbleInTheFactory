@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: initialHealth
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -7789898313100651961, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
+      propertyPath: enemyRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
     - target: {fileID: -2978630073550354148, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: movementSpeed
       value: 0.5
