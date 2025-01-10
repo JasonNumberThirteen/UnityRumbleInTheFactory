@@ -5,16 +5,14 @@ using UnityEngine;
 public class RobotRank
 {
 	[SerializeField, Min(1)] private int health;
-	[SerializeField, Min(1)] private int damage;
 	[SerializeField, Min(0.01f)] private float movementSpeed;
-	[SerializeField, Min(0.01f)] private float bulletSpeed;
-	[SerializeField] private bool canDestroyMetal;
+	[SerializeField] private BulletStats bulletStats;
 	[SerializeField] private RuntimeAnimatorController runtimeAnimatorController;
 
 	public int GetHealth() => health;
-	public int GetDamage() => damage;
 	public float GetMovementSpeed() => movementSpeed;
-	public float GetBulletSpeed() => bulletSpeed;
-	public bool CanDestroyMetal() => canDestroyMetal;
+	public int GetDamage() => bulletStats.GetDamage();
+	public float GetBulletSpeed() => bulletStats.GetBulletSpeed();
+	public bool CanDestroyMetal() => bulletStats.CanDestroyMetal();
 	public RuntimeAnimatorController GetRuntimeAnimatorController() => runtimeAnimatorController;
 }

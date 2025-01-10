@@ -22,19 +22,17 @@ public class BulletEntity : MonoBehaviour
 		entityMovementController.CurrentMovementDirection = movementDirection;
 	}
 
-	public void SetDamage(int damage)
+	public void SetStats(BulletStats bulletStats)
 	{
-		this.damage = damage;
+		damage = bulletStats.GetDamage();
+		canDestroyMetal = bulletStats.CanDestroyMetal();
+
+		entityMovementController.SetMovementSpeed(bulletStats.GetBulletSpeed());
 	}
 
 	public void SetMovementSpeed(float movementSpeed)
 	{
 		entityMovementController.SetMovementSpeed(movementSpeed);
-	}
-
-	public void SetCanDestroyMetal(bool canDestroyMetal)
-	{
-		this.canDestroyMetal = canDestroyMetal;
 	}
 
 	public void SetParent(GameObject parent)

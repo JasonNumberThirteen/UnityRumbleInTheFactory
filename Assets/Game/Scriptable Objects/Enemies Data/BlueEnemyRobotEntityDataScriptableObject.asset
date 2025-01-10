@@ -17,8 +17,9 @@ MonoBehaviour:
   displayInScoreSceneSprite: {fileID: -1056247388, guid: cb86ba34a2897e049a3a62fafd953cb8, type: 3}
   ranks:
   - health: 4
-    damage: 1
     movementSpeed: 0.5
-    bulletSpeed: 6.5
-    canDestroyMetal: 0
+    bulletStats:
+      damage: 1
+      bulletSpeed: 6.5
+      canDestroyMetal: 0
     runtimeAnimatorController: {fileID: 22100000, guid: ddf9bc2ead5f0624381635a9f06ba7d1, type: 2}

@@ -6,9 +6,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 	[SerializeField] private string bulletTag;
 	
 	private PlayerRobotEntityRankController playerRobotEntityRankController;
-	private int damage;
-	private float bulletSpeed;
-	private bool canDestroyMetal;
+	private BulletStats bulletStats;
 	private int bulletsLimitAtOnce;
 
 	public override void FireBullet()
@@ -38,15 +36,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 	protected override void SetupBulletEntity(BulletEntity bulletEntity)
 	{
 		base.SetupBulletEntity(bulletEntity);
-
-		if(bulletEntity == null)
-		{
-			return;
-		}
-
-		bulletEntity.SetDamage(damage);
-		bulletEntity.SetMovementSpeed(bulletSpeed);
-		bulletEntity.SetCanDestroyMetal(canDestroyMetal);
+		bulletEntity.SetStats(bulletStats);
 	}
 
 	private void OnDestroy()
@@ -68,9 +58,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	private void OnRankChanged(RobotRank robotRank)
 	{
-		damage = robotRank.GetDamage();
-		bulletSpeed = robotRank.GetBulletSpeed();
-		canDestroyMetal = robotRank.CanDestroyMetal();
+		bulletStats = new BulletStats(robotRank.GetDamage(), robotRank.GetBulletSpeed(), robotRank.CanDestroyMetal());
 
 		if(robotRank is PlayerRobotRank playerRobotRank)
 		{
