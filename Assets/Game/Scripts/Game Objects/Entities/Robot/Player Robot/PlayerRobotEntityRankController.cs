@@ -2,14 +2,11 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerRobotEntity))]
-public class PlayerRobotEntityRankController : MonoBehaviour
+public class PlayerRobotEntityRankController : RobotEntityRankController<PlayerRobotRank>
 {
-	public PlayerRobotRank CurrentRank {get; private set;}
-
-	private PlayerRobotEntity playerRobotEntity;
 	private PlayersDataManager playersDataManager;
 	
-	public void IncreaseRank()
+	public override void IncreaseRank()
 	{
 		InvokeActionOnPlayerDataIfPossible(playerData =>
 		{
@@ -20,9 +17,10 @@ public class PlayerRobotEntityRankController : MonoBehaviour
 		});
 	}
 
-	private void Awake()
+	protected override void Awake()
 	{
-		playerRobotEntity = GetComponent<PlayerRobotEntity>();
+		base.Awake();
+		
 		playersDataManager = FindAnyObjectByType<PlayersDataManager>();
 
 		RegisterToListeners(true);
@@ -60,6 +58,7 @@ public class PlayerRobotEntityRankController : MonoBehaviour
 	{
 		InvokeActionOnPlayerDataIfPossible(playerData => CurrentRank = playerData.GetRank());
 		UpdateValuesUpgradeableByRobotRank();
+		rankChangedEvent?.Invoke(CurrentRank);
 	}
 
 	private void UpdateValuesUpgradeableByRobotRank()
@@ -74,6 +73,11 @@ public class PlayerRobotEntityRankController : MonoBehaviour
 
 	private void InvokeActionOnPlayerDataIfPossible(Action<PlayerData> action)
 	{
+		if(robotEntity is not PlayerRobotEntity playerRobotEntity)
+		{
+			return;
+		}
+		
 		var playerData = playerRobotEntity.GetPlayerData();
 
 		if(playerData != null)
