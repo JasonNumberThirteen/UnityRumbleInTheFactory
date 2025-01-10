@@ -835,10 +835,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelect:
+  optionSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onSubmit:
+  optionSubmittedEvent:
     m_PersistentCalls:
       m_Calls: []
   optionType: 2
@@ -976,10 +976,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelect:
+  optionSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onSubmit:
+  optionSubmittedEvent:
     m_PersistentCalls:
       m_Calls: []
   optionType: 1
@@ -1221,6 +1221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 5
   countFromTheStart: 1
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -1380,10 +1383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSelect:
+  optionSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onSubmit:
+  optionSubmittedEvent:
     m_PersistentCalls:
       m_Calls: []
   optionType: 3
