@@ -10,11 +10,11 @@ public class RobotEntityRankController : MonoBehaviour
 
 	public RobotData GetRobotData() => robotData;
 
-	public void IncreaseRank()
+	public void IncreaseRankBy(int ranks)
 	{
 		if(robotData != null)
 		{
-			SetRankNumber(robotData.RankNumber + 1);
+			SetRankNumber(robotData.RankNumber + ranks);
 		}
 	}
 

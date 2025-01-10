@@ -9,9 +9,9 @@ public abstract class RobotEntity : MonoBehaviour
 	public abstract bool IsFriendly();
 	public abstract void OnLifeBonusCollected(int lives);
 
-	public void OnRankBonusCollected()
+	public void OnRankBonusCollected(int ranks)
 	{
-		robotEntityRankController.IncreaseRank();
+		robotEntityRankController.IncreaseRankBy(ranks);
 	}
 
 	public void ActivateShield(float duration)
