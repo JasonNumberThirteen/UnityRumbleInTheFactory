@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EntityMovementController : MonoBehaviour, IUpgradeableByRobotRank
+public class EntityMovementController : MonoBehaviour
 {
 	public Vector2 CurrentMovementDirection {get; set;}
 
@@ -13,11 +13,6 @@ public class EntityMovementController : MonoBehaviour, IUpgradeableByRobotRank
 
 	public float GetMovementSpeed() => movementSpeed;
 	public bool CurrentMovementDirectionIsNone() => CurrentMovementDirection == Vector2.zero;
-
-	public virtual void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank)
-	{
-		movementSpeed = robotRank.GetMovementSpeed();
-	}
 
 	public void SetMovementSpeed(float movementSpeed)
 	{

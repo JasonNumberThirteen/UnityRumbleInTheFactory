@@ -5,5 +5,5 @@ public abstract class EntityRankController<T> : MonoBehaviour where T : RobotRan
 {
 	public UnityEvent<T> rankChangedEvent;
 	
-	public T CurrentRank {get; protected set;}
+	public T CurrentRank {get; set;}
 }

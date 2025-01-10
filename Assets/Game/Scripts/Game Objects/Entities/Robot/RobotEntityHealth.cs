@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EntityExploder))]
-public class RobotEntityHealth : MonoBehaviour, IUpgradeableByRobotRank
+public class RobotEntityHealth : MonoBehaviour
 {
 	public int CurrentHealth {get; protected set;}
 	
@@ -10,11 +10,6 @@ public class RobotEntityHealth : MonoBehaviour, IUpgradeableByRobotRank
 	protected StageSoundManager stageSoundManager;
 
 	private EntityExploder entityExploder;
-
-	public void UpdateValuesUpgradeableByRobotRank(RobotRank robotRank)
-	{
-		CurrentHealth = robotRank.GetHealth();
-	}
 
 	public virtual void TakeDamage(GameObject sender, int damage)
 	{

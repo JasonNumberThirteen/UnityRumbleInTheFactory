@@ -57,18 +57,7 @@ public class PlayerRobotEntityRankController : RobotEntityRankController<PlayerR
 	private void OnPlayerRankChanged()
 	{
 		InvokeActionOnPlayerDataIfPossible(playerData => CurrentRank = playerData.GetRank());
-		UpdateValuesUpgradeableByRobotRank();
 		rankChangedEvent?.Invoke(CurrentRank);
-	}
-
-	private void UpdateValuesUpgradeableByRobotRank()
-	{
-		var upgradeableByRobotRankComponents = GetComponents<IUpgradeableByRobotRank>();
-
-		foreach (var upgradeableByRobotRank in upgradeableByRobotRankComponents)
-		{
-			upgradeableByRobotRank.UpdateValuesUpgradeableByRobotRank(CurrentRank);
-		}
 	}
 
 	private void InvokeActionOnPlayerDataIfPossible(Action<PlayerData> action)
