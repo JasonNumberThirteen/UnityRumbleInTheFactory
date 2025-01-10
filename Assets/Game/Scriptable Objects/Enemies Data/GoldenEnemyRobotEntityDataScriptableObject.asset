@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afabcdd18ba018e4f997c593daa2019d, type: 3}
-  m_Name: CyanEnemyRobotDataScriptableObject
+  m_Name: GoldenEnemyRobotEntityDataScriptableObject
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7494953504550476265, guid: e3ac4914fbe686049b0d44ee85f097e5, type: 3}
-  pointsForDefeat: 200
-  displayInScoreSceneSprite: {fileID: 740022647, guid: 6e1a492aa2ae7e14c82445f0195c559e, type: 3}
+  prefab: {fileID: 3790308775650090290, guid: e4abb37ecae788840b6427574e914bb6, type: 3}
+  pointsForDefeat: 500
+  displayInScoreSceneSprite: {fileID: 2130987304, guid: 3888c98491b80bc44830fb979711cbeb, type: 3}
