@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
 public class RobotEntityRankController : MonoBehaviour
 {
-	[SerializeField] protected RobotData robotData;
+	[SerializeField] private RobotData robotData;
+	[SerializeField] private bool resetRankOnStart = true;
 	
 	public UnityEvent<RobotRank> rankChangedEvent;
 
@@ -11,22 +12,37 @@ public class RobotEntityRankController : MonoBehaviour
 
 	public void IncreaseRank()
 	{
+		if(robotData != null)
+		{
+			SetRankNumber(robotData.RankNumber + 1);
+		}
+	}
+
+	private void Start()
+	{
+		if(resetRankOnStart)
+		{	
+			SetRankNumber(1);
+		}
+		else if(robotData != null)
+		{
+			rankChangedEvent?.Invoke(robotData.GetRank());
+		}
+	}
+
+	private void SetRankNumber(int rankNumber)
+	{
 		if(robotData == null)
 		{
 			return;
 		}
 
-		++robotData.RankNumber;
-		
-		rankChangedEvent?.Invoke(robotData.GetRank());
-	}
+		var previousRankNumber = robotData.RankNumber;
 
-	protected virtual void Start()
-	{
-		if(robotData != null)
+		robotData.RankNumber = rankNumber;
+
+		if(previousRankNumber != robotData.RankNumber)
 		{
-			robotData.RankNumber = 1;
-
 			rankChangedEvent?.Invoke(robotData.GetRank());
 		}
 	}

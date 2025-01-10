@@ -134,9 +134,6 @@ PrefabInstance:
       addedObject: {fileID: 9001871678627473777}
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8615373432809089523}
-    - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3415699233984565831}
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
@@ -214,22 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f30dd19c39cf04fa0432f4a5ad1f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8615373432809089523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3405398399308765810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3fdfc74f21426444adb2b9150b3f47b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotData: {fileID: 0}
-  rankChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3415699233984565831
 MonoBehaviour:
   m_ObjectHideFlags: 0

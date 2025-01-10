@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2373070885826344332, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
+      propertyPath: robotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     - target: {fileID: 3278257877024703880, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_Controller
       value: 
