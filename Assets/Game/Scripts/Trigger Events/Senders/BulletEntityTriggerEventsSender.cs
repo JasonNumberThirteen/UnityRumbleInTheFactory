@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletTriggerEventsSender : MonoBehaviour
+public class BulletEntityTriggerEventsSender : MonoBehaviour
 {
 	[SerializeField] private GameObject splatterEffectPrefab;
 	[SerializeField] private string[] ignoredTags;
