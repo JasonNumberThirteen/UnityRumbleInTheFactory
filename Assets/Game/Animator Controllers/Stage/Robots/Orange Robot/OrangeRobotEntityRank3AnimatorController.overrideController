@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OrangeRobotEntityRank3AnimatorController
+  m_Controller: {fileID: 9100000, guid: 411496a2918f8c54ea48afedd2e4eadc, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: da682a65e3957b44a8f0d2694ef1c57d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5de4153388dd8a04f94a9f66c6114b91, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 57c1b74ca50a6624488519d84249ca20, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: efe7a63d33e946841a63c686b614d5f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9116199ecd00752459fb92068d149e1c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: aa5548a871ae12f43846d5b94fdc2dc5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d978d43dabd8d6146b727a1a577d069e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 52c23b2fe0d761449af74c80a112b41d, type: 2}

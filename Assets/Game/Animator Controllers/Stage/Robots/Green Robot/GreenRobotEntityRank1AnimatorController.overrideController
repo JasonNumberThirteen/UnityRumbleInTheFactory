@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GreenRobotEntityRank1AnimatorController
+  m_Controller: {fileID: 9100000, guid: 411496a2918f8c54ea48afedd2e4eadc, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: da682a65e3957b44a8f0d2694ef1c57d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3b019cda2d7e7fc48a5f2600f44103f1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 57c1b74ca50a6624488519d84249ca20, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f6cac5d49ad29a74fac6a4cf9227baa1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9116199ecd00752459fb92068d149e1c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5221f62a38d1cdc4cb2b7f2d570407d8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d978d43dabd8d6146b727a1a577d069e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a5fd10d7e5718204b810ffdbc93944c1, type: 2}
