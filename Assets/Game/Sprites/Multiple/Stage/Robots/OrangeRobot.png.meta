@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OrangeRobotUp1
+      name: OrangeRobotRank1Up1
       rect:
         serializedVersion: 2
         x: 0
@@ -157,7 +157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OrangeRobotUp2
+      name: OrangeRobotRank1Up2
       rect:
         serializedVersion: 2
         x: 16
@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OrangeRobotDown1
+      name: OrangeRobotRank1Down1
       rect:
         serializedVersion: 2
         x: 32
@@ -199,7 +199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OrangeRobotDown2
+      name: OrangeRobotRank1Down2
       rect:
         serializedVersion: 2
         x: 48
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OrangeRobotLeft1
+      name: OrangeRobotRank1Left1
       rect:
         serializedVersion: 2
         x: 64
@@ -241,7 +241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OrangeRobotLeft2
+      name: OrangeRobotRank1Left2
       rect:
         serializedVersion: 2
         x: 80
@@ -262,7 +262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OrangeRobotRight1
+      name: OrangeRobotRank1Right1
       rect:
         serializedVersion: 2
         x: 96
@@ -283,7 +283,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OrangeRobotRight2
+      name: OrangeRobotRank1Right2
       rect:
         serializedVersion: 2
         x: 112
@@ -314,14 +314,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      OrangeRobotDown1: -2082800295
-      OrangeRobotDown2: 261536760
-      OrangeRobotLeft1: 1302563404
-      OrangeRobotLeft2: -189018443
-      OrangeRobotRight1: 345342295
-      OrangeRobotRight2: -1035893452
-      OrangeRobotUp1: -1321011705
-      OrangeRobotUp2: 1488003502
+      OrangeRobotRank1Down1: -2082800295
+      OrangeRobotRank1Down2: 261536760
+      OrangeRobotRank1Left1: 1302563404
+      OrangeRobotRank1Left2: -189018443
+      OrangeRobotRank1Right1: 345342295
+      OrangeRobotRank1Right2: -1035893452
+      OrangeRobotRank1Up1: -1321011705
+      OrangeRobotRank1Up2: 1488003502
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
