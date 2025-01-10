@@ -3,10 +3,13 @@ using UnityEngine;
 public class RobotEntityTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	private RobotEntityHealth robotEntityHealth;
+	private RobotEntityShield robotEntityShield;
 	
 	public virtual void TriggerOnEnter(GameObject sender)
 	{
-		if(sender.TryGetComponent(out BulletEntity bulletEntity))
+		var canTakeDamage = robotEntityShield == null || !robotEntityShield.IsActive();
+
+		if(canTakeDamage && sender.TryGetComponent(out BulletEntity bulletEntity))
 		{
 			robotEntityHealth.TakeDamage(bulletEntity.GetParent(), bulletEntity.GetDamage());
 		}
@@ -15,5 +18,6 @@ public class RobotEntityTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnt
 	protected virtual void Awake()
 	{
 		robotEntityHealth = GetComponent<RobotEntityHealth>();
+		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
 	}
 }

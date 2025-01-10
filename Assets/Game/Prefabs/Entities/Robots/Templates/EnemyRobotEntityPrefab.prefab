@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.25
   countFromTheStart: 0
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -101,6 +104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 1
   countFromTheStart: 1
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -204,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4366984621820829096, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
-    - {fileID: 5886565102491951326, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+    - {fileID: 0}
     - {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: 2083158133487335146, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: -2720126704085592801, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
