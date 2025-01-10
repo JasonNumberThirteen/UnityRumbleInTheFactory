@@ -3,20 +3,11 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerRobotEntity))]
 public class PlayerRobotEntityRankController : RobotEntityRankController
 {
-	private PlayerRobotEntity playerRobotEntity;
-
-	private void Awake()
+	protected override void Start()
 	{
-		playerRobotEntity = GetComponent<PlayerRobotEntity>();
-	}
-
-	private void Start()
-	{
-		var playerRobotData = playerRobotEntity.GetPlayerRobotData();
-
-		if(playerRobotData != null)
+		if(robotData != null)
 		{
-			rankChangedEvent?.Invoke(playerRobotData.GetRank());
+			rankChangedEvent?.Invoke(robotData.GetRank());
 		}
 	}
 }

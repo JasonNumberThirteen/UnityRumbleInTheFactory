@@ -15,19 +15,14 @@ public class BulletEntity : MonoBehaviour
 	public GameObject GetParent() => parent;
 	public Vector2 GetMovementDirection() => entityMovementController.CurrentMovementDirection;
 
-	public void Setup(GameObject parentGO, Vector2 movementDirection)
+	public void Setup(BulletStats bulletStats, GameObject parentGO, Vector2 movementDirection)
 	{
 		SetParent(parentGO);
+		entityMovementController.SetMovementSpeed(bulletStats.GetBulletSpeed());
 		
-		entityMovementController.CurrentMovementDirection = movementDirection;
-	}
-
-	public void SetStats(BulletStats bulletStats)
-	{
 		damage = bulletStats.GetDamage();
 		canDestroyMetal = bulletStats.CanDestroyMetal();
-
-		entityMovementController.SetMovementSpeed(bulletStats.GetBulletSpeed());
+		entityMovementController.CurrentMovementDirection = movementDirection;
 	}
 
 	public void SetMovementSpeed(float movementSpeed)

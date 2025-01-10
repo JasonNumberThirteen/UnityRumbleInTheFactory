@@ -8,24 +8,60 @@ public class RobotEntityShootController : MonoBehaviour
 	protected StageSoundManager stageSoundManager;
 
 	private RobotEntityAnimatorController robotEntityAnimatorController;
+	private RobotEntityRankController robotEntityRankController;
+	private BulletStats bulletStats;
 
 	public virtual void FireBullet()
 	{
-		if(bulletEntityPrefab != null)
+		if(bulletEntityPrefab == null)
 		{
-			SetupBulletEntity(Instantiate(bulletEntityPrefab, GetBulletPosition(), Quaternion.identity));
+			return;
 		}
+
+		var instance = Instantiate(bulletEntityPrefab, GetBulletPosition(), Quaternion.identity);
+
+		instance.Setup(bulletStats, gameObject, robotEntityAnimatorController.GetMovementDirection());
 	}
 
 	protected virtual void Awake()
 	{
 		robotEntityAnimatorController = GetComponent<RobotEntityAnimatorController>();
+		robotEntityRankController = GetComponent<RobotEntityRankController>();
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
+
+		RegisterToListeners(true);
 	}
 
-	protected virtual void SetupBulletEntity(BulletEntity bulletEntity)
+	private void Start()
 	{
-		bulletEntity.Setup(gameObject, robotEntityAnimatorController.GetMovementDirection());
+		UpdateBulletStats(robotEntityRankController.GetRobotData().GetRank());
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			robotEntityRankController.rankChangedEvent.AddListener(OnRankChanged);
+		}
+		else
+		{
+			robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
+		}
+	}
+
+	protected virtual void OnRankChanged(RobotRank robotRank)
+	{
+		UpdateBulletStats(robotRank);
+	}
+
+	private void UpdateBulletStats(RobotRank robotRank)
+	{
+		bulletStats = new BulletStats(robotRank.GetDamage(), robotRank.GetBulletSpeed(), robotRank.CanDestroyMetal());
 	}
 
 	private Vector2 GetBulletPosition() => (Vector2)transform.position + robotEntityAnimatorController.GetMovementDirection()*offsetFromGO;

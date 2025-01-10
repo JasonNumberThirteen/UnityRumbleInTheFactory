@@ -16,6 +16,13 @@ MonoBehaviour:
   pointsForDefeat: 100
   displayInScoreSceneSprite: {fileID: -1056247388, guid: cb86ba34a2897e049a3a62fafd953cb8, type: 3}
   ranks:
+  - health: 1
+    movementSpeed: 1
+    bulletStats:
+      damage: 1
+      bulletSpeed: 6.5
+      canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 22100000, guid: 44356c631e0ab2f49928067fafe02137, type: 2}
   - health: 4
     movementSpeed: 0.5
     bulletStats:
