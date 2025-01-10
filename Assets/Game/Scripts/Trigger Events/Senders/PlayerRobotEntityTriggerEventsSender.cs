@@ -1,15 +1,7 @@
 using UnityEngine;
 
-public class PlayerRobotEntityTriggerEventsSender : MonoBehaviour
+public class PlayerRobotEntityTriggerEventsSender : RobotEntityTriggerEventsSender
 {
-	private void OnTriggerEnter2D(Collider2D collider)
-	{
-		if(collider.gameObject.TryGetComponent(out ITriggerableOnEnter triggerableOnEnter))
-		{
-			triggerableOnEnter.TriggerOnEnter(gameObject);
-		}
-	}
-
 	private void OnTriggerStay2D(Collider2D collider)
 	{
 		if(collider.gameObject.TryGetComponent(out ITriggerableOnStay triggerableOnStay))

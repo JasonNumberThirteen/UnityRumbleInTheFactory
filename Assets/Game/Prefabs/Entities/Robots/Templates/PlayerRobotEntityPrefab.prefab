@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_Name
-      value: PlayerRobotPrefab
+      value: PlayerRobotEntityPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_Layer
@@ -116,6 +116,7 @@ PrefabInstance:
     - {fileID: -2720126704085592801, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: 5886565102491951326, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: 2083158133487335146, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+    - {fileID: 8554013176243355584, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -252,8 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84ff31884cd3134db1dcd6317fa2917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
-  offsetFromObject: 0.1
+  bulletEntityPrefab: {fileID: 0}
+  offsetFromGO: 0.1
   bulletTag: Player Bullet
 --- !u!114 &-123051218500741914
 MonoBehaviour:
