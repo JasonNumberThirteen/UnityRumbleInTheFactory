@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRobotTriggerEventsSender : MonoBehaviour
+public class PlayerRobotEntityTriggerEventsSender : MonoBehaviour
 {
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
