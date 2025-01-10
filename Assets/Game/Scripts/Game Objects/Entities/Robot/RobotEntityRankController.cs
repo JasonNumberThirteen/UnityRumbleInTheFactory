@@ -7,7 +7,7 @@ public class RobotEntityRankController : MonoBehaviour
 	
 	public UnityEvent<RobotRank> rankChangedEvent;
 
-	public virtual void IncreaseRank()
+	public void IncreaseRank()
 	{
 		if(robotData == null)
 		{

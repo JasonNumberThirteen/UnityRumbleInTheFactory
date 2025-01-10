@@ -6,6 +6,10 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 	[SerializeField] private string bulletTag;
 	
 	private PlayerRobotEntityRankController playerRobotEntityRankController;
+	private int damage;
+	private float bulletSpeed;
+	private bool canDestroyMetal;
+	private int bulletsLimitAtOnce;
 
 	public override void FireBullet()
 	{
@@ -27,29 +31,52 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		base.Awake();
 
 		playerRobotEntityRankController = GetComponent<PlayerRobotEntityRankController>();
+
+		RegisterToListeners(true);
 	}
 
 	protected override void SetupBulletEntity(BulletEntity bulletEntity)
 	{
 		base.SetupBulletEntity(bulletEntity);
 
-		if(playerRobotEntityRankController.CurrentRank == null || bulletEntity == null)
+		if(bulletEntity == null)
 		{
 			return;
 		}
 
-		bulletEntity.SetDamage(playerRobotEntityRankController.CurrentRank.GetDamage());
-		bulletEntity.SetMovementSpeed(playerRobotEntityRankController.CurrentRank.GetBulletSpeed());
-		bulletEntity.SetCanDestroyMetal(playerRobotEntityRankController.CurrentRank.CanDestroyMetal());
+		bulletEntity.SetDamage(damage);
+		bulletEntity.SetMovementSpeed(bulletSpeed);
+		bulletEntity.SetCanDestroyMetal(canDestroyMetal);
 	}
 
-	private bool ReachedBulletsLimitAtOnce()
+	private void OnDestroy()
 	{
-		if(playerRobotEntityRankController.CurrentRank is not PlayerRobotRank playerRobotRank)
-		{
-			return false;
-		}
-
-		return GameObject.FindGameObjectsWithTag(bulletTag).Length >= playerRobotRank.GetBulletsLimitAtOnce();
+		RegisterToListeners(false);
 	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			playerRobotEntityRankController.rankChangedEvent.AddListener(OnRankChanged);
+		}
+		else
+		{
+			playerRobotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
+		}
+	}
+
+	private void OnRankChanged(RobotRank robotRank)
+	{
+		damage = robotRank.GetDamage();
+		bulletSpeed = robotRank.GetBulletSpeed();
+		canDestroyMetal = robotRank.CanDestroyMetal();
+
+		if(robotRank is PlayerRobotRank playerRobotRank)
+		{
+			bulletsLimitAtOnce = playerRobotRank.GetBulletsLimitAtOnce();
+		}
+	}
+
+	private bool ReachedBulletsLimitAtOnce() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= bulletsLimitAtOnce;
 }
