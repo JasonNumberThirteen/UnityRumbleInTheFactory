@@ -5,7 +5,7 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 	[SerializeField] private PlayerRobotData playerRobotData;
 	[SerializeField, Min(0f)] private float respawnDelay = 1f;
 
-	private PlayersDataManager playersDataManager;
+	private PlayerRobotsDataManager playerRobotsDataManager;
 
 	public void InitiateRespawn()
 	{
@@ -16,7 +16,7 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 	{
 		base.Awake();
 
-		playersDataManager = FindAnyObjectByType<PlayersDataManager>();
+		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>();
 	}
 
 	private void Start()
@@ -34,14 +34,14 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 			timer.ResetTimer();
 			playerRobotData.ResetRank();
 
-			if(playersDataManager != null)
+			if(playerRobotsDataManager != null)
 			{
-				playersDataManager.ModifyLives(playerRobotData, -1);
+				playerRobotsDataManager.ModifyLives(playerRobotData, -1);
 			}
 		}
-		else if(playersDataManager != null)
+		else if(playerRobotsDataManager != null)
 		{
-			playersDataManager.CheckPlayersLives();
+			playerRobotsDataManager.CheckPlayersLives();
 		}
 	}
 }

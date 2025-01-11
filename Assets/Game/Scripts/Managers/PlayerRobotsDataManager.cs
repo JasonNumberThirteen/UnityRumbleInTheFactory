@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayersDataManager : MonoBehaviour
+public class PlayerRobotsDataManager : MonoBehaviour
 {
 	public UnityEvent<int, GameObject> playerScoreChangedEvent;
 	public UnityEvent playerLivesChangedEvent;

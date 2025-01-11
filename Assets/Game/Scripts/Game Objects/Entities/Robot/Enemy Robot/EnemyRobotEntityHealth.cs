@@ -5,7 +5,7 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 	[SerializeField] private EnemyRobotData enemyRobotData;
 
 	private StageStateManager stageStateManager;
-	private PlayersDataManager playersDataManager;
+	private PlayerRobotsDataManager playerRobotsDataManager;
 
 	public void IncreaseHealthBy(int health)
 	{
@@ -17,7 +17,7 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 		base.Awake();
 
 		stageStateManager = FindAnyObjectByType<StageStateManager>();
-		playersDataManager = FindAnyObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
+		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
 	}
 
 	protected override void Die(GameObject sender)
@@ -50,9 +50,9 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 		{
 			playerRobotData.AddDefeatedEnemy(enemyRobotData);
 
-			if(playersDataManager != null)
+			if(playerRobotsDataManager != null)
 			{
-				playersDataManager.ModifyScore(playerRobotData, enemyRobotData.GetPointsForDefeat(), gameObject);
+				playerRobotsDataManager.ModifyScore(playerRobotData, enemyRobotData.GetPointsForDefeat(), gameObject);
 			}
 		}
 	}

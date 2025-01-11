@@ -6,7 +6,7 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 
 	[SerializeField, Min(0)] private int points = 500;
 
-	protected PlayersDataManager playersDataManager;
+	protected PlayerRobotsDataManager playerRobotsDataManager;
 
 	private StageStateManager stageStateManager;
 	
@@ -20,7 +20,7 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 	{
 		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
 		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
-		playersDataManager = FindAnyObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
+		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
 	}
 
 	private void OnBonusCollected(GameObject sender)
@@ -43,9 +43,9 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 		
 		var playerData = playerRobotEntity.GetPlayerRobotData();
 
-		if(playersDataManager != null && playerData != null)
+		if(playerRobotsDataManager != null && playerData != null)
 		{
-			playersDataManager.ModifyScore(playerData, points, gameObject);
+			playerRobotsDataManager.ModifyScore(playerData, points, gameObject);
 		}
 	}
 

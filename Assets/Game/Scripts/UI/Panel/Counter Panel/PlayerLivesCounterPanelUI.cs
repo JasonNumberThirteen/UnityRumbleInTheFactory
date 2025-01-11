@@ -4,13 +4,13 @@ public class PlayerLivesCounterPanelUI : CounterPanelUI
 {
 	[SerializeField] private PlayerRobotData playerRobotData;
 
-	private PlayersDataManager playersDataManager;
+	private PlayerRobotsDataManager playerRobotsDataManager;
 
 	protected override void Awake()
 	{
 		base.Awake();
 		
-		playersDataManager = FindAnyObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
+		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
 	}
@@ -29,16 +29,16 @@ public class PlayerLivesCounterPanelUI : CounterPanelUI
 	{
 		if(register)
 		{
-			if(playersDataManager != null)
+			if(playerRobotsDataManager != null)
 			{
-				playersDataManager.playerLivesChangedEvent.AddListener(UpdateCounterIfPossible);
+				playerRobotsDataManager.playerLivesChangedEvent.AddListener(UpdateCounterIfPossible);
 			}
 		}
 		else
 		{
-			if(playersDataManager != null)
+			if(playerRobotsDataManager != null)
 			{
-				playersDataManager.playerLivesChangedEvent.RemoveListener(UpdateCounterIfPossible);
+				playerRobotsDataManager.playerLivesChangedEvent.RemoveListener(UpdateCounterIfPossible);
 			}
 		}
 	}

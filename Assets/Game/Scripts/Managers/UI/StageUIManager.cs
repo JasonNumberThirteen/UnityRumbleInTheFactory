@@ -4,7 +4,7 @@ public class StageUIManager : UIManager
 {
 	[SerializeField] private GainedPointsCounterTextUI gainedPointsCounterTextUIPrefab;
 
-	private PlayersDataManager playersDataManager;
+	private PlayerRobotsDataManager playerRobotsDataManager;
 	private StageStateManager stageStateManager;
 	private StageSceneFlowManager stageSceneFlowManager;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
@@ -13,7 +13,7 @@ public class StageUIManager : UIManager
 
 	private void Awake()
 	{
-		playersDataManager = FindFirstObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
+		playerRobotsDataManager = FindFirstObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
 		stageStateManager = FindFirstObjectByType<StageStateManager>(FindObjectsInactive.Include);
 		stageSceneFlowManager = FindFirstObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
 		translationBackgroundPanelUI = FindFirstObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
@@ -32,9 +32,9 @@ public class StageUIManager : UIManager
 	{
 		if(register)
 		{
-			if(playersDataManager != null)
+			if(playerRobotsDataManager != null)
 			{
-				playersDataManager.playerScoreChangedEvent.AddListener(OnPlayerScoreChanged);
+				playerRobotsDataManager.playerScoreChangedEvent.AddListener(OnPlayerScoreChanged);
 			}
 
 			if(stageSceneFlowManager != null)
@@ -50,9 +50,9 @@ public class StageUIManager : UIManager
 		}
 		else
 		{
-			if(playersDataManager != null)
+			if(playerRobotsDataManager != null)
 			{
-				playersDataManager.playerScoreChangedEvent.RemoveListener(OnPlayerScoreChanged);
+				playerRobotsDataManager.playerScoreChangedEvent.RemoveListener(OnPlayerScoreChanged);
 			}
 
 			if(stageSceneFlowManager != null)

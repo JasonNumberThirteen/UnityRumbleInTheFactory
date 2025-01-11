@@ -4,7 +4,7 @@ public class PlayerRobotEntity : RobotEntity
 {
 	[SerializeField] private PlayerRobotData playerRobotData;
 
-	private PlayersDataManager playersDataManager;
+	private PlayerRobotsDataManager playerRobotsDataManager;
 	
 	public override bool IsFriendly() => true;
 
@@ -12,9 +12,9 @@ public class PlayerRobotEntity : RobotEntity
 	{
 		var playerRobotData = GetPlayerRobotData();
 
-		if(playersDataManager != null && playerRobotData != null)
+		if(playerRobotsDataManager != null && playerRobotData != null)
 		{
-			playersDataManager.ModifyLives(playerRobotData, lives);
+			playerRobotsDataManager.ModifyLives(playerRobotData, lives);
 		}
 	}
 
@@ -24,7 +24,7 @@ public class PlayerRobotEntity : RobotEntity
 	{
 		base.Awake();
 
-		playersDataManager = FindAnyObjectByType<PlayersDataManager>(FindObjectsInactive.Include);
+		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
 	}
 
 	private void OnDestroy()
