@@ -4,8 +4,6 @@ using UnityEngine;
 public class RobotEntityHealth : MonoBehaviour
 {
 	public int CurrentHealth {get; protected set;}
-	
-	[SerializeField, Min(1)] private int initialHealth;
 
 	protected StageSoundManager stageSoundManager;
 
@@ -26,11 +24,6 @@ public class RobotEntityHealth : MonoBehaviour
 		robotEntityRankController = GetComponent<RobotEntityRankController>();
 
 		RegisterToListeners(true);
-	}
-
-	protected virtual void Start()
-	{
-		CurrentHealth = initialHealth;
 	}
 
 	protected virtual void CheckHealth(GameObject sender)
