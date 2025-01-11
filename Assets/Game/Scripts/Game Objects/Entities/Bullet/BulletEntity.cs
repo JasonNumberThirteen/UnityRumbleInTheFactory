@@ -3,10 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(EntityMovementController))]
 public class BulletEntity : MonoBehaviour
 {
-	[SerializeField, Min(1)] private int damage = 1;
-	[SerializeField, Min(0f)] private float initialMovementSpeed = 6.5f;
-	[SerializeField] private bool canDestroyMetal;
-
+	private int damage;
+	private bool canDestroyMetal;
 	private EntityMovementController entityMovementController;
 	private GameObject parent;
 
@@ -25,11 +23,6 @@ public class BulletEntity : MonoBehaviour
 		entityMovementController.CurrentMovementDirection = movementDirection;
 	}
 
-	public void SetMovementSpeed(float movementSpeed)
-	{
-		entityMovementController.SetMovementSpeed(movementSpeed);
-	}
-
 	public void SetParent(GameObject parent)
 	{
 		this.parent = parent;
@@ -38,13 +31,5 @@ public class BulletEntity : MonoBehaviour
 	private void Awake()
 	{
 		entityMovementController = GetComponent<EntityMovementController>();
-	}
-
-	private void Start()
-	{
-		if(Mathf.Approximately(entityMovementController.GetMovementSpeed(), 0f))
-		{
-			SetMovementSpeed(initialMovementSpeed);
-		}
 	}
 }
