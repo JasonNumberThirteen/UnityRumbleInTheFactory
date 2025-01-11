@@ -11,7 +11,7 @@ public class RobotEntityTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnt
 
 		if(canTakeDamage && sender.TryGetComponent(out BulletEntity bulletEntity))
 		{
-			robotEntityHealth.TakeDamage(bulletEntity.GetParent(), bulletEntity.GetDamage());
+			robotEntityHealth.TakeDamage(bulletEntity.GetParentGO(), bulletEntity.GetDamage());
 		}
 	}
 	
