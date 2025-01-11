@@ -5,13 +5,11 @@ public class EntityMovementController : MonoBehaviour
 {
 	public Vector2 CurrentMovementDirection {get; set;}
 
-	[SerializeField, Min(0f)] private float movementSpeed = 5f;
-
 	protected Rigidbody2D rb2D;
+	protected float movementSpeed;
 
 	private Vector2 lastMovementDirection;
 
-	public float GetMovementSpeed() => movementSpeed;
 	public bool CurrentMovementDirectionIsNone() => CurrentMovementDirection == Vector2.zero;
 
 	public void SetMovementSpeed(float movementSpeed)

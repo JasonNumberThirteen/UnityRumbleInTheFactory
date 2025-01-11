@@ -22,7 +22,7 @@ public class RobotEntityRankController : MonoBehaviour
 	{
 		if(resetRankOnStart)
 		{	
-			SetRankNumber(1);
+			SetRankNumber(1, true);
 		}
 		else if(robotData != null)
 		{
@@ -30,7 +30,7 @@ public class RobotEntityRankController : MonoBehaviour
 		}
 	}
 
-	private void SetRankNumber(int rankNumber)
+	private void SetRankNumber(int rankNumber, bool forceInvokingEvent = false)
 	{
 		if(robotData == null)
 		{
@@ -41,7 +41,7 @@ public class RobotEntityRankController : MonoBehaviour
 
 		robotData.RankNumber = rankNumber;
 
-		if(previousRankNumber != robotData.RankNumber)
+		if(forceInvokingEvent || previousRankNumber != robotData.RankNumber)
 		{
 			rankChangedEvent?.Invoke(robotData.GetRank());
 		}

@@ -45,7 +45,7 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 			return;
 		}
 		
-		var baseMovementSpeed = GetMovementSpeed();
+		var baseMovementSpeed = movementSpeed;
 		var multiplier = gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier());
 		
 		SetMovementSpeed(baseMovementSpeed*multiplier);
@@ -115,7 +115,7 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 				enemyRobotEntityMovementControllerTimer.ResetTimer();
 			}
 
-			lastMovementSpeed = GetMovementSpeed();
+			lastMovementSpeed = movementSpeed;
 		}
 
 		detectedCollision = detected;
