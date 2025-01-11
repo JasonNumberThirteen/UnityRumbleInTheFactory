@@ -15,7 +15,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 	{
 		if(stageSceneFlowManager != null && playerRobotsListData != null && !playerRobotsListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0))
 		{
-			stageSceneFlowManager.SetGameAsOver();
+			stageSceneFlowManager.SetGameAsOverIfNeeded();
 		}
 	}
 

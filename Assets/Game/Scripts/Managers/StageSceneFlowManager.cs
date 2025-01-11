@@ -37,9 +37,9 @@ public class StageSceneFlowManager : MonoBehaviour
 		stageStateManager.SetStateTo(stateToSwitch);
 	}
 
-	public void SetGameAsOver()
+	public void SetGameAsOverIfNeeded()
 	{
-		if(stageStateManager != null)
+		if(stageStateManager != null && !stageStateManager.StateIsSetTo(StageState.Over))
 		{
 			stageStateManager.SetStateTo(StageState.Over);
 		}
@@ -117,7 +117,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		}
 		else if(stageStateManager.StateIsSetTo(StageState.Interrupted))
 		{
-			SetGameAsOver();
+			SetGameAsOverIfNeeded();
 		}
 	}
 
