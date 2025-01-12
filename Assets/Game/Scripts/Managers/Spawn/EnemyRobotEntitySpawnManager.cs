@@ -27,10 +27,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	{
 		++numberOfDefeatedEnemies;
 
-		if(stageStateManager != null && WonStage())
-		{
-			stageStateManager.SetStateTo(StageState.Won);
-		}
+		SetStageAsWonIfNeeded();
 	}
 
 	private void Awake()
@@ -38,7 +35,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		stageEnemyTypesLoadingManager = FindAnyObjectByType<StageEnemyTypesLoadingManager>();
 		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
 		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
-		enemyRobotEntitySpawners = FindObjectsByType<EnemyRobotEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).ToList();
+		enemyRobotEntitySpawners = FindObjectsByType<EnemyRobotEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).Take(GetTotalNumberOfEnemies()).ToList();
 		
 		RegisterToListeners(true);
 	}
@@ -54,22 +51,39 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		{
 			if(stageSceneFlowManager != null)
 			{
-				stageSceneFlowManager.stageActivatedEvent.AddListener(StartSpawn);
+				stageSceneFlowManager.stageActivatedEvent.AddListener(StartSpawnIfPossible);
 			}
 		}
 		else
 		{
 			if(stageSceneFlowManager != null)
 			{
-				stageSceneFlowManager.stageActivatedEvent.RemoveListener(StartSpawn);
+				stageSceneFlowManager.stageActivatedEvent.RemoveListener(StartSpawnIfPossible);
 			}
 		}
 	}
 
-	private void StartSpawn()
+	private void StartSpawnIfPossible()
 	{
-		enemyRobotEntitySpawners.ForEach(AssignEntityToSpawner);
-		StartCoroutine(StartSpawningEntities());
+		SetStageAsWonIfNeeded();
+		enemyRobotEntitySpawners.ForEach(enemyRobotEntitySpawner =>
+		{
+			enemyRobotEntitySpawner.StartTimer();
+			AssignEntityToSpawner(enemyRobotEntitySpawner);
+		});
+
+		if(enemyRobotEntitySpawners.Count > 0)
+		{
+			StartCoroutine(StartSpawningEntities());
+		}
+	}
+
+	private void SetStageAsWonIfNeeded()
+	{
+		if(stageStateManager != null && WonStage())
+		{
+			stageStateManager.SetStateTo(StageState.Won);
+		}
 	}
 
 	private void AssignEntityToSpawner(EnemyRobotEntitySpawner enemyRobotEntitySpawner)

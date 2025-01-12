@@ -12,6 +12,11 @@ public class EntitySpawner : MonoBehaviour
 
 	private SpawnGameVisualEffect spawnGameVisualEffect;
 
+	public void StartTimer()
+	{
+		timer.StartTimer();
+	}
+
 	public void ResetTimer()
 	{
 		timer.ResetTimer();
@@ -28,11 +33,13 @@ public class EntitySpawner : MonoBehaviour
 	{
 		if(register)
 		{
+			timer.timerStartedEvent.AddListener(OnTimerStarted);
 			timer.onReset.AddListener(OnTimerReset);
 			timer.onEnd.AddListener(OnTimerEnd);
 		}
 		else
 		{
+			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
 			timer.onReset.RemoveListener(OnTimerReset);
 			timer.onEnd.RemoveListener(OnTimerEnd);
 		}
@@ -41,7 +48,7 @@ public class EntitySpawner : MonoBehaviour
 	protected virtual void Awake()
 	{
 		timer = GetComponent<Timer>();
-		spawnGameVisualEffect = GetComponentInChildren<SpawnGameVisualEffect>();
+		spawnGameVisualEffect = GetComponentInChildren<SpawnGameVisualEffect>(true);
 
 		RegisterToListeners(true);
 	}
@@ -49,6 +56,11 @@ public class EntitySpawner : MonoBehaviour
 	private void OnDestroy()
 	{
 		RegisterToListeners(false);
+	}
+
+	private void OnTimerStarted()
+	{
+		SetSpawnVisualEffectActive(true);
 	}
 
 	private void OnTimerReset()

@@ -61,6 +61,10 @@ PrefabInstance:
       value: Enemy Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: countFromTheStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -194,6 +198,8 @@ MonoBehaviour:
       m_Calls: []
   entityPrefab: {fileID: 0}
   ordinalNumber: 1
+  bonusEnemyColorFadeTime: 0.5
+  bonusEnemyColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &-2211959474914024363
 MonoBehaviour:
   m_ObjectHideFlags: 0
