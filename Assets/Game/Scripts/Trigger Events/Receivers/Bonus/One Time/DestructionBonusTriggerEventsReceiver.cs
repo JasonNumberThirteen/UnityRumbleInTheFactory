@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class DestructionBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 {
-	public override void TriggerOnEnter(GameObject sender)
+	protected override void GiveEffect(GameObject sender)
 	{
 		DestroyAllRobotEntities(sender.TryGetComponent(out RobotEntity robotEntity) && !robotEntity.IsFriendly());
-		base.TriggerOnEnter(sender);
 	}
 
 	private void DestroyAllRobotEntities(bool destroyFriendly)

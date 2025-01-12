@@ -121,9 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9fb23aa4e665c4888a7c72be68396e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+  points: 500
   duration: 20
-  overlapBoxSize: 1.5
-  overlapLayerMask:
-    serializedVersion: 2
-    m_Bits: 1280
-  metalTilePrefab: {fileID: 6712889474181035811, guid: bde2028975b227a49a3e4cd077f2c60c, type: 3}

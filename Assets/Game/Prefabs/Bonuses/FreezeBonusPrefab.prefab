@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8939861058589864051, guid: 45c1cf0a586e1bb4ba562296bbadc509, type: 3}
       propertyPath: m_Name
-      value: Freeze Bonus
+      value: FreezeBonusPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -117,5 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37f915d121b16047935878d70494506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+  points: 500
   duration: 10

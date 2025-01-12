@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class ShieldTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsReceiver
 {
-	public override void TriggerOnEnter(GameObject sender)
+	protected override void GiveEffect(GameObject sender)
 	{
 		if(sender.TryGetComponent(out RobotEntity robotEntity))
 		{
 			robotEntity.ActivateShield(GetDuration());
 		}
-		
-		base.TriggerOnEnter(sender);
 	}
 }

@@ -4,17 +4,30 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 {
 	protected StageSoundManager stageSoundManager;
 
+	[SerializeField] private GameData gameData;
 	[SerializeField, Min(0)] private int points = 500;
 
 	protected PlayerRobotsDataManager playerRobotsDataManager;
 
 	private StageStateManager stageStateManager;
 	
-	public virtual void TriggerOnEnter(GameObject sender)
+	public void TriggerOnEnter(GameObject sender)
 	{
+		if(stageStateManager == null || stageStateManager.GameIsOver())
+		{
+			return;
+		}
+		
+		if(sender.TryGetComponent(out EnemyRobotEntity _) && gameData != null && !gameData.GetDifficultyTierValue(tier => tier.EnemiesCanCollectBonuses()))
+		{
+			return;
+		}
+		
 		OnBonusCollected(sender);
 		Destroy(gameObject);
 	}
+
+	protected abstract void GiveEffect(GameObject sender);
 
 	protected virtual void Awake()
 	{
@@ -25,11 +38,7 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 
 	private void OnBonusCollected(GameObject sender)
 	{
-		if(stageStateManager == null || stageStateManager.GameIsOver())
-		{
-			return;
-		}
-		
+		GiveEffect(sender);
 		AddPointsToPlayerIfPossible(sender);
 		PlaySound();
 	}
