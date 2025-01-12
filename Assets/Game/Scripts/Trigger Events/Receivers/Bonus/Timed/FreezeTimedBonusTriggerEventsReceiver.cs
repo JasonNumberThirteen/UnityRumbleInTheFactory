@@ -10,8 +10,6 @@ public class FreezeTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRece
 		{
 			robotEntitiesDisablingManager.DisableRobotEntitiesTemporarily(GetDuration(), !robotEntity.IsFriendly());
 		}
-
-		base.TriggerOnEnter(sender);
 	}
 
 	protected override void Awake()
