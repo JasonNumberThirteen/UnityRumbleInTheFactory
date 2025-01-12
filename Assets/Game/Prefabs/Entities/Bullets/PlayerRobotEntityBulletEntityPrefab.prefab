@@ -102,6 +102,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367fb6d0394a49347a7004e6ac8275df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  initialMovementSpeed: 6.5
-  canDestroyMetal: 0

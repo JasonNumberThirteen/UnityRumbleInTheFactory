@@ -23,8 +23,6 @@ TagManager:
   - Grid Tiles
   - Slippery Floor Tiles
   - Toxic Waste Tiles
-  - Player 1 Bullet
-  - Player 2 Bullet
   - Bonuses
   - Spawners
   layers:

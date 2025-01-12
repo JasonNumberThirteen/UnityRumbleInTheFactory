@@ -1,8 +1,8 @@
 using UnityEngine;
 public class PlayerRobotEntityShootController : RobotEntityShootController
 {
-	[SerializeField] private string bulletTag;
-	
+	private StageEventsManager stageEventsManager;
+	private int numberOfFiredBullets;
 	private int bulletsLimitAtOnce;
 
 	public override void FireBullet()
@@ -11,6 +11,8 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		{
 			return;
 		}
+
+		++numberOfFiredBullets;
 		
 		if(stageSoundManager != null)
 		{
@@ -18,6 +20,13 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		}
 		
 		base.FireBullet();
+	}
+
+	protected override void Awake()
+	{
+		stageEventsManager = FindAnyObjectByType<StageEventsManager>(FindObjectsInactive.Include);
+		
+		base.Awake();
 	}
 
 	protected override void OnRankChanged(RobotRank robotRank)
@@ -30,5 +39,33 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		}
 	}
 
-	private bool ReachedBulletsLimitAtOnce() => GameObject.FindGameObjectsWithTag(bulletTag).Length >= bulletsLimitAtOnce;
+	protected override void RegisterToListeners(bool register)
+	{
+		base.RegisterToListeners(register);
+		
+		if(register)
+		{
+			if(stageEventsManager != null)
+			{
+				stageEventsManager.eventReceivedEvent.AddListener(OnEventReceived);
+			}
+		}
+		else
+		{
+			if(stageEventsManager != null)
+			{
+				stageEventsManager.eventReceivedEvent.RemoveListener(OnEventReceived);
+			}
+		}
+	}
+
+	private void OnEventReceived(StageEventType stageEventType, GameObject sender)
+	{
+		if(stageEventType == StageEventType.BulletDestroyed && sender.TryGetComponent(out PlayerRobotEntityBulletEntity playerRobotEntityBulletEntity) && playerRobotEntityBulletEntity.GetParentGO() == gameObject)
+		{
+			--numberOfFiredBullets;
+		}
+	}
+
+	private bool ReachedBulletsLimitAtOnce() => numberOfFiredBullets >= bulletsLimitAtOnce;
 }

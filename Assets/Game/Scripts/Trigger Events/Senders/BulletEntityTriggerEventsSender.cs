@@ -5,7 +5,13 @@ public class BulletEntityTriggerEventsSender : MonoBehaviour
 	[SerializeField] private GameObject splatterEffectPrefab;
 	[SerializeField] private string[] ignoredTags;
 
+	private StageEventsManager stageEventsManager;
 	private bool triggered;
+
+	private void Awake()
+	{
+		stageEventsManager = FindAnyObjectByType<StageEventsManager>(FindObjectsInactive.Include);
+	}
 	
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
@@ -26,6 +32,7 @@ public class BulletEntityTriggerEventsSender : MonoBehaviour
 
 		SendTriggerOnEnter(collider);
 		SpawnSplatterEffect();
+		SendEvent();
 		Destroy(gameObject);
 	}
 
@@ -42,6 +49,14 @@ public class BulletEntityTriggerEventsSender : MonoBehaviour
 		if(splatterEffectPrefab != null)
 		{
 			Instantiate(splatterEffectPrefab, transform.position, Quaternion.identity);
+		}
+	}
+
+	private void SendEvent()
+	{
+		if(stageEventsManager != null)
+		{
+			stageEventsManager.SendEvent(StageEventType.BulletDestroyed, gameObject);
 		}
 	}
 }

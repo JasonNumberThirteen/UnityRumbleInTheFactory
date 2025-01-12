@@ -42,7 +42,7 @@ public class RobotEntityShootController : MonoBehaviour
 		RegisterToListeners(false);
 	}
 
-	private void RegisterToListeners(bool register)
+	protected virtual void RegisterToListeners(bool register)
 	{
 		if(register)
 		{

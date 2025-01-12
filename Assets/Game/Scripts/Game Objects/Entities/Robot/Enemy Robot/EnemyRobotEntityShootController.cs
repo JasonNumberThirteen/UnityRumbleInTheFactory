@@ -16,8 +16,10 @@ public class EnemyRobotEntityShootController : RobotEntityShootController
 		RegisterToListeners(false);
 	}
 
-	private void RegisterToListeners(bool register)
+	protected override void RegisterToListeners(bool register)
 	{
+		base.RegisterToListeners(register);
+		
 		if(register)
 		{
 			if(enemyRobotEntityShootControllerTimer != null)
