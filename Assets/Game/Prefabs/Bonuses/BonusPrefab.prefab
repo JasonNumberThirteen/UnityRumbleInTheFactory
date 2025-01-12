@@ -202,6 +202,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 20
   countFromTheStart: 1
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []
@@ -230,9 +233,12 @@ MonoBehaviour:
     width: 12
     height: 12
   gridSize: 0.5
-  inaccessibleAreaLayers:
+  unacceptableObjectsForColliderBoundsLayerMask:
     serializedVersion: 2
-    m_Bits: 7680
+    m_Bits: 81536
+  unacceptableSingleObjectsLayerMask:
+    serializedVersion: 2
+    m_Bits: 78464
   drawGizmos: 1
   accessiblePositionGizmosColor: {r: 0, g: 1, b: 0, a: 0.5}
   inaccessiblePositionGizmosColor: {r: 1, g: 0, b: 0, a: 0.5}

@@ -7,7 +7,8 @@ public class BonusTiledPositionSetter : MonoBehaviour
 {
 	[SerializeField] private Rect area;
 	[SerializeField, Min(0.01f)] private float gridSize = 0.5f;
-	[SerializeField] private LayerMask inaccessibleAreaLayers;
+	[SerializeField] private LayerMask unacceptableObjectsForColliderBoundsLayerMask;
+	[SerializeField] private LayerMask unacceptableSingleObjectsLayerMask;
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color accessiblePositionGizmosColor = new(0f, 1f, 0f, 0.5f);
 	[SerializeField] private Color inaccessiblePositionGizmosColor = new(1f, 0f, 0f, 0.5f);
@@ -74,14 +75,14 @@ public class BonusTiledPositionSetter : MonoBehaviour
 	{
 		var colliders = GetColliders(position);
 
-		return colliders.Length >= 4 || colliders.Any(ColliderFitsEntireBounds);
+		return colliders.Length >= 4 || colliders.Any(collider => (unacceptableSingleObjectsLayerMask.value & (1 << collider.gameObject.layer)) != 0) || colliders.Any(ColliderFitsEntireBounds);
 	}
 
 	private Collider2D[] GetColliders(Vector2 position)
 	{
-		var colliders = Physics2D.OverlapBoxAll(position, c2D.bounds.size, 0f, inaccessibleAreaLayers);
+		var colliders = Physics2D.OverlapBoxAll(position, c2D.bounds.size, 0f, unacceptableObjectsForColliderBoundsLayerMask);
 
-		return colliders.Where(collider => collider.OverlapPoint(position)).ToArray();
+		return colliders.Where(collider => collider.gameObject != gameObject).ToArray();
 	}
 
 	private float GetGridCoordinate(float coordinate) => Mathf.Round(coordinate / gridSize)*gridSize;
