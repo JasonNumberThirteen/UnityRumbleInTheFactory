@@ -1,50 +1,25 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Timer))]
+[RequireComponent(typeof(AudioSource))]
 public class StageMusicManager : MonoBehaviour
 {
 	public UnityEvent musicStoppedPlayingEvent;
 	
-	[SerializeField] private AudioSource audioSource;
-
-	private Timer timer;
+	private AudioSource audioSource;
 
 	private void Awake()
 	{
-		timer = GetComponent<Timer>();
-
-		AdjustTimerDurationForMusicLength();
-		RegisterToListeners(true);
+		audioSource = GetComponent<AudioSource>();
+		
+		StartCoroutine(InvokeMusicStoppedPlayingEvent());
 	}
 
-	private void AdjustTimerDurationForMusicLength()
+	private IEnumerator InvokeMusicStoppedPlayingEvent()
 	{
-		if(audioSource != null && audioSource.clip != null)
-		{
-			timer.duration = audioSource.clip.length;
-		}
-	}
+		yield return new WaitUntil(() => !audioSource.isPlaying);
 
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-	}
-	
-	private void RegisterToListeners(bool register)
-	{
-		if(register)
-		{
-			timer.onEnd.AddListener(OnTimerEnd);
-		}
-		else
-		{
-			timer.onEnd.RemoveListener(OnTimerEnd);
-		}
-	}
-
-	private void OnTimerEnd()
-	{
 		musicStoppedPlayingEvent?.Invoke();
 	}
 }
