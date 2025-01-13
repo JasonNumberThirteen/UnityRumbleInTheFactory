@@ -9,7 +9,6 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 	private float lastMovementSpeed;
 	private EnemyRobotEntityMovementDirectionSelector enemyRobotEntityMovementDirectionSelector;
 	private EnemyRobotEntityMovementControllerTimer enemyRobotEntityMovementControllerTimer;
-	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
 
 	protected override void Awake()
 	{
@@ -17,7 +16,6 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 
 		enemyRobotEntityMovementDirectionSelector = GetComponent<EnemyRobotEntityMovementDirectionSelector>();
 		enemyRobotEntityMovementControllerTimer = GetComponentInChildren<EnemyRobotEntityMovementControllerTimer>();
-		robotEntitiesDisablingManager = FindAnyObjectByType<RobotEntitiesDisablingManager>(FindObjectsInactive.Include);
 
 		RegisterToListeners(true);
 	}
@@ -89,7 +87,7 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 
 	private void SetLastAndCurrentDirection(Vector2 lastDirection, Vector2 currentDirection)
 	{
-		if(robotEntitiesDisablingManager != null && robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled())
+		if(!enabled)
 		{
 			this.lastDirection = lastDirection;
 		}
@@ -125,9 +123,8 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 
 	private bool DetectedAnyCollision()
 	{
-		var robotEntitiesAreActive = robotEntitiesDisablingManager == null || !robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled();
 		var detectedAnyCollision = robotEntityCollisionDetector != null && robotEntityCollisionDetector.OverlapBoxAll().Length > 1;
 		
-		return !detectedCollision && robotEntitiesAreActive && detectedAnyCollision;
+		return !detectedCollision && enabled && detectedAnyCollision;
 	}
 }

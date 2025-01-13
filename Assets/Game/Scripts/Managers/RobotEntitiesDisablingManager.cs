@@ -5,23 +5,23 @@ using UnityEngine;
 public class RobotEntitiesDisablingManager : MonoBehaviour
 {
 	private Timer timer;
-	private bool disableFriendly;
+	private bool affectFriendly;
 
 	private StageStateManager stageStateManager;
 	
 	public bool RobotsAreTemporarilyDisabled() => timer.Started;
 	
-	public void DisableRobotEntitiesTemporarily(float duration, bool disableFriendly)
+	public void DisableRobotEntitiesTemporarily(float duration, bool affectFriendly)
 	{
 		timer.duration = duration;
-		this.disableFriendly = disableFriendly;
+		this.affectFriendly = affectFriendly;
 
 		timer.ResetTimer();
 	}
 
-	public void SetRobotEntitiesActive(bool active, bool disableFriendly)
+	public void SetRobotEntitiesActive(bool active, bool affectFriendly)
 	{
-		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robot => robot.IsFriendly() == disableFriendly);
+		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robotEntity => robotEntity.IsFriendly() == affectFriendly);
 		var robotEntityDisablers = robotEntities.Select(robot => robot.GetComponent<RobotEntityDisabler>()).Where(component => component != null);
 
 		foreach (var robotEntityDisabler in robotEntityDisablers)
@@ -69,12 +69,18 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 
 	private void OnTimerReset()
 	{
-		SetRobotEntitiesActive(false, disableFriendly);
+		SetRobotEntitiesActive(true, !affectFriendly);
+		SetRobotEntitiesActive(false, affectFriendly);
 	}
 
 	private void OnTimerEnd()
 	{
-		SetRobotEntitiesActive(true, disableFriendly);
+		SetRobotEntitiesActive(true, false);
+
+		if(stageStateManager != null && !stageStateManager.StateIsSetTo(StageState.Over))
+		{
+			SetRobotEntitiesActive(true, true);
+		}
 	}
 
 	private void OnStageStateChanged(StageState stageState)
