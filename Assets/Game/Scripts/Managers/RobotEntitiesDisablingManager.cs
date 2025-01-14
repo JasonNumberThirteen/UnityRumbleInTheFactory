@@ -5,11 +5,10 @@ using UnityEngine;
 public class RobotEntitiesDisablingManager : MonoBehaviour
 {
 	private Timer timer;
-	private bool affectFriendly;
-
 	private StageStateManager stageStateManager;
+	private bool affectFriendly;
 	
-	public bool RobotsAreTemporarilyDisabled() => timer.Started;
+	public bool RobotsAreTemporarilyDisabled(bool checkFriendly) => timer.Started && checkFriendly == affectFriendly;
 	
 	public void DisableRobotEntitiesTemporarily(float duration, bool affectFriendly)
 	{
@@ -22,7 +21,7 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 	public void SetRobotEntitiesActive(bool active, bool affectFriendly)
 	{
 		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robotEntity => robotEntity.IsFriendly() == affectFriendly);
-		var robotEntityDisablers = robotEntities.Select(robot => robot.GetComponent<RobotEntityDisabler>()).Where(component => component != null);
+		var robotEntityDisablers = robotEntities.Select(robotEntity => robotEntity.GetComponent<RobotEntityDisabler>()).Where(component => component != null);
 
 		foreach (var robotEntityDisabler in robotEntityDisablers)
 		{
