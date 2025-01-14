@@ -32,8 +32,6 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 		if(playerRobotData.Score != previousScore)
 		{
-			AddLifeIfPossible(playerRobotData);
-
 			if(gameData != null)
 			{
 				gameData.SetHighScoreIfPossible(playerRobotData.Score, () => ModifyLives(playerRobotData, 1));
@@ -68,17 +66,5 @@ public class PlayerRobotsDataManager : MonoBehaviour
 		{
 			playerRobotsListData.ForEach(playerRobotData => playerRobotData.ResetDefeatedEnemies());
 		}
-	}
-
-	private void AddLifeIfPossible(PlayerRobotData playerRobotData)
-	{
-		if(playerRobotData == null || playerRobotData.Score < playerRobotData.BonusLifeThreshold)
-		{
-			return;
-		}
-		
-		ModifyLives(playerRobotData, 1);
-		playerRobotData.IncreaseBonusLifeThreshold();
-		AddLifeIfPossible(playerRobotData);
 	}
 }

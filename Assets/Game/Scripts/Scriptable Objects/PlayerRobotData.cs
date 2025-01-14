@@ -19,12 +19,6 @@ public class PlayerRobotData : RobotData
 		set => lives = Mathf.Clamp(value, 0, maxLives);
 	}
 
-	public int BonusLifeThreshold
-	{
-		get => bonusLifeThreshold;
-		set => bonusLifeThreshold = Mathf.Clamp(value, 0, int.MaxValue);
-	}
-
 	public override int RankNumber
 	{
 		get => rankNumber;
@@ -34,12 +28,10 @@ public class PlayerRobotData : RobotData
 	[SerializeField] private PlayerRobotRank[] ranks;
 	[SerializeField, Min(0)] private int initialLives = 2;
 	[SerializeField, Min(0)] private int maxLives = 9;
-	[SerializeField, Min(1)] private int initialBonusLifeThreshold = 20000;
 	[SerializeField, Min(1)] private int initialRankNumber = 1;
 
 	private int score;
 	private int lives;
-	private int bonusLifeThreshold;
 	private int rankNumber;
 
 	public override RobotRank GetRank() => ranks[RankNumber - 1];
@@ -48,7 +40,6 @@ public class PlayerRobotData : RobotData
 	{
 		score = 0;
 		lives = initialLives;
-		bonusLifeThreshold = initialBonusLifeThreshold;
 
 		ResetRank();
 		ResetDefeatedEnemies();
@@ -74,10 +65,5 @@ public class PlayerRobotData : RobotData
 		{
 			DefeatedEnemies.Add(enemyRobotData, 1);
 		}
-	}
-
-	public void IncreaseBonusLifeThreshold()
-	{
-		BonusLifeThreshold += initialBonusLifeThreshold;
 	}
 }
