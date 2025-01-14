@@ -14,9 +14,9 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	private void Awake()
 	{
 		loopingIntCounter = GetComponent<LoopingIntCounter>();
-		menuOptionsInput = FindAnyObjectByType<MenuOptionsInput>();
-		mainMenuPanelUI = FindAnyObjectByType<MainMenuPanelUI>();
-		optionsManager = FindAnyObjectByType<OptionsManager>();
+		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
+		mainMenuPanelUI = ObjectMethods.FindComponentOfType<MainMenuPanelUI>();
+		optionsManager = ObjectMethods.FindComponentOfType<OptionsManager>();
 		
 		RegisterToListeners(true);
 	}

@@ -27,7 +27,7 @@ public class RobotEntityShootController : MonoBehaviour
 	{
 		robotEntityAnimatorController = GetComponent<RobotEntityAnimatorController>();
 		robotEntityRankController = GetComponent<RobotEntityRankController>();
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 
 		RegisterToListeners(true);
 	}

@@ -62,7 +62,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 	private void Awake()
 	{
-		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
+		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
 		
 		if(playerRobotsListData != null)
 		{

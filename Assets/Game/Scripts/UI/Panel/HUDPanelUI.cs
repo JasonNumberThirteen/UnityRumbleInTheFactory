@@ -8,7 +8,7 @@ public class HUDPanelUI : MonoBehaviour
 
 	private void Awake()
 	{
-		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>();
+		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
 		rectTransformPositionController = GetComponent<RectTransformPositionController>();
 
 		RegisterToListeners(true);

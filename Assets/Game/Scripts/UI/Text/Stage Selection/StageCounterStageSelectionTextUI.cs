@@ -14,7 +14,7 @@ public class StageCounterStageSelectionTextUI : StageSelectionTextUI
 	{
 		base.Awake();
 		
-		stageSelectionManager = FindAnyObjectByType<StageSelectionManager>();
+		stageSelectionManager = ObjectMethods.FindComponentOfType<StageSelectionManager>();
 		loopingIntCounter = GetComponent<LoopingIntCounter>();
 
 		RegisterToListeners(true);

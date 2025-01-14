@@ -23,6 +23,6 @@ public class FortressTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRe
 	{
 		base.Awake();
 		
-		nukeEntityFortressField = FindAnyObjectByType<NukeEntityFortressField>();
+		nukeEntityFortressField = ObjectMethods.FindComponentOfType<NukeEntityFortressField>();
 	}
 }

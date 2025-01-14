@@ -62,8 +62,8 @@ public class StageSoundManager : MonoBehaviour
 	private void Awake()
 	{
 		playerRobotMovementSourceChannel = GetComponentInChildren<PlayerRobotMovementSoundChannel>();
-		stageMusicManager = FindAnyObjectByType<StageMusicManager>();
-		stageStateManager = FindAnyObjectByType<StageStateManager>();
+		stageMusicManager = ObjectMethods.FindComponentOfType<StageMusicManager>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 
 		RegisterToListeners(true);
 	}

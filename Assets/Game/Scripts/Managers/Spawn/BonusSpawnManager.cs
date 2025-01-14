@@ -22,7 +22,7 @@ public class BonusSpawnManager : MonoBehaviour
 
 	private void Awake()
 	{
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 	}
 
 	private void PlaySound()

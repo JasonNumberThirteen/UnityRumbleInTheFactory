@@ -6,7 +6,7 @@ public class StageTimeManager : MonoBehaviour
 
 	private void Awake()
 	{
-		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 
 		RegisterToListeners(true);
 	}

@@ -20,7 +20,7 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 
 	public void SetRobotEntitiesActive(bool active, bool affectFriendly)
 	{
-		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robotEntity => robotEntity.IsFriendly() == affectFriendly);
+		var robotEntities = ObjectMethods.FindComponentsOfType<RobotEntity>(false).Where(robotEntity => robotEntity.IsFriendly() == affectFriendly);
 		var robotEntityDisablers = robotEntities.Select(robotEntity => robotEntity.GetComponent<RobotEntityDisabler>()).Where(component => component != null);
 
 		foreach (var robotEntityDisabler in robotEntityDisablers)
@@ -32,7 +32,7 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
-		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 
 		RegisterToListeners(true);
 	}

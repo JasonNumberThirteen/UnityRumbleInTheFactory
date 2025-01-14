@@ -40,7 +40,7 @@ public class EnemyRobotEntity : RobotEntity
 		base.Awake();
 
 		enemyRobotEntityHealth = GetComponent<EnemyRobotEntityHealth>();
-		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
+		enemyRobotEntitySpawnManager = ObjectMethods.FindComponentOfType<EnemyRobotEntitySpawnManager>();
 	}
 
 	private void OnDestroy()

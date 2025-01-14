@@ -31,9 +31,9 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 
 	protected virtual void Awake()
 	{
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
-		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
-		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 	}
 
 	private void OnBonusCollected(GameObject sender)

@@ -6,7 +6,7 @@ public class MainMenuGameSceneManager : GameSceneManager
 
 	private void Awake()
 	{
-		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
+		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 
 		RegisterToListeners(true);
 	}

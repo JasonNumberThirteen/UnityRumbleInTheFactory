@@ -10,7 +10,7 @@ public class DestructionBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 
 	private void DestroyAllRobotEntities(bool destroyFriendly)
 	{
-		var robotEntities = FindObjectsByType<RobotEntity>(FindObjectsSortMode.None).Where(robotEntity => robotEntity.IsFriendly() == destroyFriendly).ToArray();
+		var robotEntities = ObjectMethods.FindComponentsOfType<RobotEntity>(false).Where(robotEntity => robotEntity.IsFriendly() == destroyFriendly).ToArray();
 		
 		foreach (var robotEntity in robotEntities)
 		{

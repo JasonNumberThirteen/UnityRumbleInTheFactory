@@ -8,7 +8,7 @@ public class StageSceneStageCounterHeaderTextUI : StageCounterHeaderTextUI
 	{
 		base.Awake();
 		
-		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
+		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 
 		RegisterToListeners(true);
 	}

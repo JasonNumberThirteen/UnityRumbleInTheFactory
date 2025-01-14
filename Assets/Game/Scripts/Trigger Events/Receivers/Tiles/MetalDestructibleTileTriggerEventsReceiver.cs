@@ -20,7 +20,7 @@ public class MetalDestructibleTileTriggerEventsReceiver : DestructibleTileTrigge
 	{
 		base.Awake();
 		
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 	}
 
 	private bool CanBeDestroyedByBullet(GameObject sender) => sender.TryGetComponent(out BulletEntity bulletEntity) && bulletEntity.CanDestroyMetal();

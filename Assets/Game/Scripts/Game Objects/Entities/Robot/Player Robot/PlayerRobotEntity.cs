@@ -24,7 +24,7 @@ public class PlayerRobotEntity : RobotEntity
 	{
 		base.Awake();
 
-		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
+		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 	}
 
 	private void OnDestroy()

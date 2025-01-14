@@ -20,7 +20,7 @@ public class RobotEntityHealth : MonoBehaviour
 	protected virtual void Awake()
 	{
 		entityExploder = GetComponent<EntityExploder>();
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>(FindObjectsInactive.Include);
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 		robotEntityRankController = GetComponent<RobotEntityRankController>();
 
 		RegisterToListeners(true);

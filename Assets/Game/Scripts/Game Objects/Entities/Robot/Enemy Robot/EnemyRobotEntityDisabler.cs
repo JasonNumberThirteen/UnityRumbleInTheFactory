@@ -4,7 +4,7 @@ public class EnemyRobotEntityDisabler : RobotEntityDisabler
 {
 	private void Awake()
 	{
-		var robotEntitiesDisablingManager = FindAnyObjectByType<RobotEntitiesDisablingManager>(FindObjectsInactive.Include);
+		var robotEntitiesDisablingManager = ObjectMethods.FindComponentOfType<RobotEntitiesDisablingManager>();
 
 		if(robotEntitiesDisablingManager != null && robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled(false))
 		{

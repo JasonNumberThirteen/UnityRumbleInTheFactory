@@ -16,8 +16,8 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 	{
 		base.Awake();
 
-		stageStateManager = FindAnyObjectByType<StageStateManager>();
-		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 	}
 
 	protected override void Die(GameObject sender)

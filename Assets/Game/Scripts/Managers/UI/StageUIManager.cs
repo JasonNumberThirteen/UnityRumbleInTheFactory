@@ -13,12 +13,12 @@ public class StageUIManager : UIManager
 
 	private void Awake()
 	{
-		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
-		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
-		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
-		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
-		mainCanvasUI = FindAnyObjectByType<MainCanvasUI>(FindObjectsInactive.Include);
-		pauseTextUI = FindAnyObjectByType<PauseTextUI>(FindObjectsInactive.Include);
+		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
+		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
+		mainCanvasUI = ObjectMethods.FindComponentOfType<MainCanvasUI>();
+		pauseTextUI = ObjectMethods.FindComponentOfType<PauseTextUI>();
 
 		RegisterToListeners(true);
 	}

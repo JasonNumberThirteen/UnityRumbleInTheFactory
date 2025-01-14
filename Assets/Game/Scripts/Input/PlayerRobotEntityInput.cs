@@ -14,8 +14,8 @@ public class PlayerRobotEntityInput : MonoBehaviour
 	private void Awake()
 	{
 		robotEntityShootController = GetComponent<RobotEntityShootController>();
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
-		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
+		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
 	}
 
 	private void OnMove(InputValue inputValue)

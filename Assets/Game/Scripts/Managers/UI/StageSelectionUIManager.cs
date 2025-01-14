@@ -9,8 +9,8 @@ public class StageSelectionUIManager : UIManager
 
 	private void Awake()
 	{
-		stageCounterTextUI = FindAnyObjectByType<StageCounterStageSelectionTextUI>();
-		noStagesTextUI = FindAnyObjectByType<NoStagesStageSelectionTextUI>();
+		stageCounterTextUI = ObjectMethods.FindComponentOfType<StageCounterStageSelectionTextUI>();
+		noStagesTextUI = ObjectMethods.FindComponentOfType<NoStagesStageSelectionTextUI>();
 	}
 
 	private void Start()

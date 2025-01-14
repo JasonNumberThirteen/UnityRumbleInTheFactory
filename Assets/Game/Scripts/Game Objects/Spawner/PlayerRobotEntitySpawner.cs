@@ -16,7 +16,7 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 	{
 		base.Awake();
 
-		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>();
+		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 	}
 
 	private void Start()

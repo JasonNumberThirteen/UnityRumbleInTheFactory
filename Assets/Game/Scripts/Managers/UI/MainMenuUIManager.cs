@@ -9,10 +9,10 @@ public class MainMenuUIManager : UIManager
 
 	private void Awake()
 	{
-		mainMenuPanelUI = FindAnyObjectByType<MainMenuPanelUI>();
-		mainMenuOptionsCursorImageUI = FindAnyObjectByType<MainMenuOptionsCursorImageUI>(FindObjectsInactive.Include);
-		mainMenuOptionsListenersManager = FindAnyObjectByType<MainMenuOptionsListenersManager>(FindObjectsInactive.Include);
-		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
+		mainMenuPanelUI = ObjectMethods.FindComponentOfType<MainMenuPanelUI>();
+		mainMenuOptionsCursorImageUI = ObjectMethods.FindComponentOfType<MainMenuOptionsCursorImageUI>();
+		mainMenuOptionsListenersManager = ObjectMethods.FindComponentOfType<MainMenuOptionsListenersManager>();
+		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 		
 		RegisterToListeners(true);
 	}

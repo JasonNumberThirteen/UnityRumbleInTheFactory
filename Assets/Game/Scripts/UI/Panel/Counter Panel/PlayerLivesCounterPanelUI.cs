@@ -10,7 +10,7 @@ public class PlayerLivesCounterPanelUI : CounterPanelUI
 	{
 		base.Awake();
 		
-		playerRobotsDataManager = FindAnyObjectByType<PlayerRobotsDataManager>(FindObjectsInactive.Include);
+		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 
 		RegisterToListeners(true);
 	}

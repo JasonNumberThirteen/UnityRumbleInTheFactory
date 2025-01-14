@@ -10,8 +10,8 @@ public class StageGameSceneManager : GameSceneManager
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
-		gameOverTextUI = FindAnyObjectByType<GameOverTextUI>();
-		stageStateManager = FindAnyObjectByType<StageStateManager>();
+		gameOverTextUI = ObjectMethods.FindComponentOfType<GameOverTextUI>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 
 		RegisterToListeners(true);
 	}

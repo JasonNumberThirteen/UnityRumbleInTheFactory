@@ -22,6 +22,6 @@ public class EnemyRobotEntityTriggerEventsReceiver : RobotEntityTriggerEventsRec
 		base.Awake();
 
 		enemyRobotEntity = GetComponent<EnemyRobotEntity>();
-		bonusSpawnManager = FindAnyObjectByType<BonusSpawnManager>();
+		bonusSpawnManager = ObjectMethods.FindComponentOfType<BonusSpawnManager>();
 	}
 }

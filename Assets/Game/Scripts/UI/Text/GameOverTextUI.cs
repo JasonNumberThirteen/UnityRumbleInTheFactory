@@ -14,7 +14,7 @@ public class GameOverTextUI : TextUI
 		base.Awake();
 
 		timedRectTransformPositionController = GetComponent<TimedRectTransformPositionController>();
-		stageStateManager = FindAnyObjectByType<StageStateManager>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 
 		RegisterToListeners(true);
 	}

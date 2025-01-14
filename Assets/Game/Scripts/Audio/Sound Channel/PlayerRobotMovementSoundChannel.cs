@@ -23,9 +23,9 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 	{
 		base.Awake();
 		
-		stageStateManager = FindAnyObjectByType<StageStateManager>();
-		stageMusicManager = FindAnyObjectByType<StageMusicManager>();
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		stageMusicManager = ObjectMethods.FindComponentOfType<StageMusicManager>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 
 		RegisterToListeners(true);
 	}

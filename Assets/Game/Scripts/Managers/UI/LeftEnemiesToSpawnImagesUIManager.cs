@@ -12,8 +12,8 @@ public class LeftEnemiesToSpawnImagesUIManager : UIManager
 
 	private void Awake()
 	{
-		leftEnemiesToSpawnPanelUI = FindAnyObjectByType<LeftEnemiesToSpawnPanelUI>(FindObjectsInactive.Include);
-		enemyRobotEntitySpawnManager = FindAnyObjectByType<EnemyRobotEntitySpawnManager>(FindObjectsInactive.Include);
+		leftEnemiesToSpawnPanelUI = ObjectMethods.FindComponentOfType<LeftEnemiesToSpawnPanelUI>();
+		enemyRobotEntitySpawnManager = ObjectMethods.FindComponentOfType<EnemyRobotEntitySpawnManager>();
 
 		RegisterToListeners(true);
 	}

@@ -10,7 +10,7 @@ public class BulletEntityTriggerEventsSender : MonoBehaviour
 
 	private void Awake()
 	{
-		stageEventsManager = FindAnyObjectByType<StageEventsManager>(FindObjectsInactive.Include);
+		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 	}
 	
 	private void OnTriggerEnter2D(Collider2D collider)

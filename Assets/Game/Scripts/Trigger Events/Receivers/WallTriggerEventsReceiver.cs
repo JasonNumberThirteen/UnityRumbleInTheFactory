@@ -14,6 +14,6 @@ public class WallTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 
 	private void Awake()
 	{
-		stageSoundManager = FindAnyObjectByType<StageSoundManager>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 	}
 }

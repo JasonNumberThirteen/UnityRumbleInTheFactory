@@ -48,9 +48,9 @@ public class StageSceneFlowManager : MonoBehaviour
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
-		stageStateManager = FindAnyObjectByType<StageStateManager>();
-		translationBackgroundPanelUI = FindAnyObjectByType<TranslationBackgroundPanelUI>(FindObjectsInactive.Include);
-		nukeEntity = FindAnyObjectByType<NukeEntity>(FindObjectsInactive.Include);
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
+		nukeEntity = ObjectMethods.FindComponentOfType<NukeEntity>();
 		timer.duration = delayOnStart;
 
 		SetGOsActive(false);

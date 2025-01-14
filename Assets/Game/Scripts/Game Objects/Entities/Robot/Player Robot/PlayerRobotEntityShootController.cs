@@ -24,7 +24,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	protected override void Awake()
 	{
-		stageEventsManager = FindAnyObjectByType<StageEventsManager>(FindObjectsInactive.Include);
+		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		
 		base.Awake();
 	}

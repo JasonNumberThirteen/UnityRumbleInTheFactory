@@ -32,10 +32,10 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 
 	private void Awake()
 	{
-		stageEnemyTypesLoadingManager = FindAnyObjectByType<StageEnemyTypesLoadingManager>();
-		stageSceneFlowManager = FindAnyObjectByType<StageSceneFlowManager>(FindObjectsInactive.Include);
-		stageStateManager = FindAnyObjectByType<StageStateManager>(FindObjectsInactive.Include);
-		enemyRobotEntitySpawners = FindObjectsByType<EnemyRobotEntitySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None).OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).Take(GetTotalNumberOfEnemies()).ToList();
+		stageEnemyTypesLoadingManager = ObjectMethods.FindComponentOfType<StageEnemyTypesLoadingManager>();
+		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		enemyRobotEntitySpawners = ObjectMethods.FindComponentsOfType<EnemyRobotEntitySpawner>().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).Take(GetTotalNumberOfEnemies()).ToList();
 		
 		RegisterToListeners(true);
 	}

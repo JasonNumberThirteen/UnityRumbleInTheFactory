@@ -13,9 +13,9 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 
 	private void Awake()
 	{
-		optionsManager = FindAnyObjectByType<OptionsManager>();
-		menuOptionsInput = FindAnyObjectByType<MenuOptionsInput>(FindObjectsInactive.Include);
-		mainMenuOptionsCursorImageUI = FindAnyObjectByType<MainMenuOptionsCursorImageUI>(FindObjectsInactive.Include);
+		optionsManager = ObjectMethods.FindComponentOfType<OptionsManager>();
+		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
+		mainMenuOptionsCursorImageUI = ObjectMethods.FindComponentOfType<MainMenuOptionsCursorImageUI>();
 
 		RegisterToListeners(true);
 	}
