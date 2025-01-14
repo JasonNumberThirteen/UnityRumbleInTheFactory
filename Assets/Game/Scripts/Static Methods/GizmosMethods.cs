@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class GizmosMethods : MonoBehaviour
+public static class GizmosMethods
 {
 	public static void OperateOnGizmos(Action action, Color color)
 	{
