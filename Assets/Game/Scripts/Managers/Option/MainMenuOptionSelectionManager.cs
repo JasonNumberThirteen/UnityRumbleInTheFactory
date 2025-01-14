@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 
 [RequireComponent(typeof(LoopingIntCounter))]
@@ -39,8 +41,15 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		if(gameData != null && gameData.EnteredStageSelection && gameData.SelectedTwoPlayersMode)
 		{
-			loopingIntCounter.SetTo((int)OptionType.TwoPlayersMode);
+			StartCoroutine(SelectTwoPlayersMode());
 		}
+	}
+
+	private IEnumerator SelectTwoPlayersMode()
+	{
+		yield return new WaitForEndOfFrame();
+
+		loopingIntCounter.SetTo((int)OptionType.TwoPlayersMode);
 	}
 
 	private void OnDestroy()

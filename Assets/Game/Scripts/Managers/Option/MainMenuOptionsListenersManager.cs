@@ -32,40 +32,25 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 			return;
 		}
 		
-		optionsManager.RegisterToOptionListeners(register, OptionType.OnePlayerMode, OnOnePlayerModeSelected, OnOnePlayerModeSubmitted);
-		optionsManager.RegisterToOptionListeners(register, OptionType.TwoPlayersMode, OnTwoPlayersModeSelected, OnTwoPlayersModeSubmitted);
-		optionsManager.RegisterToOptionListeners(register, OptionType.ExitGame, OnExitGameSelected, OnExitGameSubmitted);
+		optionsManager.RegisterToOptionListeners(register, OptionType.OnePlayerMode, OnOptionSelected, OnOnePlayerModeSubmitted);
+		optionsManager.RegisterToOptionListeners(register, OptionType.TwoPlayersMode, OnOptionSelected, OnTwoPlayersModeSubmitted);
+		optionsManager.RegisterToOptionListeners(register, OptionType.ExitGame, OnOptionSelected, OnExitGameSubmitted);
 	}
 
-	private void OnOnePlayerModeSelected()
-	{
-		SetPositionYToOptionsCursor(-44);
-	}
-
-	private void OnTwoPlayersModeSelected()
-	{
-		SetPositionYToOptionsCursor(-60);
-	}
-
-	private void OnExitGameSelected()
-	{
-		SetPositionYToOptionsCursor(-76);
-	}
-
-	private void SetPositionYToOptionsCursor(float y)
+	private void OnOptionSelected(Option option)
 	{
 		if(mainMenuOptionsCursorImageUI != null)
 		{
-			mainMenuOptionsCursorImageUI.SetPositionY(y);
+			mainMenuOptionsCursorImageUI.SetPositionRelativeToOption(option);
 		}
 	}
 
-	private void OnOnePlayerModeSubmitted()
+	private void OnOnePlayerModeSubmitted(Option option)
 	{
 		StartGame(false);
 	}
 
-	private void OnTwoPlayersModeSubmitted()
+	private void OnTwoPlayersModeSubmitted(Option option)
 	{
 		StartGame(true);
 	}
@@ -93,7 +78,7 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 		}
 	}
 
-	private void OnExitGameSubmitted()
+	private void OnExitGameSubmitted(Option option)
 	{
 		Application.Quit();
 	}

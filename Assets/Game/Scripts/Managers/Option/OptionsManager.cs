@@ -20,7 +20,7 @@ public class OptionsManager : MonoBehaviour
 		OperateOnOptionIfExists(optionType, option => option.Submit());
 	}
 
-	public void RegisterToOptionListeners(bool register, OptionType optionType, UnityAction onSelect, UnityAction onSubmit)
+	public void RegisterToOptionListeners(bool register, OptionType optionType, UnityAction<Option> onSelect, UnityAction<Option> onSubmit)
 	{
 		if(!OptionByGivenTypeExists(optionType))
 		{

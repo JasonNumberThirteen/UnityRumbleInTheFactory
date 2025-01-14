@@ -12,9 +12,9 @@ public class MainMenuOptionsCursorImageUI : MonoBehaviour
 		image.enabled = active;
 	}
 
-	public void SetPositionY(float y)
+	public void SetPositionRelativeToOption(Option option)
 	{
-		rectTransformPositionController.SetPositionY(y);
+		rectTransformPositionController.SetPositionY(option.GetPosition().y);
 	}
 
 	private void Awake()
