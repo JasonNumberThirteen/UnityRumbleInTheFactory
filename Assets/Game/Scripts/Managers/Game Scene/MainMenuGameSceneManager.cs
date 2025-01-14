@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MainMenuGameSceneManager : GameSceneManager
 {
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;

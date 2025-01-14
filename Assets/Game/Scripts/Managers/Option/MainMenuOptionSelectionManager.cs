@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 
 [RequireComponent(typeof(LoopingIntCounter))]
