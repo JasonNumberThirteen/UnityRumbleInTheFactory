@@ -15,7 +15,7 @@ public class StageSelectionManager : MonoBehaviour
 
 	private void Awake()
 	{
-		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
+		menuOptionsInput = FindAnyObjectByType<MenuOptionsInput>();
 		timer = GetComponent<Timer>();
 
 		RegisterToListeners(true);

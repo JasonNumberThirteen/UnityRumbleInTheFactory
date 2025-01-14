@@ -10,8 +10,8 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void Awake()
 	{
-		menuOptionsInput = FindFirstObjectByType<MenuOptionsInput>();
-		stageCounterTextUI = FindFirstObjectByType<StageCounterStageSelectionTextUI>();
+		menuOptionsInput = FindAnyObjectByType<MenuOptionsInput>();
+		stageCounterTextUI = FindAnyObjectByType<StageCounterStageSelectionTextUI>();
 
 		RegisterToListeners(true);
 	}
