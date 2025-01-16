@@ -175,6 +175,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2211959474914024363}
+    - targetCorrespondingSourceObject: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8019531351368280990}
   m_SourcePrefab: {fileID: 100100000, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
 --- !u!1 &1529488581660020816 stripped
 GameObject:
@@ -216,5 +219,24 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 65536
+  drawGizmos: 1
+  radiusGizmosColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &8019531351368280990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529488581660020816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0e633cfb19ea54dbd7f6dd2bacfba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectsLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  intersectingGameObjectsLayerName: Intersecting Enemy
+  radius: 1
   drawGizmos: 1
   radiusGizmosColor: {r: 0, g: 0, b: 0, a: 1}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Telefragger))]
+[RequireComponent(typeof(Telefragger), typeof(IntersectingGameObjectsDetector))]
 public class EnemyRobotEntitySpawner : EntitySpawner
 {
 	public bool IsBonus {get; set;}
@@ -10,6 +10,7 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 	[SerializeField] private Color bonusEnemyColor = Color.blue;
 
 	private Telefragger telefragger;
+	private IntersectingGameObjectsDetector intersectingGameObjectsDetector;
 
 	public int GetOrdinalNumber() => ordinalNumber;
 
@@ -18,6 +19,7 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 		base.Awake();
 
 		telefragger = GetComponent<Telefragger>();
+		intersectingGameObjectsDetector = GetComponent<IntersectingGameObjectsDetector>();
 	}
 
 	protected override GameObject GetEntityInstance()
@@ -49,5 +51,6 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 	private void OnTimerEnd()
 	{
 		telefragger.TelefragGOsWithinRadius();
+		intersectingGameObjectsDetector.SetLayerToGOsIfIntersect();
 	}
 }
