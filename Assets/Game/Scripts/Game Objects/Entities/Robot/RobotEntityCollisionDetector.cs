@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class RobotEntityCollisionDetector : MonoBehaviour
 	[SerializeField] private Color detectedColliderGizmosColor = Color.red;
 	
 	private Collider2D c2D;
+	private GameObject parentGO;
 
 	private readonly Dictionary<Vector2, Vector3> eulerAnglesByDirection = new()
 	{
@@ -27,7 +29,7 @@ public class RobotEntityCollisionDetector : MonoBehaviour
 	}
 
 	public Collider2D OverlapBox() => Physics2D.OverlapBox(GetColliderCenter(), GetColliderSize(), 0f, layerMask);
-	public Collider2D[] OverlapBoxAll() => Physics2D.OverlapBoxAll(GetColliderCenter(), GetColliderSize(), 0f, layerMask);
+	public Collider2D[] OverlapBoxAll() => Physics2D.OverlapBoxAll(GetColliderCenter(), GetColliderSize(), 0f, layerMask).Where(collider => collider.gameObject != parentGO).ToArray();
 
 	private Vector2 GetColliderCenter() => c2D.bounds.center;
 	private Vector2 GetColliderSize() => c2D.bounds.size;
@@ -35,6 +37,7 @@ public class RobotEntityCollisionDetector : MonoBehaviour
 	private void Awake()
 	{
 		c2D = GetComponent<Collider2D>();
+		parentGO = transform.parent.gameObject;
 	}
 
 	private void OnDrawGizmos()

@@ -123,8 +123,8 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 
 	private bool DetectedAnyCollision()
 	{
-		var detectedAnyCollision = robotEntityCollisionDetector != null && robotEntityCollisionDetector.OverlapBoxAll().Length > 1;
+		var detectedColliders = robotEntityCollisionDetector != null ? robotEntityCollisionDetector.OverlapBoxAll() : new Collider2D[0];
 		
-		return !detectedCollision && enabled && detectedAnyCollision;
+		return !detectedCollision && enabled && detectedColliders.Length > 0;
 	}
 }

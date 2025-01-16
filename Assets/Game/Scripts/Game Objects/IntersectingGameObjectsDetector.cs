@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class IntersectingGameObjectsDetector : MonoBehaviour
@@ -16,7 +17,7 @@ public class IntersectingGameObjectsDetector : MonoBehaviour
 	{
 		Physics2D.OverlapBoxNonAlloc(transform.position, Vector2.one*radius, 0f, detectedColliders, gameObjectsLayerMask);
 
-		if(detectedColliders != null && detectedColliders.Length == OVERLAP_BUFFER_SIZE)
+		if(detectedColliders != null && detectedColliders.Where(collider => collider != null).Count() == OVERLAP_BUFFER_SIZE)
 		{
 			ConfigureGOs();
 		}
