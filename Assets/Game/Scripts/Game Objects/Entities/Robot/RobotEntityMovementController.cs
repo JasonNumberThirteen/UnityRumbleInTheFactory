@@ -18,12 +18,7 @@ public class RobotEntityMovementController : EntityMovementController
 		RegisterToListeners(true);
 	}
 
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-	}
-
-	private void RegisterToListeners(bool register)
+	protected virtual void RegisterToListeners(bool register)
 	{
 		if(register)
 		{
@@ -33,6 +28,11 @@ public class RobotEntityMovementController : EntityMovementController
 		{
 			robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
 		}
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
 	}
 
 	private void OnRankChanged(RobotRank robotRank)

@@ -1,17 +1,44 @@
+using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerRobotEntityInput))]
+[RequireComponent(typeof(PlayerRobotEntityInput), typeof(PlayerRobotEntityGameObjectsDetector))]
 public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
-	public bool IsSliding {get; set;}
-
 	private PlayerRobotEntityInput playerRobotEntityInput;
+	private PlayerRobotEntityGameObjectsDetector playerRobotEntityGameObjectsDetector;
+	private bool isSliding;
+
+	private readonly string SLIPPERY_FLOOR_LAYER_NAME = "Slippery Floor";
+
+	public Vector2 GetLastDirection() => lastDirection;
 
 	protected override void Awake()
 	{
+		playerRobotEntityGameObjectsDetector = GetComponent<PlayerRobotEntityGameObjectsDetector>();
+		
 		base.Awake();
 
 		playerRobotEntityInput = GetComponent<PlayerRobotEntityInput>();
+	}
+
+	protected override void RegisterToListeners(bool register)
+	{
+		base.RegisterToListeners(register);
+
+		if(register)
+		{
+			playerRobotEntityGameObjectsDetector.detectedGameObjectsUpdatedEvent.AddListener(OnDetectedGameObjectsUpdated);
+		}
+		else
+		{
+			playerRobotEntityGameObjectsDetector.detectedGameObjectsUpdatedEvent.RemoveListener(OnDetectedGameObjectsUpdated);
+		}
+	}
+
+	private void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
+	{
+		isSliding = gameObjects != null && gameObjects.Count > 0 && gameObjects.All(go => go.layer == LayerMask.NameToLayer(SLIPPERY_FLOOR_LAYER_NAME));
 	}
 
 	private void Update()
@@ -32,7 +59,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void UpdateCurrentMovementDirection()
 	{
-		CurrentMovementDirection = IsSliding ? playerRobotEntityInput.LastMovementVector : GetMovementDirection();
+		CurrentMovementDirection = isSliding ? playerRobotEntityInput.LastMovementVector : GetMovementDirection();
 	}
 
 	private Vector2 GetMovementDirection()

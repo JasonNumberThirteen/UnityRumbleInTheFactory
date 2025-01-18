@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6799519437811995597}
   - component: {fileID: 6412099630306354084}
   - component: {fileID: 7396844477143940735}
-  - component: {fileID: 7797617092294412773}
   - component: {fileID: 1807818615005442926}
   m_Layer: 6
   m_Name: SlipperyFloorTilePrefab
@@ -158,20 +157,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.45}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &7797617092294412773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3965729446970126673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942c0b0d7ef839146bd361bb27701333, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1807818615005442926
 MonoBehaviour:
   m_ObjectHideFlags: 0

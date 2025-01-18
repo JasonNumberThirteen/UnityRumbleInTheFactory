@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4953811159382910320}
   - component: {fileID: 8296638607036752338}
   - component: {fileID: 1433802966453193260}
-  m_Layer: 12
+  m_Layer: 18
   m_Name: FortressFieldArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,6 +93,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0
   countFromTheStart: 0
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onReset:
     m_PersistentCalls:
       m_Calls: []

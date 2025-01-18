@@ -54,8 +54,10 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		RegisterToListeners(false);
 	}
 
-	private void RegisterToListeners(bool register)
+	protected override void RegisterToListeners(bool register)
 	{
+		base.RegisterToListeners(register);
+		
 		if(register)
 		{
 			if(enemyRobotEntityMovementControllerTimer != null)
