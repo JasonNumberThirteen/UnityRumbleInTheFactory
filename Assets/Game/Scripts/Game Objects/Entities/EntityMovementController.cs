@@ -22,7 +22,7 @@ public class EntityMovementController : MonoBehaviour
 		rb2D = GetComponent<Rigidbody2D>();
 	}
 
-	protected virtual void FixedUpdate()
+	private void FixedUpdate()
 	{
 		var speed = movementSpeed*Time.fixedDeltaTime;
 

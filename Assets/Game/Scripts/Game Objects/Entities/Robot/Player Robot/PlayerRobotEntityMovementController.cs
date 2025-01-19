@@ -2,51 +2,33 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerRobotEntityInput), typeof(PlayerRobotEntityGameObjectsDetector))]
+[RequireComponent(typeof(PlayerRobotEntityInput))]
 public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
 	private PlayerRobotEntityInput playerRobotEntityInput;
-	private PlayerRobotEntityGameObjectsDetector playerRobotEntityGameObjectsDetector;
 	private bool isSliding;
 
+	private readonly string ENEMY_LAYER_NAME = "Enemy";
 	private readonly string SLIPPERY_FLOOR_LAYER_NAME = "Slippery Floor";
-
-	public Vector2 GetLastDirection() => lastDirection;
 
 	protected override void Awake()
 	{
-		playerRobotEntityGameObjectsDetector = GetComponent<PlayerRobotEntityGameObjectsDetector>();
-		
 		base.Awake();
 
 		playerRobotEntityInput = GetComponent<PlayerRobotEntityInput>();
 	}
 
-	protected override void RegisterToListeners(bool register)
-	{
-		base.RegisterToListeners(register);
-
-		if(register)
-		{
-			playerRobotEntityGameObjectsDetector.detectedGameObjectsUpdatedEvent.AddListener(OnDetectedGameObjectsUpdated);
-		}
-		else
-		{
-			playerRobotEntityGameObjectsDetector.detectedGameObjectsUpdatedEvent.RemoveListener(OnDetectedGameObjectsUpdated);
-		}
-	}
-
-	private void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
+	protected override void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
 	{
 		isSliding = gameObjects != null && gameObjects.Count > 0 && gameObjects.All(go => go.layer == LayerMask.NameToLayer(SLIPPERY_FLOOR_LAYER_NAME));
+		rb2D.constraints = gameObjects.Any(go => go.layer == LayerMask.NameToLayer(ENEMY_LAYER_NAME)) ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
 	}
 
 	private void Update()
 	{
 		UpdateLastDirectionIfNeeded();
-		UpdateCurrentMovementDirection();
-		RotateByDirectionIfNeeded();
-		LockMovementWhenHitObject();
+
+		CurrentMovementDirection = isSliding ? playerRobotEntityInput.LastMovementVector : GetMovementDirection();
 	}
 
 	private void UpdateLastDirectionIfNeeded()
@@ -55,11 +37,6 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		{
 			lastDirection = CurrentMovementDirection;
 		}
-	}
-
-	private void UpdateCurrentMovementDirection()
-	{
-		CurrentMovementDirection = isSliding ? playerRobotEntityInput.LastMovementVector : GetMovementDirection();
 	}
 
 	private Vector2 GetMovementDirection()
@@ -75,26 +52,6 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		var y = Mathf.RoundToInt(playerRobotEntityInput.MovementVector.y);
 
 		return new Vector2(x, y);
-	}
-
-	private void RotateByDirectionIfNeeded()
-	{
-		if(IsMovingInDifferentDirection())
-		{
-			robotEntityCollisionDetector.AdjustRotationIfPossible(CurrentMovementDirection);
-		}
-	}
-	
-	private void LockMovementWhenHitObject()
-	{
-		if(robotEntityCollisionDetector != null && robotEntityCollisionDetector.OverlapBox() != null)
-		{
-			rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-		}
-		else if(rb2D.constraints != RigidbodyConstraints2D.FreezeRotation)
-		{
-			rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-		}
 	}
 
 	private bool PressedHorizontalMovementKey(Vector2 movement) => Mathf.Abs(movement.x) > Mathf.Abs(movement.y);

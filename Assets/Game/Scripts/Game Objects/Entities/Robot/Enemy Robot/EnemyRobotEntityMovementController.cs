@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyRobotEntityMovementDirectionSelector))]
@@ -20,40 +21,6 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		RegisterToListeners(true);
 	}
 
-	protected override void FixedUpdate()
-	{
-		base.FixedUpdate();
-		
-		if(DetectedAnyCollision())
-		{
-			SetDetectedCollisionState(true);
-		}
-	}
-
-	private void Start()
-	{
-		SetInitialMovementSpeedModifiedByDifficultyTier();
-		SetCurrentMovementDirection(Vector2.down);
-	}
-
-	private void SetInitialMovementSpeedModifiedByDifficultyTier()
-	{
-		if(gameData == null)
-		{
-			return;
-		}
-		
-		var baseMovementSpeed = movementSpeed;
-		var multiplier = gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier());
-		
-		SetMovementSpeed(baseMovementSpeed*multiplier);
-	}
-
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-	}
-
 	protected override void RegisterToListeners(bool register)
 	{
 		base.RegisterToListeners(register);
@@ -74,6 +41,39 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		}
 	}
 
+	protected override void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
+	{
+		if(enabled && !detectedCollision && gameObjects.Count > 0)
+		{
+			SetDetectedCollisionState(true);
+		}
+	}
+
+	private void Start()
+	{
+		SetInitialMovementSpeedModifiedByDifficultyTier();
+
+		CurrentMovementDirection = Vector2.down;
+	}
+
+	private void SetInitialMovementSpeedModifiedByDifficultyTier()
+	{
+		if(gameData == null)
+		{
+			return;
+		}
+		
+		var baseMovementSpeed = movementSpeed;
+		var multiplier = gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier());
+		
+		SetMovementSpeed(baseMovementSpeed*multiplier);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
 	private void OnTimerEnd()
 	{
 		RandomiseMovementDirection();
@@ -89,21 +89,12 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 
 	private void SetLastAndCurrentDirection(Vector2 lastDirection, Vector2 currentDirection)
 	{
-		if(!enabled)
+		this.lastDirection = lastDirection;
+		
+		if(enabled)
 		{
-			this.lastDirection = lastDirection;
+			CurrentMovementDirection = currentDirection;
 		}
-		else
-		{
-			SetCurrentMovementDirection(currentDirection);
-		}
-	}
-
-	private void SetCurrentMovementDirection(Vector2 currentDirection)
-	{
-		CurrentMovementDirection = currentDirection;
-
-		robotEntityCollisionDetector.AdjustRotationIfPossible(CurrentMovementDirection);
 	}
 
 	private void SetDetectedCollisionState(bool detected)
@@ -121,12 +112,5 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		detectedCollision = detected;
 
 		SetMovementSpeed(detected ? 0f : lastMovementSpeed);
-	}
-
-	private bool DetectedAnyCollision()
-	{
-		var detectedColliders = robotEntityCollisionDetector != null ? robotEntityCollisionDetector.OverlapBoxAll() : new Collider2D[0];
-		
-		return !detectedCollision && enabled && detectedColliders.Length > 0;
 	}
 }

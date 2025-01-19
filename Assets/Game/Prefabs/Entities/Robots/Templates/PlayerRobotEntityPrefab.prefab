@@ -112,6 +112,22 @@ PrefabInstance:
       propertyPath: layerMask.m_Bits
       value: 8192
       objectReference: {fileID: 0}
+    - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: detectionAreaSize.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: detectionAreaSize.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: detectionLayerMask.m_Bits
+      value: 163648
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: detectionAreaOffsetFromCenterDistance
+      value: 0.11
+      objectReference: {fileID: 0}
     - target: {fileID: 7184377186673889978, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: initialVerticalDirection
       value: 1
@@ -121,7 +137,8 @@ PrefabInstance:
     - {fileID: 2083158133487335146, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: 8554013176243355584, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: -5011310037718002703, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9105230650490365401, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
@@ -142,9 +159,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
       addedObject: {fileID: -123051218500741914}
-    - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -5286834352617371297}
   m_SourcePrefab: {fileID: 100100000, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
 --- !u!1 &3405398399308765810 stripped
 GameObject:
@@ -244,23 +258,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRobotData: {fileID: 0}
---- !u!114 &-5286834352617371297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3405398399308765810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e396716a7394742a35b585859c860f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectedGameObjectsUpdatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  detectionAreaSize: {x: 0.1, y: 0.4}
-  detectionLayerMask:
-    serializedVersion: 2
-    m_Bits: 163648
-  detectionAreaOffsetFromCenterDistance: 0.11

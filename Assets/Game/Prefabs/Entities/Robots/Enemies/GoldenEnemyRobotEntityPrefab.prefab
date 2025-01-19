@@ -32,6 +32,18 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.42
       objectReference: {fileID: 0}
+    - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
+      propertyPath: detectionAreaSize.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
+      propertyPath: detectionAreaSize.y
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
+      propertyPath: detectionAreaOffsetFromCenterDistance
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5101436285164364232, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: m_Sprite
       value: 
