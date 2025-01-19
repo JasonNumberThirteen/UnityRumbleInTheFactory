@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class StageSceneStageCounterHeaderTextUI : StageCounterHeaderTextUI
 {
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;

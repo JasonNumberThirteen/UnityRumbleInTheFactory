@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MainMenuUIManager : UIManager
 {
 	private MainMenuPanelUI mainMenuPanelUI;
