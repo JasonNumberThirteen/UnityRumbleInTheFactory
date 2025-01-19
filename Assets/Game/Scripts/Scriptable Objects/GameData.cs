@@ -12,9 +12,10 @@ public class GameData : ScriptableObject
 	public int StageNumber {get; private set;}
 	public StageData[] StagesData {get; private set;}
 
-	[SerializeField] private GameDifficulty gameDifficulty;
+	[SerializeField] private GameDifficulty gameDifficulty = new();
 	
 	public int GetCurrentDifficultyTierIndex() => gameDifficulty.GetCurrentTierIndex();
+	public T GetDifficultyTierValue<T>(Func<GameDifficultyTier, T> tierFunc) where T : struct => gameDifficulty.GetTierValue(tierFunc);
 	public StageData GetCurrentStageData() => StagesData != null && StageNumber >= 1 && StageNumber <= StagesData.Length ? StagesData[StageNumber - 1] : null;
 	public bool NoStagesFound() => StagesData.Length == 0;
 
@@ -61,11 +62,6 @@ public class GameData : ScriptableObject
 	public void SetStagesData(StageData[] stagesData)
 	{
 		StagesData = stagesData;
-	}
-
-	public T GetDifficultyTierValue<T>(Func<GameDifficultyTier, T> tierFunc) where T : struct
-	{
-		return gameDifficulty.GetTierValue(tierFunc);
 	}
 
 	public void IncreaseDifficultyIfNeeded()
