@@ -10,7 +10,7 @@ public class EntityMovementController : MonoBehaviour
 
 	private Vector2 lastMovementDirection;
 
-	public bool CurrentMovementDirectionIsNone() => CurrentMovementDirection == Vector2.zero;
+	public bool CurrentMovementDirectionIsNone() => CurrentMovementDirection.IsZero();
 
 	public void SetMovementSpeed(float movementSpeed)
 	{

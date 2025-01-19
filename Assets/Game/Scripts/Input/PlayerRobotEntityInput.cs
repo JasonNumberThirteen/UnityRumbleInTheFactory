@@ -38,7 +38,7 @@ public class PlayerRobotEntityInput : MonoBehaviour
 			return;
 		}
 
-		var soundEffectType = MovementVector == Vector2.zero ? SoundEffectType.PlayerRobotIdle : SoundEffectType.PlayerRobotMovement;
+		var soundEffectType = MovementVector.IsZero() ? SoundEffectType.PlayerRobotIdle : SoundEffectType.PlayerRobotMovement;
 		
 		stageSoundManager.PlaySound(soundEffectType);
 	}
