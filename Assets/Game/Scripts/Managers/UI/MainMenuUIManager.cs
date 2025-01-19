@@ -1,15 +1,15 @@
 public class MainMenuUIManager : UIManager
 {
 	private MainMenuPanelUI mainMenuPanelUI;
-	private MainMenuOptionsCursorImageUI mainMenuOptionsCursorImageUI;
 	private MainMenuOptionsListenersManager mainMenuOptionsListenersManager;
+	private MainMenuOptionsCursorImageUI mainMenuOptionsCursorImageUI;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
 
 	private void Awake()
 	{
 		mainMenuPanelUI = ObjectMethods.FindComponentOfType<MainMenuPanelUI>();
-		mainMenuOptionsCursorImageUI = ObjectMethods.FindComponentOfType<MainMenuOptionsCursorImageUI>();
 		mainMenuOptionsListenersManager = ObjectMethods.FindComponentOfType<MainMenuOptionsListenersManager>();
+		mainMenuOptionsCursorImageUI = ObjectMethods.FindComponentOfType<MainMenuOptionsCursorImageUI>();
 		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 		
 		RegisterToListeners(true);
