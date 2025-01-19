@@ -8,7 +8,7 @@ public class EnemyRobotEntityTriggerEventsReceiver : RobotEntityTriggerEventsRec
 
 	public override void TriggerOnEnter(GameObject sender)
 	{
-		if(enemyRobotEntity.HasBonus && bonusSpawnManager != null)
+		if(sender.TryGetComponent(out BulletEntity _) && enemyRobotEntity.HasBonus && bonusSpawnManager != null)
 		{
 			bonusSpawnManager.SpawnRandomBonus();
 			enemyRobotEntity.RemoveBonusTypeProperties();
