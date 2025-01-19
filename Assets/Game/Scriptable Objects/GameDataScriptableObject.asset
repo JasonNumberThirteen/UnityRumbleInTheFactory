@@ -16,16 +16,21 @@ MonoBehaviour:
     tiers:
     - enemiesLimitAtOnce: 3
       enemyMovementSpeedMultiplier: 1
+      enemyShootDelay: 1
       enemiesCanCollectBonuses: 0
     - enemiesLimitAtOnce: 3
       enemyMovementSpeedMultiplier: 1.1
+      enemyShootDelay: 1
       enemiesCanCollectBonuses: 0
     - enemiesLimitAtOnce: 4
       enemyMovementSpeedMultiplier: 1.25
+      enemyShootDelay: 0.9
       enemiesCanCollectBonuses: 0
     - enemiesLimitAtOnce: 5
       enemyMovementSpeedMultiplier: 1.4
+      enemyShootDelay: 0.8
       enemiesCanCollectBonuses: 0
     - enemiesLimitAtOnce: 6
       enemyMovementSpeedMultiplier: 1.5
+      enemyShootDelay: 0.7
       enemiesCanCollectBonuses: 1
