@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988d7bd1636773c4996ccadbd41b7e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionSoundEffectType: 9
   enemyRobotData: {fileID: 0}
 --- !u!114 &-7993017942770709550
 MonoBehaviour:

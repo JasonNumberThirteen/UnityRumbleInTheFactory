@@ -109,6 +109,10 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	private void OnSoundPlayed(SoundEffectType soundEffectType)
 	{
+		if(soundEffectType == SoundEffectType.PlayerRobotLifeGain)
+		{
+			MuteTemporarily(1);
+		}
 		if(soundEffectType == SoundEffectType.BonusSpawn)
 		{
 			MuteTemporarily(1);

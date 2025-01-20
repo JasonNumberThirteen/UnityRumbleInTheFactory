@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class MetalDestructibleTileTriggerEventsReceiver : DestructibleTileTriggerEventsReceiver
 {
-	private StageSoundManager stageSoundManager;
-	
 	public override void TriggerOnEnter(GameObject sender)
 	{
 		if(CanBeDestroyedByBullet(sender))
@@ -14,13 +12,6 @@ public class MetalDestructibleTileTriggerEventsReceiver : DestructibleTileTrigge
 		{
 			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotBulletHit);
 		}
-	}
-
-	protected override void Awake()
-	{
-		base.Awake();
-		
-		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 	}
 
 	private bool CanBeDestroyedByBullet(GameObject sender) => sender.TryGetComponent(out BulletEntity bulletEntity) && bulletEntity.CanDestroyMetal();

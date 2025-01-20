@@ -2776,10 +2776,16 @@ MonoBehaviour:
   playerRobotIdleSound: {fileID: 8300000, guid: a45af856d780abe47b6c8161e4764223, type: 3}
   playerRobotMovementSound: {fileID: 8300000, guid: fc25995ca1a276f41a55f257b3355d01, type: 3}
   playerRobotShootSound: {fileID: 8300000, guid: ef941213f8ebea44d81a7bdb72ec48a7, type: 3}
+  playerRobotDestructibleTileDestructionSound: {fileID: 8300000, guid: 7ea441ce8e5795b40bf797864d9508a7, type: 3}
   playerRobotBulletHitSound: {fileID: 8300000, guid: 27fdf53cec0538c4ab93448032492606, type: 3}
+  playerRobotExplosionSound: {fileID: 8300000, guid: ed79f67ea9dc1cc4da56538fa50dcc53, type: 3}
+  playerRobotLifeGainSound: {fileID: 8300000, guid: 86178cf677cce994c8ceb66007e196c5, type: 3}
+  playerRobotSlidingSound: {fileID: 8300000, guid: 3e2fe9be17f8d8f44bc323c72ee0f6a7, type: 3}
   enemyRobotExplosionSound: {fileID: 8300000, guid: 2720389b74928a6419af122c6e585d37, type: 3}
+  nukeExplosionSound: {fileID: 8300000, guid: 541cc7f3f4877f04c82166efe023e59c, type: 3}
   bonusSpawnSound: {fileID: 8300000, guid: edf1027ae433ed4439b95007d563cdaa, type: 3}
   bonusCollectSound: {fileID: 8300000, guid: bb59b197d6495354f93c4c133f5c3a92, type: 3}
+  gamePauseSound: {fileID: 8300000, guid: 740f00d0c25191449b0370a7f39014d9, type: 3}
 --- !u!4 &1579829972
 Transform:
   m_ObjectHideFlags: 0

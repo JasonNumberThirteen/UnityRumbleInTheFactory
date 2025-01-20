@@ -8,6 +8,7 @@ public class NukeEntity : MonoBehaviour, ITriggerableOnEnter
 
 	private EntityExploder entityExploder;
 	private Collider2D c2D;
+	private StageSoundManager stageSoundManager;
 
 	private readonly string DESTROYED_STATE_LAYER_NAME = "Destroyed Nuke";
 
@@ -18,6 +19,7 @@ public class NukeEntity : MonoBehaviour, ITriggerableOnEnter
 		gameObject.layer = LayerMask.NameToLayer(DESTROYED_STATE_LAYER_NAME);
 
 		entityExploder.TriggerExplosion();
+		PlaySound();
 		nukeDestroyedEvent?.Invoke();
 	}
 
@@ -25,5 +27,14 @@ public class NukeEntity : MonoBehaviour, ITriggerableOnEnter
 	{
 		entityExploder = GetComponent<EntityExploder>();
 		c2D = GetComponent<Collider2D>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
+	}
+
+	private void PlaySound()
+	{
+		if(stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.NukeExplosion);
+		}
 	}
 }

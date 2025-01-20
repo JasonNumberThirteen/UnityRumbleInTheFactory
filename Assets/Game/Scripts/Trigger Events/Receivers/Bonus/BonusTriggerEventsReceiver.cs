@@ -29,6 +29,8 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 
 	protected abstract void GiveEffect(GameObject sender);
 
+	protected virtual SoundEffectType GetSoundEffectType(GameObject sender) => SoundEffectType.BonusCollect;
+
 	protected virtual void Awake()
 	{
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
@@ -40,7 +42,7 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 	{
 		GiveEffect(sender);
 		AddPointsToPlayerIfPossible(sender);
-		PlaySound();
+		PlaySound(sender);
 	}
 
 	private void AddPointsToPlayerIfPossible(GameObject sender)
@@ -58,11 +60,11 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 		}
 	}
 
-	private void PlaySound()
+	private void PlaySound(GameObject sender)
 	{
 		if(stageSoundManager != null)
 		{
-			stageSoundManager.PlaySound(SoundEffectType.BonusCollect);
+			stageSoundManager.PlaySound(GetSoundEffectType(sender));
 		}
 	}
 }

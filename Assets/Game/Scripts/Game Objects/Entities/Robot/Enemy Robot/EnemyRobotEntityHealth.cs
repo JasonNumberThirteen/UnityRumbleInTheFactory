@@ -28,13 +28,10 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 
 	private void OnDeath(GameObject sender)
 	{
-		if(stageStateManager == null || stageStateManager.GameIsOver())
+		if(stageStateManager != null && !stageStateManager.GameIsOver())
 		{
-			return;
+			ModifyPlayerRobotDataIfPossible(sender);
 		}
-
-		ModifyPlayerRobotDataIfPossible(sender);
-		PlaySound();
 	}
 
 	private void ModifyPlayerRobotDataIfPossible(GameObject sender)
@@ -54,14 +51,6 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 			{
 				playerRobotsDataManager.ModifyScore(playerRobotData, enemyRobotData.GetPointsForDefeat(), gameObject);
 			}
-		}
-	}
-
-	private void PlaySound()
-	{
-		if(stageSoundManager != null)
-		{
-			stageSoundManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
 		}
 	}
 }

@@ -15,6 +15,7 @@ public class StageSceneFlowManager : MonoBehaviour
 	
 	private Timer timer;
 	private StageStateManager stageStateManager;
+	private StageSoundManager stageSoundManager;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
 	private NukeEntity nukeEntity;
 
@@ -35,6 +36,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		var stateToSwitch = stageStateManager.StateIsSetTo(StageState.Active) ? StageState.Paused : StageState.Active;
 
 		stageStateManager.SetStateTo(stateToSwitch);
+		PlaySoundIfNeeded(stageStateManager.StateIsSetTo(StageState.Paused));
 	}
 
 	public void SetGameAsOverIfNeeded()
@@ -49,6 +51,7 @@ public class StageSceneFlowManager : MonoBehaviour
 	{
 		timer = GetComponent<Timer>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 		nukeEntity = ObjectMethods.FindComponentOfType<NukeEntity>();
 		timer.duration = delayOnStart;
@@ -155,6 +158,14 @@ public class StageSceneFlowManager : MonoBehaviour
 		foreach (var go in gosToActivateWhenStageIsActivated)
 		{
 			go.SetActive(active);
+		}
+	}
+
+	private void PlaySoundIfNeeded(bool playSound)
+	{
+		if(playSound && stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.GamePause);
 		}
 	}
 }

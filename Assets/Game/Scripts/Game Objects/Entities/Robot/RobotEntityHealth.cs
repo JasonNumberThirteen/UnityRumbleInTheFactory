@@ -5,10 +5,11 @@ public class RobotEntityHealth : MonoBehaviour
 {
 	public int CurrentHealth {get; protected set;}
 
-	protected StageSoundManager stageSoundManager;
+	[SerializeField] private SoundEffectType explosionSoundEffectType;
 
 	private EntityExploder entityExploder;
 	private RobotEntityRankController robotEntityRankController;
+	private StageSoundManager stageSoundManager;
 
 	public virtual void TakeDamage(GameObject sender, int damage)
 	{
@@ -20,8 +21,8 @@ public class RobotEntityHealth : MonoBehaviour
 	protected virtual void Awake()
 	{
 		entityExploder = GetComponent<EntityExploder>();
-		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 		robotEntityRankController = GetComponent<RobotEntityRankController>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 
 		RegisterToListeners(true);
 	}
@@ -41,6 +42,7 @@ public class RobotEntityHealth : MonoBehaviour
 	protected virtual void Die(GameObject sender)
 	{
 		entityExploder.TriggerExplosion();
+		PlaySoundOnDeath();
 	}
 
 	private void OnDestroy()
@@ -63,5 +65,13 @@ public class RobotEntityHealth : MonoBehaviour
 	private void OnRankChanged(RobotRank robotRank)
 	{
 		CurrentHealth = robotRank.GetHealth();
+	}
+
+	private void PlaySoundOnDeath()
+	{
+		if(stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(explosionSoundEffectType);
+		}
 	}
 }

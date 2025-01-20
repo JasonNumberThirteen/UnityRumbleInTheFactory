@@ -6,7 +6,9 @@ using UnityEngine;
 public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
 	private PlayerRobotEntityInput playerRobotEntityInput;
+	private StageSoundManager stageSoundManager;
 	private bool isSliding;
+	private bool playedSlidingSound;
 
 	private readonly string ENEMY_LAYER_NAME = "Enemy";
 	private readonly string SLIPPERY_FLOOR_LAYER_NAME = "Slippery Floor";
@@ -16,12 +18,24 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		base.Awake();
 
 		playerRobotEntityInput = GetComponent<PlayerRobotEntityInput>();
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 	}
 
 	protected override void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
 	{
 		isSliding = gameObjects != null && gameObjects.Count > 0 && gameObjects.All(go => go.layer == LayerMask.NameToLayer(SLIPPERY_FLOOR_LAYER_NAME));
 		rb2D.constraints = gameObjects.Any(go => go.layer == LayerMask.NameToLayer(ENEMY_LAYER_NAME)) ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
+
+		if(isSliding && !playedSlidingSound && stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotSliding);
+
+			playedSlidingSound = true;
+		}
+		else if(!isSliding && playedSlidingSound)
+		{
+			playedSlidingSound = false;
+		}
 	}
 
 	private void Update()

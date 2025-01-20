@@ -12,10 +12,16 @@ public class StageSoundManager : MonoBehaviour
 	[SerializeField] private AudioClip playerRobotIdleSound;
 	[SerializeField] private AudioClip playerRobotMovementSound;
 	[SerializeField] private AudioClip playerRobotShootSound;
+	[SerializeField] private AudioClip playerRobotDestructibleTileDestructionSound;
 	[SerializeField] private AudioClip playerRobotBulletHitSound;
+	[SerializeField] private AudioClip playerRobotExplosionSound;
+	[SerializeField] private AudioClip playerRobotLifeGainSound;
+	[SerializeField] private AudioClip playerRobotSlidingSound;
 	[SerializeField] private AudioClip enemyRobotExplosionSound;
+	[SerializeField] private AudioClip nukeExplosionSound;
 	[SerializeField] private AudioClip bonusSpawnSound;
 	[SerializeField] private AudioClip bonusCollectSound;
+	[SerializeField] private AudioClip gamePauseSound;
 
 	private readonly List<SoundChannel> soundChannels = new();
 	private PlayerRobotMovementSoundChannel playerRobotMovementSourceChannel;
@@ -51,10 +57,16 @@ public class StageSoundManager : MonoBehaviour
 			SoundEffectType.PlayerRobotIdle => playerRobotIdleSound,
 			SoundEffectType.PlayerRobotMovement => playerRobotMovementSound,
 			SoundEffectType.PlayerRobotShoot => playerRobotShootSound,
+			SoundEffectType.PlayerRobotDestructibleTileDestruction => playerRobotDestructibleTileDestructionSound,
 			SoundEffectType.PlayerRobotBulletHit => playerRobotBulletHitSound,
+			SoundEffectType.PlayerRobotExplosion => playerRobotExplosionSound,
+			SoundEffectType.PlayerRobotLifeGain => playerRobotLifeGainSound,
+			SoundEffectType.PlayerRobotSliding => playerRobotSlidingSound,
 			SoundEffectType.EnemyRobotExplosion => enemyRobotExplosionSound,
+			SoundEffectType.NukeExplosion => nukeExplosionSound,
 			SoundEffectType.BonusSpawn => bonusSpawnSound,
 			SoundEffectType.BonusCollect => bonusCollectSound,
+			SoundEffectType.GamePause => gamePauseSound,
 			_ => null
 		};
 	}

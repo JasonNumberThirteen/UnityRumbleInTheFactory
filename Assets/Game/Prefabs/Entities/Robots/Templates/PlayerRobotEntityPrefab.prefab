@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4366984621820829096, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: explosionSoundEffectType
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4684673283914614341, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_IsActive
       value: 1

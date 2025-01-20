@@ -4,6 +4,8 @@ using UnityEngine;
 public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	[SerializeField] private LayerMask overlapLayerMask;
+
+	protected StageSoundManager stageSoundManager;
 	
 	private Collider2D c2D;
 	private Collider2D[] detectedColliders;
@@ -20,13 +22,14 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 		}
 		
 		DetectAdjacentTiles(bulletEntity.GetMovementDirection(), sender.transform.position);
-		DestroyAllDetectedCollidersIfPossible();
+		DestroyAllDetectedCollidersIfPossible(sender.TryGetComponent(out PlayerRobotEntityBulletEntity _));
 	}
 
 	protected virtual void Awake()
 	{
 		c2D = GetComponent<Collider2D>();
 		detectedColliders = new Collider2D[OVERLAP_BUFFER_SIZE];
+		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 	}
 
 	private void DetectAdjacentTiles(Vector2 movementDirection, Vector2 senderHitPoint)
@@ -70,14 +73,28 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 		return overlapSize - boundsPadding;
 	}
 
-	private void DestroyAllDetectedCollidersIfPossible()
+	private void DestroyAllDetectedCollidersIfPossible(bool playSound)
 	{
+		var destroyedAtLeastOneCollider = false;
+		
 		foreach (var collider in detectedColliders)
 		{
 			if(collider != null)
 			{
 				Destroy(collider.gameObject);
+
+				destroyedAtLeastOneCollider = true;
 			}
+		}
+
+		PlaySoundIfNeeded(destroyedAtLeastOneCollider && playSound);
+	}
+
+	private void PlaySoundIfNeeded(bool playSound)
+	{
+		if(playSound && stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotDestructibleTileDestruction);
 		}
 	}
 }
