@@ -75,7 +75,11 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		MuteSoundDependingOnStageState(stageState);
+		if(stageState != StageState.Interrupted)
+		{
+			MuteSoundDependingOnStageState(stageState);
+		}
+		
 		StopSoundIfNeeded(stageState);
 	}
 
