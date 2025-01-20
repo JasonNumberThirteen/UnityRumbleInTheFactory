@@ -8,19 +8,21 @@ public class PlayerRobotEntityInput : MonoBehaviour
 	public Vector2 LastMovementVector {get; private set;}
 
 	private RobotEntityShootController robotEntityShootController;
+	private StageStateManager stageStateManager;
 	private StageSoundManager stageSoundManager;
 	private StageSceneFlowManager stageSceneFlowManager;
 
 	private void Awake()
 	{
 		robotEntityShootController = GetComponent<RobotEntityShootController>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
 	}
 
 	private void OnMove(InputValue inputValue)
 	{
-		if(!enabled)
+		if(!enabled || GameIsPaused())
 		{
 			return;
 		}
@@ -33,7 +35,7 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private void PlayMovementSoundIfPossible()
 	{
-		if(!enabled || stageSoundManager == null)
+		if(!enabled || stageSoundManager == null || GameIsPaused())
 		{
 			return;
 		}
@@ -45,7 +47,7 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private void OnFire(InputValue inputValue)
 	{
-		if(enabled && robotEntityShootController != null)
+		if(enabled && robotEntityShootController != null && !GameIsPaused())
 		{
 			robotEntityShootController.FireBullet();
 		}
@@ -58,4 +60,6 @@ public class PlayerRobotEntityInput : MonoBehaviour
 			stageSceneFlowManager.PauseGameIfPossible();
 		}
 	}
+
+	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
 }
