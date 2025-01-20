@@ -108,7 +108,10 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	private void OnMusicStoppedPlaying()
 	{
-		audioSource.mute = stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Over);
+		if(stageStateManager != null)
+		{
+			MuteSoundDependingOnStageState(stageStateManager.GetStageState());
+		}
 	}
 
 	private void OnSoundPlayed(SoundEffectType soundEffectType)
