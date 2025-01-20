@@ -109,17 +109,23 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	private void OnSoundPlayed(SoundEffectType soundEffectType)
 	{
-		if(soundEffectType == SoundEffectType.PlayerRobotLifeGain)
+		var temporarilyMutingSoundEffectTypes = new List<SoundEffectType>
 		{
-			MuteTemporarily(1);
+			SoundEffectType.PlayerRobotLifeGain,
+			SoundEffectType.BonusSpawn,
+			SoundEffectType.BonusCollect
+		};
+
+		if(stageSoundManager == null || !temporarilyMutingSoundEffectTypes.Contains(soundEffectType))
+		{
+			return;
 		}
-		if(soundEffectType == SoundEffectType.BonusSpawn)
+
+		var audioClip = stageSoundManager.GetAudioClipBySoundEffectType(soundEffectType);
+
+		if(audioClip != null)
 		{
-			MuteTemporarily(1);
-		}
-		else if(soundEffectType == SoundEffectType.BonusCollect)
-		{
-			MuteTemporarily(0.9f);
+			MuteTemporarily(audioClip.length);
 		}
 	}
 
