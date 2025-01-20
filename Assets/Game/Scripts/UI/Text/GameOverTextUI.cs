@@ -15,6 +15,7 @@ public class GameOverTextUI : TextUI
 
 		timedRectTransformPositionController = GetComponent<TimedRectTransformPositionController>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		text.enabled = false;
 
 		RegisterToListeners(true);
 	}
@@ -53,9 +54,12 @@ public class GameOverTextUI : TextUI
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		if(stageState == StageState.Over)
+		if(stageState != StageState.Over)
 		{
-			timedRectTransformPositionController.StartTranslation();
+			return;
 		}
+
+		text.enabled = true;
+		timedRectTransformPositionController.StartTranslation();
 	}
 }
