@@ -1,38 +1,24 @@
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Timer))]
+[RequireComponent(typeof(AudioSource))]
 public class GameOverGameSceneManager : GameSceneManager
 {
 	[SerializeField] private GameData gameData;
 
-	private Timer timer;
+	private AudioSource audioSource;
 
 	private void Awake()
 	{
-		timer = GetComponent<Timer>();
-
-		RegisterToListeners(true);
+		audioSource = GetComponent<AudioSource>();
+		
+		StartCoroutine(LoadNextScene());
 	}
 
-	private void OnDestroy()
+	private IEnumerator LoadNextScene()
 	{
-		RegisterToListeners(false);
-	}
-	
-	private void RegisterToListeners(bool register)
-	{
-		if(register)
-		{
-			timer.onEnd.AddListener(OnTimerEnd);
-		}
-		else
-		{
-			timer.onEnd.RemoveListener(OnTimerEnd);
-		}
-	}
-
-	private void OnTimerEnd()
-	{
+		yield return new WaitUntil(() => !audioSource.isPlaying);
+		
 		var beatenHighScore = gameData != null && gameData.BeatenHighScore;
 		var sceneName = beatenHighScore ? HIGH_SCORE_SCENE_NAME : MAIN_MENU_SCENE_NAME;
 
