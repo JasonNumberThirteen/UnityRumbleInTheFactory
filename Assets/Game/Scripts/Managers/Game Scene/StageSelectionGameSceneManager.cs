@@ -49,13 +49,14 @@ public class StageSelectionGameSceneManager : GameSceneManager
 		}
 		
 		ResetGameData();
-		SetInitialStageNumber();
+		SetStageNumber();
 		ResetPlayerRobotsListData();
 		LoadSceneByName(STAGE_SCENE_NAME);
 	}
 
 	private void OnCancelKeyPressed()
 	{
+		SetStageNumber();
 		LoadSceneByName(MAIN_MENU_SCENE_NAME);
 	}
 
@@ -67,7 +68,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 		}
 	}
 
-	private void SetInitialStageNumber()
+	private void SetStageNumber()
 	{
 		if(gameData != null && stageCounterHeaderTextUI != null)
 		{

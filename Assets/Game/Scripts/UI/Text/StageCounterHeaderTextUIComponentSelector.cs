@@ -28,7 +28,8 @@ public class StageCounterHeaderTextUIComponentSelector : MonoBehaviour
 	private void Start()
 	{
 		SetNumberOfStagesRangeToCounterIfPossible();
-		SetStageNumberValueToCounter();
+		SetStageNumberToGameDataIfNeeded();
+		SetStageNumberToCounterIfNeeded();
 		DestroySelfIfAddedComponent();
 	}
 
@@ -40,9 +41,17 @@ public class StageCounterHeaderTextUIComponentSelector : MonoBehaviour
 		}
 	}
 
-	private void SetStageNumberValueToCounter()
+	private void SetStageNumberToGameDataIfNeeded()
 	{
-		if(gameData != null)
+		if(gameData != null && gameData.StageNumber == 0 && loopingIntCounter.CurrentValue != gameData.StageNumber)
+		{
+			gameData.SetStageNumber(loopingIntCounter.CurrentValue);
+		}
+	}
+
+	private void SetStageNumberToCounterIfNeeded()
+	{
+		if(gameData != null && gameData.StageNumber > 0)
 		{
 			loopingIntCounter.SetTo(gameData.StageNumber);
 		}
