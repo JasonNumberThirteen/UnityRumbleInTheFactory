@@ -4,7 +4,7 @@ public class LifeBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 {
 	[SerializeField, Min(1)] private int lives = 1;
 
-	protected override SoundEffectType GetSoundEffectType(GameObject sender) => sender.TryGetComponent(out PlayerRobotEntity _) ? SoundEffectType.PlayerRobotLifeGain : base.GetSoundEffectType(sender);
+	protected override bool ShouldPlaySound(GameObject sender) => !sender.TryGetComponent(out PlayerRobotEntity _);
 
 	protected override void GiveEffect(GameObject sender)
 	{

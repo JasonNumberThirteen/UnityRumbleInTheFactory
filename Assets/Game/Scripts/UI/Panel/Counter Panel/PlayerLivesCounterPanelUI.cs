@@ -31,16 +31,21 @@ public class PlayerLivesCounterPanelUI : CounterPanelUI
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerLivesChangedEvent.AddListener(UpdateCounterIfPossible);
+				playerRobotsDataManager.playerLivesChangedEvent.AddListener(OnPlayerLivesChanged);
 			}
 		}
 		else
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerLivesChangedEvent.RemoveListener(UpdateCounterIfPossible);
+				playerRobotsDataManager.playerLivesChangedEvent.RemoveListener(OnPlayerLivesChanged);
 			}
 		}
+	}
+
+	private void OnPlayerLivesChanged(int currentNumberOfLives, int livesValue)
+	{
+		UpdateCounterIfPossible();
 	}
 
 	private void UpdateCounterIfPossible()

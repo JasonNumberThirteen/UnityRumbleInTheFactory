@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class PlayerRobotsDataManager : MonoBehaviour
 {
 	public UnityEvent<int, GameObject> playerScoreChangedEvent;
-	public UnityEvent playerLivesChangedEvent;
+	public UnityEvent<int, int> playerLivesChangedEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
@@ -54,7 +54,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 		if(playerRobotData.Lives != previousLives)
 		{
-			playerLivesChangedEvent?.Invoke();
+			playerLivesChangedEvent?.Invoke(playerRobotData.Lives, lives);
 		}
 	}
 

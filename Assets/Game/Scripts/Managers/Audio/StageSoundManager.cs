@@ -27,6 +27,7 @@ public class StageSoundManager : MonoBehaviour
 	private PlayerRobotMovementSoundChannel playerRobotMovementSourceChannel;
 	private StageMusicManager stageMusicManager;
 	private StageStateManager stageStateManager;
+	private PlayerRobotsDataManager playerRobotsDataManager;
 	private bool canPlaySounds;
 
 	private readonly string CHANNEL_GO_NAME = "Channel";
@@ -76,6 +77,7 @@ public class StageSoundManager : MonoBehaviour
 		playerRobotMovementSourceChannel = GetComponentInChildren<PlayerRobotMovementSoundChannel>();
 		stageMusicManager = ObjectMethods.FindComponentOfType<StageMusicManager>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 
 		RegisterToListeners(true);
 	}
@@ -105,12 +107,22 @@ public class StageSoundManager : MonoBehaviour
 			{
 				stageMusicManager.musicStoppedPlayingEvent.AddListener(OnMusicStoppedPlaying);
 			}
+
+			if(playerRobotsDataManager != null)
+			{
+				playerRobotsDataManager.playerLivesChangedEvent.AddListener(OnPlayerLivesChanged);
+			}
 		}
 		else
 		{
 			if(stageMusicManager != null)
 			{
 				stageMusicManager.musicStoppedPlayingEvent.RemoveListener(OnMusicStoppedPlaying);
+			}
+
+			if(playerRobotsDataManager != null)
+			{
+				playerRobotsDataManager.playerLivesChangedEvent.RemoveListener(OnPlayerLivesChanged);
 			}
 		}
 	}
@@ -120,6 +132,14 @@ public class StageSoundManager : MonoBehaviour
 		if(stageStateManager == null || !stageStateManager.StateIsSetTo(StageState.Over))
 		{
 			canPlaySounds = true;
+		}
+	}
+
+	private void OnPlayerLivesChanged(int currentNumberOfLives, int livesValue)
+	{
+		if(livesValue > 0)
+		{
+			PlaySound(SoundEffectType.PlayerRobotLifeGain);
 		}
 	}
 
