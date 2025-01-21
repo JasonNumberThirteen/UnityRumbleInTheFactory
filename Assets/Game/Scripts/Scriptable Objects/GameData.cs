@@ -23,6 +23,7 @@ public class GameData : ScriptableObject
 	public void ResetData()
 	{
 		GameIsOver = BeatenHighScore = EnteredStageSelection = false;
+		PreviousHighScore = HighScore;
 
 		gameDifficulty.ResetData();
 	}
@@ -36,7 +37,6 @@ public class GameData : ScriptableObject
 	{
 		EnteredStageSelection = true;
 		SelectedTwoPlayersMode = selectedTwoPlayersMode;
-		PreviousHighScore = HighScore;
 	}
 
 	public void SetGameAsOver()
