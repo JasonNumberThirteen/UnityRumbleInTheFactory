@@ -3688,6 +3688,10 @@ PrefabInstance:
       propertyPath: stageCounterSceneType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8771805326695850353, guid: a959580ff154bf64a9b3b6c5b48f7ba8, type: 3}
+      propertyPath: stageCounterHeaderSceneType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
