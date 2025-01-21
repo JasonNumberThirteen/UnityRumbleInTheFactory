@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(LoopingIntCounter))]
 public class StageCounterHeaderTextUIComponentSelector : MonoBehaviour
 {
-	[SerializeField] private StageCounterSceneType stageCounterSceneType;
+	[SerializeField] private StageCounterHeaderSceneType stageCounterHeaderSceneType;
 	[SerializeField] private GameData gameData;
 
 	private LoopingIntCounter loopingIntCounter;
@@ -17,10 +17,10 @@ public class StageCounterHeaderTextUIComponentSelector : MonoBehaviour
 
 	private Component AddAndGetComponentDependingOnSceneType()
 	{
-		return stageCounterSceneType switch
+		return stageCounterHeaderSceneType switch
 		{
-			StageCounterSceneType.StageSelection => gameObject.AddComponent<StageCounterHeaderStageSelectionTextUI>(),
-			StageCounterSceneType.Stage => gameObject.AddComponent<StageCounterHeaderStageTextUI>(),
+			StageCounterHeaderSceneType.StageSelection => gameObject.AddComponent<StageCounterHeaderStageSelectionTextUI>(),
+			StageCounterHeaderSceneType.Stage => gameObject.AddComponent<StageCounterHeaderStageTextUI>(),
 			_ => null
 		};
 	}
