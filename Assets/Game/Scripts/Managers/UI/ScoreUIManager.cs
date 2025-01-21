@@ -67,7 +67,7 @@ public class ScoreUIManager : UIManager
 	}
 
 	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
-	private void SetHighScore() => highScoreCounter.text = gameData.HighScore.ToString();
+	private void SetHighScore() => highScoreCounter.text = gameData.PreviousHighScore.ToString();
 	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
 	public void RetrieveEnemiesData() => defeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray();
 	private void RetrieveEnemiesCount() => defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray();

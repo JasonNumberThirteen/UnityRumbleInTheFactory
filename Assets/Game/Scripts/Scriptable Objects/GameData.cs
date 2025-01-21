@@ -9,6 +9,7 @@ public class GameData : ScriptableObject
 	public bool GameIsOver {get; private set;}
 	public bool BeatenHighScore {get; private set;}
 	public int HighScore {get; private set;} = 20000;
+	public int PreviousHighScore {get; private set;}
 	public int StageNumber {get; private set;}
 	public StageData[] StagesData {get; private set;}
 
@@ -35,6 +36,7 @@ public class GameData : ScriptableObject
 	{
 		EnteredStageSelection = true;
 		SelectedTwoPlayersMode = selectedTwoPlayersMode;
+		PreviousHighScore = HighScore;
 	}
 
 	public void SetGameAsOver()
