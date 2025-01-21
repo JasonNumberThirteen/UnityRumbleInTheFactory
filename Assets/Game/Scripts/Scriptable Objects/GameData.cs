@@ -44,7 +44,7 @@ public class GameData : ScriptableObject
 
 	public void SetHighScoreIfPossible(int score, Action onBeatenHighScore = null)
 	{
-		if(HighScore > score)
+		if(HighScore >= score)
 		{
 			return;
 		}
