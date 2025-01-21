@@ -11,7 +11,7 @@ public class IntCounter : MonoBehaviour
 	{
 		var previousValue = CurrentValue;
 		
-		CurrentValue = value;
+		CurrentValue = GetModifiedValue(value);
 
 		if(CurrentValue != previousValue)
 		{
@@ -23,4 +23,6 @@ public class IntCounter : MonoBehaviour
 	{
 		SetTo(CurrentValue + value);
 	}
+
+	protected virtual int GetModifiedValue(int value) => value;
 }

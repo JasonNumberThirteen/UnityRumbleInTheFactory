@@ -55,9 +55,6 @@ public class StageCounterStageSelectionTextUI : StageSelectionTextUI
 			loopingIntCounter.SetRange(1, gameData.StagesData.Length);
 		}
 
-		if(gameData.StageNumber > 0)
-		{
-			loopingIntCounter.SetTo(gameData.StageNumber);
-		}
+		loopingIntCounter.SetTo(gameData.StageNumber);
 	}
 }

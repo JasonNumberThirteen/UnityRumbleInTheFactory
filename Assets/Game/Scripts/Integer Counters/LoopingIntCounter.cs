@@ -10,10 +10,7 @@ public class LoopingIntCounter : IntCounter
 		this.lowerBound = lowerBound;
 		this.upperBound = upperBound;
 
-		if(CurrentValue < this.lowerBound || CurrentValue > this.upperBound)
-		{
-			SetTo(Mathf.Clamp(CurrentValue, this.lowerBound, this.upperBound));
-		}
+		SetTo(CurrentValue);
 	}
 
 	public override void ModifyBy(int value)
@@ -28,6 +25,7 @@ public class LoopingIntCounter : IntCounter
 		}
 	}
 
+	protected override int GetModifiedValue(int value) => Mathf.Clamp(value, lowerBound, upperBound);
 	private int GetNextValue(int value) => (CurrentValue + value - 1) % upperBound + lowerBound;
 	private int GetPreviousValue(int value) => (CurrentValue - value + upperBound - 1) % upperBound + lowerBound;
 }
