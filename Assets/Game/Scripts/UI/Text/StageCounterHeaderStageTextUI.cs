@@ -1,13 +1,13 @@
-public class StageSceneStageCounterHeaderTextUI : StageCounterHeaderTextUI
+using UnityEngine;
+
+public class StageCounterHeaderStageTextUI : MonoBehaviour
 {
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
 
-	protected override void Awake()
+	private void Awake()
 	{
-		base.Awake();
-		
 		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
-
+		
 		RegisterToListeners(true);
 	}
 

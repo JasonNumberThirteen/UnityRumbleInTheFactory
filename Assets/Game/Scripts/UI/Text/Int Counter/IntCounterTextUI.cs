@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-10)]
 [RequireComponent(typeof(IntCounter))]
 public class IntCounterTextUI : TextUI
 {

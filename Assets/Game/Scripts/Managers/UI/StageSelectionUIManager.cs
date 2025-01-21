@@ -4,36 +4,36 @@ public class StageSelectionUIManager : UIManager
 {
 	[SerializeField] private GameData gameData;
 
-	private StageCounterStageSelectionTextUI stageCounterTextUI;
-	private NoStagesStageSelectionTextUI noStagesTextUI;
+	private StageCounterHeaderStageSelectionTextUI stageCounterHeaderTextUI;
+	private NoStagesStageSelectionTextUI noStagesStageSelectionTextUI;
 
 	private void Awake()
 	{
-		stageCounterTextUI = ObjectMethods.FindComponentOfType<StageCounterStageSelectionTextUI>();
-		noStagesTextUI = ObjectMethods.FindComponentOfType<NoStagesStageSelectionTextUI>();
+		stageCounterHeaderTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
+		noStagesStageSelectionTextUI = ObjectMethods.FindComponentOfType<NoStagesStageSelectionTextUI>();
 	}
 
 	private void Start()
 	{
 		var noStagesFound = GameDataMethods.NoStagesFound(gameData);
 
-		SetStageCounterTextUIActive(!noStagesFound);
+		SetStageCounterHeaderTextUIActive(!noStagesFound);
 		SetNoStagesTextUIActive(noStagesFound);
 	}
 
-	private void SetStageCounterTextUIActive(bool active)
+	private void SetStageCounterHeaderTextUIActive(bool active)
 	{
-		if(stageCounterTextUI != null)
+		if(stageCounterHeaderTextUI != null)
 		{
-			stageCounterTextUI.SetActive(active);
+			stageCounterHeaderTextUI.SetActive(active);
 		}
 	}
 
 	private void SetNoStagesTextUIActive(bool active)
 	{
-		if(noStagesTextUI != null)
+		if(noStagesStageSelectionTextUI != null)
 		{
-			noStagesTextUI.SetActive(active);
+			noStagesStageSelectionTextUI.SetActive(active);
 		}
 	}
 }

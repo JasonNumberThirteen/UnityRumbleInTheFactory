@@ -6,12 +6,12 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
 	private MenuOptionsInput menuOptionsInput;
-	private StageCounterStageSelectionTextUI stageCounterTextUI;
+	private StageCounterHeaderStageSelectionTextUI stageCounterHeaderTextUI;
 
 	private void Awake()
 	{
 		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
-		stageCounterTextUI = ObjectMethods.FindComponentOfType<StageCounterStageSelectionTextUI>();
+		stageCounterHeaderTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
 
 		RegisterToListeners(true);
 	}
@@ -69,9 +69,9 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void SetInitialStageNumber()
 	{
-		if(gameData != null && stageCounterTextUI != null)
+		if(gameData != null && stageCounterHeaderTextUI != null)
 		{
-			gameData.SetStageNumber(stageCounterTextUI.GetCurrentCounterValue());
+			gameData.SetStageNumber(stageCounterHeaderTextUI.GetCurrentCounterValue());
 		}
 	}
 

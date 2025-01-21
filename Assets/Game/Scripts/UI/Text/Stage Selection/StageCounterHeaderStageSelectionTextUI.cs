@@ -1,10 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LoopingIntCounter))]
-public class StageCounterStageSelectionTextUI : StageSelectionTextUI
+public class StageCounterHeaderStageSelectionTextUI : StageSelectionTextUI
 {
-	[SerializeField] private GameData gameData;
-	
 	private StageSelectionManager stageSelectionManager;
 	private LoopingIntCounter loopingIntCounter;
 
@@ -41,20 +39,5 @@ public class StageCounterStageSelectionTextUI : StageSelectionTextUI
 				stageSelectionManager.navigationDirectionChangedEvent.RemoveListener(loopingIntCounter.ModifyBy);
 			}
 		}
-	}
-
-	private void Start()
-	{
-		if(gameData == null)
-		{
-			return;
-		}
-
-		if(gameData.StagesData != null && gameData.StagesData.Length > 0)
-		{
-			loopingIntCounter.SetRange(1, gameData.StagesData.Length);
-		}
-
-		loopingIntCounter.SetTo(gameData.StageNumber);
 	}
 }
