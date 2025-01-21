@@ -1,47 +1,22 @@
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Timer))]
+[RequireComponent(typeof(AudioSource))]
 public class HighScoreGameSceneManager : GameSceneManager
 {
-	[SerializeField] private AudioSource audioSource;
-	
-	private Timer timer;
+	private AudioSource audioSource;
 
 	private void Awake()
 	{
-		timer = GetComponent<Timer>();
+		audioSource = GetComponent<AudioSource>();
 		
-		AdjustTimerDurationForMusicLength();
-		RegisterToListeners(true);
+		StartCoroutine(LoadNextScene());
 	}
 
-	private void AdjustTimerDurationForMusicLength()
+	private IEnumerator LoadNextScene()
 	{
-		if(audioSource != null && audioSource.clip != null)
-		{
-			timer.duration = audioSource.clip.length;
-		}
-	}
-
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-	}
-	
-	private void RegisterToListeners(bool register)
-	{
-		if(register)
-		{
-			timer.onEnd.AddListener(OnTimerEnd);
-		}
-		else
-		{
-			timer.onEnd.RemoveListener(OnTimerEnd);
-		}
-	}
-
-	private void OnTimerEnd()
-	{
+		yield return new WaitUntil(() => !audioSource.isPlaying);
+		
 		LoadSceneByName(MAIN_MENU_SCENE_NAME);
 	}
 }
