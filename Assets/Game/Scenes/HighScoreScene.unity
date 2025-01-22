@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 1640986567}
   - component: {fileID: 1640986566}
   m_Layer: 0
-  m_Name: Scene Manager
+  m_Name: High Score Game Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
