@@ -16,6 +16,7 @@ public class StageSceneFlowManager : MonoBehaviour
 	private Timer timer;
 	private StageStateManager stageStateManager;
 	private StageSoundManager stageSoundManager;
+	private DataSerialisationManager dataSerialisationManager;
 	private TranslationBackgroundPanelUI translationBackgroundPanelUI;
 	private NukeEntity nukeEntity;
 
@@ -52,6 +53,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		timer = GetComponent<Timer>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
+		dataSerialisationManager = ObjectMethods.FindComponentOfType<DataSerialisationManager>();
 		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 		nukeEntity = ObjectMethods.FindComponentOfType<NukeEntity>();
 		timer.duration = delayOnStart;
@@ -136,6 +138,27 @@ public class StageSceneFlowManager : MonoBehaviour
 			timer.duration = delayAfterInterrupting;
 			
 			timer.ResetTimer();
+		}
+
+		SaveAllDataIfNeeded(stageState);
+	}
+
+	private void SaveAllDataIfNeeded(StageState stageState)
+	{
+		if(dataSerialisationManager == null)
+		{
+			return;
+		}
+		
+		var statesSavingData = new List<StageState>()
+		{
+			StageState.Interrupted,
+			StageState.Over
+		};
+
+		if(statesSavingData.Contains(stageState))
+		{
+			dataSerialisationManager.SaveAllData();
 		}
 	}
 

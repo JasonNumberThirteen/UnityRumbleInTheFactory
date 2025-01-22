@@ -4,13 +4,21 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Game Data")]
 public class GameData : ScriptableObject
 {
+	public SaveableGameData saveableGameData = new();
+
+	public int HighScore
+	{
+		get => saveableGameData.highScore;
+	}
+	public int StageNumber
+	{
+		get => saveableGameData.stageNumber;
+	}
 	public bool EnteredStageSelection {get; private set;}
 	public bool SelectedTwoPlayersMode {get; private set;}
 	public bool GameIsOver {get; private set;}
 	public bool BeatenHighScore {get; private set;}
-	public int HighScore {get; private set;} = 20000;
 	public int PreviousHighScore {get; private set;}
-	public int StageNumber {get; private set;}
 	public StageData[] StagesData {get; private set;}
 
 	[SerializeField] private GameDifficulty gameDifficulty = new();
@@ -30,7 +38,7 @@ public class GameData : ScriptableObject
 
 	public void SetStageNumber(int stageNumber)
 	{
-		StageNumber = stageNumber;
+		saveableGameData.stageNumber = stageNumber;
 	}
 
 	public void SetupForGameStart(bool selectedTwoPlayersMode)
@@ -51,7 +59,7 @@ public class GameData : ScriptableObject
 			return;
 		}
 		
-		HighScore = score;
+		saveableGameData.highScore = score;
 
 		if(!BeatenHighScore)
 		{
@@ -76,6 +84,6 @@ public class GameData : ScriptableObject
 
 	public void AdvanceToNextStage()
 	{
-		StageNumber = StageNumber % StagesData.Length + 1;
+		saveableGameData.stageNumber = StageNumber % StagesData.Length + 1;
 	}
 }

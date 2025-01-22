@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f1138af53ddf249a7acdde88696d1a, type: 3}
   m_Name: GameDataScriptableObject
   m_EditorClassIdentifier: 
+  saveableGameData:
+    highScore: 20000
+    stageNumber: 0
   gameDifficulty:
     tiers:
     - enemiesLimitAtOnce: 3

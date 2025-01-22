@@ -7,11 +7,13 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private MenuOptionsInput menuOptionsInput;
 	private StageCounterHeaderStageSelectionTextUI stageCounterHeaderTextUI;
+	private DataSerialisationManager dataSerialisationManager;
 
 	private void Awake()
 	{
 		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
 		stageCounterHeaderTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
+		dataSerialisationManager = ObjectMethods.FindComponentOfType<DataSerialisationManager>();
 
 		RegisterToListeners(true);
 	}
@@ -70,9 +72,30 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void SetStageNumber()
 	{
-		if(gameData != null && stageCounterHeaderTextUI != null)
+		if(gameData == null || GetStageCounterHeaderStageSelectionTextUI() == null)
 		{
-			gameData.SetStageNumber(stageCounterHeaderTextUI.GetCurrentCounterValue());
+			return;
+		}
+		
+		gameData.SetStageNumber(stageCounterHeaderTextUI.GetCurrentCounterValue());
+		SaveGameData();
+	}
+
+	private StageCounterHeaderStageSelectionTextUI GetStageCounterHeaderStageSelectionTextUI()
+	{
+		if(stageCounterHeaderTextUI == null)
+		{
+			stageCounterHeaderTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
+		}
+
+		return stageCounterHeaderTextUI;
+	}
+
+	private void SaveGameData()
+	{
+		if(dataSerialisationManager != null)
+		{
+			dataSerialisationManager.SaveGameData();
 		}
 	}
 
