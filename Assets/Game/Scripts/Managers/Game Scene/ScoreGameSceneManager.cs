@@ -6,10 +6,12 @@ public class ScoreGameSceneManager : GameSceneManager
 	[SerializeField] private GameData gameData;
 
 	private Timer timer;
+	private ScoreEnemyRobotTypeSwitchManager scoreEnemyRobotTypeSwitchManager;
 
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
+		scoreEnemyRobotTypeSwitchManager = ObjectMethods.FindComponentOfType<ScoreEnemyRobotTypeSwitchManager>();
 
 		RegisterToListeners(true);
 	}
@@ -24,10 +26,20 @@ public class ScoreGameSceneManager : GameSceneManager
 		if(register)
 		{
 			timer.onEnd.AddListener(OnTimerEnd);
+
+			if(scoreEnemyRobotTypeSwitchManager != null)
+			{
+				scoreEnemyRobotTypeSwitchManager.lastEnemyRobotTypeReachedEvent.AddListener(timer.StartTimer);
+			}
 		}
 		else
 		{
 			timer.onEnd.RemoveListener(OnTimerEnd);
+
+			if(scoreEnemyRobotTypeSwitchManager != null)
+			{
+				scoreEnemyRobotTypeSwitchManager.lastEnemyRobotTypeReachedEvent.RemoveListener(timer.StartTimer);
+			}
 		}
 	}
 

@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1237229474603248334, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
       propertyPath: m_Name
-      value: Player1ScoreDetailsPanelUI
+      value: Player1ScoreDetailsPanelUIPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 5086090465295664436, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -79,14 +79,6 @@ PrefabInstance:
     - target: {fileID: 6347048902516084386, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
       propertyPath: m_AnchorMin.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347048902516084386, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347048902516084386, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6347048902516084386, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,79 +1,128 @@
-using TMPro;
 using System.Linq;
 using UnityEngine;
 
 public class ScoreUIManager : UIManager
 {
-	public ScorePointsRowsBuilder pointsRowsBuilder;
-	public PlayerRobotData playerData;
-	public GameData gameData;
-	public RectTransformPositionController totalTextMover, horizontalLineMover, totalDefeatedEnemiesCounterMover;
-	public Timer enemyTypeSwitch, scoreCountTimer, sceneManagerTimer;
-	public TextMeshProUGUI totalDefeatedEnemiesCounter;
-	public AudioSource audioSource;
+	[SerializeField] private PlayerScoreDetailsPanelUI player1ScoreDetailsPanelUI;
+	[SerializeField] private GameObject totalTextUIPrefab;
 
-	private int enemyTypeIndex, countedEnemies, enemyTypeScore, defeatedEnemies, scorePerEnemy;
-	private IntCounter currentDefeatedEnemiesIntCounter;
-	private IntCounter currentEnemyTypePointsIntCounter;
-	private EnemyRobotData[] defeatedEnemiesData;
+	private ScoreEnemyRobotTypeSwitchManager scoreEnemyRobotTypeSwitchManager;
+	private ScoreEnemyRobotTypeCountManager scoreEnemyRobotTypeCountManager;
+	private DefeatedEnemyRobotTypesPanelUI defeatedEnemyRobotTypesPanelUI;
+	private PlayersTotalDefeatedEnemiesCountersPanelUI playersTotalDefeatedEnemiesCountersPanelUI;
+	private DefeatedEnemyRobotTypeIntCounterPanelUI currentDefeatedEnemyRobotTypeIntCounterPanelUI;
+	private DefeatedEnemiesScoreIntCounterPanelUI currentDefeatedEnemiesScoreIntCounterPanelUI;
+	private int[] scoresPerEnemyRobotType;
 	private int[] defeatedEnemiesCount;
 
-	public void GoToNextEnemyType()
+	private void Awake()
 	{
-		if(enemyTypeIndex < DefeatedEnemiesTypes())
-		{
-			currentDefeatedEnemiesIntCounter = pointsRowsBuilder.DefeatedEnemiesIntCounters[enemyTypeIndex];
-			currentEnemyTypePointsIntCounter = pointsRowsBuilder.EnemyTypePointsIntCounters[enemyTypeIndex];
-			defeatedEnemies = defeatedEnemiesCount[enemyTypeIndex];
-			scorePerEnemy = defeatedEnemiesData[enemyTypeIndex].GetPointsForDefeat();
-			++enemyTypeIndex;
-			countedEnemies = enemyTypeScore = 0;
-		}
-		else if(!totalDefeatedEnemiesCounter.enabled)
-		{
-			SetTotalDefeatedEnemiesCounterEnabled(true);
-			sceneManagerTimer.StartTimer();
-		}
+		scoreEnemyRobotTypeSwitchManager = ObjectMethods.FindComponentOfType<ScoreEnemyRobotTypeSwitchManager>();
+		scoreEnemyRobotTypeCountManager = ObjectMethods.FindComponentOfType<ScoreEnemyRobotTypeCountManager>();
+		defeatedEnemyRobotTypesPanelUI = ObjectMethods.FindComponentOfType<DefeatedEnemyRobotTypesPanelUI>();
+
+		RegisterToListeners(true);
 	}
 
-	public void CountPoints()
+	private void OnDestroy()
 	{
-		if(countedEnemies < defeatedEnemies)
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
 		{
-			++countedEnemies;
-			enemyTypeScore += scorePerEnemy;
-			
-			currentDefeatedEnemiesIntCounter.SetTo(countedEnemies);
-			currentEnemyTypePointsIntCounter.SetTo(enemyTypeScore);
-			scoreCountTimer.ResetTimer();
-			audioSource.Play();
+			if(scoreEnemyRobotTypeSwitchManager != null)
+			{
+				scoreEnemyRobotTypeSwitchManager.enemyRobotTypeSwitchedEvent.AddListener(OnEnemyRobotTypeSwitched);
+				scoreEnemyRobotTypeSwitchManager.lastEnemyRobotTypeReachedEvent.AddListener(OnLastEnemyRobotTypeReached);
+			}
+
+			if(scoreEnemyRobotTypeCountManager != null)
+			{
+				scoreEnemyRobotTypeCountManager.enemyRobotCountedEvent.AddListener(OnEnemyRobotCounted);
+				scoreEnemyRobotTypeCountManager.allEnemyRobotsCountedEvent.AddListener(OnAllEnemyRobotsCounted);
+			}
 		}
 		else
 		{
-			enemyTypeSwitch.ResetTimer();
+			if(scoreEnemyRobotTypeSwitchManager != null)
+			{
+				scoreEnemyRobotTypeSwitchManager.enemyRobotTypeSwitchedEvent.RemoveListener(OnEnemyRobotTypeSwitched);
+				scoreEnemyRobotTypeSwitchManager.lastEnemyRobotTypeReachedEvent.RemoveListener(OnLastEnemyRobotTypeReached);
+			}
+
+			if(scoreEnemyRobotTypeCountManager != null)
+			{
+				scoreEnemyRobotTypeCountManager.enemyRobotCountedEvent.RemoveListener(OnEnemyRobotCounted);
+				scoreEnemyRobotTypeCountManager.allEnemyRobotsCountedEvent.RemoveListener(OnAllEnemyRobotsCounted);
+			}
+		}
+	}
+
+	private void OnEnemyRobotTypeSwitched(int currentEnemyRobotTypeIndex)
+	{
+		if(player1ScoreDetailsPanelUI != null)
+		{
+			currentDefeatedEnemiesScoreIntCounterPanelUI = player1ScoreDetailsPanelUI.GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(currentEnemyRobotTypeIndex);
+		}
+
+		if(defeatedEnemyRobotTypesPanelUI != null)
+		{
+			currentDefeatedEnemyRobotTypeIntCounterPanelUI = defeatedEnemyRobotTypesPanelUI.GetDefeatedEnemyRobotTypeIntCounterPanelUIByIndex(currentEnemyRobotTypeIndex);
+		}
+
+		if(scoreEnemyRobotTypeCountManager != null)
+		{
+			scoreEnemyRobotTypeCountManager.StartCounting(defeatedEnemiesCount[currentEnemyRobotTypeIndex], scoresPerEnemyRobotType[currentEnemyRobotTypeIndex]);
+		}
+	}
+
+	private void OnLastEnemyRobotTypeReached()
+	{
+		if(totalTextUIPrefab != null && player1ScoreDetailsPanelUI != null)
+		{
+			Instantiate(totalTextUIPrefab, player1ScoreDetailsPanelUI.transform);
+		}
+
+		if(playersTotalDefeatedEnemiesCountersPanelUI != null)
+		{
+			playersTotalDefeatedEnemiesCountersPanelUI.SetActive(true);
+		}
+	}
+
+	private void OnEnemyRobotCounted(int numberOfCountedEnemyRobots, int currentScoreForDefeatedEnemyRobots)
+	{
+		if(currentDefeatedEnemiesScoreIntCounterPanelUI != null)
+		{
+			currentDefeatedEnemiesScoreIntCounterPanelUI.SetCounterValueTo(currentScoreForDefeatedEnemyRobots);
+		}
+
+		if(currentDefeatedEnemyRobotTypeIntCounterPanelUI != null)
+		{
+			currentDefeatedEnemyRobotTypeIntCounterPanelUI.SetCounterValueTo(numberOfCountedEnemyRobots);
+		}
+	}
+
+	private void OnAllEnemyRobotsCounted()
+	{
+		if(scoreEnemyRobotTypeSwitchManager != null)
+		{
+			scoreEnemyRobotTypeSwitchManager.GoToNextEnemyRobotType();
 		}
 	}
 
 	private void Start()
 	{
-		defeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray();
-		defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray();
-		
-		SetTotalDefeatedEnemiesCounterEnabled(false);
-		pointsRowsBuilder.SetDefeatedEnemiesSprites(defeatedEnemiesData.Select(e => e.GetDisplayInScoreSceneSprite()).ToArray());
-		pointsRowsBuilder.BuildPointsRows();
-		SetLastElementsPosition();
-	}
+		var playersDefeatedEnemiesSumContainer = ObjectMethods.FindComponentOfType<PlayersDefeatedEnemiesSumContainer>();
 
-	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
-	private void SetTotalDefeatedEnemiesCounterEnabled(bool enabled) => totalDefeatedEnemiesCounter.enabled = enabled;
+		if(playersDefeatedEnemiesSumContainer != null)
+		{
+			scoresPerEnemyRobotType = playersDefeatedEnemiesSumContainer.DefeatedEnemies.Keys.Select(key => key.GetPointsForDefeat()).ToArray();
+			defeatedEnemiesCount = playersDefeatedEnemiesSumContainer.DefeatedEnemies.Values.ToArray();
+		}
 
-	private void SetLastElementsPosition()
-	{
-		int offsetY = -16*DefeatedEnemiesTypes();
-		
-		totalTextMover.AddPositionY(offsetY);
-		horizontalLineMover.AddPositionY(offsetY);
-		totalDefeatedEnemiesCounterMover.SetPositionY(totalTextMover.GetPositionY());
+		playersTotalDefeatedEnemiesCountersPanelUI = ObjectMethods.FindComponentOfType<PlayersTotalDefeatedEnemiesCountersPanelUI>();
 	}
 }
