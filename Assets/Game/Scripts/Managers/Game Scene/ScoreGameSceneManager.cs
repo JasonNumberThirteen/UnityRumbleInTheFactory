@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Timer))]
-public class ScoreSceneManager : GameSceneManager
+public class ScoreGameSceneManager : GameSceneManager
 {
 	[SerializeField] private GameData gameData;
 
