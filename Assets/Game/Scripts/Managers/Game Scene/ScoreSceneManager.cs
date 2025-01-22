@@ -1,20 +1,46 @@
+using UnityEngine;
+
+[RequireComponent(typeof(Timer))]
 public class ScoreSceneManager : GameSceneManager
 {
-	public GameData gameData;
-	
-	public string stageSceneName, gameOverSceneName;
+	[SerializeField] private GameData gameData;
 
-	public void GoToNextScene()
+	private Timer timer;
+
+	private void Awake()
 	{
-		bool isOver = gameData.GameIsOver;
-		string sceneName = isOver ? gameOverSceneName : stageSceneName;
+		timer = GetComponent<Timer>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			timer.onEnd.AddListener(OnTimerEnd);
+		}
+		else
+		{
+			timer.onEnd.RemoveListener(OnTimerEnd);
+		}
+	}
+
+	private void OnTimerEnd()
+	{
+		var gameIsOver = gameData != null && gameData.GameIsOver;
 		
-		if(!isOver)
+		if(!gameIsOver && gameData != null)
 		{
 			gameData.IncreaseDifficultyIfNeeded();
 			gameData.AdvanceToNextStage();
 		}
 
-		LoadSceneByName(sceneName);
+		LoadSceneByName(gameIsOver ? GAME_OVER_SCENE_NAME : STAGE_SCENE_NAME);
 	}
 }
