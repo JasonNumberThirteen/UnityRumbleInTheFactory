@@ -1,4 +1,3 @@
-using TMPro;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +9,8 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 	public RectTransform parent;
 	public GameObject pointsText, defeatedEnemiesCounter, leftArrow, rightArrow, enemyType, enemyTypePointsCounter;
 
-	public TextMeshProUGUI[] DefeatedEnemiesCounters {get; private set;}
-	public TextMeshProUGUI[] EnemyTypePointsCounters {get; private set;}
+	public IntCounter[] DefeatedEnemiesIntCounters {get; private set;}
+	public IntCounter[] EnemyTypePointsIntCounters {get; private set;}
 
 	private Sprite[] defeatedEnemiesSprites;
 
@@ -21,8 +20,8 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 	{
 		int amount = DefeatedEnemiesTypes();
 
-		DefeatedEnemiesCounters = new TextMeshProUGUI[amount];
-		EnemyTypePointsCounters = new TextMeshProUGUI[amount];
+		DefeatedEnemiesIntCounters = new IntCounter[amount];
+		EnemyTypePointsIntCounters = new IntCounter[amount];
 
 		for (int i = 0; i < amount; ++i)
 		{
@@ -69,9 +68,9 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 
 	private void OnDefeatedEnemiesCounterInstantiate(GameObject instance, int index)
 	{
-		if(instance.TryGetComponent(out TextMeshProUGUI text))
+		if(instance.TryGetComponent(out IntCounter intCounter))
 		{
-			DefeatedEnemiesCounters[index] = text;
+			DefeatedEnemiesIntCounters[index] = intCounter;
 		}
 	}
 
@@ -85,9 +84,9 @@ public class ScorePointsRowsBuilder : MonoBehaviour
 
 	private void OnEnemyTypePointsCounterInstantiate(GameObject instance, int index)
 	{
-		if(instance.TryGetComponent(out TextMeshProUGUI text))
+		if(instance.TryGetComponent(out IntCounter intCounter))
 		{
-			EnemyTypePointsCounters[index] = text;
+			EnemyTypePointsIntCounters[index] = intCounter;
 		}
 	}
 }

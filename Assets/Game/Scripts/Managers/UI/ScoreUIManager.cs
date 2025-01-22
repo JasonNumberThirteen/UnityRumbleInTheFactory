@@ -9,11 +9,12 @@ public class ScoreUIManager : UIManager
 	public GameData gameData;
 	public RectTransformPositionController totalTextMover, horizontalLineMover, totalDefeatedEnemiesCounterMover;
 	public Timer enemyTypeSwitch, scoreCountTimer, sceneManagerTimer;
-	public TextMeshProUGUI highScoreCounter, playerOneScoreCounter, totalDefeatedEnemiesCounter;
+	public TextMeshProUGUI totalDefeatedEnemiesCounter;
 	public AudioSource audioSource;
 
-	private int enemyTypeIndex, countedEnemies, totalCountedEnemies, enemyTypeScore, defeatedEnemies, scorePerEnemy;
-	private TextMeshProUGUI currentDefeatedEnemiesCounter, currentEnemyTypePointsCounter;
+	private int enemyTypeIndex, countedEnemies, enemyTypeScore, defeatedEnemies, scorePerEnemy;
+	private IntCounter currentDefeatedEnemiesIntCounter;
+	private IntCounter currentEnemyTypePointsIntCounter;
 	private EnemyRobotData[] defeatedEnemiesData;
 	private int[] defeatedEnemiesCount;
 
@@ -21,16 +22,16 @@ public class ScoreUIManager : UIManager
 	{
 		if(enemyTypeIndex < DefeatedEnemiesTypes())
 		{
-			currentDefeatedEnemiesCounter = pointsRowsBuilder.DefeatedEnemiesCounters[enemyTypeIndex];
-			currentEnemyTypePointsCounter = pointsRowsBuilder.EnemyTypePointsCounters[enemyTypeIndex];
+			currentDefeatedEnemiesIntCounter = pointsRowsBuilder.DefeatedEnemiesIntCounters[enemyTypeIndex];
+			currentEnemyTypePointsIntCounter = pointsRowsBuilder.EnemyTypePointsIntCounters[enemyTypeIndex];
 			defeatedEnemies = defeatedEnemiesCount[enemyTypeIndex];
 			scorePerEnemy = defeatedEnemiesData[enemyTypeIndex].GetPointsForDefeat();
 			++enemyTypeIndex;
 			countedEnemies = enemyTypeScore = 0;
 		}
-		else if(TotalDefeatedEnemiesCounterIsNotAssignedYet())
+		else if(!totalDefeatedEnemiesCounter.enabled)
 		{
-			SetTotalDefeatedEnemiesCounterText();
+			SetTotalDefeatedEnemiesCounterEnabled(true);
 			sceneManagerTimer.StartTimer();
 		}
 	}
@@ -40,11 +41,10 @@ public class ScoreUIManager : UIManager
 		if(countedEnemies < defeatedEnemies)
 		{
 			++countedEnemies;
-			++totalCountedEnemies;
 			enemyTypeScore += scorePerEnemy;
-			currentDefeatedEnemiesCounter.text = countedEnemies.ToString();
-			currentEnemyTypePointsCounter.text = enemyTypeScore.ToString();
-
+			
+			currentDefeatedEnemiesIntCounter.SetTo(countedEnemies);
+			currentEnemyTypePointsIntCounter.SetTo(enemyTypeScore);
 			scoreCountTimer.ResetTimer();
 			audioSource.Play();
 		}
@@ -56,25 +56,17 @@ public class ScoreUIManager : UIManager
 
 	private void Start()
 	{
-		ResetTotalDefeatedEnemiesCounter();
-		SetHighScore();
-		SetPlayerOneScore();
-		RetrieveEnemiesData();
-		RetrieveEnemiesCount();
+		defeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray();
+		defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray();
+		
+		SetTotalDefeatedEnemiesCounterEnabled(false);
 		pointsRowsBuilder.SetDefeatedEnemiesSprites(defeatedEnemiesData.Select(e => e.GetDisplayInScoreSceneSprite()).ToArray());
 		pointsRowsBuilder.BuildPointsRows();
 		SetLastElementsPosition();
 	}
 
-	private void ResetTotalDefeatedEnemiesCounter() => totalDefeatedEnemiesCounter.text = string.Empty;
-	private void SetHighScore() => highScoreCounter.text = gameData.PreviousHighScore.ToString();
-	private void SetPlayerOneScore() => playerOneScoreCounter.text = playerData.Score.ToString();
-	public void RetrieveEnemiesData() => defeatedEnemiesData = playerData.DefeatedEnemies.Keys.ToArray();
-	private void RetrieveEnemiesCount() => defeatedEnemiesCount = playerData.DefeatedEnemies.Values.ToArray();
 	private int DefeatedEnemiesTypes() => playerData.DefeatedEnemies.Count;
-	private bool TotalDefeatedEnemiesCounterIsNotAssignedYet() => totalDefeatedEnemiesCounter.text != TotalDefeatedEnemiesCounterText();
-	private void SetTotalDefeatedEnemiesCounterText() => totalDefeatedEnemiesCounter.text = TotalDefeatedEnemiesCounterText();
-	private string TotalDefeatedEnemiesCounterText() => totalCountedEnemies.ToString();
+	private void SetTotalDefeatedEnemiesCounterEnabled(bool enabled) => totalDefeatedEnemiesCounter.enabled = enabled;
 
 	private void SetLastElementsPosition()
 	{

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2838880589552742568}
   - component: {fileID: 8799826870181086564}
   m_Layer: 5
-  m_Name: PlayerScoreDetailsPanelUI
+  m_Name: PlayerScoreDetailsPanelUIPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,8 +532,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5412746919095561118}
+    - targetCorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2585512099592491530}
   m_SourcePrefab: {fileID: 100100000, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
+--- !u!1 &292272416496355784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
+  m_PrefabInstance: {fileID: 8148820501990912786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5412746919095561118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292272416496355784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6175a758460bc24680503932f7a752e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerRobotData: {fileID: 0}
+--- !u!114 &2585512099592491530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292272416496355784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd5d8659237cd7478207d5b0e498490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  addSpaceAfterHeader: 0
 --- !u!224 &1059002598631187456 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
