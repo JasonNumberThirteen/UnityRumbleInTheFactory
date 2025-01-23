@@ -29,14 +29,14 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		{
 			if(enemyRobotEntityMovementControllerTimer != null)
 			{
-				enemyRobotEntityMovementControllerTimer.onEnd.AddListener(OnTimerEnd);
+				enemyRobotEntityMovementControllerTimer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
 			}
 		}
 		else
 		{
 			if(enemyRobotEntityMovementControllerTimer != null)
 			{
-				enemyRobotEntityMovementControllerTimer.onEnd.RemoveListener(OnTimerEnd);
+				enemyRobotEntityMovementControllerTimer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
 			}
 		}
 	}
@@ -74,7 +74,7 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		RegisterToListeners(false);
 	}
 
-	private void OnTimerEnd()
+	private void OnTimerReachedEnd()
 	{
 		RandomiseMovementDirection();
 		SetDetectedCollisionState(false);

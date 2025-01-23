@@ -48,11 +48,11 @@ public class MainMenuPanelUI : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.onEnd.AddListener(SetTargetPosition);
+			timer.timerReachedEndEvent.AddListener(SetTargetPosition);
 		}
 		else
 		{
-			timer.onEnd.RemoveListener(SetTargetPosition);
+			timer.timerReachedEndEvent.RemoveListener(SetTargetPosition);
 		}
 	}
 

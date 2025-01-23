@@ -46,8 +46,8 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.onReset.AddListener(OnTimerReset);
-			timer.onEnd.AddListener(OnTimerEnd);
+			timer.timerWasResetEvent.AddListener(OnTimerWasReset);
+			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
 
 			if(stageStateManager != null)
 			{
@@ -56,8 +56,8 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 		}
 		else
 		{
-			timer.onReset.RemoveListener(OnTimerReset);
-			timer.onEnd.RemoveListener(OnTimerEnd);
+			timer.timerWasResetEvent.RemoveListener(OnTimerWasReset);
+			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
 
 			if(stageStateManager != null)
 			{
@@ -66,13 +66,13 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 		}
 	}
 
-	private void OnTimerReset()
+	private void OnTimerWasReset()
 	{
 		SetRobotEntitiesActive(true, !affectFriendly);
 		SetRobotEntitiesActive(false, affectFriendly);
 	}
 
-	private void OnTimerEnd()
+	private void OnTimerReachedEnd()
 	{
 		SetRobotEntitiesActive(true, false);
 

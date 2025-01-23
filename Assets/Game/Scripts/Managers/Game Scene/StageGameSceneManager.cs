@@ -25,7 +25,7 @@ public class StageGameSceneManager : GameSceneManager
 	{
 		if(register)
 		{
-			timer.onEnd.AddListener(OnTimerEnd);
+			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
 
 			if(gameOverTextUI != null)
 			{
@@ -39,7 +39,7 @@ public class StageGameSceneManager : GameSceneManager
 		}
 		else
 		{
-			timer.onEnd.RemoveListener(OnTimerEnd);
+			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
 
 			if(gameOverTextUI != null)
 			{
@@ -53,7 +53,7 @@ public class StageGameSceneManager : GameSceneManager
 		}
 	}
 
-	private void OnTimerEnd()
+	private void OnTimerReachedEnd()
 	{
 		LoadSceneByName(SCORE_SCENE_NAME);
 	}

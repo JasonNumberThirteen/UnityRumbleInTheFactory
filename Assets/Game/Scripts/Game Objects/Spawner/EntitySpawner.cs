@@ -34,14 +34,14 @@ public class EntitySpawner : MonoBehaviour
 		if(register)
 		{
 			timer.timerStartedEvent.AddListener(OnTimerStarted);
-			timer.onReset.AddListener(OnTimerReset);
-			timer.onEnd.AddListener(OnTimerEnd);
+			timer.timerWasResetEvent.AddListener(OnTimerWasReset);
+			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
 		}
 		else
 		{
 			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
-			timer.onReset.RemoveListener(OnTimerReset);
-			timer.onEnd.RemoveListener(OnTimerEnd);
+			timer.timerWasResetEvent.RemoveListener(OnTimerWasReset);
+			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
 		}
 	}
 
@@ -63,12 +63,12 @@ public class EntitySpawner : MonoBehaviour
 		SetSpawnVisualEffectActive(true);
 	}
 
-	private void OnTimerReset()
+	private void OnTimerWasReset()
 	{
 		SetSpawnVisualEffectActive(true);
 	}
 
-	private void OnTimerEnd()
+	private void OnTimerReachedEnd()
 	{
 		Spawn();
 		SetSpawnVisualEffectActive(false);

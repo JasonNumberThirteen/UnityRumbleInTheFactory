@@ -71,7 +71,7 @@ public class StageSceneFlowManager : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.onEnd.AddListener(OnTimerEnd);
+			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
 
 			if(stageStateManager != null)
 			{
@@ -90,7 +90,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		}
 		else
 		{
-			timer.onEnd.RemoveListener(OnTimerEnd);
+			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
 
 			if(stageStateManager != null)
 			{
@@ -109,7 +109,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		}
 	}
 
-	private void OnTimerEnd()
+	private void OnTimerReachedEnd()
 	{
 		if(stageStateManager == null)
 		{

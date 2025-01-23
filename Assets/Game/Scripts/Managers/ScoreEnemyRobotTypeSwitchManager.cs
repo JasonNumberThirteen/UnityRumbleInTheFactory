@@ -40,15 +40,15 @@ public class ScoreEnemyRobotTypeSwitchManager : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.onEnd.AddListener(OnTimerEnd);
+			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
 		}
 		else
 		{
-			timer.onEnd.RemoveListener(OnTimerEnd);
+			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
 		}
 	}
 
-	private void OnTimerEnd()
+	private void OnTimerReachedEnd()
 	{
 		if(currentEnemyRobotTypeIndex < numberOfDefeatedEnemyRobotTypes)
 		{
