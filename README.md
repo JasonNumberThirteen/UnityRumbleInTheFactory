@@ -49,7 +49,7 @@ A scene wherein the game is played on the current stage, firstly selected and la
 
 ![Rumble In The Factory (Stage)](./Screenshots/Stage.png?raw=true)
 ### Score
-A scene which displays details about defeated enemies, what types and how many units have been destroyed.
+A scene which displays details about defeated enemies by each of the players (what types and how many units have been destroyed).
 
 ![Rumble In The Factory (Score)](./Screenshots/Score.png?raw=true)
 ### Game Over
