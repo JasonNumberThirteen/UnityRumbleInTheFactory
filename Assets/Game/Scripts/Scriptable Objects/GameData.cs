@@ -84,6 +84,9 @@ public class GameData : ScriptableObject
 
 	public void AdvanceToNextStage()
 	{
-		saveableGameData.stageNumber = StageNumber % StagesData.Length + 1;
+		if(StagesData != null && StagesData.Length > 0)
+		{
+			saveableGameData.stageNumber = StageNumber % StagesData.Length + 1;
+		}
 	}
 }
