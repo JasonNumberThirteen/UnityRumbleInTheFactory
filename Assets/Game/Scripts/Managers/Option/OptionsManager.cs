@@ -43,7 +43,7 @@ public class OptionsManager : MonoBehaviour
 
 	private void Awake()
 	{
-		var options = ObjectMethods.FindComponentsOfType<Option>();
+		var options = ObjectMethods.FindComponentsOfType<Option>(false);
 
 		foreach (var option in options)
 		{
