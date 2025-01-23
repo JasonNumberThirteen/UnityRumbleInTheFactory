@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afabcdd18ba018e4f997c593daa2019d, type: 3}
   m_Name: CyanEnemyRobotEntityDataScriptableObject
   m_EditorClassIdentifier: 
+  ordinalNumber: 2
   prefab: {fileID: 7494953504550476265, guid: e3ac4914fbe686049b0d44ee85f097e5, type: 3}
   pointsForDefeat: 200
   displayInScoreSceneSprite: {fileID: 740022647, guid: 6e1a492aa2ae7e14c82445f0195c559e, type: 3}

@@ -21,7 +21,7 @@ public class PlayersDefeatedEnemiesSumContainer : MonoBehaviour
 	{
 		if(playerRobotData != null)
 		{
-			playerRobotData.DefeatedEnemies.ToList().ForEach(AddNumberOfDefeatedEnemiesOfOneType);
+			playerRobotData.DefeatedEnemies.OrderBy(pair => pair.Key.GetOrdinalNumber()).ToList().ForEach(AddNumberOfDefeatedEnemiesOfOneType);
 		}
 	}
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afabcdd18ba018e4f997c593daa2019d, type: 3}
   m_Name: BlueEnemyRobotEntityDataScriptableObject
   m_EditorClassIdentifier: 
+  ordinalNumber: 1
   prefab: {fileID: 5260229412919861021, guid: 587ad42afb1edc0438ef9ac802550fdf, type: 3}
   pointsForDefeat: 100
   displayInScoreSceneSprite: {fileID: -1056247388, guid: cb86ba34a2897e049a3a62fafd953cb8, type: 3}
