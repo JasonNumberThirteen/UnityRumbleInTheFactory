@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Name
-      value: Stage Counter (Stage)
+      value: StageCounterTextUIPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
       propertyPath: m_Pivot.x
@@ -132,8 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7040c19f18ae95f4bb3436d641d9a799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialValue: 0
-  text: {fileID: 8476436485221035716}
+  valueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8476436485221035716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,5 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd5d8659237cd7478207d5b0e498490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counter: {fileID: -4741913531757093697}
   header: 
+  addSpaceAfterHeader: 0

@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134551509500443794, guid: a6f0f4c597696da4f8d622f921301218, type: 3}
       propertyPath: m_Name
-      value: PlayerLivesCounterTextUIPrefab
+      value: Player1LivesCounterTextUIPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
