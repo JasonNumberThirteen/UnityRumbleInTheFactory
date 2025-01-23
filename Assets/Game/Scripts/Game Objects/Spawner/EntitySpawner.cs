@@ -17,11 +17,6 @@ public class EntitySpawner : MonoBehaviour
 		timer.StartTimer();
 	}
 
-	public void ResetTimer()
-	{
-		timer.ResetTimer();
-	}
-
 	public void SetEntityPrefab(GameObject entityPrefab)
 	{
 		this.entityPrefab = entityPrefab;
@@ -34,14 +29,12 @@ public class EntitySpawner : MonoBehaviour
 		if(register)
 		{
 			timer.timerStartedEvent.AddListener(OnTimerStarted);
-			timer.timerWasResetEvent.AddListener(OnTimerWasReset);
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 		}
 		else
 		{
 			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
-			timer.timerWasResetEvent.RemoveListener(OnTimerWasReset);
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 		}
 	}
 
@@ -63,12 +56,7 @@ public class EntitySpawner : MonoBehaviour
 		SetSpawnVisualEffectActive(true);
 	}
 
-	private void OnTimerWasReset()
-	{
-		SetSpawnVisualEffectActive(true);
-	}
-
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		Spawn();
 		SetSpawnVisualEffectActive(false);

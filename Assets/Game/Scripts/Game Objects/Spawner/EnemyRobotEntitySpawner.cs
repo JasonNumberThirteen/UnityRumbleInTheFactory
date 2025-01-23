@@ -40,15 +40,15 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 
 		if(register)
 		{
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 		}
 		else
 		{
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 		}
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		telefragger.TelefragGOsWithinRadius();
 		intersectingGameObjectsDetector.SetLayerToGOsIfIntersect();

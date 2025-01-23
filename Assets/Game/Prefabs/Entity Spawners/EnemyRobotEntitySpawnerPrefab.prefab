@@ -61,6 +61,10 @@ PrefabInstance:
       value: Enemy Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
+      propertyPath: startImmediately
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: countFromTheStart
       value: 0
       objectReference: {fileID: 0}

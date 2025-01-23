@@ -8,7 +8,7 @@ public class EnemyRobotEntityShootControllerTimer : Timer
 	{
 		if(gameData != null)
 		{
-			duration = gameData.GetDifficultyTierValue(tier => tier.GetEnemyShootDelay());
+			SetDuration(gameData.GetDifficultyTierValue(tier => tier.GetEnemyShootDelay()));
 		}
 	}
 }

@@ -25,7 +25,7 @@ public class StageGameSceneManager : GameSceneManager
 	{
 		if(register)
 		{
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 
 			if(gameOverTextUI != null)
 			{
@@ -39,7 +39,7 @@ public class StageGameSceneManager : GameSceneManager
 		}
 		else
 		{
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 
 			if(gameOverTextUI != null)
 			{
@@ -53,7 +53,7 @@ public class StageGameSceneManager : GameSceneManager
 		}
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		LoadSceneByName(SCORE_SCENE_NAME);
 	}
@@ -67,7 +67,7 @@ public class StageGameSceneManager : GameSceneManager
 	{
 		if(stageState == StageState.Interrupted)
 		{
-			timer.InterruptTimer();
+			timer.InterruptTimerIfPossible();
 		}
 		else if(stageState == StageState.Won)
 		{

@@ -31,7 +31,7 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 	{
 		if(playerRobotData != null && playerRobotData.Lives > 0)
 		{
-			timer.ResetTimer();
+			timer.StartTimer();
 			playerRobotData.ResetRank();
 
 			if(playerRobotsDataManager != null)

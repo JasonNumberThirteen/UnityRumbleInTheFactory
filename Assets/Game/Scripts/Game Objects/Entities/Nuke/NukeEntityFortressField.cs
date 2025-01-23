@@ -19,12 +19,11 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	public void SpawnFortress(float duration)
 	{
-		timer.duration = duration;
-		
 		fortressTileGOs.Clear();
 		DestroyAllGOsWithinArea();
 		SpawnTilesWithinArea();
-		timer.ResetTimer();
+		timer.SetDuration(duration);
+		timer.StartTimer();
 	}
 
 	public void DestroyAllGOsWithinArea()
@@ -55,15 +54,15 @@ public class NukeEntityFortressField : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 		}
 		else
 		{
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 		}
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		if(tileToSpawnAfterElapsedTimePrefab == null)
 		{
@@ -112,7 +111,7 @@ public class NukeEntityFortressField : MonoBehaviour
 		{
 			var nukeEntityFortressFieldTileRenderer = instance.AddComponent<NukeEntityFortressFieldTileRenderer>();
 
-			nukeEntityFortressFieldTileRenderer.Setup(timer.duration, timeForBlinkStart, blinkDuration, tileSpriteToBlink);
+			nukeEntityFortressFieldTileRenderer.Setup(timer.GetDuration(), timeForBlinkStart, blinkDuration, tileSpriteToBlink);
 			fortressTileGOs.Add(instance);
 		}
 	}

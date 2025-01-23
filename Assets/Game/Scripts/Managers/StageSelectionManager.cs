@@ -54,7 +54,7 @@ public class StageSelectionManager : MonoBehaviour
 			}
 			else
 			{
-				navigationTimer = timer.duration;
+				navigationTimer = timer.GetDuration();
 
 				navigationDirectionChangedEvent?.Invoke(navigationDirection);
 			}

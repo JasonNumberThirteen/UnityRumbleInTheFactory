@@ -45,22 +45,22 @@ public class TimedRectTransformPositionController : RectTransformPositionControl
 	{
 		if(register)
 		{
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 		}
 		else
 		{
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 		}
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		rectTransformReachedTargetPositionEvent?.Invoke();
 	}
 
 	private void Update()
 	{
-		if(timer.Started && !ReachedTargetPosition())
+		if(timer.TimerWasStarted && !ReachedTargetPosition())
 		{
 			rectTransform.anchoredPosition = GetCurrentPosition();
 		}
@@ -68,7 +68,7 @@ public class TimedRectTransformPositionController : RectTransformPositionControl
 
 	private Vector2 GetCurrentPosition()
 	{
-		var percent = timer.ProgressPercent();
+		var percent = timer.GetProgressPercent();
 		var x = initialPosition.x + GetDifferenceX()*percent;
 		var y = initialPosition.y + GetDifferenceY()*percent;
 

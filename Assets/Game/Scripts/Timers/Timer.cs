@@ -3,90 +3,78 @@ using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
-	[Min(0.01f)] public float duration;
-	public bool countFromTheStart = true;
-	public UnityEvent timerStartedEvent;
-	public UnityEvent timerWasResetEvent, timerReachedEndEvent, timerWasInterruptedEvent;
+	public bool TimerWasStarted {get; private set;}
+	public bool TimerWasFinished {get; private set;}
 	
-	public bool Started {get; private set;}
-	public bool Finished {get; private set;}
+	public UnityEvent timerStartedEvent;
+	public UnityEvent timerFinishedEvent;
 
-	private float timer;
+	[SerializeField] private bool startImmediately = true;
+	[SerializeField, Min(0.01f)] private float duration;
+
+	private float currentTime;
+
+	public float GetDuration() => duration;
+	public float GetProgressPercent() => duration > 0 ? currentTime / duration : 0;
 
 	public void StartTimer()
 	{
-		if(!Started)
-		{
-			timer = 0f;
-			
-			SetAsFinished(false);
-			timerStartedEvent?.Invoke();
-		}
-		else
-		{
-			ResetTimer();
-		}
-	}
-
-	public void ResetTimer()
-	{
-		timer = 0f;
-		
 		SetAsFinished(false);
-		timerWasResetEvent.Invoke();
+		timerStartedEvent?.Invoke();
 	}
 
-	public void InterruptTimer()
+	public void InterruptTimerIfPossible(bool invokeReachedEndEvent = false)
 	{
-		if(!Started)
+		if(TimerWasStarted)
 		{
-			return;
+			FinishTimer(invokeReachedEndEvent);
 		}
-
-		timer = duration;
-		
-		SetAsFinished(true);
-		timerWasInterruptedEvent.Invoke();
 	}
 
-	public bool ReachedTheEnd() => timer >= duration;
-	public float ProgressPercent() => timer / duration;
-
-	private void Start() => StartTimerImmediately();
-	private void Modify() => timer = Mathf.Clamp(timer + Time.deltaTime, 0f, duration);
-
-	private void StartTimerImmediately()
+	public void SetDuration(float duration)
 	{
-		if(countFromTheStart)
+		this.duration = duration;
+	}
+
+	private void Start()
+	{
+		if(startImmediately)
 		{
 			StartTimer();
 		}
 	}
-
+	
 	private void Update()
 	{
-		if(Started)
+		if(!TimerWasStarted)
 		{
-			if(!ReachedTheEnd())
-			{
-				Modify();
-			}
-			else if(!Finished)
-			{
-				Finish();
-			}
+			return;
+		}
+		
+		if(currentTime < duration)
+		{
+			currentTime = Mathf.Clamp(currentTime + Time.deltaTime, 0f, duration);
+		}
+		else if(!TimerWasFinished)
+		{
+			FinishTimer();
 		}
 	}
-	
-	private void Finish()
+
+	private void FinishTimer(bool invokeReachedEndEvent = true)
 	{
 		SetAsFinished(true);
-		timerReachedEndEvent.Invoke();
+
+		if(invokeReachedEndEvent)
+		{
+			timerFinishedEvent?.Invoke();
+		}
 	}
 
 	private void SetAsFinished(bool finished)
 	{
-		Started = !finished;
-		Finished = finished;
+		currentTime = finished ? duration : 0f;
+		TimerWasStarted = !finished;
+		TimerWasFinished = finished;
 	}
 }

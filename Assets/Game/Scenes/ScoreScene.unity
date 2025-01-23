@@ -181,20 +181,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
-  countFromTheStart: 0
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 0
+  duration: 2
 --- !u!224 &306810974 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 496093811362255574, guid: ae6678c4ff51d184fbec4d60355863c0, type: 3}
@@ -817,20 +811,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.125
-  countFromTheStart: 0
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 0
+  duration: 0.125
 --- !u!1 &1301211824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,20 +1666,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.5
-  countFromTheStart: 1
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 1
+  duration: 0.5
 --- !u!1001 &1977789711
 PrefabInstance:
   m_ObjectHideFlags: 0

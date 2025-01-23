@@ -24,21 +24,21 @@ public class EnemyRobotEntityShootController : RobotEntityShootController
 		{
 			if(enemyRobotEntityShootControllerTimer != null)
 			{
-				enemyRobotEntityShootControllerTimer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+				enemyRobotEntityShootControllerTimer.timerFinishedEvent.AddListener(OnTimerFinished);
 			}
 		}
 		else
 		{
 			if(enemyRobotEntityShootControllerTimer != null)
 			{
-				enemyRobotEntityShootControllerTimer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+				enemyRobotEntityShootControllerTimer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 			}
 		}
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		FireBullet();
-		enemyRobotEntityShootControllerTimer.ResetTimer();
+		enemyRobotEntityShootControllerTimer.StartTimer();
 	}
 }

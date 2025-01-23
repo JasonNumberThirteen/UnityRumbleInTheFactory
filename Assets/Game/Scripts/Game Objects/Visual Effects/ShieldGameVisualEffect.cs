@@ -21,22 +21,22 @@ public class ShieldGameVisualEffect : GameVisualEffect
 	{
 		if(register)
 		{
-			timer.timerWasResetEvent.AddListener(OnTimerWasReset);
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerStartedEvent.AddListener(OnTimerStarted);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 		}
 		else
 		{
-			timer.timerWasResetEvent.RemoveListener(OnTimerWasReset);
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 		}
 	}
 
-	private void OnTimerWasReset()
+	private void OnTimerStarted()
 	{
 		SetActive(true);
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		SetActive(false);
 	}

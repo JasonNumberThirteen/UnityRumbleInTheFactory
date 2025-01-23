@@ -64,7 +64,7 @@ public class TranslationBackgroundPartPanelUIRectTransformOffsetController : Mon
 
 	private void Update()
 	{
-		if(timer.Started && !ReachedTargetPosition())
+		if(timer.TimerWasStarted && !ReachedTargetPosition())
 		{
 			SetOffset();
 		}
@@ -78,7 +78,7 @@ public class TranslationBackgroundPartPanelUIRectTransformOffsetController : Mon
 
 	private Vector2 GetOffset(Vector2 initialOffset, Vector2 offsetDifference)
 	{
-		var percent = timer.ProgressPercent();
+		var percent = timer.GetProgressPercent();
 		var x = GetOffsetCoordinate(initialOffset.x, offsetDifference.x, percent);
 		var y = GetOffsetCoordinate(initialOffset.y, offsetDifference.y, percent);
 

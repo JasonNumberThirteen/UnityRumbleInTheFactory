@@ -137,7 +137,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		{
 			var currentEnemyRobotEntitySpawner = enemyRobotEntitySpawners[currentEnemyRobotEntitySpawnerIndex];
 
-			currentEnemyRobotEntitySpawner.ResetTimer();
+			currentEnemyRobotEntitySpawner.StartTimer();
 			OnSpawnerTimerReset(currentEnemyRobotEntitySpawner);
 		}
 	}

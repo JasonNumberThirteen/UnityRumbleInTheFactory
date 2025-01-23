@@ -25,7 +25,7 @@ public class ScoreGameSceneManager : GameSceneManager
 	{
 		if(register)
 		{
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 
 			if(scoreEnemyRobotTypeSwitchManager != null)
 			{
@@ -34,7 +34,7 @@ public class ScoreGameSceneManager : GameSceneManager
 		}
 		else
 		{
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 
 			if(scoreEnemyRobotTypeSwitchManager != null)
 			{
@@ -43,7 +43,7 @@ public class ScoreGameSceneManager : GameSceneManager
 		}
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		var gameIsOver = gameData != null && gameData.GameIsOver;
 		

@@ -44,20 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1a18012b020fd46a2795dd06b9833e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.25
-  countFromTheStart: 0
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 0
+  duration: 0.25
 --- !u!1 &4398289623834182830
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,20 +173,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bf48c55fffa03459bb229cf72a5bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
-  countFromTheStart: 1
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 1
+  duration: 1
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!1001 &7305028705194506425
 PrefabInstance:

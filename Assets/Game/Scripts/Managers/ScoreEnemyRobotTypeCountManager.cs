@@ -38,15 +38,15 @@ public class ScoreEnemyRobotTypeCountManager : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 		}
 		else
 		{
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 		}
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		++numberOfCountedEnemyRobots;
 		currentScoreForDefeatedEnemyRobots += scorePerEnemyRobot;
@@ -59,7 +59,7 @@ public class ScoreEnemyRobotTypeCountManager : MonoBehaviour
 		}
 		else
 		{
-			timer.ResetTimer();
+			timer.StartTimer();
 		}
 	}
 }

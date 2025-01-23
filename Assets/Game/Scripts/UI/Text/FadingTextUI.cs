@@ -26,5 +26,5 @@ public class FadingTextUI : TextUI
 		return color;
 	}
 
-	private float GetAlpha() => 1 - timer.ProgressPercent();
+	private float GetAlpha() => 1 - timer.GetProgressPercent();
 }

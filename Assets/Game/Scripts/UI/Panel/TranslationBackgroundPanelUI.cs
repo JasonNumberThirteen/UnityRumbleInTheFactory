@@ -42,12 +42,12 @@ public class TranslationBackgroundPanelUI : MonoBehaviour
 		if(register)
 		{
 			timer.timerStartedEvent.AddListener(OnTimerStarted);
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 		}
 		else
 		{
 			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 		}
 	}
 
@@ -56,7 +56,7 @@ public class TranslationBackgroundPanelUI : MonoBehaviour
 		panelStartedTranslationEvent?.Invoke();
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		panelFinishedTranslationEvent?.Invoke();
 	}

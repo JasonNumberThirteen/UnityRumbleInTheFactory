@@ -56,10 +56,10 @@ public class StageSceneFlowManager : MonoBehaviour
 		dataSerialisationManager = ObjectMethods.FindComponentOfType<DataSerialisationManager>();
 		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 		nukeEntity = ObjectMethods.FindComponentOfType<NukeEntity>();
-		timer.duration = delayOnStart;
 
 		SetGOsActive(false);
 		RegisterToListeners(true);
+		timer.SetDuration(delayOnStart);
 	}
 
 	private void OnDestroy()
@@ -71,7 +71,7 @@ public class StageSceneFlowManager : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 
 			if(stageStateManager != null)
 			{
@@ -90,7 +90,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		}
 		else
 		{
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 
 			if(stageStateManager != null)
 			{
@@ -109,7 +109,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		}
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		if(stageStateManager == null)
 		{
@@ -135,9 +135,8 @@ public class StageSceneFlowManager : MonoBehaviour
 		
 		if(stageState == StageState.Interrupted)
 		{
-			timer.duration = delayAfterInterrupting;
-			
-			timer.ResetTimer();
+			timer.SetDuration(delayAfterInterrupting);
+			timer.StartTimer();
 		}
 
 		SaveAllDataIfNeeded(stageState);

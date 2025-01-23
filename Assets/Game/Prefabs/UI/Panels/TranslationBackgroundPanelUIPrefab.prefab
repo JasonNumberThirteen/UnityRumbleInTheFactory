@@ -92,17 +92,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  timerFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startImmediately: 0
   duration: 0.25
-  countFromTheStart: 0
-  onReset:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5243136493124728988
 MonoBehaviour:
   m_ObjectHideFlags: 0

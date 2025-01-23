@@ -8,14 +8,14 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 	private StageStateManager stageStateManager;
 	private bool affectFriendly;
 	
-	public bool RobotsAreTemporarilyDisabled(bool checkFriendly) => timer.Started && checkFriendly == affectFriendly;
+	public bool RobotsAreTemporarilyDisabled(bool checkFriendly) => timer.TimerWasStarted && checkFriendly == affectFriendly;
 	
 	public void DisableRobotEntitiesTemporarily(float duration, bool affectFriendly)
 	{
-		timer.duration = duration;
 		this.affectFriendly = affectFriendly;
 
-		timer.ResetTimer();
+		timer.SetDuration(duration);
+		timer.StartTimer();
 	}
 
 	public void SetRobotEntitiesActive(bool active, bool affectFriendly)
@@ -46,8 +46,8 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.timerWasResetEvent.AddListener(OnTimerWasReset);
-			timer.timerReachedEndEvent.AddListener(OnTimerReachedEnd);
+			timer.timerStartedEvent.AddListener(OnTimerStarted);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 
 			if(stageStateManager != null)
 			{
@@ -56,8 +56,8 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 		}
 		else
 		{
-			timer.timerWasResetEvent.RemoveListener(OnTimerWasReset);
-			timer.timerReachedEndEvent.RemoveListener(OnTimerReachedEnd);
+			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 
 			if(stageStateManager != null)
 			{
@@ -66,13 +66,13 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 		}
 	}
 
-	private void OnTimerWasReset()
+	private void OnTimerStarted()
 	{
 		SetRobotEntitiesActive(true, !affectFriendly);
 		SetRobotEntitiesActive(false, affectFriendly);
 	}
 
-	private void OnTimerReachedEnd()
+	private void OnTimerFinished()
 	{
 		SetRobotEntitiesActive(true, false);
 

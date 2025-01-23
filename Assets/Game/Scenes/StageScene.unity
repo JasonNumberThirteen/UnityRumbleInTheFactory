@@ -1277,20 +1277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
-  countFromTheStart: 0
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 0
+  duration: 2
 --- !u!114 &600235747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,20 +1517,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
-  countFromTheStart: 0
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 0
+  duration: 2
 --- !u!1001 &912258329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3446,20 +3434,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0
-  countFromTheStart: 1
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 1
+  duration: 0
 --- !u!82 &1886217743
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3613,20 +3595,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
-  countFromTheStart: 0
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 0
+  duration: 10
 --- !u!1001 &1922023824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4090,20 +4066,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
-  countFromTheStart: 1
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 1
+  duration: 1
 --- !u!1 &2144898997
 GameObject:
   m_ObjectHideFlags: 0
