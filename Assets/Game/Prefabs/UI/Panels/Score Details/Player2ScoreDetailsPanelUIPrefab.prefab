@@ -176,6 +176,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2HeaderTextUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8154718971830254560, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
+      propertyPath: ordinalNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154718971830254560, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
     m_RemovedComponents:
     - {fileID: 8799826870181086564, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
     m_RemovedGameObjects:

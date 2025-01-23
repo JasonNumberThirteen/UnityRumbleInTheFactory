@@ -1,25 +1,27 @@
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreUIManager : UIManager
 {
-	[SerializeField] private PlayerScoreDetailsPanelUI player1ScoreDetailsPanelUI;
 	[SerializeField] private GameObject totalTextUIPrefab;
+	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
 	private ScoreEnemyRobotTypeSwitchManager scoreEnemyRobotTypeSwitchManager;
 	private ScoreEnemyRobotTypeCountManager scoreEnemyRobotTypeCountManager;
 	private DefeatedEnemyRobotTypesPanelUI defeatedEnemyRobotTypesPanelUI;
 	private PlayersTotalDefeatedEnemiesCountersPanelUI playersTotalDefeatedEnemiesCountersPanelUI;
 	private DefeatedEnemyRobotTypeIntCounterPanelUI currentDefeatedEnemyRobotTypeIntCounterPanelUI;
-	private DefeatedEnemiesScoreIntCounterPanelUI currentDefeatedEnemiesScoreIntCounterPanelUI;
-	private int[] scoresPerEnemyRobotType;
-	private int[] defeatedEnemiesCount;
+	private Dictionary<PlayerRobotData, DefeatedEnemiesScoreIntCounterPanelUI> defeatedEnemiesScoreIntCounterPanelUIByPlayerRobotData;
+	private EnemyRobotData[] defeatedEnemyRobotTypesData;
+	private List<PlayerScoreDetailsPanelUI> playerScoreDetailsPanelUIs;
 
 	private void Awake()
 	{
 		scoreEnemyRobotTypeSwitchManager = ObjectMethods.FindComponentOfType<ScoreEnemyRobotTypeSwitchManager>();
 		scoreEnemyRobotTypeCountManager = ObjectMethods.FindComponentOfType<ScoreEnemyRobotTypeCountManager>();
 		defeatedEnemyRobotTypesPanelUI = ObjectMethods.FindComponentOfType<DefeatedEnemyRobotTypesPanelUI>();
+		playerScoreDetailsPanelUIs = ObjectMethods.FindComponentsOfType<PlayerScoreDetailsPanelUI>().OrderBy(playerScoreDetailsPanelUI => playerScoreDetailsPanelUI.GetOrdinalNumber()).ToList();
 
 		RegisterToListeners(true);
 	}
@@ -63,27 +65,65 @@ public class ScoreUIManager : UIManager
 
 	private void OnEnemyRobotTypeSwitched(int currentEnemyRobotTypeIndex)
 	{
-		if(player1ScoreDetailsPanelUI != null)
-		{
-			currentDefeatedEnemiesScoreIntCounterPanelUI = player1ScoreDetailsPanelUI.GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(currentEnemyRobotTypeIndex);
-		}
+		GoToNextDefeatedEnemiesScoreIntCounterPanelUIs(currentEnemyRobotTypeIndex);
+		GoToNextDefeatedEnemyRobotTypeIntCounterPanelUIIfPossible(currentEnemyRobotTypeIndex);
+		StartCountingNextEnemyRobotTypeIfPossible(currentEnemyRobotTypeIndex);
+	}
 
+	private void GoToNextDefeatedEnemiesScoreIntCounterPanelUIs(int currentEnemyRobotTypeIndex)
+	{
+		if(playerScoreDetailsPanelUIs != null)
+		{
+			defeatedEnemiesScoreIntCounterPanelUIByPlayerRobotData = playerScoreDetailsPanelUIs.ToDictionary(key => key.GetPlayerRobotData(), value => value.GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(currentEnemyRobotTypeIndex));
+		}
+	}
+
+	private void GoToNextDefeatedEnemyRobotTypeIntCounterPanelUIIfPossible(int currentEnemyRobotTypeIndex)
+	{
 		if(defeatedEnemyRobotTypesPanelUI != null)
 		{
 			currentDefeatedEnemyRobotTypeIntCounterPanelUI = defeatedEnemyRobotTypesPanelUI.GetDefeatedEnemyRobotTypeIntCounterPanelUIByIndex(currentEnemyRobotTypeIndex);
 		}
+	}
 
-		if(scoreEnemyRobotTypeCountManager != null)
+	private void StartCountingNextEnemyRobotTypeIfPossible(int currentEnemyRobotTypeIndex)
+	{
+		if(scoreEnemyRobotTypeCountManager == null || defeatedEnemyRobotTypesData == null || currentEnemyRobotTypeIndex >= defeatedEnemyRobotTypesData.Length)
 		{
-			scoreEnemyRobotTypeCountManager.StartCounting(defeatedEnemiesCount[currentEnemyRobotTypeIndex], scoresPerEnemyRobotType[currentEnemyRobotTypeIndex]);
+			return;
 		}
+
+		var enemyRobotData = defeatedEnemyRobotTypesData[currentEnemyRobotTypeIndex];
+		var numberOfDefeatedEnemyRobots = GetHighestNumberOfDefeatedEnemies(currentEnemyRobotTypeIndex);
+
+		scoreEnemyRobotTypeCountManager.StartCounting(enemyRobotData, numberOfDefeatedEnemyRobots);
+	}
+
+	private int GetHighestNumberOfDefeatedEnemies(int currentEnemyRobotTypeIndex)
+	{
+		if(playerRobotsListData == null)
+		{
+			return 0;
+		}
+
+		return playerRobotsListData.Max(playerRobotData =>
+		{
+			if(playerRobotData == null || defeatedEnemyRobotTypesData == null || currentEnemyRobotTypeIndex >= defeatedEnemyRobotTypesData.Length)
+			{
+				return 0;
+			}
+
+			var enemyRobotData = defeatedEnemyRobotTypesData[currentEnemyRobotTypeIndex];
+
+			return playerRobotData.DefeatedEnemies.TryGetValue(enemyRobotData, out var numberOfDefeatedEnemies) ? numberOfDefeatedEnemies : 0;
+		});
 	}
 
 	private void OnLastEnemyRobotTypeReached()
 	{
-		if(totalTextUIPrefab != null && player1ScoreDetailsPanelUI != null)
+		if(totalTextUIPrefab != null && playerScoreDetailsPanelUIs != null && playerScoreDetailsPanelUIs.Count > 0)
 		{
-			Instantiate(totalTextUIPrefab, player1ScoreDetailsPanelUI.transform);
+			Instantiate(totalTextUIPrefab, playerScoreDetailsPanelUIs.First().transform);
 		}
 
 		if(playersTotalDefeatedEnemiesCountersPanelUI != null)
@@ -92,16 +132,21 @@ public class ScoreUIManager : UIManager
 		}
 	}
 
-	private void OnEnemyRobotCounted(int numberOfCountedEnemyRobots, int currentScoreForDefeatedEnemyRobots)
+	private void OnEnemyRobotCounted(List<PlayerRobotScoreData> playerRobotScoreDataList)
 	{
-		if(currentDefeatedEnemiesScoreIntCounterPanelUI != null)
-		{
-			currentDefeatedEnemiesScoreIntCounterPanelUI.SetCounterValueTo(currentScoreForDefeatedEnemyRobots);
-		}
+		playerRobotScoreDataList.ForEach(SetCurrentScoreForDefeatedEnemyRobotsValueToCounterIfPossible);
 
 		if(currentDefeatedEnemyRobotTypeIntCounterPanelUI != null)
 		{
-			currentDefeatedEnemyRobotTypeIntCounterPanelUI.SetCounterValueTo(numberOfCountedEnemyRobots);
+			currentDefeatedEnemyRobotTypeIntCounterPanelUI.SetValuesToCountersIfPossible(playerRobotScoreDataList);
+		}
+	}
+
+	private void SetCurrentScoreForDefeatedEnemyRobotsValueToCounterIfPossible(PlayerRobotScoreData playerRobotScoreData)
+	{
+		if(defeatedEnemiesScoreIntCounterPanelUIByPlayerRobotData.TryGetValue(playerRobotScoreData.PlayerRobotData, out var defeatedEnemiesScoreIntCounterPanelUI))
+		{
+			defeatedEnemiesScoreIntCounterPanelUI.SetValueToCounter(playerRobotScoreData.CurrentScoreForDefeatedEnemyRobots);
 		}
 	}
 
@@ -115,14 +160,18 @@ public class ScoreUIManager : UIManager
 
 	private void Start()
 	{
+		GetDefeatedEnemyRobotTypesFromAllPlayersIfPossible();
+
+		playersTotalDefeatedEnemiesCountersPanelUI = ObjectMethods.FindComponentOfType<PlayersTotalDefeatedEnemiesCountersPanelUI>();
+	}
+
+	private void GetDefeatedEnemyRobotTypesFromAllPlayersIfPossible()
+	{
 		var playersDefeatedEnemiesSumContainer = ObjectMethods.FindComponentOfType<PlayersDefeatedEnemiesSumContainer>();
 
 		if(playersDefeatedEnemiesSumContainer != null)
 		{
-			scoresPerEnemyRobotType = playersDefeatedEnemiesSumContainer.DefeatedEnemies.Keys.Select(key => key.GetPointsForDefeat()).ToArray();
-			defeatedEnemiesCount = playersDefeatedEnemiesSumContainer.DefeatedEnemies.Values.ToArray();
+			defeatedEnemyRobotTypesData = playersDefeatedEnemiesSumContainer.DefeatedEnemies.Keys.ToArray();
 		}
-
-		playersTotalDefeatedEnemiesCountersPanelUI = ObjectMethods.FindComponentOfType<PlayersTotalDefeatedEnemiesCountersPanelUI>();
 	}
 }

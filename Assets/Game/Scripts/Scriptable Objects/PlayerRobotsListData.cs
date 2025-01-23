@@ -9,6 +9,7 @@ public class PlayerRobotsListData : ScriptableObject
 	[SerializeField] private List<PlayerRobotData> playerRobotsData = new();
 
 	public bool Any(Func<PlayerRobotData, bool> func) => playerRobotsData.Any(func);
+	public int Max(Func<PlayerRobotData, int> func) => playerRobotsData.Max(func);
 
 	public void ForEachIndexed(Action<PlayerRobotData, int> action, int counterInitialValue = 0)
 	{

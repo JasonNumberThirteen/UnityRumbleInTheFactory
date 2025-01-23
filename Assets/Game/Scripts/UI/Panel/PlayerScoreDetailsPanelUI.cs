@@ -3,11 +3,15 @@ using UnityEngine;
 
 public class PlayerScoreDetailsPanelUI : MonoBehaviour
 {
+	[SerializeField, Min(1)] private int ordinalNumber;
 	[SerializeField] private GameObject defeatedEnemiesScoreCounterPanelUIPrefab;
+	[SerializeField] private PlayerRobotData playerRobotData;
 
 	private DefeatedEnemiesScoreIntCounterPanelUI[] defeatedEnemiesScoreIntCounterPanelUIs;
 
-	public DefeatedEnemiesScoreIntCounterPanelUI GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(int index) => defeatedEnemiesScoreIntCounterPanelUIs[index];
+	public int GetOrdinalNumber() => ordinalNumber;
+	public PlayerRobotData GetPlayerRobotData() => playerRobotData;
+	public DefeatedEnemiesScoreIntCounterPanelUI GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(int index) => defeatedEnemiesScoreIntCounterPanelUIs != null && index < defeatedEnemiesScoreIntCounterPanelUIs.Length ? defeatedEnemiesScoreIntCounterPanelUIs[index] : null;
 
 	private void Awake()
 	{

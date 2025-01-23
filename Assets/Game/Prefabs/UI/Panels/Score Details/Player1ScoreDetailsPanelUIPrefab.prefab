@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1HeaderTextUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8154718971830254560, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

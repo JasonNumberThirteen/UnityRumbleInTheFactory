@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2DefeatedEnemyRobotsCounterTextUIPrefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3414356654277327885, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -495,6 +499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1DefeatedEnemyRobotsCounterTextUIPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3414356654277327885, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

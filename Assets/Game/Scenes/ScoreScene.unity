@@ -397,17 +397,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2575669532503113782, guid: c647600a2932c7d48ab938c57bdf9322, type: 3}
   m_PrefabInstance: {fileID: 483394253}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &483394258 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 756819285345613172, guid: c647600a2932c7d48ab938c57bdf9322, type: 3}
-  m_PrefabInstance: {fileID: 483394253}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c211e48df9edc645a3641aa8cafd03d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &490738113
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +788,7 @@ MonoBehaviour:
   allEnemyRobotsCountedEvent:
     m_PersistentCalls:
       m_Calls: []
+  playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!114 &1039323151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,8 +838,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c664603ddeb636046b681519fa4fe5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1ScoreDetailsPanelUI: {fileID: 483394258}
   totalTextUIPrefab: {fileID: 8548089726475320436, guid: 71076c0c0e22cd549ac706c826a5ed03, type: 3}
+  playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!4 &1301211826
 Transform:
   m_ObjectHideFlags: 0

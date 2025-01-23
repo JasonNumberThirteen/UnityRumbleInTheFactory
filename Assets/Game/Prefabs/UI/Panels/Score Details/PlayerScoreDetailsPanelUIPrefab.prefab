@@ -118,7 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c211e48df9edc645a3641aa8cafd03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ordinalNumber: 1
   defeatedEnemiesScoreCounterPanelUIPrefab: {fileID: 9048260784425366282, guid: 132287f5bbb5e2547a1bdaf5b94885da, type: 3}
+  playerRobotData: {fileID: 0}
 --- !u!1001 &2030932981193563461
 PrefabInstance:
   m_ObjectHideFlags: 0

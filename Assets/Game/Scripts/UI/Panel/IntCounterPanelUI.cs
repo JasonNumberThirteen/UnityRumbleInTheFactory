@@ -4,7 +4,7 @@ public class IntCounterPanelUI : MonoBehaviour
 {
 	private IntCounter intCounter;
 	
-	public void SetCounterValueTo(int value)
+	public void SetValueToCounter(int value)
 	{
 		if(intCounter != null)
 		{

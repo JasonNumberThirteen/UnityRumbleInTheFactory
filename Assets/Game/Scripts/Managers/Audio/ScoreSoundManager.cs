@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -37,7 +38,7 @@ public class ScoreSoundManager : MonoBehaviour
 		}
 	}
 
-	private void OnEnemyRobotCounted(int numberOfCountedEnemyRobots, int currentScoreForDefeatedEnemyRobots)
+	private void OnEnemyRobotCounted(List<PlayerRobotScoreData> playerRobotScoreDataList)
 	{
 		audioSource.Play();
 	}
