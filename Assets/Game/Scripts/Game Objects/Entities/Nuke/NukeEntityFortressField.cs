@@ -19,10 +19,10 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	public void SpawnFortress(float duration)
 	{
+		timer.SetDuration(duration);
 		fortressTileGOs.Clear();
 		DestroyAllGOsWithinArea();
 		SpawnTilesWithinArea();
-		timer.SetDuration(duration);
 		timer.StartTimer();
 	}
 
