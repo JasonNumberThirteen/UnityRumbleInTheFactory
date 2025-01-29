@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class EntitySpawner : MonoBehaviour
 {
-	public UnityEvent entitySpawnedEvent;
+	public UnityEvent<GameObject> entitySpawnedEvent;
 
 	protected Timer timer;
 
@@ -68,7 +68,7 @@ public class EntitySpawner : MonoBehaviour
 
 		if(entityInstance != null)
 		{
-			entitySpawnedEvent?.Invoke();
+			entitySpawnedEvent?.Invoke(entityInstance);
 		}
 	}
 

@@ -1,22 +1,24 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(RobotEntityShootController))]
 public class PlayerRobotEntityInput : MonoBehaviour
 {
+	public UnityEvent<PlayerRobotEntityInput, bool> movementValueChangedEvent;
+	public UnityEvent<PlayerRobotEntityInput> playerDiedEvent;
+	
 	public Vector2 MovementVector {get; private set;}
 	public Vector2 LastMovementVector {get; private set;}
 
 	private RobotEntityShootController robotEntityShootController;
 	private StageStateManager stageStateManager;
-	private StageSoundManager stageSoundManager;
 	private StageSceneFlowManager stageSceneFlowManager;
 
 	private void Awake()
 	{
 		robotEntityShootController = GetComponent<RobotEntityShootController>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
-		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
 	}
 
@@ -27,22 +29,8 @@ public class PlayerRobotEntityInput : MonoBehaviour
 			return;
 		}
 		
-		LastMovementVector = MovementVector;
-		MovementVector = inputValue.Get<Vector2>();
-
-		PlayMovementSoundIfPossible();
-	}
-
-	private void PlayMovementSoundIfPossible()
-	{
-		if(!enabled || stageSoundManager == null || GameIsPaused())
-		{
-			return;
-		}
-
-		var soundEffectType = MovementVector.IsZero() ? SoundEffectType.PlayerRobotIdle : SoundEffectType.PlayerRobotMovement;
-		
-		stageSoundManager.PlaySound(soundEffectType);
+		UpdateMovementVector(inputValue.Get<Vector2>());
+		movementValueChangedEvent?.Invoke(this, !MovementVector.IsZero());
 	}
 
 	private void OnFire(InputValue inputValue)
@@ -59,6 +47,18 @@ public class PlayerRobotEntityInput : MonoBehaviour
 		{
 			stageSceneFlowManager.PauseGameIfPossible();
 		}
+	}
+
+	private void OnDestroy()
+	{
+		UpdateMovementVector(Vector2.zero);
+		playerDiedEvent?.Invoke(this);
+	}
+
+	private void UpdateMovementVector(Vector2 movementVector)
+	{
+		LastMovementVector = MovementVector;
+		MovementVector = movementVector;
 	}
 
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
