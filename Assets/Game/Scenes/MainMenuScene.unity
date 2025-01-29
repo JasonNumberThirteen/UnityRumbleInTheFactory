@@ -1851,6 +1851,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: HI-
   addSpaceAfterHeader: 0
+  postfix: 
+  addSpaceAfterPostfix: 0
   width: 6
 --- !u!114 &1571427413
 MonoBehaviour:
@@ -2034,6 +2036,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: II-
   addSpaceAfterHeader: 0
+  postfix: 
+  addSpaceAfterPostfix: 0
   width: 6
 --- !u!224 &1612145309 stripped
 RectTransform:
@@ -2160,6 +2164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: I-
   addSpaceAfterHeader: 0
+  postfix: 
+  addSpaceAfterPostfix: 0
   width: 6
 --- !u!1 &1749089703
 GameObject:

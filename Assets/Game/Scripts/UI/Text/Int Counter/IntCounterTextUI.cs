@@ -6,6 +6,8 @@ public class IntCounterTextUI : TextUI
 {
 	[SerializeField] private string header;
 	[SerializeField] private bool addSpaceAfterHeader = true;
+	[SerializeField] private string postfix;
+	[SerializeField] private bool addSpaceAfterPostfix = true;
 	
 	private IntCounter intCounter;
 
@@ -47,12 +49,37 @@ public class IntCounterTextUI : TextUI
 	private string GetFormattedText()
 	{
 		var value = GetCounterValueAsString();
-		
-		if(!string.IsNullOrEmpty(header))
+		var headerIsEmpty = string.IsNullOrEmpty(header);
+		var postfixIsEmpty = string.IsNullOrEmpty(postfix);
+
+		if(!headerIsEmpty && postfixIsEmpty)
 		{
 			return addSpaceAfterHeader ? $"{header} {value}" : header + value;
 		}
-		
+		else if(headerIsEmpty && !postfixIsEmpty)
+		{
+			return addSpaceAfterPostfix ? $"{value} {postfix}" : value + postfix;
+		}
+		else if(!headerIsEmpty && !postfixIsEmpty)
+		{
+			if(!addSpaceAfterHeader && !addSpaceAfterPostfix)
+			{
+				return header + value + postfix;
+			}
+			else if(addSpaceAfterHeader && !addSpaceAfterPostfix)
+			{
+				return $"{header} {value}";
+			}
+			else if(!addSpaceAfterHeader && addSpaceAfterPostfix)
+			{
+				return $"{value} {postfix}";
+			}
+			else if(addSpaceAfterHeader && addSpaceAfterPostfix)
+			{
+				return $"{header} {value} {postfix}";
+			}
+		}
+
 		return value;
 	}
 }

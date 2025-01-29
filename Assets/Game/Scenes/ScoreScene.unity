@@ -1668,6 +1668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: STAGE
   addSpaceAfterHeader: 1
+  postfix: 
+  addSpaceAfterPostfix: 1
 --- !u!114 &1766620794
 MonoBehaviour:
   m_ObjectHideFlags: 0
