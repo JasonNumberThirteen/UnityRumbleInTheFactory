@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: detectionAreaSize.x
-      value: 0.65
+      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: detectionAreaSize.y
