@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class ScoreBonusPointsAwardManager : MonoBehaviour
 {
-	public UnityEvent playerAwardedWithPointsEvent;
+	public UnityEvent<bool> playerAwardedWithPointsEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
@@ -98,11 +98,18 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 		{
 			return;
 		}
+
+		var beatenHighScoreEarlier = gameData != null && gameData.BeatenHighScore;
 		
 		playerRobotDataToAward.Score += numberOfPoints;
 
+		if(gameData != null)
+		{
+			gameData.SetHighScoreIfPossible(playerRobotDataToAward.Score, () => ++playerRobotDataToAward.Lives);
+		}
+
 		UpdateAwardedPlayerScoreCounterIfPossible();
-		playerAwardedWithPointsEvent?.Invoke();
+		playerAwardedWithPointsEvent?.Invoke(gameData != null && beatenHighScoreEarlier != gameData.BeatenHighScore);
 	}
 
 	private void UpdateAwardedPlayerScoreCounterIfPossible()

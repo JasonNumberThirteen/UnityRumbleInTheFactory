@@ -6,6 +6,7 @@ public class ScoreSoundManager : MonoBehaviour
 {
 	[SerializeField] private AudioClip pointsCountSound;
 	[SerializeField] private AudioClip bonusPointsAwardSound;
+	[SerializeField] private AudioClip playerRobotLifeGainSound;
 	
 	private AudioSource audioSource;
 	private ScoreEnemyRobotTypeCountManager scoreEnemyRobotTypeCountManager;
@@ -58,9 +59,9 @@ public class ScoreSoundManager : MonoBehaviour
 		PlaySound(SoundEffectType.PointsCount);
 	}
 
-	private void OnPlayerAwardedWithPoints()
+	private void OnPlayerAwardedWithPoints(bool gainedNewLife)
 	{
-		PlaySound(SoundEffectType.BonusPointsAward);
+		PlaySound(gainedNewLife ? SoundEffectType.PlayerRobotLifeGain : SoundEffectType.BonusPointsAward);
 	}
 
 	private void PlaySound(SoundEffectType soundEffectType)
@@ -79,6 +80,7 @@ public class ScoreSoundManager : MonoBehaviour
 		{
 			SoundEffectType.PointsCount => pointsCountSound,
 			SoundEffectType.BonusPointsAward => bonusPointsAwardSound,
+			SoundEffectType.PlayerRobotLifeGain => playerRobotLifeGainSound,
 			_ => null
 		};
 	}

@@ -1068,6 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsCountSound: {fileID: 8300000, guid: 1254930eec872c340ad51fdb26e89bf5, type: 3}
   bonusPointsAwardSound: {fileID: 8300000, guid: 20f1850b137d4fb4a93225c8f4f456bb, type: 3}
+  playerRobotLifeGainSound: {fileID: 8300000, guid: af2088ab644d64e4188995ea474d9657, type: 3}
 --- !u!82 &1408049480
 AudioSource:
   m_ObjectHideFlags: 0
