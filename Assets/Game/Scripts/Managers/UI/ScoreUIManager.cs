@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreUIManager : UIManager
 {
 	[SerializeField] private GameObject totalTextUIPrefab;
+	[SerializeField] private GameObject emptyTotalTextUIPrefab;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
 	private ScoreEnemyRobotTypeSwitchManager scoreEnemyRobotTypeSwitchManager;
@@ -121,14 +122,26 @@ public class ScoreUIManager : UIManager
 
 	private void OnLastEnemyRobotTypeReached()
 	{
-		if(totalTextUIPrefab != null && playerScoreDetailsPanelUIs != null && playerScoreDetailsPanelUIs.Count > 0)
-		{
-			Instantiate(totalTextUIPrefab, playerScoreDetailsPanelUIs.First().transform);
-		}
+		AddTotalTextUIsIfPossible();
 
 		if(playersTotalDefeatedEnemiesCountersPanelUI != null)
 		{
 			playersTotalDefeatedEnemiesCountersPanelUI.SetActive(true);
+		}
+	}
+
+	private void AddTotalTextUIsIfPossible()
+	{
+		if(totalTextUIPrefab == null || playerScoreDetailsPanelUIs == null || playerScoreDetailsPanelUIs.Count == 0)
+		{
+			return;
+		}
+		
+		Instantiate(totalTextUIPrefab, playerScoreDetailsPanelUIs.First().transform);
+
+		if(emptyTotalTextUIPrefab != null && playerScoreDetailsPanelUIs.Count > 1)
+		{
+			playerScoreDetailsPanelUIs.Skip(1).ToList().ForEach(playerScoreDetailsPanelUI => Instantiate(emptyTotalTextUIPrefab, playerScoreDetailsPanelUI.transform));
 		}
 	}
 

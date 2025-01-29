@@ -8,6 +8,7 @@ public class PlayerRobotsListData : ScriptableObject
 {
 	[SerializeField] private List<PlayerRobotData> playerRobotsData = new();
 
+	public List<PlayerRobotData> GetPlayerRobotsData() => playerRobotsData;
 	public bool Any(Func<PlayerRobotData, bool> func) => playerRobotsData.Any(func);
 	public int Max(Func<PlayerRobotData, int> func) => playerRobotsData.Max(func);
 

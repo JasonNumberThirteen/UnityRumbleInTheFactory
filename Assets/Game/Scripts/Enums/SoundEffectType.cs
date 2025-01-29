@@ -13,5 +13,7 @@ public enum SoundEffectType
 	NukeExplosion,
 	BonusSpawn,
 	BonusCollect,
-	GamePause
+	GamePause,
+	PointsCount,
+	BonusPointsAward
 }

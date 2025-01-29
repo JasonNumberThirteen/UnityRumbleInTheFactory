@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-200)]
 public class OnePlayerModeExcluder : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;

@@ -4,13 +4,18 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class ScoreSoundManager : MonoBehaviour
 {
+	[SerializeField] private AudioClip pointsCountSound;
+	[SerializeField] private AudioClip bonusPointsAwardSound;
+	
 	private AudioSource audioSource;
 	private ScoreEnemyRobotTypeCountManager scoreEnemyRobotTypeCountManager;
+	private ScoreBonusPointsAwardManager scoreBonusPointsAwardManager;
 
 	private void Awake()
 	{
 		audioSource = GetComponent<AudioSource>();
 		scoreEnemyRobotTypeCountManager = ObjectMethods.FindComponentOfType<ScoreEnemyRobotTypeCountManager>();
+		scoreBonusPointsAwardManager = ObjectMethods.FindComponentOfType<ScoreBonusPointsAwardManager>(false);
 
 		RegisterToListeners(true);
 	}
@@ -28,6 +33,11 @@ public class ScoreSoundManager : MonoBehaviour
 			{
 				scoreEnemyRobotTypeCountManager.enemyRobotCountedEvent.AddListener(OnEnemyRobotCounted);
 			}
+
+			if(scoreBonusPointsAwardManager != null)
+			{
+				scoreBonusPointsAwardManager.playerAwardedWithPointsEvent.AddListener(OnPlayerAwardedWithPoints);
+			}
 		}
 		else
 		{
@@ -35,11 +45,41 @@ public class ScoreSoundManager : MonoBehaviour
 			{
 				scoreEnemyRobotTypeCountManager.enemyRobotCountedEvent.RemoveListener(OnEnemyRobotCounted);
 			}
+
+			if(scoreBonusPointsAwardManager != null)
+			{
+				scoreBonusPointsAwardManager.playerAwardedWithPointsEvent.RemoveListener(OnPlayerAwardedWithPoints);
+			}
 		}
 	}
 
 	private void OnEnemyRobotCounted(List<PlayerRobotScoreData> playerRobotScoreDataList)
 	{
-		audioSource.Play();
+		PlaySound(SoundEffectType.PointsCount);
+	}
+
+	private void OnPlayerAwardedWithPoints()
+	{
+		PlaySound(SoundEffectType.BonusPointsAward);
+	}
+
+	private void PlaySound(SoundEffectType soundEffectType)
+	{
+		var audioClip = GetAudioClipBySoundEffectType(soundEffectType);
+
+		if(audioClip != null)
+		{
+			audioSource.PlayOneShot(audioClip);
+		}
+	}
+
+	private AudioClip GetAudioClipBySoundEffectType(SoundEffectType soundEffectType)
+	{
+		return soundEffectType switch
+		{
+			SoundEffectType.PointsCount => pointsCountSound,
+			SoundEffectType.BonusPointsAward => bonusPointsAwardSound,
+			_ => null
+		};
 	}
 }

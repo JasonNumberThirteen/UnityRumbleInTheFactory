@@ -502,6 +502,92 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &659535034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 659535035}
+  - component: {fileID: 659535037}
+  - component: {fileID: 659535036}
+  - component: {fileID: 659535038}
+  m_Layer: 0
+  m_Name: Score Bonus Points Award Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &659535035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659535034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1007017806}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &659535036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659535034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0d74beb6dc09d4c8158157b362c9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+--- !u!114 &659535037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659535034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab5b0baa01984a4897d90b4f27bc7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAwardedWithPointsEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+  playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
+  numberOfPoints: 1000
+  bonusPointsCounterPanelUIPrefab: {fileID: 5422061231259265322, guid: 5a3c610573f33f84ca90251d161725bb, type: 3}
+--- !u!114 &659535038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659535034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  timerFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startImmediately: 0
+  duration: 0.25
 --- !u!1001 &723484578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -734,6 +820,7 @@ Transform:
   - {fileID: 1301211826}
   - {fileID: 100667261}
   - {fileID: 1408049478}
+  - {fileID: 659535035}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -839,6 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalTextUIPrefab: {fileID: 8548089726475320436, guid: 71076c0c0e22cd549ac706c826a5ed03, type: 3}
+  emptyTotalTextUIPrefab: {fileID: 997514522998123479, guid: 37d9892a778b60246bfa1b58af2e51f3, type: 3}
   playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
 --- !u!4 &1301211826
 Transform:
@@ -978,6 +1066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6fcff5810ecce4e8aa5b23f0cf3a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsCountSound: {fileID: 8300000, guid: 1254930eec872c340ad51fdb26e89bf5, type: 3}
+  bonusPointsAwardSound: {fileID: 8300000, guid: 20f1850b137d4fb4a93225c8f4f456bb, type: 3}
 --- !u!82 &1408049480
 AudioSource:
   m_ObjectHideFlags: 0
@@ -988,7 +1078,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1254930eec872c340ad51fdb26e89bf5, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
