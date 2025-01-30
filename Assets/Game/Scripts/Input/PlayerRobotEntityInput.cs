@@ -30,14 +30,10 @@ public class PlayerRobotEntityInput : MonoBehaviour
 		{
 			UpdateMovementVector(Vector2.zero);
 		}
-		
-		if(!enabled || gameIsPaused)
+		else if(!gameIsPaused && enabled)
 		{
-			return;
+			UpdateMovementVector(inputValue.Get<Vector2>());
 		}
-		
-		UpdateMovementVector(inputValue.Get<Vector2>());
-		movementValueChangedEvent?.Invoke(this, !MovementVector.IsZero());
 	}
 
 	private void OnFire(InputValue inputValue)
@@ -56,6 +52,11 @@ public class PlayerRobotEntityInput : MonoBehaviour
 		}
 	}
 
+	private void OnDisable()
+	{
+		UpdateMovementVector(Vector2.zero);
+	}
+
 	private void OnDestroy()
 	{
 		UpdateMovementVector(Vector2.zero);
@@ -66,6 +67,8 @@ public class PlayerRobotEntityInput : MonoBehaviour
 	{
 		LastMovementVector = MovementVector;
 		MovementVector = movementVector;
+
+		movementValueChangedEvent?.Invoke(this, !MovementVector.IsZero());
 	}
 
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
