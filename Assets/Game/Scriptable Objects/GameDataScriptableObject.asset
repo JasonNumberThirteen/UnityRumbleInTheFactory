@@ -26,14 +26,18 @@ MonoBehaviour:
       enemyShootDelay: 1
       enemiesCanCollectBonuses: 0
     - enemiesLimitAtOnce: 4
-      enemyMovementSpeedMultiplier: 1.25
+      enemyMovementSpeedMultiplier: 1.2
       enemyShootDelay: 0.9
+      enemiesCanCollectBonuses: 0
+    - enemiesLimitAtOnce: 4
+      enemyMovementSpeedMultiplier: 1.3
+      enemyShootDelay: 0.8
       enemiesCanCollectBonuses: 0
     - enemiesLimitAtOnce: 5
       enemyMovementSpeedMultiplier: 1.4
       enemyShootDelay: 0.8
       enemiesCanCollectBonuses: 0
     - enemiesLimitAtOnce: 6
-      enemyMovementSpeedMultiplier: 1.5
+      enemyMovementSpeedMultiplier: 1.4
       enemyShootDelay: 0.7
       enemiesCanCollectBonuses: 1
