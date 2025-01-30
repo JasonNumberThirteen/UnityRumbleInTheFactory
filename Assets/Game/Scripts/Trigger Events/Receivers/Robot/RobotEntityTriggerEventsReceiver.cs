@@ -7,9 +7,7 @@ public class RobotEntityTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnt
 	
 	public virtual void TriggerOnEnter(GameObject sender)
 	{
-		var canTakeDamage = robotEntityShield == null || !robotEntityShield.IsActive();
-
-		if(canTakeDamage && sender.TryGetComponent(out BulletEntity bulletEntity))
+		if(!ShieldIsActive() && sender.TryGetComponent(out BulletEntity bulletEntity))
 		{
 			robotEntityHealth.TakeDamage(bulletEntity.GetParentGO(), bulletEntity.GetDamage());
 		}
@@ -20,4 +18,6 @@ public class RobotEntityTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnt
 		robotEntityHealth = GetComponent<RobotEntityHealth>();
 		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
 	}
+
+	protected bool ShieldIsActive() => robotEntityShield != null && robotEntityShield.IsActive();
 }

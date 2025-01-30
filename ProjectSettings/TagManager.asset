@@ -25,6 +25,7 @@ TagManager:
   - Toxic Waste Tiles
   - Bonuses
   - Spawners
+  - Player2
   layers:
   - Default
   - TransparentFX
