@@ -24,7 +24,14 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private void OnMove(InputValue inputValue)
 	{
-		if(!enabled || GameIsPaused())
+		var gameIsPaused = GameIsPaused();
+		
+		if(gameIsPaused && !MovementVector.IsZero())
+		{
+			UpdateMovementVector(Vector2.zero);
+		}
+		
+		if(!enabled || gameIsPaused)
 		{
 			return;
 		}
