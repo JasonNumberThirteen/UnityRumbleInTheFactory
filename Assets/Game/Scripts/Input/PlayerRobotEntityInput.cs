@@ -11,6 +11,7 @@ public class PlayerRobotEntityInput : MonoBehaviour
 	public Vector2 MovementVector {get; private set;}
 	public Vector2 LastMovementVector {get; private set;}
 
+	private Vector2 currentMovementVector;
 	private RobotEntityShootController robotEntityShootController;
 	private StageStateManager stageStateManager;
 	private StageSceneFlowManager stageSceneFlowManager;
@@ -20,19 +21,47 @@ public class PlayerRobotEntityInput : MonoBehaviour
 		robotEntityShootController = GetComponent<RobotEntityShootController>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+		UpdateMovementVector(Vector2.zero);
+		playerDiedEvent?.Invoke(this);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+			}
+		}
+		else
+		{
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+			}
+		}
+	}
+
+	private void OnStageStateChanged(StageState stageState)
+	{
+		UpdateMovementVector(stageState == StageState.Paused ? Vector2.zero : currentMovementVector);
 	}
 
 	private void OnMove(InputValue inputValue)
 	{
-		var gameIsPaused = GameIsPaused();
-		
-		if(gameIsPaused && !MovementVector.IsZero())
+		currentMovementVector = inputValue.Get<Vector2>();
+
+		if(enabled && !GameIsPaused())
 		{
-			UpdateMovementVector(Vector2.zero);
-		}
-		else if(!gameIsPaused && enabled)
-		{
-			UpdateMovementVector(inputValue.Get<Vector2>());
+			UpdateMovementVector(currentMovementVector);
 		}
 	}
 
@@ -52,15 +81,14 @@ public class PlayerRobotEntityInput : MonoBehaviour
 		}
 	}
 
+	private void OnEnable()
+	{
+		UpdateMovementVector(currentMovementVector);
+	}
+
 	private void OnDisable()
 	{
 		UpdateMovementVector(Vector2.zero);
-	}
-
-	private void OnDestroy()
-	{
-		UpdateMovementVector(Vector2.zero);
-		playerDiedEvent?.Invoke(this);
 	}
 
 	private void UpdateMovementVector(Vector2 movementVector)
