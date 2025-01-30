@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EntityExploder : MonoBehaviour
 {
+	public UnityEvent entityDestroyedEvent;
+	
 	[SerializeField] private GameObject explosionEffectPrefab;
 	[SerializeField] private bool destroyGOAfterExplosion = true;
 
@@ -21,9 +24,12 @@ public class EntityExploder : MonoBehaviour
 	
 	private void DestroyGOIfNeeded()
 	{
-		if(destroyGOAfterExplosion)
+		if(!destroyGOAfterExplosion)
 		{
-			Destroy(gameObject);
+			return;
 		}
+
+		entityDestroyedEvent?.Invoke();
+		Destroy(gameObject);
 	}
 }

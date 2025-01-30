@@ -1,12 +1,12 @@
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyRobotEntityHealth))]
+[RequireComponent(typeof(EnemyRobotEntityHealth), typeof(EntityExploder))]
 public class EnemyRobotEntity : RobotEntity
 {
 	public bool HasBonus {get; private set;}
 	
 	private EnemyRobotEntityHealth enemyRobotEntityHealth;
-	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
+	private EntityExploder entityExploder;
 	
 	public override bool IsFriendly() => false;
 
@@ -40,14 +40,35 @@ public class EnemyRobotEntity : RobotEntity
 		base.Awake();
 
 		enemyRobotEntityHealth = GetComponent<EnemyRobotEntityHealth>();
-		enemyRobotEntitySpawnManager = ObjectMethods.FindComponentOfType<EnemyRobotEntitySpawnManager>();
+		entityExploder = GetComponent<EntityExploder>();
+
+		RegisterToListeners(true);
 	}
 
 	private void OnDestroy()
 	{
-		if(enemyRobotEntitySpawnManager != null)
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
 		{
-			enemyRobotEntitySpawnManager.CountDefeatedEnemy();
+			entityExploder.entityDestroyedEvent.AddListener(OnEntityDestroyed);
+		}
+		else
+		{
+			entityExploder.entityDestroyedEvent.RemoveListener(OnEntityDestroyed);
+		}
+	}
+
+	private void OnEntityDestroyed()
+	{
+		var stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
+		
+		if(stageEventsManager != null)
+		{
+			stageEventsManager.SendEvent(StageEventType.EnemyDestroyed, gameObject);
 		}
 	}
 }

@@ -15,6 +15,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	private StageEnemyTypesLoadingManager stageEnemyTypesLoadingManager;
 	private StageSceneFlowManager stageSceneFlowManager;
 	private StageStateManager stageStateManager;
+	private StageEventsManager stageEventsManager;
 	private List<EnemyRobotEntitySpawner> enemyRobotEntitySpawners;
 	private int currentEnemyRobotEntitySpawnerIndex;
 	private int currentEnemyEntityIndex;
@@ -23,18 +24,12 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	
 	public int GetTotalNumberOfEnemies() => stageEnemyTypesLoadingManager != null && stageEnemyTypesLoadingManager.EnemyPrefabs != null ? stageEnemyTypesLoadingManager.EnemyPrefabs.Length : 0;
 
-	public void CountDefeatedEnemy()
-	{
-		++numberOfDefeatedEnemies;
-
-		SetStageAsWonIfNeeded();
-	}
-
 	private void Awake()
 	{
 		stageEnemyTypesLoadingManager = ObjectMethods.FindComponentOfType<StageEnemyTypesLoadingManager>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		enemyRobotEntitySpawners = ObjectMethods.FindComponentsOfType<EnemyRobotEntitySpawner>().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).Take(GetTotalNumberOfEnemies()).ToList();
 		
 		RegisterToListeners(true);
@@ -53,12 +48,22 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 			{
 				stageSceneFlowManager.stageActivatedEvent.AddListener(StartSpawnIfPossible);
 			}
+
+			if(stageEventsManager != null)
+			{
+				stageEventsManager.eventReceivedEvent.AddListener(OnEventReceived);
+			}
 		}
 		else
 		{
 			if(stageSceneFlowManager != null)
 			{
 				stageSceneFlowManager.stageActivatedEvent.RemoveListener(StartSpawnIfPossible);
+			}
+
+			if(stageEventsManager != null)
+			{
+				stageEventsManager.eventReceivedEvent.RemoveListener(OnEventReceived);
 			}
 		}
 	}
@@ -76,6 +81,18 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		{
 			StartCoroutine(StartSpawningEntities());
 		}
+	}
+
+	private void OnEventReceived(StageEventType stageEventType, GameObject sender)
+	{
+		if(stageEventType != StageEventType.EnemyDestroyed)
+		{
+			return;
+		}
+
+		++numberOfDefeatedEnemies;
+
+		SetStageAsWonIfNeeded();
 	}
 
 	private void SetStageAsWonIfNeeded()
@@ -118,7 +135,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 			yield return new WaitForSeconds(spawnInterval);
 
 			DetermineNumberOfEnemiesToSpawn();
-			ResetSpawnersTimersIfPossible();
+			StartSpawnersTimersIfPossible();
 		}
 	}
 
@@ -126,20 +143,29 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	{
 		var numberOfAliveEnemies = GameObject.FindGameObjectsWithTag(enemyTag).Length;
 		var enemiesLimitAtOnce = gameData != null ? gameData.GetDifficultyTierValue(tier => tier.GetEnemiesLimitAtOnce()) : 0;
-		var numberOfEnemiesToSpawn = enemiesLimitAtOnce - numberOfAliveEnemies;
 		
-		this.numberOfEnemiesToSpawn = Mathf.Max(0, enemiesLimitAtOnce - numberOfAliveEnemies);
+		numberOfEnemiesToSpawn = Mathf.Max(0, enemiesLimitAtOnce - numberOfAliveEnemies);
 	}
 
-	private void ResetSpawnersTimersIfPossible()
+	private void StartSpawnersTimersIfPossible()
 	{
-		while (enemyRobotEntitySpawners != null && numberOfEnemiesToSpawn > 0 && stageEnemyTypesLoadingManager != null && stageEnemyTypesLoadingManager.EnemyPrefabs != null && currentEnemyEntityIndex < stageEnemyTypesLoadingManager.EnemyPrefabs.Length)
+		if(enemyRobotEntitySpawners == null || enemyRobotEntitySpawners.Count == 0 || stageEnemyTypesLoadingManager == null || stageEnemyTypesLoadingManager.EnemyPrefabs == null)
 		{
-			var currentEnemyRobotEntitySpawner = enemyRobotEntitySpawners[currentEnemyRobotEntitySpawnerIndex];
-
-			currentEnemyRobotEntitySpawner.StartTimer();
-			OnSpawnerTimerReset(currentEnemyRobotEntitySpawner);
+			return;
 		}
+
+		var numberOfIterations = Mathf.Min(numberOfEnemiesToSpawn, enemyRobotEntitySpawners.Count);
+
+		for (var i = 0; i < numberOfIterations && currentEnemyEntityIndex < stageEnemyTypesLoadingManager.EnemyPrefabs.Length; ++i)
+		{
+			InitiateSpawner(enemyRobotEntitySpawners[currentEnemyRobotEntitySpawnerIndex]);
+		}
+	}
+
+	private void InitiateSpawner(EnemyRobotEntitySpawner enemyRobotEntitySpawner)
+	{
+		enemyRobotEntitySpawner.StartTimer();
+		OnSpawnerTimerReset(enemyRobotEntitySpawner);
 	}
 
 	private void OnSpawnerTimerReset(EnemyRobotEntitySpawner enemyRobotEntitySpawner)
