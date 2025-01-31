@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameDataScriptableObject
   m_EditorClassIdentifier: 
   saveableGameData:
-    highScore: 98200
-    stageNumber: 2
+    highScore: 20000
+    stageNumber: 0
   gameDifficulty:
     tiers:
     - enemySpawnDelay: 2
