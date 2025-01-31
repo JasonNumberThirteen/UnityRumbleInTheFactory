@@ -8,6 +8,8 @@ public class EntityExploder : MonoBehaviour
 	[SerializeField] private GameObject explosionEffectPrefab;
 	[SerializeField] private bool destroyGOAfterExplosion = true;
 
+	private bool wasDestroyed;
+
 	public void TriggerExplosion()
 	{
 		SpawnExplosionEffect();
@@ -24,10 +26,12 @@ public class EntityExploder : MonoBehaviour
 	
 	private void DestroyGOIfNeeded()
 	{
-		if(!destroyGOAfterExplosion)
+		if(!destroyGOAfterExplosion || wasDestroyed)
 		{
 			return;
 		}
+
+		wasDestroyed = true;
 
 		entityDestroyedEvent?.Invoke();
 		Destroy(gameObject);
