@@ -2590,6 +2590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410690119}
   - component: {fileID: 1410690121}
+  - component: {fileID: 1410690122}
   - component: {fileID: 1410690120}
   m_Layer: 0
   m_Name: Player Robot Movement Sound Channel
@@ -2721,6 +2722,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1410690122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410690118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  timerFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startImmediately: 0
+  duration: 0
 --- !u!1 &1460397761
 GameObject:
   m_ObjectHideFlags: 0

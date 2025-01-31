@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Timer))]
 public class PlayerRobotMovementSoundChannel : SoundChannel
 {
+	private Timer timer;
 	private StageStateManager stageStateManager;
 	private StageMusicManager stageMusicManager;
 	private StageSoundManager stageSoundManager;
@@ -23,6 +25,7 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 	{
 		base.Awake();
 		
+		timer = GetComponent<Timer>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageMusicManager = ObjectMethods.FindComponentOfType<StageMusicManager>();
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
@@ -39,6 +42,9 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 	{
 		if(register)
 		{
+			timer.timerStartedEvent.AddListener(OnTimerStarted);
+			timer.timerFinishedEvent.AddListener(OnTimerFinished);
+			
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
@@ -56,6 +62,9 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 		}
 		else
 		{
+			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
+			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
+			
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
@@ -71,6 +80,16 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 				stageSoundManager.soundPlayedEvent.RemoveListener(OnSoundPlayed);
 			}
 		}
+	}
+
+	private void OnTimerStarted()
+	{
+		audioSource.mute = true;
+	}
+
+	private void OnTimerFinished()
+	{
+		audioSource.mute = stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Over);
 	}
 
 	private void OnStageStateChanged(StageState stageState)
@@ -130,21 +149,12 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 		var audioClip = stageSoundManager.GetAudioClipBySoundEffectType(soundEffectType);
 
-		if(audioClip != null)
+		if(audioClip == null)
 		{
-			MuteTemporarily(audioClip.length);
+			return;
 		}
-	}
 
-	private void MuteTemporarily(float duration)
-	{
-		audioSource.mute = true;
-
-		Invoke(nameof(UnmuteIfNeeded), duration);
-	}
-
-	private void UnmuteIfNeeded()
-	{
-		audioSource.mute = stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Over);
+		timer.SetDuration(audioClip.length);
+		timer.StartTimer();
 	}
 }
