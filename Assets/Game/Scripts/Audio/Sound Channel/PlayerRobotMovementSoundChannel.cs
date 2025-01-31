@@ -140,11 +140,11 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 	{
 		audioSource.mute = true;
 
-		Invoke(nameof(Unmute), duration);
+		Invoke(nameof(UnmuteIfNeeded), duration);
 	}
 
-	private void Unmute()
+	private void UnmuteIfNeeded()
 	{
-		audioSource.mute = false;
+		audioSource.mute = stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Over);
 	}
 }
