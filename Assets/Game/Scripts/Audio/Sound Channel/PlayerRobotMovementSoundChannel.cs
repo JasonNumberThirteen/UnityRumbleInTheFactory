@@ -115,13 +115,7 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	private void StopSoundIfNeeded(StageState stageState)
 	{
-		var stageStatesStoppingSound = new List<StageState>
-		{
-			StageState.Interrupted,
-			StageState.Won
-		};
-		
-		if(!stageStatesStoppingSound.Contains(stageState) || stageSoundManager == null || audioSource.clip != stageSoundManager.GetAudioClipBySoundEffectType(SoundEffectType.PlayerRobotIdle))
+		if(stageState != StageState.Won || stageSoundManager == null || audioSource.clip != stageSoundManager.GetAudioClipBySoundEffectType(SoundEffectType.PlayerRobotIdle))
 		{
 			return;
 		}
