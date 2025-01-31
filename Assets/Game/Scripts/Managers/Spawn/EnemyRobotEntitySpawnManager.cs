@@ -23,6 +23,20 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	private float spawnInterval;
 	
 	public int GetTotalNumberOfEnemies() => stageEnemyTypesLoadingManager != null && stageEnemyTypesLoadingManager.EnemyPrefabs != null ? stageEnemyTypesLoadingManager.EnemyPrefabs.Length : 0;
+	
+	public bool DefeatedAllEnemies()
+	{
+		var totalNumberOfEnemies = GetTotalNumberOfEnemies();
+		
+		return numberOfDefeatedEnemies >= totalNumberOfEnemies && currentEnemyEntityIndex >= totalNumberOfEnemies;
+	}
+
+	public bool WonStage()
+	{
+		var stageCanBeWon = stageStateManager == null || !stageStateManager.GameIsOver();
+		
+		return stageCanBeWon && DefeatedAllEnemies();
+	}
 
 	private void Awake()
 	{
@@ -180,13 +194,5 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 
 		--numberOfEnemiesToSpawn;
 		currentEnemyRobotEntitySpawnerIndex = (currentEnemyRobotEntitySpawnerIndex + 1) % enemyRobotEntitySpawners.Count;
-	}
-
-	private bool WonStage()
-	{
-		var stageCanBeWon = stageStateManager == null || !stageStateManager.GameIsOver();
-		var totalNumberOfEnemies = GetTotalNumberOfEnemies();
-		
-		return stageCanBeWon && numberOfDefeatedEnemies >= totalNumberOfEnemies && currentEnemyEntityIndex >= totalNumberOfEnemies;
 	}
 }

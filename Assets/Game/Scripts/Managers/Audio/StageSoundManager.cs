@@ -28,6 +28,7 @@ public class StageSoundManager : MonoBehaviour
 	private StageMusicManager stageMusicManager;
 	private StageStateManager stageStateManager;
 	private PlayerRobotsDataManager playerRobotsDataManager;
+	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
 	private bool canPlaySounds;
 
 	private readonly string CHANNEL_GO_NAME = "Channel";
@@ -78,6 +79,7 @@ public class StageSoundManager : MonoBehaviour
 		stageMusicManager = ObjectMethods.FindComponentOfType<StageMusicManager>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
+		enemyRobotEntitySpawnManager = ObjectMethods.FindComponentOfType<EnemyRobotEntitySpawnManager>();
 
 		RegisterToListeners(true);
 	}
@@ -147,10 +149,21 @@ public class StageSoundManager : MonoBehaviour
 	{
 		var conditionsBySoundEffectType = new Dictionary<SoundEffectType, bool>()
 		{
-			{SoundEffectType.PlayerRobotIdle, stageStateManager == null || !stageStateManager.StateIsSetTo(StageState.Won)}
+			{SoundEffectType.PlayerRobotIdle, PlayerRobotIdleSoundCanBePlayed()},
+			{SoundEffectType.PlayerRobotMovement, stageStateManager == null || !stageStateManager.StateIsSetTo(StageState.Over)}
 		};
 
 		return !conditionsBySoundEffectType.ContainsKey(soundEffectType) || conditionsBySoundEffectType[soundEffectType] ? GetAudioClipBySoundEffectType(soundEffectType) : null;
+	}
+
+	private bool PlayerRobotIdleSoundCanBePlayed()
+	{
+		var stageStateManagerIsDefined = stageStateManager != null;
+		var defeatedAllEnemies = enemyRobotEntitySpawnManager == null || enemyRobotEntitySpawnManager.DefeatedAllEnemies();
+		var gameIsOverAfterDestroyingAllEnemies = stageStateManagerIsDefined && stageStateManager.GameIsOver() && defeatedAllEnemies;
+		var wonStageOrGameIsOver = stageStateManagerIsDefined && (stageStateManager.StateIsSetTo(StageState.Won) || stageStateManager.StateIsSetTo(StageState.Over));
+
+		return !gameIsOverAfterDestroyingAllEnemies && !wonStageOrGameIsOver;
 	}
 
 	private SoundChannel GetSoundChannelBySoundEffectType(SoundEffectType soundEffectType)
