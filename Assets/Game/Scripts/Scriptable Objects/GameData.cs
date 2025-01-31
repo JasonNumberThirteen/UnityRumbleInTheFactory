@@ -89,4 +89,10 @@ public class GameData : ScriptableObject
 			saveableGameData.stageNumber = StageNumber % StagesData.Length + 1;
 		}
 	}
+
+	[ContextMenu("Reset saveable game data")]
+	private void ResetSaveableGameData()
+	{
+		saveableGameData.ResetData();
+	}
 }
