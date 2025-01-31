@@ -10,7 +10,6 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private string enemyTag;
-	[SerializeField, Min(0.01f)] private float spawnInterval = 2f;
 
 	private StageEnemyTypesLoadingManager stageEnemyTypesLoadingManager;
 	private StageSceneFlowManager stageSceneFlowManager;
@@ -21,6 +20,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	private int currentEnemyEntityIndex;
 	private int numberOfEnemiesToSpawn;
 	private int numberOfDefeatedEnemies;
+	private float spawnInterval;
 	
 	public int GetTotalNumberOfEnemies() => stageEnemyTypesLoadingManager != null && stageEnemyTypesLoadingManager.EnemyPrefabs != null ? stageEnemyTypesLoadingManager.EnemyPrefabs.Length : 0;
 
@@ -31,7 +31,8 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		enemyRobotEntitySpawners = ObjectMethods.FindComponentsOfType<EnemyRobotEntitySpawner>().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).Take(GetTotalNumberOfEnemies()).ToList();
-		
+		spawnInterval = gameData != null ? gameData.GetDifficultyTierValue(tier => tier.GetEnemySpawnDelay()) : 0f;
+
 		RegisterToListeners(true);
 	}
 
