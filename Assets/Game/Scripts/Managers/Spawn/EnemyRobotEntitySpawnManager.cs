@@ -181,7 +181,11 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		currentEnemyRobotEntitySpawnerIndex = (currentEnemyRobotEntitySpawnerIndex + 1) % enemyRobotEntitySpawners.Count;
 	}
 
-	private bool WonStage() => DefeatedAllEnemies() && NoEnemiesLeft();
-	private bool DefeatedAllEnemies() => numberOfDefeatedEnemies >= GetTotalNumberOfEnemies();
-	private bool NoEnemiesLeft() => currentEnemyEntityIndex >= GetTotalNumberOfEnemies();
+	private bool WonStage()
+	{
+		var stageCanBeWon = stageStateManager == null || !stageStateManager.GameIsOver();
+		var totalNumberOfEnemies = GetTotalNumberOfEnemies();
+		
+		return stageCanBeWon && numberOfDefeatedEnemies >= totalNumberOfEnemies && currentEnemyEntityIndex >= totalNumberOfEnemies;
+	}
 }
