@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MainMenuUIManager : UIManager
 {
 	private MainMenuPanelUI mainMenuPanelUI;
@@ -13,6 +15,11 @@ public class MainMenuUIManager : UIManager
 		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 		
 		RegisterToListeners(true);
+	}
+
+	private void Start()
+	{
+		SetCursorVisible(false);
 	}
 
 	private void OnDestroy()
@@ -62,5 +69,15 @@ public class MainMenuUIManager : UIManager
 		{
 			translationBackgroundPanelUI.StartTranslation();
 		}
+	}
+
+	private void OnApplicationQuit()
+	{
+		SetCursorVisible(true);
+	}
+
+	private void SetCursorVisible(bool visible)
+	{
+		Cursor.visible = visible;
 	}
 }
