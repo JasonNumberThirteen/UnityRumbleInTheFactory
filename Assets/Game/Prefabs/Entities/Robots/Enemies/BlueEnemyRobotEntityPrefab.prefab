@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: detectionAreaSize.x
-      value: 0.68
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: detectionAreaSize.y
-      value: 0.75
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: detectionAreaOffsetFromCenterDistance
