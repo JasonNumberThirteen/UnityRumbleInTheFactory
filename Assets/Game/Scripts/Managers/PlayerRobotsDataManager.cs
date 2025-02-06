@@ -43,19 +43,14 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 	public void ModifyLives(PlayerRobotData playerRobotData, int lives)
 	{
-		if(playerRobotData == null)
+		if(playerRobotData == null || lives == 0)
 		{
 			return;
 		}
 
-		var previousLives = playerRobotData.Lives;
-
 		playerRobotData.Lives += lives;
 
-		if(playerRobotData.Lives != previousLives)
-		{
-			playerLivesChangedEvent?.Invoke(playerRobotData.Lives, lives);
-		}
+		playerLivesChangedEvent?.Invoke(playerRobotData.Lives, lives);
 	}
 
 	private void Awake()
