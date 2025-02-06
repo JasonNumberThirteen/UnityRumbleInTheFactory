@@ -47,7 +47,10 @@ public class RobotEntityHealth : MonoBehaviour
 
 	protected virtual void OnRankChanged(RobotRank robotRank)
 	{
-		CurrentHealth = robotRank.GetHealth();
+		if(robotRank != null)
+		{
+			CurrentHealth = robotRank.GetHealth();
+		}
 	}
 
 	private void OnDestroy()

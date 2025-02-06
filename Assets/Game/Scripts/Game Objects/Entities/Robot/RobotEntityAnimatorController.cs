@@ -38,7 +38,10 @@ public class RobotEntityAnimatorController : EntityAnimatorController
 
 	private void OnRankChanged(RobotRank robotRank)
 	{
-		animator.runtimeAnimatorController = robotRank.GetRuntimeAnimatorController();
+		if(robotRank != null)
+		{
+			animator.runtimeAnimatorController = robotRank.GetRuntimeAnimatorController();
+		}
 	}
 
 	private void Start()

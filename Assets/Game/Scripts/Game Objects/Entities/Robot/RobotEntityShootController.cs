@@ -61,7 +61,10 @@ public class RobotEntityShootController : MonoBehaviour
 
 	private void UpdateBulletStats(RobotRank robotRank)
 	{
-		bulletStats = new BulletStats(robotRank.GetDamage(), robotRank.GetBulletSpeed(), robotRank.CanDestroyMetal());
+		if(robotRank != null)
+		{
+			bulletStats = new BulletStats(robotRank.GetDamage(), robotRank.GetBulletSpeed(), robotRank.CanDestroyMetal());
+		}
 	}
 
 	private Vector2 GetBulletPosition() => (Vector2)transform.position + robotEntityAnimatorController.GetMovementDirection()*offsetFromGO;

@@ -47,6 +47,9 @@ public class RobotEntityMovementController : EntityMovementController
 
 	private void OnRankChanged(RobotRank robotRank)
 	{
-		SetMovementSpeed(robotRank.GetMovementSpeed());
+		if(robotRank != null)
+		{
+			SetMovementSpeed(robotRank.GetMovementSpeed());
+		}
 	}
 }

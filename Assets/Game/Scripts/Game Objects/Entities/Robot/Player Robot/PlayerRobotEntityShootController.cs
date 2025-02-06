@@ -33,7 +33,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 	{
 		base.OnRankChanged(robotRank);
 		
-		if(robotRank is PlayerRobotRank playerRobotRank)
+		if(robotRank != null && robotRank is PlayerRobotRank playerRobotRank)
 		{
 			bulletsLimitAtOnce = playerRobotRank.GetBulletsLimitAtOnce();
 		}
