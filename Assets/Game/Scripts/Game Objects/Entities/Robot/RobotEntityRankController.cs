@@ -3,47 +3,42 @@ using UnityEngine.Events;
 
 public class RobotEntityRankController : MonoBehaviour
 {
-	[SerializeField] private RobotData robotData;
+	public UnityEvent<RobotRank> rankChangedEvent;
+	
+	[SerializeField] protected RobotData robotData;
+
 	[SerializeField] private bool resetRankOnStart = true;
 	
-	public UnityEvent<RobotRank> rankChangedEvent;
+	protected int rankNumber = 1;
 
-	public RobotData GetRobotData() => robotData;
+	public RobotRank GetCurrentRobotRank() => robotData != null ? robotData.GetRankByIndex(rankNumber - 1) : null;
 
 	public void IncreaseRankBy(int ranks)
 	{
-		if(robotData != null)
-		{
-			SetRankNumber(robotData.RankNumber + ranks);
-		}
+		SetRankNumber(rankNumber + ranks);
 	}
 
 	private void Start()
 	{
 		if(resetRankOnStart)
-		{	
+		{
 			SetRankNumber(1, true);
 		}
-		else if(robotData != null)
+		else
 		{
-			rankChangedEvent?.Invoke(robotData.GetRank());
+			rankChangedEvent?.Invoke(GetCurrentRobotRank());
 		}
 	}
 
-	private void SetRankNumber(int rankNumber, bool forceInvokingEvent = false)
+	private void SetRankNumber(int newRankNumber, bool forceInvokingEvent = false)
 	{
-		if(robotData == null)
+		var previousRankNumber = rankNumber;
+
+		rankNumber = Mathf.Clamp(newRankNumber, 1, robotData != null ? robotData.GetNumberOfRanks() : 1);
+
+		if(forceInvokingEvent || previousRankNumber != rankNumber)
 		{
-			return;
-		}
-
-		var previousRankNumber = robotData.RankNumber;
-
-		robotData.RankNumber = rankNumber;
-
-		if(forceInvokingEvent || previousRankNumber != robotData.RankNumber)
-		{
-			rankChangedEvent?.Invoke(robotData.GetRank());
+			rankChangedEvent?.Invoke(GetCurrentRobotRank());
 		}
 	}
 }

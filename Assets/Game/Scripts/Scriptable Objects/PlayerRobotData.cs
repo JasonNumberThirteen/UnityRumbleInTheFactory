@@ -21,10 +21,10 @@ public class PlayerRobotData : RobotData
 		set => lives = Mathf.Clamp(value, 0, maxLives);
 	}
 
-	public override int RankNumber
+	public int RankNumber
 	{
 		get => rankNumber;
-		set => rankNumber = Mathf.Clamp(value, 1, ranks != null && ranks.Length > 0 ? ranks.Length : 1);
+		set => rankNumber = Mathf.Clamp(value, 1, GetNumberOfRanks());
 	}
 	
 	[SerializeField] private PlayerRobotRank[] ranks;
@@ -35,7 +35,8 @@ public class PlayerRobotData : RobotData
 	private int lives;
 	private int rankNumber;
 
-	public override RobotRank GetRank() => ranks[RankNumber - 1];
+	public override RobotRank GetRankByIndex(int index) => index >= 0 && index < GetNumberOfRanks() ? ranks[index] : null;
+	public override int GetNumberOfRanks() => ranks != null && ranks.Length > 0 ? ranks.Length : 1;
 
 	public void ResetData()
 	{

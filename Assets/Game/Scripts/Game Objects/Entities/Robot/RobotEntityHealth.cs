@@ -45,6 +45,11 @@ public class RobotEntityHealth : MonoBehaviour
 		PlaySoundOnDeath();
 	}
 
+	protected virtual void OnRankChanged(RobotRank robotRank)
+	{
+		CurrentHealth = robotRank.GetHealth();
+	}
+
 	private void OnDestroy()
 	{
 		RegisterToListeners(false);
@@ -60,11 +65,6 @@ public class RobotEntityHealth : MonoBehaviour
 		{
 			robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
 		}
-	}
-
-	private void OnRankChanged(RobotRank robotRank)
-	{
-		CurrentHealth = robotRank.GetHealth();
 	}
 
 	private void PlaySoundOnDeath()

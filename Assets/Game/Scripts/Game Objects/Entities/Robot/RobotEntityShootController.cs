@@ -34,7 +34,7 @@ public class RobotEntityShootController : MonoBehaviour
 
 	private void Start()
 	{
-		UpdateBulletStats(robotEntityRankController.GetRobotData().GetRank());
+		UpdateBulletStats(robotEntityRankController.GetCurrentRobotRank());
 	}
 
 	private void OnDestroy()

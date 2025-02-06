@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class EnemyRobotEntityHealth : RobotEntityHealth
 {
-	[SerializeField] private EnemyRobotData enemyRobotData;
-
+	private EnemyRobotData enemyRobotData;
 	private StageStateManager stageStateManager;
 	private PlayerRobotsDataManager playerRobotsDataManager;
 
@@ -24,6 +23,16 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 	{
 		OnDeath(sender);
 		base.Die(sender);
+	}
+
+	protected override void OnRankChanged(RobotRank robotRank)
+	{
+		base.OnRankChanged(robotRank);
+
+		if(robotRank is EnemyRobotRank enemyRobotRank)
+		{
+			enemyRobotData = enemyRobotRank.GetEnemyRobotData();
+		}
 	}
 
 	private void OnDeath(GameObject sender)

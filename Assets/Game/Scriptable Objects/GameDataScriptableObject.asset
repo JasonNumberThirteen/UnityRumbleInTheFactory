@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveableGameData:
     highScore: 20000
-    stageNumber: 0
+    stageNumber: 1
   gameDifficulty:
     tiers:
     - enemySpawnDelay: 2
