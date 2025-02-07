@@ -1,21 +1,29 @@
 using UnityEngine;
 
+[RequireComponent(typeof(BulletEntity))]
 public class BulletEntityTriggerEventsSender : MonoBehaviour
 {
 	[SerializeField] private GameObject splatterEffectPrefab;
 	[SerializeField] private string[] ignoredTags;
 
+	private BulletEntity bulletEntity;
 	private StageEventsManager stageEventsManager;
 	private bool triggered;
 
 	private void Awake()
 	{
+		bulletEntity = GetComponent<BulletEntity>();
 		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 	}
 	
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
 		if(triggered)
+		{
+			return;
+		}
+
+		if(collider.TryGetComponent(out BulletEntity bulletEntity) && this.bulletEntity.GetParentGO() == bulletEntity.GetParentGO())
 		{
 			return;
 		}
