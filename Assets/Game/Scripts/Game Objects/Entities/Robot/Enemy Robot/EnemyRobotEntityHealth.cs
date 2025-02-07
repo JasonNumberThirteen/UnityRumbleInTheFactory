@@ -6,11 +6,6 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 	private StageStateManager stageStateManager;
 	private PlayerRobotsDataManager playerRobotsDataManager;
 
-	public void IncreaseHealthBy(int health)
-	{
-		CurrentHealth += health;
-	}
-
 	protected override void Awake()
 	{
 		base.Awake();
@@ -25,9 +20,9 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 		base.Die(sender);
 	}
 
-	protected override void OnRankChanged(RobotRank robotRank)
+	protected override void OnRankChanged(RobotRank robotRank, bool setOnStart)
 	{
-		base.OnRankChanged(robotRank);
+		base.OnRankChanged(robotRank, setOnStart);
 
 		if(robotRank is EnemyRobotRank enemyRobotRank)
 		{

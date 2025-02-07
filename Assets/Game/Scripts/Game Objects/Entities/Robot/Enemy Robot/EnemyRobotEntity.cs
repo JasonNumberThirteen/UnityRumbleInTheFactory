@@ -12,7 +12,7 @@ public class EnemyRobotEntity : RobotEntity
 
 	public override void OnLifeBonusCollected(int lives)
 	{
-		enemyRobotEntityHealth.IncreaseHealthBy(lives);
+		enemyRobotEntityHealth.ModifyCurrentHealthBy(lives);
 	}
 
 	public void SetupForBonusType(float fadeTime, Color targetColor)

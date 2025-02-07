@@ -27,7 +27,7 @@ public class PlayerRobotEntityRankController : RobotEntityRankController
 		}
 	}
 
-	private void OnRankChanged(RobotRank robotRank)
+	private void OnRankChanged(RobotRank robotRank, bool setOnStart)
 	{
 		if(robotData != null && robotData is PlayerRobotData playerRobotData)
 		{

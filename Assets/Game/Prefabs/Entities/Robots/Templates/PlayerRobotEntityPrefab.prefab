@@ -208,6 +208,7 @@ PrefabInstance:
     - {fileID: 8554013176243355584, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: -5011310037718002703, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     - {fileID: -2720126704085592801, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+    - {fileID: 4366984621820829096, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9105230650490365401, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
     m_AddedGameObjects:
@@ -242,6 +243,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6590375321696505505}
+    - targetCorrespondingSourceObject: {fileID: 3880115763377585167, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5006473970861720256}
   m_SourcePrefab: {fileID: 100100000, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
 --- !u!1 &3405398399308765810 stripped
 GameObject:
@@ -388,6 +392,23 @@ MonoBehaviour:
       m_Calls: []
   robotData: {fileID: 0}
   resetRankOnStart: 0
+--- !u!114 &5006473970861720256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405398399308765810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610547401ff15e54ea5140178285a7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealthValueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  explosionSoundEffectType: 6
+  playerRobotData: {fileID: 0}
 --- !u!4 &3508498655664141437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3038284362999386624, guid: 45af5603af150104993ac8c5bdc54084, type: 3}

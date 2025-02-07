@@ -54,7 +54,7 @@ public class RobotEntityShootController : MonoBehaviour
 		}
 	}
 
-	protected virtual void OnRankChanged(RobotRank robotRank)
+	protected virtual void OnRankChanged(RobotRank robotRank, bool setOnStart)
 	{
 		UpdateBulletStats(robotRank);
 	}

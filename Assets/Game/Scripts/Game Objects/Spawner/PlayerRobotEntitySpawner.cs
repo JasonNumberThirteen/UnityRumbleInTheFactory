@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerRobotEntitySpawner : EntitySpawner
 {
+	public int NumberOfSpawns {get; private set;}
+	
 	[SerializeField] private PlayerRobotData playerRobotData;
 	[SerializeField, Min(0f)] private float respawnDelay = 1f;
 
@@ -17,6 +19,20 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 		base.Awake();
 
 		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
+	}
+
+	protected override void RegisterToListeners(bool register)
+	{
+		base.RegisterToListeners(register);
+
+		if(register)
+		{
+			entitySpawnedEvent.AddListener(OnEntitySpawned);
+		}
+		else
+		{
+			entitySpawnedEvent.RemoveListener(OnEntitySpawned);
+		}
 	}
 
 	private void Start()
@@ -43,5 +59,10 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 		{
 			playerRobotsDataManager.CheckPlayersLives();
 		}
+	}
+
+	private void OnEntitySpawned(GameObject go)
+	{
+		++NumberOfSpawns;
 	}
 }

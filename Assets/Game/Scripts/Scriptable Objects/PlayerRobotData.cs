@@ -8,6 +8,8 @@ public class PlayerRobotData : RobotData
 	
 	public Dictionary<EnemyRobotData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyRobotData, int>();
 	public PlayerRobotEntitySpawner Spawner {get; set;}
+
+	public int CurrentHealth {get; set;}
 	
 	public int Score
 	{
@@ -45,6 +47,7 @@ public class PlayerRobotData : RobotData
 
 		ResetRank();
 		ResetDefeatedEnemies();
+		ResetCurrentHealth();
 	}
 
 	public void ResetRank()
@@ -66,6 +69,16 @@ public class PlayerRobotData : RobotData
 		else
 		{
 			DefeatedEnemies.Add(enemyRobotData, 1);
+		}
+	}
+
+	private void ResetCurrentHealth()
+	{
+		var rank = GetRankByIndex(rankNumber - 1);
+
+		if(rank != null)
+		{
+			CurrentHealth = rank.GetHealth();
 		}
 	}
 }

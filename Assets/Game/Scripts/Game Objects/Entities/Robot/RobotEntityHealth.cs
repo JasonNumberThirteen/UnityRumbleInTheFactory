@@ -1,21 +1,35 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(EntityExploder), typeof(RobotEntityRankController))]
 public class RobotEntityHealth : MonoBehaviour
 {
-	public int CurrentHealth {get; protected set;}
+	public UnityEvent<int> currentHealthValueChangedEvent;
 
 	[SerializeField] private SoundEffectType explosionSoundEffectType;
 
 	private EntityExploder entityExploder;
 	private RobotEntityRankController robotEntityRankController;
 	private StageSoundManager stageSoundManager;
+	private int currentHealth;
 
 	public virtual void TakeDamage(GameObject sender, int damage)
 	{
-		CurrentHealth -= damage;
+		ModifyCurrentHealthBy(-damage);
 
-		CheckHealth(sender);
+		if(currentHealth <= 0)
+		{
+			Die(sender);
+		}
+		else if(stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.RobotDamage);
+		}
+	}
+
+	public void ModifyCurrentHealthBy(int value)
+	{
+		SetCurrentHealth(currentHealth + value);
 	}
 
 	protected virtual void Awake()
@@ -27,38 +41,13 @@ public class RobotEntityHealth : MonoBehaviour
 		RegisterToListeners(true);
 	}
 
-	protected virtual void CheckHealth(GameObject sender)
-	{
-		if(CurrentHealth <= 0)
-		{
-			Die(sender);
-		}
-		else if(stageSoundManager != null)
-		{
-			stageSoundManager.PlaySound(SoundEffectType.RobotDamage);
-		}
-	}
-
 	protected virtual void Die(GameObject sender)
 	{
 		entityExploder.TriggerExplosion();
 		PlaySoundOnDeath();
 	}
 
-	protected virtual void OnRankChanged(RobotRank robotRank)
-	{
-		if(robotRank != null)
-		{
-			CurrentHealth = robotRank.GetHealth();
-		}
-	}
-
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-	}
-
-	private void RegisterToListeners(bool register)
+	protected virtual void RegisterToListeners(bool register)
 	{
 		if(register)
 		{
@@ -68,6 +57,31 @@ public class RobotEntityHealth : MonoBehaviour
 		{
 			robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
 		}
+	}
+
+	protected virtual void OnRankChanged(RobotRank robotRank, bool setOnStart)
+	{
+		if(robotRank != null)
+		{
+			SetCurrentHealth(robotRank.GetHealth());
+		}
+	}
+
+	protected void SetCurrentHealth(int newCurrentHealth)
+	{
+		var previousHealth = currentHealth;
+
+		currentHealth = newCurrentHealth;
+
+		if(previousHealth != currentHealth)
+		{
+			currentHealthValueChangedEvent?.Invoke(currentHealth);
+		}
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
 	}
 
 	private void PlaySoundOnDeath()

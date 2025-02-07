@@ -45,7 +45,7 @@ public class RobotEntityMovementController : EntityMovementController
 		RegisterToListeners(false);
 	}
 
-	private void OnRankChanged(RobotRank robotRank)
+	private void OnRankChanged(RobotRank robotRank, bool setOnStart)
 	{
 		if(robotRank != null)
 		{

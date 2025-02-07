@@ -29,9 +29,9 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		base.Awake();
 	}
 
-	protected override void OnRankChanged(RobotRank robotRank)
+	protected override void OnRankChanged(RobotRank robotRank, bool setOnStart)
 	{
-		base.OnRankChanged(robotRank);
+		base.OnRankChanged(robotRank, setOnStart);
 		
 		if(robotRank != null && robotRank is PlayerRobotRank playerRobotRank)
 		{
