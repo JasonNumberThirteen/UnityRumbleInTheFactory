@@ -25,6 +25,7 @@ MonoBehaviour:
       canDestroyMetal: 0
     runtimeAnimatorController: {fileID: 22100000, guid: 44356c631e0ab2f49928067fafe02137, type: 2}
     enemyRobotData: {fileID: 11400000}
+    shootDelay: 1
   - health: 4
     movementSpeed: 0.5
     bulletStats:
@@ -33,3 +34,4 @@ MonoBehaviour:
       canDestroyMetal: 0
     runtimeAnimatorController: {fileID: 22100000, guid: ddf9bc2ead5f0624381635a9f06ba7d1, type: 2}
     enemyRobotData: {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
+    shootDelay: 1

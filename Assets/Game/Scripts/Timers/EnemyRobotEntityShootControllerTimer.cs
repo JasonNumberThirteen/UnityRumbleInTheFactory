@@ -3,12 +3,44 @@ using UnityEngine;
 public class EnemyRobotEntityShootControllerTimer : Timer
 {
 	[SerializeField] private GameData gameData;
+
+	private RobotEntityRankController robotEntityRankController;
 	
 	private void Awake()
 	{
-		if(gameData != null)
+		robotEntityRankController = GetComponentInParent<RobotEntityRankController>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
 		{
-			SetDuration(gameData.GetDifficultyTierValue(tier => tier.GetEnemyShootDelay()));
+			if(robotEntityRankController != null)
+			{
+				robotEntityRankController.rankChangedEvent.AddListener(OnRankChanged);
+			}
 		}
+		else
+		{
+			if(robotEntityRankController != null)
+			{
+				robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
+			}
+		}
+	}
+
+	private void OnRankChanged(RobotRank robotRank, bool setOnStart)
+	{
+		var baseShootDelayValue = robotRank != null && robotRank is EnemyRobotRank enemyRobotRank ? enemyRobotRank.GetShootDelay() : 0f;
+		var shootDelayMultiplier = gameData != null ? gameData.GetDifficultyTierValue(tier => tier.GetEnemyShootDelayMultiplier()) : 1f;
+		
+		SetDuration(baseShootDelayValue*shootDelayMultiplier);
 	}
 }

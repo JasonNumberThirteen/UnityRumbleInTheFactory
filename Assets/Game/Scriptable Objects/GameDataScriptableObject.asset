@@ -14,36 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveableGameData:
     highScore: 20000
-    stageNumber: 1
+    stageNumber: 0
   gameDifficulty:
     tiers:
     - enemySpawnDelay: 2
       enemiesLimitAtOnce: 3
       enemyMovementSpeedMultiplier: 1
-      enemyShootDelay: 1
+      enemyShootDelayMultiplier: 1
       enemiesCanCollectBonuses: 0
     - enemySpawnDelay: 2
       enemiesLimitAtOnce: 3
       enemyMovementSpeedMultiplier: 1.1
-      enemyShootDelay: 1
+      enemyShootDelayMultiplier: 1
       enemiesCanCollectBonuses: 0
     - enemySpawnDelay: 2
       enemiesLimitAtOnce: 4
       enemyMovementSpeedMultiplier: 1.2
-      enemyShootDelay: 0.9
+      enemyShootDelayMultiplier: 0.9
       enemiesCanCollectBonuses: 0
     - enemySpawnDelay: 1.8
       enemiesLimitAtOnce: 4
       enemyMovementSpeedMultiplier: 1.3
-      enemyShootDelay: 0.8
+      enemyShootDelayMultiplier: 0.8
       enemiesCanCollectBonuses: 0
     - enemySpawnDelay: 1.6
       enemiesLimitAtOnce: 5
       enemyMovementSpeedMultiplier: 1.4
-      enemyShootDelay: 0.8
+      enemyShootDelayMultiplier: 0.8
       enemiesCanCollectBonuses: 0
     - enemySpawnDelay: 1.5
       enemiesLimitAtOnce: 6
       enemyMovementSpeedMultiplier: 1.4
-      enemyShootDelay: 0.7
+      enemyShootDelayMultiplier: 0.7
       enemiesCanCollectBonuses: 1
