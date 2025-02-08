@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afabcdd18ba018e4f997c593daa2019d, type: 3}
+  m_Name: MagentaEnemyRobotEntityDataScriptableObject
+  m_EditorClassIdentifier: 
+  ordinalNumber: 3
+  prefab: {fileID: 5846403709422768729, guid: 75372a8da47bda748881d07b3bbf8c33, type: 3}
+  pointsForDefeat: 250
+  displayInScoreSceneSprite: {fileID: -65799742, guid: 9c9ad5b673ffbc14a9a539e3267c5c84, type: 3}
+  ranks:
+  - health: 2
+    movementSpeed: 1.2
+    bulletStats:
+      damage: 1
+      bulletSpeed: 7
+      canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 22100000, guid: c913c41c16f4db1428a4d4edd90c9bd2, type: 2}
+    enemyRobotData: {fileID: 11400000}
+    shootDelay: 1
+  - health: 4
+    movementSpeed: 0.5
+    bulletStats:
+      damage: 1
+      bulletSpeed: 6.5
+      canDestroyMetal: 0
+    runtimeAnimatorController: {fileID: 22100000, guid: ddf9bc2ead5f0624381635a9f06ba7d1, type: 2}
+    enemyRobotData: {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
+    shootDelay: 1
