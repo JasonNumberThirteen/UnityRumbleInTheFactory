@@ -30,10 +30,10 @@
 ## Features
 - [6 scenes](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Scenes "Scenes")
 - [2 game modes](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Main-Menu#1-player "Main Menu")
-- 3 stages
+- 20 stages
 - [5 types of tiles](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Tiles "Tiles")
 - [6 bonuses](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Bonuses "Bonuses")
-- 3 enemy types
+- 4 enemy types
 
 ## Scenes
 ### Main Menu
@@ -72,11 +72,11 @@ A scene which shows a big "**HISCORE**" text with a new high score when the play
 The game **has some important differences** compared to the original, both visually and functionally. Please see the Wiki page linked [here](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Differences-to-the-original-game "Differences to the original game") to display detailed information.
 
 ## Project status
-<p align = "center"><b>IN PROGRESS</b></p>
-<p align = "center"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Gasr95percent.png"/></p>
+<p align = "center"><b>COMPLETED</b></p>
+<p align = "center"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Gasr100percent.png"/></p>
 
 ---
-**The project is completed in ~95%**. It still requires fixes, optimisations and upgrades. For more information about left tasks to complete, please see the Wiki page linked [here](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Project-status "Project status").
+**The project is complete and ready to build**.
 
 ## Credits
 This project was made by [Jason](https://jasonxiii.pl "Jason. Cała informatyka w jednym miejscu! Oficjalna strona internetowa! Setki artykułów na różne tematy! Wszystko stworzone przez jedną osobę!").
