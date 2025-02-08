@@ -280,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.875, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &8887816664841345866
 MonoBehaviour:
@@ -322,5 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a7e1ec98212664bb12bc138c01920f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityDestroyedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   explosionEffectPrefab: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
   destroyGOAfterExplosion: 0
