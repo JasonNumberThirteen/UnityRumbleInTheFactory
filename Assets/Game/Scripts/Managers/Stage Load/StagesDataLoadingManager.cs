@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class StagesDataLoadingManager : MonoBehaviour
@@ -16,7 +18,7 @@ public class StagesDataLoadingManager : MonoBehaviour
 
 	private StageData[] GetStagesDataFromPath(string path)
 	{
-		var assets = Resources.LoadAll(path, typeof(TextAsset));
+		var assets = Resources.LoadAll(path, typeof(TextAsset)).OrderBy(GetStageNumberFromFilename).ToArray();
 		var numberOfAssets = assets.Length;
 		var stagesData = new StageData[numberOfAssets];
 
@@ -26,6 +28,13 @@ public class StagesDataLoadingManager : MonoBehaviour
 		}
 
 		return stagesData;
+	}
+
+	private int GetStageNumberFromFilename(Object asset)
+	{
+		var match = Regex.Match(asset.name, @"\d+");
+		
+		return int.TryParse(match.Value, out var stageNumber) ? stageNumber : int.MaxValue;
 	}
 
 	private StageData GetStageDataFromAsset(Object asset)
