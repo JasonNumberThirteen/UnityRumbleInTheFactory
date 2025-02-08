@@ -4,4 +4,9 @@ using System;
 public class SaveablePlayerRobotData
 {
 	public int score;
+
+	public void ResetData()
+	{
+		score = 0;
+	}
 }

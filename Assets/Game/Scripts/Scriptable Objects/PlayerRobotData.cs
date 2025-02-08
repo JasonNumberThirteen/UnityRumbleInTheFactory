@@ -42,9 +42,9 @@ public class PlayerRobotData : RobotData
 
 	public void ResetData()
 	{
-		saveablePlayerRobotData.score = 0;
 		lives = initialLives;
-
+		
+		saveablePlayerRobotData.ResetData();
 		ResetRank();
 		ResetDefeatedEnemies();
 		ResetCurrentHealth();
