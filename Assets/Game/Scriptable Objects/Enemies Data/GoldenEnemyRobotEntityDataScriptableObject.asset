@@ -21,7 +21,7 @@ MonoBehaviour:
     movementSpeed: 0.5
     bulletStats:
       damage: 1
-      bulletSpeed: 7.5
+      bulletSpeed: 6.5
       canDestroyMetal: 0
     runtimeAnimatorController: {fileID: 22100000, guid: ddf9bc2ead5f0624381635a9f06ba7d1, type: 2}
     enemyRobotData: {fileID: 11400000}
