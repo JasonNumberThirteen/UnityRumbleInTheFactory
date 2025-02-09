@@ -60,8 +60,34 @@ PrefabInstance:
       propertyPath: triggerableTags.Array.data[2]
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8438295727497518047, guid: e8a6b6350b5c6574da5c1ffff3f1b51b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2137018745332980371, guid: e8a6b6350b5c6574da5c1ffff3f1b51b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5298401675535483919}
   m_SourcePrefab: {fileID: 100100000, guid: e8a6b6350b5c6574da5c1ffff3f1b51b, type: 3}
+--- !u!1 &1372171276495067033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2137018745332980371, guid: e8a6b6350b5c6574da5c1ffff3f1b51b, type: 3}
+  m_PrefabInstance: {fileID: 1054644649128873226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5298401675535483919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372171276495067033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0be9974b40f27384192db0b832118770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splatterEffectPrefab: {fileID: 4882441606795613529, guid: f1c0785e07f2be945a779be11629fb76, type: 3}
+  ignoredTags:
+  - Bonus
+  - Shield
+  - Enemy

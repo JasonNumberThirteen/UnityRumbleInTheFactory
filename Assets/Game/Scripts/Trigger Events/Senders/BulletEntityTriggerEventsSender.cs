@@ -10,13 +10,7 @@ public class BulletEntityTriggerEventsSender : MonoBehaviour
 	private StageEventsManager stageEventsManager;
 	private bool triggered;
 
-	private void Awake()
-	{
-		bulletEntity = GetComponent<BulletEntity>();
-		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
-	}
-	
-	private void OnTriggerEnter2D(Collider2D collider)
+	protected virtual void OnTriggerEnter2D(Collider2D collider)
 	{
 		if(triggered)
 		{
@@ -42,6 +36,12 @@ public class BulletEntityTriggerEventsSender : MonoBehaviour
 		SpawnSplatterEffect();
 		SendEvent();
 		Destroy(gameObject);
+	}
+
+	private void Awake()
+	{
+		bulletEntity = GetComponent<BulletEntity>();
+		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 	}
 
 	private void SendTriggerOnEnter(Collider2D collider)
