@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [DefaultExecutionOrder(-200)]
-public class OnePlayerModeExcluder : MonoBehaviour
+public class TwoPlayersModeGameObjectActivationController : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
