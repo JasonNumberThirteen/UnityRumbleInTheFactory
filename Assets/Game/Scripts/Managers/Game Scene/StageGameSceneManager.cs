@@ -3,6 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(Timer))]
 public class StageGameSceneManager : GameSceneManager
 {
+	[SerializeField] private float delayOnWonStage = 3f;
+	[SerializeField] private float delayOnGameOver = 2f;
+	
 	private Timer timer;
 	private GameOverTextUI gameOverTextUI;
 	private StageStateManager stageStateManager;
@@ -60,7 +63,7 @@ public class StageGameSceneManager : GameSceneManager
 
 	private void OnGameOverTextUIReachedTargetPosition()
 	{
-		timer.StartTimer();
+		StartTimerWithSetDuration(delayOnGameOver);
 	}
 
 	private void OnStageStateChanged(StageState stageState)
@@ -71,7 +74,13 @@ public class StageGameSceneManager : GameSceneManager
 		}
 		else if(stageState == StageState.Won)
 		{
-			timer.StartTimer();
+			StartTimerWithSetDuration(delayOnWonStage);
 		}
+	}
+
+	private void StartTimerWithSetDuration(float duration)
+	{
+		timer.SetDuration(duration);
+		timer.StartTimer();
 	}
 }

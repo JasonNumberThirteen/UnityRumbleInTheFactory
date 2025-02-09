@@ -1507,6 +1507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c8a795ac4a09f4386f9f9e867158e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayOnWonStage: 3
+  delayOnGameOver: 2
 --- !u!114 &894496750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,7 +1528,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   startImmediately: 0
-  duration: 2
+  duration: 0.01
 --- !u!1001 &912258329
 PrefabInstance:
   m_ObjectHideFlags: 0
