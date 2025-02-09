@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(RobotEntityShootController))]
+[RequireComponent(typeof(RobotEntityShootController), typeof(PlayerRobotEntityMovementController))]
 public class PlayerRobotEntityInput : MonoBehaviour
 {
 	public UnityEvent<PlayerRobotEntityInput, bool> movementValueChangedEvent;
@@ -13,12 +13,19 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private Vector2 currentMovementVector;
 	private RobotEntityShootController robotEntityShootController;
+	private PlayerRobotEntityMovementController playerRobotEntityMovementController;
 	private StageStateManager stageStateManager;
 	private StageSceneFlowManager stageSceneFlowManager;
+
+	public void SetLastMovementVector(Vector2 movementVector)
+	{
+		LastMovementVector = movementVector;
+	}
 
 	private void Awake()
 	{
 		robotEntityShootController = GetComponent<RobotEntityShootController>();
+		playerRobotEntityMovementController = GetComponent<PlayerRobotEntityMovementController>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
 
@@ -52,7 +59,14 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		UpdateMovementVector(stageState == StageState.Paused ? Vector2.zero : currentMovementVector);
+		var movementVector = currentMovementVector;
+		
+		if(stageState == StageState.Paused)
+		{
+			movementVector = playerRobotEntityMovementController.IsSliding ? LastMovementVector : Vector2.zero;
+		}
+		
+		UpdateMovementVector(movementVector);
 	}
 
 	private void OnMove(InputValue inputValue)
@@ -93,7 +107,6 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private void UpdateMovementVector(Vector2 movementVector)
 	{
-		LastMovementVector = MovementVector;
 		MovementVector = movementVector;
 
 		movementValueChangedEvent?.Invoke(this, !MovementVector.IsZero());

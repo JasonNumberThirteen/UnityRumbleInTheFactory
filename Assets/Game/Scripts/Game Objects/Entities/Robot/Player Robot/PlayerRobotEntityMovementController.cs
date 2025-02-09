@@ -5,9 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerRobotEntityInput))]
 public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
+	public bool IsSliding {get; private set;}
+	
 	private PlayerRobotEntityInput playerRobotEntityInput;
 	private StageSoundManager stageSoundManager;
-	private bool isSliding;
 	private bool playedSlidingSound;
 
 	private readonly string ENEMY_LAYER_NAME = "Enemy";
@@ -23,26 +24,45 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	protected override void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
 	{
-		isSliding = gameObjects != null && gameObjects.Count > 0 && gameObjects.All(go => go.layer == LayerMask.NameToLayer(SLIPPERY_FLOOR_LAYER_NAME));
+		IsSliding = gameObjects != null && gameObjects.Count > 0 && gameObjects.All(go => go.layer == LayerMask.NameToLayer(SLIPPERY_FLOOR_LAYER_NAME));
 		rb2D.constraints = gameObjects.Any(go => go.layer == LayerMask.NameToLayer(ENEMY_LAYER_NAME)) ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
 
-		if(isSliding && !playedSlidingSound && stageSoundManager != null)
+		if(IsSliding)
 		{
-			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotSliding);
-
-			playedSlidingSound = true;
+			SetLastMovementVectorIfNeeded();
+			PlaySlidingSoundIfNeeded();
 		}
-		else if(!isSliding && playedSlidingSound)
+		else if(!IsSliding && playedSlidingSound)
 		{
 			playedSlidingSound = false;
 		}
+	}
+
+	private void SetLastMovementVectorIfNeeded()
+	{
+		if(playerRobotEntityInput.LastMovementVector != playerRobotEntityInput.MovementVector && !playerRobotEntityInput.MovementVector.IsZero())
+		{
+			playerRobotEntityInput.SetLastMovementVector(playerRobotEntityInput.MovementVector);
+		}
+	}
+
+	private void PlaySlidingSoundIfNeeded()
+	{
+		if(playedSlidingSound || stageSoundManager == null)
+		{
+			return;
+		}
+		
+		stageSoundManager.PlaySound(SoundEffectType.PlayerRobotSliding);
+
+		playedSlidingSound = true;
 	}
 
 	private void Update()
 	{
 		UpdateLastDirectionIfNeeded();
 
-		CurrentMovementDirection = isSliding ? playerRobotEntityInput.LastMovementVector : GetMovementDirection();
+		CurrentMovementDirection = IsSliding && !playerRobotEntityInput.LastMovementVector.IsZero() ? playerRobotEntityInput.LastMovementVector : GetMovementDirection();
 	}
 
 	private void UpdateLastDirectionIfNeeded()
