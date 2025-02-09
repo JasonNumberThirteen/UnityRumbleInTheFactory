@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: playerRobotData
       value: 
       objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
+    - target: {fileID: -3178227873983471239, guid: 8c8fb64fa2ecda7478a5e3fe0762d999, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     - target: {fileID: 2335937406916345273, guid: 8c8fb64fa2ecda7478a5e3fe0762d999, type: 3}
       propertyPath: m_Name
       value: Player1RobotEntitySpawnerPrefab

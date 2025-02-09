@@ -154,6 +154,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4487558066152827419, guid: e58604b6a861cba438803f742ef3a312, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}
     - target: {fileID: 4493301477905477592, guid: e58604b6a861cba438803f742ef3a312, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -8,7 +8,14 @@ public class PlayersTotalDefeatedEnemiesCountersPanelUI : MonoBehaviour
 	{
 		foreach (var playerTotalDefeatedEnemiesIntCounter in playerTotalDefeatedEnemiesIntCounters)
 		{
-			playerTotalDefeatedEnemiesIntCounter.gameObject.SetActive(active);
+			if(active)
+			{
+				playerTotalDefeatedEnemiesIntCounter.ActivateIfPossible();
+			}
+			else
+			{
+				playerTotalDefeatedEnemiesIntCounter.Deactivate();
+			}
 		}
 	}
 

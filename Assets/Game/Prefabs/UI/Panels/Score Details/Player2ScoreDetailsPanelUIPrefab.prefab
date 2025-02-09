@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2ScoreDetailsPanelUIPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2400941265315917835, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
+    - target: {fileID: 2862525343948837727, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
+      propertyPath: playerRobotData
+      value: 
+      objectReference: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
     - target: {fileID: 4261998073096703262, guid: 94d1572e2c463f443b0f823a715884e8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

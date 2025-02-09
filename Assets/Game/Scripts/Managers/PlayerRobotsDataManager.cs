@@ -13,7 +13,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 	public void CheckPlayersLives()
 	{
-		if(stageSceneFlowManager != null && playerRobotsListData != null && !playerRobotsListData.Any(playerData => playerData.Spawner != null && playerData.Lives > 0) && ObjectMethods.FindComponentsOfType<PlayerRobotEntity>().Length == 0)
+		if(stageSceneFlowManager != null && playerRobotsListData != null && !playerRobotsListData.Any(playerData => playerData.Spawner != null && playerData.IsAlive) && ObjectMethods.FindComponentsOfType<PlayerRobotEntity>().Length == 0)
 		{
 			stageSceneFlowManager.SetGameAsOverIfNeeded();
 		}
@@ -59,7 +59,12 @@ public class PlayerRobotsDataManager : MonoBehaviour
 		
 		if(playerRobotsListData != null)
 		{
-			playerRobotsListData.ForEach(playerRobotData => playerRobotData.ResetDefeatedEnemies());
+			playerRobotsListData.ForEach(playerRobotData =>
+			{
+				playerRobotData.ResetDefeatedEnemies();
+
+				playerRobotData.WasAliveOnCurrentStage = playerRobotData.IsAlive;
+			});
 		}
 	}
 }

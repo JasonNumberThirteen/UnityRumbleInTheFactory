@@ -57,6 +57,11 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 		}
 		else if(playerRobotsDataManager != null)
 		{
+			if(playerRobotData != null)
+			{
+				playerRobotData.IsAlive = false;
+			}
+			
 			playerRobotsDataManager.CheckPlayersLives();
 		}
 	}

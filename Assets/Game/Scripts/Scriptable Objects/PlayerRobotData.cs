@@ -10,6 +10,8 @@ public class PlayerRobotData : RobotData
 	public PlayerRobotEntitySpawner Spawner {get; set;}
 
 	public int CurrentHealth {get; set;}
+	public bool IsAlive {get; set;}
+	public bool WasAliveOnCurrentStage {get; set;}
 	
 	public int Score
 	{
@@ -40,9 +42,10 @@ public class PlayerRobotData : RobotData
 	public override RobotRank GetRankByIndex(int index) => index >= 0 && index < GetNumberOfRanks() ? ranks[index] : null;
 	public override int GetNumberOfRanks() => ranks != null && ranks.Length > 0 ? ranks.Length : 1;
 
-	public void ResetData()
+	public void ResetData(bool isActive)
 	{
-		lives = initialLives;
+		lives = isActive ? initialLives : 0;
+		IsAlive = WasAliveOnCurrentStage = isActive;
 		
 		saveablePlayerData.ResetData();
 		ResetRank();

@@ -33,7 +33,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 	private void DetermineIfAnyPlayerCanBeAwarded()
 	{
-		var numberOfDefeatedEnemiesByPlayerRobot = playerRobotsListData.GetPlayerRobotsData().ToDictionary(key => key, value => value.DefeatedEnemies.Values.Sum());
+		var numberOfDefeatedEnemiesByPlayerRobot = playerRobotsListData.GetPlayerRobotsData().Where(playerRobotData => playerRobotData.IsAlive).ToDictionary(key => key, value => value.DefeatedEnemies.Values.Sum());
 
 		if(BonusPointsCanBeAwarded(numberOfDefeatedEnemiesByPlayerRobot.Values.ToList()))
 		{
@@ -46,7 +46,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 		var playerRobotWithHighestNumberOfDefeatedEnemies = numberOfDefeatedEnemiesByPlayerRobot.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
 
 		playerRobotDataToAward = playerRobotWithHighestNumberOfDefeatedEnemies;
-		playerScoreDetailsPanelUI = ObjectMethods.FindComponentsOfType<PlayerScoreDetailsPanelUI>().FirstOrDefault(playerScoreDetailsPanelUI => playerScoreDetailsPanelUI.GetPlayerRobotData() == playerRobotDataToAward);
+		playerScoreDetailsPanelUI = ObjectMethods.FindComponentsOfType<PlayerScoreDetailsPanelUI>(false).FirstOrDefault(playerScoreDetailsPanelUI => playerScoreDetailsPanelUI.GetPlayerRobotData() == playerRobotDataToAward);
 
 		RegisterToListeners(true);
 	}

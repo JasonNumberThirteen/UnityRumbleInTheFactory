@@ -128,8 +128,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5185690586855138589}
-  - component: {fileID: 9159079852551321459}
   - component: {fileID: 7755116143451911904}
+  - component: {fileID: 9159079852551321459}
   - component: {fileID: 8606166809185048932}
   - component: {fileID: 5825522741781732748}
   m_Layer: 0
@@ -155,6 +155,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7755116143451911904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725085237384328082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  timerFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startImmediately: 1
+  duration: 0.75
 --- !u!114 &9159079852551321459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,32 +191,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   entityPrefab: {fileID: 0}
---- !u!114 &7755116143451911904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6725085237384328082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.75
-  countFromTheStart: 1
-  timerStartedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onReset:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8606166809185048932
 MonoBehaviour:
   m_ObjectHideFlags: 0

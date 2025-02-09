@@ -103,7 +103,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	{
 		if(playerRobotsListData != null)
 		{
-			playerRobotsListData.ForEach(playerRobotData => playerRobotData.ResetData());
+			playerRobotsListData.ForEachIndexed((playerRobotData, i) => playerRobotData.ResetData(i == 1 || (gameData != null && gameData.SelectedTwoPlayersMode)), 1);
 		}
 	}
 }

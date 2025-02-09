@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6347048902516084386}
   - component: {fileID: 3668669338097351654}
-  - component: {fileID: 1084372371341337801}
   - component: {fileID: 2838880589552742568}
   - component: {fileID: 8154718971830254560}
+  - component: {fileID: 2862525343948837727}
   m_Layer: 5
   m_Name: PlayerScoreDetailsPanelUIPrefab
   m_TagString: Untagged
@@ -50,36 +50,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237229474603248334}
   m_CullTransparentMesh: 1
---- !u!114 &1084372371341337801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237229474603248334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2838880589552742568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +90,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ordinalNumber: 1
   defeatedEnemiesScoreCounterPanelUIPrefab: {fileID: 9048260784425366282, guid: 132287f5bbb5e2547a1bdaf5b94885da, type: 3}
+  playerRobotData: {fileID: 0}
+--- !u!114 &2862525343948837727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237229474603248334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dedc730b520f0e544a398386702309f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   playerRobotData: {fileID: 0}
 --- !u!1001 &2030932981193563461
 PrefabInstance:
@@ -421,6 +404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: 
   addSpaceAfterHeader: 0
+  postfix: 
+  addSpaceAfterPostfix: 1
 --- !u!224 &1059002598631187456 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9197538267396183826, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}

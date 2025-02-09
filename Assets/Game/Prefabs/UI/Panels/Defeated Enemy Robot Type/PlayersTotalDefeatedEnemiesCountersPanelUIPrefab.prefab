@@ -32,7 +32,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 38448688577437386}
+  - {fileID: 2493391874338558092}
   - {fileID: 609547266890708791}
   m_Father: {fileID: 0}
   m_RootOrder: -1
@@ -118,17 +118,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492b0a05b4a22154eba5dfdf2e788419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6471067999817280840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2493391874338558092}
+  - component: {fileID: 5503733377477459825}
+  m_Layer: 5
+  m_Name: Player 1 Total Defeated Enemies Counter Text UI Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2493391874338558092
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6471067999817280840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 38448688577437386}
+  m_Father: {fileID: 8131245237403802577}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 32, y: 8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5503733377477459825
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6471067999817280840}
+  m_CullTransparentMesh: 1
 --- !u!1001 &3116763922642015204
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8131245237403802577}
+    m_TransformParent: {fileID: 2493391874338558092}
     m_Modifications:
     - target: {fileID: 579402479198749987, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_Name
-      value: Player1TotalDefeatedEnemiesCounterTextUI
+      value: Player 1 Total Defeated Enemies Counter Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_Pivot.x
@@ -140,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -148,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -156,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -196,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3154877808567143726, guid: 6648ec7a462da5b4eafa31bb797d180a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -234,7 +280,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1378160986151971276, guid: e3ed3c8e344216b4dbcdd55fe91a8f85, type: 3}
       propertyPath: m_Name
-      value: Player2TotalDefeatedEnemiesCounterTextUI
+      value: Player 2 Total Defeated Enemies Counter Text UI
       objectReference: {fileID: 0}
     - target: {fileID: 3522419397552824769, guid: e3ed3c8e344216b4dbcdd55fe91a8f85, type: 3}
       propertyPath: m_Pivot.x
