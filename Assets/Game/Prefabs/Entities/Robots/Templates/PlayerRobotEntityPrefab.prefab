@@ -184,11 +184,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionAreaSize.x
-      value: 0.1
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionAreaSize.y
-      value: 0.4
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionLayerMask.m_Bits
@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionAreaOffsetFromCenterDistance
-      value: 0.11
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7184377186673889978, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: initialVerticalDirection
