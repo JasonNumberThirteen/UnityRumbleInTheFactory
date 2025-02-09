@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Game/Player Robot Data")]
 public class PlayerRobotData : RobotData
 {
-	public SaveablePlayerRobotData saveablePlayerRobotData;
+	public SaveablePlayerData saveablePlayerData;
 	
 	public Dictionary<EnemyRobotData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyRobotData, int>();
 	public PlayerRobotEntitySpawner Spawner {get; set;}
@@ -13,8 +13,8 @@ public class PlayerRobotData : RobotData
 	
 	public int Score
 	{
-		get => saveablePlayerRobotData.score;
-		set => saveablePlayerRobotData.score = Mathf.Clamp(value, 0, int.MaxValue);
+		get => saveablePlayerData.score;
+		set => saveablePlayerData.score = Mathf.Clamp(value, 0, int.MaxValue);
 	}
 
 	public int Lives
@@ -44,7 +44,7 @@ public class PlayerRobotData : RobotData
 	{
 		lives = initialLives;
 		
-		saveablePlayerRobotData.ResetData();
+		saveablePlayerData.ResetData();
 		ResetRank();
 		ResetDefeatedEnemies();
 		ResetCurrentHealth();

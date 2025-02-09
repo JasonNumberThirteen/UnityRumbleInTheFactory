@@ -50,7 +50,7 @@ public class DataSerialisationManager : MonoBehaviour
 	{
 		if(playerRobotsListData != null)
 		{
-			playerRobotsListData.ForEachIndexed((playerRobotData, i) => action?.Invoke($"player{i}Data", playerRobotData.saveablePlayerRobotData), 1);
+			playerRobotsListData.ForEachIndexed((playerRobotData, i) => action?.Invoke($"player{i}Data", playerRobotData.saveablePlayerData), 1);
 		}
 	}
 }

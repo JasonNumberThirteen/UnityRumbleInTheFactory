@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class SaveablePlayerRobotData
+public class SaveablePlayerData
 {
 	public int score;
 
