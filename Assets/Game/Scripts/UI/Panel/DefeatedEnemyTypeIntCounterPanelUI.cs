@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DefeatedEnemyRobotTypeIntCounterPanelUI : MonoBehaviour
+public class DefeatedEnemyTypeIntCounterPanelUI : MonoBehaviour
 {
 	private Image image;
 	private PlayerRobotDataIntCounter[] playerRobotDataIntCounters;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6680134146587021013}
   - component: {fileID: 6946373327516934039}
   m_Layer: 5
-  m_Name: DefeatedEnemyRobotTypeIntCounterPanelUIPrefab
+  m_Name: DefeatedEnemyTypeIntCounterPanelUIPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1888134825636643331, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
       propertyPath: m_Name
-      value: Player2DefeatedEnemyRobotsCounterTextUIPrefab (1)
+      value: Player2DefeatedEnemiesCounterTextUIPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3414356654277327885, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
       propertyPath: playerRobotData
@@ -497,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1888134825636643331, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
       propertyPath: m_Name
-      value: Player1DefeatedEnemyRobotsCounterTextUIPrefab
+      value: Player1DefeatedEnemiesCounterTextUIPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3414356654277327885, guid: f582023e59554b7449cf91c558ee0b02, type: 3}
       propertyPath: playerRobotData

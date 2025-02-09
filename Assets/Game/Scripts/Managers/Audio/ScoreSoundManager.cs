@@ -9,13 +9,13 @@ public class ScoreSoundManager : MonoBehaviour
 	[SerializeField] private AudioClip playerRobotLifeGainSound;
 	
 	private AudioSource audioSource;
-	private ScoreEnemyRobotTypeCountManager scoreEnemyRobotTypeCountManager;
+	private ScoreEnemyTypeCountManager scoreEnemyTypeCountManager;
 	private ScoreBonusPointsAwardManager scoreBonusPointsAwardManager;
 
 	private void Awake()
 	{
 		audioSource = GetComponent<AudioSource>();
-		scoreEnemyRobotTypeCountManager = ObjectMethods.FindComponentOfType<ScoreEnemyRobotTypeCountManager>();
+		scoreEnemyTypeCountManager = ObjectMethods.FindComponentOfType<ScoreEnemyTypeCountManager>();
 		scoreBonusPointsAwardManager = ObjectMethods.FindComponentOfType<ScoreBonusPointsAwardManager>(false);
 
 		RegisterToListeners(true);
@@ -30,9 +30,9 @@ public class ScoreSoundManager : MonoBehaviour
 	{
 		if(register)
 		{
-			if(scoreEnemyRobotTypeCountManager != null)
+			if(scoreEnemyTypeCountManager != null)
 			{
-				scoreEnemyRobotTypeCountManager.enemyRobotCountedEvent.AddListener(OnEnemyRobotCounted);
+				scoreEnemyTypeCountManager.enemyCountedEvent.AddListener(OnEnemyCounted);
 			}
 
 			if(scoreBonusPointsAwardManager != null)
@@ -42,9 +42,9 @@ public class ScoreSoundManager : MonoBehaviour
 		}
 		else
 		{
-			if(scoreEnemyRobotTypeCountManager != null)
+			if(scoreEnemyTypeCountManager != null)
 			{
-				scoreEnemyRobotTypeCountManager.enemyRobotCountedEvent.RemoveListener(OnEnemyRobotCounted);
+				scoreEnemyTypeCountManager.enemyCountedEvent.RemoveListener(OnEnemyCounted);
 			}
 
 			if(scoreBonusPointsAwardManager != null)
@@ -54,7 +54,7 @@ public class ScoreSoundManager : MonoBehaviour
 		}
 	}
 
-	private void OnEnemyRobotCounted(List<PlayerRobotScoreData> playerRobotScoreDataList)
+	private void OnEnemyCounted(List<PlayerRobotScoreData> playerRobotScoreDataList)
 	{
 		PlaySound(SoundEffectType.PointsCount);
 	}

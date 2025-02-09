@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2373352842680790821}
   - component: {fileID: 1910989073299262221}
   m_Layer: 5
-  m_Name: DefeatedEnemyRobotTypesPanelUIPrefab
+  m_Name: DefeatedEnemyTypesPanelUIPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754d20f19af8a624fae8c60c564dc839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defeatedEnemyRobotTypeIntCounterPanelUIPrefab: {fileID: 6946373327516934039, guid: abfc05293b7f1c94e8d1f96f4770c94b, type: 3}
+  defeatedEnemyTypeIntCounterPanelUIPrefab: {fileID: 6946373327516934039, guid: abfc05293b7f1c94e8d1f96f4770c94b, type: 3}
   horizontalLineTextUIPrefab: {fileID: 1469681167153838892, guid: 54f7576515e7be24f9606adca9f3ce11, type: 3}
   playersTotalDefeatedEnemiesCountersPanelUIPrefab: {fileID: 4682225714264502255, guid: dbab041b39690234e8f72ce20471ee45, type: 3}

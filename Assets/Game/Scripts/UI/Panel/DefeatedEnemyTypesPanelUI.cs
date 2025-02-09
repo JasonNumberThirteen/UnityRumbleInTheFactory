@@ -1,29 +1,29 @@
 using UnityEngine;
 
-public class DefeatedEnemyRobotTypesPanelUI : MonoBehaviour
+public class DefeatedEnemyTypesPanelUI : MonoBehaviour
 {
-	[SerializeField] private DefeatedEnemyRobotTypeIntCounterPanelUI defeatedEnemyRobotTypeIntCounterPanelUIPrefab;
+	[SerializeField] private DefeatedEnemyTypeIntCounterPanelUI defeatedEnemyTypeIntCounterPanelUIPrefab;
 	[SerializeField] private GameObject horizontalLineTextUIPrefab;
 	[SerializeField] private GameObject playersTotalDefeatedEnemiesCountersPanelUIPrefab;
 
-	private DefeatedEnemyRobotTypeIntCounterPanelUI[] defeatedEnemyRobotTypeIntCounterPanelUIs;
+	private DefeatedEnemyTypeIntCounterPanelUI[] defeatedEnemyTypeIntCounterPanelUIs;
 
-	public DefeatedEnemyRobotTypeIntCounterPanelUI GetDefeatedEnemyRobotTypeIntCounterPanelUIByIndex(int index) => defeatedEnemyRobotTypeIntCounterPanelUIs[index];
+	public DefeatedEnemyTypeIntCounterPanelUI GetDefeatedEnemyTypeIntCounterPanelUIByIndex(int index) => defeatedEnemyTypeIntCounterPanelUIs[index];
 
 	private void Awake()
 	{
-		SpawnAndSetupDefeatedEnemyRobotTypePanelUIs();
+		SpawnAndSetupDefeatedEnemyTypePanelUIs();
 		SpawnHorizontalLineTextUI();
 		SpawnPlayersTotalDefeatedEnemiesCountersPanelUI();
 
-		defeatedEnemyRobotTypeIntCounterPanelUIs = GetComponentsInChildren<DefeatedEnemyRobotTypeIntCounterPanelUI>();
+		defeatedEnemyTypeIntCounterPanelUIs = GetComponentsInChildren<DefeatedEnemyTypeIntCounterPanelUI>();
 	}
 
-	private void SpawnAndSetupDefeatedEnemyRobotTypePanelUIs()
+	private void SpawnAndSetupDefeatedEnemyTypePanelUIs()
 	{
 		var playersDefeatedEnemiesSumContainer = ObjectMethods.FindComponentOfType<PlayersDefeatedEnemiesSumContainer>();
 
-		if(playersDefeatedEnemiesSumContainer == null || defeatedEnemyRobotTypeIntCounterPanelUIPrefab == null)
+		if(playersDefeatedEnemiesSumContainer == null || defeatedEnemyTypeIntCounterPanelUIPrefab == null)
 		{
 			return;
 		}
@@ -34,7 +34,7 @@ public class DefeatedEnemyRobotTypesPanelUI : MonoBehaviour
 		{
 			var enemyRobotSprite = key.GetDisplayInScoreSceneSprite();
 			
-			Instantiate(defeatedEnemyRobotTypeIntCounterPanelUIPrefab, gameObject.transform).SetSprite(enemyRobotSprite);
+			Instantiate(defeatedEnemyTypeIntCounterPanelUIPrefab, gameObject.transform).SetSprite(enemyRobotSprite);
 		}
 	}
 

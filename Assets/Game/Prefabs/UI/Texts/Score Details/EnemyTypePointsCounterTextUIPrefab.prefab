@@ -149,3 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: 
   addSpaceAfterHeader: 0
+  postfix: 
+  addSpaceAfterPostfix: 0

@@ -148,6 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: STAGE
   addSpaceAfterHeader: 1
+  postfix: 
+  addSpaceAfterPostfix: 0
 --- !u!114 &8771805326695850353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,4 +162,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1abc09875c3f040928b065cfddf3c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageCounterHeaderSceneType: 0
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}

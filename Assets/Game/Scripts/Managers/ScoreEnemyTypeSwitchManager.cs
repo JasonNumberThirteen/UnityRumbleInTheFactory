@@ -2,16 +2,16 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Timer))]
-public class ScoreEnemyRobotTypeSwitchManager : MonoBehaviour
+public class ScoreEnemyTypeSwitchManager : MonoBehaviour
 {
-	public UnityEvent<int> enemyRobotTypeSwitchedEvent;
-	public UnityEvent lastEnemyRobotTypeReachedEvent;
+	public UnityEvent<int> enemyTypeSwitchedEvent;
+	public UnityEvent lastEnemyTypeReachedEvent;
 	
 	private Timer timer;
-	private int currentEnemyRobotTypeIndex;
-	private int numberOfDefeatedEnemyRobotTypes;
+	private int currentEnemyTypeIndex;
+	private int numberOfDefeatedEnemyTypes;
 
-	public void GoToNextEnemyRobotType()
+	public void GoToNextEnemyType()
 	{
 		timer.StartTimer();
 	}
@@ -19,12 +19,12 @@ public class ScoreEnemyRobotTypeSwitchManager : MonoBehaviour
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
-		numberOfDefeatedEnemyRobotTypes = GetNumberOfDefeatedEnemyRobotTypes();
+		numberOfDefeatedEnemyTypes = GetNumberOfDefeatedEnemyTypes();
 
 		RegisterToListeners(true);
 	}
 
-	private int GetNumberOfDefeatedEnemyRobotTypes()
+	private int GetNumberOfDefeatedEnemyTypes()
 	{
 		var playersDefeatedEnemiesSumContainer = ObjectMethods.FindComponentOfType<PlayersDefeatedEnemiesSumContainer>();
 
@@ -50,13 +50,13 @@ public class ScoreEnemyRobotTypeSwitchManager : MonoBehaviour
 
 	private void OnTimerFinished()
 	{
-		if(currentEnemyRobotTypeIndex < numberOfDefeatedEnemyRobotTypes)
+		if(currentEnemyTypeIndex < numberOfDefeatedEnemyTypes)
 		{
-			enemyRobotTypeSwitchedEvent?.Invoke(currentEnemyRobotTypeIndex++);
+			enemyTypeSwitchedEvent?.Invoke(currentEnemyTypeIndex++);
 		}
 		else
 		{
-			lastEnemyRobotTypeReachedEvent?.Invoke();
+			lastEnemyTypeReachedEvent?.Invoke();
 		}
 	}
 }

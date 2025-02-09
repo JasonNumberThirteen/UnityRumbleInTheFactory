@@ -14,7 +14,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 	[SerializeField] private BonusPointsCounterPanelUI bonusPointsCounterPanelUIPrefab;
 
 	private Timer timer;
-	private ScoreEnemyRobotTypeSwitchManager scoreEnemyRobotTypeSwitchManager;
+	private ScoreEnemyTypeSwitchManager scoreEnemyTypeSwitchManager;
 	private PlayerScoreDetailsPanelUI playerScoreDetailsPanelUI;
 	private PlayerRobotData playerRobotDataToAward;
 
@@ -26,7 +26,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 		}
 
 		timer = GetComponent<Timer>();
-		scoreEnemyRobotTypeSwitchManager = ObjectMethods.FindComponentOfType<ScoreEnemyRobotTypeSwitchManager>();
+		scoreEnemyTypeSwitchManager = ObjectMethods.FindComponentOfType<ScoreEnemyTypeSwitchManager>();
 
 		DetermineIfAnyPlayerCanBeAwarded();
 	}
@@ -65,18 +65,18 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 		{
 			timer.timerFinishedEvent.AddListener(OnTimerFinished);
 
-			if(scoreEnemyRobotTypeSwitchManager != null)
+			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyRobotTypeSwitchManager.lastEnemyRobotTypeReachedEvent.AddListener(OnLastEnemyRobotTypeReached);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.AddListener(OnLastEnemyTypeReached);
 			}
 		}
 		else
 		{
 			timer.timerFinishedEvent.RemoveListener(OnTimerFinished);
 
-			if(scoreEnemyRobotTypeSwitchManager != null)
+			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyRobotTypeSwitchManager.lastEnemyRobotTypeReachedEvent.RemoveListener(OnLastEnemyRobotTypeReached);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.RemoveListener(OnLastEnemyTypeReached);
 			}
 		}
 	}
@@ -127,7 +127,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 		}
 	}
 	
-	private void OnLastEnemyRobotTypeReached()
+	private void OnLastEnemyTypeReached()
 	{
 		timer.StartTimer();
 	}

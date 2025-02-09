@@ -151,20 +151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
-  countFromTheStart: 1
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 1
+  duration: 2
 --- !u!114 &4709795868737360805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   header: 
-  addSpaceAfterHeader: 1
+  addSpaceAfterHeader: 0
+  postfix: 
+  addSpaceAfterPostfix: 0
 --- !u!114 &-917488883713071552
 MonoBehaviour:
   m_ObjectHideFlags: 0

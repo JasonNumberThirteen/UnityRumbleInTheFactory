@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 1039323151}
   - component: {fileID: 1039323150}
   m_Layer: 0
-  m_Name: Score Enemy Robot Type Count Manager
+  m_Name: Score Enemy Type Count Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -869,10 +869,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccb1dc80b33e0542a6667bb465f865d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRobotCountedEvent:
+  enemyCountedEvent:
     m_PersistentCalls:
       m_Calls: []
-  allEnemyRobotsCountedEvent:
+  allEnemiesCountedEvent:
     m_PersistentCalls:
       m_Calls: []
   playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
@@ -1698,7 +1698,7 @@ GameObject:
   - component: {fileID: 1810015465}
   - component: {fileID: 1810015464}
   m_Layer: 0
-  m_Name: Score Enemy Robot Type Switch Manager
+  m_Name: Score Enemy Type Switch Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1731,10 +1731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c362c5f677f1846800a41a44c126bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRobotTypeSwitchedEvent:
+  enemyTypeSwitchedEvent:
     m_PersistentCalls:
       m_Calls: []
-  lastEnemyRobotTypeReachedEvent:
+  lastEnemyTypeReachedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1810015465
@@ -2200,7 +2200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7435361723670593995, guid: ae6678c4ff51d184fbec4d60355863c0, type: 3}
       propertyPath: m_Name
-      value: Defeated Enemy Robot Types Panel UI
+      value: Defeated Enemy Types Panel UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
