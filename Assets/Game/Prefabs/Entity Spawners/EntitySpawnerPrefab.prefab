@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 39147631426850919}
   - component: {fileID: 6629469496154656758}
   - component: {fileID: 4035633232068442417}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: SpawnVisualEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 9159079852551321459}
   - component: {fileID: 8606166809185048932}
   - component: {fileID: 5825522741781732748}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: EntitySpawnerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -229,7 +229,7 @@ MonoBehaviour:
   gridSize: 0.5
   unacceptableObjectsForColliderBoundsLayerMask:
     serializedVersion: 2
-    m_Bits: 340608
+    m_Bits: 864896
   drawGizmos: 1
   accessiblePositionGizmosColor: {r: 0, g: 1, b: 0, a: 0.5}
   inaccessiblePositionGizmosColor: {r: 1, g: 0, b: 0, a: 0.5}
