@@ -1,4 +1,3 @@
-using Random = UnityEngine.Random;
 using System.Linq;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ using UnityEngine;
 public class BonusTiledPositionSetter : MonoBehaviour
 {
 	[SerializeField] private Rect area;
-	[SerializeField, Min(0.01f)] private float gridSize = 0.5f;
+	[SerializeField, Min(0.01f)] private float tileSize = 0.5f;
 	[SerializeField] private LayerMask unacceptableObjectsForColliderBoundsLayerMask;
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color accessiblePositionGizmosColor = new(0f, 1f, 0f, 0.5f);
@@ -30,31 +29,10 @@ public class BonusTiledPositionSetter : MonoBehaviour
 
 	private Vector2 GetFinalPosition()
 	{
-		var randomPosition = GetRandomPosition();
-		var gridPosition = GetGridPosition(randomPosition);
+		var randomPosition = VectorMethods.GetRandomPositionWithin(area);
+		var tiledPosition = randomPosition.ToTiledPosition(tileSize);
 		
-		if(PositionIsInaccessible(gridPosition))
-		{
-			return GetFinalPosition();
-		}
-
-		return gridPosition;
-	}
-
-	private Vector2 GetRandomPosition()
-	{
-		var x = Random.Range(area.xMin, area.xMax);
-		var y = Random.Range(area.yMin, area.yMax);
-
-		return new Vector2(x, y);
-	}
-
-	private Vector2 GetGridPosition(Vector2 position)
-	{
-		var x = GetGridCoordinate(position.x);
-		var y = GetGridCoordinate(position.y);
-
-		return new Vector2(x, y);
+		return PositionIsInaccessible(tiledPosition) ? GetFinalPosition() : tiledPosition;
 	}
 	
 	private void OnDrawGizmos()
@@ -89,12 +67,11 @@ public class BonusTiledPositionSetter : MonoBehaviour
 		}
 		
 		var startNodesAreaSize = Vector2.one;
-		var startNodesArea = new Rect(position - startNodesAreaSize*0.5f, startNodesAreaSize);
+		var startNodesArea = new Rect(position.GetOffsetFrom(startNodesAreaSize), startNodesAreaSize);
 		var availableStartNodes = stageTileNodesManager.GetTileNodesWithin(startNodesArea).Where(tileNode => tileNode.Passable);
 
 		return availableStartNodes != null && availableStartNodes.Any(startNode => startNode != null && stageTileNodesPathfinder.PathExistsBetweenTwoTileNodes(startNode, stageTileNodesManager.GetTileNodeWhereClosestPlayerRobotIsOnIfPossible(startNode)));
 	}
 
-	private float GetGridCoordinate(float coordinate) => Mathf.Round(coordinate / gridSize)*gridSize;
 	private bool PositionIsInaccessible(Vector2 position) => DetectedAnyUnacceptableCollider(position) || !DetectedPathToClosestPlayerRobotFrom(position);
 }
