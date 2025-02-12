@@ -9,6 +9,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 	
 	private Collider2D c2D;
 	private Collider2D[] detectedColliders;
+	private StageTileNodesManager stageTileNodesManager;
 
 	private readonly int OVERLAP_BUFFER_SIZE = 4;
 	private readonly float OVERLAP_RANGE = 0.75f;
@@ -30,6 +31,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 		c2D = GetComponent<Collider2D>();
 		detectedColliders = new Collider2D[OVERLAP_BUFFER_SIZE];
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
+		stageTileNodesManager = ObjectMethods.FindComponentOfType<StageTileNodesManager>();
 	}
 
 	private void DetectAdjacentTiles(Vector2 movementDirection, Vector2 senderHitPoint)
@@ -82,12 +84,28 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 			if(collider != null)
 			{
 				Destroy(collider.gameObject);
+				SetNodeAsPassableIfNeeded(collider.transform.position);
 
 				destroyedAtLeastOneCollider = true;
 			}
 		}
 
 		PlaySoundIfNeeded(destroyedAtLeastOneCollider && playSound);
+	}
+
+	private void SetNodeAsPassableIfNeeded(Vector2 position)
+	{
+		if(stageTileNodesManager == null)
+		{
+			return;
+		}
+
+		var node = stageTileNodesManager.GetClosestTileNodeTo(position);
+
+		if(node != null && !node.Passable)
+		{
+			node.Passable = true;
+		}
 	}
 
 	private void PlaySoundIfNeeded(bool playSound)

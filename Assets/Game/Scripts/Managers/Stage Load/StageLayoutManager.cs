@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class StageLayoutManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
@@ -12,7 +13,16 @@ public class StageLayoutManager : MonoBehaviour
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color prohibitedAreasGizmosColor = Color.red;
 
-	private void Start()
+	public float GetTileSize() => tileSize;
+
+	public Vector2 GetTilePosition(int loopIndex)
+	{
+		var boardPosition = GetBoardPosition(loopIndex);
+
+		return boardPosition*tileSize + positionOffset;
+	}
+
+	private void Awake()
 	{
 		if(gameData == null)
 		{
@@ -40,11 +50,10 @@ public class StageLayoutManager : MonoBehaviour
 			return;
 		}
 		
-		var boardPosition = GetBoardPosition(loopIndex);
-		var tilePosition = GetTilePosition(boardPosition);
 		var tilePrefab = tilesPrefabs[tileIndex];
+		var tilePosition = GetTilePosition(loopIndex);
 
-		if(tilePrefab != null && TileCanBePlaced(tilePosition))
+		if(tilePrefab != null && !tilePosition.OverlapsWithAnyOfColliders(takenAreas))
 		{
 			Instantiate(tilePrefab, tilePosition, Quaternion.identity);
 		}
@@ -56,24 +65,6 @@ public class StageLayoutManager : MonoBehaviour
 		var y = GetBoardPositionY(index);
 		
 		return new(x, y);
-	}
-
-	private bool TileCanBePlaced(Vector2 position)
-	{
-		if(takenAreas == null)
-		{
-			return false;
-		}
-		
-		foreach (var takenArea in takenAreas)
-		{
-			if(takenArea != null && takenArea.OverlapPoint(position))
-			{
-				return false;
-			}
-		}
-
-		return true;
 	}
 
 	private void OnDrawGizmos()
@@ -99,5 +90,4 @@ public class StageLayoutManager : MonoBehaviour
 	private int GetBoardPositionX(int index) => index % stageWidthInTiles;
 	private int GetBoardPositionY(int index) => stageHeightInTiles - GetBoardPositionOffsetY(index);
 	private int GetBoardPositionOffsetY(int index) => Mathf.FloorToInt(index / stageHeightInTiles);
-	private Vector2 GetTilePosition(Vector2 position) => position*tileSize + positionOffset;
 }

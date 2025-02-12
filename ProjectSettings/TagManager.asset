@@ -26,6 +26,7 @@ TagManager:
   - Bonuses
   - Spawners
   - Player2
+  - Tile Nodes
   layers:
   - Default
   - TransparentFX

@@ -200,20 +200,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 20
-  countFromTheStart: 1
   timerStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onReset:
+  timerFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  onInterrupt:
-    m_PersistentCalls:
-      m_Calls: []
+  startImmediately: 1
+  duration: 20
 --- !u!114 &-6153362195523077573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,9 +228,6 @@ MonoBehaviour:
     height: 12
   gridSize: 0.5
   unacceptableObjectsForColliderBoundsLayerMask:
-    serializedVersion: 2
-    m_Bits: 343680
-  unacceptableSingleObjectsLayerMask:
     serializedVersion: 2
     m_Bits: 340608
   drawGizmos: 1
