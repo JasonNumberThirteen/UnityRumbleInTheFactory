@@ -30,10 +30,7 @@ public class NukeEntityFortressField : MonoBehaviour
 	{
 		var colliders = Physics2D.OverlapBoxAll(c2D.bounds.center, c2D.bounds.size, 0f, overlapLayerMask);
 
-		foreach (var collider in colliders)
-		{
-			Destroy(collider.gameObject);
-		}
+		colliders.ForEach(collider => Destroy(collider.gameObject));
 	}
 
 	private void Awake()

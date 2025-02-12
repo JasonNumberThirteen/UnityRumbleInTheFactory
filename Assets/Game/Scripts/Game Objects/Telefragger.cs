@@ -11,10 +11,7 @@ public class Telefragger : MonoBehaviour
 	{
 		var colliders = Physics2D.OverlapCircleAll(transform.position, radius, layerMask);
 
-		foreach (var collider in colliders)
-		{
-			TelefragGO(collider.gameObject);
-		}
+		colliders.ForEach(collider => TelefragGO(collider.gameObject));
 	}
 
 	private void TelefragGO(GameObject go)

@@ -21,12 +21,9 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 	public void SetRobotEntitiesActive(bool active, bool affectFriendly)
 	{
 		var robotEntities = ObjectMethods.FindComponentsOfType<RobotEntity>(false).Where(robotEntity => robotEntity.IsFriendly() == affectFriendly);
-		var robotEntityDisablers = robotEntities.Select(robotEntity => robotEntity.GetComponent<RobotEntityDisabler>()).Where(component => component != null);
+		var robotEntityDisablers = robotEntities.Select(robotEntity => robotEntity.GetComponent<RobotEntityDisabler>()).Where(component => component != null).ToArray();
 
-		foreach (var robotEntityDisabler in robotEntityDisablers)
-		{
-			robotEntityDisabler.SetBehavioursActive(active);
-		}
+		robotEntityDisablers.ForEach(robotEntityDisabler => robotEntityDisabler.SetBehavioursActive(active));
 	}
 
 	private void Awake()

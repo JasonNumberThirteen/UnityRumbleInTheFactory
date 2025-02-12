@@ -6,12 +6,12 @@ public class RobotEntityDisabler : MonoBehaviour
 	
 	public void SetBehavioursActive(bool active)
 	{
-		foreach (var behaviour in behaviours)
+		behaviours.ForEach(behaviour =>
 		{
 			if(behaviour != null)
 			{
 				behaviour.enabled = active;
 			}
-		}
+		});
 	}
 }

@@ -76,13 +76,13 @@ public class StageLayoutManager : MonoBehaviour
 		
 		GizmosMethods.OperateOnGizmos(() =>
 		{
-			foreach (var takenArea in takenAreas)
+			takenAreas.ForEach(takenArea =>
 			{
 				if(takenArea != null)
 				{
 					Gizmos.DrawWireCube(takenArea.bounds.center, takenArea.bounds.size);
 				}
-			}
+			});
 		}, prohibitedAreasGizmosColor);
 	}
 	

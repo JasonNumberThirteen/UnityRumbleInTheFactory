@@ -6,7 +6,7 @@ public class PlayersTotalDefeatedEnemiesCountersPanelUI : MonoBehaviour
 	
 	public void SetActive(bool active)
 	{
-		foreach (var playerTotalDefeatedEnemiesIntCounter in playerTotalDefeatedEnemiesIntCounters)
+		playerTotalDefeatedEnemiesIntCounters.ForEach(playerTotalDefeatedEnemiesIntCounter =>
 		{
 			if(active)
 			{
@@ -16,7 +16,7 @@ public class PlayersTotalDefeatedEnemiesCountersPanelUI : MonoBehaviour
 			{
 				playerTotalDefeatedEnemiesIntCounter.Deactivate();
 			}
-		}
+		});
 	}
 
 	private void Awake()

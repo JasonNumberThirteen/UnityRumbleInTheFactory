@@ -26,10 +26,7 @@ public class TranslationBackgroundPanelUI : MonoBehaviour
 	{
 		var childrenRectTransformOffsetControllers = GetComponentsInChildren<TranslationBackgroundPartPanelUIRectTransformOffsetController>();
 
-		foreach (var rectTransformOffsetController in childrenRectTransformOffsetControllers)
-		{
-			rectTransformOffsetController.SetTimer(timer);
-		}
+		childrenRectTransformOffsetControllers.ForEach(rectTransformOffsetController => rectTransformOffsetController.SetTimer(timer));
 	}
 
 	private void OnDestroy()

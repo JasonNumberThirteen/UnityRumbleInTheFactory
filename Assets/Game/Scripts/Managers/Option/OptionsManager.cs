@@ -45,10 +45,7 @@ public class OptionsManager : MonoBehaviour
 	{
 		var options = ObjectMethods.FindComponentsOfType<Option>(false);
 
-		foreach (var option in options)
-		{
-			optionsByOptionType.Add(option.GetOptionType(), option);
-		}
+		options.ForEach(option => optionsByOptionType.Add(option.GetOptionType(), option));
 	}
 
 	private void OperateOnOptionIfExists(OptionType optionType, Action<Option> action)

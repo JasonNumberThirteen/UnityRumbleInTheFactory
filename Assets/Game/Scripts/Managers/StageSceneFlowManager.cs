@@ -177,10 +177,7 @@ public class StageSceneFlowManager : MonoBehaviour
 
 	private void SetGOsActive(bool active)
 	{
-		foreach (var go in gosToActivateWhenStageIsActivated)
-		{
-			go.SetActive(active);
-		}
+		gosToActivateWhenStageIsActivated.ForEach(go => go.SetActive(active));
 	}
 
 	private void PlaySoundIfNeeded(bool playSound)

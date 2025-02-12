@@ -79,7 +79,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 	{
 		var destroyedAtLeastOneCollider = false;
 		
-		foreach (var collider in detectedColliders)
+		detectedColliders.ForEach(collider =>
 		{
 			if(collider != null)
 			{
@@ -88,7 +88,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 
 				destroyedAtLeastOneCollider = true;
 			}
-		}
+		});
 
 		PlaySoundIfNeeded(destroyedAtLeastOneCollider && playSound);
 	}

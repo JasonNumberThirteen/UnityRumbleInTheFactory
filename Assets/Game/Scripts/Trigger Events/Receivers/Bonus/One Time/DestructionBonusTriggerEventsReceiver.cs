@@ -12,11 +12,7 @@ public class DestructionBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 	{
 		var robotEntities = ObjectMethods.FindComponentsOfType<RobotEntity>(false).Where(robotEntity => robotEntity.IsFriendly() == destroyFriendly).ToArray();
 		
-		foreach (var robotEntity in robotEntities)
-		{
-			DestroyRobotEntity(robotEntity);
-		}
-
+		robotEntities.ForEach(DestroyRobotEntity);
 		PlayExplosionSoundIfNeeded(robotEntities.Length > 0);
 	}
 

@@ -56,14 +56,14 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 	{
 		var directions = GetAllDirections();
 
-		foreach (var direction in directions)
+		directions.ForEach(direction =>
 		{
 			var start = transform.position;
 			var end = GetLinecastEnd(start, direction);
 			var color = Linecast(start, direction) ? unavailableDirectionGizmosColor : availableDirectionGizmosColor;
 			
 			GizmosMethods.OperateOnGizmos(() => Gizmos.DrawLine(start, end), color);
-		}
+		});
 	}
 
 	private List<Vector2> GetAvailableDirections() => GetAllDirections().Where(vector => !Linecast(transform.position, vector)).ToList();

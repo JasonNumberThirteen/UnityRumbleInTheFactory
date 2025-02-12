@@ -57,12 +57,7 @@ public class PlayerRobotMovementSoundManager : MonoBehaviour
 
 	private void RegisterToPlayerRobotEntitySpawnerListeners(bool register)
 	{
-		if(playerRobotEntitySpawners == null)
-		{
-			return;
-		}
-
-		foreach (var playerRobotEntitySpawner in playerRobotEntitySpawners)
+		playerRobotEntitySpawners.ForEach(playerRobotEntitySpawner =>
 		{
 			if(register)
 			{
@@ -72,7 +67,7 @@ public class PlayerRobotMovementSoundManager : MonoBehaviour
 			{
 				playerRobotEntitySpawner.entitySpawnedEvent.RemoveListener(OnEntitySpawned);
 			}
-		}
+		});
 	}
 
 	private void OnEntitySpawned(GameObject go)
