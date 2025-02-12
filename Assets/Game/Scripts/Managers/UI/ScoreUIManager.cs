@@ -107,7 +107,7 @@ public class ScoreUIManager : UIManager
 			return 0;
 		}
 
-		return playerRobotsListData.Max(playerRobotData =>
+		return playerRobotsListData.GetPlayerRobotsData().Max(playerRobotData =>
 		{
 			if(playerRobotData == null || defeatedEnemyTypesData == null || currentEnemyRobotTypeIndex >= defeatedEnemyTypesData.Length)
 			{

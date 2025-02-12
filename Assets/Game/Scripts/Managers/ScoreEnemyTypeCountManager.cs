@@ -63,7 +63,7 @@ public class ScoreEnemyTypeCountManager : MonoBehaviour
 
 		if(playerRobotsListData != null)
 		{
-			playerRobotsListData.ForEach(AddPlayerRobotScoreDataIfNeeded);
+			playerRobotsListData.GetPlayerRobotsData().ForEach(AddPlayerRobotScoreDataIfNeeded);
 		}
 
 		enemyCountedEvent?.Invoke(playerRobotScoreDataList);

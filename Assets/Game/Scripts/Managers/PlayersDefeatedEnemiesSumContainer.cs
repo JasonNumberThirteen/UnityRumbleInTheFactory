@@ -13,7 +13,7 @@ public class PlayersDefeatedEnemiesSumContainer : MonoBehaviour
 	{
 		if(playerRobotsListData != null)
 		{
-			playerRobotsListData.ForEach(AddDefeatedEnemiesFromSinglePlayerIfPossible);
+			playerRobotsListData.GetPlayerRobotsData().ForEach(AddDefeatedEnemiesFromSinglePlayerIfPossible);
 		}
 	}
 

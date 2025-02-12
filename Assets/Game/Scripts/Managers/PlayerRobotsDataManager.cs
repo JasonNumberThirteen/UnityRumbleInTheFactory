@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 	public void CheckPlayersLives()
 	{
-		if(stageSceneFlowManager != null && playerRobotsListData != null && !playerRobotsListData.Any(playerData => playerData.Spawner != null && playerData.IsAlive) && ObjectMethods.FindComponentsOfType<PlayerRobotEntity>().Length == 0)
+		if(stageSceneFlowManager != null && playerRobotsListData != null && !playerRobotsListData.GetPlayerRobotsData().Any(playerData => playerData.Spawner != null && playerData.IsAlive) && ObjectMethods.FindComponentsOfType<PlayerRobotEntity>().Length == 0)
 		{
 			stageSceneFlowManager.SetGameAsOverIfNeeded();
 		}
@@ -59,7 +60,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 		
 		if(playerRobotsListData != null)
 		{
-			playerRobotsListData.ForEach(playerRobotData =>
+			playerRobotsListData.GetPlayerRobotsData().ForEach(playerRobotData =>
 			{
 				playerRobotData.ResetDefeatedEnemies();
 
