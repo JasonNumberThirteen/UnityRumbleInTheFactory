@@ -17,11 +17,11 @@ public class ScoreEnemyTypeCountManager : MonoBehaviour
 	private EnemyRobotData enemyRobotData;
 	private readonly List<PlayerRobotScoreData> playerRobotScoreDataList = new();
 
-	public void StartCounting(EnemyRobotData enemyRobotData, int numberOfDefeatedEnemyRobots)
+	public void StartCounting(EnemyRobotData enemyRobotData, int numberOfDefeatedEnemies)
 	{
 		numberOfCountedEnemies = currentScoreForDefeatedEnemies = 0;
 		this.enemyRobotData = enemyRobotData;
-		this.numberOfDefeatedEnemies = numberOfDefeatedEnemyRobots;
+		this.numberOfDefeatedEnemies = numberOfDefeatedEnemies;
 
 		timer.StartTimer();
 	}
@@ -54,31 +54,30 @@ public class ScoreEnemyTypeCountManager : MonoBehaviour
 	{
 		++numberOfCountedEnemies;
 
+		AddScoreForSingleEnemy();
+		playerRobotScoreDataList.Clear();
+		AddPlayerScoreDataFromEveryPlayer();
+		enemyCountedEvent?.Invoke(playerRobotScoreDataList);
+		ExecuteActionDependingOnNumberOfCountedEnemies();
+	}
+
+	private void AddScoreForSingleEnemy()
+	{
 		if(enemyRobotData != null)
 		{
 			currentScoreForDefeatedEnemies += enemyRobotData.GetPointsForDefeat();
 		}
+	}
 
-		playerRobotScoreDataList.Clear();
-
+	private void AddPlayerScoreDataFromEveryPlayer()
+	{
 		if(playerRobotsListData != null)
 		{
-			playerRobotsListData.GetPlayerRobotsData().ForEach(AddPlayerRobotScoreDataIfNeeded);
-		}
-
-		enemyCountedEvent?.Invoke(playerRobotScoreDataList);
-
-		if(numberOfCountedEnemies >= numberOfDefeatedEnemies)
-		{
-			allEnemiesCountedEvent?.Invoke();
-		}
-		else
-		{
-			timer.StartTimer();
+			playerRobotsListData.GetPlayerRobotsData().ForEach(AddPlayerScoreDataIfNeeded);
 		}
 	}
 
-	private void AddPlayerRobotScoreDataIfNeeded(PlayerRobotData playerRobotData)
+	private void AddPlayerScoreDataIfNeeded(PlayerRobotData playerRobotData)
 	{
 		if(playerRobotData == null || !playerRobotData.DefeatedEnemies.TryGetValue(enemyRobotData, out var numberOfDefeatedEnemies) || numberOfDefeatedEnemies < numberOfCountedEnemies)
 		{
@@ -89,5 +88,17 @@ public class ScoreEnemyTypeCountManager : MonoBehaviour
 		var playerRobotScoreData = new PlayerRobotScoreData(playerRobotData, numberOfEnemiesToDisplay, currentScoreForDefeatedEnemies);
 
 		playerRobotScoreDataList.Add(playerRobotScoreData);
+	}
+
+	private void ExecuteActionDependingOnNumberOfCountedEnemies()
+	{
+		if(numberOfCountedEnemies >= numberOfDefeatedEnemies)
+		{
+			allEnemiesCountedEvent?.Invoke();
+		}
+		else
+		{
+			timer.StartTimer();
+		}
 	}
 }
