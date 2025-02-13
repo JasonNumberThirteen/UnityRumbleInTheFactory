@@ -1,4 +1,3 @@
-using Random = UnityEngine.Random;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,18 +10,12 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 	[SerializeField] private Color availableDirectionGizmosColor = Color.white;
 	[SerializeField] private Color unavailableDirectionGizmosColor = Color.red;
 
-	private readonly List<Vector2> allDirections = new()
-	{
-		Vector2.up,
-		Vector2.down,
-		Vector2.left,
-		Vector2.right
-	};
+	private readonly List<Vector2> allDirections = new() {Vector2.up, Vector2.down, Vector2.left, Vector2.right};
 
 	public Vector2 GetRandomDirection(Vector2 currentDirection)
 	{
 		var availableDirections = GetAvailableDirections();
-		var randomDirection = GetRandomAvailableDirection(availableDirections);
+		var randomDirection = availableDirections.GetRandomElement();
 
 		if(availableDirections.Count > 1 && randomDirection == currentDirection)
 		{
@@ -32,31 +25,14 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 		return randomDirection;
 	}
 
-	private Vector2 GetRandomAvailableDirection(List<Vector2> availableDirections)
-	{
-		if(availableDirections == null || availableDirections.Count == 0)
-		{
-			return Vector2.zero;
-		}
-		
-		var randomIndex = Random.Range(0, availableDirections.Count);
-
-		return availableDirections[randomIndex];
-	}
-
 	private void OnDrawGizmos()
 	{
-		if(drawGizmos)
+		if(!drawGizmos)
 		{
-			DrawAvailableDirections();
+			return;
 		}
-	}
 
-	private void DrawAvailableDirections()
-	{
-		var directions = GetAllDirections();
-
-		directions.ForEach(direction =>
+		allDirections.ForEach(direction =>
 		{
 			var start = transform.position;
 			var end = GetLinecastEnd(start, direction);
@@ -66,8 +42,7 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 		});
 	}
 
-	private List<Vector2> GetAvailableDirections() => GetAllDirections().Where(vector => !Linecast(transform.position, vector)).ToList();
-	private List<Vector2> GetAllDirections() => allDirections;
+	private List<Vector2> GetAvailableDirections() => allDirections.Where(vector => !Linecast(transform.position, vector)).ToList();
 	private RaycastHit2D Linecast(Vector2 start, Vector2 direction) => Physics2D.Linecast(start, GetLinecastEnd(start, direction), obstacleDetectionLayerMask);
 	private Vector2 GetLinecastEnd(Vector2 start, Vector2 direction) => start + direction*obstacleDetectionDistance;
 }
