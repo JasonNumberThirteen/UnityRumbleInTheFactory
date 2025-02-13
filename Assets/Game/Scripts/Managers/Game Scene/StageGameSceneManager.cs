@@ -32,7 +32,7 @@ public class StageGameSceneManager : GameSceneManager
 
 			if(gameOverTextUI != null)
 			{
-				gameOverTextUI.textReachedTargetPositionEvent.AddListener(OnGameOverTextUIReachedTargetPosition);
+				gameOverTextUI.textReachedTargetPositionEvent.AddListener(OnTextReachedTargetPosition);
 			}
 
 			if(stageStateManager != null)
@@ -46,7 +46,7 @@ public class StageGameSceneManager : GameSceneManager
 
 			if(gameOverTextUI != null)
 			{
-				gameOverTextUI.textReachedTargetPositionEvent.RemoveListener(OnGameOverTextUIReachedTargetPosition);
+				gameOverTextUI.textReachedTargetPositionEvent.RemoveListener(OnTextReachedTargetPosition);
 			}
 
 			if(stageStateManager != null)
@@ -61,20 +61,22 @@ public class StageGameSceneManager : GameSceneManager
 		LoadSceneByName(SCORE_SCENE_NAME);
 	}
 
-	private void OnGameOverTextUIReachedTargetPosition()
+	private void OnTextReachedTargetPosition()
 	{
 		StartTimerWithSetDuration(delayOnGameOver);
 	}
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		if(stageState == StageState.Interrupted)
+		switch (stageState)
 		{
-			timer.InterruptTimerIfPossible();
-		}
-		else if(stageState == StageState.Won)
-		{
-			StartTimerWithSetDuration(delayOnWonStage);
+			case StageState.Interrupted:
+				timer.InterruptTimerIfPossible();
+				break;
+			
+			case StageState.Won:
+				StartTimerWithSetDuration(delayOnWonStage);
+				break;
 		}
 	}
 
