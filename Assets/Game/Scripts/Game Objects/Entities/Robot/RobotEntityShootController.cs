@@ -34,11 +34,6 @@ public abstract class RobotEntityShootController : MonoBehaviour
 		RegisterToListeners(true);
 	}
 
-	private void Start()
-	{
-		UpdateBulletStats(robotEntityRankController.GetCurrentRobotRank());
-	}
-
 	private void OnDestroy()
 	{
 		RegisterToListeners(false);
