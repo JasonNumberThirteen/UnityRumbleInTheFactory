@@ -14,11 +14,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 		++numberOfFiredBullets;
 		
-		if(stageSoundManager != null)
-		{
-			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotShoot);
-		}
-		
+		PlaySound();
 		base.FireBullet();
 	}
 
@@ -64,6 +60,14 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		if(stageEventType == StageEventType.BulletDestroyed && sender.TryGetComponent(out PlayerRobotEntityBulletEntity playerRobotEntityBulletEntity) && playerRobotEntityBulletEntity.GetParentGO() == gameObject)
 		{
 			--numberOfFiredBullets;
+		}
+	}
+
+	private void PlaySound()
+	{
+		if(stageSoundManager != null)
+		{
+			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotShoot);
 		}
 	}
 
