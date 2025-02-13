@@ -112,7 +112,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 	{
 		if(playSound && stageSoundManager != null)
 		{
-			stageSoundManager.PlaySound(SoundEffectType.PlayerRobotDestructibleTileDestruction);
+			stageSoundManager.PlaySound(SoundEffectType.TileDestructionByPlayerRobotBullet);
 		}
 	}
 }

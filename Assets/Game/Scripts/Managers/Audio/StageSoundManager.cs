@@ -12,7 +12,7 @@ public class StageSoundManager : MonoBehaviour
 	[SerializeField] private AudioClip playerRobotIdleSound;
 	[SerializeField] private AudioClip playerRobotMovementSound;
 	[SerializeField] private AudioClip playerRobotShootSound;
-	[SerializeField] private AudioClip playerRobotDestructibleTileDestructionSound;
+	[SerializeField] private AudioClip tileDestructionByPlayerRobotBulletSound;
 	[SerializeField] private AudioClip playerRobotBulletHitSound;
 	[SerializeField] private AudioClip playerRobotExplosionSound;
 	[SerializeField] private AudioClip playerRobotLifeGainSound;
@@ -59,7 +59,7 @@ public class StageSoundManager : MonoBehaviour
 			SoundEffectType.PlayerRobotIdle => playerRobotIdleSound,
 			SoundEffectType.PlayerRobotMovement => playerRobotMovementSound,
 			SoundEffectType.PlayerRobotShoot => playerRobotShootSound,
-			SoundEffectType.PlayerRobotDestructibleTileDestruction => playerRobotDestructibleTileDestructionSound,
+			SoundEffectType.TileDestructionByPlayerRobotBullet => tileDestructionByPlayerRobotBulletSound,
 			SoundEffectType.PlayerRobotBulletHit => playerRobotBulletHitSound,
 			SoundEffectType.PlayerRobotExplosion => playerRobotExplosionSound,
 			SoundEffectType.PlayerRobotLifeGain => playerRobotLifeGainSound,

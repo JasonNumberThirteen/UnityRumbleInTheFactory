@@ -799,6 +799,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86ea7c91d403f544958eb8c0f9a841e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawGizmos: 1
+  pathNodeGizmosColor: {r: 0.5, g: 0, b: 0.25, a: 1}
+  pathNodeGizmosRadius: 0.05
 --- !u!4 &343096547
 Transform:
   m_ObjectHideFlags: 0
@@ -1988,7 +1991,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  gridSize: 0.5
   takenAreas:
   - {fileID: 1203599836}
   tileNodePrefab: {fileID: 29264372053668378, guid: 86a530cb62bfa124fb8beef8a2d2fab6, type: 3}
@@ -3004,7 +3006,7 @@ MonoBehaviour:
   playerRobotIdleSound: {fileID: 8300000, guid: a45af856d780abe47b6c8161e4764223, type: 3}
   playerRobotMovementSound: {fileID: 8300000, guid: fc25995ca1a276f41a55f257b3355d01, type: 3}
   playerRobotShootSound: {fileID: 8300000, guid: ef941213f8ebea44d81a7bdb72ec48a7, type: 3}
-  playerRobotDestructibleTileDestructionSound: {fileID: 8300000, guid: 2a05dd761557f954291df6fd3682cb42, type: 3}
+  tileDestructionByPlayerRobotBulletSound: {fileID: 8300000, guid: 2a05dd761557f954291df6fd3682cb42, type: 3}
   playerRobotBulletHitSound: {fileID: 8300000, guid: 27fdf53cec0538c4ab93448032492606, type: 3}
   playerRobotExplosionSound: {fileID: 8300000, guid: 6eac4ffe340ff4b4898d4ad84d642334, type: 3}
   playerRobotLifeGainSound: {fileID: 8300000, guid: af2088ab644d64e4188995ea474d9657, type: 3}

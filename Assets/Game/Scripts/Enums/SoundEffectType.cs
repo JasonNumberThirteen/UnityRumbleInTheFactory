@@ -4,7 +4,7 @@ public enum SoundEffectType
 	PlayerRobotIdle,
 	PlayerRobotMovement,
 	PlayerRobotShoot,
-	PlayerRobotDestructibleTileDestruction,
+	TileDestructionByPlayerRobotBullet,
 	PlayerRobotBulletHit,
 	PlayerRobotExplosion,
 	PlayerRobotLifeGain,
