@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MainMenuUIManager : UIManager
 {
 	private MainMenuPanelUI mainMenuPanelUI;
@@ -19,7 +17,7 @@ public class MainMenuUIManager : UIManager
 
 	private void Start()
 	{
-		SetCursorVisible(false);
+		CursorMethods.SetCursorVisible(false);
 	}
 
 	private void OnDestroy()
@@ -73,11 +71,6 @@ public class MainMenuUIManager : UIManager
 
 	private void OnApplicationQuit()
 	{
-		SetCursorVisible(true);
-	}
-
-	private void SetCursorVisible(bool visible)
-	{
-		Cursor.visible = visible;
+		CursorMethods.SetCursorVisible(true);
 	}
 }
