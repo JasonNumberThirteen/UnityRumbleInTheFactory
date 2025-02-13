@@ -24,9 +24,9 @@ public class EntityMovementController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		var speed = movementSpeed*Time.fixedDeltaTime;
+		var movementSpeedPerFrame = movementSpeed*Time.fixedDeltaTime;
 
-		rb2D.MovePosition(rb2D.position + CurrentMovementDirection*speed);
+		rb2D.MovePosition(rb2D.position + CurrentMovementDirection*movementSpeedPerFrame);
 	}
 
 	private void OnDisable()
