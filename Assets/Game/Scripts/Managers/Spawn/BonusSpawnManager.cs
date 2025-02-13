@@ -1,4 +1,3 @@
-using Random = UnityEngine.Random;
 using UnityEngine;
 
 public class BonusSpawnManager : MonoBehaviour
@@ -9,7 +8,7 @@ public class BonusSpawnManager : MonoBehaviour
 
 	public void SpawnRandomBonus()
 	{
-		var randomBonusGO = GetRandomBonusGO();
+		var randomBonusGO = bonusesPrefabs.GetRandomElement();
 
 		if(randomBonusGO == null)
 		{
@@ -31,19 +30,5 @@ public class BonusSpawnManager : MonoBehaviour
 		{
 			stageSoundManager.PlaySound(SoundEffectType.BonusSpawn);
 		}
-	}
-
-	private GameObject GetRandomBonusGO()
-	{
-		var numberOfBonuses = bonusesPrefabs.Length;
-		
-		if(numberOfBonuses == 0)
-		{
-			return null;
-		}
-		
-		var randomIndex = Random.Range(0, numberOfBonuses);
-
-		return bonusesPrefabs[randomIndex];
 	}
 }
