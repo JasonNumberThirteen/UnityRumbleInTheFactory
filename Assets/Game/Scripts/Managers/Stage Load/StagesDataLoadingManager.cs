@@ -22,10 +22,7 @@ public class StagesDataLoadingManager : MonoBehaviour
 		var numberOfAssets = assets.Length;
 		var stagesData = new StageData[numberOfAssets];
 
-		for (var i = 0; i < numberOfAssets; ++i)
-		{
-			stagesData[i] = GetStageDataFromAsset(assets[i]);
-		}
+		stagesData.ForEachIndexed((stageData, i) => stagesData[i] = GetStageDataFromAsset(assets[i]));
 
 		return stagesData;
 	}
