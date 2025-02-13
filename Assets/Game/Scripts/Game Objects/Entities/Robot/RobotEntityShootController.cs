@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class RobotEntityShootController : MonoBehaviour
+[RequireComponent(typeof(RobotEntityAnimatorController), typeof(RobotEntityRankController))]
+public abstract class RobotEntityShootController : MonoBehaviour
 {
 	[SerializeField] private BulletEntity bulletEntityPrefab;
 	[SerializeField, Min(0f)] private float offsetFromGO = 0.1f;
@@ -9,7 +10,8 @@ public class RobotEntityShootController : MonoBehaviour
 
 	private RobotEntityAnimatorController robotEntityAnimatorController;
 	private RobotEntityRankController robotEntityRankController;
-	private BulletStats bulletStats;
+
+	private readonly BulletStats bulletStats = new();
 
 	public virtual void FireBullet()
 	{
@@ -63,7 +65,7 @@ public class RobotEntityShootController : MonoBehaviour
 	{
 		if(robotRank != null)
 		{
-			bulletStats = new BulletStats(robotRank.GetDamage(), robotRank.GetBulletSpeed(), robotRank.CanDestroyMetal());
+			bulletStats.SetValues(robotRank.GetDamage(), robotRank.GetBulletSpeed(), robotRank.CanDestroyMetal());
 		}
 	}
 

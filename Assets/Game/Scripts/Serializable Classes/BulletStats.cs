@@ -8,7 +8,7 @@ public class BulletStats
 	[SerializeField, Min(0.01f)] private float bulletSpeed;
 	[SerializeField] private bool canDestroyMetal;
 
-	public BulletStats(int damage, float bulletSpeed, bool canDestroyMetal)
+	public void SetValues(int damage, float bulletSpeed, bool canDestroyMetal)
 	{
 		this.damage = damage;
 		this.bulletSpeed = bulletSpeed;
