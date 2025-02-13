@@ -22,7 +22,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 			return;
 		}
 		
-		DetectAdjacentTiles(bulletEntity.GetMovementDirection(), sender.transform.position);
+		DetectAdjacentTiles(bulletEntity.GetCurrentMovementDirection(), sender.transform.position);
 		DestroyAllDetectedCollidersIfPossible(sender.TryGetComponent(out PlayerRobotEntityBulletEntity _));
 	}
 
