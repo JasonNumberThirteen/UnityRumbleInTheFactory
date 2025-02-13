@@ -2,9 +2,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(RobotEntityShootController), typeof(PlayerRobotEntityMovementController))]
+[RequireComponent(typeof(PlayerInput), typeof(RobotEntityShootController), typeof(PlayerRobotEntityMovementController))]
 public class PlayerRobotEntityInput : MonoBehaviour
 {
+	[SerializeField] private GameData gameData;
+	[SerializeField, Min(1)] private int ordinalNumber;
+	
 	public UnityEvent<PlayerRobotEntityInput, bool> movementValueChangedEvent;
 	public UnityEvent<PlayerRobotEntityInput> playerDiedEvent;
 	
@@ -12,6 +15,7 @@ public class PlayerRobotEntityInput : MonoBehaviour
 	public Vector2 LastMovementVector {get; private set;}
 
 	private Vector2 currentMovementVector;
+	private PlayerInput playerInput;
 	private RobotEntityShootController robotEntityShootController;
 	private PlayerRobotEntityMovementController playerRobotEntityMovementController;
 	private StageStateManager stageStateManager;
@@ -24,12 +28,18 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private void Awake()
 	{
+		playerInput = GetComponent<PlayerInput>();
 		robotEntityShootController = GetComponent<RobotEntityShootController>();
 		playerRobotEntityMovementController = GetComponent<PlayerRobotEntityMovementController>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
-
+		
 		RegisterToListeners(true);
+	}
+
+	private void Start()
+	{
+		SetControlScheme();
 	}
 
 	private void OnDestroy()
@@ -37,6 +47,21 @@ public class PlayerRobotEntityInput : MonoBehaviour
 		RegisterToListeners(false);
 		UpdateMovementVector(Vector2.zero);
 		playerDiedEvent?.Invoke(this);
+	}
+
+	private void SetControlScheme()
+	{
+		var controlSchemeName = ShouldAssignGamepadControlScheme() ? InputMethods.GAMEPAD_CONTROL_SCHEME_NAME : InputMethods.KEYBOARD_AND_MOUSE_CONTROL_SCHEME_NAME;
+	
+		InputMethods.SetControlSchemeTo(playerInput, controlSchemeName);
+	}
+
+	private bool ShouldAssignGamepadControlScheme()
+	{
+		var selectedTwoPlayersMode = gameData != null && gameData.SelectedTwoPlayersMode;
+		var isFirstPlayer = ordinalNumber == 1;
+
+		return Gamepad.current != null && (!selectedTwoPlayersMode || !isFirstPlayer);
 	}
 
 	private void RegisterToListeners(bool register)

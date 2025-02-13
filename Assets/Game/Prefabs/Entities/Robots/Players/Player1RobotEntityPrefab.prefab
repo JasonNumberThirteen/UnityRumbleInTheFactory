@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: m_DefaultActionMap
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: -2978857606154982737, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Keyboard&Mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: -2978857606154982737, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -123051218500741914, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: playerData
       value: 
@@ -134,6 +142,10 @@ PrefabInstance:
       objectReference: {fileID: -1321011705, guid: d733df92c383d0e46b82c50317cb1ecf, type: 3}
     - target: {fileID: 4121298150539198220, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
       propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828307389359312348, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
+      propertyPath: ordinalNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5006473970861720256, guid: e1536191cf73dd2469e6b6857b2f9dad, type: 3}
