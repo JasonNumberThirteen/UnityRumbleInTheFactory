@@ -47,12 +47,18 @@ public class ScoreGameSceneManager : GameSceneManager
 	{
 		var gameIsOver = gameData != null && gameData.GameIsOver;
 		
-		if(!gameIsOver && gameData != null)
-		{
-			gameData.IncreaseDifficultyIfNeeded();
-			gameData.AdvanceToNextStage();
-		}
-
+		OperateOnGameDataIfGameContinues(gameIsOver);
 		LoadSceneByName(gameIsOver ? GAME_OVER_SCENE_NAME : STAGE_SCENE_NAME);
+	}
+
+	private void OperateOnGameDataIfGameContinues(bool gameIsOver)
+	{
+		if(gameIsOver || gameData == null)
+		{
+			return;
+		}
+		
+		gameData.IncreaseDifficultyIfNeeded();
+		gameData.AdvanceToNextStage();
 	}
 }
