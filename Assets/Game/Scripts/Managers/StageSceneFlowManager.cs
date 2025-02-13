@@ -157,7 +157,7 @@ public class StageSceneFlowManager : MonoBehaviour
 
 		if(statesSavingData.Contains(stageState))
 		{
-			dataSerialisationManager.SaveAllData();
+			dataSerialisationManager.SerialiseAllData();
 		}
 	}
 

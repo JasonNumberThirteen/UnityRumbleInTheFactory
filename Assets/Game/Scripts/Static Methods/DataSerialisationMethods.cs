@@ -5,7 +5,7 @@ public static class DataSerialisationMethods
 {
 	private static readonly string DATA_FILE_EXTENSION = "json";
 	
-	public static void SaveData(string filename, object @object)
+	public static void SerialiseData(string filename, object @object)
 	{
 		var filePath = GetFilePath(filename);
 		var data = JsonUtility.ToJson(@object);
@@ -13,7 +13,7 @@ public static class DataSerialisationMethods
 		File.WriteAllText(filePath, data);
 	}
 
-	public static void LoadDataIfPossible(string filename, object @object)
+	public static void DeserialiseDataIfPossible(string filename, object @object)
 	{
 		var filePath = GetFilePath(filename);
 

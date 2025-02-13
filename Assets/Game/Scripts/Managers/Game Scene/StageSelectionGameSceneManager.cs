@@ -95,7 +95,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	{
 		if(dataSerialisationManager != null)
 		{
-			dataSerialisationManager.SaveGameData();
+			dataSerialisationManager.SerialiseGameData();
 		}
 	}
 

@@ -6,39 +6,39 @@ public class DataSerialisationManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
-	public void SaveAllData()
+	public void SerialiseAllData()
 	{
-		SaveGameData();
-		SavePlayersData();
+		SerialiseGameData();
+		SerialisePlayersData();
 	}
 
-	public void SaveGameData()
+	public void SerialiseGameData()
 	{
-		OperateOnGameDataIfPossible(DataSerialisationMethods.SaveData);
+		OperateOnGameData(DataSerialisationMethods.SerialiseData);
 	}
 
-	public void SavePlayersData()
+	public void SerialisePlayersData()
 	{
-		OperateOnPlayerRobotDataIfPossible(DataSerialisationMethods.SaveData);
+		OperateOnPlayerData(DataSerialisationMethods.SerialiseData);
 	}
 
-	public void LoadAllData()
+	public void DeserialiseAllDataIfPossible()
 	{
-		LoadGameData();
-		LoadPlayersData();
+		DeserialiseGameDataIfPossible();
+		DeserialisePlayersDataIfPossible();
 	}
 
-	public void LoadGameData()
+	public void DeserialiseGameDataIfPossible()
 	{
-		OperateOnGameDataIfPossible(DataSerialisationMethods.LoadDataIfPossible);
+		OperateOnGameData(DataSerialisationMethods.DeserialiseDataIfPossible);
 	}
 
-	public void LoadPlayersData()
+	public void DeserialisePlayersDataIfPossible()
 	{
-		OperateOnPlayerRobotDataIfPossible(DataSerialisationMethods.LoadDataIfPossible);
+		OperateOnPlayerData(DataSerialisationMethods.DeserialiseDataIfPossible);
 	}
 
-	private void OperateOnGameDataIfPossible(Action<string, object> action)
+	private void OperateOnGameData(Action<string, object> action)
 	{
 		if(gameData != null)
 		{
@@ -46,7 +46,7 @@ public class DataSerialisationManager : MonoBehaviour
 		}
 	}
 	
-	private void OperateOnPlayerRobotDataIfPossible(Action<string, object> action)
+	private void OperateOnPlayerData(Action<string, object> action)
 	{
 		if(playerRobotsListData != null)
 		{
