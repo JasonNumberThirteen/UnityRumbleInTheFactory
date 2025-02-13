@@ -10,11 +10,12 @@ public class NukeEntityFortressField : MonoBehaviour
 	[SerializeField, Min(0.01f)] private float blinkDuration = 0.25f;
 	[SerializeField] private Sprite tileSpriteToBlink;
 	[SerializeField] private GameObject tileToSpawnAfterElapsedTimePrefab;
-	[SerializeField, Min(0.01f)] private float gridSize = 0.5f;
 
-	private NukeEntity nukeEntity;
 	private Collider2D c2D;
 	private Timer timer;
+	private NukeEntity nukeEntity;
+	private StageLayoutManager stageLayoutManager;
+
 	private readonly List<GameObject> fortressTileGOs = new();
 
 	public void SpawnFortress(float duration)
@@ -35,9 +36,10 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	private void Awake()
 	{
-		nukeEntity = GetComponentInParent<NukeEntity>();
 		c2D = GetComponent<Collider2D>();
 		timer = GetComponent<Timer>();
+		nukeEntity = GetComponentInParent<NukeEntity>();
+		stageLayoutManager = ObjectMethods.FindComponentOfType<StageLayoutManager>();
 
 		RegisterToListeners(true);
 	}
@@ -61,36 +63,43 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	private void OnTimerFinished()
 	{
-		if(tileToSpawnAfterElapsedTimePrefab == null)
-		{
-			return;
-		}
+		fortressTileGOs.ForEach(ReplaceTileAfterElapsedTime);
+		fortressTileGOs.Clear();
+	}
 
-		fortressTileGOs.ForEach(go =>
+	private void ReplaceTileAfterElapsedTime(GameObject go)
+	{
+		if(tileToSpawnAfterElapsedTimePrefab != null)
 		{
 			Instantiate(tileToSpawnAfterElapsedTimePrefab, go.transform.position, go.transform.rotation);
-			Destroy(go);
-		});
-
-		fortressTileGOs.Clear();
+		}
+		
+		Destroy(go);
 	}
 
 	private void SpawnTilesWithinArea()
 	{
-		for (var y = c2D.bounds.min.y; y < c2D.bounds.max.y; y += gridSize)
+		if(stageLayoutManager == null)
 		{
-			for (var x = c2D.bounds.min.x; x < c2D.bounds.max.x; x += gridSize)
+			return;
+		}
+
+		var tileSize = stageLayoutManager.GetTileSize();
+		
+		for (var y = c2D.bounds.min.y; y < c2D.bounds.max.y; y += tileSize)
+		{
+			for (var x = c2D.bounds.min.x; x < c2D.bounds.max.x; x += tileSize)
 			{
-				SpawnTile(GetTilePosition(x, y));
+				SpawnTile(GetTilePosition(x, y, tileSize));
 			}
 		}
 	}
 
-	private Vector2 GetTilePosition(float leftSideX, float topSideY)
+	private Vector2 GetTilePosition(float leftSideX, float topSideY, float tileSize)
 	{
-		var halfOfGridSize = gridSize*0.5f;
-		var x = leftSideX + halfOfGridSize;
-		var y = topSideY + halfOfGridSize;
+		var halfOfTileSize = tileSize*0.5f;
+		var x = leftSideX + halfOfTileSize;
+		var y = topSideY + halfOfTileSize;
 		
 		return new Vector2(x, y);
 	}
@@ -103,13 +112,9 @@ public class NukeEntityFortressField : MonoBehaviour
 		}
 
 		var instance = Instantiate(tilePrefab, position, Quaternion.identity);
-		
-		if(instance != null)
-		{
-			var nukeEntityFortressFieldTileRenderer = instance.AddComponent<NukeEntityFortressFieldTileRenderer>();
+		var nukeEntityFortressFieldTileRenderer = instance.AddComponent<NukeEntityFortressFieldTileRenderer>();
 
-			nukeEntityFortressFieldTileRenderer.Setup(timer.GetDuration(), timeForBlinkStart, blinkDuration, tileSpriteToBlink);
-			fortressTileGOs.Add(instance);
-		}
+		nukeEntityFortressFieldTileRenderer.Setup(timer.GetDuration(), timeForBlinkStart, blinkDuration, tileSpriteToBlink);
+		fortressTileGOs.Add(instance);
 	}
 }
