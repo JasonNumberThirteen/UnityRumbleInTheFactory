@@ -42,7 +42,7 @@ public class GameOverTextUI : TextUI
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 	}
