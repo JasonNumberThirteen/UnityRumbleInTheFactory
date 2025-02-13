@@ -6,13 +6,11 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
 	private MenuOptionsInput menuOptionsInput;
-	private StageCounterHeaderStageSelectionTextUI stageCounterHeaderTextUI;
 	private DataSerialisationManager dataSerialisationManager;
 
 	private void Awake()
 	{
 		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
-		stageCounterHeaderTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
 		dataSerialisationManager = ObjectMethods.FindComponentOfType<DataSerialisationManager>();
 
 		RegisterToListeners(true);
@@ -72,23 +70,15 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void SetStageNumber()
 	{
-		if(gameData == null || GetStageCounterHeaderStageSelectionTextUI() == null)
+		var stageCounterHeaderTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
+		
+		if(gameData == null || stageCounterHeaderTextUI == null)
 		{
 			return;
 		}
 		
 		gameData.SetStageNumber(stageCounterHeaderTextUI.GetCurrentCounterValue());
 		SaveGameData();
-	}
-
-	private StageCounterHeaderStageSelectionTextUI GetStageCounterHeaderStageSelectionTextUI()
-	{
-		if(stageCounterHeaderTextUI == null)
-		{
-			stageCounterHeaderTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
-		}
-
-		return stageCounterHeaderTextUI;
 	}
 
 	private void SaveGameData()
@@ -103,7 +93,15 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	{
 		if(playerRobotsListData != null)
 		{
-			playerRobotsListData.GetPlayerRobotsData().ForEachIndexed((playerRobotData, i) => playerRobotData.ResetData(i == 1 || (gameData != null && gameData.SelectedTwoPlayersMode)), 1);
+			playerRobotsListData.GetPlayerRobotsData().ForEachIndexed(ResetPlayerRobotData, 1);
 		}
+	}
+
+	private void ResetPlayerRobotData(PlayerRobotData playerRobotData, int counterValue)
+	{
+		var isFirstPlayer = counterValue == 1;
+		var selectedTwoPlayersMode = gameData != null && gameData.SelectedTwoPlayersMode;
+		
+		playerRobotData.ResetData(isFirstPlayer || selectedTwoPlayersMode);
 	}
 }
