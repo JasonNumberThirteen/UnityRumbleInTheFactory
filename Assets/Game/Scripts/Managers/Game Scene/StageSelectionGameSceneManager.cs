@@ -70,14 +70,14 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void SetStageNumber()
 	{
-		var stageCounterHeaderTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
+		var stageCounterHeaderStageSelectionTextUI = ObjectMethods.FindComponentOfType<StageCounterHeaderStageSelectionTextUI>();
 		
-		if(gameData == null || stageCounterHeaderTextUI == null)
+		if(gameData == null || stageCounterHeaderStageSelectionTextUI == null)
 		{
 			return;
 		}
 		
-		gameData.SetStageNumber(stageCounterHeaderTextUI.GetCurrentCounterValue());
+		gameData.SetStageNumber(stageCounterHeaderStageSelectionTextUI.GetCurrentCounterValue());
 		SaveGameData();
 	}
 
