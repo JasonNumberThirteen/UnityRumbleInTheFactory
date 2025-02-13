@@ -1,12 +1,10 @@
+using System;
+
 public class PlayerRobotEntityRankController : RobotEntityRankController
 {
 	private void Awake()
 	{
-		if(robotData != null && robotData is PlayerRobotData playerRobotData)
-		{
-			rankNumber = playerRobotData.RankNumber;
-		}
-
+		OperateOnPlayerRobotDataIfPossible(playerRobotData => rankNumber = playerRobotData.RankNumber);
 		RegisterToListeners(true);
 	}
 
@@ -29,9 +27,14 @@ public class PlayerRobotEntityRankController : RobotEntityRankController
 
 	private void OnRankChanged(RobotRank robotRank, bool setOnStart)
 	{
+		OperateOnPlayerRobotDataIfPossible(playerRobotData => playerRobotData.RankNumber = rankNumber);
+	}
+
+	private void OperateOnPlayerRobotDataIfPossible(Action<PlayerRobotData> action)
+	{
 		if(robotData != null && robotData is PlayerRobotData playerRobotData)
 		{
-			playerRobotData.RankNumber = rankNumber;
+			action?.Invoke(playerRobotData);
 		}
 	}
 }
