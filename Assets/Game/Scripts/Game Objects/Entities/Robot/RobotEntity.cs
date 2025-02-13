@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(RobotEntityRankController))]
 public abstract class RobotEntity : MonoBehaviour
 {
-	private RobotEntityShield robotEntityShield;
 	private RobotEntityRankController robotEntityRankController;
+	private RobotEntityShield robotEntityShield;
 	
 	public abstract bool IsFriendly();
 	public abstract void OnLifeBonusCollected(int lives);
@@ -24,7 +24,7 @@ public abstract class RobotEntity : MonoBehaviour
 
 	protected virtual void Awake()
 	{
-		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
 		robotEntityRankController = GetComponent<RobotEntityRankController>();
+		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
 	}
 }
