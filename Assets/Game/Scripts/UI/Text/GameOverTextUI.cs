@@ -60,6 +60,7 @@ public class GameOverTextUI : TextUI
 		}
 
 		text.enabled = true;
+		
 		timedRectTransformPositionController.StartTranslation();
 	}
 }
