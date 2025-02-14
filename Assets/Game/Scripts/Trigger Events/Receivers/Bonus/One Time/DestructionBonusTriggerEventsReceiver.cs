@@ -29,7 +29,7 @@ public class DestructionBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 
 	private void PlaySoundIfNeeded(bool playSound)
 	{
-		if(stageSoundManager != null && playSound)
+		if(playSound && stageSoundManager != null)
 		{
 			stageSoundManager.PlaySound(SoundEffectType.EnemyRobotExplosion);
 		}
