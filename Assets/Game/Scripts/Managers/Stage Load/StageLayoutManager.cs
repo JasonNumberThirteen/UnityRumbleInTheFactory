@@ -24,18 +24,12 @@ public class StageLayoutManager : MonoBehaviour
 
 	private void Awake()
 	{
-		BuildStageLayout(GameDataMethods.GetTileIndexesFromCurrentStageData(gameData));
+		var tileIndexes = GameDataMethods.GetTileIndexesFromCurrentStageData(gameData);
+
+		tileIndexes.ForEachIndexed(SpawnTileIfPossible);
 	}
 
-	private void BuildStageLayout(int[] tilesIndexes)
-	{
-		for (int i = 0; i < tilesIndexes.Length; ++i)
-		{
-			SpawnTile(i, tilesIndexes[i]);
-		}
-	}
-
-	private void SpawnTile(int loopIndex, int tileIndex)
+	private void SpawnTileIfPossible(int tileIndex, int loopIndex)
 	{
 		if(!IndexIsWithinTilesLength(tileIndex))
 		{
