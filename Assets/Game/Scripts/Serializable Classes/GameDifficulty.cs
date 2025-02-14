@@ -25,10 +25,8 @@ public class GameDifficulty
 
 	public T GetTierValue<T>(Func<GameDifficultyTier, T> tierFunc) where T : struct
 	{
-		var currentTier = GetCurrentTier();
+		var currentTier = tiers.GetElementAt(currentTierIndex);
 		
 		return currentTier != null ? tierFunc(currentTier) : default;
 	}
-
-	private GameDifficultyTier GetCurrentTier() => tiers.Length > 0 && currentTierIndex >= 0 && currentTierIndex < tiers.Length ? tiers[currentTierIndex] : null;
 }

@@ -39,7 +39,7 @@ public class PlayerRobotData : RobotData
 	private int lives;
 	private int rankNumber;
 
-	public override RobotRank GetRankByIndex(int index) => index >= 0 && index < GetNumberOfRanks() ? ranks[index] : null;
+	public override RobotRank GetRankByIndex(int index) => ranks.GetElementAt(index);
 	public override int GetNumberOfRanks() => ranks != null && ranks.Length > 0 ? ranks.Length : 1;
 
 	public void ResetData(bool isActive)
