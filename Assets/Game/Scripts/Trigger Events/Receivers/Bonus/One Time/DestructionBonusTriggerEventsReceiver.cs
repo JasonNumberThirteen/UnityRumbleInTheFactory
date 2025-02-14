@@ -5,15 +5,18 @@ public class DestructionBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 {
 	protected override void GiveEffect(GameObject sender)
 	{
-		DestroyAllRobotEntities(sender.TryGetComponent(out RobotEntity robotEntity) && !robotEntity.IsFriendly());
+		if(sender.TryGetComponent(out RobotEntity robotEntity))
+		{
+			DestroyAllActiveRobotEntities(!robotEntity.IsFriendly());
+		}
 	}
 
-	private void DestroyAllRobotEntities(bool destroyFriendly)
+	private void DestroyAllActiveRobotEntities(bool destroyFriendly)
 	{
-		var robotEntities = ObjectMethods.FindComponentsOfType<RobotEntity>(false).Where(robotEntity => robotEntity.IsFriendly() == destroyFriendly).ToArray();
+		var activeRobotEntitiesToDestroy = ObjectMethods.FindComponentsOfType<RobotEntity>(false).Where(robotEntity => robotEntity.IsFriendly() == destroyFriendly).ToArray();
 		
-		robotEntities.ForEach(DestroyRobotEntity);
-		PlayExplosionSoundIfNeeded(robotEntities.Length > 0);
+		activeRobotEntitiesToDestroy.ForEach(DestroyRobotEntity);
+		PlaySoundIfNeeded(activeRobotEntitiesToDestroy.Length > 0);
 	}
 
 	private void DestroyRobotEntity(RobotEntity robotEntity)
@@ -24,7 +27,7 @@ public class DestructionBonusTriggerEventsReceiver : BonusTriggerEventsReceiver
 		}
 	}
 
-	private void PlayExplosionSoundIfNeeded(bool playSound)
+	private void PlaySoundIfNeeded(bool playSound)
 	{
 		if(stageSoundManager != null && playSound)
 		{
