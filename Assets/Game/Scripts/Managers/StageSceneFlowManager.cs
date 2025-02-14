@@ -166,13 +166,10 @@ public class StageSceneFlowManager : MonoBehaviour
 
 	private void StartTimerWithDurationForInterruptedGameIfPossible(StageState stageState)
 	{
-		if(stageState != StageState.Interrupted)
+		if(stageState == StageState.Interrupted)
 		{
-			return;
+			timer.StartTimerWithSetDuration(delayAfterInterrupting);
 		}
-
-		timer.SetDuration(delayAfterInterrupting);
-		timer.StartTimer();
 	}
 
 	private void SaveAllDataIfNeeded(StageState stageState)

@@ -17,6 +17,12 @@ public class Timer : MonoBehaviour
 	public float GetDuration() => duration;
 	public float GetProgressPercent() => duration > 0 ? currentTime / duration : 0;
 
+	public void StartTimerWithSetDuration(float duration)
+	{
+		SetDuration(duration);
+		StartTimer();
+	}
+
 	public void StartTimer()
 	{
 		SetAsFinished(false);

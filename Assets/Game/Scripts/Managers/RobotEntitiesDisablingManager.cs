@@ -14,8 +14,7 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 	{
 		this.affectFriendly = affectFriendly;
 
-		timer.SetDuration(duration);
-		timer.StartTimer();
+		timer.StartTimerWithSetDuration(duration);
 	}
 
 	public void SetRobotEntitiesActive(bool active, bool affectFriendly)

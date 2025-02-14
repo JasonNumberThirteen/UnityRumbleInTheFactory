@@ -149,12 +149,9 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 		var audioClip = stageSoundManager.GetAudioClipBySoundEffectType(soundEffectType);
 
-		if(audioClip == null)
+		if(audioClip != null)
 		{
-			return;
+			timer.StartTimerWithSetDuration(audioClip.length);
 		}
-
-		timer.SetDuration(audioClip.length);
-		timer.StartTimer();
 	}
 }

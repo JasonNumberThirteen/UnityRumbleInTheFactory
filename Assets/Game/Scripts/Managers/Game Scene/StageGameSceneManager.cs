@@ -63,7 +63,7 @@ public class StageGameSceneManager : GameSceneManager
 
 	private void OnTextReachedTargetPosition()
 	{
-		StartTimerWithSetDuration(delayOnGameOver);
+		timer.StartTimerWithSetDuration(delayOnGameOver);
 	}
 
 	private void OnStageStateChanged(StageState stageState)
@@ -75,14 +75,8 @@ public class StageGameSceneManager : GameSceneManager
 				break;
 			
 			case StageState.Won:
-				StartTimerWithSetDuration(delayOnWonStage);
+				timer.StartTimerWithSetDuration(delayOnWonStage);
 				break;
 		}
-	}
-
-	private void StartTimerWithSetDuration(float duration)
-	{
-		timer.SetDuration(duration);
-		timer.StartTimer();
 	}
 }

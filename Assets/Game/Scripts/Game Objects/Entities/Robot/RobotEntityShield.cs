@@ -12,8 +12,7 @@ public class RobotEntityShield : MonoBehaviour
 
 	public void ActivateShield(float duration)
 	{
-		timer.SetDuration(duration);
-		timer.StartTimer();
+		timer.StartTimerWithSetDuration(duration);
 	}
 
 	private void Awake()
