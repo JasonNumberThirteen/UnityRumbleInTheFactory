@@ -2,18 +2,21 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(LoopingIntCounter))]
+[RequireComponent(typeof(Timer), typeof(LoopingIntCounter))]
 public class MainMenuOptionSelectionManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
+	private Timer timer;
 	private LoopingIntCounter loopingIntCounter;
+	private int navigationDirection;
 	private MenuOptionsInput menuOptionsInput;
 	private MainMenuPanelUI mainMenuPanelUI;
 	private OptionsManager optionsManager;
 
 	private void Awake()
 	{
+		timer = GetComponent<Timer>();
 		loopingIntCounter = GetComponent<LoopingIntCounter>();
 		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
 		mainMenuPanelUI = ObjectMethods.FindComponentOfType<MainMenuPanelUI>();
@@ -60,29 +63,46 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		if(register)
 		{
+			timer.timerStartedEvent.AddListener(OnTimerStarted);
+			timer.timerFinishedEvent.AddListener(timer.StartTimer);
+			loopingIntCounter.valueChangedEvent.AddListener(OnCounterValueChanged);
+			
 			if(menuOptionsInput != null)
 			{
 				menuOptionsInput.navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
 				menuOptionsInput.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
 			}
-
-			loopingIntCounter.valueChangedEvent.AddListener(OnCounterValueChanged);
 		}
 		else
 		{
+			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
+			timer.timerFinishedEvent.RemoveListener(timer.StartTimer);
+			loopingIntCounter.valueChangedEvent.RemoveListener(OnCounterValueChanged);
+			
 			if(menuOptionsInput != null)
 			{
 				menuOptionsInput.navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
 				menuOptionsInput.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
 			}
+		}
+	}
 
-			loopingIntCounter.valueChangedEvent.RemoveListener(OnCounterValueChanged);
+	private void OnTimerStarted()
+	{
+		TriggerOnKeyPressed(() => loopingIntCounter.ModifyBy(navigationDirection));
+	}
+
+	private void OnCounterValueChanged()
+	{
+		if(optionsManager != null)
+		{
+			optionsManager.SelectOptionIfPossible(GetOptionTypeByCounterValue());
 		}
 	}
 
 	private void OnNavigateKeyPressed(int direction)
 	{
-		TriggerOnKeyPressed(() => loopingIntCounter.ModifyBy(direction));
+		navigationDirection = direction;
 	}
 
 	private void OnSubmitKeyPressed()
@@ -110,11 +130,15 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		}
 	}
 
-	private void OnCounterValueChanged()
+	private void Update()
 	{
-		if(optionsManager != null)
+		if(navigationDirection != 0 && !timer.TimerWasStarted)
 		{
-			optionsManager.SelectOptionIfPossible(GetOptionTypeByCounterValue());
+			timer.StartTimer();
+		}
+		else if(navigationDirection == 0)
+		{
+			timer.InterruptTimerIfPossible();
 		}
 	}
 

@@ -357,8 +357,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 639037320}
-  - component: {fileID: 639037319}
+  - component: {fileID: 639037322}
   - component: {fileID: 639037321}
+  - component: {fileID: 639037319}
   m_Layer: 0
   m_Name: Main Menu Option Selection Manager
   m_TagString: Untagged
@@ -409,6 +410,26 @@ MonoBehaviour:
   valueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &639037322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639037318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fa35555f60b8344aac1210d6ce0ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  timerFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startImmediately: 0
+  duration: 0.2
 --- !u!1 &680709370
 GameObject:
   m_ObjectHideFlags: 0
