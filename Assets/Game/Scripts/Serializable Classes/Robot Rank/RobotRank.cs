@@ -5,7 +5,7 @@ using UnityEngine;
 public class RobotRank
 {
 	[SerializeField, Min(1)] private int health;
-	[SerializeField, Min(0.01f)] private float movementSpeed;
+	[SerializeField, Min(0f)] private float movementSpeed;
 	[SerializeField] private BulletStats bulletStats;
 	[SerializeField] private RuntimeAnimatorController runtimeAnimatorController;
 

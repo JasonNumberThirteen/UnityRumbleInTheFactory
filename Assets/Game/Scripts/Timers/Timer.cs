@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
 	public UnityEvent timerFinishedEvent;
 
 	[SerializeField] private bool startImmediately = true;
-	[SerializeField, Min(0.01f)] private float duration;
+	[SerializeField, Min(0f)] private float duration;
 
 	private float currentTime;
 

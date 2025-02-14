@@ -6,7 +6,7 @@ public class GameDifficultyTier
 {
 	[SerializeField, Min(1f)] private float enemySpawnDelay;
 	[SerializeField, Min(1)] private int enemiesLimitAtOnce;
-	[SerializeField, Min(0.01f)] private float enemyMovementSpeedMultiplier;
+	[SerializeField, Min(0f)] private float enemyMovementSpeedMultiplier;
 	[SerializeField, Min(0.01f)] private float enemyShootDelayMultiplier;
 	[SerializeField] private bool enemiesCanCollectBonuses;
 
