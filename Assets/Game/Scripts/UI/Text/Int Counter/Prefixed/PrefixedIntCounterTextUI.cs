@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PrefixedIntCounterTextUI : IntCounterTextUI
 {
-	[SerializeField] private int width;
+	[SerializeField, Min(0)] private int width;
 
 	public override string GetCounterValueAsString() => string.Format("{0," + width + "}", GetFormattedCounterValueAsString());
 
