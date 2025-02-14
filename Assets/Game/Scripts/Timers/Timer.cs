@@ -53,7 +53,7 @@ public class Timer : MonoBehaviour
 		
 		if(currentTime < duration)
 		{
-			currentTime = Mathf.Clamp(currentTime + Time.deltaTime, 0f, duration);
+			currentTime = (currentTime + Time.deltaTime).GetClampedValue(0f, duration);
 		}
 		else if(!TimerWasFinished)
 		{

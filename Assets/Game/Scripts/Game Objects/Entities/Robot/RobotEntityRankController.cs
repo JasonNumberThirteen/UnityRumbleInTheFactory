@@ -34,7 +34,7 @@ public class RobotEntityRankController : MonoBehaviour
 	{
 		var previousRankNumber = rankNumber;
 
-		rankNumber = Mathf.Clamp(newRankNumber, 1, robotData != null ? robotData.GetNumberOfRanks() : 1);
+		rankNumber = newRankNumber.GetClampedValue(1, robotData != null ? robotData.GetNumberOfRanks() : 1);
 
 		if(forceInvokingEvent || previousRankNumber != rankNumber)
 		{

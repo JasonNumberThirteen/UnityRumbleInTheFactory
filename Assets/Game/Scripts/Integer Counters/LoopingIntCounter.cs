@@ -25,7 +25,7 @@ public class LoopingIntCounter : IntCounter
 		}
 	}
 
-	protected override int GetModifiedValue(int value) => Mathf.Clamp(value, lowerBound, upperBound);
+	protected override int GetModifiedValue(int value) => value.GetClampedValue(lowerBound, upperBound);
 	private int GetNextValue(int value) => (CurrentValue + value - 1) % upperBound + lowerBound;
 	private int GetPreviousValue(int value) => (CurrentValue - value + upperBound - 1) % upperBound + lowerBound;
 }

@@ -16,19 +16,19 @@ public class PlayerRobotData : RobotData
 	public int Score
 	{
 		get => saveablePlayerData.score;
-		set => saveablePlayerData.score = Mathf.Clamp(value, 0, int.MaxValue);
+		set => saveablePlayerData.score = value.GetClampedValue(0, int.MaxValue);
 	}
 
 	public int Lives
 	{
 		get => lives;
-		set => lives = Mathf.Clamp(value, 0, maxLives);
+		set => lives = value.GetClampedValue(0, maxLives);
 	}
 
 	public int RankNumber
 	{
 		get => rankNumber;
-		set => rankNumber = Mathf.Clamp(value, 1, GetNumberOfRanks());
+		set => rankNumber = value.GetClampedValue(1, GetNumberOfRanks());
 	}
 	
 	[SerializeField] private PlayerRobotRank[] ranks;

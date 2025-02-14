@@ -19,7 +19,7 @@ public class GameDifficulty
 	{
 		if(tiers.Length > 0)
 		{
-			currentTierIndex = Mathf.Clamp(currentTierIndex + 1, 0, tiers.Length - 1);
+			currentTierIndex = (currentTierIndex + 1).GetClampedValue(0, tiers.Length - 1);
 		}
 	}
 
