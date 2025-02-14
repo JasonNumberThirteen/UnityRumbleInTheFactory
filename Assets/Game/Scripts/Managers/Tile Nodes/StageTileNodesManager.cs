@@ -40,19 +40,18 @@ public class StageTileNodesManager : MonoBehaviour
 	{
 		stageLayoutManager = ObjectMethods.FindComponentOfType<StageLayoutManager>();
 
-		SpawnTileNodes(GameDataMethods.GetTileIndexesFromCurrentStageData(gameData));
+		SpawnTileNodes();
 		tileNodes.ForEach(tileNode => tileNode.FindNeighbors(tileNodes));
 	}
 
-	private void SpawnTileNodes(int[] tilesIndexes)
+	private void SpawnTileNodes()
 	{
-		for (int i = 0; i < tilesIndexes.Length; ++i)
-		{
-			SpawnTileNodeIfNeeded(i, tilesIndexes[i]);
-		}
+		var tileIndexes = GameDataMethods.GetTileIndexesFromCurrentStageData(gameData);
+		
+		tileIndexes.ForEachIndexed(SpawnTileNodeIfPossible);
 	}
 
-	private void SpawnTileNodeIfNeeded(int loopIndex, int tileIndex)
+	private void SpawnTileNodeIfPossible(int tileIndex, int loopIndex)
 	{
 		var tileType = (StageTileType)tileIndex;
 		
