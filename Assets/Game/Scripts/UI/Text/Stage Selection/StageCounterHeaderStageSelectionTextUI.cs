@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(LoopingIntCounter))]
 public class StageCounterHeaderStageSelectionTextUI : StageSelectionTextUI
 {
-	private StageSelectionOptionSelectionManager stageSelectionOptionSelectionManager;
+	private StageSelectionManager stageSelectionManager;
 	private LoopingIntCounter loopingIntCounter;
 
 	public int GetCurrentCounterValue() => loopingIntCounter.CurrentValue;
@@ -12,7 +12,7 @@ public class StageCounterHeaderStageSelectionTextUI : StageSelectionTextUI
 	{
 		base.Awake();
 		
-		stageSelectionOptionSelectionManager = ObjectMethods.FindComponentOfType<StageSelectionOptionSelectionManager>();
+		stageSelectionManager = ObjectMethods.FindComponentOfType<StageSelectionManager>();
 		loopingIntCounter = GetComponent<LoopingIntCounter>();
 
 		RegisterToListeners(true);
@@ -27,16 +27,16 @@ public class StageCounterHeaderStageSelectionTextUI : StageSelectionTextUI
 	{
 		if(register)
 		{
-			if(stageSelectionOptionSelectionManager != null)
+			if(stageSelectionManager != null)
 			{
-				stageSelectionOptionSelectionManager.navigationDirectionChangedEvent.AddListener(loopingIntCounter.ModifyBy);
+				stageSelectionManager.navigationDirectionChangedEvent.AddListener(loopingIntCounter.ModifyBy);
 			}
 		}
 		else
 		{
-			if(stageSelectionOptionSelectionManager != null)
+			if(stageSelectionManager != null)
 			{
-				stageSelectionOptionSelectionManager.navigationDirectionChangedEvent.RemoveListener(loopingIntCounter.ModifyBy);
+				stageSelectionManager.navigationDirectionChangedEvent.RemoveListener(loopingIntCounter.ModifyBy);
 			}
 		}
 	}

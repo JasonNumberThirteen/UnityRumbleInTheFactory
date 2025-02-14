@@ -2,21 +2,18 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Timer), typeof(LoopingIntCounter))]
+[RequireComponent(typeof(LoopingIntCounter))]
 public class MainMenuOptionSelectionManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
-	private Timer timer;
 	private LoopingIntCounter loopingIntCounter;
-	private int navigationDirection;
 	private MenuOptionsInput menuOptionsInput;
 	private MainMenuPanelUI mainMenuPanelUI;
 	private OptionsManager optionsManager;
 
 	private void Awake()
 	{
-		timer = GetComponent<Timer>();
 		loopingIntCounter = GetComponent<LoopingIntCounter>();
 		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
 		mainMenuPanelUI = ObjectMethods.FindComponentOfType<MainMenuPanelUI>();
@@ -63,8 +60,6 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		if(register)
 		{
-			timer.timerStartedEvent.AddListener(OnTimerStarted);
-			timer.timerFinishedEvent.AddListener(timer.StartTimer);
 			loopingIntCounter.valueChangedEvent.AddListener(OnCounterValueChanged);
 			
 			if(menuOptionsInput != null)
@@ -75,8 +70,6 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		}
 		else
 		{
-			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
-			timer.timerFinishedEvent.RemoveListener(timer.StartTimer);
 			loopingIntCounter.valueChangedEvent.RemoveListener(OnCounterValueChanged);
 			
 			if(menuOptionsInput != null)
@@ -85,11 +78,6 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 				menuOptionsInput.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
 			}
 		}
-	}
-
-	private void OnTimerStarted()
-	{
-		TriggerOnKeyPressed(() => loopingIntCounter.ModifyBy(navigationDirection));
 	}
 
 	private void OnCounterValueChanged()
@@ -102,7 +90,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 
 	private void OnNavigateKeyPressed(int direction)
 	{
-		navigationDirection = direction;
+		TriggerOnKeyPressed(() => loopingIntCounter.ModifyBy(direction));
 	}
 
 	private void OnSubmitKeyPressed()
@@ -127,18 +115,6 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		else
 		{
 			mainMenuPanelUI.SetTargetPosition();
-		}
-	}
-
-	private void Update()
-	{
-		if(navigationDirection != 0 && !timer.TimerWasStarted)
-		{
-			timer.StartTimer();
-		}
-		else if(navigationDirection == 0)
-		{
-			timer.InterruptTimerIfPossible();
 		}
 	}
 
