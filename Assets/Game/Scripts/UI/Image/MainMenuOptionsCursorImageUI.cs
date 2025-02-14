@@ -14,7 +14,10 @@ public class MainMenuOptionsCursorImageUI : MonoBehaviour
 
 	public void SetPositionRelativeToOption(Option option)
 	{
-		rectTransformPositionController.SetPositionY(option.GetPosition().y);
+		if(option != null)
+		{
+			rectTransformPositionController.SetPositionY(option.GetPosition().y);
+		}
 	}
 
 	private void Awake()
