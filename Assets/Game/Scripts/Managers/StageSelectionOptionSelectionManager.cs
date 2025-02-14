@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Timer))]
-public class StageSelectionManager : MonoBehaviour
+public class StageSelectionOptionSelectionManager : MonoBehaviour
 {
 	public UnityEvent<int> navigationDirectionChangedEvent;
 	
