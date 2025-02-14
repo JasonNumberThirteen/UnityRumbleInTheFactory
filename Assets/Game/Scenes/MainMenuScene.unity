@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 639037319}
   - component: {fileID: 639037321}
   m_Layer: 0
-  m_Name: Option Selection Manager
+  m_Name: Main Menu Option Selection Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,7 +1418,7 @@ GameObject:
   - component: {fileID: 1144572965}
   - component: {fileID: 1144572964}
   m_Layer: 0
-  m_Name: Options Listeners Manager
+  m_Name: Main Menu Options Listeners Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1544,7 +1544,7 @@ GameObject:
   - component: {fileID: 1261939961}
   - component: {fileID: 1261939960}
   m_Layer: 0
-  m_Name: UI Manager
+  m_Name: Main Menu UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2570,7 +2570,7 @@ GameObject:
   - component: {fileID: 1906489575}
   - component: {fileID: 1906489576}
   m_Layer: 0
-  m_Name: Game Scene Manager
+  m_Name: Main Menu Game Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2781,12 +2781,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1261939961}
+  - {fileID: 1754974305}
+  - {fileID: 1906489575}
   - {fileID: 639037320}
   - {fileID: 1144572965}
+  - {fileID: 1261939961}
   - {fileID: 1969683317}
-  - {fileID: 1906489575}
-  - {fileID: 1754974305}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
