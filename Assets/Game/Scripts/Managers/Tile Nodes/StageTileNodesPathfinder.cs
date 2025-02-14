@@ -8,10 +8,10 @@ public class StageTileNodesPathfinder : MonoBehaviour
 	[SerializeField] private Color pathNodeGizmosColor = new(0.5f, 0f, 0.25f, 1f);
 	[SerializeField, Range(0.01f, 0.25f)] private float pathNodeGizmosRadius = 0.05f;
 	
-	private StageTileNodesManager stageTileNodesManager;
 	private TileNode startTileNode;
 	private TileNode endTileNode;
 	private bool foundPath;
+	private StageTileNodesManager stageTileNodesManager;
 
 	private readonly PriorityQueue<TileNode> priorityQueue = new();
 	private readonly List<TileNode> pathNodes = new();
@@ -90,14 +90,24 @@ public class StageTileNodesPathfinder : MonoBehaviour
 		
 		if(tileNode == endTileNode)
 		{
-			foundPath = true;
-
-			PathfindingMethods.OperateOnPathTileNodes(tileNode, tileNode => pathNodes.Add(tileNode));
+			FinishSearchingOn(tileNode);
 		}
 		else
 		{
 			AddNeighborsOf(tileNode);
 		}
+	}
+
+	private void FinishSearchingOn(TileNode tileNode)
+	{
+		if(tileNode == null)
+		{
+			return;
+		}
+		
+		foundPath = true;
+
+		PathfindingMethods.OperateOnPathTileNodes(tileNode, tileNode => pathNodes.Add(tileNode));
 	}
 
 	private void AddNeighborsOf(TileNode tileNode)
