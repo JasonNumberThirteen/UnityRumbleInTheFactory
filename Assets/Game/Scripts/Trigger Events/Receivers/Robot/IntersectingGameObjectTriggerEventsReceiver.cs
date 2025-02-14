@@ -8,11 +8,13 @@ public class IntersectingGameObjectTriggerEventsReceiver : MonoBehaviour, ITrigg
 	
 	public void TriggerOnExit(GameObject sender)
 	{
-		if(sender != null && sender.TryGetComponent(out IntersectingGameObjectTriggerEventsReceiver intersectingGameObjectTriggerEventsReceiver))
+		if(sender == null || !sender.TryGetComponent(out IntersectingGameObjectTriggerEventsReceiver intersectingGameObjectTriggerEventsReceiver))
 		{
-			RestoreInitialLayerIfNeeded();
-			intersectingGameObjectTriggerEventsReceiver.RestoreInitialLayerIfNeeded();
+			return;
 		}
+
+		RestoreInitialLayerIfNeeded();
+		intersectingGameObjectTriggerEventsReceiver.RestoreInitialLayerIfNeeded();
 	}
 
 	public void RestoreInitialLayerIfNeeded()
