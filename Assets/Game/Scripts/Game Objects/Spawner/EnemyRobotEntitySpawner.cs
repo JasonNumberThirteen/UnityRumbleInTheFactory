@@ -6,8 +6,8 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 	public bool IsBonus {get; set;}
 
 	[SerializeField, Min(1)] private int ordinalNumber;
-	[SerializeField] private float bonusEnemyColorFadeTime = 0.5f;
 	[SerializeField] private Color bonusEnemyColor = Color.blue;
+	[SerializeField] private float bonusEnemyColorFadeTime = 0.5f;
 
 	private Telefragger telefragger;
 	private IntersectingGameObjectsDetector intersectingGameObjectsDetector;
@@ -28,7 +28,7 @@ public class EnemyRobotEntitySpawner : EntitySpawner
 
 		if(IsBonus && entityInstance != null && entityInstance.TryGetComponent(out EnemyRobotEntity enemyRobotEntity))
 		{
-			enemyRobotEntity.SetupForBonusType(bonusEnemyColorFadeTime, bonusEnemyColor);
+			enemyRobotEntity.SetupForBonusType(bonusEnemyColor, bonusEnemyColorFadeTime);
 		}
 
 		return entityInstance;

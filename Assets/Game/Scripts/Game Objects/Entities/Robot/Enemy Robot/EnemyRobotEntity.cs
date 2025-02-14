@@ -15,13 +15,13 @@ public class EnemyRobotEntity : RobotEntity
 		enemyRobotEntityHealth.ModifyCurrentHealthBy(lives);
 	}
 
-	public void SetupForBonusType(float fadeTime, Color targetColor)
+	public void SetupForBonusType(Color targetColor, float fadeTime)
 	{
 		HasBonus = true;
 
 		var bonusEnemyRobotEntityRendererColorAdjuster = gameObject.AddComponent<BonusEnemyRobotEntityRendererColorAdjuster>();
 
-		bonusEnemyRobotEntityRendererColorAdjuster.Setup(fadeTime, targetColor);
+		bonusEnemyRobotEntityRendererColorAdjuster.Setup(targetColor, fadeTime);
 	}
 
 	public void RemoveBonusTypeProperties()
