@@ -6,16 +6,18 @@ public class FortressTimedBonusTriggerEventsReceiver : TimedBonusTriggerEventsRe
 	
 	protected override void GiveEffect(GameObject sender)
 	{
-		if(nukeEntityFortressField != null && sender.TryGetComponent(out RobotEntity robotEntity))
+		if(nukeEntityFortressField == null || !sender.TryGetComponent(out RobotEntity robotEntity))
 		{
-			if(robotEntity.IsFriendly())
-			{
-				nukeEntityFortressField.SpawnFortress(GetDuration());
-			}
-			else
-			{
-				nukeEntityFortressField.DestroyAllGOsWithinArea();
-			}
+			return;
+		}
+
+		if(robotEntity.IsFriendly())
+		{
+			nukeEntityFortressField.SpawnFortress(GetDuration());
+		}
+		else
+		{
+			nukeEntityFortressField.DestroyAllGOsWithinArea();
 		}
 	}
 
