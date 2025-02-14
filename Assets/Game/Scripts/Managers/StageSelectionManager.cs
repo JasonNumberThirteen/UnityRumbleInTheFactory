@@ -8,13 +8,12 @@ public class StageSelectionManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 
 	private MenuOptionsInput menuOptionsInput;
+	private bool navigationIsActive;
 
 	private void Awake()
 	{
-		if(GameDataMethods.AnyStageFound(gameData))
-		{
-			menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
-		}
+		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
+		navigationIsActive = GameDataMethods.AnyStageFound(gameData);
 
 		RegisterToListeners(true);
 	}
@@ -44,6 +43,9 @@ public class StageSelectionManager : MonoBehaviour
 
 	private void OnNavigateKeyPressed(int direction)
 	{
-		navigationDirectionChangedEvent?.Invoke(direction);
+		if(navigationIsActive)
+		{
+			navigationDirectionChangedEvent?.Invoke(direction);
+		}
 	}
 }

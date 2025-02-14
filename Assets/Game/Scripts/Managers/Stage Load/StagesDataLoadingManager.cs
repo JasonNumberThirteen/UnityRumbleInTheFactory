@@ -2,6 +2,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class StagesDataLoadingManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
