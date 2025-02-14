@@ -30,10 +30,10 @@ Transform:
   m_Children:
   - {fileID: 6640079810517403083}
   - {fileID: 6897983283581746822}
-  - {fileID: 3074507586834333187}
+  - {fileID: 110361940355477430}
   - {fileID: 8640041364541577202}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3074507586834333186
 PrefabInstance:
@@ -45,7 +45,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 347834206453697271, guid: 92800dc317168a040803ec0e76786e72, type: 3}
       propertyPath: m_Name
-      value: Left Wall
+      value: LeftWall
       objectReference: {fileID: 0}
     - target: {fileID: 1163076759028376476, guid: 92800dc317168a040803ec0e76786e72, type: 3}
       propertyPath: m_Size.y
@@ -108,7 +108,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92800dc317168a040803ec0e76786e72, type: 3}
---- !u!4 &3074507586834333187 stripped
+--- !u!4 &110361940355477430 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3108272942171853236, guid: 92800dc317168a040803ec0e76786e72, type: 3}
   m_PrefabInstance: {fileID: 3074507586834333186}
@@ -123,7 +123,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 347834206453697271, guid: 92800dc317168a040803ec0e76786e72, type: 3}
       propertyPath: m_Name
-      value: Right Wall
+      value: RightWall
       objectReference: {fileID: 0}
     - target: {fileID: 1163076759028376476, guid: 92800dc317168a040803ec0e76786e72, type: 3}
       propertyPath: m_Size.y
@@ -201,7 +201,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 347834206453697271, guid: 92800dc317168a040803ec0e76786e72, type: 3}
       propertyPath: m_Name
-      value: Bottom Wall
+      value: BottomWall
       objectReference: {fileID: 0}
     - target: {fileID: 1163076759028376476, guid: 92800dc317168a040803ec0e76786e72, type: 3}
       propertyPath: m_Size.x
@@ -275,7 +275,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 347834206453697271, guid: 92800dc317168a040803ec0e76786e72, type: 3}
       propertyPath: m_Name
-      value: Top Wall
+      value: TopWall
       objectReference: {fileID: 0}
     - target: {fileID: 1163076759028376476, guid: 92800dc317168a040803ec0e76786e72, type: 3}
       propertyPath: m_Size.x
