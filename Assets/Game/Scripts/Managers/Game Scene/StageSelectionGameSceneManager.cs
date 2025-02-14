@@ -43,7 +43,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void OnSubmitKeyPressed()
 	{
-		if(GameDataMethods.NoStagesFound(gameData))
+		if(!GameDataMethods.AnyStageFound(gameData))
 		{
 			return;
 		}

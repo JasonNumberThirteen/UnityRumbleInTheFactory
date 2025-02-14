@@ -1,4 +1,4 @@
 public static class GameDataMethods
 {
-	public static bool NoStagesFound(GameData gameData) => gameData != null && gameData.NoStagesFound();
+	public static bool AnyStageFound(GameData gameData) => gameData != null && gameData.AnyStageFound();
 }

@@ -26,7 +26,7 @@ public class GameData : ScriptableObject
 	public int GetCurrentDifficultyTierIndex() => gameDifficulty.GetCurrentTierIndex();
 	public T GetDifficultyTierValue<T>(Func<GameDifficultyTier, T> tierFunc) where T : struct => gameDifficulty.GetTierValue(tierFunc);
 	public StageData GetCurrentStageData() => StagesData != null && StageNumber >= 1 && StageNumber <= StagesData.Length ? StagesData[StageNumber - 1] : null;
-	public bool NoStagesFound() => StagesData.Length == 0;
+	public bool AnyStageFound() => StagesData.Length > 0;
 
 	public void ResetData()
 	{

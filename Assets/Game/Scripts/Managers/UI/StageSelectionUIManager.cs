@@ -15,10 +15,10 @@ public class StageSelectionUIManager : UIManager
 
 	private void Start()
 	{
-		var noStagesFound = GameDataMethods.NoStagesFound(gameData);
+		var anyStageFound = GameDataMethods.AnyStageFound(gameData);
 
-		SetStageCounterHeaderTextUIActive(!noStagesFound);
-		SetNoStagesTextUIActive(noStagesFound);
+		SetStageCounterHeaderTextUIActive(anyStageFound);
+		SetNoStagesTextUIActive(!anyStageFound);
 	}
 
 	private void SetStageCounterHeaderTextUIActive(bool active)
