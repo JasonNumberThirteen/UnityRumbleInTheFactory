@@ -1607,7 +1607,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   startImmediately: 0
-  duration: 0.01
+  duration: 0
 --- !u!1001 &912258329
 PrefabInstance:
   m_ObjectHideFlags: 0
