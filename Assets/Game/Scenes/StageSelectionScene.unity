@@ -217,8 +217,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 832648716}
   - {fileID: 1459275921}
+  - {fileID: 832648716}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 443464712}
   - component: {fileID: 443464710}
   m_Layer: 0
-  m_Name: Selection Manager
+  m_Name: Stage Selection Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 653106878}
   - component: {fileID: 653106877}
   m_Layer: 0
-  m_Name: UI Manager
+  m_Name: Stage Selection UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,11 +636,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 731514315}
-  - {fileID: 653106878}
   - {fileID: 443464712}
-  - {fileID: 1104572918}
   - {fileID: 1197701168}
+  - {fileID: 653106878}
+  - {fileID: 731514315}
+  - {fileID: 1104572918}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 1104572918}
   - component: {fileID: 1104572919}
   m_Layer: 0
-  m_Name: Game Scene Manager
+  m_Name: Stage Selection Game Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -405,11 +405,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1843182811}
-  - {fileID: 600235742}
-  - {fileID: 28531380}
   - {fileID: 1922023825}
   - {fileID: 7835921523582647341}
+  - {fileID: 1843182811}
+  - {fileID: 28531380}
+  - {fileID: 600235742}
   m_Father: {fileID: 25619687}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1137,24 +1137,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 879573809}
+  - {fileID: 1237164744}
+  - {fileID: 124401211}
+  - {fileID: 1359323840}
+  - {fileID: 1886217740}
   - {fileID: 1579829972}
+  - {fileID: 879573809}
+  - {fileID: 1041399659}
+  - {fileID: 681417467}
+  - {fileID: 894496748}
+  - {fileID: 2136177301}
+  - {fileID: 1085413090}
+  - {fileID: 472280982}
+  - {fileID: 142723056}
   - {fileID: 1295888591}
   - {fileID: 1892637675}
-  - {fileID: 1237164744}
-  - {fileID: 449972476}
-  - {fileID: 894496748}
-  - {fileID: 142723056}
-  - {fileID: 1886217740}
-  - {fileID: 2136177301}
-  - {fileID: 681417467}
   - {fileID: 756287911}
-  - {fileID: 1359323840}
-  - {fileID: 124401211}
-  - {fileID: 1041399659}
-  - {fileID: 472280982}
   - {fileID: 1369907037}
-  - {fileID: 1085413090}
+  - {fileID: 449972476}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3369,12 +3369,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2144898998}
-  - {fileID: 340759088}
   - {fileID: 1181348151}
-  - {fileID: 1939610192}
+  - {fileID: 340759088}
   - {fileID: 127018397}
+  - {fileID: 1939610192}
   - {fileID: 149658484}
+  - {fileID: 2144898998}
   - {fileID: 868459688}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -3722,8 +3722,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1892637675}
-  - component: {fileID: 1892637674}
   - component: {fileID: 1892637676}
+  - component: {fileID: 1892637674}
   m_Layer: 0
   m_Name: Robot Entities Disabling Manager
   m_TagString: Untagged

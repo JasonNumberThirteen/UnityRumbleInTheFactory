@@ -511,9 +511,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 659535035}
+  - component: {fileID: 659535038}
   - component: {fileID: 659535037}
   - component: {fileID: 659535036}
-  - component: {fileID: 659535038}
   m_Layer: 0
   m_Name: Score Bonus Points Award Manager
   m_TagString: Untagged
@@ -852,11 +852,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1810015463}
-  - {fileID: 1039323149}
   - {fileID: 1301211826}
-  - {fileID: 100667261}
   - {fileID: 1408049478}
+  - {fileID: 100667261}
+  - {fileID: 1039323149}
+  - {fileID: 1810015463}
   - {fileID: 659535035}
   m_Father: {fileID: 0}
   m_RootOrder: 3

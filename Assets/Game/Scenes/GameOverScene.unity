@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 443016947}
   - component: {fileID: 443016946}
   m_Layer: 0
-  m_Name: Scene Manager
+  m_Name: Game Over Game Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
