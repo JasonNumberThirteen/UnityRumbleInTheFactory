@@ -14,7 +14,7 @@ public class TranslationBackgroundPartPanelUIRectTransformOffsetController : Mon
 	private Vector2 targetOffsetMin;
 	private Vector2 targetOffsetMax;
 
-	public void SetTimer(Timer timer)
+	public void Setup(Timer timer)
 	{
 		this.timer = timer;
 	}
