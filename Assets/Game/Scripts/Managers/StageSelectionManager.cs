@@ -8,15 +8,14 @@ public class StageSelectionManager : MonoBehaviour
 	
 	[SerializeField] private GameData gameData;
 
-	private MenuOptionsInput menuOptionsInput;
 	private Timer timer;
 	private int navigationDirection;
-	private float navigationTimer;
+	private MenuOptionsInput menuOptionsInput;
 
 	private void Awake()
 	{
-		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
 		timer = GetComponent<Timer>();
+		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
 
 		RegisterToListeners(true);
 	}
@@ -30,6 +29,9 @@ public class StageSelectionManager : MonoBehaviour
 	{
 		if(register)
 		{
+			timer.timerStartedEvent.AddListener(OnTimerStarted);
+			timer.timerFinishedEvent.AddListener(timer.StartTimer);
+			
 			if(menuOptionsInput != null)
 			{
 				menuOptionsInput.navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
@@ -37,6 +39,9 @@ public class StageSelectionManager : MonoBehaviour
 		}
 		else
 		{
+			timer.timerStartedEvent.RemoveListener(OnTimerStarted);
+			timer.timerFinishedEvent.RemoveListener(timer.StartTimer);
+			
 			if(menuOptionsInput != null)
 			{
 				menuOptionsInput.navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
@@ -44,25 +49,9 @@ public class StageSelectionManager : MonoBehaviour
 		}
 	}
 
-	private void Update()
+	private void OnTimerStarted()
 	{
-		if(navigationDirection != 0)
-		{
-			if(navigationTimer >= 0)
-			{
-				navigationTimer -= Time.deltaTime;
-			}
-			else
-			{
-				navigationTimer = timer.GetDuration();
-
-				navigationDirectionChangedEvent?.Invoke(navigationDirection);
-			}
-		}
-		else if(navigationTimer != 0)
-		{
-			navigationTimer = 0;
-		}
+		navigationDirectionChangedEvent?.Invoke(navigationDirection);
 	}
 
 	private void OnNavigateKeyPressed(int direction)
@@ -70,6 +59,18 @@ public class StageSelectionManager : MonoBehaviour
 		if(GameDataMethods.AnyStageFound(gameData))
 		{
 			navigationDirection = direction;
+		}
+	}
+
+	private void Update()
+	{
+		if(navigationDirection != 0 && !timer.TimerWasStarted)
+		{
+			timer.StartTimer();
+		}
+		else if(navigationDirection == 0)
+		{
+			timer.InterruptTimerIfPossible();
 		}
 	}
 }
