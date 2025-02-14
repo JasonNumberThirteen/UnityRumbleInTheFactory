@@ -24,15 +24,7 @@ public class StageLayoutManager : MonoBehaviour
 
 	private void Awake()
 	{
-		if(gameData == null)
-		{
-			return;
-		}
-
-		var currentStageData = gameData.GetCurrentStageData();
-		var tileIndexes = currentStageData != null ? currentStageData.GetTileIndexes() : new int[0];
-		
-		BuildStageLayout(tileIndexes);
+		BuildStageLayout(GameDataMethods.GetTileIndexesFromCurrentStageData(gameData));
 	}
 
 	private void BuildStageLayout(int[] tilesIndexes)
