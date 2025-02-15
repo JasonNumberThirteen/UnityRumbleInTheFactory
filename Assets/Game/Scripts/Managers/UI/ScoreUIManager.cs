@@ -116,7 +116,7 @@ public class ScoreUIManager : UIManager
 
 			var enemyRobotData = defeatedEnemyTypesData[currentEnemyRobotTypeIndex];
 
-			return playerRobotData.DefeatedEnemies.GetValueOf(enemyRobotData);
+			return playerRobotData.DefeatedEnemies.GetUnitsOf(enemyRobotData);
 		});
 	}
 

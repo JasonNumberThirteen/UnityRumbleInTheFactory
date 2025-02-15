@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class PlayerDefeatedEnemiesDictionary : Dictionary<EnemyRobotData, int>
 {
 	public int GetSumOfDefeatedEnemies() => Values.Sum();
-	public int GetValueOf(EnemyRobotData enemyRobotData) => TryGetValue(enemyRobotData, out var numberOfDefeatedEnemies) ? numberOfDefeatedEnemies : 0;
+	public int GetUnitsOf(EnemyRobotData enemyRobotData) => TryGetValue(enemyRobotData, out var numberOfDefeatedEnemies) ? numberOfDefeatedEnemies : 0;
 	public List<KeyValuePair<EnemyRobotData, int>> GetPairsOrderedByOrdinalNumber() => this.OrderBy(pair => pair.Key.GetOrdinalNumber()).ToList();
 
 	public void AddEnemyData(KeyValuePair<EnemyRobotData, int> keyValuePair)
