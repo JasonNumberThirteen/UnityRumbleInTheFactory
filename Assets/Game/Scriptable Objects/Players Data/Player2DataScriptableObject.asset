@@ -19,7 +19,7 @@ MonoBehaviour:
     movementSpeed: 3
     bulletStats:
       damage: 1
-      bulletSpeed: 6.5
+      movementSpeed: 6.5
       canDestroyMetal: 0
     runtimeAnimatorController: {fileID: 22100000, guid: e0acb152246c90f42a2cff59ed526379, type: 2}
     bulletsLimitAtOnce: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
     movementSpeed: 3.25
     bulletStats:
       damage: 1
-      bulletSpeed: 7.5
+      movementSpeed: 7.5
       canDestroyMetal: 0
     runtimeAnimatorController: {fileID: 22100000, guid: cce599784573f9f46bc45ae22bdc9093, type: 2}
     bulletsLimitAtOnce: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
     movementSpeed: 3.4
     bulletStats:
       damage: 1
-      bulletSpeed: 8
+      movementSpeed: 8
       canDestroyMetal: 0
     runtimeAnimatorController: {fileID: 22100000, guid: ca6e9472847a209469337489aadc82b0, type: 2}
     bulletsLimitAtOnce: 2
@@ -43,7 +43,7 @@ MonoBehaviour:
     movementSpeed: 3.5
     bulletStats:
       damage: 2
-      bulletSpeed: 8
+      movementSpeed: 8
       canDestroyMetal: 1
     runtimeAnimatorController: {fileID: 22100000, guid: 06b82a2a2b5e3c0478a140495b0066ed, type: 2}
     bulletsLimitAtOnce: 2

@@ -15,7 +15,7 @@ public class BulletEntity : MonoBehaviour
 
 	public void Setup(BulletStats bulletStats, GameObject parentGO, Vector2 movementDirection)
 	{
-		entityMovementController.SetMovementSpeed(bulletStats.GetBulletSpeed());
+		entityMovementController.SetMovementSpeed(bulletStats.GetMovementSpeed());
 		
 		damage = bulletStats.GetDamage();
 		canDestroyMetal = bulletStats.CanDestroyMetal();

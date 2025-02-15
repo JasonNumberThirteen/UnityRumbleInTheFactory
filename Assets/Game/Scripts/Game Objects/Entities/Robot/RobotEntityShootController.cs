@@ -60,7 +60,7 @@ public abstract class RobotEntityShootController : MonoBehaviour
 	{
 		if(robotRank != null)
 		{
-			bulletStats.SetValues(robotRank.GetDamage(), robotRank.GetBulletSpeed(), robotRank.CanDestroyMetal());
+			bulletStats.SetValues(robotRank.GetDamage(), robotRank.GetBulletMovementSpeed(), robotRank.CanDestroyMetal());
 		}
 	}
 

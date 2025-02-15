@@ -4,18 +4,18 @@ using UnityEngine;
 [Serializable]
 public class BulletStats
 {
-	[SerializeField, Min(1)] private int damage;
-	[SerializeField, Min(0.01f)] private float bulletSpeed;
+	[SerializeField, Min(1)] private int damage = 1;
+	[SerializeField, Min(0.01f)] private float movementSpeed = 6.5f;
 	[SerializeField] private bool canDestroyMetal;
 
-	public void SetValues(int damage, float bulletSpeed, bool canDestroyMetal)
+	public void SetValues(int damage, float movementSpeed, bool canDestroyMetal)
 	{
 		this.damage = damage;
-		this.bulletSpeed = bulletSpeed;
+		this.movementSpeed = movementSpeed;
 		this.canDestroyMetal = canDestroyMetal;
 	}
 
 	public int GetDamage() => damage;
-	public float GetBulletSpeed() => bulletSpeed;
+	public float GetMovementSpeed() => movementSpeed;
 	public bool CanDestroyMetal() => canDestroyMetal;
 }
