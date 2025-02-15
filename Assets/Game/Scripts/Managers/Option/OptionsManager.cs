@@ -22,23 +22,19 @@ public class OptionsManager : MonoBehaviour
 
 	public void RegisterToOptionListeners(bool register, OptionType optionType, UnityAction<Option> onSelect, UnityAction<Option> onSubmit)
 	{
-		if(!OptionByGivenTypeExists(optionType))
+		OperateOnOptionIfExists(optionType, option =>
 		{
-			return;
-		}
-
-		var option = optionsByOptionType[optionType];
-
-		if(register)
-		{
-			option.optionSelectedEvent.AddListener(onSelect);
-			option.optionSubmittedEvent.AddListener(onSubmit);
-		}
-		else
-		{
-			option.optionSelectedEvent.RemoveListener(onSelect);
-			option.optionSubmittedEvent.RemoveListener(onSubmit);
-		}
+			if(register)
+			{
+				option.optionSelectedEvent.AddListener(onSelect);
+				option.optionSubmittedEvent.AddListener(onSubmit);
+			}
+			else
+			{
+				option.optionSelectedEvent.RemoveListener(onSelect);
+				option.optionSubmittedEvent.RemoveListener(onSubmit);
+			}
+		});
 	}
 
 	private void Awake()
@@ -50,11 +46,9 @@ public class OptionsManager : MonoBehaviour
 
 	private void OperateOnOptionIfExists(OptionType optionType, Action<Option> action)
 	{
-		if(OptionByGivenTypeExists(optionType))
+		if(optionsByOptionType.TryGetValue(optionType, out var option))
 		{
-			action(optionsByOptionType[optionType]);
+			action(option);
 		}
 	}
-
-	private bool OptionByGivenTypeExists(OptionType optionType) => optionsByOptionType.ContainsKey(optionType);
 }

@@ -120,7 +120,7 @@ public class StageSoundManager : MonoBehaviour
 			{SoundEffectType.PlayerRobotMovement, stageStateManager == null || !stageStateManager.StateIsSetTo(StageState.Over)}
 		};
 
-		return !conditionsBySoundEffectType.ContainsKey(soundEffectType) || conditionsBySoundEffectType[soundEffectType] ? GetAudioClipBySoundEffectType(soundEffectType) : null;
+		return !conditionsBySoundEffectType.TryGetValue(soundEffectType, out var _) || conditionsBySoundEffectType[soundEffectType] ? GetAudioClipBySoundEffectType(soundEffectType) : null;
 	}
 
 	private bool PlayerRobotIdleSoundCanBePlayed()

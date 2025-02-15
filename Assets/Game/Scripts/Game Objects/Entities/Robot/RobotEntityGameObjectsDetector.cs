@@ -40,7 +40,7 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 	{
 		var lastDirection = robotEntityMovementController.GetLastDirection();
 		
-		return anglesByDirection.ContainsKey(lastDirection) ? anglesByDirection[lastDirection] : 0f;
+		return anglesByDirection.TryGetValue(lastDirection, out var angle) ? angle : 0f;
 	}
 
 	private void OnDrawGizmos()
