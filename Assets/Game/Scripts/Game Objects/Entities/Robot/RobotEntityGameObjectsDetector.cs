@@ -16,13 +16,7 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 
 	private RobotEntityMovementController robotEntityMovementController;
 
-	private readonly Dictionary<Vector2, float> anglesByDirection = new()
-	{
-		{Vector2.up, 0f},
-		{Vector2.down, 180f},
-		{Vector2.left, 270f},
-		{Vector2.right, 90f}
-	};
+	private readonly DirectionAnglesDictionary directionAngles = new();
 
 	private void Awake()
 	{
@@ -34,13 +28,6 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 		var detectedColliders = Physics2D.OverlapBoxAll(GetDetectionAreaCenter(), detectionAreaSize, GetDetectionAreaAngle(), detectionLayerMask);
 
 		detectedGameObjectsUpdatedEvent?.Invoke(detectedColliders.Where(collider2D => collider2D != null).Select(collider2D => collider2D.gameObject).Where(go => go != gameObject).ToList());
-	}
-
-	private float GetDetectionAreaAngle()
-	{
-		var lastDirection = robotEntityMovementController.GetLastDirection();
-		
-		return anglesByDirection.TryGetValue(lastDirection, out var angle) ? angle : 0f;
 	}
 
 	private void OnDrawGizmos()
@@ -68,5 +55,6 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 		}, detectionAreaGizmosColor);
 	}
 
+	private float GetDetectionAreaAngle() => directionAngles.GetAngleBy(robotEntityMovementController.GetLastDirection());
 	private Vector2 GetDetectionAreaCenter() => transform.position + (Vector3)robotEntityMovementController.GetLastDirection()*detectionAreaOffsetFromCenterDistance;
 }
