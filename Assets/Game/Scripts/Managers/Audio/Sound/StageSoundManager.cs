@@ -104,9 +104,9 @@ public class StageSoundManager : MonoBehaviour
 		}
 	}
 
-	private void OnPlayerLivesChanged(int currentNumberOfLives, int livesValue)
+	private void OnPlayerLivesChanged(int currentNumberOfLives, int differenceToCurrentNumberOfLives)
 	{
-		if(livesValue > 0)
+		if(differenceToCurrentNumberOfLives > 0)
 		{
 			PlaySound(SoundEffectType.PlayerRobotLifeGain);
 		}

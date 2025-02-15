@@ -43,7 +43,7 @@ public class PlayerLivesIntCounterPanelUI : IntCounterPanelUI
 		}
 	}
 
-	private void OnPlayerLivesChanged(int currentNumberOfLives, int livesValue)
+	private void OnPlayerLivesChanged(int currentNumberOfLives, int differenceToCurrentNumberOfLives)
 	{
 		UpdateCounterIfPossible();
 	}
