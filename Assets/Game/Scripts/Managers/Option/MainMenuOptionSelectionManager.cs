@@ -118,5 +118,5 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		}
 	}
 
-	private OptionType GetOptionTypeByCounterValue() => (OptionType)loopingIntCounter.CurrentValue;
+	private OptionType GetOptionTypeByCounterValue() => loopingIntCounter.CurrentValue.ToEnumValue<OptionType>();
 }

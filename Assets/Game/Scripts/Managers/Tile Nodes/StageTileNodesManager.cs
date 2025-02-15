@@ -53,7 +53,7 @@ public class StageTileNodesManager : MonoBehaviour
 
 	private void SpawnTileNodeIfPossible(int tileIndex, int loopIndex)
 	{
-		var tileType = (StageTileType)tileIndex;
+		var tileType = tileIndex.ToEnumValue<StageTileType>();
 		
 		if(stageLayoutManager == null || prohibitedTileTypes.Contains(tileType))
 		{
