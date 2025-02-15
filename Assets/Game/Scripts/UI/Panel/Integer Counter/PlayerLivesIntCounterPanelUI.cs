@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerLivesCounterPanelUI : CounterPanelUI
+public class PlayerLivesIntCounterPanelUI : IntCounterPanelUI
 {
 	[SerializeField] private PlayerRobotData playerRobotData;
 
@@ -50,9 +50,9 @@ public class PlayerLivesCounterPanelUI : CounterPanelUI
 
 	private void UpdateCounterIfPossible()
 	{
-		if(playerRobotData != null && intCounter != null)
+		if(playerRobotData != null)
 		{
-			intCounter.SetTo(playerRobotData.Lives);
+			SetValueToCounter(playerRobotData.Lives);
 		}
 	}
 }

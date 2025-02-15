@@ -11,8 +11,8 @@ public class ScoreUIManager : UIManager
 	private ScoreEnemyTypeSwitchManager scoreEnemyTypeSwitchManager;
 	private ScoreEnemyTypeCountManager scoreEnemyTypeCountManager;
 	private DefeatedEnemyTypesPanelUI defeatedEnemyTypesPanelUI;
-	private PlayersTotalDefeatedEnemiesCountersPanelUI playersTotalDefeatedEnemiesCountersPanelUI;
-	private DefeatedEnemyTypeIntCounterPanelUI currentDefeatedEnemyTypeIntCounterPanelUI;
+	private PlayersTotalDefeatedEnemiesIntCountersPanelUI playersTotalDefeatedEnemiesIntCountersPanelUI;
+	private DefeatedEnemyTypePanelUI currentDefeatedEnemyTypePanelUI;
 	private Dictionary<PlayerRobotData, DefeatedEnemiesScoreIntCounterPanelUI> defeatedEnemiesScoreIntCounterPanelUIByPlayerRobotData;
 	private EnemyRobotData[] defeatedEnemyTypesData;
 	private List<PlayerScoreDetailsPanelUI> playerScoreDetailsPanelUIs;
@@ -83,7 +83,7 @@ public class ScoreUIManager : UIManager
 	{
 		if(defeatedEnemyTypesPanelUI != null)
 		{
-			currentDefeatedEnemyTypeIntCounterPanelUI = defeatedEnemyTypesPanelUI.GetDefeatedEnemyTypeIntCounterPanelUIByIndex(currentEnemyRobotTypeIndex);
+			currentDefeatedEnemyTypePanelUI = defeatedEnemyTypesPanelUI.GetDefeatedEnemyTypePanelUIByIndex(currentEnemyRobotTypeIndex);
 		}
 	}
 
@@ -124,9 +124,9 @@ public class ScoreUIManager : UIManager
 	{
 		AddTotalTextUIsIfPossible();
 
-		if(playersTotalDefeatedEnemiesCountersPanelUI != null)
+		if(playersTotalDefeatedEnemiesIntCountersPanelUI != null)
 		{
-			playersTotalDefeatedEnemiesCountersPanelUI.SetActive(true);
+			playersTotalDefeatedEnemiesIntCountersPanelUI.SetActive(true);
 		}
 	}
 
@@ -149,9 +149,9 @@ public class ScoreUIManager : UIManager
 	{
 		playerRobotScoreDataList.ForEach(SetCurrentScoreForDefeatedEnemiesValueToCounterIfPossible);
 
-		if(currentDefeatedEnemyTypeIntCounterPanelUI != null)
+		if(currentDefeatedEnemyTypePanelUI != null)
 		{
-			currentDefeatedEnemyTypeIntCounterPanelUI.SetValuesToCountersIfPossible(playerRobotScoreDataList);
+			currentDefeatedEnemyTypePanelUI.SetValuesToCountersIfPossible(playerRobotScoreDataList);
 		}
 	}
 
@@ -175,7 +175,7 @@ public class ScoreUIManager : UIManager
 	{
 		GetDefeatedEnemyTypesFromAllPlayersIfPossible();
 
-		playersTotalDefeatedEnemiesCountersPanelUI = ObjectMethods.FindComponentOfType<PlayersTotalDefeatedEnemiesCountersPanelUI>();
+		playersTotalDefeatedEnemiesIntCountersPanelUI = ObjectMethods.FindComponentOfType<PlayersTotalDefeatedEnemiesIntCountersPanelUI>();
 	}
 
 	private void GetDefeatedEnemyTypesFromAllPlayersIfPossible()

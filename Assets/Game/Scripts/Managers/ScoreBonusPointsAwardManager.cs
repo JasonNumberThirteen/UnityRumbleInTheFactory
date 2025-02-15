@@ -11,7 +11,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 	[SerializeField, Min(0)] private int numberOfPoints = 1000;
-	[SerializeField] private BonusPointsCounterPanelUI bonusPointsCounterPanelUIPrefab;
+	[SerializeField] private BonusPointsIntCounterPanelUI bonusPointsIntCounterPanelUIPrefab;
 
 	private Timer timer;
 	private ScoreEnemyTypeSwitchManager scoreEnemyTypeSwitchManager;
@@ -58,6 +58,11 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 	private void RegisterToListeners(bool register)
 	{
+		if(playerRobotDataToAward == null)
+		{
+			return;
+		}
+		
 		if(register)
 		{
 			timer.timerFinishedEvent.AddListener(OnTimerFinished);
@@ -80,12 +85,12 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 	private void OnTimerFinished()
 	{
-		if(bonusPointsCounterPanelUIPrefab == null || playerScoreDetailsPanelUI == null)
+		if(bonusPointsIntCounterPanelUIPrefab == null || playerScoreDetailsPanelUI == null)
 		{
 			return;
 		}
 
-		Instantiate(bonusPointsCounterPanelUIPrefab, playerScoreDetailsPanelUI.transform).Setup(numberOfPoints);
+		Instantiate(bonusPointsIntCounterPanelUIPrefab, playerScoreDetailsPanelUI.transform).SetValueToCounter(numberOfPoints);
 		AwardPlayerIfPossible();
 	}
 

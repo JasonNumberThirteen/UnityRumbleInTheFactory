@@ -567,7 +567,7 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
   numberOfPoints: 1000
-  bonusPointsCounterPanelUIPrefab: {fileID: 5422061231259265322, guid: 5a3c610573f33f84ca90251d161725bb, type: 3}
+  bonusPointsIntCounterPanelUIPrefab: {fileID: 5422061231259265322, guid: 5a3c610573f33f84ca90251d161725bb, type: 3}
 --- !u!114 &659535038
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class DefeatedEnemyTypesPanelUI : MonoBehaviour
 {
-	[SerializeField] private DefeatedEnemyTypeIntCounterPanelUI defeatedEnemyTypeIntCounterPanelUIPrefab;
+	[SerializeField] private DefeatedEnemyTypePanelUI defeatedEnemyTypePanelUIPrefab;
 	[SerializeField] private GameObject horizontalLineTextUIPrefab;
 	[SerializeField] private GameObject playersTotalDefeatedEnemiesCountersPanelUIPrefab;
 
-	private DefeatedEnemyTypeIntCounterPanelUI[] defeatedEnemyTypeIntCounterPanelUIs;
+	private DefeatedEnemyTypePanelUI[] defeatedEnemyTypePanelUIs;
 
-	public DefeatedEnemyTypeIntCounterPanelUI GetDefeatedEnemyTypeIntCounterPanelUIByIndex(int index) => defeatedEnemyTypeIntCounterPanelUIs[index];
+	public DefeatedEnemyTypePanelUI GetDefeatedEnemyTypePanelUIByIndex(int index) => defeatedEnemyTypePanelUIs[index];
 
 	private void Awake()
 	{
@@ -16,14 +16,14 @@ public class DefeatedEnemyTypesPanelUI : MonoBehaviour
 		SpawnHorizontalLineTextUI();
 		SpawnPlayersTotalDefeatedEnemiesCountersPanelUI();
 
-		defeatedEnemyTypeIntCounterPanelUIs = GetComponentsInChildren<DefeatedEnemyTypeIntCounterPanelUI>();
+		defeatedEnemyTypePanelUIs = GetComponentsInChildren<DefeatedEnemyTypePanelUI>();
 	}
 
 	private void SpawnAndSetupDefeatedEnemyTypePanelUIs()
 	{
 		var playersDefeatedEnemiesSumContainer = ObjectMethods.FindComponentOfType<PlayersDefeatedEnemiesSumContainer>();
 
-		if(playersDefeatedEnemiesSumContainer == null || defeatedEnemyTypeIntCounterPanelUIPrefab == null)
+		if(playersDefeatedEnemiesSumContainer == null || defeatedEnemyTypePanelUIPrefab == null)
 		{
 			return;
 		}
@@ -34,7 +34,7 @@ public class DefeatedEnemyTypesPanelUI : MonoBehaviour
 		{
 			var enemyRobotSprite = key.GetDisplayInScoreSceneSprite();
 			
-			Instantiate(defeatedEnemyTypeIntCounterPanelUIPrefab, gameObject.transform).SetSprite(enemyRobotSprite);
+			Instantiate(defeatedEnemyTypePanelUIPrefab, gameObject.transform).SetSprite(enemyRobotSprite);
 		}
 	}
 

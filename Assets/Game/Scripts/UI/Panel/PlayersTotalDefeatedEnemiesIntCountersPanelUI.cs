@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayersTotalDefeatedEnemiesCountersPanelUI : MonoBehaviour
+public class PlayersTotalDefeatedEnemiesIntCountersPanelUI : MonoBehaviour
 {
 	private PlayerTotalDefeatedEnemiesIntCounter[] playerTotalDefeatedEnemiesIntCounters;
 	

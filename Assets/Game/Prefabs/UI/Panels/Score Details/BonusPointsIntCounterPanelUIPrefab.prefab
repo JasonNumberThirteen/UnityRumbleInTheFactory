@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3306134617227149380}
   - component: {fileID: 5422061231259265322}
   m_Layer: 5
-  m_Name: BonusPointsCounterPanelUIPrefab
+  m_Name: BonusPointsIntCounterPanelUIPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
