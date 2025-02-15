@@ -22,7 +22,7 @@ public class PlayerScoreDetailsPanelUI : MonoBehaviour
 			return;
 		}
 
-		playersDefeatedEnemiesSumContainer.DefeatedEnemies.ToList().ForEach(pair => Instantiate(defeatedEnemiesScoreCounterPanelUIPrefab, gameObject.transform));
+		playersDefeatedEnemiesSumContainer.TotalDefeatedEnemies.ToList().ForEach(pair => Instantiate(defeatedEnemiesScoreCounterPanelUIPrefab, gameObject.transform));
 
 		defeatedEnemiesScoreIntCounterPanelUIs = GetComponentsInChildren<DefeatedEnemiesScoreIntCounterPanelUI>();
 	}

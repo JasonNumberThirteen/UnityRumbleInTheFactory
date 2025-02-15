@@ -116,7 +116,7 @@ public class ScoreUIManager : UIManager
 
 			var enemyRobotData = defeatedEnemyTypesData[currentEnemyRobotTypeIndex];
 
-			return playerRobotData.DefeatedEnemies.TryGetValue(enemyRobotData, out var numberOfDefeatedEnemies) ? numberOfDefeatedEnemies : 0;
+			return playerRobotData.DefeatedEnemies.GetValueOf(enemyRobotData);
 		});
 	}
 
@@ -184,7 +184,7 @@ public class ScoreUIManager : UIManager
 
 		if(playersDefeatedEnemiesSumContainer != null)
 		{
-			defeatedEnemyTypesData = playersDefeatedEnemiesSumContainer.DefeatedEnemies.Keys.ToArray();
+			defeatedEnemyTypesData = playersDefeatedEnemiesSumContainer.TotalDefeatedEnemies.Keys.ToArray();
 		}
 	}
 }

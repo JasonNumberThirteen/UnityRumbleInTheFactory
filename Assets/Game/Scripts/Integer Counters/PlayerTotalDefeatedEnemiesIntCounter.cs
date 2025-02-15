@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class PlayerTotalDefeatedEnemiesIntCounter : IntCounter
@@ -24,7 +23,7 @@ public class PlayerTotalDefeatedEnemiesIntCounter : IntCounter
 	{
 		if(playerRobotData != null)
 		{
-			SetTo(playerRobotData.DefeatedEnemies.Sum(pair => pair.Value));
+			SetTo(playerRobotData.DefeatedEnemies.GetSumOfDefeatedEnemies());
 		}
 	}
 }

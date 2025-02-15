@@ -28,7 +28,7 @@ public class ScoreEnemyTypeSwitchManager : MonoBehaviour
 	{
 		var playersDefeatedEnemiesSumContainer = ObjectMethods.FindComponentOfType<PlayersDefeatedEnemiesSumContainer>();
 
-		return playersDefeatedEnemiesSumContainer != null ? playersDefeatedEnemiesSumContainer.DefeatedEnemies.Count : 0;
+		return playersDefeatedEnemiesSumContainer != null ? playersDefeatedEnemiesSumContainer.TotalDefeatedEnemies.Count : 0;
 	}
 
 	private void OnDestroy()

@@ -1,12 +1,11 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Game/Player Robot Data")]
 public class PlayerRobotData : RobotData
 {
 	public SaveablePlayerData saveablePlayerData;
 	
-	public Dictionary<EnemyRobotData, int> DefeatedEnemies {get; private set;} = new Dictionary<EnemyRobotData, int>();
+	public PlayerDefeatedEnemiesDictionary DefeatedEnemies {get; private set;} = new();
 	public PlayerRobotEntitySpawner Spawner {get; set;}
 
 	public int CurrentHealth {get; set;}
@@ -65,14 +64,7 @@ public class PlayerRobotData : RobotData
 
 	public void AddDefeatedEnemy(EnemyRobotData enemyRobotData)
 	{
-		if(DefeatedEnemies.ContainsKey(enemyRobotData))
-		{
-			++DefeatedEnemies[enemyRobotData];
-		}
-		else
-		{
-			DefeatedEnemies.Add(enemyRobotData, 1);
-		}
+		DefeatedEnemies.AddEnemyData(enemyRobotData);
 	}
 
 	private void ResetCurrentHealth()

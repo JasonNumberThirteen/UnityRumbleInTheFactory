@@ -33,7 +33,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 	private void DetermineIfAnyPlayerCanBeAwarded()
 	{
-		var numberOfDefeatedEnemiesByPlayerRobot = playerRobotsListData.GetPlayerRobotsData().Where(playerRobotData => playerRobotData.IsAlive).ToDictionary(key => key, value => value.DefeatedEnemies.Values.Sum());
+		var numberOfDefeatedEnemiesByPlayerRobot = playerRobotsListData.GetPlayerRobotsData().Where(playerRobotData => playerRobotData.IsAlive).ToDictionary(key => key, value => value.DefeatedEnemies.GetSumOfDefeatedEnemies());
 
 		if(BonusPointsCanBeAwarded(numberOfDefeatedEnemiesByPlayerRobot.Values.ToList()))
 		{

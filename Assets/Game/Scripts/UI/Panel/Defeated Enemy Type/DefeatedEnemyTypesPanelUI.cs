@@ -28,7 +28,7 @@ public class DefeatedEnemyTypesPanelUI : MonoBehaviour
 			return;
 		}
 
-		var defeatedEnemiesFromAllPlayersKeys = playersDefeatedEnemiesSumContainer.DefeatedEnemies.Keys;
+		var defeatedEnemiesFromAllPlayersKeys = playersDefeatedEnemiesSumContainer.TotalDefeatedEnemies.Keys;
 		
 		foreach (var key in defeatedEnemiesFromAllPlayersKeys)
 		{
