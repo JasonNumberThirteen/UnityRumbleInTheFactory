@@ -13,9 +13,13 @@ public class StageSelectionManager : MonoBehaviour
 	private void Awake()
 	{
 		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
-		navigationIsActive = GameDataMethods.AnyStageFound(gameData);
 
 		RegisterToListeners(true);
+	}
+
+	private void Start()
+	{
+		navigationIsActive = GameDataMethods.AnyStageFound(gameData);
 	}
 
 	private void OnDestroy()
