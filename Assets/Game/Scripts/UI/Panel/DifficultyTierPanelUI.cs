@@ -21,7 +21,7 @@ public class DifficultyTierPanelUI : MonoBehaviour
 			return;
 		}
 		
-		var difficultyTierIndex = gameData != null ? gameData.GetCurrentDifficultyTierIndex() : 0;
+		var difficultyTierIndex = GameDataMethods.GetCurrentDifficultyTierIndex(gameData);
 		
 		for (var i = 0; i < difficultyTierIndex; ++i)
 		{

@@ -64,7 +64,7 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 
 	private void SetupGameData(bool twoPlayersMode)
 	{
-		if(gameData != null)
+		if(GameDataMethods.GameDataIsDefined(gameData))
 		{
 			gameData.SetupForGameStart(twoPlayersMode);
 		}

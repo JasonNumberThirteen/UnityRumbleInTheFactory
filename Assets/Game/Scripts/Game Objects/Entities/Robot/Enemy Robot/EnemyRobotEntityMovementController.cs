@@ -58,15 +58,9 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 
 	private void SetInitialMovementSpeedModifiedByDifficultyTier()
 	{
-		if(gameData == null)
-		{
-			return;
-		}
+		var multiplier = GameDataMethods.GetDifficultyTierValue(gameData, tier => tier.GetEnemyMovementSpeedMultiplier());
 		
-		var baseMovementSpeed = movementSpeed;
-		var multiplier = gameData.GetDifficultyTierValue(tier => tier.GetEnemyMovementSpeedMultiplier());
-		
-		SetMovementSpeed(baseMovementSpeed*multiplier);
+		SetMovementSpeed(movementSpeed*multiplier);
 	}
 
 	private void OnDestroy()

@@ -40,7 +40,7 @@ public class DataSerialisationManager : MonoBehaviour
 
 	private void OperateOnGameData(Action<string, object> action)
 	{
-		if(gameData != null)
+		if(GameDataMethods.GameDataIsDefined(gameData))
 		{
 			action?.Invoke("gameData", gameData.saveableGameData);
 		}

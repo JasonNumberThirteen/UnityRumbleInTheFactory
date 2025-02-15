@@ -33,7 +33,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 		if(playerRobotData.Score != previousScore)
 		{
-			if(gameData != null)
+			if(GameDataMethods.GameDataIsDefined(gameData))
 			{
 				gameData.SetHighScoreIfPossible(playerRobotData.Score, () => ModifyLives(playerRobotData, 1));
 			}

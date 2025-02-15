@@ -20,7 +20,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 	private void Awake()
 	{
-		if(playerRobotsListData == null || (gameData != null && gameData.GameIsOver))
+		if(playerRobotsListData == null || GameDataMethods.GameIsOver(gameData))
 		{
 			return;
 		}
@@ -96,17 +96,18 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 			return;
 		}
 
-		var beatenHighScoreEarlier = gameData != null && gameData.BeatenHighScore;
+		var beatenHighScoreEarlier = GameDataMethods.BeatenHighScore(gameData);
+		var gameDataIsDefined = GameDataMethods.GameDataIsDefined(gameData);
 		
 		playerRobotDataToAward.Score += numberOfPoints;
 
-		if(gameData != null)
+		if(gameDataIsDefined)
 		{
 			gameData.SetHighScoreIfPossible(playerRobotDataToAward.Score, () => ++playerRobotDataToAward.Lives);
 		}
 
 		UpdateAwardedPlayerScoreCounterIfPossible();
-		playerAwardedWithPointsEvent?.Invoke(gameData != null && beatenHighScoreEarlier != gameData.BeatenHighScore);
+		playerAwardedWithPointsEvent?.Invoke(gameDataIsDefined && beatenHighScoreEarlier != gameData.BeatenHighScore);
 	}
 
 	private void UpdateAwardedPlayerScoreCounterIfPossible()

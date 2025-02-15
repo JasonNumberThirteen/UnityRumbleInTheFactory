@@ -39,7 +39,7 @@ public class EnemyRobotEntityShootControllerTimer : Timer
 	private void OnRankChanged(RobotRank robotRank, bool setOnStart)
 	{
 		var baseShootDelayValue = robotRank != null && robotRank is EnemyRobotRank enemyRobotRank ? enemyRobotRank.GetShootDelay() : 0f;
-		var shootDelayMultiplier = gameData != null ? gameData.GetDifficultyTierValue(tier => tier.GetEnemyShootDelayMultiplier()) : 1f;
+		var shootDelayMultiplier = GameDataMethods.GetDifficultyTierValue(gameData, tier => tier.GetEnemyShootDelayMultiplier());
 		
 		SetDuration(baseShootDelayValue*shootDelayMultiplier);
 	}

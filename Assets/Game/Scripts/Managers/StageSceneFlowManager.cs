@@ -158,7 +158,7 @@ public class StageSceneFlowManager : MonoBehaviour
 	{
 		var stageStatesEndingGame = new List<StageState> {StageState.Interrupted, StageState.Over};
 		
-		if(gameData != null && !gameData.GameIsOver && stageStatesEndingGame.Contains(stageState))
+		if(!GameDataMethods.GameIsOver(gameData) && stageStatesEndingGame.Contains(stageState))
 		{
 			gameData.SetGameAsOver();
 		}

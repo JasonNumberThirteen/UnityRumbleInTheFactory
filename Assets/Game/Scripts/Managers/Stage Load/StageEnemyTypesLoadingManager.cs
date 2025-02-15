@@ -12,9 +12,7 @@ public class StageEnemyTypesLoadingManager : MonoBehaviour
 	
 	private void Awake()
 	{
-		var stageData = gameData != null ? gameData.GetCurrentStageData() : null;
-		
-		EnemyTypes = GetEnemyTypesFromStageData(stageData);
+		EnemyTypes = GetEnemyTypesFromStageData(GameDataMethods.GetCurrentStageData(gameData));
 		EnemyPrefabs = new GameObject[EnemyTypes.Length];
 		
 		AssignEnemyPrefabsToCurrentStage();
@@ -32,6 +30,11 @@ public class StageEnemyTypesLoadingManager : MonoBehaviour
 
 	private EnemyType[] GetEnemyTypesFromStageData(StageData stageData)
 	{
+		if(stageData == null)
+		{
+			return new EnemyType[0];
+		}
+		
 		var enemyTypesData = stageData?.GetEnemyTypes();
 		var numberOfEnemyTypesData = enemyTypesData != null ? enemyTypesData.Length : 0;
 		var enemyTypes = new EnemyType[numberOfEnemyTypesData];

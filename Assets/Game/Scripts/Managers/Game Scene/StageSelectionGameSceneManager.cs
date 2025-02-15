@@ -62,7 +62,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 
 	private void ResetGameData()
 	{
-		if(gameData != null)
+		if(GameDataMethods.GameDataIsDefined(gameData))
 		{
 			gameData.ResetData();
 		}
@@ -100,8 +100,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	private void ResetPlayerRobotData(PlayerRobotData playerRobotData, int counterValue)
 	{
 		var isFirstPlayer = counterValue == 1;
-		var selectedTwoPlayersMode = gameData != null && gameData.SelectedTwoPlayersMode;
 		
-		playerRobotData.ResetData(isFirstPlayer || selectedTwoPlayersMode);
+		playerRobotData.ResetData(isFirstPlayer || GameDataMethods.SelectedTwoPlayersMode(gameData));
 	}
 }

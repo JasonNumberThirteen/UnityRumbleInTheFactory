@@ -6,11 +6,9 @@ public abstract class GameDataIntCounter : IntCounter
 
 	protected abstract int GetCounterValue();
 
-	private bool CounterValueCanBeChanged() => gameData != null;
-
 	private void Start()
 	{
-		if(CounterValueCanBeChanged())
+		if(GameDataMethods.GameDataIsDefined(gameData))
 		{
 			SetTo(GetCounterValue());
 		}

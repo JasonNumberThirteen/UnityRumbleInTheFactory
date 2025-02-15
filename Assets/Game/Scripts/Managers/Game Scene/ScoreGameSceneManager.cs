@@ -45,7 +45,7 @@ public class ScoreGameSceneManager : GameSceneManager
 
 	private void OnTimerFinished()
 	{
-		var gameIsOver = gameData != null && gameData.GameIsOver;
+		var gameIsOver = GameDataMethods.GameIsOver(gameData);
 		
 		OperateOnGameDataIfGameContinues(gameIsOver);
 		LoadSceneByName(gameIsOver ? GAME_OVER_SCENE_NAME : STAGE_SCENE_NAME);

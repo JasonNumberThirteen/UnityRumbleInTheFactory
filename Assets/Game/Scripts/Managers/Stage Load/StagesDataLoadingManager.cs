@@ -11,7 +11,7 @@ public class StagesDataLoadingManager : MonoBehaviour
 
 	private void Awake()
 	{
-		if(gameData != null)
+		if(GameDataMethods.GameDataIsDefined(gameData))
 		{
 			gameData.SetStagesData(GetStagesDataFromPath(STAGES_DATA_PATH));
 		}

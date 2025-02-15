@@ -6,7 +6,7 @@ public class StageCounterPanelUI : CounterPanelUI
 
 	private void Start()
 	{
-		if(gameData != null && intCounter != null)
+		if(GameDataMethods.GameDataIsDefined(gameData) && intCounter != null)
 		{
 			intCounter.SetTo(gameData.StageNumber);
 		}

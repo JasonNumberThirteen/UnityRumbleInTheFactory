@@ -45,7 +45,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		enemyRobotEntitySpawners = ObjectMethods.FindComponentsOfType<EnemyRobotEntitySpawner>().OrderBy(enemyRobotEntitySpawner => enemyRobotEntitySpawner.GetOrdinalNumber()).Take(GetTotalNumberOfEnemies()).ToList();
-		spawnInterval = gameData != null ? gameData.GetDifficultyTierValue(tier => tier.GetEnemySpawnDelay()) : 0f;
+		spawnInterval = GameDataMethods.GetDifficultyTierValue(gameData, tier => tier.GetEnemySpawnDelay());
 
 		RegisterToListeners(true);
 	}
@@ -157,7 +157,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 	private void DetermineNumberOfEnemiesToSpawn()
 	{
 		var numberOfAliveEnemies = GameObject.FindGameObjectsWithTag(enemyTag).Length;
-		var enemiesLimitAtOnce = gameData != null ? gameData.GetDifficultyTierValue(tier => tier.GetEnemiesLimitAtOnce()) : 0;
+		var enemiesLimitAtOnce = GameDataMethods.GetDifficultyTierValue(gameData, tier => tier.GetEnemiesLimitAtOnce());
 		
 		numberOfEnemiesToSpawn = Mathf.Max(0, enemiesLimitAtOnce - numberOfAliveEnemies);
 	}

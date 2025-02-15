@@ -19,8 +19,7 @@ public class GameOverGameSceneManager : GameSceneManager
 	{
 		yield return new WaitUntil(() => !audioSource.isPlaying);
 		
-		var beatenHighScore = gameData != null && gameData.BeatenHighScore;
-		var sceneName = beatenHighScore ? HIGH_SCORE_SCENE_NAME : MAIN_MENU_SCENE_NAME;
+		var sceneName = GameDataMethods.BeatenHighScore(gameData) ? HIGH_SCORE_SCENE_NAME : MAIN_MENU_SCENE_NAME;
 
 		LoadSceneByName(sceneName);
 	}

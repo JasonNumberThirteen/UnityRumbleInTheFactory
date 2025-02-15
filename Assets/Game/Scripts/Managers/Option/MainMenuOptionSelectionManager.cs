@@ -38,7 +38,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 
 	private void SelectTwoPlayersModeIfNeeded()
 	{
-		if(gameData != null && gameData.EnteredStageSelection && gameData.SelectedTwoPlayersMode)
+		if(GameDataMethods.EnteredStageSelection(gameData) && GameDataMethods.SelectedTwoPlayersMode(gameData))
 		{
 			StartCoroutine(SelectTwoPlayersMode());
 		}
