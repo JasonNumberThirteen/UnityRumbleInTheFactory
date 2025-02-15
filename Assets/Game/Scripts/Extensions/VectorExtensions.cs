@@ -32,4 +32,12 @@ public static class VectorExtensions
 
 		return new Vector2(x, y);
 	}
+
+	public static Vector2 GetCeiledVector(this Vector2 vector)
+	{
+		var x = Mathf.CeilToInt(vector.x);
+		var y = Mathf.CeilToInt(vector.y);
+
+		return new Vector2(x, y);
+	}
 }

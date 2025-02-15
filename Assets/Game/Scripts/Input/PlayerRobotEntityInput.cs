@@ -132,8 +132,8 @@ public class PlayerRobotEntityInput : MonoBehaviour
 
 	private void UpdateMovementVector(Vector2 movementVector)
 	{
-		MovementVector = movementVector;
-
+		MovementVector = InputMethods.GetAdjustedMovementVector(movementVector);
+		
 		movementValueChangedEvent?.Invoke(this, !MovementVector.IsZero());
 	}
 

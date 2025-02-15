@@ -13,7 +13,12 @@ public static class InputMethods
 		{GAMEPAD_CONTROL_SCHEME_NAME, new InputDevice[]{Gamepad.current}}
 	};
 
-	public static bool PressedHorizontalMovementKey(Vector2 movement) => Mathf.Abs(movement.x) > Mathf.Abs(movement.y);
+	public static Vector2 GetAdjustedMovementVector(Vector2 vector)
+	{
+		var oneDirectionalVector = Mathf.Abs(vector.x) > Mathf.Abs(vector.y) ? Vector2.right*vector.x : Vector2.up*vector.y;
+
+		return oneDirectionalVector.GetCeiledVector();
+	}
 
 	public static void SetControlSchemeTo(PlayerInput playerInput, string controlSchemeName)
 	{

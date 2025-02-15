@@ -62,7 +62,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		UpdateLastDirectionIfNeeded();
 
-		CurrentMovementDirection = IsSliding && !playerRobotEntityInput.LastMovementVector.IsZero() ? playerRobotEntityInput.LastMovementVector : GetMovementDirection();
+		CurrentMovementDirection = IsSliding && !playerRobotEntityInput.LastMovementVector.IsZero() ? playerRobotEntityInput.LastMovementVector : playerRobotEntityInput.MovementVector;
 	}
 
 	private void UpdateLastDirectionIfNeeded()
@@ -72,20 +72,6 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 			lastDirection = CurrentMovementDirection;
 		}
 	}
-
-	private Vector2 GetMovementDirection()
-	{
-		var movementVector = GetMovementVector();
-
-		return InputMethods.PressedHorizontalMovementKey(movementVector) ? Vector2.right*movementVector.x : Vector2.up*movementVector.y;
-	}
-
-	private Vector2 GetMovementVector()
-	{
-		var x = Mathf.RoundToInt(playerRobotEntityInput.MovementVector.x);
-		var y = Mathf.RoundToInt(playerRobotEntityInput.MovementVector.y);
-
-		return new Vector2(x, y);
-	}
+	
 	private bool IsMovingInDifferentDirection() => !CurrentMovementDirectionIsNone() && CurrentMovementDirection != lastDirection;
 }
