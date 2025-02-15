@@ -11,7 +11,7 @@ public class PlayerScoreDetailsPanelUI : MonoBehaviour
 
 	public int GetOrdinalNumber() => ordinalNumber;
 	public PlayerRobotData GetPlayerRobotData() => playerRobotData;
-	public DefeatedEnemiesScoreIntCounterPanelUI GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(int index) => defeatedEnemiesScoreIntCounterPanelUIs != null && index < defeatedEnemiesScoreIntCounterPanelUIs.Length ? defeatedEnemiesScoreIntCounterPanelUIs[index] : null;
+	public DefeatedEnemiesScoreIntCounterPanelUI GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(int index) => defeatedEnemiesScoreIntCounterPanelUIs.GetElementAt(index);
 
 	private void Awake()
 	{
