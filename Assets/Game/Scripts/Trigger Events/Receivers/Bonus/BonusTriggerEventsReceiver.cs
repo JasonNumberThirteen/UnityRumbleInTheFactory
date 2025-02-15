@@ -17,8 +17,8 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 		{
 			return;
 		}
-		
-		if(BonusCanBeCollectedByEnemy(sender))
+
+		if(sender.TryGetComponent(out EnemyRobotEntity _) && !BonusCanBeCollectedByEnemy())
 		{
 			return;
 		}
@@ -67,5 +67,5 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 		}
 	}
 
-	private bool BonusCanBeCollectedByEnemy(GameObject sender) => sender.TryGetComponent(out EnemyRobotEntity _) && GameDataMethods.GetDifficultyTierValue(gameData, tier => tier.EnemiesCanCollectBonuses());
+	private bool BonusCanBeCollectedByEnemy() => GameDataMethods.GetDifficultyTierValue(gameData, tier => tier.EnemiesCanCollectBonuses());
 }
