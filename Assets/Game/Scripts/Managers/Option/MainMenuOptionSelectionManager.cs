@@ -48,7 +48,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		yield return new WaitForEndOfFrame();
 
-		loopingIntCounter.SetTo((int)OptionType.TwoPlayersMode);
+		loopingIntCounter.SetTo(OptionType.TwoPlayersMode.ToInt());
 	}
 
 	private void OnDestroy()
