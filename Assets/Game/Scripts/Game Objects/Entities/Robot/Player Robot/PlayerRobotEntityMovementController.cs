@@ -77,7 +77,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		var movementVector = GetMovementVector();
 
-		return PressedHorizontalMovementKey(movementVector) ? Vector2.right*movementVector.x : Vector2.up*movementVector.y;
+		return InputMethods.PressedHorizontalMovementKey(movementVector) ? Vector2.right*movementVector.x : Vector2.up*movementVector.y;
 	}
 
 	private Vector2 GetMovementVector()
@@ -87,7 +87,5 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 		return new Vector2(x, y);
 	}
-
-	private bool PressedHorizontalMovementKey(Vector2 movement) => Mathf.Abs(movement.x) > Mathf.Abs(movement.y);
 	private bool IsMovingInDifferentDirection() => !CurrentMovementDirectionIsNone() && CurrentMovementDirection != lastDirection;
 }
