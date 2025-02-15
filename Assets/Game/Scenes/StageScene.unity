@@ -2064,7 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01acbe22e9ccf3e47bf575720ddcea82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gainedPointsCounterTextUIPrefab: {fileID: -917488883713071552, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
+  gainedPointsIntCounterTextUIParentPrefab: {fileID: 7538793090055378574, guid: 161782ebd33355b488ae3fcbe2342b85, type: 3}
 --- !u!4 &1237164744
 Transform:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StageUIManager : UIManager
 {
-	[SerializeField] private GainedPointsCounterTextUI gainedPointsCounterTextUIPrefab;
+	[SerializeField] private GainedPointsIntCounterTextUIParent gainedPointsIntCounterTextUIParentPrefab;
 
 	private PlayerRobotsDataManager playerRobotsDataManager;
 	private StageStateManager stageStateManager;
@@ -75,18 +75,14 @@ public class StageUIManager : UIManager
 
 	private void SpawnGainedPointsCounterIfPossible(int points, Vector2 position)
 	{
-		if(gainedPointsCounterTextUIPrefab == null)
+		if(gainedPointsIntCounterTextUIParentPrefab == null)
 		{
 			return;
 		}
 		
 		var parent = mainCanvasUI != null ? mainCanvasUI.transform : null;
-		var instance = Instantiate(gainedPointsCounterTextUIPrefab, parent);
-
-		if(instance != null)
-		{
-			instance.Setup(points, position*16);
-		}
+		
+		Instantiate(gainedPointsIntCounterTextUIParentPrefab, parent).Setup(points, position*16);
 	}
 
 	private void OnStageStarted()
