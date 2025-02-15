@@ -15,8 +15,8 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 	private Timer timer;
 	private ScoreEnemyTypeSwitchManager scoreEnemyTypeSwitchManager;
-	private PlayerScoreDetailsPanelUI playerScoreDetailsPanelUI;
 	private PlayerRobotData playerRobotDataToAward;
+	private PlayerScoreDetailsPanelUI playerScoreDetailsPanelUI;
 
 	private void Awake()
 	{
@@ -53,10 +53,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		if(playerRobotDataToAward != null)
-		{
-			RegisterToListeners(false);
-		}
+		RegisterToListeners(false);
 	}
 
 	private void RegisterToListeners(bool register)
@@ -67,7 +64,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.AddListener(OnLastEnemyTypeReached);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.AddListener(timer.StartTimer);
 			}
 		}
 		else
@@ -76,7 +73,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.RemoveListener(OnLastEnemyTypeReached);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.RemoveListener(timer.StartTimer);
 			}
 		}
 	}
@@ -125,11 +122,6 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 		{
 			playerScoreIntCounter.SetTo(playerRobotDataToAward.Score);
 		}
-	}
-	
-	private void OnLastEnemyTypeReached()
-	{
-		timer.StartTimer();
 	}
 
 	private bool BonusPointsCanBeAwarded(List<int> numberOfDefeatedEnemiesPerPlayer)
