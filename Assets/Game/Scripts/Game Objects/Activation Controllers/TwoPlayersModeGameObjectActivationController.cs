@@ -7,8 +7,9 @@ public class TwoPlayersModeGameObjectActivationController : MonoBehaviour
 
 	private void Awake()
 	{
-		var goShouldBeActive = gameData != null && gameData.SelectedTwoPlayersMode;
-		
-		gameObject.SetActive(goShouldBeActive);
+		if(gameData != null)
+		{
+			gameObject.SetActive(gameData.SelectedTwoPlayersMode);
+		}
 	}
 }
