@@ -1,9 +1,9 @@
-public readonly struct PriorityQueueElement<E>
+public readonly struct PriorityQueueElement<T>
 {
-	public E Element {get;}
+	public T Element {get;}
 	public float Priority {get;}
 
-	public PriorityQueueElement(E element, float priority)
+	public PriorityQueueElement(T element, float priority)
 	{
 		Element = element;
 		Priority = priority;

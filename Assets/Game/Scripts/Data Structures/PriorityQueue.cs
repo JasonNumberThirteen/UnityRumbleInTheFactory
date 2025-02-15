@@ -1,19 +1,19 @@
 using System.Linq;
 using System.Collections.Generic;
 
-public class PriorityQueue<E>
+public class PriorityQueue<T>
 {
-	private List<PriorityQueueElement<E>> list = new();
+	private List<PriorityQueueElement<T>> list = new();
 
 	public int Count => list.Count;
-	public E Dequeue() => list.PopFirst().Element;
+	public T Dequeue() => list.PopFirst().Element;
 
 	public void Clear()
 	{
 		list.Clear();
 	}
 
-	public void Enqueue(PriorityQueueElement<E> priorityQueueElement)
+	public void Enqueue(PriorityQueueElement<T> priorityQueueElement)
 	{
 		list.Add(priorityQueueElement);
 

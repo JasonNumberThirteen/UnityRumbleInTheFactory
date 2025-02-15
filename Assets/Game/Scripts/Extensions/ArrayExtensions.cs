@@ -3,17 +3,17 @@ using System;
 
 public static class ArrayExtensions
 {
-	public static E GetElementAt<E>(this E[] array, int index) => array.Length > 0 && index >= 0 && index < array.Length ? array[index] : default;
-	public static E GetRandomElement<E>(this E[] array) => array.Length > 0 ? array[Random.Range(0, array.Length)] : default;
+	public static T GetElementAt<T>(this T[] array, int index) => array.Length > 0 && index >= 0 && index < array.Length ? array[index] : default;
+	public static T GetRandomElement<T>(this T[] array) => array.Length > 0 ? array[Random.Range(0, array.Length)] : default;
 	
-	public static void ForEachIndexed<E>(this E[] array, Action<E, int> action, int counterInitialValue = 0)
+	public static void ForEachIndexed<T>(this T[] array, Action<T, int> action, int counterInitialValue = 0)
 	{
 		var i = counterInitialValue;
 
 		array.ForEach(playerRobotData => action?.Invoke(playerRobotData, i++));
 	}
 
-	public static void ForEach<E>(this E[] array, Action<E> action)
+	public static void ForEach<T>(this T[] array, Action<T> action)
 	{
 		foreach (var element in array)
 		{
