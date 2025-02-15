@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerRobotMovementSoundChannel : SoundChannel
 {
 	private Timer timer;
-	private StageStateManager stageStateManager;
-	private StageMusicManager stageMusicManager;
 	private StageSoundManager stageSoundManager;
+
+	public override bool CanPlaySounds() => true;
 
 	public override void Play(AudioClip audioClip)
 	{
@@ -23,23 +23,16 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 
 	protected override void Awake()
 	{
-		base.Awake();
-		
 		timer = GetComponent<Timer>();
-		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
-		stageMusicManager = ObjectMethods.FindComponentOfType<StageMusicManager>();
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 
-		RegisterToListeners(true);
+		base.Awake();
 	}
 
-	private void OnDestroy()
+	protected override void RegisterToListeners(bool register)
 	{
-		RegisterToListeners(false);
-	}
-
-	private void RegisterToListeners(bool register)
-	{
+		base.RegisterToListeners(register);
+		
 		if(register)
 		{
 			timer.timerStartedEvent.AddListener(OnTimerStarted);
@@ -48,11 +41,6 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
-			}
-
-			if(stageMusicManager != null)
-			{
-				stageMusicManager.musicStoppedPlayingEvent.AddListener(OnMusicStoppedPlaying);
 			}
 
 			if(stageSoundManager != null)
@@ -68,11 +56,6 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
-			}
-
-			if(stageMusicManager != null)
-			{
-				stageMusicManager.musicStoppedPlayingEvent.RemoveListener(OnMusicStoppedPlaying);
 			}
 
 			if(stageSoundManager != null)
@@ -102,17 +85,6 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 		StopSoundIfNeeded(stageState);
 	}
 
-	private void MuteSoundDependingOnStageState(StageState stageState)
-	{
-		var stageStatesMutingSound = new List<StageState>
-		{
-			StageState.Paused,
-			StageState.Over
-		};
-		
-		audioSource.mute = stageStatesMutingSound.Contains(stageState);
-	}
-
 	private void StopSoundIfNeeded(StageState stageState)
 	{
 		if(stageState != StageState.Won || stageSoundManager == null || audioSource.clip != stageSoundManager.GetAudioClipBySoundEffectType(SoundEffectType.PlayerRobotIdle))
@@ -123,14 +95,6 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 		audioSource.Stop();
 
 		audioSource.clip = null;
-	}
-
-	private void OnMusicStoppedPlaying()
-	{
-		if(stageStateManager != null)
-		{
-			MuteSoundDependingOnStageState(stageStateManager.GetStageState());
-		}
 	}
 
 	private void OnSoundPlayed(SoundEffectType soundEffectType)

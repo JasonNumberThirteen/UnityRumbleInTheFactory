@@ -10,9 +10,7 @@ public class StageSoundManager : MonoBehaviour
 	[SerializeField, Range(0, 8)] private int additionalSoundChannels = 4;
 	[SerializeField] private StageSoundEffectsContainer stageSoundEffectsContainer = new();
 
-	private bool canPlaySounds;
 	private PlayerRobotMovementSoundChannel playerRobotMovementSourceChannel;
-	private StageMusicManager stageMusicManager;
 	private StageStateManager stageStateManager;
 	private PlayerRobotsDataManager playerRobotsDataManager;
 	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
@@ -24,11 +22,6 @@ public class StageSoundManager : MonoBehaviour
 
 	public void PlaySound(SoundEffectType soundEffectType)
 	{
-		if(!canPlaySounds)
-		{
-			return;
-		}
-		
 		var soundChannel = GetSoundChannelBySoundEffectType(soundEffectType);
 
 		if(soundChannel == null)
@@ -43,7 +36,6 @@ public class StageSoundManager : MonoBehaviour
 	private void Awake()
 	{
 		playerRobotMovementSourceChannel = GetComponentInChildren<PlayerRobotMovementSoundChannel>();
-		stageMusicManager = ObjectMethods.FindComponentOfType<StageMusicManager>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 		enemyRobotEntitySpawnManager = ObjectMethods.FindComponentOfType<EnemyRobotEntitySpawnManager>();
@@ -72,11 +64,6 @@ public class StageSoundManager : MonoBehaviour
 	{
 		if(register)
 		{
-			if(stageMusicManager != null)
-			{
-				stageMusicManager.musicStoppedPlayingEvent.AddListener(OnMusicStoppedPlaying);
-			}
-
 			if(playerRobotsDataManager != null)
 			{
 				playerRobotsDataManager.playerLivesChangedEvent.AddListener(OnPlayerLivesChanged);
@@ -84,23 +71,10 @@ public class StageSoundManager : MonoBehaviour
 		}
 		else
 		{
-			if(stageMusicManager != null)
-			{
-				stageMusicManager.musicStoppedPlayingEvent.RemoveListener(OnMusicStoppedPlaying);
-			}
-
 			if(playerRobotsDataManager != null)
 			{
 				playerRobotsDataManager.playerLivesChangedEvent.RemoveListener(OnPlayerLivesChanged);
 			}
-		}
-	}
-
-	private void OnMusicStoppedPlaying()
-	{
-		if(stageStateManager == null || !stageStateManager.StateIsSetTo(StageState.Over))
-		{
-			canPlaySounds = true;
 		}
 	}
 

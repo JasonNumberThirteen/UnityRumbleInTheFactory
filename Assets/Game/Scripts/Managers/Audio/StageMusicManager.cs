@@ -9,6 +9,8 @@ public class StageMusicManager : MonoBehaviour
 	
 	private AudioSource audioSource;
 
+	public bool MusicIsPlaying() => audioSource.isPlaying;
+
 	private void Awake()
 	{
 		audioSource = GetComponent<AudioSource>();
@@ -18,7 +20,7 @@ public class StageMusicManager : MonoBehaviour
 
 	private IEnumerator InvokeMusicStoppedPlayingEvent()
 	{
-		yield return new WaitUntil(() => !audioSource.isPlaying);
+		yield return new WaitUntil(() => !MusicIsPlaying());
 
 		musicStoppedPlayingEvent?.Invoke();
 	}
