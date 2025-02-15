@@ -1,15 +1,9 @@
 using UnityEngine;
 
-[DefaultExecutionOrder(-200)]
-public class TwoPlayersModeGameObjectActivationController : MonoBehaviour
+public class TwoPlayersModeGameObjectActivationController : GameObjectActivationController
 {
 	[SerializeField] private GameData gameData;
-
-	private void Awake()
-	{
-		if(gameData != null)
-		{
-			gameObject.SetActive(gameData.SelectedTwoPlayersMode);
-		}
-	}
+	
+	protected override bool GOShouldBeActive() => GOActivationStateCanBeChanged() && gameData.SelectedTwoPlayersMode;
+	protected override bool GOActivationStateCanBeChanged() => gameData != null;
 }

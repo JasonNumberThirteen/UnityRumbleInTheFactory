@@ -1,12 +1,11 @@
-using UnityEngine;
-
-[DefaultExecutionOrder(-200)]
-public class WebGLGameObjectActivationController : MonoBehaviour
+public class WebGLGameObjectActivationController : GameObjectActivationController
 {
-#if UNITY_WEBGL
-	private void Awake()
+	protected override bool GOShouldBeActive()
 	{
-		gameObject.SetActive(false);
-	}
+#if UNITY_WEBGL
+		return false;
+#else
+		return true;
 #endif
+	}
 }
