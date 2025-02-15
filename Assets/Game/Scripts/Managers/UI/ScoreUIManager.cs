@@ -13,9 +13,10 @@ public class ScoreUIManager : UIManager
 	private DefeatedEnemyTypesPanelUI defeatedEnemyTypesPanelUI;
 	private PlayersTotalDefeatedEnemiesIntCountersPanelUI playersTotalDefeatedEnemiesIntCountersPanelUI;
 	private DefeatedEnemyTypePanelUI currentDefeatedEnemyTypePanelUI;
-	private Dictionary<PlayerRobotData, DefeatedEnemiesScoreIntCounterPanelUI> defeatedEnemiesScoreIntCounterPanelUIByPlayerRobotData;
 	private EnemyRobotData[] defeatedEnemyTypesData;
 	private List<PlayerScoreDetailsPanelUI> playerScoreDetailsPanelUIs;
+
+	private readonly PlayersDefeatedEnemiesScoreIntCounterPanelUIsDictionary playersDefeatedEnemiesScoreIntCounterPanelUIs = new();
 
 	private void Awake()
 	{
@@ -66,17 +67,9 @@ public class ScoreUIManager : UIManager
 
 	private void OnEnemyTypeSwitched(int currentEnemyRobotTypeIndex)
 	{
-		GoToNextDefeatedEnemiesScoreIntCounterPanelUIs(currentEnemyRobotTypeIndex);
+		playersDefeatedEnemiesScoreIntCounterPanelUIs.UpdatePanelUIs(playerScoreDetailsPanelUIs, currentEnemyRobotTypeIndex);
 		GoToNextDefeatedEnemyTypeIntCounterPanelUIIfPossible(currentEnemyRobotTypeIndex);
 		StartCountingNextEnemyTypeIfPossible(currentEnemyRobotTypeIndex);
-	}
-
-	private void GoToNextDefeatedEnemiesScoreIntCounterPanelUIs(int currentEnemyRobotTypeIndex)
-	{
-		if(playerScoreDetailsPanelUIs != null)
-		{
-			defeatedEnemiesScoreIntCounterPanelUIByPlayerRobotData = playerScoreDetailsPanelUIs.ToDictionary(key => key.GetPlayerRobotData(), value => value.GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(currentEnemyRobotTypeIndex));
-		}
 	}
 
 	private void GoToNextDefeatedEnemyTypeIntCounterPanelUIIfPossible(int currentEnemyRobotTypeIndex)
@@ -147,19 +140,11 @@ public class ScoreUIManager : UIManager
 
 	private void OnEnemyCounted(List<PlayerRobotScoreData> playerRobotScoreDataList)
 	{
-		playerRobotScoreDataList.ForEach(SetCurrentScoreForDefeatedEnemiesValueToCounterIfPossible);
+		playerRobotScoreDataList.ForEach(playersDefeatedEnemiesScoreIntCounterPanelUIs.SetValueToCounterIfExists);
 
 		if(currentDefeatedEnemyTypePanelUI != null)
 		{
 			currentDefeatedEnemyTypePanelUI.SetValuesToCountersIfPossible(playerRobotScoreDataList);
-		}
-	}
-
-	private void SetCurrentScoreForDefeatedEnemiesValueToCounterIfPossible(PlayerRobotScoreData playerRobotScoreData)
-	{
-		if(defeatedEnemiesScoreIntCounterPanelUIByPlayerRobotData.TryGetValue(playerRobotScoreData.PlayerRobotData, out var defeatedEnemiesScoreIntCounterPanelUI))
-		{
-			defeatedEnemiesScoreIntCounterPanelUI.SetValueToCounter(playerRobotScoreData.CurrentScoreForDefeatedEnemyRobots);
 		}
 	}
 
