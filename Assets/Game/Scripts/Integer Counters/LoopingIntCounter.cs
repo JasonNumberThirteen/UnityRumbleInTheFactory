@@ -7,6 +7,11 @@ public class LoopingIntCounter : IntCounter
 
 	public void SetRange(int lowerBound, int upperBound)
 	{
+		if(lowerBound > upperBound)
+		{
+			return;
+		}
+		
 		this.lowerBound = lowerBound;
 		this.upperBound = upperBound;
 
@@ -15,17 +20,14 @@ public class LoopingIntCounter : IntCounter
 
 	public override void ModifyBy(int value)
 	{
-		if(value > 0)
-		{
-			SetTo(GetNextValue(value));
-		}
-		else if(value < 0)
-		{
-			SetTo(GetPreviousValue(Mathf.Abs(value)));
-		}
+		var newValue = value >= 0 ? GetNextValue(value) : GetPreviousValue(Mathf.Abs(value));
+
+		SetTo(newValue);
 	}
 
 	protected override int GetModifiedValue(int value) => value.GetClampedValue(lowerBound, upperBound);
-	private int GetNextValue(int value) => (CurrentValue + value - 1) % upperBound + lowerBound;
-	private int GetPreviousValue(int value) => (CurrentValue - value + upperBound - 1) % upperBound + lowerBound;
+	
+	private int GetNextValue(int value) => GetClampedValue(CurrentValue + value - 1);
+	private int GetPreviousValue(int value) => GetClampedValue(CurrentValue - value + upperBound - 1);
+	private int GetClampedValue(int value) => value % upperBound + lowerBound;
 }
