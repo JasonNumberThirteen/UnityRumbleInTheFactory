@@ -2,12 +2,12 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerRobotEntityInput))]
+[RequireComponent(typeof(PlayerRobotEntityInputController))]
 public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
 	public bool IsSliding {get; private set;}
 	
-	private PlayerRobotEntityInput playerRobotEntityInput;
+	private PlayerRobotEntityInputController playerRobotEntityInputController;
 	private StageSoundManager stageSoundManager;
 	private bool playedSlidingSound;
 
@@ -18,7 +18,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		base.Awake();
 
-		playerRobotEntityInput = GetComponent<PlayerRobotEntityInput>();
+		playerRobotEntityInputController = GetComponent<PlayerRobotEntityInputController>();
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 	}
 
@@ -42,9 +42,9 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void SetLastMovementVectorIfNeeded()
 	{
-		if(playerRobotEntityInput.LastMovementVector != playerRobotEntityInput.MovementVector && !playerRobotEntityInput.MovementVector.IsZero())
+		if(playerRobotEntityInputController.LastMovementVector != playerRobotEntityInputController.MovementVector && !playerRobotEntityInputController.MovementVector.IsZero())
 		{
-			playerRobotEntityInput.SetLastMovementVector(playerRobotEntityInput.MovementVector);
+			playerRobotEntityInputController.SetLastMovementVector(playerRobotEntityInputController.MovementVector);
 		}
 	}
 
@@ -64,7 +64,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		UpdateLastDirectionIfNeeded();
 
-		CurrentMovementDirection = IsSliding && !playerRobotEntityInput.LastMovementVector.IsZero() ? playerRobotEntityInput.LastMovementVector : playerRobotEntityInput.MovementVector;
+		CurrentMovementDirection = IsSliding && !playerRobotEntityInputController.LastMovementVector.IsZero() ? playerRobotEntityInputController.LastMovementVector : playerRobotEntityInputController.MovementVector;
 	}
 
 	private void UpdateLastDirectionIfNeeded()

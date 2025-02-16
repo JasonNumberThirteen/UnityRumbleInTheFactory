@@ -3,13 +3,13 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput), typeof(RobotEntityShootController), typeof(PlayerRobotEntityMovementController))]
-public class PlayerRobotEntityInput : MonoBehaviour
+public class PlayerRobotEntityInputController : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 	[SerializeField, Min(1)] private int ordinalNumber;
 	
-	public UnityEvent<PlayerRobotEntityInput, bool> movementValueChangedEvent;
-	public UnityEvent<PlayerRobotEntityInput> playerDiedEvent;
+	public UnityEvent<PlayerRobotEntityInputController, bool> movementValueChangedEvent;
+	public UnityEvent<PlayerRobotEntityInputController> playerDiedEvent;
 	
 	public Vector2 MovementVector {get; private set;}
 	public Vector2 LastMovementVector {get; private set;}
