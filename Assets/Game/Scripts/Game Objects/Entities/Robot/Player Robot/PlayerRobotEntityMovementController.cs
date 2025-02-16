@@ -34,6 +34,8 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		}
 		else if(!IsSliding && playedSlidingSound)
 		{
+			SetLastMovementVectorIfNeeded();
+			
 			playedSlidingSound = false;
 		}
 	}
