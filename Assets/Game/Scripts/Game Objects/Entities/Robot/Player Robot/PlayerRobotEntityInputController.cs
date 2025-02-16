@@ -82,14 +82,7 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		var movementVector = currentMovementVector;
-		
-		if(stageState == StageState.Paused)
-		{
-			movementVector = playerRobotEntityMovementController.IsSliding ? LastMovementVector : Vector2.zero;
-		}
-		
-		UpdateMovementVector(movementVector);
+		UpdateMovementVector(stageState == StageState.Paused ? GetIdleVectorDependingOnSlidingState() : currentMovementVector);
 	}
 
 	private void OnMove(InputValue inputValue)
@@ -117,7 +110,7 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 
 	private void OnDisable()
 	{
-		UpdateMovementVector(Vector2.zero);
+		UpdateMovementVector(GetIdleVectorDependingOnSlidingState());
 	}
 
 	private void UpdateMovementVector(Vector2 movementVector)
@@ -128,4 +121,5 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 	}
 
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
+	private Vector2 GetIdleVectorDependingOnSlidingState() => playerRobotEntityMovementController.IsSliding ? LastMovementVector : Vector2.zero;
 }
