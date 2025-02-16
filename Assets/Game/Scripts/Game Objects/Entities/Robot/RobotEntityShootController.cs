@@ -13,7 +13,7 @@ public abstract class RobotEntityShootController : MonoBehaviour
 
 	private readonly BulletStats bulletStats = new();
 
-	public virtual void FireBullet()
+	protected virtual void FireBullet()
 	{
 		if(bulletEntityPrefab == null)
 		{

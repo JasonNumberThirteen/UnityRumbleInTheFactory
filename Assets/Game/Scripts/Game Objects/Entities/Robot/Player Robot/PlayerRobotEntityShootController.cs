@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 public class PlayerRobotEntityShootController : RobotEntityShootController
 {
-	private StageEventsManager stageEventsManager;
 	private int numberOfFiredBullets;
 	private int bulletsLimitAtOnce;
+	private StageStateManager stageStateManager;
+	private StageEventsManager stageEventsManager;
 
-	public override void FireBullet()
+	protected override void FireBullet()
 	{
 		if(ReachedBulletsLimitAtOnce())
 		{
@@ -20,6 +23,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	protected override void Awake()
 	{
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		
 		base.Awake();
@@ -63,6 +67,14 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		}
 	}
 
+	private void OnFire(InputValue inputValue)
+	{
+		if(enabled && !GameIsPaused())
+		{
+			FireBullet();
+		}
+	}
+
 	private void PlaySound()
 	{
 		if(stageSoundManager != null)
@@ -72,4 +84,5 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 	}
 
 	private bool ReachedBulletsLimitAtOnce() => numberOfFiredBullets >= bulletsLimitAtOnce;
+	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
 }

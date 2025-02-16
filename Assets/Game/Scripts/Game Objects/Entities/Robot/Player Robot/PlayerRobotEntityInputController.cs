@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput), typeof(RobotEntityShootController), typeof(PlayerRobotEntityMovementController))]
+[RequireComponent(typeof(PlayerInput), typeof(PlayerRobotEntityMovementController))]
 public class PlayerRobotEntityInputController : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
@@ -16,7 +16,6 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 
 	private Vector2 currentMovementVector;
 	private PlayerInput playerInput;
-	private RobotEntityShootController robotEntityShootController;
 	private PlayerRobotEntityMovementController playerRobotEntityMovementController;
 	private StageStateManager stageStateManager;
 	private StageSceneFlowManager stageSceneFlowManager;
@@ -29,7 +28,6 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 	private void Awake()
 	{
 		playerInput = GetComponent<PlayerInput>();
-		robotEntityShootController = GetComponent<RobotEntityShootController>();
 		playerRobotEntityMovementController = GetComponent<PlayerRobotEntityMovementController>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
@@ -101,14 +99,6 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 		if(enabled && !GameIsPaused())
 		{
 			UpdateMovementVector(currentMovementVector);
-		}
-	}
-
-	private void OnFire(InputValue inputValue)
-	{
-		if(enabled && robotEntityShootController != null && !GameIsPaused())
-		{
-			robotEntityShootController.FireBullet();
 		}
 	}
 
