@@ -1088,7 +1088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1529488581660020816, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
       propertyPath: m_Name
-      value: Enemy Spawner
+      value: Enemy Robot Entity Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 2975118311883631459, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
       propertyPath: ordinalNumber
@@ -1662,7 +1662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1529488581660020816, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
       propertyPath: m_Name
-      value: Enemy Spawner
+      value: Enemy Robot Entity Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2597,7 +2597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8337257472276329561, guid: 81efebd42ac50fe4e873393335d4a2a3, type: 3}
       propertyPath: m_Name
-      value: Player 2 Spawner
+      value: Player 2 Robot Entity Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4073,7 +4073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1529488581660020816, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
       propertyPath: m_Name
-      value: Enemy Spawner
+      value: Enemy Robot Entity Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 2975118311883631459, guid: f09fe4e6777dd084ba7ae8bda08ecca6, type: 3}
       propertyPath: ordinalNumber
@@ -4928,7 +4928,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2815371805309261868, guid: 7efb95089c018d8488d843034ee3bc98, type: 3}
       propertyPath: m_Name
-      value: Player 1 Spawner
+      value: Player 1 Robot Entity Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 4445403322417516195, guid: 7efb95089c018d8488d843034ee3bc98, type: 3}
       propertyPath: m_RootOrder
