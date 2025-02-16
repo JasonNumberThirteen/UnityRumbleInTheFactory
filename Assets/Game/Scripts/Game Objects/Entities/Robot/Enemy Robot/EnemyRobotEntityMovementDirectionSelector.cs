@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 {
-	[SerializeField] private LayerMask obstacleDetectionLayerMask;
+	[SerializeField] private LayerMask detectableGameObjects;
 	[SerializeField, Min(0.01f)] private float obstacleDetectionDistance = 0.5f;
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color availableDirectionGizmosColor = Color.white;
@@ -43,6 +43,6 @@ public class EnemyRobotEntityMovementDirectionSelector : MonoBehaviour
 	}
 
 	private List<Vector2> GetAvailableDirections() => allDirections.Where(vector => !Linecast(transform.position, vector)).ToList();
-	private RaycastHit2D Linecast(Vector2 start, Vector2 direction) => Physics2D.Linecast(start, GetLinecastEnd(start, direction), obstacleDetectionLayerMask);
+	private RaycastHit2D Linecast(Vector2 start, Vector2 direction) => Physics2D.Linecast(start, GetLinecastEnd(start, direction), detectableGameObjects);
 	private Vector2 GetLinecastEnd(Vector2 start, Vector2 direction) => start + direction*obstacleDetectionDistance;
 }

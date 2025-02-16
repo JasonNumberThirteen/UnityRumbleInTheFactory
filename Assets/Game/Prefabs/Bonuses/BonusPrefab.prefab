@@ -226,10 +226,10 @@ MonoBehaviour:
     y: -6
     width: 12
     height: 12
-  gridSize: 0.5
-  unacceptableObjectsForColliderBoundsLayerMask:
+  tileSize: 0.5
+  unacceptableGameObjects:
     serializedVersion: 2
-    m_Bits: 864896
+    m_Bits: 995968
   drawGizmos: 1
   accessiblePositionGizmosColor: {r: 0, g: 1, b: 0, a: 0.5}
   inaccessiblePositionGizmosColor: {r: 1, g: 0, b: 0, a: 0.5}

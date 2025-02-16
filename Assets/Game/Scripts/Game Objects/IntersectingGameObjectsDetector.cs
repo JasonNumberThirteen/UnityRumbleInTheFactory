@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class IntersectingGameObjectsDetector : MonoBehaviour
 {
-	[SerializeField] private LayerMask gameObjectsLayerMask;
+	[SerializeField] private LayerMask detectableGameObjects;
 	[SerializeField] private string intersectingGameObjectsLayerName;
 	[SerializeField, Min(0.01f)] private float radius = 1f;
 	[SerializeField] private bool drawGizmos = true;
@@ -15,7 +15,7 @@ public class IntersectingGameObjectsDetector : MonoBehaviour
 
 	public void SetLayerToGOsIfIntersect()
 	{
-		Physics2D.OverlapBoxNonAlloc(transform.position, Vector2.one*radius, 0f, detectedColliders, gameObjectsLayerMask);
+		Physics2D.OverlapBoxNonAlloc(transform.position, Vector2.one*radius, 0f, detectedColliders, detectableGameObjects);
 
 		if(detectedColliders != null && detectedColliders.Where(collider => collider != null).Count() == OVERLAP_BUFFER_SIZE)
 		{

@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4834d97d744b0e42b093bbc288956e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapLayerMask:
+  detectableAdjacentGameObjects:
     serializedVersion: 2
     m_Bits: 256
 --- !u!1 &2308587011227819208
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4834d97d744b0e42b093bbc288956e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapLayerMask:
+  detectableAdjacentGameObjects:
     serializedVersion: 2
     m_Bits: 256
 --- !u!1 &6319188888266772951
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4834d97d744b0e42b093bbc288956e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapLayerMask:
+  detectableAdjacentGameObjects:
     serializedVersion: 2
     m_Bits: 256
 --- !u!1 &6619443221430191917
@@ -756,6 +756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4834d97d744b0e42b093bbc288956e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapLayerMask:
+  detectableAdjacentGameObjects:
     serializedVersion: 2
     m_Bits: 256

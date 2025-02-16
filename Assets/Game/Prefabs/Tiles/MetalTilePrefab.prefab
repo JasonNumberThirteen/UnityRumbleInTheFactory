@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5444690604406753386
 SpriteRenderer:
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324f12d0a4014a743ad0183f93df088a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapLayerMask:
+  detectableAdjacentGameObjects:
     serializedVersion: 2
     m_Bits: 1024
 --- !u!114 &-4747447432209969921

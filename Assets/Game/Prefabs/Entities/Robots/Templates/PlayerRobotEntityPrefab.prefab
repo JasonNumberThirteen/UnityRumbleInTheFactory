@@ -195,6 +195,10 @@ PrefabInstance:
       value: 163648
       objectReference: {fileID: 0}
     - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: detectableGameObjects.m_Bits
+      value: 163648
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionAreaOffsetFromCenterDistance
       value: 0.08
       objectReference: {fileID: 0}

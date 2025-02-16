@@ -3,13 +3,13 @@ using UnityEngine;
 public class Telefragger : MonoBehaviour
 {
 	[SerializeField, Min(0.01f)] private float radius = 0.3f;
-	[SerializeField] private LayerMask layerMask;
+	[SerializeField] private LayerMask detectableGameObjects;
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color radiusGizmosColor = Color.black;
 	
 	public void TelefragGOsWithinRadius()
 	{
-		var colliders = Physics2D.OverlapCircleAll(transform.position, radius, layerMask);
+		var colliders = Physics2D.OverlapCircleAll(transform.position, radius, detectableGameObjects);
 
 		colliders.ForEach(collider => TelefragGO(collider.gameObject));
 	}

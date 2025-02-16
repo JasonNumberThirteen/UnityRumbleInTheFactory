@@ -295,6 +295,10 @@ PrefabInstance:
       value: 98048
       objectReference: {fileID: 0}
     - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
+      propertyPath: detectableGameObjects.m_Bits
+      value: 98048
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionAreaOffsetFromCenterDistance
       value: 0.11
       objectReference: {fileID: 0}
@@ -377,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec868d51399bf1844ada2536eb6b7e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleDetectionLayerMask:
+  detectableGameObjects:
     serializedVersion: 2
     m_Bits: 19968
   obstacleDetectionDistance: 0.5

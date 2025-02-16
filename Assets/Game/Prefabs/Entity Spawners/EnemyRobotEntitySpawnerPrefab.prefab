@@ -205,8 +205,8 @@ MonoBehaviour:
       m_Calls: []
   entityPrefab: {fileID: 0}
   ordinalNumber: 1
-  bonusEnemyColorFadeTime: 0.5
   bonusEnemyColor: {r: 0, g: 0, b: 1, a: 1}
+  bonusEnemyColorFadeTime: 0.5
 --- !u!114 &-2211959474914024363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.3
-  layerMask:
+  detectableGameObjects:
     serializedVersion: 2
     m_Bits: 65536
   drawGizmos: 1
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0e633cfb19ea54dbd7f6dd2bacfba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectsLayerMask:
+  detectableGameObjects:
     serializedVersion: 2
     m_Bits: 8192
   intersectingGameObjectsLayerName: Intersecting Enemy

@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D), typeof(Timer))]
 public class NukeEntityFortressField : MonoBehaviour
 {
-	[SerializeField] private LayerMask overlapLayerMask;
+	[SerializeField] private LayerMask destroyableGameObjectsWithinArea;
 	[SerializeField] private GameObject tilePrefab;
 	[SerializeField, Min(0.01f)] private float timeForBlinkStart = 5f;
 	[SerializeField, Min(0.01f)] private float blinkDuration = 0.25f;
@@ -29,7 +29,7 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	public void DestroyAllGOsWithinArea()
 	{
-		var colliders = Physics2D.OverlapBoxAll(c2D.bounds.center, c2D.bounds.size, 0f, overlapLayerMask);
+		var colliders = Physics2D.OverlapBoxAll(c2D.bounds.center, c2D.bounds.size, 0f, destroyableGameObjectsWithinArea);
 
 		colliders.ForEach(collider => Destroy(collider.gameObject));
 	}

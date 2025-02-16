@@ -9,7 +9,7 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 	public UnityEvent<List<GameObject>> detectedGameObjectsUpdatedEvent;
 
 	[SerializeField] private Vector2 detectionAreaSize;
-	[SerializeField] private LayerMask detectionLayerMask;
+	[SerializeField] private LayerMask detectableGameObjects;
 	[SerializeField, Min(0f)] private float detectionAreaOffsetFromCenterDistance = 0.1f;
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color detectionAreaGizmosColor = Color.green;
@@ -25,7 +25,7 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 
 	private void Update()
 	{
-		var detectedColliders = Physics2D.OverlapBoxAll(GetDetectionAreaCenter(), detectionAreaSize, GetDetectionAreaAngle(), detectionLayerMask);
+		var detectedColliders = Physics2D.OverlapBoxAll(GetDetectionAreaCenter(), detectionAreaSize, GetDetectionAreaAngle(), detectableGameObjects);
 
 		detectedGameObjectsUpdatedEvent?.Invoke(detectedColliders.Where(collider2D => collider2D != null).Select(collider2D => collider2D.gameObject).Where(go => go != gameObject).ToList());
 	}

@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2825eb21edd183408f5706d80c943e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapLayerMask:
+  destroyableGameObjectsWithinArea:
     serializedVersion: 2
     m_Bits: 1280
   tilePrefab: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
@@ -119,7 +119,6 @@ MonoBehaviour:
   blinkDuration: 0.25
   tileSpriteToBlink: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
   tileToSpawnAfterElapsedTimePrefab: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
-  gridSize: 0.5
 --- !u!1 &8414169594087006866
 GameObject:
   m_ObjectHideFlags: 0

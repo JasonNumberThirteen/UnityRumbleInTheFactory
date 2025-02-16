@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
-	[SerializeField] private LayerMask overlapLayerMask;
+	[SerializeField] private LayerMask detectableAdjacentGameObjects;
 
 	protected StageSoundManager stageSoundManager;
 	
@@ -39,7 +39,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 		var point = GetOverlapPoint(movementDirection, senderHitPoint);
 		var size = GetOverlapSize(movementDirection);
 
-		Physics2D.OverlapBoxNonAlloc(point, size, 0f, detectedColliders, overlapLayerMask);
+		Physics2D.OverlapBoxNonAlloc(point, size, 0f, detectedColliders, detectableAdjacentGameObjects);
 	}
 
 	private Vector2 GetOverlapPoint(Vector2 movementDirection, Vector2 senderHitPoint)

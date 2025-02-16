@@ -6,7 +6,7 @@ public class BonusTiledPositionSetter : MonoBehaviour
 {
 	[SerializeField] private Rect area;
 	[SerializeField, Min(0.01f)] private float tileSize = 0.5f;
-	[SerializeField] private LayerMask unacceptableObjectsForColliderBoundsLayerMask;
+	[SerializeField] private LayerMask unacceptableGameObjects;
 	[SerializeField] private bool drawGizmos = true;
 	[SerializeField] private Color accessiblePositionGizmosColor = new(0f, 1f, 0f, 0.5f);
 	[SerializeField] private Color inaccessiblePositionGizmosColor = new(1f, 0f, 0f, 0.5f);
@@ -54,7 +54,7 @@ public class BonusTiledPositionSetter : MonoBehaviour
 
 	private bool DetectedAnyUnacceptableCollider(Vector2 position)
 	{
-		var colliders = Physics2D.OverlapBoxAll(position, c2D.bounds.size, 0f, unacceptableObjectsForColliderBoundsLayerMask);
+		var colliders = Physics2D.OverlapBoxAll(position, c2D.bounds.size, 0f, unacceptableGameObjects);
 
 		return colliders.Any(collider => collider.gameObject != gameObject);
 	}
