@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Timer))]
-public class MenuOptionsInput : MonoBehaviour
+public class MenuOptionsInputController : MonoBehaviour
 {
 	public UnityEvent<int> navigateKeyPressedEvent;
 	public UnityEvent submitKeyPressedEvent;

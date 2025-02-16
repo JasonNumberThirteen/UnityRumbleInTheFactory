@@ -8,14 +8,14 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 
 	private LoopingIntCounter loopingIntCounter;
-	private MenuOptionsInput menuOptionsInput;
+	private MenuOptionsInputController menuOptionsInputController;
 	private MainMenuPanelUI mainMenuPanelUI;
 	private OptionsManager optionsManager;
 
 	private void Awake()
 	{
 		loopingIntCounter = GetComponent<LoopingIntCounter>();
-		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
+		menuOptionsInputController = ObjectMethods.FindComponentOfType<MenuOptionsInputController>();
 		mainMenuPanelUI = ObjectMethods.FindComponentOfType<MainMenuPanelUI>();
 		optionsManager = ObjectMethods.FindComponentOfType<OptionsManager>();
 		
@@ -62,20 +62,20 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		{
 			loopingIntCounter.valueChangedEvent.AddListener(OnCounterValueChanged);
 			
-			if(menuOptionsInput != null)
+			if(menuOptionsInputController != null)
 			{
-				menuOptionsInput.navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
-				menuOptionsInput.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
+				menuOptionsInputController.navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
+				menuOptionsInputController.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
 			}
 		}
 		else
 		{
 			loopingIntCounter.valueChangedEvent.RemoveListener(OnCounterValueChanged);
 			
-			if(menuOptionsInput != null)
+			if(menuOptionsInputController != null)
 			{
-				menuOptionsInput.navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
-				menuOptionsInput.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
+				menuOptionsInputController.navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
+				menuOptionsInputController.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
 			}
 		}
 	}

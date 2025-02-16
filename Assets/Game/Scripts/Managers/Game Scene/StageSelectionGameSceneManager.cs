@@ -5,12 +5,12 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
-	private MenuOptionsInput menuOptionsInput;
+	private MenuOptionsInputController menuOptionsInputController;
 	private DataSerialisationManager dataSerialisationManager;
 
 	private void Awake()
 	{
-		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
+		menuOptionsInputController = ObjectMethods.FindComponentOfType<MenuOptionsInputController>();
 		dataSerialisationManager = ObjectMethods.FindComponentOfType<DataSerialisationManager>();
 
 		RegisterToListeners(true);
@@ -25,18 +25,18 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	{
 		if(register)
 		{
-			if(menuOptionsInput != null)
+			if(menuOptionsInputController != null)
 			{
-				menuOptionsInput.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
-				menuOptionsInput.cancelKeyPressedEvent.AddListener(OnCancelKeyPressed);
+				menuOptionsInputController.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
+				menuOptionsInputController.cancelKeyPressedEvent.AddListener(OnCancelKeyPressed);
 			}
 		}
 		else
 		{
-			if(menuOptionsInput != null)
+			if(menuOptionsInputController != null)
 			{
-				menuOptionsInput.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
-				menuOptionsInput.cancelKeyPressedEvent.RemoveListener(OnCancelKeyPressed);
+				menuOptionsInputController.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
+				menuOptionsInputController.cancelKeyPressedEvent.RemoveListener(OnCancelKeyPressed);
 			}
 		}
 	}

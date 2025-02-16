@@ -8,13 +8,13 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 	
 	private OptionsManager optionsManager;
-	private MenuOptionsInput menuOptionsInput;
+	private MenuOptionsInputController menuOptionsInputController;
 	private MainMenuOptionsCursorImageUI mainMenuOptionsCursorImageUI;
 
 	private void Awake()
 	{
 		optionsManager = ObjectMethods.FindComponentOfType<OptionsManager>();
-		menuOptionsInput = ObjectMethods.FindComponentOfType<MenuOptionsInput>();
+		menuOptionsInputController = ObjectMethods.FindComponentOfType<MenuOptionsInputController>();
 		mainMenuOptionsCursorImageUI = ObjectMethods.FindComponentOfType<MainMenuOptionsCursorImageUI>();
 
 		RegisterToListeners(true);
@@ -58,7 +58,7 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 	private void StartGame(bool twoPlayersMode)
 	{
 		SetupGameData(twoPlayersMode);
-		DeactivateMenuOptionsInput();
+		DeactivateMenuOptionsInputController();
 		gameStartOptionSubmittedEvent?.Invoke();
 	}
 
@@ -70,11 +70,11 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 		}
 	}
 
-	private void DeactivateMenuOptionsInput()
+	private void DeactivateMenuOptionsInputController()
 	{
-		if(menuOptionsInput != null)
+		if(menuOptionsInputController != null)
 		{
-			menuOptionsInput.SetActive(false);
+			menuOptionsInputController.SetActive(false);
 		}
 	}
 
