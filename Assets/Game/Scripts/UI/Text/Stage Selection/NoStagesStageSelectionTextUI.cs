@@ -23,12 +23,15 @@ public class NoStagesStageSelectionTextUI : StageSelectionTextUI
 		{
 			return KEY_LITERAL;
 		}
+
+		var action = inputActionReference.action;
+		var bindings = action.bindings;
 		
-		for (int i = 0; i < inputActionReference.action.bindings.Count; i++)
+		for (int i = 0; i < bindings.Count; i++)
 		{
-			if(inputActionReference.action.bindings[i].groups.Contains(playerInput.currentControlScheme))
+			if(bindings[i].groups.Contains(playerInput.currentControlScheme))
 			{
-				return inputActionReference.action.GetBindingDisplayString().ToUpper();
+				return action.GetBindingDisplayString().ToUpper();
 			}
 		}
 
