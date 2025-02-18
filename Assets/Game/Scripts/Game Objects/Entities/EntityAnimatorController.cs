@@ -25,10 +25,9 @@ public abstract class EntityAnimatorController : MonoBehaviour
 
 	protected void UpdateMovementParametersValues()
 	{
-		var movementDirection = entityMovementController.CurrentMovementDirection;
-		var adjustedMovementDirection = Mathf.Abs(movementDirection.x) > Mathf.Abs(movementDirection.y) ? Vector2.right*movementDirection.x : Vector2.up*movementDirection.y;
+		var oneDimensionalMovementDirection = entityMovementController.CurrentMovementDirection.GetOneDimensionalVector();
 
-		animator.SetInteger(HORIZONTAL_MOVEMENT_PARAMETER_NAME, Mathf.RoundToInt(adjustedMovementDirection.x));
-		animator.SetInteger(VERTICAL_MOVEMENT_PARAMETER_NAME, Mathf.RoundToInt(adjustedMovementDirection.y));
+		animator.SetInteger(HORIZONTAL_MOVEMENT_PARAMETER_NAME, Mathf.RoundToInt(oneDimensionalMovementDirection.x));
+		animator.SetInteger(VERTICAL_MOVEMENT_PARAMETER_NAME, Mathf.RoundToInt(oneDimensionalMovementDirection.y));
 	}
 }

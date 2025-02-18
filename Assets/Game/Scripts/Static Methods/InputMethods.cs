@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 public static class InputMethods
@@ -12,13 +11,6 @@ public static class InputMethods
 		{KEYBOARD_AND_MOUSE_CONTROL_SCHEME_NAME, new InputDevice[]{Keyboard.current, Mouse.current}},
 		{GAMEPAD_CONTROL_SCHEME_NAME, new InputDevice[]{Gamepad.current}}
 	};
-
-	public static Vector2 GetAdjustedMovementVector(Vector2 vector)
-	{
-		var oneDirectionalVector = Mathf.Abs(vector.x) > Mathf.Abs(vector.y) ? Vector2.right*vector.x : Vector2.up*vector.y;
-
-		return oneDirectionalVector.GetCeiledVector();
-	}
 
 	public static void SetControlSchemeTo(PlayerInput playerInput, string controlSchemeName)
 	{

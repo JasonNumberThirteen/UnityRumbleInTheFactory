@@ -6,6 +6,7 @@ public static class VectorExtensions
 	public static bool IsVertical(this Vector2 vector) => vector == Vector2.up || vector == Vector2.down;
 	public static bool IsZero(this Vector2 vector) => vector == Vector2.zero;
 	public static Vector2 GetOffsetFrom(this Vector2 vector, Vector2 position) => vector - position*0.5f;
+	public static Vector2 GetOneDimensionalVector(this Vector2 vector) => Mathf.Abs(vector.x) > Mathf.Abs(vector.y) ? Vector2.right*vector.x : Vector2.up*vector.y;
 
 	public static bool OverlapsWithAnyOfColliders(this Vector2 vector, Collider2D[] colliders)
 	{
@@ -29,14 +30,6 @@ public static class VectorExtensions
 	{
 		var x = MathMethods.GetTiledCoordinate(vector.x, tileSize);
 		var y = MathMethods.GetTiledCoordinate(vector.y, tileSize);
-
-		return new Vector2(x, y);
-	}
-
-	public static Vector2 GetCeiledVector(this Vector2 vector)
-	{
-		var x = Mathf.CeilToInt(vector.x);
-		var y = Mathf.CeilToInt(vector.y);
 
 		return new Vector2(x, y);
 	}

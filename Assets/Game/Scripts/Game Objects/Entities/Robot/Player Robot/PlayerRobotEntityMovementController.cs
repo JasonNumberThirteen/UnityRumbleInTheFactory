@@ -125,7 +125,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void OnMovementValueChanged(Vector2 movementVector)
 	{
-		pressedMovementVector = InputMethods.GetAdjustedMovementVector(movementVector);
+		pressedMovementVector = movementVector.GetOneDimensionalVector();
 		
 		if(enabled && !GameIsPaused())
 		{
