@@ -6,7 +6,7 @@ public class BonusSpawnManager : MonoBehaviour
 
 	private StageSoundManager stageSoundManager;
 
-	public void SpawnRandomBonus()
+	public void SpawnRandomBonusIfPossible()
 	{
 		var randomBonusGO = bonusesPrefabs.GetRandomElement();
 

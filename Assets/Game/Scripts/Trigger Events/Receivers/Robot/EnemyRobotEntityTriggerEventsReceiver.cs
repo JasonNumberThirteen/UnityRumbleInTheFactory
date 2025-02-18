@@ -31,7 +31,7 @@ public class EnemyRobotEntityTriggerEventsReceiver : RobotEntityTriggerEventsRec
 			return;
 		}
 		
-		bonusSpawnManager.SpawnRandomBonus();
+		bonusSpawnManager.SpawnRandomBonusIfPossible();
 		enemyRobotEntity.RemoveBonusTypeProperties();
 	}
 }
