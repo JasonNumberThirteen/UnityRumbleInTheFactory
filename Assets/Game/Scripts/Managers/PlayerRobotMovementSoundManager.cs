@@ -70,26 +70,26 @@ public class PlayerRobotMovementSoundManager : MonoBehaviour
 
 	private void OnEntitySpawned(GameObject go)
 	{
-		if(go.TryGetComponent(out PlayerRobotEntityInputController playerRobotEntityInputController))
+		if(go.TryGetComponent(out PlayerRobotEntityMovementController playerRobotEntityMovementController))
 		{
-			RegisterPlayerRobotEntityInput(playerRobotEntityInputController, true);
+			RegisterPlayerRobotEntityInput(playerRobotEntityMovementController, true);
 		}
 	}
 
-	private void OnPlayerDied(PlayerRobotEntityInputController playerRobotEntityInputController)
+	private void OnPlayerDied(PlayerRobotEntityMovementController playerRobotEntityMovementController)
 	{
-		RegisterPlayerRobotEntityInput(playerRobotEntityInputController, false);
+		RegisterPlayerRobotEntityInput(playerRobotEntityMovementController, false);
 	}
 
-	private void RegisterPlayerRobotEntityInput(PlayerRobotEntityInputController playerRobotEntityInputController, bool register)
+	private void RegisterPlayerRobotEntityInput(PlayerRobotEntityMovementController playerRobotEntityMovementController, bool register)
 	{
-		playersMovementStates.RegisterPlayerInput(register, playerRobotEntityInputController, OnMovementValueChanged, OnPlayerDied);
+		playersMovementStates.RegisterPlayerInput(register, playerRobotEntityMovementController, OnMovementValueChanged, OnPlayerDied);
 		UpdateMovementSound();
 	}
 
-	private void OnMovementValueChanged(PlayerRobotEntityInputController playerRobotEntityInputController, bool isMoving)
+	private void OnMovementValueChanged(PlayerRobotEntityMovementController playerRobotEntityMovementController, bool isMoving)
 	{
-		playersMovementStates.SetStateTo(playerRobotEntityInputController, isMoving);
+		playersMovementStates.SetStateTo(playerRobotEntityMovementController, isMoving);
 		UpdateMovementSound();
 	}
 

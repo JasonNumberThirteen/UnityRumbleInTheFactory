@@ -2,28 +2,28 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-public class PlayersMovementStatesDictionary : Dictionary<PlayerRobotEntityInputController, bool>
+public class PlayersMovementStatesDictionary : Dictionary<PlayerRobotEntityMovementController, bool>
 {
 	public bool AnyPlayerIsMoving() => this.Any(pair => pair.Value);
 
-	public void RegisterPlayerInput(bool register, PlayerRobotEntityInputController playerRobotEntityInputController, UnityAction<PlayerRobotEntityInputController, bool> onMovementValueChanged, UnityAction<PlayerRobotEntityInputController> onPlayerDied)
+	public void RegisterPlayerInput(bool register, PlayerRobotEntityMovementController playerRobotEntityMovementController, UnityAction<PlayerRobotEntityMovementController, bool> onMovementValueChanged, UnityAction<PlayerRobotEntityMovementController> onPlayerDied)
 	{
-		if(playerRobotEntityInputController == null)
+		if(playerRobotEntityMovementController == null)
 		{
 			return;
 		}
 		
 		if(register)
 		{
-			SetStateTo(playerRobotEntityInputController, false);
-			playerRobotEntityInputController.movementValueChangedEvent.AddListener(onMovementValueChanged);
-			playerRobotEntityInputController.playerDiedEvent.AddListener(onPlayerDied);
+			SetStateTo(playerRobotEntityMovementController, false);
+			playerRobotEntityMovementController.movementValueChangedEvent.AddListener(onMovementValueChanged);
+			playerRobotEntityMovementController.playerDiedEvent.AddListener(onPlayerDied);
 		}
 		else
 		{
-			Remove(playerRobotEntityInputController);
-			playerRobotEntityInputController.movementValueChangedEvent.RemoveListener(onMovementValueChanged);
-			playerRobotEntityInputController.playerDiedEvent.RemoveListener(onPlayerDied);
+			Remove(playerRobotEntityMovementController);
+			playerRobotEntityMovementController.movementValueChangedEvent.RemoveListener(onMovementValueChanged);
+			playerRobotEntityMovementController.playerDiedEvent.RemoveListener(onPlayerDied);
 		}
 	}
 	
@@ -32,11 +32,11 @@ public class PlayersMovementStatesDictionary : Dictionary<PlayerRobotEntityInput
 		Keys.ToList().ForEach(key => SetStateTo(key, isMoving));
 	}
 
-	public void SetStateTo(PlayerRobotEntityInputController playerRobotEntityInputController, bool isMoving)
+	public void SetStateTo(PlayerRobotEntityMovementController playerRobotEntityMovementController, bool isMoving)
 	{
-		if(playerRobotEntityInputController != null)
+		if(playerRobotEntityMovementController != null)
 		{
-			this[playerRobotEntityInputController] = isMoving;
+			this[playerRobotEntityMovementController] = isMoving;
 		}
 	}
 }

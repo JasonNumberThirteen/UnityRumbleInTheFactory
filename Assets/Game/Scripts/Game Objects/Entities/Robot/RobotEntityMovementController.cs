@@ -40,7 +40,7 @@ public class RobotEntityMovementController : EntityMovementController
 
 	}
 
-	private void OnDestroy()
+	protected virtual void OnDestroy()
 	{
 		RegisterToListeners(false);
 	}

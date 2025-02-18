@@ -88,7 +88,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: behaviours.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 831581827609024836, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: behaviours.Array.data[0]
@@ -294,14 +294,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195558b8412e4964c9be7fbd6b2e1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
-  ordinalNumber: 0
   movementValueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  playerDiedEvent:
+  shootKeyPressedEvent:
     m_PersistentCalls:
       m_Calls: []
+  gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
+  ordinalNumber: 0
 --- !u!114 &-6502274134588380994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +314,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3dada8d8e5cab488c46a6750548b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementValueChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerDiedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3415699233984565831
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerRobotEntityShootController : RobotEntityShootController
 {
 	private int numberOfFiredBullets;
 	private int bulletsLimitAtOnce;
+	private PlayerRobotEntityInputController playerRobotEntityInputController;
 	private StageStateManager stageStateManager;
 	private StageEventsManager stageEventsManager;
 
@@ -23,6 +23,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	protected override void Awake()
 	{
+		playerRobotEntityInputController = GetComponent<PlayerRobotEntityInputController>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		
@@ -45,6 +46,8 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		
 		if(register)
 		{
+			playerRobotEntityInputController.shootKeyPressedEvent.AddListener(OnShootKeyPressed);
+			
 			if(stageEventsManager != null)
 			{
 				stageEventsManager.eventReceivedEvent.AddListener(OnEventReceived);
@@ -52,6 +55,8 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		}
 		else
 		{
+			playerRobotEntityInputController.shootKeyPressedEvent.RemoveListener(OnShootKeyPressed);
+			
 			if(stageEventsManager != null)
 			{
 				stageEventsManager.eventReceivedEvent.RemoveListener(OnEventReceived);
@@ -67,7 +72,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		}
 	}
 
-	private void OnFire(InputValue inputValue)
+	private void OnShootKeyPressed()
 	{
 		if(enabled && !GameIsPaused())
 		{

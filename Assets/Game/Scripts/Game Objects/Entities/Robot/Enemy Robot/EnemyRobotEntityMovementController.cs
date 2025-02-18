@@ -63,11 +63,6 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		SetMovementSpeed(movementSpeed*multiplier);
 	}
 
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-	}
-
 	private void OnTimerFinished()
 	{
 		RandomiseMovementDirection();

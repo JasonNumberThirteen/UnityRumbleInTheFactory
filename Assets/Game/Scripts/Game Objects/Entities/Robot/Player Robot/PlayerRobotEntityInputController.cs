@@ -5,46 +5,24 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput), typeof(PlayerRobotEntityMovementController))]
 public class PlayerRobotEntityInputController : MonoBehaviour
 {
+	public UnityEvent<Vector2> movementValueChangedEvent;
+	public UnityEvent shootKeyPressedEvent;
+	
 	[SerializeField] private GameData gameData;
 	[SerializeField, Min(1)] private int ordinalNumber;
 	
-	public UnityEvent<PlayerRobotEntityInputController, bool> movementValueChangedEvent;
-	public UnityEvent<PlayerRobotEntityInputController> playerDiedEvent;
-	
-	public Vector2 MovementVector {get; private set;}
-	public Vector2 LastMovementVector {get; private set;}
-
-	private Vector2 currentMovementVector;
 	private PlayerInput playerInput;
-	private PlayerRobotEntityMovementController playerRobotEntityMovementController;
-	private StageStateManager stageStateManager;
 	private StageSceneFlowManager stageSceneFlowManager;
-
-	public void SetLastMovementVector(Vector2 movementVector)
-	{
-		LastMovementVector = movementVector;
-	}
 
 	private void Awake()
 	{
 		playerInput = GetComponent<PlayerInput>();
-		playerRobotEntityMovementController = GetComponent<PlayerRobotEntityMovementController>();
-		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
-		
-		RegisterToListeners(true);
 	}
 
 	private void Start()
 	{
 		SetControlScheme();
-	}
-
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-		UpdateMovementVector(Vector2.zero);
-		playerDiedEvent?.Invoke(this);
 	}
 
 	private void SetControlScheme()
@@ -62,36 +40,19 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 		return Gamepad.current != null && (!selectedTwoPlayersMode || !isFirstPlayer);
 	}
 
-	private void RegisterToListeners(bool register)
-	{
-		if(register)
-		{
-			if(stageStateManager != null)
-			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
-			}
-		}
-		else
-		{
-			if(stageStateManager != null)
-			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
-			}
-		}
-	}
-
-	private void OnStageStateChanged(StageState stageState)
-	{
-		UpdateMovementVector(stageState == StageState.Paused ? GetIdleVectorDependingOnSlidingState() : currentMovementVector);
-	}
-
 	private void OnMove(InputValue inputValue)
 	{
-		currentMovementVector = inputValue.Get<Vector2>();
-
-		if(enabled && !GameIsPaused())
+		if(enabled)
 		{
-			UpdateMovementVector(currentMovementVector);
+			movementValueChangedEvent?.Invoke(inputValue.Get<Vector2>());
+		}
+	}
+
+	private void OnFire(InputValue inputValue)
+	{
+		if(enabled)
+		{
+			shootKeyPressedEvent?.Invoke();
 		}
 	}
 
@@ -102,24 +63,4 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 			stageSceneFlowManager.PauseGameIfPossible();
 		}
 	}
-
-	private void OnEnable()
-	{
-		UpdateMovementVector(currentMovementVector);
-	}
-
-	private void OnDisable()
-	{
-		UpdateMovementVector(GetIdleVectorDependingOnSlidingState());
-	}
-
-	private void UpdateMovementVector(Vector2 movementVector)
-	{
-		MovementVector = InputMethods.GetAdjustedMovementVector(movementVector);
-		
-		movementValueChangedEvent?.Invoke(this, !MovementVector.IsZero());
-	}
-
-	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
-	private Vector2 GetIdleVectorDependingOnSlidingState() => playerRobotEntityMovementController.IsSliding ? LastMovementVector : Vector2.zero;
 }
