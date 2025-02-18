@@ -4,8 +4,6 @@ public class IntersectingGameObjectTriggerEventsReceiver : MonoBehaviour, ITrigg
 {
 	private int initialLayer;
 
-	public int GetInitialLayer() => initialLayer;
-	
 	public void TriggerOnExit(GameObject sender)
 	{
 		if(sender == null || !sender.TryGetComponent(out IntersectingGameObjectTriggerEventsReceiver intersectingGameObjectTriggerEventsReceiver))
