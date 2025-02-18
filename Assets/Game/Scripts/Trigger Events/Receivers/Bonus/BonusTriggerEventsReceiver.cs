@@ -3,11 +3,10 @@ using UnityEngine;
 public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOnEnter
 {
 	protected StageSoundManager stageSoundManager;
+	protected PlayerRobotsDataManager playerRobotsDataManager;
 
 	[SerializeField] private GameData gameData;
 	[SerializeField, Min(0)] private int points = 500;
-
-	protected PlayerRobotsDataManager playerRobotsDataManager;
 
 	private StageStateManager stageStateManager;
 	
@@ -33,8 +32,8 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 	protected virtual void Awake()
 	{
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
-		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
+		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 	}
 
 	private void OnBonusCollected(GameObject sender)
