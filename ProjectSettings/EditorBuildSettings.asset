@@ -24,4 +24,4 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/HighScoreScene.unity
     guid: 16d474e586726ed418f44599aa50b305
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 439bee1ed4b3592408fe2118e0d882aa, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: b548de0d32d920e46883ddac312edd4f, type: 2}
