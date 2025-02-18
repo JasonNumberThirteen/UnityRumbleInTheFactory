@@ -57,12 +57,12 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 
 	private void StartGame(bool twoPlayersMode)
 	{
-		SetupGameData(twoPlayersMode);
+		SetupGameDataForStart(twoPlayersMode);
 		DeactivateMenuOptionsInputController();
 		gameStartOptionSubmittedEvent?.Invoke();
 	}
 
-	private void SetupGameData(bool twoPlayersMode)
+	private void SetupGameDataForStart(bool twoPlayersMode)
 	{
 		if(GameDataMethods.GameDataIsDefined(gameData))
 		{
