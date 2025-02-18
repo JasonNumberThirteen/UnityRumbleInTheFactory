@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Timer))]
+[RequireComponent(typeof(Timer), typeof(PlayerInput))]
 public class MenuOptionsInputController : MonoBehaviour
 {
 	public UnityEvent<int> navigateKeyPressedEvent;
@@ -11,8 +11,9 @@ public class MenuOptionsInputController : MonoBehaviour
 	
 	[SerializeField] private Axis navigationAxis;
 
-	private Timer timer;
 	private int navigationDirection;
+	private Timer timer;
+	private PlayerInput playerInput;
 
 	public void SetActive(bool active)
 	{
@@ -22,8 +23,17 @@ public class MenuOptionsInputController : MonoBehaviour
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
+		playerInput = GetComponent<PlayerInput>();
 
+		SetControlScheme();
 		RegisterToListeners(true);
+	}
+
+	private void SetControlScheme()
+	{
+		var controlSchemeName = Gamepad.current != null ? InputMethods.GAMEPAD_CONTROL_SCHEME_NAME : InputMethods.KEYBOARD_AND_MOUSE_CONTROL_SCHEME_NAME;
+
+		InputMethods.SetControlSchemeTo(playerInput, controlSchemeName);
 	}
 
 	private void OnDestroy()
