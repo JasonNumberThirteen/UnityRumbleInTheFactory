@@ -9,15 +9,14 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	public UnityEvent<PlayerRobotEntityMovementController, bool> movementValueChangedEvent;
 	public UnityEvent<PlayerRobotEntityMovementController> playerDiedEvent;
 	
-	public bool IsSliding {get; private set;}
-	public Vector2 MovementVector {get; set;}
-	public Vector2 LastMovementVector {get; private set;} = Vector2.one;
-	
+	private bool isSliding;
+	private bool playedSlidingSound;
+	private Vector2 pressedMovementVector;
 	private Vector2 currentMovementVector;
+	private Vector2 movementVectorWhileSliding;
 	private PlayerRobotEntityInputController playerRobotEntityInputController;
 	private StageSoundManager stageSoundManager;
 	private StageStateManager stageStateManager;
-	private bool playedSlidingSound;
 
 	private readonly string ENEMY_LAYER_NAME = "Enemy";
 	private readonly string SLIPPERY_FLOOR_LAYER_NAME = "Slippery Floor";
@@ -57,15 +56,15 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	protected override void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
 	{
-		IsSliding = gameObjects != null && gameObjects.Count > 0 && gameObjects.All(go => go.layer == LayerMask.NameToLayer(SLIPPERY_FLOOR_LAYER_NAME));
+		isSliding = gameObjects != null && gameObjects.Count > 0 && gameObjects.All(go => go.layer == LayerMask.NameToLayer(SLIPPERY_FLOOR_LAYER_NAME));
 		rb2D.constraints = gameObjects.Any(go => go.layer == LayerMask.NameToLayer(ENEMY_LAYER_NAME)) ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
 
-		if(IsSliding)
+		if(isSliding)
 		{
 			UpdateMovementVectorsIfNeeded();
 			PlaySlidingSoundIfNeeded();
 		}
-		else if(!IsSliding && playedSlidingSound)
+		else if(!isSliding && playedSlidingSound)
 		{
 			UpdateMovementVectorsIfNeeded();
 
@@ -75,13 +74,13 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void UpdateMovementVectorsIfNeeded()
 	{
-		if(!IsSliding && !playerRobotEntityInputController.enabled)
+		if(!isSliding && !playerRobotEntityInputController.enabled)
 		{
-			MovementVector = Vector2.zero;
+			currentMovementVector = Vector2.zero;
 		}
-		else if(LastMovementVector != MovementVector && !MovementVector.IsZero())
+		else if(movementVectorWhileSliding != currentMovementVector && !currentMovementVector.IsZero())
 		{
-			LastMovementVector = MovementVector;
+			movementVectorWhileSliding = currentMovementVector;
 		}
 	}
 
@@ -101,12 +100,12 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		UpdateLastDirectionIfNeeded();
 
-		CurrentMovementDirection = IsSliding && !LastMovementVector.IsZero() ? LastMovementVector : MovementVector;
+		CurrentMovementDirection = isSliding && !movementVectorWhileSliding.IsZero() ? movementVectorWhileSliding : currentMovementVector;
 	}
 
 	private void UpdateLastDirectionIfNeeded()
 	{
-		if(IsMovingInDifferentDirection())
+		if(CurrentMovementDirection != lastDirection && !CurrentMovementDirectionIsNone())
 		{
 			lastDirection = CurrentMovementDirection;
 		}
@@ -121,22 +120,22 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		UpdateMovementVector((stageState == StageState.Paused || stageState == StageState.Over) ? GetIdleVectorDependingOnSlidingState() : currentMovementVector);
+		UpdateMovementVector((stageState == StageState.Paused || stageState == StageState.Over) ? GetIdleVectorDependingOnSlidingState() : pressedMovementVector);
 	}
 
 	private void OnMovementValueChanged(Vector2 movementVector)
 	{
-		currentMovementVector = movementVector;
-
+		pressedMovementVector = InputMethods.GetAdjustedMovementVector(movementVector);
+		
 		if(enabled && !GameIsPaused())
 		{
-			UpdateMovementVector(currentMovementVector);
+			UpdateMovementVector(pressedMovementVector);
 		}
 	}
 
 	private void OnEnable()
 	{
-		UpdateMovementVector(currentMovementVector);
+		UpdateMovementVector(pressedMovementVector);
 	}
 
 	private void OnDisable()
@@ -146,12 +145,11 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void UpdateMovementVector(Vector2 movementVector)
 	{
-		MovementVector = InputMethods.GetAdjustedMovementVector(movementVector);
+		currentMovementVector = movementVector;
 
-		movementValueChangedEvent?.Invoke(this, !MovementVector.IsZero());
+		movementValueChangedEvent?.Invoke(this, !currentMovementVector.IsZero());
 	}
 
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
-	private Vector2 GetIdleVectorDependingOnSlidingState() => IsSliding ? LastMovementVector : Vector2.zero;
-	private bool IsMovingInDifferentDirection() => !CurrentMovementDirectionIsNone() && CurrentMovementDirection != lastDirection;
+	private Vector2 GetIdleVectorDependingOnSlidingState() => isSliding ? movementVectorWhileSliding : Vector2.zero;
 }
