@@ -16,6 +16,11 @@ public class NukeEntity : MonoBehaviour, ITriggerableOnEnter
 	
 	public void TriggerOnEnter(GameObject sender)
 	{
+		if(!sender.TryGetComponent(out BulletEntity _))
+		{
+			return;
+		}
+		
 		gameObject.layer = LayerMask.NameToLayer(DESTROYED_STATE_LAYER_NAME);
 
 		entityExploder.TriggerExplosion();
