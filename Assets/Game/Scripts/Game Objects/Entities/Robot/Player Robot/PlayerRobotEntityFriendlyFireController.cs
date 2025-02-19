@@ -9,6 +9,7 @@ public class PlayerRobotEntityFriendlyFireController : MonoBehaviour
 	private RobotEntityDisabler robotEntityDisabler;
 	private PlayerRobotEntityRendererBlinker playerRobotEntityRendererBlinker;
 	private StageStateManager stageStateManager;
+	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
 	
 	public void ImmobiliseTemporarily()
 	{
@@ -21,6 +22,7 @@ public class PlayerRobotEntityFriendlyFireController : MonoBehaviour
 		robotEntityDisabler = GetComponentInParent<RobotEntityDisabler>();
 		playerRobotEntityRendererBlinker = GetComponentInParent<PlayerRobotEntityRendererBlinker>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		robotEntitiesDisablingManager = ObjectMethods.FindComponentOfType<RobotEntitiesDisablingManager>();
 
 		RegisterToListeners(true);
 	}
@@ -62,11 +64,13 @@ public class PlayerRobotEntityFriendlyFireController : MonoBehaviour
 
 	private void SetDisablerActiveIfPossible(bool active)
 	{
-		if(robotEntityDisabler == null)
+		var playerRobotsAreStillDisabled = robotEntitiesDisablingManager != null && robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled(true);
+		
+		if(robotEntityDisabler == null || playerRobotsAreStillDisabled)
 		{
 			return;
 		}
-
+		
 		var canBeTriggered = stageStateManager == null || !stageStateManager.StateIsSetTo(StageState.Over);
 		
 		robotEntityDisabler.SetBehavioursActive(!active && canBeTriggered);
