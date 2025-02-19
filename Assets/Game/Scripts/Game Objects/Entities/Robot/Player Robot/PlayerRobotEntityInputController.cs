@@ -15,11 +15,13 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 	
 	private PlayerInput playerInput;
 	private StageSceneFlowManager stageSceneFlowManager;
+	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
 
 	private void Awake()
 	{
 		playerInput = GetComponent<PlayerInput>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
+		robotEntitiesDisablingManager = ObjectMethods.FindComponentOfType<RobotEntitiesDisablingManager>();
 	}
 
 	private void Start()
@@ -52,7 +54,7 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 
 	private void OnFire(InputValue inputValue)
 	{
-		if(enabled)
+		if(robotEntitiesDisablingManager == null || !robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled(true))
 		{
 			shootKeyPressedEvent?.Invoke();
 		}
