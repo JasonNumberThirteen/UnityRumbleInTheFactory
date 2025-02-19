@@ -52,8 +52,7 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 	private void Start()
 	{
 		SetInitialMovementSpeedModifiedByDifficultyTier();
-
-		CurrentMovementDirection = Vector2.down;
+		SetLastAndCurrentDirection(Vector2.down, Vector2.down);
 	}
 
 	private void SetInitialMovementSpeedModifiedByDifficultyTier()

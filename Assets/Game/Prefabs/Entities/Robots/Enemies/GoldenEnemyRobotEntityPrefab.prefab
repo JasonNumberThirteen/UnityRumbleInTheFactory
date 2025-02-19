@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: detectionAreaSize.x
-      value: 0.77
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: detectionAreaSize.y
-      value: 0.88
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 4507011129140874713, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: detectionAreaOffsetFromCenterDistance
@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 89bebc501cc050047bbbc33bbb18b235, type: 2}
     - target: {fileID: 8756875787931960348, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: m_Size.x
-      value: 0.75
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 8756875787931960348, guid: 177e7a55de345c64982260e56bfd0bd9, type: 3}
       propertyPath: m_Size.y
