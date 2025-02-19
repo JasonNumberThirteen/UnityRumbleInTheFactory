@@ -37,6 +37,8 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		if(register)
 		{
 			playerRobotEntityInputController.movementValueChangedEvent.AddListener(OnMovementValueChanged);
+			playerRobotEntityInputController.componentActivatedEvent.AddListener(OnComponentActivated);
+			playerRobotEntityInputController.componentDeactivatedEvent.AddListener(OnComponentDeactivated);
 			
 			if(stageStateManager != null)
 			{
@@ -46,6 +48,8 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		else
 		{
 			playerRobotEntityInputController.movementValueChangedEvent.RemoveListener(OnMovementValueChanged);
+			playerRobotEntityInputController.componentActivatedEvent.RemoveListener(OnComponentActivated);
+			playerRobotEntityInputController.componentDeactivatedEvent.RemoveListener(OnComponentDeactivated);
 			
 			if(stageStateManager != null)
 			{
@@ -120,7 +124,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void OnStageStateChanged(StageState stageState)
 	{
-		UpdateMovementVector((stageState == StageState.Paused || stageState == StageState.Over) ? GetIdleVectorDependingOnSlidingState() : pressedMovementVector);
+		UpdateMovementVector((stageState == StageState.Paused || stageState == StageState.Over) ? GetIdleVectorDependingOnSlidingState() : currentMovementVector);
 	}
 
 	private void OnMovementValueChanged(Vector2 movementVector)
@@ -133,12 +137,12 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		}
 	}
 
-	private void OnEnable()
+	private void OnComponentActivated()
 	{
 		UpdateMovementVector(pressedMovementVector);
 	}
 
-	private void OnDisable()
+	private void OnComponentDeactivated()
 	{
 		UpdateMovementVector(GetIdleVectorDependingOnSlidingState());
 	}

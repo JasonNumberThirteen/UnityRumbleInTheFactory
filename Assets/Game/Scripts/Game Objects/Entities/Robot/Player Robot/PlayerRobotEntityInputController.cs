@@ -7,6 +7,8 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 {
 	public UnityEvent<Vector2> movementValueChangedEvent;
 	public UnityEvent shootKeyPressedEvent;
+	public UnityEvent componentActivatedEvent;
+	public UnityEvent componentDeactivatedEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField, Min(1)] private int ordinalNumber;
@@ -62,5 +64,15 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 		{
 			stageSceneFlowManager.PauseGameIfPossible();
 		}
+	}
+
+	private void OnEnable()
+	{
+		componentActivatedEvent?.Invoke();
+	}
+
+	private void OnDisable()
+	{
+		componentDeactivatedEvent?.Invoke();
 	}
 }
