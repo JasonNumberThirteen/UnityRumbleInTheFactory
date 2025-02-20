@@ -1,13 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(RobotEntityRankController))]
+[RequireComponent(typeof(EntityExploder), typeof(RobotEntityRankController))]
 public abstract class RobotEntity : MonoBehaviour
 {
+	private EntityExploder entityExploder;
 	private RobotEntityRankController robotEntityRankController;
 	private RobotEntityShield robotEntityShield;
 	
 	public abstract bool IsFriendly();
 	public abstract void OnLifeBonusCollected(int lives);
+
+	protected abstract StageEventType GetStageEventTypeOnDestructionEvent();
 
 	public void OnRankBonusCollected(int ranks)
 	{
@@ -24,7 +27,37 @@ public abstract class RobotEntity : MonoBehaviour
 
 	protected virtual void Awake()
 	{
+		entityExploder = GetComponent<EntityExploder>();
 		robotEntityRankController = GetComponent<RobotEntityRankController>();
 		robotEntityShield = GetComponentInChildren<RobotEntityShield>();
+
+		RegisterToListeners(true);
+	}
+
+	protected virtual void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			entityExploder.entityDestroyedEvent.AddListener(OnEntityDestroyed);
+		}
+		else
+		{
+			entityExploder.entityDestroyedEvent.RemoveListener(OnEntityDestroyed);
+		}
+	}
+
+	private void OnEntityDestroyed()
+	{
+		var stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
+		
+		if(stageEventsManager != null)
+		{
+			stageEventsManager.SendEvent(GetStageEventTypeOnDestructionEvent(), gameObject);
+		}
 	}
 }

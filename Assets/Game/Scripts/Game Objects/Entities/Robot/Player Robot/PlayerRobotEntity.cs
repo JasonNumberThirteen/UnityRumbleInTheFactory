@@ -18,6 +18,8 @@ public class PlayerRobotEntity : RobotEntity
 		}
 	}
 
+	protected override StageEventType GetStageEventTypeOnDestructionEvent() => StageEventType.PlayerWasDestroyed;
+
 	public PlayerRobotData GetPlayerRobotData() => playerRobotData;
 
 	protected override void Awake()
@@ -27,8 +29,10 @@ public class PlayerRobotEntity : RobotEntity
 		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 	}
 
-	private void OnDestroy()
+	protected override void OnDestroy()
 	{
+		base.OnDestroy();
+		
 		if(playerRobotData != null && playerRobotData.Spawner != null)
 		{
 			playerRobotData.Spawner.InitiateRespawn();
