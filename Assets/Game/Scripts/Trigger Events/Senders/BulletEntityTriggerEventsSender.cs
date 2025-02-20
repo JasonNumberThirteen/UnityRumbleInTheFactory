@@ -64,7 +64,7 @@ public class BulletEntityTriggerEventsSender : MonoBehaviour
 	{
 		if(stageEventsManager != null)
 		{
-			stageEventsManager.SendEvent(StageEventType.BulletWasDestroyed, gameObject);
+			stageEventsManager.SendEvent(new GameObjectStageEvent(StageEventType.BulletWasDestroyed, gameObject));
 		}
 	}
 }

@@ -64,9 +64,16 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		}
 	}
 
-	private void OnEventReceived(StageEventType stageEventType, GameObject sender)
+	private void OnEventReceived(StageEvent stageEvent)
 	{
-		if(stageEventType == StageEventType.BulletWasDestroyed && sender.TryGetComponent(out PlayerRobotEntityBulletEntity playerRobotEntityBulletEntity) && playerRobotEntityBulletEntity.GetParentGO() == gameObject)
+		if(stageEvent.GetStageEventType() != StageEventType.BulletWasDestroyed || stageEvent is not GameObjectStageEvent gameObjectStageEvent)
+		{
+			return;
+		}
+
+		var go = gameObjectStageEvent.GetGO();
+		
+		if(go != null && go.TryGetComponent(out PlayerRobotEntityBulletEntity playerRobotEntityBulletEntity) && playerRobotEntityBulletEntity.GetParentGO() == gameObject)
 		{
 			--numberOfFiredBullets;
 		}

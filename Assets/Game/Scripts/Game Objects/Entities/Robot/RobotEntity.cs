@@ -57,7 +57,7 @@ public abstract class RobotEntity : MonoBehaviour
 		
 		if(stageEventsManager != null)
 		{
-			stageEventsManager.SendEvent(GetStageEventTypeOnDestructionEvent(), gameObject);
+			stageEventsManager.SendEvent(new GameObjectStageEvent(GetStageEventTypeOnDestructionEvent(), gameObject));
 		}
 	}
 }
