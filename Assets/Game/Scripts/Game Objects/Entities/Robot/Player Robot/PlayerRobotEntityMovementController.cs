@@ -78,7 +78,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void UpdateMovementVectorsIfNeeded()
 	{
-		if(!isSliding)
+		if(!isSliding && pressedMovementVector.IsZero())
 		{
 			currentMovementVector = Vector2.zero;
 		}
