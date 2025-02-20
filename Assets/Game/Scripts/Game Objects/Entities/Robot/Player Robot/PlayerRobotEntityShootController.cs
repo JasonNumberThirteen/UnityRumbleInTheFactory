@@ -66,7 +66,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	private void OnEventReceived(StageEventType stageEventType, GameObject sender)
 	{
-		if(stageEventType == StageEventType.BulletDestroyed && sender.TryGetComponent(out PlayerRobotEntityBulletEntity playerRobotEntityBulletEntity) && playerRobotEntityBulletEntity.GetParentGO() == gameObject)
+		if(stageEventType == StageEventType.BulletWasDestroyed && sender.TryGetComponent(out PlayerRobotEntityBulletEntity playerRobotEntityBulletEntity) && playerRobotEntityBulletEntity.GetParentGO() == gameObject)
 		{
 			--numberOfFiredBullets;
 		}

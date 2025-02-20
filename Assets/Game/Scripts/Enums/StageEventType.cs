@@ -1,5 +1,5 @@
 public enum StageEventType
 {
-	BulletDestroyed,
-	EnemyDestroyed
+	BulletWasDestroyed,
+	EnemyWasDestroyed
 }

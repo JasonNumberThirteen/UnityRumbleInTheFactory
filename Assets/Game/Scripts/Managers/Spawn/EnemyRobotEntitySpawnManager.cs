@@ -100,7 +100,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 
 	private void OnEventReceived(StageEventType stageEventType, GameObject sender)
 	{
-		if(stageEventType != StageEventType.EnemyDestroyed)
+		if(stageEventType != StageEventType.EnemyWasDestroyed)
 		{
 			return;
 		}

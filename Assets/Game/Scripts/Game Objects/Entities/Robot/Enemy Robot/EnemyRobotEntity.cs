@@ -68,7 +68,7 @@ public class EnemyRobotEntity : RobotEntity
 		
 		if(stageEventsManager != null)
 		{
-			stageEventsManager.SendEvent(StageEventType.EnemyDestroyed, gameObject);
+			stageEventsManager.SendEvent(StageEventType.EnemyWasDestroyed, gameObject);
 		}
 	}
 }
