@@ -1,10 +1,13 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerRobotEntity))]
 public class PlayerRobotEntityInputTypesActivationController : MonoBehaviour
 {
+	public UnityEvent occuredStageEventTypesUpdatedEvent;
+	
 	private PlayerRobotEntity playerRobotEntity;
 	private StageEventsManager stageEventsManager;
 	
@@ -65,5 +68,7 @@ public class PlayerRobotEntityInputTypesActivationController : MonoBehaviour
 		{
 			occuredStageEventTypes.Remove(stageEventType);
 		}
+
+		occuredStageEventTypesUpdatedEvent?.Invoke();
 	}
 }
