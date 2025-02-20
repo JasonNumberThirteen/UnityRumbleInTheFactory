@@ -2,5 +2,7 @@ public enum StageEventType
 {
 	BulletWasDestroyed,
 	PlayerWasDestroyed,
-	EnemyWasDestroyed
+	EnemyWasDestroyed,
+	RobotsActivationStateWasChanged,
+	PlayerRobotActivationStateWasChangedByFriendlyFire,
 }

@@ -2,26 +2,22 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput), typeof(PlayerRobotEntityMovementController))]
+[RequireComponent(typeof(PlayerInput))]
 public class PlayerRobotEntityInputController : MonoBehaviour
 {
-	public UnityEvent<Vector2> movementValueChangedEvent;
+	public UnityEvent<Vector2> movementKeyPressedEvent;
 	public UnityEvent shootKeyPressedEvent;
-	public UnityEvent componentActivatedEvent;
-	public UnityEvent componentDeactivatedEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField, Min(1)] private int ordinalNumber;
 	
 	private PlayerInput playerInput;
 	private StageSceneFlowManager stageSceneFlowManager;
-	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
 
 	private void Awake()
 	{
 		playerInput = GetComponent<PlayerInput>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
-		robotEntitiesDisablingManager = ObjectMethods.FindComponentOfType<RobotEntitiesDisablingManager>();
 	}
 
 	private void Start()
@@ -46,18 +42,12 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 
 	private void OnMove(InputValue inputValue)
 	{
-		if(enabled)
-		{
-			movementValueChangedEvent?.Invoke(inputValue.Get<Vector2>());
-		}
+		movementKeyPressedEvent?.Invoke(inputValue.Get<Vector2>());
 	}
 
 	private void OnFire(InputValue inputValue)
 	{
-		if(robotEntitiesDisablingManager == null || !robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled(true))
-		{
-			shootKeyPressedEvent?.Invoke();
-		}
+		shootKeyPressedEvent?.Invoke();
 	}
 
 	private void OnPause(InputValue inputValue)
@@ -66,15 +56,5 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 		{
 			stageSceneFlowManager.PauseGameIfPossible();
 		}
-	}
-
-	private void OnEnable()
-	{
-		componentActivatedEvent?.Invoke();
-	}
-
-	private void OnDisable()
-	{
-		componentDeactivatedEvent?.Invoke();
 	}
 }

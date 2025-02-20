@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(PlayerRobotEntityInputController))]
+[RequireComponent(typeof(PlayerRobotEntity), typeof(PlayerRobotEntityInputController), typeof(PlayerRobotEntityInputTypesActivationController))]
 public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
 	public UnityEvent<PlayerRobotEntityMovementController, bool> movementValueChangedEvent;
@@ -14,18 +14,24 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	private Vector2 pressedMovementVector;
 	private Vector2 currentMovementVector;
 	private Vector2 movementVectorWhileSliding;
+	private PlayerRobotEntity playerRobotEntity;
 	private PlayerRobotEntityInputController playerRobotEntityInputController;
+	private PlayerRobotEntityInputTypesActivationController playerRobotEntityInputTypesActivationController;
 	private StageSoundManager stageSoundManager;
 	private StageStateManager stageStateManager;
+	private StageEventsManager stageEventsManager;
 
 	private readonly string ENEMY_LAYER_NAME = "Enemy";
 	private readonly string SLIPPERY_FLOOR_LAYER_NAME = "Slippery Floor";
 
 	protected override void Awake()
 	{
+		playerRobotEntity = GetComponent<PlayerRobotEntity>();
 		playerRobotEntityInputController = GetComponent<PlayerRobotEntityInputController>();
+		playerRobotEntityInputTypesActivationController = GetComponent<PlayerRobotEntityInputTypesActivationController>();
 		stageSoundManager = ObjectMethods.FindComponentOfType<StageSoundManager>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		
 		base.Awake();
 	}
@@ -36,24 +42,30 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 		if(register)
 		{
-			playerRobotEntityInputController.movementValueChangedEvent.AddListener(OnMovementValueChanged);
-			playerRobotEntityInputController.componentActivatedEvent.AddListener(OnComponentActivated);
-			playerRobotEntityInputController.componentDeactivatedEvent.AddListener(OnComponentDeactivated);
+			playerRobotEntityInputController.movementKeyPressedEvent.AddListener(OnMovementValueChanged);
 			
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
 			}
+
+			if(stageEventsManager != null)
+			{
+				stageEventsManager.eventReceivedEvent.AddListener(OnEventReceived);
+			}
 		}
 		else
 		{
-			playerRobotEntityInputController.movementValueChangedEvent.RemoveListener(OnMovementValueChanged);
-			playerRobotEntityInputController.componentActivatedEvent.RemoveListener(OnComponentActivated);
-			playerRobotEntityInputController.componentDeactivatedEvent.RemoveListener(OnComponentDeactivated);
+			playerRobotEntityInputController.movementKeyPressedEvent.RemoveListener(OnMovementValueChanged);
 			
 			if(stageStateManager != null)
 			{
 				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+			}
+
+			if(stageEventsManager != null)
+			{
+				stageEventsManager.eventReceivedEvent.RemoveListener(OnEventReceived);
 			}
 		}
 	}
@@ -78,7 +90,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void UpdateMovementVectorsIfNeeded()
 	{
-		if(!isSliding && !playerRobotEntityInputController.enabled)
+		if(!isSliding)
 		{
 			currentMovementVector = Vector2.zero;
 		}
@@ -131,20 +143,18 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		pressedMovementVector = movementVector.GetRawVector();
 
-		if(enabled && !GameIsPaused())
+		if(CanPerformInputActionOfType(PlayerInputActionType.Movement) && !GameIsPaused())
 		{
 			UpdateMovementVector(pressedMovementVector);
 		}
 	}
 
-	private void OnComponentActivated()
+	private void OnEventReceived(StageEvent stageEvent)
 	{
-		UpdateMovementVector(pressedMovementVector);
-	}
-
-	private void OnComponentDeactivated()
-	{
-		UpdateMovementVector(GetIdleVectorDependingOnSlidingState());
+		if(stageEvent is RobotEntitiesDisablingStageEvent robotEntitiesDisablingStageEvent && robotEntitiesDisablingStageEvent.AppliesTo(playerRobotEntity))
+		{
+			UpdateMovementVector(CanPerformInputActionOfType(PlayerInputActionType.Movement) && !robotEntitiesDisablingStageEvent.DisablingIsActive() ? pressedMovementVector : GetIdleVectorDependingOnSlidingState());
+		}
 	}
 
 	private void UpdateMovementVector(Vector2 movementVector)
@@ -156,4 +166,5 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
 	private Vector2 GetIdleVectorDependingOnSlidingState() => isSliding ? movementVectorWhileSliding : Vector2.zero;
+	private bool CanPerformInputActionOfType(PlayerInputActionType playerInputActionType) => playerRobotEntityInputTypesActivationController == null || playerRobotEntityInputTypesActivationController.PlayerCanPerformInputActionOfType(playerInputActionType);
 }

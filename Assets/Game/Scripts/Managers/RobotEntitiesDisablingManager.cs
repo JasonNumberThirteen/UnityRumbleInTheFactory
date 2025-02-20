@@ -4,9 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Timer))]
 public class RobotEntitiesDisablingManager : MonoBehaviour
 {
+	private bool affectFriendly;
 	private Timer timer;
 	private StageStateManager stageStateManager;
-	private bool affectFriendly;
+	private StageEventsManager stageEventsManager;
 	
 	public bool RobotsAreTemporarilyDisabled(bool checkFriendly) => timer.TimerWasStarted && checkFriendly == affectFriendly;
 	
@@ -23,12 +24,18 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 		var robotEntityDisablers = robotEntities.Select(robotEntity => robotEntity.GetComponent<RobotEntityDisabler>()).Where(component => component != null).ToArray();
 
 		robotEntityDisablers.ForEach(robotEntityDisabler => robotEntityDisabler.SetBehavioursActive(active));
+
+		if(stageEventsManager != null)
+		{
+			stageEventsManager.SendEvent(new RobotEntitiesDisablingStageEvent(StageEventType.RobotsActivationStateWasChanged, !active, robotEntities.ToArray()));
+		}
 	}
 
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
+		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 
 		RegisterToListeners(true);
 	}

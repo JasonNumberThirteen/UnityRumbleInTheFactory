@@ -1,10 +1,12 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerRobotEntityInputTypesActivationController))]
 public class PlayerRobotEntityShootController : RobotEntityShootController
 {
 	private int numberOfFiredBullets;
 	private int bulletsLimitAtOnce;
 	private PlayerRobotEntityInputController playerRobotEntityInputController;
+	private PlayerRobotEntityInputTypesActivationController playerRobotEntityInputTypesActivationController;
 	private StageStateManager stageStateManager;
 	private StageEventsManager stageEventsManager;
 
@@ -24,6 +26,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 	protected override void Awake()
 	{
 		playerRobotEntityInputController = GetComponent<PlayerRobotEntityInputController>();
+		playerRobotEntityInputTypesActivationController = GetComponent<PlayerRobotEntityInputTypesActivationController>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		
@@ -81,7 +84,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	private void OnShootKeyPressed()
 	{
-		if(enabled && !GameIsPaused())
+		if(CanPerformInputActionOfType(PlayerInputActionType.Shoot) && !GameIsPaused())
 		{
 			FireBullet();
 		}
@@ -97,4 +100,5 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	private bool ReachedBulletsLimitAtOnce() => numberOfFiredBullets >= bulletsLimitAtOnce;
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
+	private bool CanPerformInputActionOfType(PlayerInputActionType playerInputActionType) => playerRobotEntityInputTypesActivationController == null || playerRobotEntityInputTypesActivationController.PlayerCanPerformInputActionOfType(playerInputActionType);
 }

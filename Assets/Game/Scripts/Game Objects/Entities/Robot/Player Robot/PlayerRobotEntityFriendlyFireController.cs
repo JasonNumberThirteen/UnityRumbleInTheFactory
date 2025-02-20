@@ -6,10 +6,11 @@ public class PlayerRobotEntityFriendlyFireController : MonoBehaviour
 	[SerializeField, Min(0.01f)] private float blinkTime = 0.125f;
 	
 	private Timer timer;
+	private PlayerRobotEntity playerRobotEntity;
 	private RobotEntityDisabler robotEntityDisabler;
 	private PlayerRobotEntityRendererBlinker playerRobotEntityRendererBlinker;
 	private StageStateManager stageStateManager;
-	private RobotEntitiesDisablingManager robotEntitiesDisablingManager;
+	private StageEventsManager stageEventsManager;
 	
 	public void ImmobiliseTemporarily()
 	{
@@ -19,10 +20,11 @@ public class PlayerRobotEntityFriendlyFireController : MonoBehaviour
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
+		playerRobotEntity = GetComponentInParent<PlayerRobotEntity>();
 		robotEntityDisabler = GetComponentInParent<RobotEntityDisabler>();
 		playerRobotEntityRendererBlinker = GetComponentInParent<PlayerRobotEntityRendererBlinker>();
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
-		robotEntitiesDisablingManager = ObjectMethods.FindComponentOfType<RobotEntitiesDisablingManager>();
+		stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 
 		RegisterToListeners(true);
 	}
@@ -60,13 +62,12 @@ public class PlayerRobotEntityFriendlyFireController : MonoBehaviour
 	{
 		SetDisablerActiveIfPossible(active);
 		SetRendererBlinkerActive(active);
+		SendEvent(active);
 	}
 
 	private void SetDisablerActiveIfPossible(bool active)
 	{
-		var playerRobotsAreStillDisabled = robotEntitiesDisablingManager != null && robotEntitiesDisablingManager.RobotsAreTemporarilyDisabled(true);
-		
-		if(robotEntityDisabler == null || playerRobotsAreStillDisabled)
+		if(robotEntityDisabler == null)
 		{
 			return;
 		}
@@ -81,6 +82,14 @@ public class PlayerRobotEntityFriendlyFireController : MonoBehaviour
 		if(playerRobotEntityRendererBlinker != null)
 		{
 			playerRobotEntityRendererBlinker.SetBlinkActive(active, blinkTime);
+		}
+	}
+
+	private void SendEvent(bool active)
+	{
+		if(stageEventsManager != null)
+		{
+			stageEventsManager.SendEvent(new RobotEntitiesDisablingStageEvent(StageEventType.PlayerRobotActivationStateWasChangedByFriendlyFire, active, new RobotEntity[]{playerRobotEntity}));
 		}
 	}
 }
