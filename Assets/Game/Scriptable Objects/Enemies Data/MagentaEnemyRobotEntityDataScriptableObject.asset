@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ordinalNumber: 3
   prefab: {fileID: 5846403709422768729, guid: 75372a8da47bda748881d07b3bbf8c33, type: 3}
-  pointsForDefeat: 250
+  pointsForDefeat: 300
   displayInScoreSceneSprite: {fileID: -65799742, guid: 9c9ad5b673ffbc14a9a539e3267c5c84, type: 3}
   ranks:
   - health: 2
