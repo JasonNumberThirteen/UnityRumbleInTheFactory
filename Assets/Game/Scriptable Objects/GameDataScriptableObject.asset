@@ -21,7 +21,7 @@ MonoBehaviour:
       enemiesLimitAtOnce: 3
       enemyMovementSpeedMultiplier: 1
       enemyShootDelayMultiplier: 1
-      enemiesCanCollectBonuses: 0
+      enemiesCanCollectBonuses: 1
     - enemySpawnDelay: 2
       enemiesLimitAtOnce: 3
       enemyMovementSpeedMultiplier: 1.1
