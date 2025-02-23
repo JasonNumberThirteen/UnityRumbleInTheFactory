@@ -17,6 +17,7 @@ public class NukeEntityFortressField : MonoBehaviour
 	private StageLayoutManager stageLayoutManager;
 
 	private readonly List<GameObject> fortressTileGOs = new();
+	private readonly float DESTRUCTION_AREA_SIZE_OFFSET = 0.1f;
 
 	public void SpawnFortress(float duration)
 	{
@@ -28,7 +29,8 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	public void DestroyAllGOsWithinArea()
 	{
-		var colliders = Physics2D.OverlapBoxAll(c2D.bounds.center, c2D.bounds.size, 0f, destroyableGameObjectsWithinArea);
+		var size = (Vector2)c2D.bounds.size - Vector2.one*DESTRUCTION_AREA_SIZE_OFFSET;
+		var colliders = Physics2D.OverlapBoxAll(c2D.bounds.center, size, 0f, destroyableGameObjectsWithinArea);
 
 		colliders.ForEach(collider => Destroy(collider.gameObject));
 	}
