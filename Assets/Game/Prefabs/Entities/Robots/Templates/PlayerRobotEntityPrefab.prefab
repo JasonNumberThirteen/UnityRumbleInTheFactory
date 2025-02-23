@@ -76,11 +76,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7141019311719498587, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_Size.x
-      value: 0.6
+      value: 0.575
       objectReference: {fileID: 0}
     - target: {fileID: -7141019311719498587, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: m_Size.y
-      value: 0.6
+      value: 0.575
       objectReference: {fileID: 0}
     - target: {fileID: -5011310037718002703, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: resetRankOnStart
@@ -404,6 +404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5457086ff72b14d4f8be895927c4f05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occuredStageEventTypesUpdatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &3508498655664141437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3038284362999386624, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
