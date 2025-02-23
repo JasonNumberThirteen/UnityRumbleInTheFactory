@@ -3001,7 +3001,7 @@ MonoBehaviour:
   soundPlayedEvent:
     m_PersistentCalls:
       m_Calls: []
-  additionalSoundChannels: 4
+  additionalSoundChannels: 8
   stageSoundEffectsContainer:
     robotDamageSound: {fileID: 8300000, guid: 928473f8c3ec85d44a2b2294d252ea67, type: 3}
     playerRobotIdleSound: {fileID: 8300000, guid: a45af856d780abe47b6c8161e4764223, type: 3}
