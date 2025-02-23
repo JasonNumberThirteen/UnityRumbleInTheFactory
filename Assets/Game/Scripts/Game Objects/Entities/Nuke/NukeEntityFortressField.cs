@@ -70,6 +70,11 @@ public class NukeEntityFortressField : MonoBehaviour
 
 	private void ReplaceTileAfterElapsedTime(GameObject go)
 	{
+		if(go == null)
+		{
+			return;
+		}
+		
 		if(tileToSpawnAfterElapsedTimePrefab != null)
 		{
 			Instantiate(tileToSpawnAfterElapsedTimePrefab, go.transform.position, go.transform.rotation);
