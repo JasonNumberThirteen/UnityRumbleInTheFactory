@@ -33,7 +33,7 @@
 - 20 stages,
 - [5 types of tiles](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Tiles "Tiles"),
 - [6 bonuses](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Bonuses "Bonuses"),
-- 4 enemy types.
+- [4 enemy types](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Robots "Robots").
 
 ## Scenes
 ### Main Menu
