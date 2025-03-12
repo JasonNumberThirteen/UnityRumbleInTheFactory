@@ -15,16 +15,16 @@ public class IntersectingGameObjectTriggerEventsReceiver : MonoBehaviour, ITrigg
 		intersectingGameObjectTriggerEventsReceiver.RestoreInitialLayerIfNeeded();
 	}
 
-	public void RestoreInitialLayerIfNeeded()
+	private void Awake()
+	{
+		initialLayer = gameObject.layer;
+	}
+
+	private void RestoreInitialLayerIfNeeded()
 	{
 		if(gameObject.layer != initialLayer)
 		{
 			gameObject.layer = initialLayer;
 		}
-	}
-
-	private void Awake()
-	{
-		initialLayer = gameObject.layer;
 	}
 }
