@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TwoPlayersModeGameObjectActivationController : GameObjectActivationController
+public class TwoPlayerModeGameObjectActivationController : GameObjectActivationController
 {
 	[SerializeField] private GameData gameData;
 	
