@@ -1,6 +1,6 @@
 public enum OptionType
 {
 	OnePlayerMode = 1,
-	TwoPlayersMode,
+	TwoPlayerMode,
 	ExitGame
 }

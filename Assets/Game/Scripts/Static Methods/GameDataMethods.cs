@@ -3,7 +3,7 @@ using System;
 public static class GameDataMethods
 {
 	public static bool EnteredStageSelection(GameData gameData) => GameDataIsDefined(gameData) && gameData.EnteredStageSelection;
-	public static bool SelectedTwoPlayersMode(GameData gameData) => GameDataIsDefined(gameData) && gameData.SelectedTwoPlayersMode;
+	public static bool SelectedTwoPlayerMode(GameData gameData) => GameDataIsDefined(gameData) && gameData.SelectedTwoPlayerMode;
 	public static bool GameIsOver(GameData gameData) => GameDataIsDefined(gameData) && gameData.GameIsOver;
 	public static bool BeatenHighScore(GameData gameData) => GameDataIsDefined(gameData) && gameData.BeatenHighScore;
 	public static int GetCurrentDifficultyTierIndex(GameData gameData) => GameDataIsDefined(gameData) ? gameData.GetCurrentDifficultyTierIndex() : 0;

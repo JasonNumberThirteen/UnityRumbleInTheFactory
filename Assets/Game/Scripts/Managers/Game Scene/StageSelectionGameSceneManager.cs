@@ -101,6 +101,6 @@ public class StageSelectionGameSceneManager : GameSceneManager
 	{
 		var isFirstPlayer = counterValue == 1;
 		
-		playerRobotData.ResetData(isFirstPlayer || GameDataMethods.SelectedTwoPlayersMode(gameData));
+		playerRobotData.ResetData(isFirstPlayer || GameDataMethods.SelectedTwoPlayerMode(gameData));
 	}
 }

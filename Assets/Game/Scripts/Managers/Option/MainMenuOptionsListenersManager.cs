@@ -33,7 +33,7 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 		}
 		
 		optionsManager.RegisterToOptionListeners(register, OptionType.OnePlayerMode, OnOptionSelected, OnOnePlayerModeSubmitted);
-		optionsManager.RegisterToOptionListeners(register, OptionType.TwoPlayersMode, OnOptionSelected, OnTwoPlayersModeSubmitted);
+		optionsManager.RegisterToOptionListeners(register, OptionType.TwoPlayerMode, OnOptionSelected, OnTwoPlayerModeSubmitted);
 		optionsManager.RegisterToOptionListeners(register, OptionType.ExitGame, OnOptionSelected, OnExitGameSubmitted);
 	}
 
@@ -50,23 +50,23 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 		StartGame(false);
 	}
 
-	private void OnTwoPlayersModeSubmitted(Option option)
+	private void OnTwoPlayerModeSubmitted(Option option)
 	{
 		StartGame(true);
 	}
 
-	private void StartGame(bool twoPlayersMode)
+	private void StartGame(bool twoPlayerMode)
 	{
-		SetupGameDataForStart(twoPlayersMode);
+		SetupGameDataForStart(twoPlayerMode);
 		DeactivateMenuOptionsInputController();
 		gameStartOptionSubmittedEvent?.Invoke();
 	}
 
-	private void SetupGameDataForStart(bool twoPlayersMode)
+	private void SetupGameDataForStart(bool twoPlayerMode)
 	{
 		if(GameDataMethods.GameDataIsDefined(gameData))
 		{
-			gameData.SetupForGameStart(twoPlayersMode);
+			gameData.SetupForGameStart(twoPlayerMode);
 		}
 	}
 

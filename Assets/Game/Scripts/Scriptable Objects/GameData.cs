@@ -15,7 +15,7 @@ public class GameData : ScriptableObject
 		get => saveableGameData.stageNumber;
 	}
 	public bool EnteredStageSelection {get; private set;}
-	public bool SelectedTwoPlayersMode {get; private set;}
+	public bool SelectedTwoPlayerMode {get; private set;}
 	public bool GameIsOver {get; private set;}
 	public bool BeatenHighScore {get; private set;}
 	public int PreviousHighScore {get; private set;}
@@ -41,10 +41,10 @@ public class GameData : ScriptableObject
 		saveableGameData.stageNumber = stageNumber;
 	}
 
-	public void SetupForGameStart(bool selectedTwoPlayersMode)
+	public void SetupForGameStart(bool selectedTwoPlayerMode)
 	{
 		EnteredStageSelection = true;
-		SelectedTwoPlayersMode = selectedTwoPlayersMode;
+		SelectedTwoPlayerMode = selectedTwoPlayerMode;
 	}
 
 	public void SetGameAsOver()

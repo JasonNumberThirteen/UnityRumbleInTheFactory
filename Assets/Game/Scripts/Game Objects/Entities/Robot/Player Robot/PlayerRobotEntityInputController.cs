@@ -34,10 +34,10 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 
 	private bool ShouldAssignGamepadControlScheme()
 	{
-		var selectedTwoPlayersMode = GameDataMethods.SelectedTwoPlayersMode(gameData);
+		var selectedTwoPlayerMode = GameDataMethods.SelectedTwoPlayerMode(gameData);
 		var isFirstPlayer = ordinalNumber == 1;
 
-		return Gamepad.current != null && (!selectedTwoPlayersMode || !isFirstPlayer);
+		return Gamepad.current != null && (!selectedTwoPlayerMode || !isFirstPlayer);
 	}
 
 	private void OnMove(InputValue inputValue)

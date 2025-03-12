@@ -25,7 +25,7 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	private void Start()
 	{
 		SetCounterRange();
-		SelectTwoPlayersModeIfNeeded();
+		SelectTwoPlayerModeIfNeeded();
 	}
 
 	private void SetCounterRange()
@@ -36,19 +36,19 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		loopingIntCounter.SetRange(1, max);
 	}
 
-	private void SelectTwoPlayersModeIfNeeded()
+	private void SelectTwoPlayerModeIfNeeded()
 	{
-		if(GameDataMethods.EnteredStageSelection(gameData) && GameDataMethods.SelectedTwoPlayersMode(gameData))
+		if(GameDataMethods.EnteredStageSelection(gameData) && GameDataMethods.SelectedTwoPlayerMode(gameData))
 		{
-			StartCoroutine(SelectTwoPlayersMode());
+			StartCoroutine(SelectTwoPlayerMode());
 		}
 	}
 
-	private IEnumerator SelectTwoPlayersMode()
+	private IEnumerator SelectTwoPlayerMode()
 	{
 		yield return new WaitForEndOfFrame();
 
-		loopingIntCounter.SetTo(OptionType.TwoPlayersMode.ToInt());
+		loopingIntCounter.SetTo(OptionType.TwoPlayerMode.ToInt());
 	}
 
 	private void OnDestroy()
