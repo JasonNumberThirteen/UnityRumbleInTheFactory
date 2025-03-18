@@ -2057,7 +2057,7 @@ GameObject:
   - component: {fileID: 1623448758}
   - component: {fileID: 1623448757}
   m_Layer: 0
-  m_Name: Menu Options Input
+  m_Name: Menu Options Input Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
