@@ -84,7 +84,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	private void OnShootKeyWasPressed()
 	{
-		if(CanPerformInputActionOfType(PlayerInputActionType.Shoot) && !GameIsPaused())
+		if(CanPerformInputActionOfType(PlayerInputActionType.Shoot) && !GameIsPaused() && !GameIsOver())
 		{
 			FireBullet();
 		}
@@ -100,5 +100,6 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 
 	private bool ReachedBulletsLimitAtOnce() => numberOfFiredBullets >= bulletsLimitAtOnce;
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
+	private bool GameIsOver() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Over);
 	private bool CanPerformInputActionOfType(PlayerInputActionType playerInputActionType) => playerRobotEntityInputTypesActivationController == null || playerRobotEntityInputTypesActivationController.PlayerCanPerformInputActionOfType(playerInputActionType);
 }

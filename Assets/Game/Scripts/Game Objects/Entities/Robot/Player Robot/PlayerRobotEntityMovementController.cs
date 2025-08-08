@@ -126,7 +126,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		pressedMovementVector = movementVector.GetRawVector();
 
-		if(CanPerformInputActionOfType(PlayerInputActionType.Movement) && !GameIsPaused())
+		if(CanPerformInputActionOfType(PlayerInputActionType.Movement) && !GameIsPaused() && !GameIsOver())
 		{
 			UpdateMovementVector(pressedMovementVector);
 		}
@@ -150,6 +150,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	}
 
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);
+	private bool GameIsOver() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Over);
 	private Vector2 GetIdleVectorDependingOnSlidingState() => isSliding ? movementVectorWhileSliding : Vector2.zero;
 	private bool CanPerformInputActionOfType(PlayerInputActionType playerInputActionType) => playerRobotEntityInputTypesActivationController == null || playerRobotEntityInputTypesActivationController.PlayerCanPerformInputActionOfType(playerInputActionType);
 }
