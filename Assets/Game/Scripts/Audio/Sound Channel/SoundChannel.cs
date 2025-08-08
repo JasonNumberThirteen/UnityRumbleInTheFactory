@@ -39,12 +39,22 @@ public class SoundChannel : MonoBehaviour
 			{
 				stageMusicManager.musicStoppedPlayingEvent.AddListener(OnMusicStoppedPlaying);
 			}
+
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
+			}
 		}
 		else
 		{
 			if(stageMusicManager != null)
 			{
 				stageMusicManager.musicStoppedPlayingEvent.RemoveListener(OnMusicStoppedPlaying);
+			}
+
+			if(stageStateManager != null)
+			{
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 		}
 	}
@@ -56,7 +66,7 @@ public class SoundChannel : MonoBehaviour
 			StageState.Paused,
 			StageState.Over
 		};
-		
+
 		audioSource.mute = stageStatesMutingSound.Contains(stageState);
 	}
 
@@ -71,5 +81,10 @@ public class SoundChannel : MonoBehaviour
 		{
 			MuteSoundDependingOnStageState(stageStateManager.GetStageState());
 		}
+	}
+
+	private void OnStageStateWasChanged(StageState stageState)
+	{
+		MuteSoundDependingOnStageState(stageState);
 	}
 }
