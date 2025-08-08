@@ -25,17 +25,17 @@ public class RobotEntityMovementController : EntityMovementController
 	{
 		if(register)
 		{
-			robotEntityRankController.rankWasChangedEvent.AddListener(OnRankChanged);
-			robotEntityGameObjectsDetector.detectedGameObjectsWereUpdatedEvent.AddListener(OnDetectedGameObjectsUpdated);
+			robotEntityRankController.rankWasChangedEvent.AddListener(OnRankWasChanged);
+			robotEntityGameObjectsDetector.detectedGameObjectsWereUpdatedEvent.AddListener(OnDetectedGameObjectsWereUpdated);
 		}
 		else
 		{
-			robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankChanged);
-			robotEntityGameObjectsDetector.detectedGameObjectsWereUpdatedEvent.RemoveListener(OnDetectedGameObjectsUpdated);
+			robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankWasChanged);
+			robotEntityGameObjectsDetector.detectedGameObjectsWereUpdatedEvent.RemoveListener(OnDetectedGameObjectsWereUpdated);
 		}
 	}
 
-	protected virtual void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
+	protected virtual void OnDetectedGameObjectsWereUpdated(List<GameObject> gameObjects)
 	{
 
 	}
@@ -45,7 +45,7 @@ public class RobotEntityMovementController : EntityMovementController
 		RegisterToListeners(false);
 	}
 
-	private void OnRankChanged(RobotRank robotRank, bool setOnStart)
+	private void OnRankWasChanged(RobotRank robotRank, bool setOnStart)
 	{
 		if(robotRank != null)
 		{

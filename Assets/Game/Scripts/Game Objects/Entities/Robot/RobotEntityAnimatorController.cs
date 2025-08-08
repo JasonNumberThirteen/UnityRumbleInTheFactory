@@ -28,15 +28,15 @@ public class RobotEntityAnimatorController : EntityAnimatorController
 	{
 		if(register)
 		{
-			robotEntityRankController.rankWasChangedEvent.AddListener(OnRankChanged);
+			robotEntityRankController.rankWasChangedEvent.AddListener(OnRankWasChanged);
 		}
 		else
 		{
-			robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankChanged);
+			robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankWasChanged);
 		}
 	}
 
-	private void OnRankChanged(RobotRank robotRank, bool setOnStart)
+	private void OnRankWasChanged(RobotRank robotRank, bool setOnStart)
 	{
 		if(robotRank != null)
 		{

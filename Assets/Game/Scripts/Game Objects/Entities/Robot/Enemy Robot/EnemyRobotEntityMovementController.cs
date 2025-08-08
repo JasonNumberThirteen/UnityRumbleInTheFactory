@@ -41,7 +41,7 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		}
 	}
 
-	protected override void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
+	protected override void OnDetectedGameObjectsWereUpdated(List<GameObject> gameObjects)
 	{
 		if(enabled && !detectedCollision && gameObjects.Count > 0)
 		{

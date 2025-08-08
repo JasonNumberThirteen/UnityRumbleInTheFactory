@@ -27,21 +27,21 @@ public class StageSelectionGameSceneManager : GameSceneManager
 		{
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.submitKeyWasPressedEvent.AddListener(OnSubmitKeyPressed);
-				menuOptionsInputController.cancelKeyWasPressedEvent.AddListener(OnCancelKeyPressed);
+				menuOptionsInputController.submitKeyWasPressedEvent.AddListener(OnSubmitKeyWasPressed);
+				menuOptionsInputController.cancelKeyWasPressedEvent.AddListener(OnCancelKeyWasPressed);
 			}
 		}
 		else
 		{
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.submitKeyWasPressedEvent.RemoveListener(OnSubmitKeyPressed);
-				menuOptionsInputController.cancelKeyWasPressedEvent.RemoveListener(OnCancelKeyPressed);
+				menuOptionsInputController.submitKeyWasPressedEvent.RemoveListener(OnSubmitKeyWasPressed);
+				menuOptionsInputController.cancelKeyWasPressedEvent.RemoveListener(OnCancelKeyWasPressed);
 			}
 		}
 	}
 
-	private void OnSubmitKeyPressed()
+	private void OnSubmitKeyWasPressed()
 	{
 		if(!GameDataMethods.AnyStageFound(gameData))
 		{
@@ -54,7 +54,7 @@ public class StageSelectionGameSceneManager : GameSceneManager
 		LoadSceneByName(STAGE_SCENE_NAME);
 	}
 
-	private void OnCancelKeyPressed()
+	private void OnCancelKeyWasPressed()
 	{
 		SetStageNumber();
 		LoadSceneByName(MAIN_MENU_SCENE_NAME);

@@ -25,15 +25,15 @@ public class NukeRenderer : MonoBehaviour
 	{
 		if(register)
 		{
-			nukeEntity.nukeWasDestroyedEvent.AddListener(OnNukeDestroyed);
+			nukeEntity.nukeWasDestroyedEvent.AddListener(OnNukeWasDestroyed);
 		}
 		else
 		{
-			nukeEntity.nukeWasDestroyedEvent.RemoveListener(OnNukeDestroyed);
+			nukeEntity.nukeWasDestroyedEvent.RemoveListener(OnNukeWasDestroyed);
 		}
 	}
 
-	private void OnNukeDestroyed()
+	private void OnNukeWasDestroyed()
 	{
 		if(!RendererHasSetSprite(destroyedNukeSprite))
 		{

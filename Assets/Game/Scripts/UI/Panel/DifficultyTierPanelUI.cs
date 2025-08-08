@@ -40,19 +40,19 @@ public class DifficultyTierPanelUI : MonoBehaviour
 		{
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.translationWasStartedEvent.AddListener(OnPanelStartedTranslation);
+				translationBackgroundPanelUI.translationWasStartedEvent.AddListener(OnTranslationWasStarted);
 			}
 		}
 		else
 		{
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.translationWasStartedEvent.RemoveListener(OnPanelStartedTranslation);
+				translationBackgroundPanelUI.translationWasStartedEvent.RemoveListener(OnTranslationWasStarted);
 			}
 		}
 	}
 
-	private void OnPanelStartedTranslation()
+	private void OnTranslationWasStarted()
 	{
 		gameObject.SetActive(false);
 	}

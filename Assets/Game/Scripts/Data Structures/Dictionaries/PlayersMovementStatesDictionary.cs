@@ -6,7 +6,7 @@ public class PlayersMovementStatesDictionary : Dictionary<PlayerRobotEntityMovem
 {
 	public bool AnyPlayerIsMoving() => this.Any(pair => pair.Value);
 
-	public void RegisterPlayerInput(bool register, PlayerRobotEntityMovementController playerRobotEntityMovementController, UnityAction<PlayerRobotEntityMovementController, bool> onMovementValueChanged, UnityAction<PlayerRobotEntityMovementController> onPlayerDied)
+	public void RegisterPlayerInput(bool register, PlayerRobotEntityMovementController playerRobotEntityMovementController, UnityAction<PlayerRobotEntityMovementController, bool> onMovementValueWasChanged, UnityAction<PlayerRobotEntityMovementController> onPlayerDied)
 	{
 		if(playerRobotEntityMovementController == null)
 		{
@@ -16,13 +16,13 @@ public class PlayersMovementStatesDictionary : Dictionary<PlayerRobotEntityMovem
 		if(register)
 		{
 			SetStateTo(playerRobotEntityMovementController, false);
-			playerRobotEntityMovementController.movementValueWasChangedEvent.AddListener(onMovementValueChanged);
+			playerRobotEntityMovementController.movementValueWasChangedEvent.AddListener(onMovementValueWasChanged);
 			playerRobotEntityMovementController.playerDiedEvent.AddListener(onPlayerDied);
 		}
 		else
 		{
 			Remove(playerRobotEntityMovementController);
-			playerRobotEntityMovementController.movementValueWasChangedEvent.RemoveListener(onMovementValueChanged);
+			playerRobotEntityMovementController.movementValueWasChangedEvent.RemoveListener(onMovementValueWasChanged);
 			playerRobotEntityMovementController.playerDiedEvent.RemoveListener(onPlayerDied);
 		}
 	}

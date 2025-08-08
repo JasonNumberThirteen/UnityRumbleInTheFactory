@@ -20,9 +20,9 @@ public class EnemyRobotEntityHealth : RobotEntityHealth
 		base.Die(sender);
 	}
 
-	protected override void OnRankChanged(RobotRank robotRank, bool setOnStart)
+	protected override void OnRankWasChanged(RobotRank robotRank, bool setOnStart)
 	{
-		base.OnRankChanged(robotRank, setOnStart);
+		base.OnRankWasChanged(robotRank, setOnStart);
 
 		if(robotRank is EnemyRobotRank enemyRobotRank)
 		{

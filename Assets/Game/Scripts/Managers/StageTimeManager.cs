@@ -22,19 +22,19 @@ public class StageTimeManager : MonoBehaviour
 		{
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
 			}
 		}
 		else
 		{
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 		}
 	}
 
-	private void OnStageStateChanged(StageState stageState)
+	private void OnStageStateWasChanged(StageState stageState)
 	{
 		Time.timeScale = stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused) ? 0f : 1f;
 	}

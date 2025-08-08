@@ -54,7 +54,7 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
 			}
 		}
 		else
@@ -64,7 +64,7 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 		}
 	}
@@ -85,7 +85,7 @@ public class RobotEntitiesDisablingManager : MonoBehaviour
 		}
 	}
 
-	private void OnStageStateChanged(StageState stageState)
+	private void OnStageStateWasChanged(StageState stageState)
 	{
 		if(stageState == StageState.Over)
 		{

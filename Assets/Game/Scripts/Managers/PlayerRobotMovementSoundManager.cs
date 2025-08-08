@@ -28,21 +28,21 @@ public class PlayerRobotMovementSoundManager : MonoBehaviour
 		{
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
 			}
 		}
 		else
 		{
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 		}
 
 		RegisterToPlayerRobotEntitySpawnerListeners(register);
 	}
 
-	private void OnStageStateChanged(StageState stageState)
+	private void OnStageStateWasChanged(StageState stageState)
 	{
 		if(stageState != StageState.Over)
 		{
@@ -59,16 +59,16 @@ public class PlayerRobotMovementSoundManager : MonoBehaviour
 		{
 			if(register)
 			{
-				playerRobotEntitySpawner.entityWasSpawnedEvent.AddListener(OnEntitySpawned);
+				playerRobotEntitySpawner.entityWasSpawnedEvent.AddListener(OnEntityWasSpawned);
 			}
 			else
 			{
-				playerRobotEntitySpawner.entityWasSpawnedEvent.RemoveListener(OnEntitySpawned);
+				playerRobotEntitySpawner.entityWasSpawnedEvent.RemoveListener(OnEntityWasSpawned);
 			}
 		});
 	}
 
-	private void OnEntitySpawned(GameObject go)
+	private void OnEntityWasSpawned(GameObject go)
 	{
 		if(go.TryGetComponent(out PlayerRobotEntityMovementController playerRobotEntityMovementController))
 		{

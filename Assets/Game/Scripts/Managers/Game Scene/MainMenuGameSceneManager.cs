@@ -31,19 +31,19 @@ public class MainMenuGameSceneManager : GameSceneManager
 		{
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.translationWasFinishedEvent.AddListener(OnPanelFinishedTranslation);
+				translationBackgroundPanelUI.translationWasFinishedEvent.AddListener(OnTranslationWasFinished);
 			}
 		}
 		else
 		{
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.translationWasFinishedEvent.RemoveListener(OnPanelFinishedTranslation);
+				translationBackgroundPanelUI.translationWasFinishedEvent.RemoveListener(OnTranslationWasFinished);
 			}
 		}
 	}
 	
-	private void OnPanelFinishedTranslation()
+	private void OnTranslationWasFinished()
 	{
 		LoadSceneByName(STAGE_SELECTION_SCENE_NAME);
 	}

@@ -32,34 +32,34 @@ public class ScoreSoundManager : MonoBehaviour
 		{
 			if(scoreEnemyTypeCountManager != null)
 			{
-				scoreEnemyTypeCountManager.enemyWasCountedEvent.AddListener(OnEnemyCounted);
+				scoreEnemyTypeCountManager.enemyWasCountedEvent.AddListener(OnEnemyWasCounted);
 			}
 
 			if(scoreBonusPointsAwardManager != null)
 			{
-				scoreBonusPointsAwardManager.playerWasAwardedWithPointsEvent.AddListener(OnPlayerAwardedWithPoints);
+				scoreBonusPointsAwardManager.playerWasAwardedWithPointsEvent.AddListener(OnPlayerWasAwardedWithPoints);
 			}
 		}
 		else
 		{
 			if(scoreEnemyTypeCountManager != null)
 			{
-				scoreEnemyTypeCountManager.enemyWasCountedEvent.RemoveListener(OnEnemyCounted);
+				scoreEnemyTypeCountManager.enemyWasCountedEvent.RemoveListener(OnEnemyWasCounted);
 			}
 
 			if(scoreBonusPointsAwardManager != null)
 			{
-				scoreBonusPointsAwardManager.playerWasAwardedWithPointsEvent.RemoveListener(OnPlayerAwardedWithPoints);
+				scoreBonusPointsAwardManager.playerWasAwardedWithPointsEvent.RemoveListener(OnPlayerWasAwardedWithPoints);
 			}
 		}
 	}
 
-	private void OnEnemyCounted(List<PlayerRobotScoreData> playerRobotScoreDataList)
+	private void OnEnemyWasCounted(List<PlayerRobotScoreData> playerRobotScoreDataList)
 	{
 		PlaySound(SoundEffectType.PointsCount);
 	}
 
-	private void OnPlayerAwardedWithPoints(bool gainedNewLife)
+	private void OnPlayerWasAwardedWithPoints(bool gainedNewLife)
 	{
 		PlaySound(gainedNewLife ? SoundEffectType.PlayerRobotLifeGain : SoundEffectType.BonusPointsAward);
 	}

@@ -20,19 +20,19 @@ public class OptionsManager : MonoBehaviour
 		OperateOnOptionIfExists(optionType, option => option.Submit());
 	}
 
-	public void RegisterToOptionListeners(bool register, OptionType optionType, UnityAction<Option> onSelect, UnityAction<Option> onSubmit)
+	public void RegisterToOptionListeners(bool register, OptionType optionType, UnityAction<Option> onOptionWasSelected, UnityAction<Option> onOptionWasSubmitted)
 	{
 		OperateOnOptionIfExists(optionType, option =>
 		{
 			if(register)
 			{
-				option.optionWasSelectedEvent.AddListener(onSelect);
-				option.optionWasSubmittedEvent.AddListener(onSubmit);
+				option.optionWasSelectedEvent.AddListener(onOptionWasSelected);
+				option.optionWasSubmittedEvent.AddListener(onOptionWasSubmitted);
 			}
 			else
 			{
-				option.optionWasSelectedEvent.RemoveListener(onSelect);
-				option.optionWasSubmittedEvent.RemoveListener(onSubmit);
+				option.optionWasSelectedEvent.RemoveListener(onOptionWasSelected);
+				option.optionWasSubmittedEvent.RemoveListener(onOptionWasSubmitted);
 			}
 		});
 	}

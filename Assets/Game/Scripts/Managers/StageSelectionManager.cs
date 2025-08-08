@@ -33,19 +33,19 @@ public class StageSelectionManager : MonoBehaviour
 		{
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.navigateKeyWasPressedEvent.AddListener(OnNavigateKeyPressed);
+				menuOptionsInputController.navigateKeyWasPressedEvent.AddListener(OnNavigateKeyWasPressed);
 			}
 		}
 		else
 		{
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.navigateKeyWasPressedEvent.RemoveListener(OnNavigateKeyPressed);
+				menuOptionsInputController.navigateKeyWasPressedEvent.RemoveListener(OnNavigateKeyWasPressed);
 			}
 		}
 	}
 
-	private void OnNavigateKeyPressed(int direction)
+	private void OnNavigateKeyWasPressed(int direction)
 	{
 		if(navigationIsActive)
 		{

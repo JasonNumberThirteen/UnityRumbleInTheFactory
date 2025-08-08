@@ -31,19 +31,19 @@ public class PlayerLivesIntCounterPanelUI : IntCounterPanelUI
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerLivesWereChangedEvent.AddListener(OnPlayerLivesChanged);
+				playerRobotsDataManager.playerLivesWereChangedEvent.AddListener(OnPlayerLivesWereChanged);
 			}
 		}
 		else
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerLivesWereChangedEvent.RemoveListener(OnPlayerLivesChanged);
+				playerRobotsDataManager.playerLivesWereChangedEvent.RemoveListener(OnPlayerLivesWereChanged);
 			}
 		}
 	}
 
-	private void OnPlayerLivesChanged(int currentNumberOfLives, int differenceToCurrentNumberOfLives)
+	private void OnPlayerLivesWereChanged(int currentNumberOfLives, int differenceToCurrentNumberOfLives)
 	{
 		UpdateCounterIfPossible();
 	}

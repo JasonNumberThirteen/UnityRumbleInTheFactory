@@ -10,15 +10,15 @@ public class PlayerRobotEntityHealth : RobotEntityHealth
 
 		if(register)
 		{
-			currentHealthValueWasChangedEvent.AddListener(OnCurrentHealthValueChanged);
+			currentHealthValueWasChangedEvent.AddListener(OnCurrentHealthValueWasChanged);
 		}
 		else
 		{
-			currentHealthValueWasChangedEvent.RemoveListener(OnCurrentHealthValueChanged);
+			currentHealthValueWasChangedEvent.RemoveListener(OnCurrentHealthValueWasChanged);
 		}
 	}
 
-	protected override void OnRankChanged(RobotRank robotRank, bool setOnStart)
+	protected override void OnRankWasChanged(RobotRank robotRank, bool setOnStart)
 	{
 		if(setOnStart && playerRobotData != null && playerRobotData.Spawner != null && playerRobotData.Spawner.NumberOfSpawns == 1)
 		{
@@ -26,11 +26,11 @@ public class PlayerRobotEntityHealth : RobotEntityHealth
 		}
 		else
 		{
-			base.OnRankChanged(robotRank, setOnStart);
+			base.OnRankWasChanged(robotRank, setOnStart);
 		}
 	}
 
-	private void OnCurrentHealthValueChanged(int currentHealth)
+	private void OnCurrentHealthValueWasChanged(int currentHealth)
 	{
 		if(playerRobotData != null)
 		{

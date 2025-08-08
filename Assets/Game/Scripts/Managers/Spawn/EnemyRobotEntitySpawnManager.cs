@@ -66,7 +66,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventWasSentEvent.AddListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.AddListener(OnEventWasSent);
 			}
 		}
 		else
@@ -78,7 +78,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventWasSent);
 			}
 		}
 	}
@@ -98,7 +98,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		}
 	}
 
-	private void OnEventReceived(StageEvent stageEvent)
+	private void OnEventWasSent(StageEvent stageEvent)
 	{
 		if(stageEvent.GetStageEventType() != StageEventType.EnemyWasDestroyed)
 		{

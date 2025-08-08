@@ -60,27 +60,27 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		if(register)
 		{
-			loopingIntCounter.valueWasChangedEvent.AddListener(OnCounterValueChanged);
+			loopingIntCounter.valueWasChangedEvent.AddListener(OnValueWasChanged);
 			
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.navigateKeyWasPressedEvent.AddListener(OnNavigateKeyPressed);
-				menuOptionsInputController.submitKeyWasPressedEvent.AddListener(OnSubmitKeyPressed);
+				menuOptionsInputController.navigateKeyWasPressedEvent.AddListener(OnNavigateKeyWasPressed);
+				menuOptionsInputController.submitKeyWasPressedEvent.AddListener(OnSubmitKeyWasPressed);
 			}
 		}
 		else
 		{
-			loopingIntCounter.valueWasChangedEvent.RemoveListener(OnCounterValueChanged);
+			loopingIntCounter.valueWasChangedEvent.RemoveListener(OnValueWasChanged);
 			
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.navigateKeyWasPressedEvent.RemoveListener(OnNavigateKeyPressed);
-				menuOptionsInputController.submitKeyWasPressedEvent.RemoveListener(OnSubmitKeyPressed);
+				menuOptionsInputController.navigateKeyWasPressedEvent.RemoveListener(OnNavigateKeyWasPressed);
+				menuOptionsInputController.submitKeyWasPressedEvent.RemoveListener(OnSubmitKeyWasPressed);
 			}
 		}
 	}
 
-	private void OnCounterValueChanged()
+	private void OnValueWasChanged()
 	{
 		if(optionsManager != null)
 		{
@@ -88,12 +88,12 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 		}
 	}
 
-	private void OnNavigateKeyPressed(int direction)
+	private void OnNavigateKeyWasPressed(int direction)
 	{
 		TriggerOnKeyPressed(() => loopingIntCounter.ModifyBy(direction));
 	}
 
-	private void OnSubmitKeyPressed()
+	private void OnSubmitKeyWasPressed()
 	{
 		if(optionsManager != null)
 		{

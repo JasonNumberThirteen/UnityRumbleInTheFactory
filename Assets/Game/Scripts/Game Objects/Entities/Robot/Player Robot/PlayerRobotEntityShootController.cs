@@ -33,9 +33,9 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		base.Awake();
 	}
 
-	protected override void OnRankChanged(RobotRank robotRank, bool setOnStart)
+	protected override void OnRankWasChanged(RobotRank robotRank, bool setOnStart)
 	{
-		base.OnRankChanged(robotRank, setOnStart);
+		base.OnRankWasChanged(robotRank, setOnStart);
 		
 		if(robotRank != null && robotRank is PlayerRobotRank playerRobotRank)
 		{
@@ -49,25 +49,25 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		
 		if(register)
 		{
-			playerRobotEntityInputController.shootKeyWasPressedEvent.AddListener(OnShootKeyPressed);
+			playerRobotEntityInputController.shootKeyWasPressedEvent.AddListener(OnShootKeyWasPressed);
 			
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventWasSentEvent.AddListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.AddListener(OnEventWasSent);
 			}
 		}
 		else
 		{
-			playerRobotEntityInputController.shootKeyWasPressedEvent.RemoveListener(OnShootKeyPressed);
+			playerRobotEntityInputController.shootKeyWasPressedEvent.RemoveListener(OnShootKeyWasPressed);
 			
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventWasSent);
 			}
 		}
 	}
 
-	private void OnEventReceived(StageEvent stageEvent)
+	private void OnEventWasSent(StageEvent stageEvent)
 	{
 		if(stageEvent.GetStageEventType() != StageEventType.BulletWasDestroyed || stageEvent is not GameObjectStageEvent gameObjectStageEvent)
 		{
@@ -82,7 +82,7 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		}
 	}
 
-	private void OnShootKeyPressed()
+	private void OnShootKeyWasPressed()
 	{
 		if(CanPerformInputActionOfType(PlayerInputActionType.Shoot) && !GameIsPaused())
 		{

@@ -24,19 +24,19 @@ public class EnemyRobotEntityShootControllerTimer : Timer
 		{
 			if(robotEntityRankController != null)
 			{
-				robotEntityRankController.rankWasChangedEvent.AddListener(OnRankChanged);
+				robotEntityRankController.rankWasChangedEvent.AddListener(OnRankWasChanged);
 			}
 		}
 		else
 		{
 			if(robotEntityRankController != null)
 			{
-				robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankChanged);
+				robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankWasChanged);
 			}
 		}
 	}
 
-	private void OnRankChanged(RobotRank robotRank, bool setOnStart)
+	private void OnRankWasChanged(RobotRank robotRank, bool setOnStart)
 	{
 		var baseShootDelayValue = robotRank != null && robotRank is EnemyRobotRank enemyRobotRank ? enemyRobotRank.GetShootDelay() : 0f;
 		var shootDelayMultiplier = GameDataMethods.GetDifficultyTierValue(gameData, tier => tier.GetEnemyShootDelayMultiplier());

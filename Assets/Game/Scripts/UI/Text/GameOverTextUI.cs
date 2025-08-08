@@ -29,30 +29,30 @@ public class GameOverTextUI : TextUI
 	{
 		if(register)
 		{
-			timedRectTransformPositionController.targetPositionWasReachedEvent.AddListener(OnRectTransformReachedTargetPosition);
+			timedRectTransformPositionController.targetPositionWasReachedEvent.AddListener(OnTargetPositionWasReached);
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
 			}
 		}
 		else
 		{
-			timedRectTransformPositionController.targetPositionWasReachedEvent.RemoveListener(OnRectTransformReachedTargetPosition);
+			timedRectTransformPositionController.targetPositionWasReachedEvent.RemoveListener(OnTargetPositionWasReached);
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 		}
 	}
 
-	private void OnRectTransformReachedTargetPosition()
+	private void OnTargetPositionWasReached()
 	{
 		targetPositionWasReachedEvent?.Invoke();
 	}
 
-	private void OnStageStateChanged(StageState stageState)
+	private void OnStageStateWasChanged(StageState stageState)
 	{
 		if(stageState != StageState.Over)
 		{

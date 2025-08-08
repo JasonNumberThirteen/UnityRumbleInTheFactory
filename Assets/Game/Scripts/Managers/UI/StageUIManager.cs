@@ -34,41 +34,41 @@ public class StageUIManager : UIManager
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerScoreWasChangedEvent.AddListener(OnPlayerScoreChanged);
+				playerRobotsDataManager.playerScoreWasChangedEvent.AddListener(OnPlayerScoreWasChanged);
 			}
 
 			if(stageSceneFlowManager != null)
 			{
 				stageSceneFlowManager.stageStartedEvent.AddListener(OnStageStarted);
-				stageSceneFlowManager.stageWasActivatedEvent.AddListener(OnStageActivated);
+				stageSceneFlowManager.stageWasActivatedEvent.AddListener(OnStageWasActivated);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
 			}
 		}
 		else
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerScoreWasChangedEvent.RemoveListener(OnPlayerScoreChanged);
+				playerRobotsDataManager.playerScoreWasChangedEvent.RemoveListener(OnPlayerScoreWasChanged);
 			}
 
 			if(stageSceneFlowManager != null)
 			{
 				stageSceneFlowManager.stageStartedEvent.RemoveListener(OnStageStarted);
-				stageSceneFlowManager.stageWasActivatedEvent.RemoveListener(OnStageActivated);
+				stageSceneFlowManager.stageWasActivatedEvent.RemoveListener(OnStageWasActivated);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 		}
 	}
 
-	private void OnPlayerScoreChanged(int score, GameObject go)
+	private void OnPlayerScoreWasChanged(int score, GameObject go)
 	{
 		SpawnGainedPointsCounterIfPossible(score, go.transform.position);
 	}
@@ -93,7 +93,7 @@ public class StageUIManager : UIManager
 		}
 	}
 
-	private void OnStageActivated()
+	private void OnStageWasActivated()
 	{
 		if(translationBackgroundPanelUI != null)
 		{
@@ -101,7 +101,7 @@ public class StageUIManager : UIManager
 		}
 	}
 
-	private void OnStageStateChanged(StageState stageState)
+	private void OnStageStateWasChanged(StageState stageState)
 	{
 		if(pauseTextUI != null)
 		{

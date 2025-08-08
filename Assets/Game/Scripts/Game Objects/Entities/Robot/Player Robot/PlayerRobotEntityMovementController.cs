@@ -38,27 +38,27 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 		if(register)
 		{
-			playerRobotEntityInputController.movementKeyWasPressedEvent.AddListener(OnMovementValueChanged);
-			playerRobotEntityInputTypesActivationController.occuredStageEventTypesWereUpdatedEvent.AddListener(OnOccuredStageEventTypesUpdated);
+			playerRobotEntityInputController.movementKeyWasPressedEvent.AddListener(OnMovementKeyWasPressed);
+			playerRobotEntityInputTypesActivationController.occuredStageEventTypesWereUpdatedEvent.AddListener(OnOccuredStageEventTypesWereUpdated);
 			
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
 			}
 		}
 		else
 		{
-			playerRobotEntityInputController.movementKeyWasPressedEvent.RemoveListener(OnMovementValueChanged);
-			playerRobotEntityInputTypesActivationController.occuredStageEventTypesWereUpdatedEvent.RemoveListener(OnOccuredStageEventTypesUpdated);
+			playerRobotEntityInputController.movementKeyWasPressedEvent.RemoveListener(OnMovementKeyWasPressed);
+			playerRobotEntityInputTypesActivationController.occuredStageEventTypesWereUpdatedEvent.RemoveListener(OnOccuredStageEventTypesWereUpdated);
 			
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 		}
 	}
 
-	protected override void OnDetectedGameObjectsUpdated(List<GameObject> gameObjects)
+	protected override void OnDetectedGameObjectsWereUpdated(List<GameObject> gameObjects)
 	{
 		isSliding = gameObjects != null && gameObjects.Count > 0 && gameObjects.All(go => go.layer == LayerMask.NameToLayer(SLIPPERY_FLOOR_LAYER_NAME));
 		rb2D.constraints = gameObjects.Any(go => go.layer == LayerMask.NameToLayer(ENEMY_LAYER_NAME)) ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
@@ -122,7 +122,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		playerDiedEvent?.Invoke(this);
 	}
 	
-	private void OnMovementValueChanged(Vector2 movementVector)
+	private void OnMovementKeyWasPressed(Vector2 movementVector)
 	{
 		pressedMovementVector = movementVector.GetRawVector();
 
@@ -132,12 +132,12 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		}
 	}
 
-	private void OnOccuredStageEventTypesUpdated()
+	private void OnOccuredStageEventTypesWereUpdated()
 	{
 		UpdateMovementVector(CanPerformInputActionOfType(PlayerInputActionType.Movement) ? pressedMovementVector : GetIdleVectorDependingOnSlidingState());
 	}
 
-	private void OnStageStateChanged(StageState stageState)
+	private void OnStageStateWasChanged(StageState stageState)
 	{
 		UpdateMovementVector((stageState == StageState.Paused || stageState == StageState.Over) ? GetIdleVectorDependingOnSlidingState() : pressedMovementVector);
 	}

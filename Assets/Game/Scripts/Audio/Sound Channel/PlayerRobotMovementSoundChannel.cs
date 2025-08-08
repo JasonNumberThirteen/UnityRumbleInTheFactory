@@ -40,12 +40,12 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 			
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
 			}
 
 			if(stageSoundManager != null)
 			{
-				stageSoundManager.soundWasPlayedEvent.AddListener(OnSoundPlayed);
+				stageSoundManager.soundWasPlayedEvent.AddListener(OnSoundWasPlayed);
 			}
 		}
 		else
@@ -55,12 +55,12 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 			
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 
 			if(stageSoundManager != null)
 			{
-				stageSoundManager.soundWasPlayedEvent.RemoveListener(OnSoundPlayed);
+				stageSoundManager.soundWasPlayedEvent.RemoveListener(OnSoundWasPlayed);
 			}
 		}
 	}
@@ -75,7 +75,7 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 		audioSource.mute = stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Over);
 	}
 
-	private void OnStageStateChanged(StageState stageState)
+	private void OnStageStateWasChanged(StageState stageState)
 	{
 		if(stageState != StageState.Interrupted)
 		{
@@ -97,7 +97,7 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 		audioSource.clip = null;
 	}
 
-	private void OnSoundPlayed(SoundEffectType soundEffectType)
+	private void OnSoundWasPlayed(SoundEffectType soundEffectType)
 	{
 		var temporarilyMutingSoundEffectTypes = new List<SoundEffectType>
 		{

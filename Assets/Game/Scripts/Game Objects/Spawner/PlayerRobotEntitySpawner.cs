@@ -27,11 +27,11 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 
 		if(register)
 		{
-			entityWasSpawnedEvent.AddListener(OnEntitySpawned);
+			entityWasSpawnedEvent.AddListener(OnEntityWasSpawned);
 		}
 		else
 		{
-			entityWasSpawnedEvent.RemoveListener(OnEntitySpawned);
+			entityWasSpawnedEvent.RemoveListener(OnEntityWasSpawned);
 		}
 	}
 
@@ -66,7 +66,7 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 		}
 	}
 
-	private void OnEntitySpawned(GameObject go)
+	private void OnEntityWasSpawned(GameObject go)
 	{
 		++NumberOfSpawns;
 	}

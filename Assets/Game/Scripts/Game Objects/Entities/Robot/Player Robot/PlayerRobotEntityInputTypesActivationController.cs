@@ -39,19 +39,19 @@ public class PlayerRobotEntityInputTypesActivationController : MonoBehaviour
 		{
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventWasSentEvent.AddListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.AddListener(OnEventWasSent);
 			}
 		}
 		else
 		{
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventWasSent);
 			}
 		}
 	}
 
-	private void OnEventReceived(StageEvent stageEvent)
+	private void OnEventWasSent(StageEvent stageEvent)
 	{
 		if(stageEvent is not RobotEntitiesDisablingStageEvent robotEntitiesDisablingStateEvent || !robotEntitiesDisablingStateEvent.AppliesTo(playerRobotEntity))
 		{

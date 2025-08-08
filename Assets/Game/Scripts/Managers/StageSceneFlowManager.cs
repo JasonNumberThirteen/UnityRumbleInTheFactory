@@ -75,17 +75,17 @@ public class StageSceneFlowManager : MonoBehaviour
 
 			if(nukeEntity != null)
 			{
-				nukeEntity.nukeWasDestroyedEvent.AddListener(OnNukeDestroyed);
+				nukeEntity.nukeWasDestroyedEvent.AddListener(OnNukeWasDestroyed);
 			}
 
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.translationWasFinishedEvent.AddListener(OnPanelFinishedTranslation);
+				translationBackgroundPanelUI.translationWasFinishedEvent.AddListener(OnTranslationWasFinished);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateWasChanged);
 			}
 		}
 		else
@@ -94,17 +94,17 @@ public class StageSceneFlowManager : MonoBehaviour
 
 			if(nukeEntity != null)
 			{
-				nukeEntity.nukeWasDestroyedEvent.RemoveListener(OnNukeDestroyed);
+				nukeEntity.nukeWasDestroyedEvent.RemoveListener(OnNukeWasDestroyed);
 			}
 
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.translationWasFinishedEvent.RemoveListener(OnPanelFinishedTranslation);
+				translationBackgroundPanelUI.translationWasFinishedEvent.RemoveListener(OnTranslationWasFinished);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateWasChanged);
 			}
 		}
 	}
@@ -128,7 +128,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		}
 	}
 
-	private void OnNukeDestroyed()
+	private void OnNukeWasDestroyed()
 	{
 		if(stageStateManager != null)
 		{
@@ -136,7 +136,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		}
 	}
 
-	private void OnPanelFinishedTranslation()
+	private void OnTranslationWasFinished()
 	{
 		SetGOsActive(true);
 		stageWasActivatedEvent?.Invoke();
@@ -147,7 +147,7 @@ public class StageSceneFlowManager : MonoBehaviour
 		gosToActivateWhenStageIsActivated.ForEach(go => go.SetActive(active));
 	}
 
-	private void OnStageStateChanged(StageState stageState)
+	private void OnStageStateWasChanged(StageState stageState)
 	{
 		SetGameAsOverIfNeeded(stageState);
 		StartTimerWithDurationForInterruptedGameIfPossible(stageState);

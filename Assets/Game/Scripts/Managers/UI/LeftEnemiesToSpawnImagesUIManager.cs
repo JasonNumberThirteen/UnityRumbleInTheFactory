@@ -50,19 +50,19 @@ public class LeftEnemiesToSpawnImagesUIManager : UIManager
 		{
 			if(enemyRobotEntitySpawnManager != null)
 			{
-				enemyRobotEntitySpawnManager.entityWasAssignedToSpawnerEvent.AddListener(OnEntityAssignedToSpawner);
+				enemyRobotEntitySpawnManager.entityWasAssignedToSpawnerEvent.AddListener(OnEntityWasAssignedToSpawner);
 			}
 		}
 		else
 		{
 			if(enemyRobotEntitySpawnManager != null)
 			{
-				enemyRobotEntitySpawnManager.entityWasAssignedToSpawnerEvent.RemoveListener(OnEntityAssignedToSpawner);
+				enemyRobotEntitySpawnManager.entityWasAssignedToSpawnerEvent.RemoveListener(OnEntityWasAssignedToSpawner);
 			}
 		}
 	}
 
-	private void OnEntityAssignedToSpawner()
+	private void OnEntityWasAssignedToSpawner()
 	{
 		if(--currentIconIndex < iconGOs.Length)
 		{

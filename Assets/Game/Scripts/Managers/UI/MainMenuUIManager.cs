@@ -36,7 +36,7 @@ public class MainMenuUIManager : UIManager
 
 			if(mainMenuOptionsListenersManager != null)
 			{
-				mainMenuOptionsListenersManager.gameStartOptionWasSubmittedEvent.AddListener(OnGameStartOptionSubmitted);
+				mainMenuOptionsListenersManager.gameStartOptionWasSubmittedEvent.AddListener(OnGameStartOptionWasSubmitted);
 			}
 		}
 		else
@@ -48,7 +48,7 @@ public class MainMenuUIManager : UIManager
 
 			if(mainMenuOptionsListenersManager != null)
 			{
-				mainMenuOptionsListenersManager.gameStartOptionWasSubmittedEvent.RemoveListener(OnGameStartOptionSubmitted);
+				mainMenuOptionsListenersManager.gameStartOptionWasSubmittedEvent.RemoveListener(OnGameStartOptionWasSubmitted);
 			}
 		}
 	}
@@ -61,7 +61,7 @@ public class MainMenuUIManager : UIManager
 		}
 	}
 
-	private void OnGameStartOptionSubmitted()
+	private void OnGameStartOptionWasSubmitted()
 	{
 		if(translationBackgroundPanelUI != null)
 		{

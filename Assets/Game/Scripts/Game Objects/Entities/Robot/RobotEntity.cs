@@ -43,15 +43,15 @@ public abstract class RobotEntity : MonoBehaviour
 	{
 		if(register)
 		{
-			entityExploder.entityWasDestroyedEvent.AddListener(OnEntityDestroyed);
+			entityExploder.entityWasDestroyedEvent.AddListener(OnEntityWasDestroyed);
 		}
 		else
 		{
-			entityExploder.entityWasDestroyedEvent.RemoveListener(OnEntityDestroyed);
+			entityExploder.entityWasDestroyedEvent.RemoveListener(OnEntityWasDestroyed);
 		}
 	}
 
-	private void OnEntityDestroyed()
+	private void OnEntityWasDestroyed()
 	{
 		var stageEventsManager = ObjectMethods.FindComponentOfType<StageEventsManager>();
 		
