@@ -12,6 +12,7 @@ public class SoundChannel : MonoBehaviour
 	public virtual bool CanPlaySounds() => stageMusicManager == null || !stageMusicManager.MusicIsPlaying();
 
 	public bool SoundIsPlaying() => audioSource.isPlaying;
+	public bool MusicIsPlaying() => stageMusicManager != null && stageMusicManager.MusicIsPlaying();
 
 	public virtual void Play(AudioClip audioClip)
 	{
@@ -85,9 +86,7 @@ public class SoundChannel : MonoBehaviour
 
 	private void OnStageStateWasChanged(StageState stageState)
 	{
-		var musicIsPlaying = stageMusicManager != null && stageMusicManager.MusicIsPlaying();
-		
-		if(!musicIsPlaying && stageState == StageState.Active && audioSource.mute)
+		if(!MusicIsPlaying() && stageState == StageState.Active && audioSource.mute)
 		{
 			audioSource.mute = false;
 		}
