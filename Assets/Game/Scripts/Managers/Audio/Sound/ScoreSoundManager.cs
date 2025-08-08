@@ -32,24 +32,24 @@ public class ScoreSoundManager : MonoBehaviour
 		{
 			if(scoreEnemyTypeCountManager != null)
 			{
-				scoreEnemyTypeCountManager.enemyCountedEvent.AddListener(OnEnemyCounted);
+				scoreEnemyTypeCountManager.enemyWasCountedEvent.AddListener(OnEnemyCounted);
 			}
 
 			if(scoreBonusPointsAwardManager != null)
 			{
-				scoreBonusPointsAwardManager.playerAwardedWithPointsEvent.AddListener(OnPlayerAwardedWithPoints);
+				scoreBonusPointsAwardManager.playerWasAwardedWithPointsEvent.AddListener(OnPlayerAwardedWithPoints);
 			}
 		}
 		else
 		{
 			if(scoreEnemyTypeCountManager != null)
 			{
-				scoreEnemyTypeCountManager.enemyCountedEvent.RemoveListener(OnEnemyCounted);
+				scoreEnemyTypeCountManager.enemyWasCountedEvent.RemoveListener(OnEnemyCounted);
 			}
 
 			if(scoreBonusPointsAwardManager != null)
 			{
-				scoreBonusPointsAwardManager.playerAwardedWithPointsEvent.RemoveListener(OnPlayerAwardedWithPoints);
+				scoreBonusPointsAwardManager.playerWasAwardedWithPointsEvent.RemoveListener(OnPlayerAwardedWithPoints);
 			}
 		}
 	}

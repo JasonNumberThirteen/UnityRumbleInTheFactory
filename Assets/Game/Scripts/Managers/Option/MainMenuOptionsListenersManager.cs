@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class MainMenuOptionsListenersManager : MonoBehaviour
 {
-	public UnityEvent gameStartOptionSubmittedEvent;
+	public UnityEvent gameStartOptionWasSubmittedEvent;
 	
 	[SerializeField] private GameData gameData;
 	
@@ -59,7 +59,7 @@ public class MainMenuOptionsListenersManager : MonoBehaviour
 	{
 		SetupGameDataForStart(selectedTwoPlayerMode);
 		DeactivateMenuOptionsInputController();
-		gameStartOptionSubmittedEvent?.Invoke();
+		gameStartOptionWasSubmittedEvent?.Invoke();
 	}
 
 	private void SetupGameDataForStart(bool selectedTwoPlayerMode)

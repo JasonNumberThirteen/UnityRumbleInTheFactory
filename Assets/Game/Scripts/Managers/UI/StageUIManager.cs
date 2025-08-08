@@ -34,36 +34,36 @@ public class StageUIManager : UIManager
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerScoreChangedEvent.AddListener(OnPlayerScoreChanged);
+				playerRobotsDataManager.playerScoreWasChangedEvent.AddListener(OnPlayerScoreChanged);
 			}
 
 			if(stageSceneFlowManager != null)
 			{
 				stageSceneFlowManager.stageStartedEvent.AddListener(OnStageStarted);
-				stageSceneFlowManager.stageActivatedEvent.AddListener(OnStageActivated);
+				stageSceneFlowManager.stageWasActivatedEvent.AddListener(OnStageActivated);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
 			}
 		}
 		else
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerScoreChangedEvent.RemoveListener(OnPlayerScoreChanged);
+				playerRobotsDataManager.playerScoreWasChangedEvent.RemoveListener(OnPlayerScoreChanged);
 			}
 
 			if(stageSceneFlowManager != null)
 			{
 				stageSceneFlowManager.stageStartedEvent.RemoveListener(OnStageStarted);
-				stageSceneFlowManager.stageActivatedEvent.RemoveListener(OnStageActivated);
+				stageSceneFlowManager.stageWasActivatedEvent.RemoveListener(OnStageActivated);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 	}

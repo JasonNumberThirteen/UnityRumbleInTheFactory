@@ -32,12 +32,12 @@ public class StageGameSceneManager : GameSceneManager
 
 			if(gameOverTextUI != null)
 			{
-				gameOverTextUI.textReachedTargetPositionEvent.AddListener(OnTextReachedTargetPosition);
+				gameOverTextUI.targetPositionWasReachedEvent.AddListener(OnTextReachedTargetPosition);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
 			}
 		}
 		else
@@ -46,12 +46,12 @@ public class StageGameSceneManager : GameSceneManager
 
 			if(gameOverTextUI != null)
 			{
-				gameOverTextUI.textReachedTargetPositionEvent.RemoveListener(OnTextReachedTargetPosition);
+				gameOverTextUI.targetPositionWasReachedEvent.RemoveListener(OnTextReachedTargetPosition);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 	}

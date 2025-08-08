@@ -60,22 +60,22 @@ public class MainMenuOptionSelectionManager : MonoBehaviour
 	{
 		if(register)
 		{
-			loopingIntCounter.valueChangedEvent.AddListener(OnCounterValueChanged);
+			loopingIntCounter.valueWasChangedEvent.AddListener(OnCounterValueChanged);
 			
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
-				menuOptionsInputController.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
+				menuOptionsInputController.navigateKeyWasPressedEvent.AddListener(OnNavigateKeyPressed);
+				menuOptionsInputController.submitKeyWasPressedEvent.AddListener(OnSubmitKeyPressed);
 			}
 		}
 		else
 		{
-			loopingIntCounter.valueChangedEvent.RemoveListener(OnCounterValueChanged);
+			loopingIntCounter.valueWasChangedEvent.RemoveListener(OnCounterValueChanged);
 			
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
-				menuOptionsInputController.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
+				menuOptionsInputController.navigateKeyWasPressedEvent.RemoveListener(OnNavigateKeyPressed);
+				menuOptionsInputController.submitKeyWasPressedEvent.RemoveListener(OnSubmitKeyPressed);
 			}
 		}
 	}

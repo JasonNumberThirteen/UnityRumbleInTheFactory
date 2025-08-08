@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(TimedRectTransformPositionController))]
 public class GameOverTextUI : TextUI
 {
-	public UnityEvent textReachedTargetPositionEvent;
+	public UnityEvent targetPositionWasReachedEvent;
 	
 	private TimedRectTransformPositionController timedRectTransformPositionController;
 	private StageStateManager stageStateManager;
@@ -29,27 +29,27 @@ public class GameOverTextUI : TextUI
 	{
 		if(register)
 		{
-			timedRectTransformPositionController.rectTransformReachedTargetPositionEvent.AddListener(OnRectTransformReachedTargetPosition);
+			timedRectTransformPositionController.targetPositionWasReachedEvent.AddListener(OnRectTransformReachedTargetPosition);
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
 			}
 		}
 		else
 		{
-			timedRectTransformPositionController.rectTransformReachedTargetPositionEvent.RemoveListener(OnRectTransformReachedTargetPosition);
+			timedRectTransformPositionController.targetPositionWasReachedEvent.RemoveListener(OnRectTransformReachedTargetPosition);
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 	}
 
 	private void OnRectTransformReachedTargetPosition()
 	{
-		textReachedTargetPositionEvent?.Invoke();
+		targetPositionWasReachedEvent?.Invoke();
 	}
 
 	private void OnStageStateChanged(StageState stageState)

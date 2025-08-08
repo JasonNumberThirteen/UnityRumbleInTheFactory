@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(EntityExploder), typeof(RobotEntityRankController))]
 public class RobotEntityHealth : MonoBehaviour
 {
-	public UnityEvent<int> currentHealthValueChangedEvent;
+	public UnityEvent<int> currentHealthValueWasChangedEvent;
 
 	[SerializeField] private SoundEffectType explosionSoundEffectType;
 
@@ -51,11 +51,11 @@ public class RobotEntityHealth : MonoBehaviour
 	{
 		if(register)
 		{
-			robotEntityRankController.rankChangedEvent.AddListener(OnRankChanged);
+			robotEntityRankController.rankWasChangedEvent.AddListener(OnRankChanged);
 		}
 		else
 		{
-			robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
+			robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankChanged);
 		}
 	}
 
@@ -75,7 +75,7 @@ public class RobotEntityHealth : MonoBehaviour
 
 		if(previousHealth != currentHealth)
 		{
-			currentHealthValueChangedEvent?.Invoke(currentHealth);
+			currentHealthValueWasChangedEvent?.Invoke(currentHealth);
 		}
 	}
 

@@ -31,14 +31,14 @@ public class MainMenuGameSceneManager : GameSceneManager
 		{
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.panelFinishedTranslationEvent.AddListener(OnPanelFinishedTranslation);
+				translationBackgroundPanelUI.translationWasFinishedEvent.AddListener(OnPanelFinishedTranslation);
 			}
 		}
 		else
 		{
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.panelFinishedTranslationEvent.RemoveListener(OnPanelFinishedTranslation);
+				translationBackgroundPanelUI.translationWasFinishedEvent.RemoveListener(OnPanelFinishedTranslation);
 			}
 		}
 	}

@@ -29,14 +29,14 @@ public class StageCounterHeaderStageSelectionTextUI : StageSelectionTextUI
 		{
 			if(stageSelectionManager != null)
 			{
-				stageSelectionManager.navigationDirectionChangedEvent.AddListener(loopingIntCounter.ModifyBy);
+				stageSelectionManager.navigationDirectionWasChangedEvent.AddListener(loopingIntCounter.ModifyBy);
 			}
 		}
 		else
 		{
 			if(stageSelectionManager != null)
 			{
-				stageSelectionManager.navigationDirectionChangedEvent.RemoveListener(loopingIntCounter.ModifyBy);
+				stageSelectionManager.navigationDirectionWasChangedEvent.RemoveListener(loopingIntCounter.ModifyBy);
 			}
 		}
 	}

@@ -27,16 +27,16 @@ public class StageSelectionGameSceneManager : GameSceneManager
 		{
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.submitKeyPressedEvent.AddListener(OnSubmitKeyPressed);
-				menuOptionsInputController.cancelKeyPressedEvent.AddListener(OnCancelKeyPressed);
+				menuOptionsInputController.submitKeyWasPressedEvent.AddListener(OnSubmitKeyPressed);
+				menuOptionsInputController.cancelKeyWasPressedEvent.AddListener(OnCancelKeyPressed);
 			}
 		}
 		else
 		{
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.submitKeyPressedEvent.RemoveListener(OnSubmitKeyPressed);
-				menuOptionsInputController.cancelKeyPressedEvent.RemoveListener(OnCancelKeyPressed);
+				menuOptionsInputController.submitKeyWasPressedEvent.RemoveListener(OnSubmitKeyPressed);
+				menuOptionsInputController.cancelKeyWasPressedEvent.RemoveListener(OnCancelKeyPressed);
 			}
 		}
 	}

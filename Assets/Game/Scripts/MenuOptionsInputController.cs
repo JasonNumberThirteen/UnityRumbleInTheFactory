@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Timer), typeof(PlayerInput))]
 public class MenuOptionsInputController : MonoBehaviour
 {
-	public UnityEvent<int> navigateKeyPressedEvent;
-	public UnityEvent submitKeyPressedEvent;
-	public UnityEvent cancelKeyPressedEvent;
+	public UnityEvent<int> navigateKeyWasPressedEvent;
+	public UnityEvent submitKeyWasPressedEvent;
+	public UnityEvent cancelKeyWasPressedEvent;
 	
 	[SerializeField] private Axis navigationAxis;
 
@@ -57,7 +57,7 @@ public class MenuOptionsInputController : MonoBehaviour
 
 	private void OnTimerStarted()
 	{
-		navigateKeyPressedEvent?.Invoke(navigationDirection);
+		navigateKeyWasPressedEvent?.Invoke(navigationDirection);
 	}
 
 	private void OnNavigate(InputValue inputValue)
@@ -67,12 +67,12 @@ public class MenuOptionsInputController : MonoBehaviour
 
 	private void OnSubmit(InputValue inputValue)
 	{
-		submitKeyPressedEvent?.Invoke();
+		submitKeyWasPressedEvent?.Invoke();
 	}
 
 	private void OnCancel(InputValue inputValue)
 	{
-		cancelKeyPressedEvent?.Invoke();
+		cancelKeyWasPressedEvent?.Invoke();
 	}
 
 	private int GetNavigationValue(Vector2 inputVector)

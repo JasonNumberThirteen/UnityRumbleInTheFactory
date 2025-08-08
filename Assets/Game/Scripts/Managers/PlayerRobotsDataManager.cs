@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 public class PlayerRobotsDataManager : MonoBehaviour
 {
-	public UnityEvent<int, GameObject> playerScoreChangedEvent;
-	public UnityEvent<int, int> playerLivesChangedEvent;
+	public UnityEvent<int, GameObject> playerScoreWasChangedEvent;
+	public UnityEvent<int, int> playerLivesWereChangedEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
@@ -38,7 +38,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 				gameData.SetHighScoreIfPossible(playerRobotData.Score, () => ModifyLives(playerRobotData, 1));
 			}
 			
-			playerScoreChangedEvent?.Invoke(score, go);
+			playerScoreWasChangedEvent?.Invoke(score, go);
 		}
 	}
 
@@ -51,7 +51,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 		playerRobotData.Lives += lives;
 
-		playerLivesChangedEvent?.Invoke(playerRobotData.Lives, lives);
+		playerLivesWereChangedEvent?.Invoke(playerRobotData.Lives, lives);
 	}
 
 	private void Awake()

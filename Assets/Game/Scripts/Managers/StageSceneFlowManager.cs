@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class StageSceneFlowManager : MonoBehaviour
 {
 	public UnityEvent stageStartedEvent;
-	public UnityEvent stageActivatedEvent;
+	public UnityEvent stageWasActivatedEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private GameObject[] gosToActivateWhenStageIsActivated;
@@ -75,17 +75,17 @@ public class StageSceneFlowManager : MonoBehaviour
 
 			if(nukeEntity != null)
 			{
-				nukeEntity.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
+				nukeEntity.nukeWasDestroyedEvent.AddListener(OnNukeDestroyed);
 			}
 
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.panelFinishedTranslationEvent.AddListener(OnPanelFinishedTranslation);
+				translationBackgroundPanelUI.translationWasFinishedEvent.AddListener(OnPanelFinishedTranslation);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
 			}
 		}
 		else
@@ -94,17 +94,17 @@ public class StageSceneFlowManager : MonoBehaviour
 
 			if(nukeEntity != null)
 			{
-				nukeEntity.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
+				nukeEntity.nukeWasDestroyedEvent.RemoveListener(OnNukeDestroyed);
 			}
 
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.panelFinishedTranslationEvent.RemoveListener(OnPanelFinishedTranslation);
+				translationBackgroundPanelUI.translationWasFinishedEvent.RemoveListener(OnPanelFinishedTranslation);
 			}
 
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 	}
@@ -139,7 +139,7 @@ public class StageSceneFlowManager : MonoBehaviour
 	private void OnPanelFinishedTranslation()
 	{
 		SetGOsActive(true);
-		stageActivatedEvent?.Invoke();
+		stageWasActivatedEvent?.Invoke();
 	}
 
 	private void SetGOsActive(bool active)

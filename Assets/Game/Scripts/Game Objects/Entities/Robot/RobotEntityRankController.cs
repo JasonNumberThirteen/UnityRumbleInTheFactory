@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class RobotEntityRankController : MonoBehaviour
 {
-	public UnityEvent<RobotRank, bool> rankChangedEvent;
+	public UnityEvent<RobotRank, bool> rankWasChangedEvent;
 	
 	[SerializeField] protected RobotData robotData;
 
@@ -26,7 +26,7 @@ public class RobotEntityRankController : MonoBehaviour
 		}
 		else
 		{
-			rankChangedEvent?.Invoke(GetCurrentRobotRank(), true);
+			rankWasChangedEvent?.Invoke(GetCurrentRobotRank(), true);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class RobotEntityRankController : MonoBehaviour
 
 		if(forceInvokingEvent || previousRankNumber != rankNumber)
 		{
-			rankChangedEvent?.Invoke(GetCurrentRobotRank(), setOnStart);
+			rankWasChangedEvent?.Invoke(GetCurrentRobotRank(), setOnStart);
 		}
 	}
 }

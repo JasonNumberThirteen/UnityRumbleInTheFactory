@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerRobotEntity))]
 public class PlayerRobotEntityInputTypesActivationController : MonoBehaviour
 {
-	public UnityEvent occuredStageEventTypesUpdatedEvent;
+	public UnityEvent occuredStageEventTypesWereUpdatedEvent;
 	
 	private PlayerRobotEntity playerRobotEntity;
 	private StageEventsManager stageEventsManager;
@@ -39,14 +39,14 @@ public class PlayerRobotEntityInputTypesActivationController : MonoBehaviour
 		{
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventReceivedEvent.AddListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.AddListener(OnEventReceived);
 			}
 		}
 		else
 		{
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventReceivedEvent.RemoveListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventReceived);
 			}
 		}
 	}
@@ -69,6 +69,6 @@ public class PlayerRobotEntityInputTypesActivationController : MonoBehaviour
 			occuredStageEventTypes.Remove(stageEventType);
 		}
 
-		occuredStageEventTypesUpdatedEvent?.Invoke();
+		occuredStageEventTypesWereUpdatedEvent?.Invoke();
 	}
 }

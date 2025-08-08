@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer), typeof(TimedRectTransformPositionController))]
 public class MainMenuPanelUI : MonoBehaviour
 {
-	public UnityEvent panelReachedTargetPositionEvent;
+	public UnityEvent targetPositionWasReachedEvent;
 
 	public bool ReachedTargetPosition {get; private set;}
 	
@@ -23,7 +23,7 @@ public class MainMenuPanelUI : MonoBehaviour
 		ReachedTargetPosition = true;
 		
 		timedRectTransformPositionController.SetPositionY(0);
-		panelReachedTargetPositionEvent?.Invoke();
+		targetPositionWasReachedEvent?.Invoke();
 	}
 
 	private void Awake()

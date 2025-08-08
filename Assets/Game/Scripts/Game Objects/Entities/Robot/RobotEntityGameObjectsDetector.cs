@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(RobotEntityMovementController))]
 public class RobotEntityGameObjectsDetector : MonoBehaviour
 {
-	public UnityEvent<List<GameObject>> detectedGameObjectsUpdatedEvent;
+	public UnityEvent<List<GameObject>> detectedGameObjectsWereUpdatedEvent;
 
 	[SerializeField] private Vector2 detectionAreaSize;
 	[SerializeField] private LayerMask detectableGameObjects;
@@ -27,7 +27,7 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 	{
 		var detectedColliders = Physics2D.OverlapBoxAll(GetDetectionAreaCenter(), detectionAreaSize, GetDetectionAreaAngle(), detectableGameObjects);
 
-		detectedGameObjectsUpdatedEvent?.Invoke(detectedColliders.Where(collider2D => collider2D != null).Select(collider2D => collider2D.gameObject).Where(go => go != gameObject).ToList());
+		detectedGameObjectsWereUpdatedEvent?.Invoke(detectedColliders.Where(collider2D => collider2D != null).Select(collider2D => collider2D.gameObject).Where(go => go != gameObject).ToList());
 	}
 
 	private void OnDrawGizmos()

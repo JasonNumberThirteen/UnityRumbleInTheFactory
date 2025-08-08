@@ -43,11 +43,11 @@ public abstract class RobotEntityShootController : MonoBehaviour
 	{
 		if(register)
 		{
-			robotEntityRankController.rankChangedEvent.AddListener(OnRankChanged);
+			robotEntityRankController.rankWasChangedEvent.AddListener(OnRankChanged);
 		}
 		else
 		{
-			robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
+			robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankChanged);
 		}
 	}
 

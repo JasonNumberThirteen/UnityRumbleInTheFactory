@@ -22,14 +22,14 @@ public class StageCounterHeaderStageTextUI : MonoBehaviour
 		{
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.panelStartedTranslationEvent.AddListener(OnPanelStartedTranslation);
+				translationBackgroundPanelUI.translationWasStartedEvent.AddListener(OnPanelStartedTranslation);
 			}
 		}
 		else
 		{
 			if(translationBackgroundPanelUI != null)
 			{
-				translationBackgroundPanelUI.panelStartedTranslationEvent.RemoveListener(OnPanelStartedTranslation);
+				translationBackgroundPanelUI.translationWasStartedEvent.RemoveListener(OnPanelStartedTranslation);
 			}
 		}
 	}

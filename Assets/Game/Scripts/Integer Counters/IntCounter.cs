@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class IntCounter : MonoBehaviour
 {
-	public UnityEvent valueChangedEvent;
+	public UnityEvent valueWasChangedEvent;
 
 	public int CurrentValue {get; private set;}
 
@@ -15,7 +15,7 @@ public class IntCounter : MonoBehaviour
 
 		if(CurrentValue != previousValue)
 		{
-			valueChangedEvent?.Invoke();
+			valueWasChangedEvent?.Invoke();
 		}
 	}
 

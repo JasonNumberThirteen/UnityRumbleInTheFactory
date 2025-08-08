@@ -49,20 +49,20 @@ public class PlayerRobotEntityShootController : RobotEntityShootController
 		
 		if(register)
 		{
-			playerRobotEntityInputController.shootKeyPressedEvent.AddListener(OnShootKeyPressed);
+			playerRobotEntityInputController.shootKeyWasPressedEvent.AddListener(OnShootKeyPressed);
 			
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventReceivedEvent.AddListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.AddListener(OnEventReceived);
 			}
 		}
 		else
 		{
-			playerRobotEntityInputController.shootKeyPressedEvent.RemoveListener(OnShootKeyPressed);
+			playerRobotEntityInputController.shootKeyWasPressedEvent.RemoveListener(OnShootKeyPressed);
 			
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventReceivedEvent.RemoveListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventReceived);
 			}
 		}
 	}

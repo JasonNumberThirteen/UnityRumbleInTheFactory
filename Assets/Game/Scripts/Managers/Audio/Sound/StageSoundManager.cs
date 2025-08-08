@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class StageSoundManager : MonoBehaviour
 {
-	public UnityEvent<SoundEffectType> soundPlayedEvent;
+	public UnityEvent<SoundEffectType> soundWasPlayedEvent;
 	
 	[SerializeField, Range(0, 8)] private int additionalSoundChannels = 4;
 	[SerializeField] private StageSoundEffectsContainer stageSoundEffectsContainer = new();
@@ -30,7 +30,7 @@ public class StageSoundManager : MonoBehaviour
 		}
 
 		soundChannel.Play(GetAudioClipBySoundEffectTypeIfPossible(soundEffectType));
-		soundPlayedEvent?.Invoke(soundEffectType);
+		soundWasPlayedEvent?.Invoke(soundEffectType);
 	}
 	
 	private void Awake()
@@ -66,14 +66,14 @@ public class StageSoundManager : MonoBehaviour
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerLivesChangedEvent.AddListener(OnPlayerLivesChanged);
+				playerRobotsDataManager.playerLivesWereChangedEvent.AddListener(OnPlayerLivesChanged);
 			}
 		}
 		else
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerLivesChangedEvent.RemoveListener(OnPlayerLivesChanged);
+				playerRobotsDataManager.playerLivesWereChangedEvent.RemoveListener(OnPlayerLivesChanged);
 			}
 		}
 	}

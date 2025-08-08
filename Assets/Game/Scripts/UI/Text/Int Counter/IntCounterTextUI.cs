@@ -33,11 +33,11 @@ public class IntCounterTextUI : TextUI
 	{
 		if(register)
 		{
-			intCounter.valueChangedEvent.AddListener(OnValueChanged);
+			intCounter.valueWasChangedEvent.AddListener(OnValueChanged);
 		}
 		else
 		{
-			intCounter.valueChangedEvent.RemoveListener(OnValueChanged);
+			intCounter.valueWasChangedEvent.RemoveListener(OnValueChanged);
 		}
 	}
 

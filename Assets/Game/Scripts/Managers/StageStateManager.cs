@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class StageStateManager : MonoBehaviour
 {
-	public UnityEvent<StageState> stageStateChangedEvent;
+	public UnityEvent<StageState> stageStateWasChangedEvent;
 	
 	private StageState stageState = StageState.Active;
 
@@ -15,6 +15,6 @@ public class StageStateManager : MonoBehaviour
 	{
 		this.stageState = stageState;
 
-		stageStateChangedEvent?.Invoke(stageState);
+		stageStateWasChangedEvent?.Invoke(stageState);
 	}
 }

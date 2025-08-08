@@ -4,8 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class TranslationBackgroundPanelUI : MonoBehaviour
 {
-	public UnityEvent panelStartedTranslationEvent;
-	public UnityEvent panelFinishedTranslationEvent;
+	public UnityEvent translationWasStartedEvent;
+	public UnityEvent translationWasFinishedEvent;
 	
 	private Timer timer;
 
@@ -50,11 +50,11 @@ public class TranslationBackgroundPanelUI : MonoBehaviour
 
 	private void OnTimerStarted()
 	{
-		panelStartedTranslationEvent?.Invoke();
+		translationWasStartedEvent?.Invoke();
 	}
 
 	private void OnTimerFinished()
 	{
-		panelFinishedTranslationEvent?.Invoke();
+		translationWasFinishedEvent?.Invoke();
 	}
 }

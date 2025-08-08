@@ -25,14 +25,14 @@ public class HUDPanelUI : MonoBehaviour
 		{
 			if(stageSceneFlowManager != null)
 			{
-				stageSceneFlowManager.stageActivatedEvent.AddListener(OnStageActivated);
+				stageSceneFlowManager.stageWasActivatedEvent.AddListener(OnStageActivated);
 			}
 		}
 		else
 		{
 			if(stageSceneFlowManager != null)
 			{
-				stageSceneFlowManager.stageActivatedEvent.RemoveListener(OnStageActivated);
+				stageSceneFlowManager.stageWasActivatedEvent.RemoveListener(OnStageActivated);
 			}
 		}
 	}

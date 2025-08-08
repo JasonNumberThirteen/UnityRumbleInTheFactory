@@ -4,8 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(RectTransform))]
 public class Option : MonoBehaviour
 {
-	public UnityEvent<Option> optionSelectedEvent;
-	public UnityEvent<Option> optionSubmittedEvent;
+	public UnityEvent<Option> optionWasSelectedEvent;
+	public UnityEvent<Option> optionWasSubmittedEvent;
 
 	[SerializeField] private OptionType optionType;
 
@@ -16,12 +16,12 @@ public class Option : MonoBehaviour
 
 	public void Select()
 	{
-		optionSelectedEvent?.Invoke(this);
+		optionWasSelectedEvent?.Invoke(this);
 	}
 
 	public void Submit()
 	{
-		optionSubmittedEvent?.Invoke(this);
+		optionWasSubmittedEvent?.Invoke(this);
 	}
 
 	private void Awake()

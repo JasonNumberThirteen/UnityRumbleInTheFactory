@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class EntityExploder : MonoBehaviour
 {
-	public UnityEvent entityDestroyedEvent;
+	public UnityEvent entityWasDestroyedEvent;
 	
 	[SerializeField] private GameObject explosionEffectPrefab;
 	[SerializeField] private bool destroyGOAfterExplosion = true;
@@ -33,7 +33,7 @@ public class EntityExploder : MonoBehaviour
 
 		wasDestroyed = true;
 
-		entityDestroyedEvent?.Invoke();
+		entityWasDestroyedEvent?.Invoke();
 		Destroy(gameObject);
 	}
 }

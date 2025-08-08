@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class EnemyRobotEntitySpawnManager : MonoBehaviour
 {
-	public UnityEvent entityAssignedToSpawnerEvent;
+	public UnityEvent entityWasAssignedToSpawnerEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private string enemyTag;
@@ -61,24 +61,24 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		{
 			if(stageSceneFlowManager != null)
 			{
-				stageSceneFlowManager.stageActivatedEvent.AddListener(StartSpawnIfPossible);
+				stageSceneFlowManager.stageWasActivatedEvent.AddListener(StartSpawnIfPossible);
 			}
 
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventReceivedEvent.AddListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.AddListener(OnEventReceived);
 			}
 		}
 		else
 		{
 			if(stageSceneFlowManager != null)
 			{
-				stageSceneFlowManager.stageActivatedEvent.RemoveListener(StartSpawnIfPossible);
+				stageSceneFlowManager.stageWasActivatedEvent.RemoveListener(StartSpawnIfPossible);
 			}
 
 			if(stageEventsManager != null)
 			{
-				stageEventsManager.eventReceivedEvent.RemoveListener(OnEventReceived);
+				stageEventsManager.eventWasSentEvent.RemoveListener(OnEventReceived);
 			}
 		}
 	}
@@ -140,7 +140,7 @@ public class EnemyRobotEntitySpawnManager : MonoBehaviour
 		
 		++currentEnemyEntityIndex;
 
-		entityAssignedToSpawnerEvent?.Invoke();
+		entityWasAssignedToSpawnerEvent?.Invoke();
 	}
 
 	private IEnumerator StartSpawningEntities()

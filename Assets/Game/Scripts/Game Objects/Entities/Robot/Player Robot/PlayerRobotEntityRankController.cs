@@ -17,11 +17,11 @@ public class PlayerRobotEntityRankController : RobotEntityRankController
 	{
 		if(register)
 		{
-			rankChangedEvent.AddListener(OnRankChanged);
+			rankWasChangedEvent.AddListener(OnRankChanged);
 		}
 		else
 		{
-			rankChangedEvent.RemoveListener(OnRankChanged);
+			rankWasChangedEvent.RemoveListener(OnRankChanged);
 		}
 	}
 

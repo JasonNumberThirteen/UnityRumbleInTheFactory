@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class StageSelectionManager : MonoBehaviour
 {
-	public UnityEvent<int> navigationDirectionChangedEvent;
+	public UnityEvent<int> navigationDirectionWasChangedEvent;
 	
 	[SerializeField] private GameData gameData;
 
@@ -33,14 +33,14 @@ public class StageSelectionManager : MonoBehaviour
 		{
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.navigateKeyPressedEvent.AddListener(OnNavigateKeyPressed);
+				menuOptionsInputController.navigateKeyWasPressedEvent.AddListener(OnNavigateKeyPressed);
 			}
 		}
 		else
 		{
 			if(menuOptionsInputController != null)
 			{
-				menuOptionsInputController.navigateKeyPressedEvent.RemoveListener(OnNavigateKeyPressed);
+				menuOptionsInputController.navigateKeyWasPressedEvent.RemoveListener(OnNavigateKeyPressed);
 			}
 		}
 	}
@@ -49,7 +49,7 @@ public class StageSelectionManager : MonoBehaviour
 	{
 		if(navigationIsActive)
 		{
-			navigationDirectionChangedEvent?.Invoke(direction);
+			navigationDirectionWasChangedEvent?.Invoke(direction);
 		}
 	}
 }

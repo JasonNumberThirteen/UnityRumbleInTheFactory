@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class TimedRectTransformPositionController : RectTransformPositionController
 {
-	public UnityEvent rectTransformReachedTargetPositionEvent;
+	public UnityEvent targetPositionWasReachedEvent;
 	
 	[SerializeField] private Vector2 targetPosition;
 	
@@ -55,7 +55,7 @@ public class TimedRectTransformPositionController : RectTransformPositionControl
 
 	private void OnTimerFinished()
 	{
-		rectTransformReachedTargetPositionEvent?.Invoke();
+		targetPositionWasReachedEvent?.Invoke();
 	}
 
 	private void Update()

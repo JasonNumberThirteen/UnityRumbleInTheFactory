@@ -22,14 +22,14 @@ public class StageTimeManager : MonoBehaviour
 		{
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
 			}
 		}
 		else
 		{
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 	}

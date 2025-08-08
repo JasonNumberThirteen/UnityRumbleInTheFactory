@@ -40,12 +40,12 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 			
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
 			}
 
 			if(stageSoundManager != null)
 			{
-				stageSoundManager.soundPlayedEvent.AddListener(OnSoundPlayed);
+				stageSoundManager.soundWasPlayedEvent.AddListener(OnSoundPlayed);
 			}
 		}
 		else
@@ -55,12 +55,12 @@ public class PlayerRobotMovementSoundChannel : SoundChannel
 			
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 
 			if(stageSoundManager != null)
 			{
-				stageSoundManager.soundPlayedEvent.RemoveListener(OnSoundPlayed);
+				stageSoundManager.soundWasPlayedEvent.RemoveListener(OnSoundPlayed);
 			}
 		}
 	}

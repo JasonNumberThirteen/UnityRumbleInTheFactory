@@ -25,13 +25,13 @@ public class RobotEntityMovementController : EntityMovementController
 	{
 		if(register)
 		{
-			robotEntityRankController.rankChangedEvent.AddListener(OnRankChanged);
-			robotEntityGameObjectsDetector.detectedGameObjectsUpdatedEvent.AddListener(OnDetectedGameObjectsUpdated);
+			robotEntityRankController.rankWasChangedEvent.AddListener(OnRankChanged);
+			robotEntityGameObjectsDetector.detectedGameObjectsWereUpdatedEvent.AddListener(OnDetectedGameObjectsUpdated);
 		}
 		else
 		{
-			robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
-			robotEntityGameObjectsDetector.detectedGameObjectsUpdatedEvent.RemoveListener(OnDetectedGameObjectsUpdated);
+			robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankChanged);
+			robotEntityGameObjectsDetector.detectedGameObjectsWereUpdatedEvent.RemoveListener(OnDetectedGameObjectsUpdated);
 		}
 	}
 

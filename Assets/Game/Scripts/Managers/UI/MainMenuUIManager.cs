@@ -31,24 +31,24 @@ public class MainMenuUIManager : UIManager
 		{
 			if(mainMenuPanelUI != null)
 			{
-				mainMenuPanelUI.panelReachedTargetPositionEvent.AddListener(ActivateOptionsCursorImageUI);
+				mainMenuPanelUI.targetPositionWasReachedEvent.AddListener(ActivateOptionsCursorImageUI);
 			}
 
 			if(mainMenuOptionsListenersManager != null)
 			{
-				mainMenuOptionsListenersManager.gameStartOptionSubmittedEvent.AddListener(OnGameStartOptionSubmitted);
+				mainMenuOptionsListenersManager.gameStartOptionWasSubmittedEvent.AddListener(OnGameStartOptionSubmitted);
 			}
 		}
 		else
 		{
 			if(mainMenuPanelUI != null)
 			{
-				mainMenuPanelUI.panelReachedTargetPositionEvent.RemoveListener(ActivateOptionsCursorImageUI);
+				mainMenuPanelUI.targetPositionWasReachedEvent.RemoveListener(ActivateOptionsCursorImageUI);
 			}
 
 			if(mainMenuOptionsListenersManager != null)
 			{
-				mainMenuOptionsListenersManager.gameStartOptionSubmittedEvent.RemoveListener(OnGameStartOptionSubmitted);
+				mainMenuOptionsListenersManager.gameStartOptionWasSubmittedEvent.RemoveListener(OnGameStartOptionSubmitted);
 			}
 		}
 	}

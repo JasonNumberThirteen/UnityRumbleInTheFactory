@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(EntityExploder), typeof(Collider2D))]
 public class NukeEntity : MonoBehaviour, ITriggerableOnEnter
 {
-	public UnityEvent nukeDestroyedEvent;
+	public UnityEvent nukeWasDestroyedEvent;
 
 	private EntityExploder entityExploder;
 	private Collider2D c2D;
@@ -25,7 +25,7 @@ public class NukeEntity : MonoBehaviour, ITriggerableOnEnter
 
 		entityExploder.TriggerExplosion();
 		PlaySound();
-		nukeDestroyedEvent?.Invoke();
+		nukeWasDestroyedEvent?.Invoke();
 	}
 
 	private void Awake()

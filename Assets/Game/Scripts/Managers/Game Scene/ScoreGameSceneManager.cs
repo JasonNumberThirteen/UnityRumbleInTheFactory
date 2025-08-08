@@ -29,7 +29,7 @@ public class ScoreGameSceneManager : GameSceneManager
 
 			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.AddListener(timer.StartTimer);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeWasReachedEvent.AddListener(timer.StartTimer);
 			}
 		}
 		else
@@ -38,7 +38,7 @@ public class ScoreGameSceneManager : GameSceneManager
 
 			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.RemoveListener(timer.StartTimer);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeWasReachedEvent.RemoveListener(timer.StartTimer);
 			}
 		}
 	}

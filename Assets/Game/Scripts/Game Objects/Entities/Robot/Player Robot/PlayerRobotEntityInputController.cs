@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerRobotEntityInputController : MonoBehaviour
 {
-	public UnityEvent<Vector2> movementKeyPressedEvent;
-	public UnityEvent shootKeyPressedEvent;
+	public UnityEvent<Vector2> movementKeyWasPressedEvent;
+	public UnityEvent shootKeyWasPressedEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField, Min(1)] private int ordinalNumber;
@@ -42,12 +42,12 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 
 	private void OnMove(InputValue inputValue)
 	{
-		movementKeyPressedEvent?.Invoke(inputValue.Get<Vector2>());
+		movementKeyWasPressedEvent?.Invoke(inputValue.Get<Vector2>());
 	}
 
 	private void OnFire(InputValue inputValue)
 	{
-		shootKeyPressedEvent?.Invoke();
+		shootKeyWasPressedEvent?.Invoke();
 	}
 
 	private void OnPause(InputValue inputValue)

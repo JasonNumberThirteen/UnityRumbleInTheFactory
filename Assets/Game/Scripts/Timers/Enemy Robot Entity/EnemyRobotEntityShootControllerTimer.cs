@@ -24,14 +24,14 @@ public class EnemyRobotEntityShootControllerTimer : Timer
 		{
 			if(robotEntityRankController != null)
 			{
-				robotEntityRankController.rankChangedEvent.AddListener(OnRankChanged);
+				robotEntityRankController.rankWasChangedEvent.AddListener(OnRankChanged);
 			}
 		}
 		else
 		{
 			if(robotEntityRankController != null)
 			{
-				robotEntityRankController.rankChangedEvent.RemoveListener(OnRankChanged);
+				robotEntityRankController.rankWasChangedEvent.RemoveListener(OnRankChanged);
 			}
 		}
 	}

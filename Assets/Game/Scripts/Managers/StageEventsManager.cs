@@ -3,10 +3,10 @@ using UnityEngine.Events;
 
 public class StageEventsManager : MonoBehaviour
 {
-	public UnityEvent<StageEvent> eventReceivedEvent;
+	public UnityEvent<StageEvent> eventWasSentEvent;
 
 	public void SendEvent(StageEvent stageEvent)
 	{
-		eventReceivedEvent?.Invoke(stageEvent);
+		eventWasSentEvent?.Invoke(stageEvent);
 	}
 }

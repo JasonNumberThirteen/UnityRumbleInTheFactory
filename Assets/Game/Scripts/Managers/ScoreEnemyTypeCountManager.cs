@@ -5,8 +5,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class ScoreEnemyTypeCountManager : MonoBehaviour
 {
-	public UnityEvent<List<PlayerRobotScoreData>> enemyCountedEvent;
-	public UnityEvent allEnemiesCountedEvent;
+	public UnityEvent<List<PlayerRobotScoreData>> enemyWasCountedEvent;
+	public UnityEvent allEnemiesWereCountedEvent;
 
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 	
@@ -57,7 +57,7 @@ public class ScoreEnemyTypeCountManager : MonoBehaviour
 		AddScoreForSingleEnemy();
 		playerRobotScoreDataList.Clear();
 		AddPlayerScoreDataFromEveryPlayer();
-		enemyCountedEvent?.Invoke(playerRobotScoreDataList);
+		enemyWasCountedEvent?.Invoke(playerRobotScoreDataList);
 		ExecuteActionDependingOnNumberOfCountedEnemies();
 	}
 
@@ -94,7 +94,7 @@ public class ScoreEnemyTypeCountManager : MonoBehaviour
 	{
 		if(numberOfCountedEnemies >= numberOfDefeatedEnemies)
 		{
-			allEnemiesCountedEvent?.Invoke();
+			allEnemiesWereCountedEvent?.Invoke();
 		}
 		else
 		{

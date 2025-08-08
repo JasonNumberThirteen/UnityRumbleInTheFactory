@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerRobotEntityInputController), typeof(PlayerRobotEntityInputTypesActivationController))]
 public class PlayerRobotEntityMovementController : RobotEntityMovementController
 {
-	public UnityEvent<PlayerRobotEntityMovementController, bool> movementValueChangedEvent;
+	public UnityEvent<PlayerRobotEntityMovementController, bool> movementValueWasChangedEvent;
 	public UnityEvent<PlayerRobotEntityMovementController> playerDiedEvent;
 	
 	private bool isSliding;
@@ -38,22 +38,22 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 		if(register)
 		{
-			playerRobotEntityInputController.movementKeyPressedEvent.AddListener(OnMovementValueChanged);
-			playerRobotEntityInputTypesActivationController.occuredStageEventTypesUpdatedEvent.AddListener(OnOccuredStageEventTypesUpdated);
+			playerRobotEntityInputController.movementKeyWasPressedEvent.AddListener(OnMovementValueChanged);
+			playerRobotEntityInputTypesActivationController.occuredStageEventTypesWereUpdatedEvent.AddListener(OnOccuredStageEventTypesUpdated);
 			
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
 			}
 		}
 		else
 		{
-			playerRobotEntityInputController.movementKeyPressedEvent.RemoveListener(OnMovementValueChanged);
-			playerRobotEntityInputTypesActivationController.occuredStageEventTypesUpdatedEvent.RemoveListener(OnOccuredStageEventTypesUpdated);
+			playerRobotEntityInputController.movementKeyWasPressedEvent.RemoveListener(OnMovementValueChanged);
+			playerRobotEntityInputTypesActivationController.occuredStageEventTypesWereUpdatedEvent.RemoveListener(OnOccuredStageEventTypesUpdated);
 			
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 	}
@@ -146,7 +146,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		currentMovementVector = movementVector;
 
-		movementValueChangedEvent?.Invoke(this, !currentMovementVector.IsZero());
+		movementValueWasChangedEvent?.Invoke(this, !currentMovementVector.IsZero());
 	}
 
 	private bool GameIsPaused() => stageStateManager != null && stageStateManager.StateIsSetTo(StageState.Paused);

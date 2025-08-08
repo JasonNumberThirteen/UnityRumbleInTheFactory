@@ -10,11 +10,11 @@ public class PlayerRobotEntityHealth : RobotEntityHealth
 
 		if(register)
 		{
-			currentHealthValueChangedEvent.AddListener(OnCurrentHealthValueChanged);
+			currentHealthValueWasChangedEvent.AddListener(OnCurrentHealthValueChanged);
 		}
 		else
 		{
-			currentHealthValueChangedEvent.RemoveListener(OnCurrentHealthValueChanged);
+			currentHealthValueWasChangedEvent.RemoveListener(OnCurrentHealthValueChanged);
 		}
 	}
 

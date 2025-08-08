@@ -25,11 +25,11 @@ public class NukeRenderer : MonoBehaviour
 	{
 		if(register)
 		{
-			nukeEntity.nukeDestroyedEvent.AddListener(OnNukeDestroyed);
+			nukeEntity.nukeWasDestroyedEvent.AddListener(OnNukeDestroyed);
 		}
 		else
 		{
-			nukeEntity.nukeDestroyedEvent.RemoveListener(OnNukeDestroyed);
+			nukeEntity.nukeWasDestroyedEvent.RemoveListener(OnNukeDestroyed);
 		}
 	}
 

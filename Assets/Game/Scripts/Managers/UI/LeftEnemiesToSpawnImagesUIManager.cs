@@ -50,14 +50,14 @@ public class LeftEnemiesToSpawnImagesUIManager : UIManager
 		{
 			if(enemyRobotEntitySpawnManager != null)
 			{
-				enemyRobotEntitySpawnManager.entityAssignedToSpawnerEvent.AddListener(OnEntityAssignedToSpawner);
+				enemyRobotEntitySpawnManager.entityWasAssignedToSpawnerEvent.AddListener(OnEntityAssignedToSpawner);
 			}
 		}
 		else
 		{
 			if(enemyRobotEntitySpawnManager != null)
 			{
-				enemyRobotEntitySpawnManager.entityAssignedToSpawnerEvent.RemoveListener(OnEntityAssignedToSpawner);
+				enemyRobotEntitySpawnManager.entityWasAssignedToSpawnerEvent.RemoveListener(OnEntityAssignedToSpawner);
 			}
 		}
 	}

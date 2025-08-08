@@ -28,14 +28,14 @@ public class PlayerRobotMovementSoundManager : MonoBehaviour
 		{
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.AddListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.AddListener(OnStageStateChanged);
 			}
 		}
 		else
 		{
 			if(stageStateManager != null)
 			{
-				stageStateManager.stageStateChangedEvent.RemoveListener(OnStageStateChanged);
+				stageStateManager.stageStateWasChangedEvent.RemoveListener(OnStageStateChanged);
 			}
 		}
 
@@ -59,11 +59,11 @@ public class PlayerRobotMovementSoundManager : MonoBehaviour
 		{
 			if(register)
 			{
-				playerRobotEntitySpawner.entitySpawnedEvent.AddListener(OnEntitySpawned);
+				playerRobotEntitySpawner.entityWasSpawnedEvent.AddListener(OnEntitySpawned);
 			}
 			else
 			{
-				playerRobotEntitySpawner.entitySpawnedEvent.RemoveListener(OnEntitySpawned);
+				playerRobotEntitySpawner.entityWasSpawnedEvent.RemoveListener(OnEntitySpawned);
 			}
 		});
 	}

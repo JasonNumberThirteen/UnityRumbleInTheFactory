@@ -31,14 +31,14 @@ public class PlayerLivesIntCounterPanelUI : IntCounterPanelUI
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerLivesChangedEvent.AddListener(OnPlayerLivesChanged);
+				playerRobotsDataManager.playerLivesWereChangedEvent.AddListener(OnPlayerLivesChanged);
 			}
 		}
 		else
 		{
 			if(playerRobotsDataManager != null)
 			{
-				playerRobotsDataManager.playerLivesChangedEvent.RemoveListener(OnPlayerLivesChanged);
+				playerRobotsDataManager.playerLivesWereChangedEvent.RemoveListener(OnPlayerLivesChanged);
 			}
 		}
 	}

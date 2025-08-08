@@ -27,11 +27,11 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 
 		if(register)
 		{
-			entitySpawnedEvent.AddListener(OnEntitySpawned);
+			entityWasSpawnedEvent.AddListener(OnEntitySpawned);
 		}
 		else
 		{
-			entitySpawnedEvent.RemoveListener(OnEntitySpawned);
+			entityWasSpawnedEvent.RemoveListener(OnEntitySpawned);
 		}
 	}
 

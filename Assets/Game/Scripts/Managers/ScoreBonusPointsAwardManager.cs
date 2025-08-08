@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class ScoreBonusPointsAwardManager : MonoBehaviour
 {
-	public UnityEvent<bool> playerAwardedWithPointsEvent;
+	public UnityEvent<bool> playerWasAwardedWithPointsEvent;
 	
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
@@ -67,7 +67,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.AddListener(timer.StartTimer);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeWasReachedEvent.AddListener(timer.StartTimer);
 			}
 		}
 		else
@@ -76,7 +76,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 
 			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.RemoveListener(timer.StartTimer);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeWasReachedEvent.RemoveListener(timer.StartTimer);
 			}
 		}
 	}
@@ -110,7 +110,7 @@ public class ScoreBonusPointsAwardManager : MonoBehaviour
 		}
 
 		UpdateAwardedPlayerScoreCounterIfPossible();
-		playerAwardedWithPointsEvent?.Invoke(gameDataIsDefined && beatenHighScoreEarlier != gameData.BeatenHighScore);
+		playerWasAwardedWithPointsEvent?.Invoke(gameDataIsDefined && beatenHighScoreEarlier != gameData.BeatenHighScore);
 	}
 
 	private void UpdateAwardedPlayerScoreCounterIfPossible()

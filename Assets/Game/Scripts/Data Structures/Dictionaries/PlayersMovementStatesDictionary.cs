@@ -16,13 +16,13 @@ public class PlayersMovementStatesDictionary : Dictionary<PlayerRobotEntityMovem
 		if(register)
 		{
 			SetStateTo(playerRobotEntityMovementController, false);
-			playerRobotEntityMovementController.movementValueChangedEvent.AddListener(onMovementValueChanged);
+			playerRobotEntityMovementController.movementValueWasChangedEvent.AddListener(onMovementValueChanged);
 			playerRobotEntityMovementController.playerDiedEvent.AddListener(onPlayerDied);
 		}
 		else
 		{
 			Remove(playerRobotEntityMovementController);
-			playerRobotEntityMovementController.movementValueChangedEvent.RemoveListener(onMovementValueChanged);
+			playerRobotEntityMovementController.movementValueWasChangedEvent.RemoveListener(onMovementValueChanged);
 			playerRobotEntityMovementController.playerDiedEvent.RemoveListener(onPlayerDied);
 		}
 	}

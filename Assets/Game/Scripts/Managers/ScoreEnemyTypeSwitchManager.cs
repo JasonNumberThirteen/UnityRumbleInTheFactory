@@ -4,8 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class ScoreEnemyTypeSwitchManager : MonoBehaviour
 {
-	public UnityEvent<int> enemyTypeSwitchedEvent;
-	public UnityEvent lastEnemyTypeReachedEvent;
+	public UnityEvent<int> enemyTypeWasSwitchedEvent;
+	public UnityEvent lastEnemyTypeWasReachedEvent;
 	
 	private Timer timer;
 	private int currentEnemyTypeIndex;
@@ -52,11 +52,11 @@ public class ScoreEnemyTypeSwitchManager : MonoBehaviour
 	{
 		if(currentEnemyTypeIndex < numberOfDefeatedEnemyTypes)
 		{
-			enemyTypeSwitchedEvent?.Invoke(currentEnemyTypeIndex++);
+			enemyTypeWasSwitchedEvent?.Invoke(currentEnemyTypeIndex++);
 		}
 		else
 		{
-			lastEnemyTypeReachedEvent?.Invoke();
+			lastEnemyTypeWasReachedEvent?.Invoke();
 		}
 	}
 }

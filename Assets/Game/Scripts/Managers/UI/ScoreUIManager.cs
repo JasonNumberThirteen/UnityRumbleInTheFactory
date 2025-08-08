@@ -39,28 +39,28 @@ public class ScoreUIManager : UIManager
 		{
 			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyTypeSwitchManager.enemyTypeSwitchedEvent.AddListener(OnEnemyTypeSwitched);
-				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.AddListener(OnLastEnemyTypeReached);
+				scoreEnemyTypeSwitchManager.enemyTypeWasSwitchedEvent.AddListener(OnEnemyTypeSwitched);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeWasReachedEvent.AddListener(OnLastEnemyTypeReached);
 			}
 
 			if(scoreEnemyTypeCountManager != null)
 			{
-				scoreEnemyTypeCountManager.enemyCountedEvent.AddListener(OnEnemyCounted);
-				scoreEnemyTypeCountManager.allEnemiesCountedEvent.AddListener(OnAllEnemiesCounted);
+				scoreEnemyTypeCountManager.enemyWasCountedEvent.AddListener(OnEnemyCounted);
+				scoreEnemyTypeCountManager.allEnemiesWereCountedEvent.AddListener(OnAllEnemiesCounted);
 			}
 		}
 		else
 		{
 			if(scoreEnemyTypeSwitchManager != null)
 			{
-				scoreEnemyTypeSwitchManager.enemyTypeSwitchedEvent.RemoveListener(OnEnemyTypeSwitched);
-				scoreEnemyTypeSwitchManager.lastEnemyTypeReachedEvent.RemoveListener(OnLastEnemyTypeReached);
+				scoreEnemyTypeSwitchManager.enemyTypeWasSwitchedEvent.RemoveListener(OnEnemyTypeSwitched);
+				scoreEnemyTypeSwitchManager.lastEnemyTypeWasReachedEvent.RemoveListener(OnLastEnemyTypeReached);
 			}
 
 			if(scoreEnemyTypeCountManager != null)
 			{
-				scoreEnemyTypeCountManager.enemyCountedEvent.RemoveListener(OnEnemyCounted);
-				scoreEnemyTypeCountManager.allEnemiesCountedEvent.RemoveListener(OnAllEnemiesCounted);
+				scoreEnemyTypeCountManager.enemyWasCountedEvent.RemoveListener(OnEnemyCounted);
+				scoreEnemyTypeCountManager.allEnemiesWereCountedEvent.RemoveListener(OnAllEnemiesCounted);
 			}
 		}
 	}
