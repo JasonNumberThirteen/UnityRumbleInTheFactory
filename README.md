@@ -19,11 +19,12 @@
 - The game consists of defending the nuke against incoming robots. The player controls the orange robot (the 2nd player controls the green one) and must shoot projectiles to destroy enemy robots which are spawned on the top of the map.
 - Win condition: all incoming enemy robots are destroyed.
 - Lose condition: all the players were destroyed and lost all lives or the nuke is destroyed.
+- The repository contains entire [Wiki](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki) about the game explaining all the technical details.
 
 ## Used technologies
 - [Unity](https://unity.com/ "Unity Real-Time Development Platform | 3D, 2D, VR &amp; AR Engine") game engine (version **2022.3.1f1**),
 - [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code - Code Editing. Redefined") IDE for writing code,
-- [GIMP](https://www.gimp.org/ "GIMP - GNU Image Manipulation Program") & [Paint.NET](https://www.getpaint.net/ "Paint.NET - Free Software for Digital Photo Editing") for making graphics,
+- [GIMP](https://www.gimp.org/ "GIMP - GNU Image Manipulation Program") for making graphics,
 - [Tiled](https://www.mapeditor.org/ "Tiled | Flexible level editor") for making stage layouts,
 - [FamiStudio](https://famistudio.org/ "FamiStudio - NES Music Editor") for making music & sound effects.
 
@@ -32,8 +33,8 @@
 - [2 game modes](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Main-Menu#1-player "Main Menu"),
 - 20 stages,
 - [5 types of tiles](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Tiles "Tiles"),
-- [6 bonuses](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Bonuses "Bonuses"),
-- [4 enemy types](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Robots "Robots").
+- [4 enemy types](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Robots "Robots"),
+- [6 bonuses](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Bonuses "Bonuses").
 
 ## Scenes
 ### Main Menu
