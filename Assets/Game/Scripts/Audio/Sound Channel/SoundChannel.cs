@@ -85,6 +85,11 @@ public class SoundChannel : MonoBehaviour
 
 	private void OnStageStateWasChanged(StageState stageState)
 	{
-		MuteSoundDependingOnStageState(stageState);
+		var musicIsPlaying = stageMusicManager != null && stageMusicManager.MusicIsPlaying();
+		
+		if(!musicIsPlaying && stageState == StageState.Active && audioSource.mute)
+		{
+			audioSource.mute = false;
+		}
 	}
 }
