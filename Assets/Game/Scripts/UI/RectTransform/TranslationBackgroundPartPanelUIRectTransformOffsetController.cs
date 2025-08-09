@@ -13,6 +13,7 @@ public class TranslationBackgroundPartPanelUIRectTransformOffsetController : Mon
 	private Vector2 initialOffsetMax;
 	private Vector2 targetOffsetMin;
 	private Vector2 targetOffsetMax;
+	private GameResolutionChangeDetector gameResolutionChangeDetector;
 
 	public void Setup(Timer timer)
 	{
@@ -22,9 +23,45 @@ public class TranslationBackgroundPartPanelUIRectTransformOffsetController : Mon
 	private void Awake()
 	{
 		rectTransform = GetComponent<RectTransform>();
+		gameResolutionChangeDetector = ObjectMethods.FindComponentOfType<GameResolutionChangeDetector>();
+
+		RegisterToListeners(true);
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			if(gameResolutionChangeDetector != null)
+			{
+				gameResolutionChangeDetector.resolutionWasChangedEvent.AddListener(OnResolutionWasChanged);
+			}
+		}
+		else
+		{
+			if(gameResolutionChangeDetector != null)
+			{
+				gameResolutionChangeDetector.resolutionWasChangedEvent.RemoveListener(OnResolutionWasChanged);
+			}
+		}
+	}
+
+	private void OnResolutionWasChanged()
+	{
+		UpdateOffsetValues();
 	}
 
 	private void Start()
+	{
+		UpdateOffsetValues();
+	}
+
+	private void UpdateOffsetValues()
 	{
 		initialOffsetMin = initialOffsetMax = rectTransform.offsetMin = rectTransform.offsetMax = GetInitialOffset();
 		targetOffsetMin = GetTargetOffset(initialOffsetMin);

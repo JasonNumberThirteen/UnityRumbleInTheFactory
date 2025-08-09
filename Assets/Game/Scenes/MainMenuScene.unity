@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c18f53a00d6c034a8179682c5388398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueChangedEvent:
+  valueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &680709370
@@ -839,10 +839,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionSelectedEvent:
+  optionWasSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
-  optionSubmittedEvent:
+  optionWasSubmittedEvent:
     m_PersistentCalls:
       m_Calls: []
   optionType: 2
@@ -980,10 +980,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionSelectedEvent:
+  optionWasSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
-  optionSubmittedEvent:
+  optionWasSubmittedEvent:
     m_PersistentCalls:
       m_Calls: []
   optionType: 1
@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d822f13543f816b4989dbb0902bbff29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransformReachedTargetPositionEvent:
+  targetPositionWasReachedEvent:
     m_PersistentCalls:
       m_Calls: []
   targetPosition: {x: 0, y: 0}
@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bc6233bd410bf4593089e986c9dd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelReachedTargetPositionEvent:
+  targetPositionWasReachedEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -1388,10 +1388,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46dc51fe84dae14b88d8e5a02067237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionSelectedEvent:
+  optionWasSelectedEvent:
     m_PersistentCalls:
       m_Calls: []
-  optionSubmittedEvent:
+  optionWasSubmittedEvent:
     m_PersistentCalls:
       m_Calls: []
   optionType: 3
@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d870d15022490ff4abb76fe0803f5790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartOptionSubmittedEvent:
+  gameStartOptionWasSubmittedEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -1582,6 +1582,53 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8437547935343819482, guid: 46d52f932a7cde047af8536c7e1978eb, type: 3}
   m_PrefabInstance: {fileID: 1601528627}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1308089581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1308089583}
+  - component: {fileID: 1308089582}
+  m_Layer: 0
+  m_Name: Game Resolution Change Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1308089582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308089581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1b7a4fb2f348845b14c44fc837fa8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionWasChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1308089583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308089581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1386975100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1866,7 +1913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6032a9f1cb11ed54eab55fcc7a4e4aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueChangedEvent:
+  valueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -2018,7 +2065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6175a758460bc24680503932f7a752e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueChangedEvent:
+  valueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   playerRobotData: {fileID: 11400000, guid: 78e7a057db81c82488d8feeb6656ee08, type: 2}
@@ -2120,13 +2167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974468a7c85d06640951740b05b02a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigateKeyPressedEvent:
+  navigateKeyWasPressedEvent:
     m_PersistentCalls:
       m_Calls: []
-  submitKeyPressedEvent:
+  submitKeyWasPressedEvent:
     m_PersistentCalls:
       m_Calls: []
-  cancelKeyPressedEvent:
+  cancelKeyWasPressedEvent:
     m_PersistentCalls:
       m_Calls: []
   navigationAxis: 1
@@ -2167,7 +2214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6175a758460bc24680503932f7a752e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueChangedEvent:
+  valueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   playerRobotData: {fileID: 11400000, guid: 6dddb61176186724c8c72d556a2864a6, type: 2}

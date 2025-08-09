@@ -549,10 +549,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc32e7eb544adbb48a6b10359afe6431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScoreChangedEvent:
+  playerScoreWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  playerLivesChangedEvent:
+  playerLivesWereChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -988,6 +988,53 @@ Transform:
   m_Father: {fileID: 554198272}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &464860731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 464860733}
+  - component: {fileID: 464860732}
+  m_Layer: 0
+  m_Name: Game Resolution Change Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &464860732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464860731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1b7a4fb2f348845b14c44fc837fa8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionWasChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &464860733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464860731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472280981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,7 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d822f13543f816b4989dbb0902bbff29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransformReachedTargetPositionEvent:
+  targetPositionWasReachedEvent:
     m_PersistentCalls:
       m_Calls: []
   targetPosition: {x: 0, y: 0}
@@ -1346,7 +1393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79546e476de33aa428d381fed4925b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textReachedTargetPositionEvent:
+  targetPositionWasReachedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &681417465
@@ -1523,7 +1570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189b583751cef314bb96397d4004ff04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageStateChangedEvent:
+  stageStateWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &879573809
@@ -1809,7 +1856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505513e6f448a0d4f89891337ffadbe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventReceivedEvent:
+  eventWasSentEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1059412380
@@ -2523,7 +2570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aec3dec5d51dd49bd2295f4a0f4876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityAssignedToSpawnerEvent:
+  entityWasAssignedToSpawnerEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -2998,7 +3045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca906d1af7a926d4497b223dfd0ab539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundPlayedEvent:
+  soundWasPlayedEvent:
     m_PersistentCalls:
       m_Calls: []
   additionalSoundChannels: 8
@@ -4220,7 +4267,7 @@ MonoBehaviour:
   stageStartedEvent:
     m_PersistentCalls:
       m_Calls: []
-  stageActivatedEvent:
+  stageWasActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
