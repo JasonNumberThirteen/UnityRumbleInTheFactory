@@ -6,11 +6,11 @@ public class MainMenuGameSceneManager : GameSceneManager
 	{
 		translationBackgroundPanelUI = ObjectMethods.FindComponentOfType<TranslationBackgroundPanelUI>();
 
-		DeserialiseAllData();
+		DeserialiseAllDataIfPossible();
 		RegisterToListeners(true);
 	}
 
-	private void DeserialiseAllData()
+	private void DeserialiseAllDataIfPossible()
 	{
 		var dataSerialisationManager = ObjectMethods.FindComponentOfType<DataSerialisationManager>();
 
