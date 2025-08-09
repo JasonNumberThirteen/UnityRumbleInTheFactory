@@ -7,4 +7,6 @@ public class PrefixedIntCounterTextUI : IntCounterTextUI
 	public override string GetCounterValueAsString() => string.Format("{0," + width + "}", GetFormattedCounterValueAsString());
 
 	public virtual string GetFormattedCounterValueAsString() => base.GetCounterValueAsString();
+
+	public int GetWidth() => width;
 }

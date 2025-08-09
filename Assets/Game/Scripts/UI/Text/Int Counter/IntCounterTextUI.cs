@@ -13,6 +13,8 @@ public class IntCounterTextUI : TextUI
 
 	public virtual string GetCounterValueAsString() => GetCounterValue().ToString();
 
+	public string GetHeader() => header;
+	public string GetPostfix() => postfix;
 	public int GetCounterValue() => intCounter.CurrentValue;
 	
 	protected override void Awake()
@@ -22,6 +24,11 @@ public class IntCounterTextUI : TextUI
 		intCounter = GetComponent<IntCounter>();
 
 		RegisterToListeners(true);
+	}
+
+	protected virtual void OnValueWasChanged()
+	{
+		text.text = GetFormattedText();
 	}
 
 	private void OnDestroy()
@@ -39,11 +46,6 @@ public class IntCounterTextUI : TextUI
 		{
 			intCounter.valueWasChangedEvent.RemoveListener(OnValueWasChanged);
 		}
-	}
-
-	private void OnValueWasChanged()
-	{
-		text.text = GetFormattedText();
 	}
 	
 	private string GetFormattedText()
