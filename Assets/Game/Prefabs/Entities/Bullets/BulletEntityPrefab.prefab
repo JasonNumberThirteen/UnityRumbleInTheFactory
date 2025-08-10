@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3234668162895731857}
   - component: {fileID: -954762323830548360}
   - component: {fileID: -5566419768450551203}
+  - component: {fileID: 8617117274142273082}
   m_Layer: 3
   m_Name: BulletEntityPrefab
   m_TagString: Bullet
@@ -162,7 +163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.35}
+  m_Size: {x: 0.25, y: 0.35}
   m_EdgeRadius: 0
 --- !u!95 &7478468426985284263
 Animator:
@@ -197,6 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3e4779f1fb586418d5db6ee6e03f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementDirectionWasChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8438295727497518047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +254,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentTag: Entities
+--- !u!114 &8617117274142273082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137018745332980371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f848bceecaa2d44b9a58c59c390ab26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

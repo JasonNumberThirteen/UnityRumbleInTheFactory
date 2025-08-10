@@ -1,13 +1,36 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class EntityMovementController : MonoBehaviour
 {
-	public Vector2 CurrentMovementDirection {get; set;}
+	public UnityEvent<Vector2> movementDirectionWasChangedEvent;
+	
+	public Vector2 CurrentMovementDirection
+	{
+		get
+		{
+			return currentMovementDirection;
+		}
+		set
+		{
+			var currentMovementDirection = this.currentMovementDirection;
+
+			if(currentMovementDirection == value)
+			{
+				return;
+			}
+
+			this.currentMovementDirection = value;
+
+			movementDirectionWasChangedEvent?.Invoke(this.currentMovementDirection);
+		}
+	}
 
 	protected Rigidbody2D rb2D;
 	protected float movementSpeed;
 
+	private Vector2 currentMovementDirection;
 	private Vector2 lastMovementDirection;
 
 	public bool CurrentMovementDirectionIsNone() => CurrentMovementDirection.IsZero();
