@@ -28,6 +28,17 @@ public class GameData : ScriptableObject
 	public StageData GetCurrentStageData() => StagesData.GetElementAt(StageNumber - 1);
 	public bool AnyStageFound() => StagesData.Length > 0;
 
+	public void InitSaveableGameData()
+	{
+		ResetSaveableGameData();
+	}
+
+	[ContextMenu("Reset saveable game data")]
+	public void ResetSaveableGameData()
+	{
+		saveableGameData.ResetData();
+	}
+
 	public void ResetData()
 	{
 		GameIsOver = BeatenHighScore = EnteredStageSelection = false;
@@ -88,11 +99,5 @@ public class GameData : ScriptableObject
 		{
 			saveableGameData.stageNumber = StageNumber % StagesData.Length + 1;
 		}
-	}
-
-	[ContextMenu("Reset saveable game data")]
-	private void ResetSaveableGameData()
-	{
-		saveableGameData.ResetData();
 	}
 }

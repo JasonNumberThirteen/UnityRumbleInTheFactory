@@ -41,6 +41,17 @@ public class PlayerRobotData : RobotData
 	public override RobotRank GetRankByIndex(int index) => ranks.GetElementAt(index);
 	public override int GetNumberOfRanks() => ranks != null && ranks.Length > 0 ? ranks.Length : 1;
 
+	public void InitSaveablePlayerData()
+	{
+		ResetSaveablePlayerData();
+	}
+
+	[ContextMenu("Reset saveable player data")]
+	public void ResetSaveablePlayerData()
+	{
+		saveablePlayerData.ResetData();
+	}
+
 	public void ResetData(bool isActive)
 	{
 		lives = isActive ? initialLives : 0;

@@ -7,4 +7,9 @@ public class PlayerRobotsListData : ScriptableObject
 	[SerializeField] private List<PlayerRobotData> playerRobotsData = new();
 
 	public List<PlayerRobotData> GetPlayerRobotsData() => playerRobotsData;
+
+	public void InitAllSaveablePlayerData()
+	{
+		playerRobotsData.ForEach(playerRobotData => playerRobotData.InitSaveablePlayerData());
+	}
 }
