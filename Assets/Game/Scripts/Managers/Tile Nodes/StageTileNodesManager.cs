@@ -41,7 +41,7 @@ public class StageTileNodesManager : MonoBehaviour
 		stageLayoutManager = ObjectMethods.FindComponentOfType<StageLayoutManager>();
 
 		SpawnStageTileNodes();
-		stageTileNodes.ForEach(stageTileNode => stageTileNode.FindNeighbors(stageTileNodes));
+		stageTileNodes.ForEach(stageTileNode => stageTileNode.FindNeighbours(stageTileNodes));
 	}
 
 	private void SpawnStageTileNodes()
