@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionAreaSize.x
-      value: 0.59
+      value: 0.566
       objectReference: {fileID: 0}
     - target: {fileID: 6623865249156756832, guid: 45af5603af150104993ac8c5bdc54084, type: 3}
       propertyPath: detectionAreaSize.y
@@ -281,10 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195558b8412e4964c9be7fbd6b2e1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementKeyPressedEvent:
+  movementKeyWasPressedEvent:
     m_PersistentCalls:
       m_Calls: []
-  shootKeyPressedEvent:
+  shootKeyWasPressedEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -301,7 +301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3dada8d8e5cab488c46a6750548b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementValueChangedEvent:
+  movementDirectionWasChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  movementValueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   playerDiedEvent:
@@ -370,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281c187dbcedf6c4d9c46adf614a613e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankChangedEvent:
+  rankWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   robotData: {fileID: 0}
@@ -387,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610547401ff15e54ea5140178285a7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealthValueChangedEvent:
+  currentHealthValueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   explosionSoundEffectType: 6
@@ -404,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5457086ff72b14d4f8be895927c4f05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occuredStageEventTypesUpdatedEvent:
+  occuredStageEventTypesWereUpdatedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &3508498655664141437 stripped
