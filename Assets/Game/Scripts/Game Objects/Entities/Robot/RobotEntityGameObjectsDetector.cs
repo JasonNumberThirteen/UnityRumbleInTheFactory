@@ -60,8 +60,6 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 		{
 			robotEntityGameObjectsDetectorTimer.StartTimer();
 		}
-
-		Debug.Log(detectedColliders.Length);
 	}
 
 	private void OnDrawGizmos()
