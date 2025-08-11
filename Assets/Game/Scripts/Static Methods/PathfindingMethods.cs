@@ -3,15 +3,15 @@ using UnityEngine;
 
 public static class PathfindingMethods
 {
-	public static void OperateOnPathTileNodes(TileNode tileNodeToStartFrom, Action<TileNode> action)
+	public static void OperateOnPathStageTileNodes(StageTileNode stageTileNodeToStartFrom, Action<StageTileNode> action)
 	{
-		var currentTileNode = tileNodeToStartFrom;
+		var currentStageTileNode = stageTileNodeToStartFrom;
 
-		while (currentTileNode.Parent != null)
+		while (currentStageTileNode.Parent != null)
 		{
-			action?.Invoke(currentTileNode);
+			action?.Invoke(currentStageTileNode);
 
-			currentTileNode = currentTileNode.Parent;
+			currentStageTileNode = currentStageTileNode.Parent;
 		}
 	}
 	

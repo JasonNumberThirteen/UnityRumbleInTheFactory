@@ -6,18 +6,18 @@ public class StageTileNodesManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 	[SerializeField] private Collider2D[] takenAreas;
-	[SerializeField] private TileNode tileNodePrefab;
+	[SerializeField] private StageTileNode stageTileNodePrefab;
 	
 	private StageLayoutManager stageLayoutManager;
 
-	private readonly List<TileNode> tileNodes = new();
-	private readonly List<StageTileType> prohibitedTileTypes = new() {StageTileType.ToxicWaste};
-	private readonly List<StageTileType> impassableTileTypes = new() {StageTileType.Metal};
+	private readonly List<StageTileNode> stageTileNodes = new();
+	private readonly List<StageTileType> prohibitedStageTileTypes = new() {StageTileType.ToxicWaste};
+	private readonly List<StageTileType> impassableStageTileTypes = new() {StageTileType.Metal};
 
-	public List<TileNode> GetTileNodesWithin(Rect rect) => tileNodes.Where(tileNode => rect.Contains(tileNode.GetPosition())).ToList();
-	public TileNode GetClosestTileNodeTo(Vector2 position) => tileNodes.OrderBy(tileNode => Vector2.Distance(tileNode.GetPosition(), position)).FirstOrDefault();
+	public List<StageTileNode> GetStageTileNodesWithin(Rect rect) => stageTileNodes.Where(stageTileNode => rect.Contains(stageTileNode.GetPosition())).ToList();
+	public StageTileNode GetClosestStageTileNodeTo(Vector2 position) => stageTileNodes.OrderBy(stageTileNode => Vector2.Distance(stageTileNode.GetPosition(), position)).FirstOrDefault();
 
-	public TileNode GetTileNodeWhereClosestPlayerRobotIsOnIfPossible(TileNode startTileNode)
+	public StageTileNode GetStageTileNodeWhereClosestPlayerRobotIsOnIfPossible(StageTileNode startStageTileNode)
 	{
 		var activePlayerRobotEntities = ObjectMethods.FindComponentsOfType<PlayerRobotEntity>(false);
 
@@ -26,36 +26,36 @@ public class StageTileNodesManager : MonoBehaviour
 			return null;
 		}
 
-		var closestActivePlayerRobotEntity = activePlayerRobotEntities.OrderBy(playerRobot => Vector2.Distance(startTileNode.GetPosition(), playerRobot.transform.position)).FirstOrDefault();
+		var closestActivePlayerRobotEntity = activePlayerRobotEntities.OrderBy(playerRobot => Vector2.Distance(startStageTileNode.GetPosition(), playerRobot.transform.position)).FirstOrDefault();
 		
-		return GetClosestTileNodeTo(closestActivePlayerRobotEntity.gameObject.transform.position);
+		return GetClosestStageTileNodeTo(closestActivePlayerRobotEntity.gameObject.transform.position);
 	}
 
-	public void ResetTileNodes()
+	public void ResetStageTileNodes()
 	{
-		tileNodes.ForEach(tileNode => tileNode.ResetData());
+		stageTileNodes.ForEach(stageTileNode => stageTileNode.ResetData());
 	}
 
 	private void Awake()
 	{
 		stageLayoutManager = ObjectMethods.FindComponentOfType<StageLayoutManager>();
 
-		SpawnTileNodes();
-		tileNodes.ForEach(tileNode => tileNode.FindNeighbors(tileNodes));
+		SpawnStageTileNodes();
+		stageTileNodes.ForEach(stageTileNode => stageTileNode.FindNeighbors(stageTileNodes));
 	}
 
-	private void SpawnTileNodes()
+	private void SpawnStageTileNodes()
 	{
 		var tileIndexes = GameDataMethods.GetTileIndexesFromCurrentStageData(gameData);
 		
-		tileIndexes.ForEachIndexed(SpawnTileNodeIfPossible);
+		tileIndexes.ForEachIndexed(SpawnStageTileNodeIfPossible);
 	}
 
-	private void SpawnTileNodeIfPossible(int tileIndex, int loopIndex)
+	private void SpawnStageTileNodeIfPossible(int tileIndex, int loopIndex)
 	{
-		var tileType = tileIndex.ToEnumValue<StageTileType>();
+		var stageTileType = tileIndex.ToEnumValue<StageTileType>();
 		
-		if(stageLayoutManager == null || prohibitedTileTypes.Contains(tileType))
+		if(stageLayoutManager == null || prohibitedStageTileTypes.Contains(stageTileType))
 		{
 			return;
 		}
@@ -64,21 +64,21 @@ public class StageTileNodesManager : MonoBehaviour
 
 		if(!tilePosition.OverlapsWithAnyOfColliders(takenAreas))
 		{
-			SpawnTileNode(tilePosition, tileType);
+			SpawnStageTileNode(tilePosition, stageTileType);
 		}
 	}
 
-	private void SpawnTileNode(Vector2 tilePosition, StageTileType stageTileType)
+	private void SpawnStageTileNode(Vector2 tilePosition, StageTileType stageTileType)
 	{
-		if(tileNodePrefab == null)
+		if(stageTileNodePrefab == null)
 		{
 			return;
 		}
 		
-		var instance = Instantiate(tileNodePrefab, tilePosition, Quaternion.identity);
+		var instance = Instantiate(stageTileNodePrefab, tilePosition, Quaternion.identity);
 
-		instance.Passable = !impassableTileTypes.Contains(stageTileType);
+		instance.Passable = !impassableStageTileTypes.Contains(stageTileType);
 
-		tileNodes.Add(instance);
+		stageTileNodes.Add(instance);
 	}
 }

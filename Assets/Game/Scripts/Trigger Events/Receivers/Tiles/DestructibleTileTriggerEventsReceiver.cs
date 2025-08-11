@@ -100,7 +100,7 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 			return;
 		}
 
-		var node = stageTileNodesManager.GetClosestTileNodeTo(position);
+		var node = stageTileNodesManager.GetClosestStageTileNodeTo(position);
 
 		if(node != null && !node.Passable)
 		{

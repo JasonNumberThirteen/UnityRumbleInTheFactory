@@ -8,23 +8,23 @@ public class StageTileNodesPathfinder : MonoBehaviour
 	[SerializeField] private Color pathNodeGizmosColor = new(0.5f, 0f, 0.25f, 1f);
 	[SerializeField, Range(0.01f, 0.25f)] private float pathNodeGizmosRadius = 0.05f;
 	
-	private TileNode startTileNode;
-	private TileNode endTileNode;
+	private StageTileNode startStageTileNode;
+	private StageTileNode endStageTileNode;
 	private bool foundPath;
 	private StageTileNodesManager stageTileNodesManager;
 
-	private readonly PriorityQueue<TileNode> priorityQueue = new();
-	private readonly List<TileNode> pathNodes = new();
+	private readonly PriorityQueue<StageTileNode> priorityQueue = new();
+	private readonly List<StageTileNode> pathStageTileNodes = new();
 	
-	public bool PathExistsBetweenTwoTileNodes(TileNode startTileNode, TileNode endTileNode)
+	public bool PathExistsBetweenTwoStageTileNodes(StageTileNode startStageTileNode, StageTileNode endStageTileNode)
 	{
-		this.startTileNode = startTileNode;
-		this.endTileNode = endTileNode;
+		this.startStageTileNode = startStageTileNode;
+		this.endStageTileNode = endStageTileNode;
 
 		ClearData();
-		ResetTileNodes();
+		ResetStageTileNodes();
 		InitiatePathfinder();
-		FindPathToEndTileNode();
+		FindPathToEndStageTileNode();
 		
 		return foundPath;
 	}
@@ -36,117 +36,117 @@ public class StageTileNodesPathfinder : MonoBehaviour
 
 	private void ClearData()
 	{
-		pathNodes.Clear();
+		pathStageTileNodes.Clear();
 		priorityQueue.Clear();
 	}
 
-	private void ResetTileNodes()
+	private void ResetStageTileNodes()
 	{
 		if(stageTileNodesManager != null)
 		{
-			stageTileNodesManager.ResetTileNodes();
+			stageTileNodesManager.ResetStageTileNodes();
 		}
 	}
 
 	private void InitiatePathfinder()
 	{
-		if(startTileNode == null || endTileNode == null)
+		if(startStageTileNode == null || endStageTileNode == null)
 		{
 			return;
 		}
 		
 		foundPath = false;
-		startTileNode.Weight = 0;
+		startStageTileNode.Weight = 0;
 
-		AddTileNodeToQueue(startTileNode);
+		AddStageTileNodeToQueue(startStageTileNode);
 	}
 
-	private void FindPathToEndTileNode()
+	private void FindPathToEndStageTileNode()
 	{
 		while (!foundPath && priorityQueue.Count > 0)
 		{
-			VisitTileNodeIfNeeded(priorityQueue.Dequeue());
+			VisitStageTileNodeIfNeeded(priorityQueue.Dequeue());
 		}
 	}
 
-	private void VisitTileNodeIfNeeded(TileNode tileNode)
+	private void VisitStageTileNodeIfNeeded(StageTileNode stageTileNode)
 	{
-		if(tileNode == null || tileNode.Visited || endTileNode == null)
+		if(stageTileNode == null || stageTileNode.Visited || endStageTileNode == null)
 		{
 			return;
 		}
 
-		tileNode.Visited = true;
+		stageTileNode.Visited = true;
 
-		OperateOnTileNode(tileNode);
+		OperateOnStageTileNode(stageTileNode);
 	}
 
-	private void OperateOnTileNode(TileNode tileNode)
+	private void OperateOnStageTileNode(StageTileNode stageTileNode)
 	{
-		if(tileNode == null)
+		if(stageTileNode == null)
 		{
 			return;
 		}
 		
-		if(tileNode == endTileNode)
+		if(stageTileNode == endStageTileNode)
 		{
-			FinishSearchingOn(tileNode);
+			FinishSearchingOn(stageTileNode);
 		}
 		else
 		{
-			AddNeighborsOf(tileNode);
+			AddNeighborsOf(stageTileNode);
 		}
 	}
 
-	private void FinishSearchingOn(TileNode tileNode)
+	private void FinishSearchingOn(StageTileNode stageTileNode)
 	{
-		if(tileNode == null)
+		if(stageTileNode == null)
 		{
 			return;
 		}
 		
 		foundPath = true;
 
-		PathfindingMethods.OperateOnPathTileNodes(tileNode, tileNode => pathNodes.Add(tileNode));
+		PathfindingMethods.OperateOnPathStageTileNodes(stageTileNode, stageTileNode => pathStageTileNodes.Add(stageTileNode));
 	}
 
-	private void AddNeighborsOf(TileNode tileNode)
+	private void AddNeighborsOf(StageTileNode stageTileNode)
 	{
-		if(tileNode == null)
+		if(stageTileNode == null)
 		{
 			return;
 		}
 		
-		var neighbors = tileNode.GetNeighbors().Where(neighbor => neighbor.Passable && !neighbor.Visited).ToList();
+		var neighbors = stageTileNode.GetNeighbors().Where(neighbor => neighbor.Passable && !neighbor.Visited).ToList();
 
-		neighbors?.ForEach(neighbor => SetupAndAddNeighbor(neighbor, tileNode));
+		neighbors?.ForEach(neighbor => SetupAndAddNeighbor(neighbor, stageTileNode));
 	}
 
-	private void SetupAndAddNeighbor(TileNode neighboringTileNode, TileNode parentTileNode)
+	private void SetupAndAddNeighbor(StageTileNode neighboringStageTileNode, StageTileNode parentStageTileNode)
 	{
-		neighboringTileNode.Parent = parentTileNode;
+		neighboringStageTileNode.Parent = parentStageTileNode;
 
-		AddTileNodeToQueue(neighboringTileNode);
+		AddStageTileNodeToQueue(neighboringStageTileNode);
 	}
 
-	private void AddTileNodeToQueue(TileNode tileNode)
+	private void AddStageTileNodeToQueue(StageTileNode stageTileNode)
 	{
-		if(tileNode == null)
+		if(stageTileNode == null)
 		{
 			return;
 		}
 		
-		var tileNodeCost = tileNode.GetCostToReachTo(endTileNode);
-		var tileNodeWithCost = new PriorityQueueElement<TileNode>(tileNode, tileNodeCost);
+		var stageTileNodeCost = stageTileNode.GetCostToReachTo(endStageTileNode);
+		var stageTileNodeWithCost = new PriorityQueueElement<StageTileNode>(stageTileNode, stageTileNodeCost);
 		
-		priorityQueue.Enqueue(tileNodeWithCost);
+		priorityQueue.Enqueue(stageTileNodeWithCost);
 	}
 
 	private void OnDrawGizmos()
 	{
-		if(drawGizmos && pathNodes.Count > 0)
+		if(drawGizmos && pathStageTileNodes.Count > 0)
 		{
-			GizmosMethods.OperateOnGizmos(() => pathNodes.ForEach(pathNode => Gizmos.DrawSphere(pathNode.GetPosition(), pathNodeGizmosRadius)), pathNodeGizmosColor);
+			GizmosMethods.OperateOnGizmos(() => pathStageTileNodes.ForEach(stageTileNode => Gizmos.DrawSphere(stageTileNode.GetPosition(), pathNodeGizmosRadius)), pathNodeGizmosColor);
 		}
 	}
 }

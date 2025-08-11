@@ -68,9 +68,9 @@ public class BonusTiledPositionSetter : MonoBehaviour
 		
 		var startNodesAreaSize = Vector2.one;
 		var startNodesArea = new Rect(position.GetOffsetFrom(startNodesAreaSize), startNodesAreaSize);
-		var availableStartNodes = stageTileNodesManager.GetTileNodesWithin(startNodesArea).Where(tileNode => tileNode.Passable);
+		var availableStartNodes = stageTileNodesManager.GetStageTileNodesWithin(startNodesArea).Where(tileNode => tileNode.Passable);
 
-		return availableStartNodes != null && availableStartNodes.Any(startNode => startNode != null && stageTileNodesPathfinder.PathExistsBetweenTwoTileNodes(startNode, stageTileNodesManager.GetTileNodeWhereClosestPlayerRobotIsOnIfPossible(startNode)));
+		return availableStartNodes != null && availableStartNodes.Any(startNode => startNode != null && stageTileNodesPathfinder.PathExistsBetweenTwoStageTileNodes(startNode, stageTileNodesManager.GetStageTileNodeWhereClosestPlayerRobotIsOnIfPossible(startNode)));
 	}
 
 	private bool PositionIsInaccessible(Vector2 position) => DetectedAnyUnacceptableCollider(position) || !DetectedPathToClosestPlayerRobotFrom(position);

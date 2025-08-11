@@ -2040,7 +2040,7 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   takenAreas:
   - {fileID: 1203599836}
-  tileNodePrefab: {fileID: 29264372053668378, guid: 86a530cb62bfa124fb8beef8a2d2fab6, type: 3}
+  stageTileNodePrefab: {fileID: 29264372053668378, guid: 86a530cb62bfa124fb8beef8a2d2fab6, type: 3}
 --- !u!1 &1181348150
 GameObject:
   m_ObjectHideFlags: 0
