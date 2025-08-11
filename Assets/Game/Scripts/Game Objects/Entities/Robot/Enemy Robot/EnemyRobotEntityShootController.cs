@@ -39,6 +39,10 @@ public class EnemyRobotEntityShootController : RobotEntityShootController
 	private void OnTimerFinished()
 	{
 		FireBullet();
-		enemyRobotEntityShootControllerTimer.StartTimer();
+
+		if(enemyRobotEntityShootControllerTimer != null)
+		{
+			enemyRobotEntityShootControllerTimer.StartTimer();
+		}
 	}
 }
