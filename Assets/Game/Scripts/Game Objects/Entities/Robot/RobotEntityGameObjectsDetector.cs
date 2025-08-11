@@ -15,19 +15,53 @@ public class RobotEntityGameObjectsDetector : MonoBehaviour
 	[SerializeField] private Color detectionAreaGizmosColor = Color.green;
 
 	private RobotEntityMovementController robotEntityMovementController;
+	private RobotEntityGameObjectsDetectorTimer robotEntityGameObjectsDetectorTimer;
 
 	private readonly DirectionAnglesDictionary directionAngles = new();
 
 	private void Awake()
 	{
 		robotEntityMovementController = GetComponent<RobotEntityMovementController>();
+		robotEntityGameObjectsDetectorTimer = GetComponentInChildren<RobotEntityGameObjectsDetectorTimer>();
+
+		RegisterToListeners(true);
 	}
 
-	private void Update()
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void RegisterToListeners(bool register)
+	{
+		if(register)
+		{
+			if(robotEntityGameObjectsDetectorTimer != null)
+			{
+				robotEntityGameObjectsDetectorTimer.timerFinishedEvent.AddListener(OnTimerFinished);
+			}
+		}
+		else
+		{
+			if(robotEntityGameObjectsDetectorTimer != null)
+			{
+				robotEntityGameObjectsDetectorTimer.timerFinishedEvent.RemoveListener(OnTimerFinished);
+			}
+		}
+	}
+
+	private void OnTimerFinished()
 	{
 		var detectedColliders = Physics2D.OverlapBoxAll(GetDetectionAreaCenter(), detectionAreaSize, GetDetectionAreaAngle(), detectableGameObjects);
 
 		detectedGameObjectsWereUpdatedEvent?.Invoke(detectedColliders.Where(collider2D => collider2D != null).Select(collider2D => collider2D.gameObject).Where(go => go != gameObject).ToList());
+
+		if(robotEntityGameObjectsDetectorTimer != null)
+		{
+			robotEntityGameObjectsDetectorTimer.StartTimer();
+		}
+
+		Debug.Log(detectedColliders.Length);
 	}
 
 	private void OnDrawGizmos()

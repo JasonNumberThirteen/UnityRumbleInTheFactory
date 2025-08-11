@@ -43,6 +43,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1265371228180154573}
+  - {fileID: 218663474708311094}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -240,6 +241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b1d2b5129e2b446970eb6be1685ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealthValueWasChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  explosionSoundEffectType: 0
 --- !u!114 &6410641849965248143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a7e1ec98212664bb12bc138c01920f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityWasDestroyedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   explosionEffectPrefab: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
   destroyGOAfterExplosion: 1
 --- !u!114 &5126605066933689641
@@ -279,6 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3e38d1eb5b1b04dad876ecd74b4b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementDirectionWasChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &831581827609024836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,11 +315,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d6bae63a3ff7b4291e8a62f0a23237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotData: {fileID: 0}
-  resetRankOnStart: 1
-  rankChangedEvent:
+  rankWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
+  robotData: {fileID: 0}
+  resetRankOnStart: 1
 --- !u!114 &6623865249156756832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,14 +332,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e396716a7394742a35b585859c860f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectedGameObjectsUpdatedEvent:
+  detectedGameObjectsWereUpdatedEvent:
     m_PersistentCalls:
       m_Calls: []
   detectionAreaSize: {x: 0, y: 0}
-  detectionLayerMask:
+  detectableGameObjects:
     serializedVersion: 2
     m_Bits: 0
   detectionAreaOffsetFromCenterDistance: 0.1
+  drawGizmos: 1
+  detectionAreaGizmosColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!1 &3950488775997549812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 218663474708311094}
+  - component: {fileID: 3314683775066186156}
+  m_Layer: 0
+  m_Name: Game Objects Detector Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &218663474708311094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950488775997549812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3038284362999386624}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3314683775066186156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950488775997549812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42122f952fad498439340c11e54d0a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  timerFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startImmediately: 1
+  duration: 0.03333334
 --- !u!1001 &8577749972176307599
 PrefabInstance:
   m_ObjectHideFlags: 0
