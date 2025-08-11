@@ -16,15 +16,12 @@ public class StageTileNode : MonoBehaviour
 	public Vector2 GetPosition() => transform.position;
 	public List<StageTileNode> GetNeighbours() => neighbours;
 	public StageTileNodeData GetStageTileNodeData() => stageTileNodeData;
-	//public float GetCostToReachTo(StageTileNode endStageTileNode) => GetPathLengthFromStart() + GetDistanceTo(endStageTileNode);
 
 	public void ResetData()
 	{
 		Visited = false;
 
 		stageTileNodeData.SetValues(null, 0, 0);
-		// Weight = 0;
-		// Parent = null;
 	}
 
 	public void FindNeighbours(List<StageTileNode> stageTileNodes)
@@ -56,15 +53,4 @@ public class StageTileNode : MonoBehaviour
 			neighbours.Add(neighbouringStageTileNode);
 		}
 	}
-
-	// private int GetPathLengthFromStart()
-	// {
-	// 	var length = 0;
-
-	// 	PathfindingMethods.OperateOnPathStageTileNodes(this, stageTileNode => length += stageTileNode.Weight);
-
-	// 	return length;
-	// }
-
-	// private float GetDistanceTo(StageTileNode stageTileNode) => stageTileNode != null ? PathfindingMethods.GetManhattanDistance(GetPosition(), stageTileNode.GetPosition()) : float.MaxValue;
 }
