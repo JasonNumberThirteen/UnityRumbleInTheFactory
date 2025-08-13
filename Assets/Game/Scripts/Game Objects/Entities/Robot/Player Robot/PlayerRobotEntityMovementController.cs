@@ -126,9 +126,20 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	{
 		pressedMovementVector = movementVector.GetRawVector();
 
-		if(CanPerformInputActionOfType(PlayerInputActionType.Movement) && !GameIsPaused() && !GameIsOver())
+		if(!CanPerformInputActionOfType(PlayerInputActionType.Movement) || GameIsPaused() || GameIsOver())
 		{
-			UpdateMovementVector(pressedMovementVector);
+			return;
+		}
+
+		UpdateMovementVectorWhileSlidingIfNeeded(pressedMovementVector);
+		UpdateMovementVector(pressedMovementVector);
+	}
+
+	private void UpdateMovementVectorWhileSlidingIfNeeded(Vector2 movementVector)
+	{
+		if(!movementVector.IsZero())
+		{
+			movementVectorWhileSliding = movementVector;
 		}
 	}
 
