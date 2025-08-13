@@ -41,11 +41,6 @@ public class EnemyRobotEntityShootController : RobotEntityShootController
 		}
 	}
 
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-	}
-
 	private void OnEnable()
 	{
 		SetTimerFrozenIfPossible(false);
