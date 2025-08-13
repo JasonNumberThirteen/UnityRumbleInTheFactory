@@ -11,11 +11,6 @@ public class EnemyRobotEntityShootController : RobotEntityShootController
 		RegisterToListeners(true);
 	}
 
-	private void OnDestroy()
-	{
-		RegisterToListeners(false);
-	}
-
 	protected override void RegisterToListeners(bool register)
 	{
 		base.RegisterToListeners(register);
@@ -43,6 +38,29 @@ public class EnemyRobotEntityShootController : RobotEntityShootController
 		if(enemyRobotEntityShootControllerTimer != null)
 		{
 			enemyRobotEntityShootControllerTimer.StartTimer();
+		}
+	}
+
+	private void OnDestroy()
+	{
+		RegisterToListeners(false);
+	}
+
+	private void OnEnable()
+	{
+		SetTimerFrozenIfPossible(false);
+	}
+
+	private void OnDisable()
+	{
+		SetTimerFrozenIfPossible(true);
+	}
+
+	private void SetTimerFrozenIfPossible(bool freeze)
+	{
+		if(enemyRobotEntityShootControllerTimer != null)
+		{
+			enemyRobotEntityShootControllerTimer.SetTimeFrozen(freeze);
 		}
 	}
 }
