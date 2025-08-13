@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6411893797768784338}
   - component: {fileID: 3314772161134264389}
   m_Layer: 0
-  m_Name: Movement Timer
+  m_Name: Movement Controller Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4117364974871369739}
   - component: {fileID: 3117415091800670640}
   m_Layer: 0
-  m_Name: Shoot Timer
+  m_Name: Shoot Controller Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,6 +368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9818a7bf096834c458e9dbaee7a98ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementDirectionWasChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
 --- !u!114 &-7222749067493573934
 MonoBehaviour:
@@ -400,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988d7bd1636773c4996ccadbd41b7e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealthValueChangedEvent:
+  currentHealthValueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   explosionSoundEffectType: 9
