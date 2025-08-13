@@ -45,21 +45,21 @@ public class EntityMovementController : MonoBehaviour
 		rb2D = GetComponent<Rigidbody2D>();
 	}
 
-	private void FixedUpdate()
+	protected virtual void OnEnable()
 	{
-		var movementSpeedPerFrame = movementSpeed*Time.fixedDeltaTime;
-
-		rb2D.MovePosition(rb2D.position + CurrentMovementDirection*movementSpeedPerFrame);
+		CurrentMovementDirection = lastMovementDirection;
 	}
 
-	private void OnDisable()
+	protected virtual void OnDisable()
 	{
 		lastMovementDirection = CurrentMovementDirection;
 		CurrentMovementDirection = Vector2.zero;
 	}
 
-	private void OnEnable()
+	private void FixedUpdate()
 	{
-		CurrentMovementDirection = lastMovementDirection;
+		var movementSpeedPerFrame = movementSpeed*Time.fixedDeltaTime;
+
+		rb2D.MovePosition(rb2D.position + CurrentMovementDirection*movementSpeedPerFrame);
 	}
 }

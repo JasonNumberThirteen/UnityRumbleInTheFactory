@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
 	[SerializeField, Min(0f)] private float duration;
 
 	private float currentTime;
+	private bool isFrozen;
 
 	public float GetDuration() => duration;
 	public float GetProgressPercent() => duration > 0 ? currentTime / duration : 0;
@@ -42,6 +43,11 @@ public class Timer : MonoBehaviour
 		this.duration = duration;
 	}
 
+	public void SetTimeFrozen(bool freeze)
+	{
+		isFrozen = freeze;
+	}
+
 	private void Start()
 	{
 		if(startImmediately)
@@ -52,7 +58,7 @@ public class Timer : MonoBehaviour
 	
 	private void Update()
 	{
-		if(!TimerWasStarted)
+		if(!TimerWasStarted || isFrozen)
 		{
 			return;
 		}
@@ -82,5 +88,7 @@ public class Timer : MonoBehaviour
 		currentTime = finished ? duration : 0f;
 		TimerWasStarted = !finished;
 		TimerWasFinished = finished;
+		
+		SetTimeFrozen(false);
 	}
 }

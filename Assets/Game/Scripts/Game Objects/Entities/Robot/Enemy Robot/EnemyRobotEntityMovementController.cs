@@ -49,6 +49,26 @@ public class EnemyRobotEntityMovementController : RobotEntityMovementController
 		}
 	}
 
+	protected override void OnEnable()
+	{
+		base.OnEnable();
+		SetTimerFrozenIfPossible(false);
+	}
+
+	protected override void OnDisable()
+	{
+		base.OnDisable();
+		SetTimerFrozenIfPossible(true);
+	}
+
+	private void SetTimerFrozenIfPossible(bool freeze)
+	{
+		if(enemyRobotEntityMovementControllerTimer != null)
+		{
+			enemyRobotEntityMovementControllerTimer.SetTimeFrozen(freeze);
+		}
+	}
+
 	private void Start()
 	{
 		SetInitialMovementSpeedModifiedByDifficultyTier();
