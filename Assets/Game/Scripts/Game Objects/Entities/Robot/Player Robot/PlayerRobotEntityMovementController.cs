@@ -118,7 +118,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	protected override void OnDestroy()
 	{
 		base.OnDestroy();
-		UpdateMovementVector(Vector2.zero);
+		UpdateCurrentMovementVector(Vector2.zero);
 		playerDiedEvent?.Invoke(this);
 	}
 	
@@ -132,7 +132,7 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		}
 
 		UpdateMovementVectorWhileSlidingIfNeeded(pressedMovementVector);
-		UpdateMovementVector(pressedMovementVector);
+		UpdateCurrentMovementVector(pressedMovementVector);
 	}
 
 	private void UpdateMovementVectorWhileSlidingIfNeeded(Vector2 movementVector)
@@ -145,15 +145,15 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 
 	private void OnOccuredStageEventTypesWereUpdated()
 	{
-		UpdateMovementVector(CanPerformInputActionOfType(PlayerInputActionType.Movement) ? pressedMovementVector : GetIdleVectorDependingOnSlidingState());
+		UpdateCurrentMovementVector(CanPerformInputActionOfType(PlayerInputActionType.Movement) ? pressedMovementVector : GetIdleVectorDependingOnSlidingState());
 	}
 
 	private void OnStageStateWasChanged(StageState stageState)
 	{
-		UpdateMovementVector((stageState == StageState.Paused || stageState == StageState.Over) ? GetIdleVectorDependingOnSlidingState() : pressedMovementVector);
+		UpdateCurrentMovementVector((stageState == StageState.Paused || stageState == StageState.Over) ? GetIdleVectorDependingOnSlidingState() : pressedMovementVector);
 	}
 
-	private void UpdateMovementVector(Vector2 movementVector)
+	private void UpdateCurrentMovementVector(Vector2 movementVector)
 	{
 		currentMovementVector = movementVector;
 
