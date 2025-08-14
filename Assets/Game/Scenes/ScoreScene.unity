@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab5b0baa01984a4897d90b4f27bc7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAwardedWithPointsEvent:
+  playerWasAwardedWithPointsEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914da88c444f14c46809d6fb28ce277e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueChangedEvent:
+  valueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -816,7 +816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939050827}
   m_Layer: 5
-  m_Name: Player 1 Score Details Panel UI Container'
+  m_Name: Player 1 Score Details Panel UI Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -925,10 +925,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccb1dc80b33e0542a6667bb465f865d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCountedEvent:
+  enemyWasCountedEvent:
     m_PersistentCalls:
       m_Calls: []
-  allEnemiesCountedEvent:
+  allEnemiesWereCountedEvent:
     m_PersistentCalls:
       m_Calls: []
   playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4966f56daa2d8614b85306fc0d385282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueChangedEvent:
+  valueWasChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
@@ -1787,10 +1787,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c362c5f677f1846800a41a44c126bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypeSwitchedEvent:
+  enemyTypeWasSwitchedEvent:
     m_PersistentCalls:
       m_Calls: []
-  lastEnemyTypeReachedEvent:
+  lastEnemyTypeWasReachedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1810015465
