@@ -2,21 +2,22 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput), typeof(PlayerRobotEntity))]
 public class PlayerRobotEntityInputController : MonoBehaviour
 {
 	public UnityEvent<Vector2> movementKeyWasPressedEvent;
 	public UnityEvent shootKeyWasPressedEvent;
 	
 	[SerializeField] private GameData gameData;
-	[SerializeField, Min(1)] private int ordinalNumber;
 	
 	private PlayerInput playerInput;
+	private PlayerRobotEntity playerRobotEntity;
 	private StageSceneFlowManager stageSceneFlowManager;
 
 	private void Awake()
 	{
 		playerInput = GetComponent<PlayerInput>();
+		playerRobotEntity = GetComponent<PlayerRobotEntity>();
 		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
 	}
 
@@ -35,9 +36,16 @@ public class PlayerRobotEntityInputController : MonoBehaviour
 	private bool ShouldAssignGamepadControlScheme()
 	{
 		var selectedTwoPlayerMode = GameDataMethods.SelectedTwoPlayerMode(gameData);
-		var isFirstPlayer = ordinalNumber == 1;
-
+		var isFirstPlayer = PlayerHasOrdinalNumber(1);
+		
 		return Gamepad.current != null && (!selectedTwoPlayerMode || !isFirstPlayer);
+	}
+
+	private bool PlayerHasOrdinalNumber(int ordinalNumber)
+	{
+		var playerRobotData = playerRobotEntity.GetPlayerRobotData();
+
+		return playerRobotData != null && playerRobotData.GetOrdinalNumber() == ordinalNumber;
 	}
 
 	private void OnMove(InputValue inputValue)
