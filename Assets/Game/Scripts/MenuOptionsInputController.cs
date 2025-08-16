@@ -31,9 +31,9 @@ public class MenuOptionsInputController : MonoBehaviour
 
 	private void SetControlScheme()
 	{
-		var controlSchemeName = Gamepad.current != null ? InputMethods.GAMEPAD_CONTROL_SCHEME_NAME : InputMethods.KEYBOARD_AND_MOUSE_CONTROL_SCHEME_NAME;
+		var controlSchemeName = InputMethods.GamepadIsAvailable() ? InputMethods.GAMEPAD_CONTROL_SCHEME_NAME : InputMethods.KEYBOARD_AND_MOUSE_CONTROL_SCHEME_NAME;
 
-		InputMethods.SetControlSchemeTo(playerInput, controlSchemeName);
+		InputMethods.SetControlSchemeToPlayerInputIfPossible(playerInput, controlSchemeName);
 	}
 
 	private void OnDestroy()

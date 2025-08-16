@@ -9,6 +9,8 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 
 	private PlayerRobotsDataManager playerRobotsDataManager;
 
+	public PlayerRobotData GetPlayerRobotData() => playerRobotData;
+
 	public void InitiateRespawn()
 	{
 		Invoke(nameof(AttemptToRespawn), respawnDelay);

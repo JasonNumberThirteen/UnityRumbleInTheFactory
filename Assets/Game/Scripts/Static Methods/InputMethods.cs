@@ -12,9 +12,11 @@ public static class InputMethods
 		{GAMEPAD_CONTROL_SCHEME_NAME, new InputDevice[]{Gamepad.current}}
 	};
 
-	public static void SetControlSchemeTo(PlayerInput playerInput, string controlSchemeName)
+	public static bool GamepadIsAvailable() => Gamepad.current != null;
+
+	public static void SetControlSchemeToPlayerInputIfPossible(PlayerInput playerInput, string controlSchemeName)
 	{
-		if(playerInput != null)
+		if(playerInput != null && playerInput.user.valid)
 		{
 			playerInput.SwitchCurrentControlScheme(controlSchemeName, GetInputDevicesByControlSchemeName(controlSchemeName));
 		}

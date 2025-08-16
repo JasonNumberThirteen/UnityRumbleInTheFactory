@@ -15,6 +15,7 @@ MonoBehaviour:
   ordinalNumber: 2
   saveablePlayerData:
     score: 0
+  inputActions: {fileID: -944628639613478452, guid: 40661c75caad69c4d9005911aeb976ea, type: 3}
   ranks:
   - health: 1
     movementSpeed: 3

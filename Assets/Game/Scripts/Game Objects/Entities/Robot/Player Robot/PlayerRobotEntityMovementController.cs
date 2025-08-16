@@ -22,6 +22,19 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	private readonly string ENEMY_LAYER_NAME = "Enemy";
 	private readonly string SLIPPERY_FLOOR_LAYER_NAME = "Slippery Floor";
 
+	public void OnMovementKeyWasPressed(Vector2 movementVector)
+	{
+		pressedMovementVector = movementVector.GetRawVector();
+
+		if(!CanPerformInputActionOfType(PlayerInputActionType.Movement) || GameIsPaused() || GameIsOver())
+		{
+			return;
+		}
+
+		UpdateMovementVectorWhileSlidingIfNeeded(pressedMovementVector);
+		UpdateCurrentMovementVector(pressedMovementVector);
+	}
+
 	protected override void Awake()
 	{
 		playerRobotEntityInputController = GetComponent<PlayerRobotEntityInputController>();
@@ -30,6 +43,13 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 		
 		base.Awake();
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+		UpdateCurrentMovementVector(Vector2.zero);
+		playerDiedEvent?.Invoke(this);
 	}
 
 	protected override void RegisterToListeners(bool register)
@@ -113,26 +133,6 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 		{
 			lastDirection = CurrentMovementDirection;
 		}
-	}
-
-	protected override void OnDestroy()
-	{
-		base.OnDestroy();
-		UpdateCurrentMovementVector(Vector2.zero);
-		playerDiedEvent?.Invoke(this);
-	}
-	
-	private void OnMovementKeyWasPressed(Vector2 movementVector)
-	{
-		pressedMovementVector = movementVector.GetRawVector();
-
-		if(!CanPerformInputActionOfType(PlayerInputActionType.Movement) || GameIsPaused() || GameIsOver())
-		{
-			return;
-		}
-
-		UpdateMovementVectorWhileSlidingIfNeeded(pressedMovementVector);
-		UpdateCurrentMovementVector(pressedMovementVector);
 	}
 
 	private void UpdateMovementVectorWhileSlidingIfNeeded(Vector2 movementVector)
