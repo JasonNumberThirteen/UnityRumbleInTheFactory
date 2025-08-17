@@ -4,20 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
-  - Bullet
   - Shield
-  - Nuke
-  - Toxic Waste
-  - Slippery Floor
-  - Bricks
   - Enemy
   - Entities
   - Bonus
-  - Enemy Spawner
-  - Player Spawner
-  - Stage Board
-  - Player Bullet
   - Bricks Tiles
   - Metal Tiles
   - Grid Tiles

@@ -56,10 +56,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRobotEntitySpawnerPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
-      propertyPath: m_TagString
-      value: Player Spawner
-      objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: onEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -97,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b655df3a07f3f4fa1e5e57803f1ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entitySpawnedEvent:
+  entityWasSpawnedEvent:
     m_PersistentCalls:
       m_Calls: []
   entityPrefab: {fileID: 0}

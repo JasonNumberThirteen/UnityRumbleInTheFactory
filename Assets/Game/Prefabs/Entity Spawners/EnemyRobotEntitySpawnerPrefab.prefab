@@ -56,10 +56,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyRobotEntitySpawnerPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 6725085237384328082, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
-      propertyPath: m_TagString
-      value: Enemy Spawner
-      objectReference: {fileID: 0}
     - target: {fileID: 7755116143451911904, guid: 3557a0fbaf273d74c96cc72698bebc36, type: 3}
       propertyPath: startImmediately
       value: 0
@@ -200,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2be32b63be38ef488300d6d40b5545b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entitySpawnedEvent:
+  entityWasSpawnedEvent:
     m_PersistentCalls:
       m_Calls: []
   entityPrefab: {fileID: 0}

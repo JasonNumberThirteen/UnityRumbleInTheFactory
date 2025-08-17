@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 1258385577399760706}
   m_Layer: 8
   m_Name: BottomRightBrickTilePart
-  m_TagString: Bricks
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 4224584489321028058}
   m_Layer: 8
   m_Name: BottomLeftBrickTilePart
-  m_TagString: Bricks
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 4505754649827338905}
   m_Layer: 8
   m_Name: TopLeftBrickTilePart
-  m_TagString: Bricks
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 3183359024789417362}
   m_Layer: 8
   m_Name: TopRightBrickTilePart
-  m_TagString: Bricks
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
