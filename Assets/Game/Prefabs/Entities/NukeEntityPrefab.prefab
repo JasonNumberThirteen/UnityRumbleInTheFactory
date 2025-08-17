@@ -49,7 +49,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50147b8e35605149b1116f6d0cb8884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nukeDestroyedEvent:
+  nukeWasDestroyedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &-3710137388361032966
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a7e1ec98212664bb12bc138c01920f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityDestroyedEvent:
+  entityWasDestroyedEvent:
     m_PersistentCalls:
       m_Calls: []
   explosionEffectPrefab: {fileID: 1681592834248553486, guid: d9035ff78e51cc241a08addf4874c977, type: 3}
