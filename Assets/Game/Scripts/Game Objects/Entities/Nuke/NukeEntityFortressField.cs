@@ -8,7 +8,7 @@ public class NukeEntityFortressField : MonoBehaviour
 	[SerializeField] private GameObject tilePrefab;
 	[SerializeField, Min(0.01f)] private float timeForBlinkStart = 5f;
 	[SerializeField, Min(0.01f)] private float blinkDuration = 0.25f;
-	[SerializeField] private Sprite tileSpriteToBlink;
+	[SerializeField] private Sprite tileSpriteToSwitch;
 	[SerializeField] private GameObject tileToSpawnAfterElapsedTimePrefab;
 
 	private Collider2D c2D;
@@ -120,7 +120,7 @@ public class NukeEntityFortressField : MonoBehaviour
 		var instance = Instantiate(tilePrefab, position, Quaternion.identity);
 		var nukeEntityFortressFieldTileRenderer = instance.AddComponent<NukeEntityFortressFieldTileRenderer>();
 
-		nukeEntityFortressFieldTileRenderer.Setup(timer.GetDuration(), timeForBlinkStart, blinkDuration, tileSpriteToBlink);
+		nukeEntityFortressFieldTileRenderer.Setup(timer.GetDuration(), timeForBlinkStart, blinkDuration, tileSpriteToSwitch);
 		fortressTileGOs.Add(instance);
 	}
 }

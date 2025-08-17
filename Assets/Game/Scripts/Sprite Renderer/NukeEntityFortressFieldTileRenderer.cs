@@ -5,11 +5,11 @@ public class NukeEntityFortressFieldTileRenderer : MonoBehaviour
 {
 	private SpriteRenderer spriteRenderer;
 	private Sprite initialSprite;
-	private Sprite spriteToBlink;
+	private Sprite spriteToSwitch;
 
-	public void Setup(float lifetime, float timeForBlinkStart, float blinkDuration, Sprite spriteToBlink)
+	public void Setup(float lifetime, float timeForBlinkStart, float blinkDuration, Sprite spriteToSwitch)
 	{
-		this.spriteToBlink = spriteToBlink;
+		this.spriteToSwitch = spriteToSwitch;
 
 		InvokeRepeating(nameof(SwitchSprite), lifetime - timeForBlinkStart, blinkDuration);
 	}
@@ -24,6 +24,6 @@ public class NukeEntityFortressFieldTileRenderer : MonoBehaviour
 	{
 		var rendererHasInitialSprite = spriteRenderer.sprite == initialSprite;
 		
-		spriteRenderer.sprite = rendererHasInitialSprite ? spriteToBlink : initialSprite;
+		spriteRenderer.sprite = rendererHasInitialSprite ? spriteToSwitch : initialSprite;
 	}
 }

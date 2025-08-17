@@ -117,7 +117,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
   timeForBlinkStart: 5
   blinkDuration: 0.25
-  tileSpriteToBlink: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
+  tileSpriteToSwitch: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
   tileToSpawnAfterElapsedTimePrefab: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
 --- !u!1 &8414169594087006866
 GameObject:
