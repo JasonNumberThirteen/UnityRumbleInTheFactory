@@ -5,7 +5,6 @@ public readonly struct EnemyType
 
 	public EnemyType(int index, bool isBonus)
 	{
-		Index = index;
-		IsBonus = isBonus;
+		(Index, IsBonus) = (index, isBonus);
 	}
 }

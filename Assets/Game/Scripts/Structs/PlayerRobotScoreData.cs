@@ -6,8 +6,6 @@ public readonly struct PlayerRobotScoreData
 
 	public PlayerRobotScoreData(PlayerRobotData playerRobotData, int numberOfCountedEnemyRobots, int currentScoreForDefeatedEnemyRobots)
 	{
-		PlayerRobotData = playerRobotData;
-		NumberOfCountedEnemyRobots = numberOfCountedEnemyRobots;
-		CurrentScoreForDefeatedEnemyRobots = currentScoreForDefeatedEnemyRobots;
+		(PlayerRobotData, NumberOfCountedEnemyRobots, CurrentScoreForDefeatedEnemyRobots) = (playerRobotData, numberOfCountedEnemyRobots, currentScoreForDefeatedEnemyRobots);
 	}
 }
