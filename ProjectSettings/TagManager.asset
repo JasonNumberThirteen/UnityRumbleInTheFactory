@@ -43,7 +43,7 @@ TagManager:
   - Nuke
   - Enemy
   - Wall
-  - Collision Detector
+  - 
   - Player
   - Intersecting Enemy
   - Nuke Fortress Field
