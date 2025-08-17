@@ -28,14 +28,4 @@ public class PlayerRobotEntity : RobotEntity
 
 		playerRobotsDataManager = ObjectMethods.FindComponentOfType<PlayerRobotsDataManager>();
 	}
-
-	protected override void OnDestroy()
-	{
-		base.OnDestroy();
-		
-		if(playerRobotData != null && playerRobotData.Spawner != null)
-		{
-			playerRobotData.Spawner.InitiateRespawn();
-		}
-	}
 }

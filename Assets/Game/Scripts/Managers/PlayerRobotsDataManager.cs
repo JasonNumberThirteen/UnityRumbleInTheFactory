@@ -10,15 +10,9 @@ public class PlayerRobotsDataManager : MonoBehaviour
 	[SerializeField] private GameData gameData;
 	[SerializeField] private PlayerRobotsListData playerRobotsListData;
 
-	private StageSceneFlowManager stageSceneFlowManager;
+	private PlayerRobotEntitiesTracker playerRobotsEntitiesTracker;
 
-	public void CheckPlayersLives()
-	{
-		if(stageSceneFlowManager != null && playerRobotsListData != null && !playerRobotsListData.GetPlayerRobotsData().Any(playerData => playerData.Spawner != null && playerData.IsAlive) && ObjectMethods.FindComponentsOfType<PlayerRobotEntity>().Length == 0)
-		{
-			stageSceneFlowManager.SetGameAsOverIfNeeded();
-		}
-	}
+	public bool AllPlayersLostAllLives() => playerRobotsListData != null && playerRobotsEntitiesTracker != null && !playerRobotsListData.GetPlayerRobotsData().Any(playerData => playerData.Spawner != null && playerData.IsAlive) && playerRobotsEntitiesTracker.GetPlayerRobotEntities().Count == 0;
 
 	public void ModifyScore(PlayerRobotData playerRobotData, int score, GameObject go)
 	{
@@ -56,7 +50,7 @@ public class PlayerRobotsDataManager : MonoBehaviour
 
 	private void Awake()
 	{
-		stageSceneFlowManager = ObjectMethods.FindComponentOfType<StageSceneFlowManager>();
+		playerRobotsEntitiesTracker = ObjectMethods.FindComponentOfType<PlayerRobotEntitiesTracker>();
 		
 		if(playerRobotsListData != null)
 		{

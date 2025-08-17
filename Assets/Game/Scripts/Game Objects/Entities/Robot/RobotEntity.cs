@@ -34,7 +34,7 @@ public abstract class RobotEntity : MonoBehaviour
 		RegisterToListeners(true);
 	}
 
-	protected virtual void OnDestroy()
+	private void OnDestroy()
 	{
 		RegisterToListeners(false);
 	}

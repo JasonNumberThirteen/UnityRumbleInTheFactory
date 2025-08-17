@@ -10,10 +10,22 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 	private PlayerRobotsDataManager playerRobotsDataManager;
 
 	public PlayerRobotData GetPlayerRobotData() => playerRobotData;
+	public float GetRespawnDelay() => respawnDelay;
 
-	public void InitiateRespawn()
+	public void RespawnEntityIfPossible()
 	{
-		Invoke(nameof(AttemptToRespawn), respawnDelay);
+		if(playerRobotData == null || playerRobotData.Lives == 0)
+		{
+			return;
+		}
+
+		timer.StartTimer();
+		playerRobotData.ResetRank();
+
+		if(playerRobotsDataManager != null)
+		{
+			playerRobotsDataManager.ModifyLives(playerRobotData, -1);
+		}
 	}
 
 	protected override void Awake()
@@ -37,39 +49,16 @@ public class PlayerRobotEntitySpawner : EntitySpawner
 		}
 	}
 
+	private void OnEntityWasSpawned(GameObject go)
+	{
+		++NumberOfSpawns;
+	}
+
 	private void Start()
 	{
 		if(playerRobotData != null)
 		{
 			playerRobotData.Spawner = this;
 		}
-	}
-
-	private void AttemptToRespawn()
-	{
-		if(playerRobotData != null && playerRobotData.Lives > 0)
-		{
-			timer.StartTimer();
-			playerRobotData.ResetRank();
-
-			if(playerRobotsDataManager != null)
-			{
-				playerRobotsDataManager.ModifyLives(playerRobotData, -1);
-			}
-		}
-		else if(playerRobotsDataManager != null)
-		{
-			if(playerRobotData != null)
-			{
-				playerRobotData.IsAlive = false;
-			}
-			
-			playerRobotsDataManager.CheckPlayersLives();
-		}
-	}
-
-	private void OnEntityWasSpawned(GameObject go)
-	{
-		++NumberOfSpawns;
 	}
 }
