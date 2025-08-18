@@ -22,7 +22,7 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 			return;
 		}
 		
-		OnBonusCollected(sender);
+		OnBonusWasCollected(sender);
 		Destroy(gameObject);
 	}
 
@@ -36,7 +36,7 @@ public abstract class BonusTriggerEventsReceiver : MonoBehaviour, ITriggerableOn
 		stageStateManager = ObjectMethods.FindComponentOfType<StageStateManager>();
 	}
 
-	private void OnBonusCollected(GameObject sender)
+	private void OnBonusWasCollected(GameObject sender)
 	{
 		GiveEffect(sender);
 		AddPointsToPlayerIfPossible(sender);
