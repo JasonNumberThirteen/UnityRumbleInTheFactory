@@ -8,7 +8,6 @@ public class PlayerScoreDetailsPanelUI : MonoBehaviour
 
 	private DefeatedEnemiesScoreIntCounterPanelUI[] defeatedEnemiesScoreIntCounterPanelUIs;
 
-	public int GetOrdinalNumber() => playerRobotData != null ? playerRobotData.GetOrdinalNumber() : -1;
 	public PlayerRobotData GetPlayerRobotData() => playerRobotData;
 	public DefeatedEnemiesScoreIntCounterPanelUI GetDefeatedEnemiesScoreIntCounterPanelUIByIndex(int index) => defeatedEnemiesScoreIntCounterPanelUIs.GetElementAt(index);
 

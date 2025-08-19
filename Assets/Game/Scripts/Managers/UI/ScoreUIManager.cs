@@ -23,7 +23,7 @@ public class ScoreUIManager : UIManager
 		scoreEnemyTypeSwitchManager = ObjectMethods.FindComponentOfType<ScoreEnemyTypeSwitchManager>();
 		scoreEnemyTypeCountManager = ObjectMethods.FindComponentOfType<ScoreEnemyTypeCountManager>();
 		defeatedEnemyTypesPanelUI = ObjectMethods.FindComponentOfType<DefeatedEnemyTypesPanelUI>();
-		playerScoreDetailsPanelUIs = ObjectMethods.FindComponentsOfType<PlayerScoreDetailsPanelUI>(false).OrderBy(playerScoreDetailsPanelUI => playerScoreDetailsPanelUI.GetOrdinalNumber()).ToList();
+		playerScoreDetailsPanelUIs = ObjectMethods.FindComponentsOfType<PlayerScoreDetailsPanelUI>(false).OrderBy(playerScoreDetailsPanelUI => RobotDataMethods.GetOrdinalNumber(playerScoreDetailsPanelUI.GetPlayerRobotData())).ToList();
 
 		RegisterToListeners(true);
 	}
