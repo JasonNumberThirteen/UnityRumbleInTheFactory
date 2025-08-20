@@ -11,14 +11,14 @@ public static class VectorMethods
 		return new Vector2(x, y);
 	}
 
-	public static List<Vector2> GetCardinalDirections(float offset = 0)
+	public static List<Vector2> GetCardinalDirections(float length = 1f)
 	{
 		var directions = new List<Vector2>()
 		{
-			Vector2.up*offset,
-			Vector2.down*offset,
-			Vector2.left*offset,
-			Vector2.right*offset
+			Vector2.up*length,
+			Vector2.down*length,
+			Vector2.left*length,
+			Vector2.right*length
 		};
 
 		return directions;
