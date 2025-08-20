@@ -14,12 +14,16 @@ public class BonusTiledPositionSetter : MonoBehaviour
 	private Collider2D c2D;
 	private StageTileNodesManager stageTileNodesManager;
 	private StageTileNodesPathfinder stageTileNodesPathfinder;
+	private ImpassableStageTileNodesInflationManager impassableStageTileNodesInflationManager;
+
+	private static readonly float BONUS_POSITION_AREA_SIZE_OFFSET = 0.1f;
 
 	private void Awake()
 	{
 		c2D = GetComponent<Collider2D>();
 		stageTileNodesManager = ObjectMethods.FindComponentOfType<StageTileNodesManager>();
 		stageTileNodesPathfinder = ObjectMethods.FindComponentOfType<StageTileNodesPathfinder>();
+		impassableStageTileNodesInflationManager = ObjectMethods.FindComponentOfType<ImpassableStageTileNodesInflationManager>();
 	}
 
 	private void Start()
@@ -61,14 +65,14 @@ public class BonusTiledPositionSetter : MonoBehaviour
 
 	private bool DetectedPathToClosestPlayerRobotFrom(Vector2 position)
 	{
-		if(stageTileNodesManager == null || stageTileNodesPathfinder == null)
+		if(stageTileNodesManager == null || stageTileNodesPathfinder == null || impassableStageTileNodesInflationManager == null)
 		{
 			return false;
 		}
 		
-		var startNodesAreaSize = Vector2.one;
+		var startNodesAreaSize = Vector2.one*(1 - BONUS_POSITION_AREA_SIZE_OFFSET);
 		var startNodesArea = new Rect(position.GetOffsetFrom(startNodesAreaSize), startNodesAreaSize);
-		var availableStartNodes = stageTileNodesManager.GetStageTileNodesWithin(startNodesArea).Where(tileNode => tileNode.Passable);
+		var availableStartNodes = stageTileNodesManager.GetStageTileNodesWithin(startNodesArea).Where(stageTileNode => !impassableStageTileNodesInflationManager.GetInflatedImpassableStageTileNodes().Contains(stageTileNode) && stageTileNode.Passable);
 
 		return availableStartNodes != null && availableStartNodes.Any(startNode => startNode != null && stageTileNodesPathfinder.PathExistsBetweenStageTileNodes(startNode, stageTileNodesManager.GetStageTileNodeWhereClosestPlayerRobotIsOnIfPossible(startNode)));
 	}

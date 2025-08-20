@@ -14,6 +14,14 @@ public static class ListExtensions
 		list.ForEach(playerRobotData => action?.Invoke(playerRobotData, i++));
 	}
 
+	public static void AddIfNotExists<T>(this List<T> list, T element)
+	{
+		if(!list.Contains(element))
+		{
+			list.Add(element);
+		}
+	}
+
 	public static T PopFirst<T>(this List<T> list)
 	{
 		if(list.Count == 0)

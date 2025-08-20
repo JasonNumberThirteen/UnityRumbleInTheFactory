@@ -6,6 +6,7 @@ public static class VectorExtensions
 	public static bool IsVertical(this Vector2 vector) => vector == Vector2.up || vector == Vector2.down;
 	public static bool IsZero(this Vector2 vector) => vector == Vector2.zero;
 	public static Vector2 GetOffsetFrom(this Vector2 vector, Vector2 position) => vector - position*0.5f;
+	public static Vector2 GetInversedVector(this Vector2 vector) => new(vector.y, vector.x);
 
 	public static Vector2 GetRawVector(this Vector2 vector)
 	{
