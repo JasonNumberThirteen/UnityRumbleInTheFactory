@@ -15,11 +15,6 @@ public class MainMenuUIManager : UIManager
 		RegisterToListeners(true);
 	}
 
-	private void Start()
-	{
-		CursorMethods.SetCursorVisible(false);
-	}
-
 	private void OnDestroy()
 	{
 		RegisterToListeners(false);
