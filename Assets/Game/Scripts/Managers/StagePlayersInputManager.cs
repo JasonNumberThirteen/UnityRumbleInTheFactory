@@ -11,8 +11,7 @@ public class StagePlayersInputManager : MonoBehaviour
 	private List<PlayerRobotEntitySpawner> activePlayerRobotEntitySpawners = new();
 	private StageSceneFlowManager stageSceneFlowManager;
 
-	private static readonly string PLAYER_ACTION_MAP = "Player";
-
+	public InputActionAsset GetInputActions() => inputActions;
 	public GameData GetGameData() => gameData;
 
 	private void Awake()
@@ -60,23 +59,7 @@ public class StagePlayersInputManager : MonoBehaviour
 		};
 
 		playerInputControllerGO.transform.SetParent(transform);
-		playerInputControllerGO.AddComponent<PlayerInputController>().Setup(GetPlayerInputInstance(playerInputControllerGO), playerRobotEntitySpawner);
-	}
-
-	private PlayerInput GetPlayerInputInstance(GameObject go)
-	{
-		if(go == null)
-		{
-			return null;
-		}
-		
-		var playerInput = go.AddComponent<PlayerInput>();
-
-		playerInput.actions = Instantiate(inputActions);
-		playerInput.defaultActionMap = PLAYER_ACTION_MAP;
-		playerInput.neverAutoSwitchControlSchemes = true;
-
-		return playerInput;
+		playerInputControllerGO.AddComponent<PlayerInputController>().Setup(playerRobotEntitySpawner);
 	}
 
 	private int GetPlayerOrdinalNumberFromSpawner(PlayerRobotEntitySpawner playerRobotEntitySpawner) => RobotDataMethods.GetOrdinalNumber(playerRobotEntitySpawner.GetPlayerRobotData());

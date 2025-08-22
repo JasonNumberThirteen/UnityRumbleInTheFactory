@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +5,9 @@ public class PlayerInputController : MonoBehaviour
 {
 	private int playerOrdinalNumber;
 	private Vector2 pressedMovementVector;
-	private PlayerInput playerInput;
+	private InputAction movementInputAction;
+	private InputAction fireInputAction;
+	private InputAction pauseInputAction;
 	private PlayerRobotEntitySpawner playerRobotEntitySpawner;
 	private PlayerRobotEntityInputController playerRobotEntityInputController;
 	private StageSceneFlowManager stageSceneFlowManager;
@@ -30,39 +31,48 @@ public class PlayerInputController : MonoBehaviour
 		}
 	}
 
-	public void Setup(PlayerInput playerInput, PlayerRobotEntitySpawner playerRobotEntitySpawner)
+	public void Setup(PlayerRobotEntitySpawner playerRobotEntitySpawner)
 	{
-		this.playerInput = playerInput;
 		PlayerRobotEntitySpawner = playerRobotEntitySpawner;
 		playerOrdinalNumber = RobotDataMethods.GetOrdinalNumber(this.playerRobotEntitySpawner.GetPlayerRobotData());
+		
+		GetInputActions();
+		RegisterToInputActionCallbacks(true);
+	}
+	
+	private void GetInputActions()
+	{
+		if(stagePlayersInputManager == null)
+		{
+			return;
+		}
+		
+		var inputActions = stagePlayersInputManager.GetInputActions();
 
-		SetControlSchemeIfNeeded();
-		ActivateInputIfPossible();
+		if(inputActions == null)
+		{
+			return;
+		}
+
+		movementInputAction = inputActions.FindAction(GetInputActionName("Move"));
+		fireInputAction = inputActions.FindAction(GetInputActionName("Fire"));
+		pauseInputAction = inputActions.FindAction(GetInputActionName("Pause"));
+
+		inputActions.Enable();
 	}
 
-	private void SetControlSchemeIfNeeded()
+	private string GetInputActionName(string prefix)
 	{
-		var gamepadIsAvailable = InputMethods.GamepadIsAvailable();
+		var keyboardInputActionName = $"{prefix}ByKeyboardP{playerOrdinalNumber}";
+		
+		if(!InputMethods.GamepadIsAvailable())
+		{
+			return keyboardInputActionName;
+		}
+
 		var twoPlayerModeWasSelected = stagePlayersInputManager != null && GameDataMethods.SelectedTwoPlayerMode(stagePlayersInputManager.GetGameData());
 		
-		if(playerOrdinalNumber == 1)
-		{
-			var controlSchemeName = gamepadIsAvailable && !twoPlayerModeWasSelected ? InputMethods.GAMEPAD_CONTROL_SCHEME_NAME : InputMethods.KEYBOARD_AND_MOUSE_CONTROL_SCHEME_NAME;
-			
-			InputMethods.SetControlSchemeToPlayerInputIfPossible(playerInput, controlSchemeName);
-		}
-		else if(playerOrdinalNumber == 2 && gamepadIsAvailable)
-		{
-			InputMethods.SetControlSchemeToPlayerInputIfPossible(playerInput, InputMethods.GAMEPAD_CONTROL_SCHEME_NAME);
-		}
-	}
-
-	private void ActivateInputIfPossible()
-	{
-		if(playerInput != null)
-		{
-			playerInput.ActivateInput();
-		}
+		return ((playerOrdinalNumber == 1 && !twoPlayerModeWasSelected) || playerOrdinalNumber == 2) ? $"{prefix}ByGamepad" : keyboardInputActionName;
 	}
 
 	private void Awake()
@@ -74,6 +84,84 @@ public class PlayerInputController : MonoBehaviour
 	private void OnDestroy()
 	{
 		PlayerRobotEntitySpawner = null;
+
+		RegisterToInputActionCallbacks(false);
+	}
+
+	private void RegisterToInputActionCallbacks(bool register)
+	{
+		if(register)
+		{
+			if(movementInputAction != null)
+			{
+				movementInputAction.performed += OnMovementInputActionWasPerformed;
+				movementInputAction.canceled += OnMovementInputActionWasCanceled;
+			}
+			
+			if(fireInputAction != null)
+			{
+				fireInputAction.performed += OnFireInputActionWasPerformed;
+			}
+
+			if(pauseInputAction != null)
+			{
+				pauseInputAction.performed += OnPauseInputActionWasPerformed;
+			}
+		}
+		else
+		{
+			if(movementInputAction != null)
+			{
+				movementInputAction.performed -= OnMovementInputActionWasPerformed;
+				movementInputAction.canceled -= OnMovementInputActionWasCanceled;
+			}
+			
+			if(fireInputAction != null)
+			{
+				fireInputAction.performed -= OnFireInputActionWasPerformed;
+			}
+
+			if(pauseInputAction != null)
+			{
+				pauseInputAction.performed -= OnPauseInputActionWasPerformed;
+			}
+		}
+	}
+	
+	private void OnMovementInputActionWasPerformed(InputAction.CallbackContext callbackContext)
+	{
+		OnMove(callbackContext.ReadValue<Vector2>());
+	}
+
+	private void OnMovementInputActionWasCanceled(InputAction.CallbackContext callbackContext)
+	{
+		OnMove(Vector2.zero);
+	}
+
+	private void OnMove(Vector2 movementVector)
+	{
+		pressedMovementVector = movementVector;
+		
+		if(playerRobotEntityInputController != null)
+		{
+			playerRobotEntityInputController.OnMove(pressedMovementVector);
+		}
+	}
+
+	private void OnFireInputActionWasPerformed(InputAction.CallbackContext callbackContext)
+	{
+		if(playerRobotEntityInputController != null)
+		{
+			playerRobotEntityInputController.OnFire();
+		}
+	}
+
+	private void OnPauseInputActionWasPerformed(InputAction.CallbackContext callbackContext)
+	{
+		if(stageSceneFlowManager != null)
+		{
+			stageSceneFlowManager.PauseGameIfPossible();
+		}
 	}
 
 	private void RegisterToPlayerRobotEntitySpawnerListeners(bool register)
@@ -104,70 +192,6 @@ public class PlayerInputController : MonoBehaviour
 		if(go.TryGetComponent(out PlayerRobotEntityMovementController playerRobotEntityMovementController))
 		{
 			playerRobotEntityMovementController.OnMovementKeyWasPressed(pressedMovementVector);
-		}
-	}
-
-	private void OnMoveP1(InputValue inputValue)
-	{
-		InvokeActionIfConditionIsMet(OnMove, inputValue, playerOrdinalNumber == 1);
-	}
-
-	private void OnMoveP2(InputValue inputValue)
-	{
-		InvokeActionIfConditionIsMet(OnMove, inputValue, playerOrdinalNumber == 2);
-	}
-
-	private void OnMove(InputValue inputValue)
-	{
-		pressedMovementVector = inputValue.Get<Vector2>();
-		
-		if(playerRobotEntityInputController != null)
-		{
-			playerRobotEntityInputController.OnMove(inputValue);
-		}
-	}
-
-	private void OnFireP1(InputValue inputValue)
-	{
-		InvokeActionIfConditionIsMet(OnFire, inputValue, playerOrdinalNumber == 1);
-	}
-
-	private void OnFireP2(InputValue inputValue)
-	{
-		InvokeActionIfConditionIsMet(OnFire, inputValue, playerOrdinalNumber == 2);
-	}
-
-	private void OnFire(InputValue inputValue)
-	{
-		if(playerRobotEntityInputController != null)
-		{
-			playerRobotEntityInputController.OnFire(inputValue);
-		}
-	}
-
-	private void OnPauseP1(InputValue inputValue)
-	{
-		InvokeActionIfConditionIsMet(OnPause, inputValue, playerOrdinalNumber == 1);
-	}
-
-	private void OnPauseP2(InputValue inputValue)
-	{
-		InvokeActionIfConditionIsMet(OnPause, inputValue, playerOrdinalNumber == 2);
-	}
-
-	private void OnPause(InputValue inputValue)
-	{
-		if(stageSceneFlowManager != null)
-		{
-			stageSceneFlowManager.PauseGameIfPossible();
-		}
-	}
-
-	private void InvokeActionIfConditionIsMet(Action<InputValue> action, InputValue inputValue, bool condition)
-	{
-		if(condition)
-		{
-			action?.Invoke(inputValue);
 		}
 	}
 }

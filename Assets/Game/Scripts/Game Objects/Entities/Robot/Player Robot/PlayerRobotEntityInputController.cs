@@ -1,18 +1,17 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class PlayerRobotEntityInputController : MonoBehaviour
 {
 	public UnityEvent<Vector2> movementKeyWasPressedEvent;
 	public UnityEvent shootKeyWasPressedEvent;
 
-	public void OnMove(InputValue inputValue)
+	public void OnMove(Vector2 movementVector)
 	{
-		movementKeyWasPressedEvent?.Invoke(inputValue.Get<Vector2>());
+		movementKeyWasPressedEvent?.Invoke(movementVector);
 	}
 
-	public void OnFire(InputValue inputValue)
+	public void OnFire()
 	{
 		shootKeyWasPressedEvent?.Invoke();
 	}
