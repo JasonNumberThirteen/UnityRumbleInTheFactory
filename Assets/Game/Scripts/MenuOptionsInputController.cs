@@ -13,7 +13,6 @@ public class MenuOptionsInputController : MonoBehaviour
 
 	private int navigationDirection;
 	private Timer timer;
-	private PlayerInput playerInput;
 
 	public void SetActive(bool active)
 	{
@@ -23,17 +22,8 @@ public class MenuOptionsInputController : MonoBehaviour
 	private void Awake()
 	{
 		timer = GetComponent<Timer>();
-		playerInput = GetComponent<PlayerInput>();
-
-		SetControlScheme();
+		
 		RegisterToListeners(true);
-	}
-
-	private void SetControlScheme()
-	{
-		var controlSchemeName = InputMethods.GamepadIsAvailable() ? InputMethods.GAMEPAD_CONTROL_SCHEME_NAME : InputMethods.KEYBOARD_AND_MOUSE_CONTROL_SCHEME_NAME;
-
-		InputMethods.SetControlSchemeToPlayerInputIfPossible(playerInput, controlSchemeName);
 	}
 
 	private void OnDestroy()
