@@ -22,7 +22,7 @@
 - The repository contains entire [Wiki](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki) about the game explaining all the technical details.
 
 ## Used technologies
-- [Unity](https://unity.com/ "Unity Real-Time Development Platform | 3D, 2D, VR &amp; AR Engine") game engine (version **2022.3.1f1**),
+- [Unity](https://unity.com/ "Unity Real-Time Development Platform | 3D, 2D, VR &amp; AR Engine") game engine (version **2022.3.62f2**),
 - [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code - Code Editing. Redefined") IDE for writing code,
 - [GIMP](https://www.gimp.org/ "GIMP - GNU Image Manipulation Program") for making graphics,
 - [Tiled](https://www.mapeditor.org/ "Tiled | Flexible level editor") for making stage layouts,
