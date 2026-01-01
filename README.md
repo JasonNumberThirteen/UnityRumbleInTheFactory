@@ -29,7 +29,7 @@
 - [FamiStudio](https://famistudio.org/ "FamiStudio - NES Music Editor") for making music & sound effects.
 
 ## Features
-- [6 scenes](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Scenes "Scenes"),
+- [7 scenes](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Scenes "Scenes"),
 - [2 game modes](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Main-Menu#1-player "Main Menu"),
 - 20 stages,
 - [5 types of tiles](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Tiles "Tiles"),
@@ -37,6 +37,9 @@
 - [6 bonuses](https://github.com/JasonNumberThirteen/UnityRumbleInTheFactory/wiki/Bonuses "Bonuses").
 
 ## Scenes
+### Boot
+A scene made for initialising saved data. It has no content for the player.
+
 ### Main Menu
 A starting scene with option selection.
 
