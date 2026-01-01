@@ -10,7 +10,7 @@ public static class ListExtensions
 	{
 		var i = counterInitialValue;
 
-		list.ForEach(playerRobotData => action?.Invoke(playerRobotData, i++));
+		list.ForEach(element => action?.Invoke(element, i++));
 	}
 
 	public static void AddIfNotExists<T>(this List<T> list, T element)

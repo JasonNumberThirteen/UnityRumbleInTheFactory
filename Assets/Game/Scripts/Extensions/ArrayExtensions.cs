@@ -10,7 +10,7 @@ public static class ArrayExtensions
 	{
 		var i = counterInitialValue;
 
-		array.ForEach(playerRobotData => action?.Invoke(playerRobotData, i++));
+		array.ForEach(element => action?.Invoke(element, i++));
 	}
 
 	public static void ForEach<T>(this T[] array, Action<T> action)
