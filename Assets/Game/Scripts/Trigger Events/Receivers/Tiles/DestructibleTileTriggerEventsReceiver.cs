@@ -11,9 +11,9 @@ public class DestructibleTileTriggerEventsReceiver : MonoBehaviour, ITriggerable
 	private Collider2D[] detectedColliders;
 	private StageTileNodesManager stageTileNodesManager;
 
-	private readonly int OVERLAP_BUFFER_SIZE = 4;
-	private readonly float OVERLAP_RANGE = 0.75f;
-	private readonly float OVERLAP_BOUNDS_PADDING = 0.05f;
+	private static readonly int OVERLAP_BUFFER_SIZE = 4;
+	private static readonly float OVERLAP_RANGE = 0.75f;
+	private static readonly float OVERLAP_BOUNDS_PADDING = 0.05f;
 	
 	public virtual void TriggerOnEnter(GameObject sender)
 	{

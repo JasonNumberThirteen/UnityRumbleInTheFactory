@@ -16,7 +16,8 @@ public class StageSoundManager : MonoBehaviour
 	private EnemyRobotEntitySpawnManager enemyRobotEntitySpawnManager;
 
 	private readonly List<SoundChannel> soundChannels = new();
-	private readonly string CHANNEL_GO_NAME = "Channel";
+	
+	private static readonly string CHANNEL_GO_NAME = "Channel";
 
 	public AudioClip GetAudioClipBySoundEffectType(SoundEffectType soundEffectType) => stageSoundEffectsContainer.GetAudioClipBySoundEffectType(soundEffectType);
 

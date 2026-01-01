@@ -19,8 +19,8 @@ public class PlayerRobotEntityMovementController : RobotEntityMovementController
 	private StageSoundManager stageSoundManager;
 	private StageStateManager stageStateManager;
 
-	private readonly string ENEMY_LAYER_NAME = "Enemy";
-	private readonly string SLIPPERY_FLOOR_LAYER_NAME = "Slippery Floor";
+	private static readonly string ENEMY_LAYER_NAME = "Enemy";
+	private static readonly string SLIPPERY_FLOOR_LAYER_NAME = "Slippery Floor";
 
 	public void OnMovementKeyWasPressed(Vector2 movementVector)
 	{

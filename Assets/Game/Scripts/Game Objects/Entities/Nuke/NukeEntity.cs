@@ -10,7 +10,7 @@ public class NukeEntity : MonoBehaviour, ITriggerableOnEnter
 	private Collider2D c2D;
 	private StageSoundManager stageSoundManager;
 
-	private readonly string DESTROYED_STATE_LAYER_NAME = "Destroyed Nuke";
+	private static readonly string DESTROYED_STATE_LAYER_NAME = "Destroyed Nuke";
 
 	public bool OverlapPoint(Vector2 point) => c2D.OverlapPoint(point);
 	

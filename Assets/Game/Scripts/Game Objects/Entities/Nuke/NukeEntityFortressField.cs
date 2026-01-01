@@ -17,7 +17,8 @@ public class NukeEntityFortressField : MonoBehaviour
 	private StageLayoutManager stageLayoutManager;
 
 	private readonly List<GameObject> fortressTileGOs = new();
-	private readonly float DESTRUCTION_AREA_SIZE_OFFSET = 0.1f;
+	
+	private static readonly float DESTRUCTION_AREA_SIZE_OFFSET = 0.1f;
 
 	public void SpawnFortress(float duration)
 	{

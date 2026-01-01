@@ -8,7 +8,7 @@ public class RobotEntityAnimatorController : EntityAnimatorController
 	private float movementSpeed;
 	private RobotEntityRankController robotEntityRankController;
 	
-	private readonly string MOVEMENT_SPEED_PARAMETER_NAME = "MovementSpeed";
+	private static readonly string MOVEMENT_SPEED_PARAMETER_NAME = "MovementSpeed";
 
 	protected override void Awake()
 	{

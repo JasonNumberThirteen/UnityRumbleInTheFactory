@@ -7,7 +7,7 @@ public class NoStagesStageSelectionTextUI : StageSelectionTextUI
 
 	private PlayerInput playerInput;
 	
-	private readonly string KEY_LITERAL = "[KEY]";
+	private static readonly string KEY_LITERAL = "[KEY]";
 
 	protected override void Awake()
 	{

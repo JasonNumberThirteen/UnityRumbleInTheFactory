@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(EntityMovementController), typeof(Animator))]
 public abstract class EntityAnimatorController : MonoBehaviour
 {
-	protected readonly string HORIZONTAL_MOVEMENT_PARAMETER_NAME = "MovementX";
-	protected readonly string VERTICAL_MOVEMENT_PARAMETER_NAME = "MovementY";
+	protected static readonly string HORIZONTAL_MOVEMENT_PARAMETER_NAME = "MovementX";
+	protected static readonly string VERTICAL_MOVEMENT_PARAMETER_NAME = "MovementY";
 	
 	protected EntityMovementController entityMovementController;
 	protected Animator animator;

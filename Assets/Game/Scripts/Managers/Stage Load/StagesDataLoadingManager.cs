@@ -7,7 +7,7 @@ public class StagesDataLoadingManager : MonoBehaviour
 {
 	[SerializeField] private GameData gameData;
 
-	private readonly string STAGES_DATA_PATH = "Stages";
+	private static readonly string STAGES_DATA_PATH = "Stages";
 
 	private void Awake()
 	{

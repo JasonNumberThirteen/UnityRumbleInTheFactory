@@ -8,7 +8,7 @@ public class StageEnemyTypesLoadingManager : MonoBehaviour
 	[SerializeField] private EnemyRobotData[] enemyRobotsData;
 	[SerializeField] private GameData gameData;
 
-	private readonly char ENEMY_BONUS_TYPE_PREFIX = 'B';
+	private static readonly char ENEMY_BONUS_TYPE_PREFIX = 'B';
 	
 	private void Awake()
 	{

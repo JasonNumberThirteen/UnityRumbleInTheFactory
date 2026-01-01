@@ -6,7 +6,7 @@ public class SaveableGameData
 	public int highScore;
 	public int stageNumber;
 
-	private readonly int INITIAL_HIGH_SCORE = 20000;
+	private static readonly int INITIAL_HIGH_SCORE = 20000;
 
 	public void ResetData()
 	{

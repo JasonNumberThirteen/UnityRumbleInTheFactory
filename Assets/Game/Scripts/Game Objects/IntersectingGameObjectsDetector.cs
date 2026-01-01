@@ -11,7 +11,7 @@ public class IntersectingGameObjectsDetector : MonoBehaviour
 
 	private Collider2D[] detectedColliders;
 
-	private readonly int OVERLAP_BUFFER_SIZE = 2;
+	private static readonly int OVERLAP_BUFFER_SIZE = 2;
 
 	public void SetLayerToGOsIfIntersect()
 	{
