@@ -1,47 +1,91 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3965729446970126673
+--- !u!1001 &337128092598533132
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -1439850325524646349, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: parentTag
+      value: Slippery Floor Tiles
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 47438532852169152, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505588842422115980, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_Name
+      value: SlipperyFloorTilePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505588842422115980, guid: da702411f08f6474196bae776904049c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5505588842422115980, guid: da702411f08f6474196bae776904049c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5520895825198184810}
+    - targetCorrespondingSourceObject: {fileID: 5505588842422115980, guid: da702411f08f6474196bae776904049c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5425614781692274429}
+    - targetCorrespondingSourceObject: {fileID: 5505588842422115980, guid: da702411f08f6474196bae776904049c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2043514088531576839}
+  m_SourcePrefab: {fileID: 100100000, guid: da702411f08f6474196bae776904049c, type: 3}
+--- !u!1 &5245145277770195584 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5505588842422115980, guid: da702411f08f6474196bae776904049c, type: 3}
+  m_PrefabInstance: {fileID: 337128092598533132}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 247582311752684902}
-  - component: {fileID: 6799519437811995597}
-  - component: {fileID: 6412099630306354084}
-  - component: {fileID: 7396844477143940735}
-  - component: {fileID: 1807818615005442926}
-  m_Layer: 6
-  m_Name: SlipperyFloorTilePrefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &247582311752684902
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3965729446970126673}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6799519437811995597
+--- !u!212 &-5520895825198184810
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3965729446970126673}
+  m_GameObject: {fileID: 5245145277770195584}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,14 +131,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &6412099630306354084
+--- !u!50 &-5425614781692274429
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3965729446970126673}
+  m_GameObject: {fileID: 5245145277770195584}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -114,13 +158,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &7396844477143940735
+--- !u!61 &-2043514088531576839
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3965729446970126673}
+  m_GameObject: {fileID: 5245145277770195584}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -159,16 +203,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &1807818615005442926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3965729446970126673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 890a9a83bd1296f47be4e2be080e61a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentTag: Slippery Floor Tiles

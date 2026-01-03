@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2555151523513049773}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7006043213450347271}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4953811159382910320
 BoxCollider2D:
@@ -114,11 +114,11 @@ MonoBehaviour:
   destroyableGameObjectsWithinArea:
     serializedVersion: 2
     m_Bits: 1280
-  tilePrefab: {fileID: 9204947701303557811, guid: 39b4fbcc595df4a44a56582570987b72, type: 3}
+  tilePrefab: {fileID: 5280968484098166850, guid: 80a1131f15fdfd149af94448d6b19628, type: 3}
   timeForBlinkStart: 5
   blinkDuration: 0.25
   tileSpriteToSwitch: {fileID: 1970386521, guid: 55417a54bf68a314b80e7ca764a1784e, type: 3}
-  tileToSpawnAfterElapsedTimePrefab: {fileID: 940286852198350438, guid: 40ef0fdbf600fbc4eabdaf5020cb7895, type: 3}
+  tileToSpawnAfterElapsedTimePrefab: {fileID: 3658153931859246002, guid: 15a38089b5184d649ab95b7e28a2642d, type: 3}
 --- !u!1 &8414169594087006866
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8414169594087006866}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -155,7 +156,6 @@ Transform:
   m_Children:
   - {fileID: 3580004110319112981}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3175265644466931908
 SpriteRenderer:
