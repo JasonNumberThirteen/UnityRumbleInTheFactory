@@ -8,6 +8,7 @@ public class MenuOptionsInputController : MonoBehaviour
 	public UnityEvent<int> navigateKeyWasPressedEvent;
 	public UnityEvent submitKeyWasPressedEvent;
 	public UnityEvent cancelKeyWasPressedEvent;
+	public UnityEvent controlsWereChangedEvent;
 	
 	[SerializeField] private Axis navigationAxis;
 
@@ -63,6 +64,11 @@ public class MenuOptionsInputController : MonoBehaviour
 	private void OnCancel(InputValue inputValue)
 	{
 		cancelKeyWasPressedEvent?.Invoke();
+	}
+
+	private void OnControlsChanged(PlayerInput playerInput)
+	{
+		controlsWereChangedEvent?.Invoke();
 	}
 
 	private int GetNavigationValue(Vector2 inputVector)

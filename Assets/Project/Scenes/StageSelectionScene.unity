@@ -734,6 +734,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: d5def8bd2f8ecfe41b7d4b957661ddaf, type: 2}
   playerRobotsListData: {fileID: 11400000, guid: 97cde28f9bf1ee44d97c11265cd6c5e4, type: 2}
+--- !u!1 &1381635324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381635325}
+  - component: {fileID: 1381635326}
+  m_Layer: 0
+  m_Name: Player Input Gamepad Control Scheme Setter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1381635325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381635324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781415391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381635326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381635324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883c2dae5e96ce64a84d1f000dfc2dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1459275920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -912,6 +956,9 @@ MonoBehaviour:
   cancelKeyWasPressedEvent:
     m_PersistentCalls:
       m_Calls: []
+  controlsWereChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   navigationAxis: 0
 --- !u!114 &1530695888
 MonoBehaviour:
@@ -937,7 +984,83 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ee2391f7-810c-47f4-a4b2-71b036af70cb
+    m_ActionName: Player/MoveByKeyboardP1[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f966f3f6-2d4d-4263-bc5d-cdab0f4e5f53
+    m_ActionName: Player/MoveByKeyboardP2[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0c310107-21b8-4685-a35e-2789d803ccfe
+    m_ActionName: Player/MoveByGamepad[/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 43c0a258-454b-4c46-87ab-47a367c1454a
+    m_ActionName: Player/FireByKeyboardP1[/Mouse/leftButton,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 51082c69-3359-4a54-9db7-32dac13c2f87
+    m_ActionName: Player/FireByKeyboardP2[/Keyboard/rightCtrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2c2cb063-b186-4fb4-9d11-26885e01c250
+    m_ActionName: Player/FireByGamepad[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 37e3bc71-c894-4359-91ed-e6dc97c1f14d
+    m_ActionName: Player/PauseByKeyboardP1[/Mouse/rightButton,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 994bff45-c4d0-45c2-b94e-006e2a011ec8
+    m_ActionName: Player/PauseByKeyboardP2
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3aefdcfb-87e6-491e-b7f6-5b8452e6c5f2
+    m_ActionName: Player/PauseByGamepad[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: de9c26b7-d3ed-44cc-9b33-82ba0a66644f
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9fb634b2-2d4d-4ebc-a457-9c6f675d5d4c
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0b51c522-b2a8-496d-8409-393a50013506
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9bb7760f-3623-49f6-afe6-d32d45bc08c6
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fab21ba2-d291-4ef3-86b4-6978c71c9c09
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7df49682-a598-459e-9fdc-1f0bec0a1c91
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 00d357c8-cb28-4911-9edd-65c537637746
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7e35cde5-a893-4383-8d92-699f15128f2d
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 563c5298-db0b-42e4-871b-8b55a0bd8255
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9388602b-369d-400c-a852-3e9f35d81bbd
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1088,6 +1211,7 @@ Transform:
   m_Children:
   - {fileID: 980652522}
   - {fileID: 1530695889}
+  - {fileID: 1381635325}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055108203 stripped
@@ -1107,7 +1231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624030d1ff9a72a4ebfc47c63027392f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputActionReference: {fileID: 970324341664954762, guid: 45e8cf423a15181489f9ad7ce90975ce, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
