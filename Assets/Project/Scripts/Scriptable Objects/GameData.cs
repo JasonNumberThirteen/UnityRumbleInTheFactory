@@ -63,7 +63,7 @@ public class GameData : ScriptableObject
 		GameIsOver = true;
 	}
 
-	public void SetHighScoreIfPossible(int score, Action onBeatenHighScore = null)
+	public void SetHighScoreIfPossible(int score, Action onHighScoreWasBeaten = null)
 	{
 		if(HighScore >= score)
 		{
@@ -76,7 +76,7 @@ public class GameData : ScriptableObject
 		{
 			BeatenHighScore = true;
 
-			onBeatenHighScore?.Invoke();
+			onHighScoreWasBeaten?.Invoke();
 		}
 	}
 
